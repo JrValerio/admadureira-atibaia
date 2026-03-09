@@ -22,6 +22,36 @@ function primeiroDia(data: string): number {
   return m ? parseInt(m[0]) : 1;
 }
 
+/** Retorna o próximo evento com sua Date calculada (para countdown) */
+export function getProximoEventoComData(): { evento: EventoFuturo; dataEvento: Date } | null {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const resultado = agenda2026
+    .flatMap((bloco) =>
+      bloco.eventos.map((ev) => {
+        const mesNum = bloco.mesNumero ?? mesParaNumero[bloco.mes] ?? 1;
+        // Extrai horário para maior precisão no countdown (ex: "19h00" → 19:00)
+        let hora = 0;
+        let minuto = 0;
+        if (ev.horario) {
+          const h = ev.horario.match(/(\d+)h(\d+)?/);
+          if (h) { hora = parseInt(h[1]); minuto = h[2] ? parseInt(h[2]) : 0; }
+        }
+        const dataEvento = new Date(bloco.ano, mesNum - 1, primeiroDia(ev.data), hora, minuto);
+        return { ev, bloco, dataEvento };
+      })
+    )
+    .filter(({ dataEvento }) => dataEvento >= hoje)
+    .sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime())[0];
+
+  if (!resultado) return null;
+  return {
+    evento: { ...resultado.ev, mes: resultado.bloco.mes, ano: resultado.bloco.ano },
+    dataEvento: resultado.dataEvento,
+  };
+}
+
 /** Retorna os próximos N eventos do agenda2026 a partir de hoje */
 export function getProximosEventos(limite = 4): EventoFuturo[] {
   const hoje = new Date();

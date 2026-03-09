@@ -7,6 +7,7 @@ import { heroEventos } from "@/data/hero";
 
 export default function HeroEventos() {
   const [index, setIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
   const total = heroEventos.length;
 
   const proximo = useCallback(
@@ -14,7 +15,10 @@ export default function HeroEventos() {
     [total]
   );
 
-  const anterior = () => setIndex((prev) => (prev - 1 + total) % total);
+  const anterior = useCallback(
+    () => setIndex((prev) => (prev - 1 + total) % total),
+    [total]
+  );
 
   // Troca automática a cada 6 segundos
   useEffect(() => {
@@ -22,10 +26,23 @@ export default function HeroEventos() {
     return () => clearInterval(id);
   }, [proximo]);
 
+  // Swipe mobile
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const delta = e.changedTouches[0].clientX - touchStart;
+    if (delta > 50) anterior();
+    else if (delta < -50) proximo();
+    setTouchStart(null);
+  };
+
   const evento = heroEventos[index];
 
   return (
-    <section className="relative w-full h-[420px] md:h-[520px] overflow-hidden bg-[#212121]">
+    <section
+      className="relative w-full h-105 md:h-130 overflow-hidden bg-[#212121]"
+      onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Imagens — pré-carrega todas, exibe apenas a ativa */}
       {heroEventos.map((ev, i) => (
         <div
@@ -72,7 +89,7 @@ export default function HeroEventos() {
         type="button"
         onClick={anterior}
         aria-label="Slide anterior"
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors"
+        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors text-xl"
       >
         ‹
       </button>
@@ -80,7 +97,7 @@ export default function HeroEventos() {
         type="button"
         onClick={proximo}
         aria-label="Próximo slide"
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors"
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors text-xl"
       >
         ›
       </button>
