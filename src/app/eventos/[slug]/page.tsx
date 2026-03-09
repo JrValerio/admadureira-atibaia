@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
+import { buildEventSchedule } from "@/lib/event-date";
 import { SITE_URL } from "@/lib/site";
 
 type PageProps = {
@@ -58,10 +59,50 @@ export default async function EventoPage({ params }: PageProps) {
     notFound();
   }
 
+  const schedule = buildEventSchedule(evento.data, evento.horario, evento.ano);
+  const eventImage =
+    evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+  const eventSchema = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: evento.titulo,
+    description:
+      evento.descricao ??
+      `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
+    startDate: schedule.startDate,
+    ...(schedule.endDate ? { endDate: schedule.endDate } : {}),
+    image: [`${SITE_URL}${eventImage}`],
+    location: {
+      "@type": "Place",
+      name: "Igreja Assembleia de Deus – Ministério Madureira",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Praça Pio XII, 122",
+        addressLocality: "Atibaia",
+        addressRegion: "SP",
+        postalCode: "12940-160",
+        addressCountry: "BR",
+      },
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "AD Madureira Atibaia",
+      url: SITE_URL,
+    },
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    url: `${SITE_URL}/eventos/${evento.slug}`,
+  };
+
   return (
     <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+          />
+
           <Link
             href="/eventos"
             className="inline-block text-[#ef5350] text-xs font-semibold tracking-widest uppercase hover:underline mb-6"
@@ -72,7 +113,7 @@ export default async function EventoPage({ params }: PageProps) {
           <div className="rounded-3xl overflow-hidden bg-white shadow-lg border border-black/5">
             <div className="relative w-full aspect-[16/9] bg-[#111]">
               <Image
-                src={evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"}
+                src={eventImage}
                 alt={evento.titulo}
                 fill
                 priority
