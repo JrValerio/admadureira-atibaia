@@ -39,7 +39,7 @@ export default function HeroEventos() {
 
   return (
     <section
-      className="relative w-full h-105 md:h-130 overflow-hidden bg-[#212121]"
+      className="relative w-full h-105 md:h-130 overflow-hidden bg-[#111]"
       onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
       onTouchEnd={handleTouchEnd}
     >
@@ -57,7 +57,7 @@ export default function HeroEventos() {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="object-cover"
+            className="object-contain"
           />
         </div>
       ))}

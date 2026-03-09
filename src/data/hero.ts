@@ -12,21 +12,21 @@ export interface HeroEvento {
 export const heroEventos: HeroEvento[] = [
   {
     titulo: "Culto para Mulheres",
-    imagem: "/programacao/culto-para-mulheres.jpg",
+    imagem: "/programacao/banner-culto-para-mulheres.jpg",
     link: "/programacao",
   },
   {
     titulo: "Campanha de Quinta-feira",
     data: "Toda Quinta-feira",
     horario: "19h30",
-    imagem: "/programacao/campanha-de-quinta.jpg",
+    imagem: "/programacao/banner-campanha-de-quinta.jpg",
     link: "/programacao",
   },
   {
     titulo: "Culto da Família",
     data: "Todo Domingo",
     horario: "18h30",
-    imagem: "/programacao/culto-da-familia.jpg",
+    imagem: "/programacao/banner-culto-da-familia.jpg",
     link: "/programacao",
   },
 ];
