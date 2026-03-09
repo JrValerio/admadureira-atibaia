@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getEventosAgenda } from "@/lib/agenda-utils";
+import { getPastores } from "@/data/pastores";
 
 const SITE_URL = "https://admadureira-atibaia.vercel.app";
 
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/programacao`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: `${SITE_URL}/eventos`,       lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: `${SITE_URL}/sobre`,         lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/pastores`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ministerios`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/videos`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${SITE_URL}/oracao`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
@@ -24,5 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: evento.destaque ? 0.9 : 0.8,
   }));
 
-  return [...paginasBase, ...paginasEvento];
+  const paginasPastores: MetadataRoute.Sitemap = getPastores().map((pastor) => ({
+    url: `${SITE_URL}/pastores/${pastor.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...paginasBase, ...paginasEvento, ...paginasPastores];
 }
