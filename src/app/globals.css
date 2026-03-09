@@ -60,3 +60,13 @@ section[id] {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── WhatsApp icon pulse (transform-only → GPU) ── */
+@keyframes wa-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.2); }
+}
+
+.wa-pulse {
+  animation: wa-pulse 2s ease-in-out 1s 3;
+}

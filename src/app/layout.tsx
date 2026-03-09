@@ -12,16 +12,44 @@ const acme = Acme({
   variable: "--font-acme",
 });
 
+const SITE_URL = "https://admadureira-atibaia.vercel.app";
+const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programação";
+const SITE_DESC =
+  "Igreja Evangélica Assembleia de Deus Ministério Madureira – Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://admadureira-atibaia.vercel.app"),
-  title: "Assembleia de Deus Madureira | Campo de Atibaia",
-  description:
-    "Igreja Evangélica Assembleia de Deus Ministério Madureira – Campo de Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESC,
   keywords:
-    "igreja em atibaia, assembleia de deus madureira, igreja evangélica atibaia, culto em atibaia, AD Madureira Atibaia",
+    "igreja em atibaia, assembleia de deus madureira, igreja evangélica atibaia, culto em atibaia, AD Madureira Atibaia, programação igreja atibaia",
   icons: {
     icon: "/logo.jpg",
     apple: "/logo.jpg",
+  },
+  // OpenGraph — aparece ao compartilhar no WhatsApp, Telegram, Facebook, Instagram
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: SITE_URL,
+    siteName: "AD Madureira Atibaia",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: [
+      {
+        url: `${SITE_URL}/fachada-da-igreja.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Assembleia de Deus Madureira Atibaia",
+      },
+    ],
+  },
+  // Twitter Card (também usado pelo WhatsApp em alguns casos)
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
   },
 };
 
@@ -56,6 +84,11 @@ const churchSchema = {
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "09:00", closes: "11:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "18:30", closes: "20:30" },
   ],
+  foundingDate: "1998",
+  areaServed: {
+    "@type": "City",
+    name: "Atibaia",
+  },
   sameAs: [
     "https://www.instagram.com/admadureira_atibaia/",
     "https://www.youtube.com/@ADMadureiraAtibaia",

@@ -28,8 +28,8 @@ export default function WhatsAppButton() {
           : "opacity-0 translate-y-4 pointer-events-none"
       }`}
     >
-      {/* Ícone do WhatsApp */}
-      <span className="flex items-center justify-center w-14 h-14 shrink-0">
+      {/* Ícone do WhatsApp — pulsa 3x ao aparecer */}
+      <span className="flex items-center justify-center w-14 h-14 shrink-0 wa-pulse">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 32 32"
