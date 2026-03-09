@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AD Madureira Atibaia | Assembleia de Deus",
+  title: "Assembleia de Deus Madureira | Campo de Atibaia",
   description:
-    "Igreja Assembleia de Deus Ministério Madureira – Campo de Atibaia. Praça Pio XII, 122 – Centro. Cultos aos domingos e quartas-feiras.",
-  keywords: "assembleia de deus, madureira, atibaia, igreja, culto, evangélica",
+    "Igreja Evangélica Assembleia de Deus Ministério Madureira – Campo de Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.",
+  keywords:
+    "igreja em atibaia, assembleia de deus madureira, igreja evangélica atibaia, culto em atibaia, AD Madureira Atibaia",
 };
 
 export default function RootLayout({
