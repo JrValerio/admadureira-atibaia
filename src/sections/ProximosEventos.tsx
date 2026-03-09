@@ -35,16 +35,17 @@ export default function ProximosEventos() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {eventos.map((ev, i) => (
-            <div
-              key={i}
-              className="rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 bg-white group"
+          {eventos.map((ev) => (
+            <Link
+              key={ev.slug}
+              href={`/eventos/${ev.slug}`}
+              className="rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 bg-white group block"
             >
               {/* Banner quando existir */}
-              {ev.banner ? (
+              {ev.imagem || ev.banner ? (
                 <div className="relative w-full aspect-video">
                   <Image
-                    src={ev.banner}
+                    src={ev.imagem ?? ev.banner ?? "/fachada-da-igreja.jpg"}
                     alt={ev.titulo}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -68,7 +69,7 @@ export default function ProximosEventos() {
 
               {/* Info */}
               <div className="px-4 py-3">
-                {ev.banner && (
+                {(ev.imagem || ev.banner) && (
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                     {ev.data} · {ev.mes}
                   </p>
@@ -79,8 +80,11 @@ export default function ProximosEventos() {
                 {ev.horario && (
                   <p className="text-[#9e9e9e] text-xs mt-1">{ev.horario}</p>
                 )}
+                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-3">
+                  Ver detalhes →
+                </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

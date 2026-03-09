@@ -1,31 +1,37 @@
 export interface Evento {
-  data: string;        // ex: "02/03" ou "29–30/03"
+  slug: string;
+  data: string; // ex: "02/03" ou "29–30/05"
   titulo: string;
   horario?: string;
-  banner?: string;     // caminho em /public, ex: "/programacao/dia-da-mulher.png"
-  destaque?: boolean;  // exibe card com banner em tamanho maior
+  descricao?: string;
+  local?: string;
+  imagem?: string;
+  banner?: string;
+  destaque?: boolean;
 }
 
 export interface MesAgenda {
-  mes: string;         // ex: "Março"
-  mesNumero?: number;  // ex: 3 — evita dependência de string para parsing de data
+  mes: string;
+  mesNumero?: number;
   ano: number;
   eventos: Evento[];
 }
 
 export interface ItemSemanal {
-  dia: string;         // ex: "Terça-feira" ou "2º Sábado"
+  dia: string;
   titulo: string;
   horario?: string;
-  icone?: string;      // emoji
-  banner?: string;     // imagem do banner em /public
+  icone?: string;
+  banner?: string;
 }
+
+export const LOCAL_EVENTO_PADRAO =
+  "Sede - Praça Pio XII, 122, Centro, Atibaia/SP";
 
 /* ──────────────────────────────────────────────
    PROGRAMAÇÃO SEMANAL FIXA
 ────────────────────────────────────────────── */
 export const programacaoSemanal: ItemSemanal[] = [
-  // Cultos semanais regulares
   {
     dia: "Terça-feira",
     titulo: "Culto de Libertação",
@@ -68,7 +74,6 @@ export const programacaoSemanal: ItemSemanal[] = [
     icone: "🌙",
     banner: "/programacao/culto-de-domingo.png",
   },
-  // Recorrentes mensais
   {
     dia: "1ª Segunda do mês",
     titulo: "Reunião de Ministério",
@@ -96,7 +101,7 @@ export const programacaoSemanal: ItemSemanal[] = [
 ];
 
 /* ──────────────────────────────────────────────
-   AGENDA 2026 — adicione/edite os meses aqui
+   AGENDA 2026 — fonte única para home, /eventos e /programacao
 ────────────────────────────────────────────── */
 export const agenda2026: MesAgenda[] = [
   {
@@ -104,21 +109,97 @@ export const agenda2026: MesAgenda[] = [
     mesNumero: 3,
     ano: 2026,
     eventos: [
-      { data: "02/03", titulo: "Reunião de Ministério" },
-      { data: "09/03", titulo: "Curso de Teologia" },
-      { data: "14/03", titulo: "Santa Ceia" },
-      { data: "16/03", titulo: "Curso de Teologia" },
-      { data: "21/03", titulo: "Reunião de Obreiros" },
-      { data: "23/03", titulo: "Curso de Teologia" },
       {
+        slug: "reuniao-de-ministerio-02-03-2026",
+        data: "02/03",
+        titulo: "Reunião de Ministério",
+        descricao:
+          "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/reuniao-ministerial.png",
+      },
+      {
+        slug: "curso-de-teologia-09-03-2026",
+        data: "09/03",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "santa-ceia-14-03-2026",
+        data: "14/03",
+        titulo: "Santa Ceia",
+        horario: "18h30",
+        descricao:
+          "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/consagracao-mulheres.png",
+      },
+      {
+        slug: "curso-de-teologia-16-03-2026",
+        data: "16/03",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "reuniao-de-obreiros-21-03-2026",
+        data: "21/03",
+        titulo: "Reunião de Obreiros",
+        horario: "18h00",
+        descricao:
+          "Reunião ministerial com obreiros para comunhão, direção e oração.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/culto-de-quinta.png",
+      },
+      {
+        slug: "curso-de-teologia-23-03-2026",
+        data: "23/03",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "confraternizacao-dia-das-mulheres-28-03-2026",
         data: "28/03",
         titulo: "Confraternização Dia das Mulheres",
         horario: "19h00",
-        destaque: true,
+        descricao:
+          "Culto especial de celebração e comunhão voltado às mulheres, com louvor, ministração e palavra.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/dia-da-mulher.png",
         banner: "/programacao/dia-da-mulher.png",
+        destaque: true,
       },
-      { data: "29/03", titulo: "Batismo" },
-      { data: "30/03", titulo: "Curso de Teologia" },
+      {
+        slug: "batismo-29-03-2026",
+        data: "29/03",
+        titulo: "Batismo",
+        horario: "09h00",
+        descricao:
+          "Celebração do batismo nas águas para novos convertidos e membros da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/fachada-da-igreja.jpg",
+      },
+      {
+        slug: "curso-de-teologia-30-03-2026",
+        data: "30/03",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
     ],
   },
   {
@@ -126,11 +207,75 @@ export const agenda2026: MesAgenda[] = [
     mesNumero: 4,
     ano: 2026,
     eventos: [
-      { data: "06/04", titulo: "Reunião de Ministério" },
-      { data: "11/04", titulo: "Santa Ceia" },
-      { data: "13,20,27/04", titulo: "Curso de Teologia" },
-      { data: "18/04", titulo: "Reunião de Obreiros" },
-      { data: "25/04", titulo: "Culto com a Mocidade" },
+      {
+        slug: "reuniao-de-ministerio-06-04-2026",
+        data: "06/04",
+        titulo: "Reunião de Ministério",
+        descricao:
+          "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/reuniao-ministerial.png",
+      },
+      {
+        slug: "santa-ceia-11-04-2026",
+        data: "11/04",
+        titulo: "Santa Ceia",
+        horario: "18h30",
+        descricao:
+          "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/consagracao-mulheres.png",
+      },
+      {
+        slug: "curso-de-teologia-13-04-2026",
+        data: "13/04",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "reuniao-de-obreiros-18-04-2026",
+        data: "18/04",
+        titulo: "Reunião de Obreiros",
+        horario: "18h00",
+        descricao:
+          "Reunião ministerial com obreiros para comunhão, direção e oração.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/culto-de-quinta.png",
+      },
+      {
+        slug: "curso-de-teologia-20-04-2026",
+        data: "20/04",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "culto-com-a-mocidade-25-04-2026",
+        data: "25/04",
+        titulo: "Culto com a Mocidade",
+        horario: "19h30",
+        descricao:
+          "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/ensaio-jovens.png",
+      },
+      {
+        slug: "curso-de-teologia-27-04-2026",
+        data: "27/04",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
     ],
   },
   {
@@ -138,16 +283,85 @@ export const agenda2026: MesAgenda[] = [
     mesNumero: 5,
     ano: 2026,
     eventos: [
-      { data: "04/05", titulo: "Reunião de Ministério" },
-      { data: "09/05", titulo: "Santa Ceia" },
-      { data: "11,18,25/05", titulo: "Curso de Teologia" },
-      { data: "16/05", titulo: "Reunião de Obreiros" },
-      { data: "23/05", titulo: "Culto com a Mocidade" },
       {
+        slug: "reuniao-de-ministerio-04-05-2026",
+        data: "04/05",
+        titulo: "Reunião de Ministério",
+        descricao:
+          "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/reuniao-ministerial.png",
+      },
+      {
+        slug: "santa-ceia-09-05-2026",
+        data: "09/05",
+        titulo: "Santa Ceia",
+        horario: "18h30",
+        descricao:
+          "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/consagracao-mulheres.png",
+      },
+      {
+        slug: "curso-de-teologia-11-05-2026",
+        data: "11/05",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "reuniao-de-obreiros-16-05-2026",
+        data: "16/05",
+        titulo: "Reunião de Obreiros",
+        horario: "18h00",
+        descricao:
+          "Reunião ministerial com obreiros para comunhão, direção e oração.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/culto-de-quinta.png",
+      },
+      {
+        slug: "curso-de-teologia-18-05-2026",
+        data: "18/05",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "culto-com-a-mocidade-23-05-2026",
+        data: "23/05",
+        titulo: "Culto com a Mocidade",
+        horario: "19h30",
+        descricao:
+          "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/ensaio-jovens.png",
+      },
+      {
+        slug: "curso-de-teologia-25-05-2026",
+        data: "25/05",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "congresso-circulo-de-oracao-29-05-2026",
         data: "29–30/05",
         titulo: "Congresso Círculo de Oração",
-        destaque: true,
+        descricao:
+          "Dois dias de culto, oração e ministração especial com a participação do círculo de oração da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/circulo-de-oracao.png",
         banner: "/programacao/circulo-de-oracao.png",
+        destaque: true,
       },
     ],
   },
@@ -156,11 +370,85 @@ export const agenda2026: MesAgenda[] = [
     mesNumero: 6,
     ano: 2026,
     eventos: [
-      { data: "01/06", titulo: "Reunião de Ministério" },
-      { data: "08,15,22,29/06", titulo: "Curso de Teologia" },
-      { data: "13/06", titulo: "Santa Ceia" },
-      { data: "20/06", titulo: "Reunião de Obreiros" },
-      { data: "27/06", titulo: "Culto com a Mocidade" },
+      {
+        slug: "reuniao-de-ministerio-01-06-2026",
+        data: "01/06",
+        titulo: "Reunião de Ministério",
+        descricao:
+          "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/reuniao-ministerial.png",
+      },
+      {
+        slug: "curso-de-teologia-08-06-2026",
+        data: "08/06",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "santa-ceia-13-06-2026",
+        data: "13/06",
+        titulo: "Santa Ceia",
+        horario: "18h30",
+        descricao:
+          "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/consagracao-mulheres.png",
+      },
+      {
+        slug: "curso-de-teologia-15-06-2026",
+        data: "15/06",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "reuniao-de-obreiros-20-06-2026",
+        data: "20/06",
+        titulo: "Reunião de Obreiros",
+        horario: "18h00",
+        descricao:
+          "Reunião ministerial com obreiros para comunhão, direção e oração.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/culto-de-quinta.png",
+      },
+      {
+        slug: "curso-de-teologia-22-06-2026",
+        data: "22/06",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
+      {
+        slug: "culto-com-a-mocidade-27-06-2026",
+        data: "27/06",
+        titulo: "Culto com a Mocidade",
+        horario: "19h30",
+        descricao:
+          "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/programacao/ensaio-jovens.png",
+      },
+      {
+        slug: "curso-de-teologia-29-06-2026",
+        data: "29/06",
+        titulo: "Curso de Teologia",
+        horario: "19h30",
+        descricao:
+          "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
+        local: LOCAL_EVENTO_PADRAO,
+        imagem: "/pulpito-da-igreja.jpg",
+      },
     ],
   },
 ];

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { programacaoSemanal, agenda2026 } from "@/data/agenda";
 import type { MesAgenda, Evento } from "@/data/agenda";
 
@@ -52,7 +53,10 @@ function CardSemanal({
 /* ── Card de evento com banner (agenda) ─────────── */
 function EventoBanner({ evento }: { evento: Evento }) {
   return (
-    <div className="rounded-2xl overflow-hidden border border-[#ffa726] shadow-md">
+    <Link
+      href={`/eventos/${evento.slug}`}
+      className="rounded-2xl overflow-hidden border border-[#ffa726] shadow-md block hover:shadow-lg transition-shadow"
+    >
       {evento.banner && (
         <div className="relative w-full aspect-video">
           <Image
@@ -74,7 +78,7 @@ function EventoBanner({ evento }: { evento: Evento }) {
           {evento.titulo}
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -105,8 +109,12 @@ function CardMes({ mes }: { mes: MesAgenda }) {
 
         {/* Lista de eventos regulares */}
         <ul className="divide-y divide-gray-100">
-          {regulares.map((e, i) => (
-            <li key={i} className="flex items-start gap-3 py-2.5">
+          {regulares.map((e) => (
+            <li key={e.slug}>
+              <Link
+                href={`/eventos/${e.slug}`}
+                className="flex items-start gap-3 py-2.5 hover:bg-[#fff8ee] rounded-xl px-2 -mx-2 transition-colors"
+              >
               <span className="text-[#ffa726] font-bold text-xs w-20 shrink-0 pt-0.5">
                 {e.data}
               </span>
@@ -116,6 +124,7 @@ function CardMes({ mes }: { mes: MesAgenda }) {
                   <p className="text-[#9e9e9e] text-xs">{e.horario}</p>
                 )}
               </div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -164,8 +173,8 @@ export default function Programacao() {
 
         {/* ── 2. AGENDA ANUAL ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {agenda2026.map((mes, i) => (
-            <CardMes key={i} mes={mes} />
+          {agenda2026.map((mes) => (
+            <CardMes key={`${mes.ano}-${mes.mes}`} mes={mes} />
           ))}
         </div>
 

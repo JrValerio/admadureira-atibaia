@@ -1,76 +1,102 @@
-import { agenda2026 } from "@/data/agenda";
+import { agenda2026, type Evento } from "@/data/agenda";
 
 const mesParaNumero: Record<string, number> = {
-  Janeiro: 1, Fevereiro: 2, Março: 3, Abril: 4,
-  Maio: 5, Junho: 6, Julho: 7, Agosto: 8,
-  Setembro: 9, Outubro: 10, Novembro: 11, Dezembro: 12,
+  Janeiro: 1,
+  Fevereiro: 2,
+  Março: 3,
+  Abril: 4,
+  Maio: 5,
+  Junho: 6,
+  Julho: 7,
+  Agosto: 8,
+  Setembro: 9,
+  Outubro: 10,
+  Novembro: 11,
+  Dezembro: 12,
 };
 
-export interface EventoFuturo {
+export interface EventoFuturo extends Evento {
   mes: string;
   ano: number;
-  data: string;
-  titulo: string;
-  horario?: string;
-  banner?: string;
-  destaque?: boolean;
 }
 
-/** Extrai o primeiro dia numérico de strings como "02/03", "09,16/03", "29–30/05" */
 function primeiroDia(data: string): number {
-  const m = data.match(/\d+/);
-  return m ? parseInt(m[0]) : 1;
+  const match = data.match(/\d+/);
+  return match ? parseInt(match[0], 10) : 1;
 }
 
-/** Retorna o próximo evento com sua Date calculada (para countdown) */
-export function getProximoEventoComData(): { evento: EventoFuturo; dataEvento: Date } | null {
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
+function extrairHorario(horario?: string) {
+  let hora = 0;
+  let minuto = 0;
 
-  const resultado = agenda2026
-    .flatMap((bloco) =>
-      bloco.eventos.map((ev) => {
-        const mesNum = bloco.mesNumero ?? mesParaNumero[bloco.mes] ?? 1;
-        // Extrai horário para maior precisão no countdown (ex: "19h00" → 19:00)
-        let hora = 0;
-        let minuto = 0;
-        if (ev.horario) {
-          const h = ev.horario.match(/(\d+)h(\d+)?/);
-          if (h) { hora = parseInt(h[1]); minuto = h[2] ? parseInt(h[2]) : 0; }
-        }
-        const dataEvento = new Date(bloco.ano, mesNum - 1, primeiroDia(ev.data), hora, minuto);
-        return { ev, bloco, dataEvento };
-      })
-    )
-    .filter(({ dataEvento }) => dataEvento >= hoje)
-    .sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime())[0];
+  if (horario) {
+    const match = horario.match(/(\d+)h(\d+)?/);
+    if (match) {
+      hora = parseInt(match[1], 10);
+      minuto = match[2] ? parseInt(match[2], 10) : 0;
+    }
+  }
 
-  if (!resultado) return null;
-  return {
-    evento: { ...resultado.ev, mes: resultado.bloco.mes, ano: resultado.bloco.ano },
-    dataEvento: resultado.dataEvento,
-  };
+  return { hora, minuto };
 }
 
-/** Retorna os próximos N eventos do agenda2026 a partir de hoje */
-export function getProximosEventos(limite = 4): EventoFuturo[] {
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
-
+function expandirAgenda() {
   return agenda2026
     .flatMap((bloco) =>
-      bloco.eventos.map((ev) => {
-        const mesNum = bloco.mesNumero ?? mesParaNumero[bloco.mes] ?? 1;
-        const ordem = new Date(bloco.ano, mesNum - 1, primeiroDia(ev.data));
-        return { ev, bloco, ordem };
+      bloco.eventos.map((evento) => {
+        const mesNumero = bloco.mesNumero ?? mesParaNumero[bloco.mes] ?? 1;
+        const { hora, minuto } = extrairHorario(evento.horario);
+        const dataEvento = new Date(
+          bloco.ano,
+          mesNumero - 1,
+          primeiroDia(evento.data),
+          hora,
+          minuto
+        );
+
+        return {
+          evento: {
+            ...evento,
+            mes: bloco.mes,
+            ano: bloco.ano,
+          } satisfies EventoFuturo,
+          dataEvento,
+        };
       })
     )
-    .filter(({ ordem }) => ordem >= hoje)
-    .sort((a, b) => a.ordem.getTime() - b.ordem.getTime())
-    .slice(0, limite)
-    .map(({ ev, bloco }) => ({
-      ...ev,
-      mes: bloco.mes,
-      ano: bloco.ano,
-    }));
+    .sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime());
+}
+
+export function getEventoBySlug(slug: string) {
+  return expandirAgenda().find((item) => item.evento.slug === slug)?.evento ?? null;
+}
+
+export function getEventosAgenda() {
+  return expandirAgenda().map((item) => item.evento);
+}
+
+export function getEventosFuturos(limite?: number) {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const futuros = expandirAgenda()
+    .filter((item) => item.dataEvento >= hoje)
+    .map((item) => item.evento);
+
+  return typeof limite === "number" ? futuros.slice(0, limite) : futuros;
+}
+
+export function getProximoEventoComData(): {
+  evento: EventoFuturo;
+  dataEvento: Date;
+} | null {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  const resultado = expandirAgenda().find((item) => item.dataEvento >= hoje);
+  return resultado ?? null;
+}
+
+export function getProximosEventos(limite = 4) {
+  return getEventosFuturos(limite);
 }

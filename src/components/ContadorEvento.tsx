@@ -85,10 +85,10 @@ export default function ContadorEvento() {
         </p>
 
         <Link
-          href="/programacao"
+          href={`/eventos/${evento.slug}`}
           className="mt-5 inline-block text-[#ffa726] text-xs font-bold tracking-widest uppercase hover:underline"
         >
-          Ver programação completa →
+          Ver detalhes do evento →
         </Link>
       </div>
     </section>

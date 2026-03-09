@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -9,7 +10,7 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-[center_34%]"
         priority
       />
 
@@ -50,20 +51,24 @@ export default function Hero() {
           <span className="text-white font-semibold">Campo de Atibaia – SP</span>
         </p>
 
+        <p className="text-white/80 text-sm md:text-base mb-8 max-w-2xl mx-auto">
+          Praça Pio XII, 122 · Centro · Atibaia/SP
+        </p>
+
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
+          <Link
             href="#cultos"
             className="bg-[#ffa726] hover:bg-[#e65100] text-[#212121] font-bold px-8 py-3 rounded-full transition-colors duration-200 text-sm tracking-widest uppercase font-acme"
           >
             Horários de Culto
-          </a>
-          <a
-            href="#contato"
+          </Link>
+          <Link
+            href="/contato"
             className="border-2 border-[#ffa726] hover:bg-[#ffa726] hover:text-[#212121] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200 text-sm tracking-widest uppercase font-acme"
           >
             Como Chegar
-          </a>
+          </Link>
         </div>
       </div>
 
