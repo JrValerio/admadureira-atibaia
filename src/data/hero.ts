@@ -11,30 +11,22 @@ export interface HeroEvento {
 // ou reaproveite imagens de /public/programacao/.
 export const heroEventos: HeroEvento[] = [
   {
-    titulo: "Confraternização Dia das Mulheres",
-    data: "28 de Março",
-    horario: "19h00",
-    imagem: "/programacao/dia-da-mulher.png",
+    titulo: "Culto para Mulheres",
+    imagem: "/programacao/culto-para-mulheres.jpg",
     link: "/programacao",
   },
   {
-    titulo: "Congresso Círculo de Oração",
-    data: "29 e 30 de Maio",
-    imagem: "/programacao/circulo-de-oracao.png",
-    link: "/programacao",
-  },
-  {
-    titulo: "Culto de Jovens",
+    titulo: "Campanha de Quinta-feira",
     data: "Toda Quinta-feira",
     horario: "19h30",
-    imagem: "/programacao/culto-de-jovens.png",
+    imagem: "/programacao/campanha-de-quinta.jpg",
     link: "/programacao",
   },
   {
-    titulo: "Culto da Noite",
+    titulo: "Culto da Família",
     data: "Todo Domingo",
     horario: "18h30",
-    imagem: "/programacao/culto-de-domingo.png",
+    imagem: "/programacao/culto-da-familia.jpg",
     link: "/programacao",
   },
 ];
