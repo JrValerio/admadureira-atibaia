@@ -51,6 +51,11 @@ export const metadata: Metadata = {
     description: SITE_DESC,
     images: [`${SITE_URL}/fachada-da-igreja.jpg`],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
 };
 
 // Schema.org JSON-LD — aparece nos resultados do Google
