@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getEventosAgenda } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
+import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
 import { SITE_URL } from "@/lib/site";
 
@@ -44,10 +45,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const paginasMinisterios: MetadataRoute.Sitemap = getMinisterios().map(
+    (ministerio) => ({
+      url: `${SITE_URL}/ministerios/${ministerio.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
+
   return [
     ...paginasBase,
     ...paginasEvento,
     ...paginasPastores,
     ...paginasCongregacoes,
+    ...paginasMinisterios,
   ];
 }

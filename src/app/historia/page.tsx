@@ -188,35 +188,57 @@ export default function HistoriaPage() {
               </Link>
             </div>
 
-            <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
-              <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                Expansão do campo
-              </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
-                Uma obra que alcança a região
-              </h2>
-              <p className="text-[#555] leading-relaxed mb-6">
-                Hoje o Campo de Atibaia reúne congregações comprometidas com a
-                proclamação do Evangelho e com o fortalecimento da fé cristã em
-                diferentes cidades da região.
-              </p>
-              <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5 mb-6">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                  Congregação em destaque
+            <div className="space-y-8">
+              <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                  Expansão do campo
                 </p>
-                <p className="font-acme text-2xl text-[#212121] mb-2">
-                  {congregacoes[0]?.igreja}
+                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+                  Uma obra que alcança a região
+                </h2>
+                <p className="text-[#555] leading-relaxed mb-6">
+                  Hoje o Campo de Atibaia reúne congregações comprometidas com a
+                  proclamação do Evangelho e com o fortalecimento da fé cristã em
+                  diferentes cidades da região.
                 </p>
-                <p className="text-[#555] text-sm">
-                  {congregacoes[0]?.endereco}
-                </p>
+                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5 mb-6">
+                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                    Congregação em destaque
+                  </p>
+                  <p className="font-acme text-2xl text-[#212121] mb-2">
+                    {congregacoes[0]?.igreja}
+                  </p>
+                  <p className="text-[#555] text-sm">
+                    {congregacoes[0]?.endereco}
+                  </p>
+                </div>
+                <Link
+                  href="/congregacoes"
+                  className="inline-flex items-center justify-center border border-[#ef5350] text-[#ef5350] hover:bg-[#ef5350] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                >
+                  Ver congregações
+                </Link>
               </div>
-              <Link
-                href="/congregacoes"
-                className="inline-flex items-center justify-center border border-[#ef5350] text-[#ef5350] hover:bg-[#ef5350] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
-              >
-                Ver congregações
-              </Link>
+
+              <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                  Vida da igreja
+                </p>
+                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+                  Ministérios que servem a comunidade
+                </h2>
+                <p className="text-[#555] leading-relaxed mb-6">
+                  A história da igreja também é contada por meio dos ministérios
+                  que acolhem, discipulam, adoram e servem diferentes gerações da
+                  comunidade cristã.
+                </p>
+                <Link
+                  href="/ministerios"
+                  className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                >
+                  Conheça os ministérios
+                </Link>
+              </div>
             </div>
           </div>
 
@@ -233,4 +255,3 @@ export default function HistoriaPage() {
     </main>
   );
 }
-

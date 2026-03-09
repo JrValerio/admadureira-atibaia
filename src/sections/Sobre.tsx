@@ -63,7 +63,7 @@ export default function Sobre() {
               ação social.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mb-8">
               <Link
                 href="/historia"
                 className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
@@ -75,6 +75,12 @@ export default function Sobre() {
                 className="inline-flex items-center justify-center border border-white/20 text-white hover:border-[#ffa726] hover:text-[#ffa726] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
               >
                 Ver congregações
+              </Link>
+              <Link
+                href="/ministerios"
+                className="inline-flex items-center justify-center border border-white/20 text-white hover:border-[#ffa726] hover:text-[#ffa726] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              >
+                Ver ministérios
               </Link>
             </div>
 
