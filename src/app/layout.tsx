@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Acme } from "next/font/google";
 import "./globals.css";
+
+const acme = Acme({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-acme",
+});
 
 export const metadata: Metadata = {
   title: "Assembleia de Deus Madureira | Campo de Atibaia",
@@ -16,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased">{children}</body>
+      <body className={`${acme.variable} antialiased`}>{children}</body>
     </html>
   );
 }

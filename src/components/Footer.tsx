@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const redes = [
   {
     nome: "Instagram",
@@ -39,23 +41,35 @@ const redes = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0f2347] text-white/70 py-10">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Identidade */}
-        <div>
-          <p className="text-[#c8a84b] font-bold text-sm tracking-widest uppercase mb-2">
-            Assembleia de Deus
-          </p>
-          <p className="text-white font-semibold text-sm mb-1">
-            Ministério Madureira
-          </p>
-          <p className="text-white/60 text-sm mb-3">Campo de Atibaia – SP</p>
-          <p className="text-white/40 text-xs">CNPJ: 48.644.074/0001-97</p>
+    <footer className="bg-[#1a1a1a] text-white/60 py-12">
+      {/* Barra laranja no topo */}
+      <div className="h-1 bg-[#ffa726] w-full mb-12" />
+
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Logo + identidade */}
+        <div className="flex flex-col items-start gap-3">
+          <Image
+            src="/logo.jpg"
+            alt="Logo AD Madureira Atibaia"
+            width={72}
+            height={72}
+            className="rounded-full"
+          />
+          <div>
+            <p className="font-acme text-[#ffa726] text-sm tracking-widest uppercase">
+              Assembleia de Deus
+            </p>
+            <p className="text-white text-sm font-semibold">Ministério Madureira</p>
+            <p className="text-white/50 text-xs">Campo de Atibaia – SP</p>
+            <p className="text-white/30 text-xs mt-1">CNPJ: 48.644.074/0001-97</p>
+          </div>
         </div>
 
         {/* Endereço */}
         <div>
-          <h4 className="text-white font-semibold text-sm mb-2">Endereço</h4>
+          <h4 className="font-acme text-white text-sm tracking-widest uppercase mb-3">
+            Endereço
+          </h4>
           <p className="text-sm leading-relaxed mb-2">
             Praça Pio XII, 122<br />
             Centro – Atibaia/SP<br />
@@ -65,7 +79,7 @@ export default function Footer() {
             href="https://wa.me/5511916116102"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm hover:text-[#c8a84b] transition-colors"
+            className="text-[#ffa726] hover:text-[#ffd54f] text-sm transition-colors"
           >
             (11) 91611-6102
           </a>
@@ -73,7 +87,9 @@ export default function Footer() {
 
         {/* Redes sociais */}
         <div>
-          <h4 className="text-white font-semibold text-sm mb-4">Redes Sociais</h4>
+          <h4 className="font-acme text-white text-sm tracking-widest uppercase mb-4">
+            Redes Sociais
+          </h4>
           <div className="flex flex-wrap gap-3">
             {redes.map((rede) => (
               <a
@@ -82,7 +98,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={rede.nome}
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#c8a84b] flex items-center justify-center transition-colors duration-200"
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#ffa726] hover:text-[#212121] text-white flex items-center justify-center transition-colors duration-200"
               >
                 {rede.icon}
               </a>
@@ -91,7 +107,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 mt-8 pt-6 border-t border-white/10 text-center text-xs text-white/40">
+      <div className="max-w-6xl mx-auto px-4 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/30">
         © {new Date().getFullYear()} AD Madureira Atibaia · Todos os direitos reservados
       </div>
     </footer>

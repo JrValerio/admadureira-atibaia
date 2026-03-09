@@ -34,17 +34,17 @@ const eventosEspeciais = [
 
 export default function Cultos() {
   return (
-    <section id="cultos" className="py-24 bg-gray-50">
+    <section id="cultos" className="py-24 bg-[#f5f5f5]">
       <div className="max-w-6xl mx-auto px-4">
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <p className="text-[#c8a84b] text-sm font-semibold tracking-widest uppercase mb-2">
+          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
             Programação
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a6c]">
+          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
             Horários de Culto
           </h2>
-          <div className="w-16 h-1 bg-[#c8a84b] mx-auto mt-4" />
+          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
         </div>
 
         {/* Grid de cultos */}
@@ -52,19 +52,19 @@ export default function Cultos() {
           {cultos.map((culto) => (
             <div
               key={culto.dia}
-              className="bg-white rounded-2xl shadow-md p-6 border-t-4 border-[#1a3a6c] hover:shadow-lg transition-shadow"
+              className="bg-white rounded-2xl shadow-md p-6 border-t-4 border-[#ffa726] hover:shadow-lg transition-shadow"
             >
               <div className="text-3xl mb-3">{culto.icone}</div>
-              <h3 className="text-[#1a3a6c] font-bold text-base mb-4">
+              <h3 className="font-acme text-[#212121] text-base mb-4 tracking-wide">
                 {culto.dia}
               </h3>
               <ul className="space-y-3">
                 {culto.horarios.map((h) => (
                   <li key={h.hora} className="flex flex-col gap-1">
-                    <span className="bg-[#1a3a6c] text-white text-xs font-bold px-3 py-1 rounded-full self-start">
+                    <span className="bg-[#ffa726] text-[#212121] text-xs font-bold px-3 py-1 rounded-full self-start">
                       {h.hora}
                     </span>
-                    <span className="text-gray-500 text-sm">{h.nome}</span>
+                    <span className="text-[#424242] text-sm">{h.nome}</span>
                   </li>
                 ))}
               </ul>
@@ -73,27 +73,27 @@ export default function Cultos() {
         </div>
 
         {/* Eventos especiais */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[#c8a84b]/30 p-6 max-w-xl mx-auto text-center">
-          <p className="text-[#c8a84b] text-xs font-semibold tracking-widest uppercase mb-4">
+        <div className="bg-white rounded-2xl shadow-sm border border-[#ffa726]/40 p-6 max-w-xl mx-auto text-center">
+          <p className="text-[#ffa726] text-xs font-semibold tracking-widest uppercase mb-4">
             Eventos Mensais
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {eventosEspeciais.map((e) => (
               <div key={e.nome}>
-                <p className="text-[#1a3a6c] font-semibold text-sm">{e.nome}</p>
-                <p className="text-gray-400 text-xs">{e.detalhe}</p>
+                <p className="text-[#212121] font-semibold text-sm">{e.nome}</p>
+                <p className="text-[#757575] text-xs">{e.detalhe}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <p className="text-center text-gray-400 text-sm mt-8">
+        <p className="text-center text-[#9e9e9e] text-sm mt-8">
           Acompanhe também pelo nosso canal no{" "}
           <a
             href="https://www.youtube.com/@ADMadureiraAtibaia"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#1a3a6c] hover:underline font-medium"
+            className="text-[#ef5350] hover:underline font-semibold"
           >
             YouTube
           </a>
