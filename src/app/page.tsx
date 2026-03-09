@@ -5,6 +5,7 @@ import Destaques from "@/sections/Destaques";
 import Cultos from "@/sections/Cultos";
 import Ministerios from "@/sections/Ministerios";
 import Sobre from "@/sections/Sobre";
+import Oracao from "@/sections/Oracao";
 import Contato from "@/sections/Contato";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Cultos />
         <Ministerios />
         <Sobre />
+        <Oracao />
         <Contato />
       </main>
       <Footer />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const navLinks = [
@@ -8,32 +8,50 @@ const navLinks = [
   { label: "Cultos", href: "#cultos" },
   { label: "Ministérios", href: "#ministerios" },
   { label: "Sobre", href: "#sobre" },
+  { label: "Oração", href: "#oracao" },
   { label: "Contato", href: "#contato" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Barra superior laranja */}
-      <div className="bg-[#ffa726] py-1 px-4 text-center">
-        <p className="text-[#212121] text-xs font-semibold tracking-widest uppercase">
+      {/* Topbar — some apenas quando não rolou */}
+      <div
+        className={`bg-[#ffa726] transition-all duration-300 overflow-hidden ${
+          scrolled ? "max-h-0 py-0" : "max-h-10 py-1"
+        }`}
+      >
+        <p className="text-[#212121] text-xs font-semibold tracking-widest uppercase text-center px-4">
           Venha fazer parte desta família · (11) 91611-6102
         </p>
       </div>
 
       {/* Navbar principal */}
-      <div className="bg-[#212121] shadow-lg">
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "bg-[#212121]/95 backdrop-blur-sm shadow-xl"
+            : "bg-[#212121]"
+        }`}
+      >
         <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
           {/* Logo + nome */}
           <div className="flex items-center gap-3">
             <Image
               src="/logo.jpg"
               alt="AD Madureira Atibaia"
-              width={48}
-              height={48}
-              className="rounded-full"
+              width={scrolled ? 36 : 48}
+              height={scrolled ? 36 : 48}
+              className="rounded-full transition-all duration-300"
             />
             <div className="leading-tight">
               <p className="font-acme text-[#ffa726] font-bold text-xs tracking-widest uppercase">
@@ -64,7 +82,7 @@ export default function Navbar() {
             className="md:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen ? "true" : "false"}
+            aria-expanded={menuOpen}
           >
             <div className="w-5 h-0.5 bg-white mb-1" />
             <div className="w-5 h-0.5 bg-white mb-1" />

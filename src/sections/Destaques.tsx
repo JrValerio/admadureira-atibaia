@@ -8,7 +8,8 @@ const destaques = [
       </svg>
     ),
     href: "https://www.youtube.com/@ADMadureiraAtibaia",
-    colorClass: "text-[#ef5350] border-[#ef5350]",
+    iconColor: "text-[#ef5350]",
+    borderColor: "border-[#ef5350]",
     label: "Assistir agora",
   },
   {
@@ -19,8 +20,9 @@ const destaques = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
     ),
-    href: "#contato",
-    colorClass: "text-[#ffa726] border-[#ffa726]",
+    href: "#oracao",
+    iconColor: "text-[#ffa726]",
+    borderColor: "border-[#ffa726]",
     label: "Enviar pedido",
   },
   {
@@ -32,7 +34,8 @@ const destaques = [
       </svg>
     ),
     href: "https://linktr.ee/admadureira_atibaia",
-    colorClass: "text-[#ffd54f] border-[#ffd54f]",
+    iconColor: "text-[#ffd54f]",
+    borderColor: "border-[#ffd54f]",
     label: "Seguir",
   },
 ];
@@ -50,16 +53,16 @@ export default function Destaques() {
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${item.colorClass.split(" ")[0]}`}>
+              <div className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${item.iconColor}`}>
                 {item.icone}
               </div>
-              <h3 className={`font-acme text-lg tracking-wide mb-2 ${item.colorClass.split(" ")[0]}`}>
+              <h3 className={`font-acme text-lg tracking-wide mb-2 ${item.iconColor}`}>
                 {item.titulo}
               </h3>
               <p className="text-white/60 text-sm leading-relaxed mb-5">
                 {item.descricao}
               </p>
-              <span className={`text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border transition-colors duration-200 ${item.colorClass}`}>
+              <span className={`text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border transition-colors duration-200 ${item.iconColor} ${item.borderColor}`}>
                 {item.label}
               </span>
             </a>
