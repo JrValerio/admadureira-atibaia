@@ -25,11 +25,22 @@ export default function Contato() {
               </div>
               <div>
                 <h4 className="font-semibold text-[#212121] mb-1">Endereço</h4>
-                <p className="text-[#424242] text-sm leading-relaxed">
+                <p className="text-[#424242] text-sm leading-relaxed mb-3">
                   Praça Pio XII, 122<br />
                   Centro – Atibaia/SP<br />
                   CEP 12940-160
                 </p>
+                <a
+                  href="https://maps.google.com/?q=Praça+Pio+XII,+122,+Centro,+Atibaia,+SP"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#ffa726] hover:underline tracking-wide uppercase"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  Abrir no Google Maps
+                </a>
               </div>
             </div>
 

@@ -39,3 +39,24 @@ html {
 section[id] {
   scroll-margin-top: 80px;
 }
+
+/* ── Scroll reveal ─────────────────────────────────
+   Use className="reveal" no container e o hook useReveal().
+   A classe .is-visible é adicionada via JS quando o elemento entra no viewport.
+────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay escalonado para grids — aplique reveal-delay-1, -2, -3 etc. nos filhos */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }

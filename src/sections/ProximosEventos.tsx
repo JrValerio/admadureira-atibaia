@@ -1,15 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { getProximosEventos } from "@/lib/agenda-utils";
+import { useReveal } from "@/hooks/useReveal";
 
 export default function ProximosEventos() {
   const eventos = getProximosEventos(4);
+  const ref = useReveal();
 
   if (eventos.length === 0) return null;
 
   return (
     <section className="py-20 bg-[#f9f9f9]">
-      <div className="max-w-6xl mx-auto px-4">
+      <div ref={ref} className="max-w-6xl mx-auto px-4 reveal">
         {/* Cabeçalho */}
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
