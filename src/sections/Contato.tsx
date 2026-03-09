@@ -90,6 +90,7 @@ export default function Contato() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.3!2d-46.5567!3d-23.1171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8a6b1234567%3A0x1234567890abcdef!2sPra%C3%A7a%20Pio%20XII%2C%20122%20-%20Centro%2C%20Atibaia%20-%20SP%2C%2012940-160!5e0!3m2!1spt-BR!2sbr!4v1"
               width="100%"
               height="100%"
+              loading="lazy"
               className="border-0"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
