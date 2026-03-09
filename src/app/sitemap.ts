@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getEventosAgenda } from "@/lib/agenda-utils";
 import { getPastores } from "@/data/pastores";
-
-const SITE_URL = "https://admadureira-atibaia.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 // Prioridade das páginas para o Google
 // 1.0 = home | 0.9 = páginas principais | 0.7 = páginas secundárias

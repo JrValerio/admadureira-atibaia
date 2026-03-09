@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
+import { SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -33,12 +34,18 @@ export async function generateMetadata({
     description:
       evento.descricao ??
       `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
+    alternates: {
+      canonical: `${SITE_URL}/eventos/${evento.slug}`,
+    },
     openGraph: {
+      url: `${SITE_URL}/eventos/${evento.slug}`,
       title: `${evento.titulo} | AD Madureira Atibaia`,
       description:
         evento.descricao ??
         `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
-      images: [evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"],
+      images: [
+        `${SITE_URL}${evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"}`,
+      ],
     },
   };
 }

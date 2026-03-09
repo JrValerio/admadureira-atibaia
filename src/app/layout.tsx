@@ -3,6 +3,7 @@ import { Acme } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const acme = Acme({
@@ -12,7 +13,6 @@ const acme = Acme({
   variable: "--font-acme",
 });
 
-const SITE_URL = "https://admadureira-atibaia.vercel.app";
 const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programação";
 const SITE_DESC =
   "Igreja Evangélica Assembleia de Deus Ministério Madureira – Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.";
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: SITE_URL,
-    siteName: "AD Madureira Atibaia",
+    siteName: SITE_NAME,
     title: SITE_TITLE,
     description: SITE_DESC,
     images: [
@@ -64,9 +64,9 @@ const churchSchema = {
   "@type": "Church",
   name: "Assembleia de Deus Ministério Madureira – Atibaia",
   alternateName: "AD Madureira Atibaia",
-  url: "https://admadureira-atibaia.vercel.app",
-  logo: "https://admadureira-atibaia.vercel.app/logo.jpg",
-  image: "https://admadureira-atibaia.vercel.app/fachada-da-igreja.jpg",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.jpg`,
+  image: `${SITE_URL}/fachada-da-igreja.jpg`,
   telephone: "+55-11-91611-6102",
   address: {
     "@type": "PostalAddress",

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPastorBySlug, getPastores } from "@/data/pastores";
+import { SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -31,10 +32,14 @@ export async function generateMetadata({
   return {
     title: `${pastor.nome} | AD Madureira Atibaia`,
     description: pastor.resumo,
+    alternates: {
+      canonical: `${SITE_URL}/pastores/${pastor.slug}`,
+    },
     openGraph: {
+      url: `${SITE_URL}/pastores/${pastor.slug}`,
       title: `${pastor.nome} | AD Madureira Atibaia`,
       description: pastor.resumo,
-      images: [pastor.foto],
+      images: [`${SITE_URL}${pastor.foto}`],
     },
   };
 }
@@ -100,10 +105,19 @@ export default async function PastorPage({ params }: PageProps) {
     "@type": "Person",
     name: pastor.nome,
     jobTitle: pastor.cargo,
-    image: pastor.foto,
+    image: `${SITE_URL}${pastor.foto}`,
+    url: `${SITE_URL}/pastores/${pastor.slug}`,
     worksFor: {
       "@type": "Organization",
       name: "Assembleia de Deus Madureira Atibaia",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Praça Pio XII, 122",
+        addressLocality: "Atibaia",
+        addressRegion: "SP",
+        postalCode: "12940-160",
+        addressCountry: "BR",
+      },
     },
   };
 
