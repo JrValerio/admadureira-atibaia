@@ -1,5 +1,6 @@
 const YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const YOUTUBE_CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID;
 const YOUTUBE_CHANNEL_HANDLE =
   process.env.YOUTUBE_CHANNEL_HANDLE ?? "@ADMadureiraAtibaia";
 
@@ -57,6 +58,10 @@ async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
 }
 
 async function getChannelId(): Promise<string | null> {
+  if (YOUTUBE_CHANNEL_ID) {
+    return YOUTUBE_CHANNEL_ID;
+  }
+
   if (!YOUTUBE_API_KEY) {
     return null;
   }

@@ -19,8 +19,9 @@ function VideoCard({
           height="100%"
           src={`https://www.youtube.com/embed/${video.id}`}
           title={video.title}
-          loading={destaque ? undefined : "lazy"}
+          loading={destaque ? "eager" : "lazy"}
           className="border-0 w-full h-full"
+          referrerPolicy="strict-origin-when-cross-origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
