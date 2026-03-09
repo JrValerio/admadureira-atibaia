@@ -1,0 +1,155 @@
+import Image from "next/image";
+import { programacaoSemanal, agenda2026 } from "@/data/agenda";
+import type { MesAgenda, Evento } from "@/data/agenda";
+
+/* ── Card de evento com banner ─────────────────── */
+function EventoBanner({ evento }: { evento: Evento }) {
+  return (
+    <div className="rounded-2xl overflow-hidden border border-[#ffa726] shadow-md">
+      {evento.banner && (
+        <div className="relative w-full aspect-video">
+          <Image
+            src={evento.banner}
+            alt={evento.titulo}
+            fill
+            sizes="(max-width: 640px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+      )}
+      <div className="px-4 py-3 bg-[#fff8ee]">
+        <p className="text-[#ffa726] text-xs font-bold uppercase tracking-widest">
+          {evento.data}
+          {evento.horario && ` · ${evento.horario}`}
+        </p>
+        <p className="font-acme text-[#212121] text-base tracking-wide mt-0.5">
+          {evento.titulo}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ── Card de mês ───────────────────────────────── */
+function CardMes({ mes }: { mes: MesAgenda }) {
+  const destaques = mes.eventos.filter((e) => e.destaque);
+  const regulares = mes.eventos.filter((e) => !e.destaque);
+
+  return (
+    <div className="rounded-2xl border border-gray-100 overflow-hidden">
+      {/* Header do mês */}
+      <div className="bg-[#212121] px-6 py-3 flex items-center gap-3">
+        <span className="font-acme text-[#ffa726] text-lg tracking-widest uppercase">
+          {mes.mes}
+        </span>
+        <span className="text-white/40 text-sm">{mes.ano}</span>
+      </div>
+
+      <div className="p-4 bg-white space-y-4">
+        {/* Eventos destacados com banner */}
+        {destaques.length > 0 && (
+          <div className="space-y-3">
+            {destaques.map((e, i) => (
+              <EventoBanner key={i} evento={e} />
+            ))}
+          </div>
+        )}
+
+        {/* Lista de eventos regulares */}
+        <ul className="divide-y divide-gray-100">
+          {regulares.map((e, i) => (
+            <li key={i} className="flex items-start gap-3 py-2.5">
+              <span className="text-[#ffa726] font-bold text-xs w-20 shrink-0 pt-0.5">
+                {e.data}
+              </span>
+              <div>
+                <p className="text-[#212121] text-sm font-medium">{e.titulo}</p>
+                {e.horario && (
+                  <p className="text-[#9e9e9e] text-xs">{e.horario}</p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+/* ── Seção principal ───────────────────────────── */
+export default function Programacao() {
+  return (
+    <section id="programacao" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Cabeçalho geral */}
+        <div className="text-center mb-16">
+          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+            Igreja AD Madureira · Atibaia
+          </p>
+          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            Programação da Igreja
+          </h2>
+          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
+        </div>
+
+        {/* ── 1. PROGRAMAÇÃO SEMANAL ── */}
+        <div className="mb-20">
+          <h3 className="font-acme text-2xl text-[#212121] tracking-wide mb-8 text-center">
+            Programação Semanal
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {programacaoSemanal.map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-[#ffa726] transition-colors"
+              >
+                <span className="text-2xl">{item.icone}</span>
+                <div>
+                  <p className="text-[#ffa726] text-xs font-bold uppercase tracking-wider">
+                    {item.dia}
+                  </p>
+                  <p className="font-acme text-[#212121] text-sm tracking-wide">
+                    {item.titulo}
+                  </p>
+                  {item.horario && (
+                    <p className="text-[#9e9e9e] text-xs">{item.horario}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Divisor */}
+        <div className="flex items-center gap-4 mb-14">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="font-acme text-[#ffa726] tracking-widest uppercase text-sm">
+            Agenda 2026
+          </span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        {/* ── 2. AGENDA ANUAL ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {agenda2026.map((mes, i) => (
+            <CardMes key={i} mes={mes} />
+          ))}
+        </div>
+
+        {/* Rodapé */}
+        <p className="text-center text-[#9e9e9e] text-sm mt-12">
+          Acompanhe novidades pelo{" "}
+          <a
+            href="https://www.instagram.com/admadureira_atibaia/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#ffa726] hover:underline font-semibold"
+          >
+            Instagram
+          </a>
+        </p>
+      </div>
+    </section>
+  );
+}

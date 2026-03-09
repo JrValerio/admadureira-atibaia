@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Início", href: "/" },
   { label: "Sobre", href: "/sobre" },
   { label: "Ministérios", href: "/ministerios" },
+  { label: "Programação", href: "/programacao" },
   { label: "Eventos", href: "/eventos" },
   { label: "Vídeos", href: "/videos" },
   { label: "Oração", href: "/oracao" },
@@ -95,7 +96,6 @@ export default function Navbar() {
             className="md:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen ? "true" : undefined}
           >
             <div className="w-5 h-0.5 bg-white mb-1" />
             <div className="w-5 h-0.5 bg-white mb-1" />
