@@ -1,15 +1,20 @@
-import { VISUAIS_EVENTO } from "@/data/agenda-visuais";
+import { getVisualEvento, type EventoTipo } from "@/data/agenda-visuais";
+import { validateAgenda } from "@/data/agenda-schema";
 
-export interface Evento {
+export interface EventoBase {
   slug: string;
+  tipo: EventoTipo;
   data: string; // ex: "02/03" ou "29–30/05"
   titulo: string;
   horario?: string;
   descricao?: string;
   local?: string;
+  destaque?: boolean;
+}
+
+export interface Evento extends EventoBase {
   imagem?: string;
   banner?: string;
-  destaque?: boolean;
 }
 
 export interface MesAgenda {
@@ -17,6 +22,13 @@ export interface MesAgenda {
   mesNumero?: number;
   ano: number;
   eventos: Evento[];
+}
+
+interface MesAgendaBase {
+  mes: string;
+  mesNumero?: number;
+  ano: number;
+  eventos: EventoBase[];
 }
 
 export interface ItemSemanal {
@@ -105,7 +117,7 @@ export const programacaoSemanal: ItemSemanal[] = [
 /* ──────────────────────────────────────────────
    AGENDA 2026 — fonte única para home, /eventos e /programacao
 ────────────────────────────────────────────── */
-export const agenda2026: MesAgenda[] = [
+const agendaBase2026: MesAgendaBase[] = validateAgenda([
   {
     mes: "Março",
     mesNumero: 3,
@@ -118,7 +130,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-ministerio"],
+        tipo: "reuniao-de-ministerio",
       },
       {
         slug: "curso-de-teologia-09-03-2026",
@@ -128,7 +140,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "santa-ceia-14-03-2026",
@@ -138,7 +150,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["santa-ceia"],
+        tipo: "santa-ceia",
       },
       {
         slug: "curso-de-teologia-16-03-2026",
@@ -148,7 +160,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "reuniao-de-obreiros-21-03-2026",
@@ -158,7 +170,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Reunião ministerial com obreiros para comunhão, direção e oração.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-obreiros"],
+        tipo: "reuniao-de-obreiros",
       },
       {
         slug: "curso-de-teologia-23-03-2026",
@@ -168,7 +180,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "confraternizacao-dia-das-mulheres-28-03-2026",
@@ -178,7 +190,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto especial de celebração e comunhão voltado às mulheres, com louvor, ministração e palavra.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["dia-das-mulheres"],
+        tipo: "dia-das-mulheres",
         destaque: true,
       },
       {
@@ -189,7 +201,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Celebração do batismo nas águas para novos convertidos e membros da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO.batismo,
+        tipo: "batismo",
       },
       {
         slug: "curso-de-teologia-30-03-2026",
@@ -199,7 +211,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
     ],
   },
@@ -215,7 +227,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-ministerio"],
+        tipo: "reuniao-de-ministerio",
       },
       {
         slug: "santa-ceia-11-04-2026",
@@ -225,7 +237,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["santa-ceia"],
+        tipo: "santa-ceia",
       },
       {
         slug: "curso-de-teologia-13-04-2026",
@@ -235,7 +247,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "reuniao-de-obreiros-18-04-2026",
@@ -245,7 +257,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Reunião ministerial com obreiros para comunhão, direção e oração.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-obreiros"],
+        tipo: "reuniao-de-obreiros",
       },
       {
         slug: "curso-de-teologia-20-04-2026",
@@ -255,7 +267,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "culto-com-a-mocidade-25-04-2026",
@@ -265,7 +277,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["culto-com-a-mocidade"],
+        tipo: "culto-com-a-mocidade",
       },
       {
         slug: "curso-de-teologia-27-04-2026",
@@ -275,7 +287,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
     ],
   },
@@ -291,7 +303,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-ministerio"],
+        tipo: "reuniao-de-ministerio",
       },
       {
         slug: "santa-ceia-09-05-2026",
@@ -301,7 +313,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["santa-ceia"],
+        tipo: "santa-ceia",
       },
       {
         slug: "curso-de-teologia-11-05-2026",
@@ -311,7 +323,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "reuniao-de-obreiros-16-05-2026",
@@ -321,7 +333,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Reunião ministerial com obreiros para comunhão, direção e oração.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-obreiros"],
+        tipo: "reuniao-de-obreiros",
       },
       {
         slug: "curso-de-teologia-18-05-2026",
@@ -331,7 +343,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "culto-com-a-mocidade-23-05-2026",
@@ -341,7 +353,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["culto-com-a-mocidade"],
+        tipo: "culto-com-a-mocidade",
       },
       {
         slug: "curso-de-teologia-25-05-2026",
@@ -351,7 +363,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "congresso-circulo-de-oracao-29-05-2026",
@@ -360,7 +372,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Dois dias de culto, oração e ministração especial com a participação do círculo de oração da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["congresso-circulo-de-oracao"],
+        tipo: "congresso-circulo-de-oracao",
         destaque: true,
       },
     ],
@@ -377,7 +389,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Encontro de alinhamento e oração com a liderança ministerial da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-ministerio"],
+        tipo: "reuniao-de-ministerio",
       },
       {
         slug: "curso-de-teologia-08-06-2026",
@@ -387,7 +399,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "santa-ceia-13-06-2026",
@@ -397,7 +409,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["santa-ceia"],
+        tipo: "santa-ceia",
       },
       {
         slug: "curso-de-teologia-15-06-2026",
@@ -407,7 +419,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "reuniao-de-obreiros-20-06-2026",
@@ -417,7 +429,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Reunião ministerial com obreiros para comunhão, direção e oração.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["reuniao-de-obreiros"],
+        tipo: "reuniao-de-obreiros",
       },
       {
         slug: "curso-de-teologia-22-06-2026",
@@ -427,7 +439,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
       {
         slug: "culto-com-a-mocidade-27-06-2026",
@@ -437,7 +449,7 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Culto especial dirigido pela mocidade, com participação dos jovens no louvor e na palavra.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["culto-com-a-mocidade"],
+        tipo: "culto-com-a-mocidade",
       },
       {
         slug: "curso-de-teologia-29-06-2026",
@@ -447,8 +459,16 @@ export const agenda2026: MesAgenda[] = [
         descricao:
           "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
         local: LOCAL_EVENTO_PADRAO,
-        ...VISUAIS_EVENTO["curso-de-teologia"],
+        tipo: "curso-de-teologia",
       },
     ],
   },
-];
+]);
+
+export const agenda2026: MesAgenda[] = agendaBase2026.map((mes) => ({
+  ...mes,
+  eventos: mes.eventos.map((evento) => ({
+    ...evento,
+    ...getVisualEvento(evento.tipo),
+  })),
+}));
