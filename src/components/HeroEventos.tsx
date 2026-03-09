@@ -39,7 +39,7 @@ export default function HeroEventos() {
 
   return (
     <section
-      className="relative w-full h-105 md:h-130 overflow-hidden bg-[#111]"
+      className="relative w-full aspect-[16/9] overflow-hidden bg-[#111]"
       onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
       onTouchEnd={handleTouchEnd}
     >
@@ -63,21 +63,21 @@ export default function HeroEventos() {
       ))}
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
 
       {/* Texto central */}
-      <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 px-4 text-center">
+      <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 sm:pb-10 md:pb-16 px-4 text-center">
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
           {evento.data}
           {evento.horario && ` · ${evento.horario}`}
         </p>
-        <h2 className="font-acme text-white text-3xl md:text-5xl tracking-wide leading-tight max-w-2xl">
+        <h2 className="font-acme text-white text-2xl sm:text-3xl md:text-5xl tracking-wide leading-tight max-w-2xl">
           {evento.titulo}
         </h2>
         {evento.link && (
           <Link
             href={evento.link}
-            className="mt-4 inline-block bg-[#ffa726] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-2 rounded-full hover:bg-[#ffb74d] transition-colors"
+            className="mt-3 sm:mt-4 inline-block bg-[#ffa726] text-[#212121] font-bold text-[11px] sm:text-xs tracking-widest uppercase px-5 sm:px-6 py-2 rounded-full hover:bg-[#ffb74d] transition-colors"
           >
             Ver programação
           </Link>
@@ -89,7 +89,7 @@ export default function HeroEventos() {
         type="button"
         onClick={anterior}
         aria-label="Slide anterior"
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors text-xl"
+        className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center transition-colors text-lg sm:text-xl"
       >
         ‹
       </button>
@@ -97,13 +97,13 @@ export default function HeroEventos() {
         type="button"
         onClick={proximo}
         aria-label="Próximo slide"
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-9 h-9 flex items-center justify-center transition-colors text-xl"
+        className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center transition-colors text-lg sm:text-xl"
       >
         ›
       </button>
 
       {/* Bolinhas indicadoras */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
         {heroEventos.map((_, i) => (
           <button
             key={i}
