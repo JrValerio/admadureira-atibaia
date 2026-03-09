@@ -1,36 +1,15 @@
-const videosDestaque = [
-  {
-    id: "iXVuDQRxrlw",
-    titulo: "Culto em Destaque",
-  },
-  {
-    id: "TThk0ZEd3OU",
-    titulo: "Transmissao em Destaque",
-  },
-];
-
-const videos = [
-  { id: "juq8QkL3urY", titulo: "Transmissao no YouTube" },
-  { id: "l87g14Ei6lc", titulo: "Transmissao no YouTube" },
-  { id: "_OJUyJQhoGQ", titulo: "Transmissao no YouTube" },
-  { id: "m54-MeElqX8", titulo: "Transmissao no YouTube" },
-  { id: "8olwOnn4_Zo", titulo: "Transmissao no YouTube" },
-  { id: "wM6Uj5e-u6M", titulo: "Transmissao no YouTube" },
-  { id: "ZcG3APU1RX8", titulo: "Transmissao no YouTube" },
-  { id: "JGN1DXeCBaI", titulo: "Transmissao no YouTube" },
-  { id: "oxSegJLl15Y", titulo: "Transmissao no YouTube" },
-];
+import { getYouTubeFeed, type YouTubeVideo } from "@/lib/youtube";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
 
 function VideoCard({
-  id,
-  titulo,
+  video,
   destaque = false,
+  badge,
 }: {
-  id: string;
-  titulo: string;
+  video: YouTubeVideo;
   destaque?: boolean;
+  badge?: string;
 }) {
   return (
     <div className="rounded-2xl overflow-hidden shadow-md bg-white border border-black/5">
@@ -38,8 +17,8 @@ function VideoCard({
         <iframe
           width="100%"
           height="100%"
-          src={`https://www.youtube.com/embed/${id}`}
-          title={titulo}
+          src={`https://www.youtube.com/embed/${video.id}`}
+          title={video.title}
           loading={destaque ? undefined : "lazy"}
           className="border-0 w-full h-full"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -47,18 +26,24 @@ function VideoCard({
         />
       </div>
       <div className="px-4 py-3">
-        {destaque && (
+        {badge && (
           <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-            Destaque
+            {badge}
           </p>
         )}
-        <p className="font-acme text-[#212121] text-sm tracking-wide">{titulo}</p>
+        <p className="font-acme text-[#212121] text-sm tracking-wide">
+          {video.title}
+        </p>
       </div>
     </div>
   );
 }
 
-export default function Videos() {
+export default async function Videos() {
+  const { liveNow, recentVideos } = await getYouTubeFeed();
+  const featuredVideos = liveNow ? recentVideos.slice(0, 1) : recentVideos.slice(0, 2);
+  const libraryVideos = recentVideos.slice(featuredVideos.length);
+
   return (
     <section id="videos" className="py-24 bg-[#f5f5f5]">
       <div className="max-w-6xl mx-auto px-4">
@@ -75,56 +60,77 @@ export default function Videos() {
           </p>
         </div>
 
-        <div className="mb-14">
-          <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
-            <div>
-              <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                Selecoes da semana
-              </p>
-              <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                Videos em Destaque
-              </h3>
+        {liveNow && (
+          <div className="mb-14">
+            <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
+              <div>
+                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
+                  Transmissao no YouTube
+                </p>
+                <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
+                  Ao Vivo Agora
+                </h3>
+              </div>
+              <a
+                href={CANAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-[#ef5350] hover:underline tracking-wide uppercase"
+              >
+                Ir para o canal -&gt;
+              </a>
             </div>
-            <a
-              href={CANAL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-semibold text-[#ef5350] hover:underline tracking-wide uppercase"
-            >
-              Ir para o canal -&gt;
-            </a>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {videosDestaque.map((video) => (
-              <VideoCard
-                key={video.id}
-                id={video.id}
-                titulo={video.titulo}
-                destaque
-              />
-            ))}
+            <VideoCard video={liveNow} destaque badge="Ao vivo" />
           </div>
-        </div>
+        )}
 
-        <div className="mb-10">
-          <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
-            <div>
-              <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                Biblioteca
-              </p>
-              <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                Mais Transmissoes
-              </h3>
+        {featuredVideos.length > 0 && (
+          <div className="mb-14">
+            <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
+              <div>
+                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
+                  Selecoes da semana
+                </p>
+                <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
+                  Videos em Destaque
+                </h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {featuredVideos.map((video) => (
+                <VideoCard
+                  key={video.id}
+                  video={video}
+                  destaque
+                  badge="Destaque"
+                />
+              ))}
             </div>
           </div>
+        )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((video) => (
-              <VideoCard key={video.id} id={video.id} titulo={video.titulo} />
-            ))}
+        {libraryVideos.length > 0 && (
+          <div className="mb-10">
+            <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
+              <div>
+                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
+                  Biblioteca
+                </p>
+                <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
+                  Mais Transmissoes
+                </h3>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {libraryVideos.map((video) => (
+                <VideoCard key={video.id} video={video} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="text-center">
           <a
