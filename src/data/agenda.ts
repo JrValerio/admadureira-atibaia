@@ -8,6 +8,7 @@ export interface Evento {
 
 export interface MesAgenda {
   mes: string;         // ex: "Março"
+  mesNumero?: number;  // ex: 3 — evita dependência de string para parsing de data
   ano: number;
   eventos: Evento[];
 }
@@ -100,6 +101,7 @@ export const programacaoSemanal: ItemSemanal[] = [
 export const agenda2026: MesAgenda[] = [
   {
     mes: "Março",
+    mesNumero: 3,
     ano: 2026,
     eventos: [
       { data: "02/03", titulo: "Reunião de Ministério" },
@@ -121,6 +123,7 @@ export const agenda2026: MesAgenda[] = [
   },
   {
     mes: "Abril",
+    mesNumero: 4,
     ano: 2026,
     eventos: [
       { data: "06/04", titulo: "Reunião de Ministério" },
@@ -132,6 +135,7 @@ export const agenda2026: MesAgenda[] = [
   },
   {
     mes: "Maio",
+    mesNumero: 5,
     ano: 2026,
     eventos: [
       { data: "04/05", titulo: "Reunião de Ministério" },
@@ -149,6 +153,7 @@ export const agenda2026: MesAgenda[] = [
   },
   {
     mes: "Junho",
+    mesNumero: 6,
     ano: 2026,
     eventos: [
       { data: "01/06", titulo: "Reunião de Ministério" },
