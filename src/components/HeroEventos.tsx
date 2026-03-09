@@ -63,25 +63,27 @@ export default function HeroEventos() {
       ))}
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/25 to-black/10" />
 
       {/* Texto central */}
-      <div className="absolute inset-0 flex flex-col items-center justify-end pb-6 sm:pb-10 md:pb-16 px-4 text-center">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-          {evento.data}
-          {evento.horario && ` · ${evento.horario}`}
-        </p>
-        <h2 className="font-acme text-white text-2xl sm:text-3xl md:text-5xl tracking-wide leading-tight max-w-2xl">
-          {evento.titulo}
-        </h2>
-        {evento.link && (
-          <Link
-            href={evento.link}
-            className="mt-3 sm:mt-4 inline-block bg-[#ffa726] text-[#212121] font-bold text-[11px] sm:text-xs tracking-widest uppercase px-5 sm:px-6 py-2 rounded-full hover:bg-[#ffb74d] transition-colors"
-          >
-            Ver programação
-          </Link>
-        )}
+      <div className="absolute inset-0 flex items-end justify-center px-4 pb-6 sm:pb-10 md:items-center md:pb-0 text-center">
+        <div className="max-w-xl rounded-2xl border border-white/10 bg-black/45 px-4 py-3 sm:px-6 sm:py-5 shadow-2xl backdrop-blur-sm md:translate-y-12 lg:translate-y-16">
+          <p className="text-[#ffa726] text-[11px] sm:text-xs font-bold tracking-widest uppercase mb-2">
+            {evento.data}
+            {evento.horario && ` · ${evento.horario}`}
+          </p>
+          <h2 className="font-acme text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight">
+            {evento.titulo}
+          </h2>
+          {evento.link && (
+            <Link
+              href={evento.link}
+              className="mt-3 sm:mt-4 inline-block bg-[#ffa726] text-[#212121] font-bold text-[11px] sm:text-xs tracking-widest uppercase px-5 sm:px-6 py-2 rounded-full hover:bg-[#ffb74d] transition-colors"
+            >
+              Ver programação
+            </Link>
+          )}
+        </div>
       </div>
 
       {/* Setas */}
