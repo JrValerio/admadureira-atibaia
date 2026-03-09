@@ -67,7 +67,7 @@ function PastorCompactCard({ pastor }: { pastor: Pastor }) {
         <h3 className="font-acme text-xl text-[#212121] tracking-wide leading-tight mb-2">
           {pastor.nome}
         </h3>
-        <p className="text-[#5f5f5f] text-sm leading-relaxed">
+        <p className="text-[#5f5f5f] text-sm leading-relaxed line-clamp-3">
           {pastor.resumo}
         </p>
       </div>

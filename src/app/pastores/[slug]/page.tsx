@@ -39,6 +39,25 @@ export async function generateMetadata({
   };
 }
 
+function Breadcrumb({ nome }: { nome: string }) {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="text-sm text-[#777] mb-6 flex flex-wrap items-center gap-2"
+    >
+      <Link href="/" className="hover:underline">
+        Início
+      </Link>
+      <span>›</span>
+      <Link href="/pastores" className="hover:underline">
+        Pastores
+      </Link>
+      <span>›</span>
+      <span className="text-[#212121] font-medium">{nome}</span>
+    </nav>
+  );
+}
+
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
@@ -46,6 +65,24 @@ function InfoCard({ label, value }: { label: string; value: string }) {
         {label}
       </p>
       <p className="text-[#212121] text-sm leading-relaxed">{value}</p>
+    </div>
+  );
+}
+
+function Timeline({ itens }: { itens: string[] }) {
+  return (
+    <div className="space-y-6">
+      {itens.map((item, index) => (
+        <div key={item} className="flex gap-4">
+          <div className="relative pt-2">
+            <div className="w-3 h-3 rounded-full bg-[#ffa726]" />
+            {index < itens.length - 1 && (
+              <div className="absolute left-1.5 top-5 bottom-[-28px] w-px bg-[#ffa726]/30" />
+            )}
+          </div>
+          <p className="text-[#555] leading-relaxed">{item}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -58,16 +95,28 @@ export default async function PastorPage({ params }: PageProps) {
     notFound();
   }
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: pastor.nome,
+    jobTitle: pastor.cargo,
+    image: pastor.foto,
+    worksFor: {
+      "@type": "Organization",
+      name: "Assembleia de Deus Madureira Atibaia",
+    },
+  };
+
   return (
     <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <Link
-            href="/pastores"
-            className="inline-block text-[#ef5350] text-xs font-semibold tracking-widest uppercase hover:underline mb-6"
-          >
-            ← Voltar para pastores
-          </Link>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          />
+
+          <Breadcrumb nome={pastor.nome} />
 
           <div className="rounded-3xl overflow-hidden bg-white shadow-lg border border-black/5 p-6 md:p-10">
             <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 items-center">
@@ -94,7 +143,7 @@ export default async function PastorPage({ params }: PageProps) {
                 <p className="text-[#ef5350] font-semibold tracking-wide uppercase text-sm mb-5">
                   {pastor.cargo}
                 </p>
-                <p className="text-[#555] leading-relaxed mb-8">
+                <p className="text-[#555] text-lg leading-relaxed max-w-2xl mb-8">
                   {pastor.resumo}
                 </p>
 
@@ -121,11 +170,7 @@ export default async function PastorPage({ params }: PageProps) {
                 <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                   Trajetória
                 </h2>
-                <div className="space-y-4 text-[#555] leading-relaxed">
-                  {pastor.trajetoria.map((item) => (
-                    <p key={item}>{item}</p>
-                  ))}
-                </div>
+                <Timeline itens={pastor.trajetoria} />
               </div>
 
               <div className="space-y-6">
@@ -160,11 +205,11 @@ export default async function PastorPage({ params }: PageProps) {
                 )}
 
                 {pastor.versiculo && (
-                  <div className="rounded-3xl bg-[#212121] text-white p-6">
+                  <div className="rounded-3xl bg-[#212121] text-white p-8 text-center">
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                       Versículo que marca o ministério
                     </p>
-                    <blockquote className="text-white/85 leading-relaxed mb-3">
+                    <blockquote className="text-xl md:text-2xl italic text-white/85 leading-relaxed mb-3">
                       “{pastor.versiculo.texto}”
                     </blockquote>
                     <p className="text-white/60 text-sm">
@@ -176,6 +221,12 @@ export default async function PastorPage({ params }: PageProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <Link
+                href="/pastores"
+                className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              >
+                Ver outros pastores
+              </Link>
               <Link
                 href="/contato"
                 className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
