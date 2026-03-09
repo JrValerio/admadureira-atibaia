@@ -1,12 +1,31 @@
 import { getYouTubeFeed } from "@/lib/youtube";
 import YouTubePreviewCard from "@/components/YouTubePreviewCard";
+import { FIXED_FEATURED_VIDEO_IDS } from "@/data/featuredVideos";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
 
 export default async function Videos() {
   const { liveNow, recentVideos } = await getYouTubeFeed();
-  const featuredVideos = liveNow ? recentVideos.slice(0, 1) : recentVideos.slice(0, 2);
-  const libraryVideos = recentVideos.slice(featuredVideos.length);
+  const fixedFeaturedVideos = FIXED_FEATURED_VIDEO_IDS.map((id) =>
+    recentVideos.find((video) => video.id === id)
+  ).filter((video) => video !== undefined);
+
+  const featuredVideoIdSet = new Set(FIXED_FEATURED_VIDEO_IDS);
+  const otherVideos = recentVideos.filter(
+    (video) => !featuredVideoIdSet.has(video.id)
+  );
+
+  const featuredVideos =
+    fixedFeaturedVideos.length > 0
+      ? fixedFeaturedVideos
+      : liveNow
+        ? otherVideos.slice(0, 1)
+        : otherVideos.slice(0, 2);
+
+  const libraryVideos =
+    fixedFeaturedVideos.length > 0
+      ? otherVideos
+      : otherVideos.slice(featuredVideos.length);
 
   return (
     <section id="videos" className="py-24 bg-[#f5f5f5]">
