@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getEventosAgenda } from "@/lib/agenda-utils";
+import { getCongregacoes } from "@/data/congregacoes";
 import { getPastores } from "@/data/pastores";
 import { SITE_URL } from "@/lib/site";
 
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/programacao`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: `${SITE_URL}/eventos`,       lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: `${SITE_URL}/sobre`,         lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/congregacoes`,  lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/pastores`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ministerios`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/videos`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
@@ -32,5 +34,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...paginasBase, ...paginasEvento, ...paginasPastores];
+  const paginasCongregacoes: MetadataRoute.Sitemap = getCongregacoes().map(
+    (congregacao) => ({
+      url: `${SITE_URL}/congregacoes/${congregacao.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
+
+  return [
+    ...paginasBase,
+    ...paginasEvento,
+    ...paginasPastores,
+    ...paginasCongregacoes,
+  ];
 }
