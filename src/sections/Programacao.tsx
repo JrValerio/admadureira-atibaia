@@ -2,7 +2,54 @@ import Image from "next/image";
 import { programacaoSemanal, agenda2026 } from "@/data/agenda";
 import type { MesAgenda, Evento } from "@/data/agenda";
 
-/* ── Card de evento com banner ─────────────────── */
+/* ── Card da programação semanal ───────────────── */
+function CardSemanal({
+  dia,
+  titulo,
+  horario,
+  icone,
+  banner,
+}: {
+  dia: string;
+  titulo: string;
+  horario?: string;
+  icone?: string;
+  banner?: string;
+}) {
+  return (
+    <div className="rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 group">
+      {/* Banner */}
+      <div className="relative w-full aspect-square bg-[#212121]">
+        {banner ? (
+          <Image
+            src={banner}
+            alt={titulo}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-5xl">{icone}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Info */}
+      <div className="px-4 py-3 bg-white">
+        <p className="text-[#ffa726] text-xs font-bold uppercase tracking-widest">
+          {dia}
+        </p>
+        <p className="font-acme text-[#212121] text-base tracking-wide leading-tight mt-0.5">
+          {titulo}
+        </p>
+        {horario && <p className="text-[#9e9e9e] text-xs mt-0.5">{horario}</p>}
+      </div>
+    </div>
+  );
+}
+
+/* ── Card de evento com banner (agenda) ─────────── */
 function EventoBanner({ evento }: { evento: Evento }) {
   return (
     <div className="rounded-2xl overflow-hidden border border-[#ffa726] shadow-md">
@@ -98,25 +145,9 @@ export default function Programacao() {
             Programação Semanal
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {programacaoSemanal.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-[#ffa726] transition-colors"
-              >
-                <span className="text-2xl">{item.icone}</span>
-                <div>
-                  <p className="text-[#ffa726] text-xs font-bold uppercase tracking-wider">
-                    {item.dia}
-                  </p>
-                  <p className="font-acme text-[#212121] text-sm tracking-wide">
-                    {item.titulo}
-                  </p>
-                  {item.horario && (
-                    <p className="text-[#9e9e9e] text-xs">{item.horario}</p>
-                  )}
-                </div>
-              </div>
+              <CardSemanal key={i} {...item} />
             ))}
           </div>
         </div>
