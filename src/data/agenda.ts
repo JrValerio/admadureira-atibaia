@@ -1,3 +1,5 @@
+import { VISUAIS_EVENTO } from "@/data/agenda-visuais";
+
 export interface Evento {
   slug: string;
   data: string; // ex: "02/03" ou "29–30/05"
@@ -25,44 +27,8 @@ export interface ItemSemanal {
   banner?: string;
 }
 
-interface EventoVisual {
-  imagem: string;
-  banner?: string;
-}
-
 export const LOCAL_EVENTO_PADRAO =
   "Sede - Praça Pio XII, 122, Centro, Atibaia/SP";
-
-const VISUAIS_EVENTO: Record<string, EventoVisual> = {
-  "reuniao-de-ministerio": {
-    imagem: "/programacao/reuniao-ministerial.png",
-    banner: "/programacao/reuniao-ministerial.png",
-  },
-  "curso-de-teologia": {
-    imagem: "/fachada-da-igreja.jpg",
-  },
-  "santa-ceia": {
-    imagem: "/fachada-da-igreja.jpg",
-  },
-  "reuniao-de-obreiros": {
-    imagem: "/pulpito-da-igreja.jpg",
-  },
-  "dia-das-mulheres": {
-    imagem: "/programacao/dia-da-mulher.png",
-    banner: "/programacao/dia-da-mulher.png",
-  },
-  batismo: {
-    imagem: "/fachada-da-igreja.jpg",
-  },
-  "culto-com-a-mocidade": {
-    imagem: "/programacao/culto-de-jovens.png",
-    banner: "/programacao/culto-de-jovens.png",
-  },
-  "congresso-circulo-de-oracao": {
-    imagem: "/programacao/circulo-de-oracao.png",
-    banner: "/programacao/circulo-de-oracao.png",
-  },
-};
 
 /* ──────────────────────────────────────────────
    PROGRAMAÇÃO SEMANAL FIXA
