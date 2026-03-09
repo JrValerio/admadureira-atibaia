@@ -1,44 +1,7 @@
-import { getYouTubeFeed, type YouTubeVideo } from "@/lib/youtube";
+import { getYouTubeFeed } from "@/lib/youtube";
+import YouTubePreviewCard from "@/components/YouTubePreviewCard";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
-
-function VideoCard({
-  video,
-  destaque = false,
-  badge,
-}: {
-  video: YouTubeVideo;
-  destaque?: boolean;
-  badge?: string;
-}) {
-  return (
-    <div className="rounded-2xl overflow-hidden shadow-md bg-white border border-black/5">
-      <div className="aspect-video">
-        <iframe
-          width="100%"
-          height="100%"
-          src={`https://www.youtube.com/embed/${video.id}`}
-          title={video.title}
-          loading={destaque ? "eager" : "lazy"}
-          className="border-0 w-full h-full"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-      <div className="px-4 py-3">
-        {badge && (
-          <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-            {badge}
-          </p>
-        )}
-        <p className="font-acme text-[#212121] text-sm tracking-wide">
-          {video.title}
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export default async function Videos() {
   const { liveNow, recentVideos } = await getYouTubeFeed();
@@ -82,7 +45,7 @@ export default async function Videos() {
               </a>
             </div>
 
-            <VideoCard video={liveNow} destaque badge="Ao vivo" />
+            <YouTubePreviewCard video={liveNow} destaque badge="Ao vivo" />
           </div>
         )}
 
@@ -101,7 +64,7 @@ export default async function Videos() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {featuredVideos.map((video) => (
-                <VideoCard
+                <YouTubePreviewCard
                   key={video.id}
                   video={video}
                   destaque
@@ -127,7 +90,7 @@ export default async function Videos() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {libraryVideos.map((video) => (
-                <VideoCard key={video.id} video={video} />
+                <YouTubePreviewCard key={video.id} video={video} />
               ))}
             </div>
           </div>

@@ -3,6 +3,7 @@ const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const YOUTUBE_CHANNEL_ID = process.env.YOUTUBE_CHANNEL_ID;
 const YOUTUBE_CHANNEL_HANDLE =
   process.env.YOUTUBE_CHANNEL_HANDLE ?? "@ADMadureiraAtibaia";
+const YOUTUBE_REVALIDATE_SECONDS = 120;
 
 export interface YouTubeVideo {
   id: string;
@@ -44,7 +45,7 @@ const fallbackRecentVideos: YouTubeVideo[] = [
 async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
   try {
     const response = await fetch(url, {
-      next: { revalidate: 300 },
+      next: { revalidate: YOUTUBE_REVALIDATE_SECONDS },
     });
 
     if (!response.ok) {
