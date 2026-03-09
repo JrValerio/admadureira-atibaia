@@ -23,9 +23,13 @@ export default function YouTubePreviewCard({
   badge?: string;
 }) {
   const [playing, setPlaying] = useState(false);
-  const [thumbnailSrc, setThumbnailSrc] = useState(
-    `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`
-  );
+  const thumbnailSources = [
+    `https://i.ytimg.com/vi_webp/${video.id}/maxresdefault.webp`,
+    `https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`,
+    `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`,
+  ];
+  const [thumbnailIndex, setThumbnailIndex] = useState(0);
+  const thumbnailSrc = thumbnailSources[thumbnailIndex];
 
   return (
     <div className="rounded-2xl overflow-hidden shadow-md bg-white border border-black/5">
@@ -56,9 +60,9 @@ export default function YouTubePreviewCard({
               fetchPriority={destaque ? "high" : "auto"}
               className="w-full h-full object-cover"
               onError={() => {
-                if (thumbnailSrc.includes("maxresdefault")) {
-                  setThumbnailSrc(`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`);
-                }
+                setThumbnailIndex((current) =>
+                  current < thumbnailSources.length - 1 ? current + 1 : current
+                );
               }}
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
