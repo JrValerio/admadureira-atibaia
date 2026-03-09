@@ -2,19 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Início", href: "#inicio" },
-  { label: "Cultos", href: "#cultos" },
-  { label: "Ministérios", href: "#ministerios" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Oração", href: "#oracao" },
-  { label: "Contato", href: "#contato" },
+  { label: "Início", href: "/" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Ministérios", href: "/ministerios" },
+  { label: "Vídeos", href: "/videos" },
+  { label: "Oração", href: "/oracao" },
+  { label: "Contato", href: "/contato" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -22,9 +25,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Fecha menu ao trocar de página
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Topbar — some apenas quando não rolou */}
+      {/* Topbar — some ao rolar */}
       <div
         className={`bg-[#ffa726] transition-all duration-300 overflow-hidden ${
           scrolled ? "max-h-0 py-0" : "max-h-10 py-1"
@@ -45,7 +53,7 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
           {/* Logo + nome */}
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.jpg"
               alt="AD Madureira Atibaia"
@@ -61,18 +69,22 @@ export default function Navbar() {
                 Ministério Madureira · Atibaia
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Links desktop */}
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                className="font-acme text-white/70 hover:text-[#ffa726] text-sm tracking-wider transition-colors duration-200 uppercase"
+                className={`font-acme text-sm tracking-wider transition-colors duration-200 uppercase ${
+                  pathname === link.href
+                    ? "text-[#ffa726]"
+                    : "text-white/70 hover:text-[#ffa726]"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -82,7 +94,7 @@ export default function Navbar() {
             className="md:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={menuOpen}
+            aria-expanded={menuOpen ? "true" : undefined}
           >
             <div className="w-5 h-0.5 bg-white mb-1" />
             <div className="w-5 h-0.5 bg-white mb-1" />
@@ -94,14 +106,17 @@ export default function Navbar() {
         {menuOpen && (
           <div className="md:hidden bg-[#1a1a1a] px-4 pb-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-acme block text-white/70 hover:text-[#ffa726] py-2 text-sm uppercase tracking-wider border-b border-white/10 transition-colors"
+                className={`font-acme block py-2 text-sm uppercase tracking-wider border-b border-white/10 transition-colors ${
+                  pathname === link.href
+                    ? "text-[#ffa726]"
+                    : "text-white/70 hover:text-[#ffa726]"
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         )}

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Acme } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const acme = Acme({
@@ -27,7 +29,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${acme.variable} antialiased`}>{children}</body>
+      <body className={`${acme.variable} antialiased`}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
