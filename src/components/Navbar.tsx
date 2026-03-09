@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Início", href: "/" },
   { label: "Sobre", href: "/sobre" },
   { label: "Ministérios", href: "/ministerios" },
+  { label: "Eventos", href: "/eventos" },
   { label: "Vídeos", href: "/videos" },
   { label: "Oração", href: "/oracao" },
   { label: "Contato", href: "/contato" },

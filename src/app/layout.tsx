@@ -7,10 +7,12 @@ import "./globals.css";
 const acme = Acme({
   weight: "400",
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-acme",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://admadureira-atibaia.vercel.app"),
   title: "Assembleia de Deus Madureira | Campo de Atibaia",
   description:
     "Igreja Evangélica Assembleia de Deus Ministério Madureira – Campo de Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.",
