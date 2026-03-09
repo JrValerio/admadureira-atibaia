@@ -19,7 +19,7 @@ function CardSemanal({
   return (
     <div className="rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 group">
       {/* Banner */}
-      <div className="relative w-full aspect-square bg-[#212121]">
+      <div className="relative w-full aspect-video bg-[#212121]">
         {banner ? (
           <Image
             src={banner}
@@ -59,6 +59,7 @@ function EventoBanner({ evento }: { evento: Evento }) {
             src={evento.banner}
             alt={evento.titulo}
             fill
+            priority
             sizes="(max-width: 640px) 100vw, 50vw"
             className="object-cover"
           />
@@ -145,7 +146,7 @@ export default function Programacao() {
             Programação Semanal
           </h3>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {programacaoSemanal.map((item, i) => (
               <CardSemanal key={i} {...item} />
             ))}

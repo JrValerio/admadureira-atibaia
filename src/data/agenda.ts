@@ -27,17 +27,17 @@ export const programacaoSemanal: ItemSemanal[] = [
   // Cultos semanais regulares
   {
     dia: "Terça-feira",
-    titulo: "Culto",
+    titulo: "Culto de Libertação",
     horario: "19h30",
     icone: "🙏",
-    banner: "/programacao/culto-de-terça.png",
+    banner: "/programacao/culto-de-terca.png",
   },
   {
     dia: "Quarta-feira",
     titulo: "Culto de Damas",
     horario: "09h00",
     icone: "👩",
-    banner: "/programacao/oração-matinal.png",
+    banner: "/programacao/oracao-matinal.png",
   },
   {
     dia: "Quinta-feira",
@@ -45,6 +45,13 @@ export const programacaoSemanal: ItemSemanal[] = [
     horario: "19h30",
     icone: "🔥",
     banner: "/programacao/culto-de-jovens.png",
+  },
+  {
+    dia: "Domingo",
+    titulo: "Oração Matinal",
+    horario: "07h00",
+    icone: "🌅",
+    banner: "/programacao/oracao-matinal-domingo.png",
   },
   {
     dia: "Domingo",
@@ -71,7 +78,7 @@ export const programacaoSemanal: ItemSemanal[] = [
     dia: "2º Sábado",
     titulo: "Santa Ceia",
     icone: "🍞",
-    banner: "/programacao/consagração-mulheres.png",
+    banner: "/programacao/consagracao-mulheres.png",
   },
   {
     dia: "3º Sábado",
