@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Sobre", href: "/sobre" },
   { label: "Congregações", href: "/congregacoes" },
   { label: "Ministérios", href: "/ministerios" },
+  { label: "Mensagens", href: "/mensagens" },
   { label: "Programação", href: "/programacao" },
   { label: "Eventos", href: "/eventos" },
   { label: "Vídeos", href: "/videos" },
