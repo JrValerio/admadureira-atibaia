@@ -3,55 +3,58 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <section
+      id="inicio"
+      className="relative h-[70vh] min-h-[560px] md:min-h-[620px] max-h-[760px] flex items-center justify-center text-white overflow-hidden"
+    >
       {/* Foto da fachada como background */}
       <Image
         src="/fachada-da-igreja.jpg"
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover object-[center_34%]"
+        className="object-cover object-[center_32%] md:object-[center_30%]"
         priority
       />
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/55 to-black/65" />
 
       {/* Linha decorativa laranja no topo */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-20 md:pt-24">
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-6">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={120}
-            height={120}
+            width={100}
+            height={100}
             className="rounded-full border-4 border-[#ffa726] shadow-xl"
           />
         </div>
 
         {/* Versículo */}
-        <p className="text-[#ffd54f] text-xs font-semibold tracking-widest uppercase mb-4">
+        <p className="text-[#ffd54f] text-xs font-semibold tracking-widest uppercase mb-3">
           Salmos 122:1
         </p>
 
         {/* Título */}
-        <h1 className="font-acme text-4xl md:text-6xl leading-tight mb-4 tracking-wide">
+        <h1 className="font-acme text-3xl md:text-5xl leading-tight mb-4 tracking-wide">
           Alegrei-me quando me disseram:
           <br />
           <span className="text-[#ffa726]">Vamos à Casa do Senhor</span>
         </h1>
 
         {/* Subtítulo */}
-        <p className="text-white/70 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+        <p className="text-white/70 text-base md:text-xl mb-8 max-w-xl mx-auto">
           Assembleia de Deus · Ministério Madureira
           <br />
           <span className="text-white font-semibold">Campo de Atibaia – SP</span>
         </p>
 
-        <p className="text-white/80 text-sm md:text-base mb-8 max-w-2xl mx-auto">
+        <p className="text-white/80 text-sm md:text-base mb-7 max-w-2xl mx-auto">
           Praça Pio XII, 122 · Centro · Atibaia/SP
         </p>
 

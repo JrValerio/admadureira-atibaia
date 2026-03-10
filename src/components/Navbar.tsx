@@ -56,14 +56,18 @@ export default function Navbar() {
             : "bg-[#212121]"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-between">
+        <div
+          className={`max-w-6xl mx-auto px-4 flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "py-3" : "py-4 md:py-5"
+          }`}
+        >
           {/* Logo + nome */}
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.jpg"
               alt="AD Madureira Atibaia"
-              width={scrolled ? 36 : 48}
-              height={scrolled ? 36 : 48}
+              width={scrolled ? 40 : 56}
+              height={scrolled ? 40 : 56}
               className="rounded-full transition-all duration-300"
             />
             <div className="leading-tight">
