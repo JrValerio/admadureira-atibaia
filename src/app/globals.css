@@ -37,7 +37,7 @@ html {
 }
 
 .font-script {
-  font-family: var(--font-script), cursive;
+  font-family: "Photograph Signature", var(--font-script), cursive;
 }
 
 .hero-title-glow {
