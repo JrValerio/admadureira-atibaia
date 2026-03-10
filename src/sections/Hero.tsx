@@ -13,7 +13,7 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover object-[center_32%] md:object-[center_30%]"
+        className="object-cover object-[center_16%] md:object-[center_14%]"
         priority
       />
 
@@ -23,14 +23,14 @@ export default function Hero() {
       {/* Linha decorativa laranja no topo */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-20 md:pt-24">
+      <div className="relative z-10 h-full w-full max-w-4xl mx-auto px-6 flex flex-col items-center justify-end text-center pb-16 md:pb-20">
         {/* Logo */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-5">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={100}
-            height={100}
+            width={92}
+            height={92}
             className="rounded-full border-4 border-[#ffa726] shadow-xl"
           />
         </div>
@@ -41,14 +41,14 @@ export default function Hero() {
         </p>
 
         {/* Título */}
-        <h1 className="font-acme text-3xl md:text-5xl leading-tight mb-4 tracking-wide">
+        <h1 className="font-acme text-3xl md:text-5xl leading-tight mb-3 tracking-wide">
           Alegrei-me quando me disseram:
           <br />
           <span className="text-[#ffa726]">Vamos à Casa do Senhor</span>
         </h1>
 
         {/* Subtítulo */}
-        <p className="text-white/70 text-base md:text-xl mb-8 max-w-xl mx-auto">
+        <p className="text-white/70 text-base md:text-lg mb-7 max-w-xl mx-auto">
           Assembleia de Deus · Ministério Madureira
           <br />
           <span className="text-white font-semibold">Campo de Atibaia – SP</span>

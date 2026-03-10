@@ -57,36 +57,42 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`max-w-6xl mx-auto px-4 flex items-center justify-between transition-all duration-300 ${
+          className={`max-w-6xl mx-auto px-4 flex items-center justify-between gap-6 transition-all duration-300 ${
             scrolled ? "py-3" : "py-4 md:py-5"
           }`}
         >
           {/* Logo + nome */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link
+            href="/"
+            className="flex flex-col items-center justify-center text-center shrink-0 min-w-[120px] md:min-w-[156px]"
+          >
             <Image
               src="/logo.jpg"
               alt="AD Madureira Atibaia"
               width={scrolled ? 40 : 56}
               height={scrolled ? 40 : 56}
-              className="rounded-full transition-all duration-300"
+              className="rounded-full transition-all duration-300 mb-2"
             />
             <div className="leading-tight">
-              <p className="font-acme text-[#ffa726] font-bold text-xs tracking-widest uppercase">
+              <p className="font-acme text-[#ffa726] font-bold text-[10px] md:text-xs tracking-widest uppercase">
                 Assembleia de Deus
               </p>
-              <p className="text-white/70 text-xs">
-                Ministério Madureira · Atibaia
+              <p className="text-white/70 text-[11px] md:text-xs">
+                Ministério Madureira
+              </p>
+              <p className="text-white/70 text-[11px] md:text-xs">
+                Atibaia
               </p>
             </div>
           </Link>
 
           {/* Links desktop */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden xl:flex flex-1 items-center justify-end gap-4 2xl:gap-6 ml-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-acme text-sm tracking-wider transition-colors duration-200 uppercase ${
+                className={`font-acme text-xs 2xl:text-sm tracking-wider transition-colors duration-200 uppercase ${
                   pathname === link.href
                     ? "text-[#ffa726]"
                     : "text-white/70 hover:text-[#ffa726]"
@@ -100,7 +106,7 @@ export default function Navbar() {
           {/* Hamburger mobile */}
           <button
             type="button"
-            className="md:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           >
@@ -112,7 +118,7 @@ export default function Navbar() {
 
         {/* Menu mobile */}
         {menuOpen && (
-          <div className="md:hidden bg-[#1a1a1a] px-4 pb-4">
+          <div className="xl:hidden bg-[#1a1a1a] px-4 pb-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
