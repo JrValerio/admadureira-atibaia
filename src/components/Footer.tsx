@@ -72,7 +72,7 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-12 px-6 py-20 md:grid-cols-2 xl:grid-cols-4">
+      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-2 xl:grid-cols-4">
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Image
@@ -108,15 +108,6 @@ export default function Footer() {
             >
               Pra. Drª Anna Alzira
             </Link>
-          </div>
-
-          <div className="border-l border-[#ffa726]/40 pl-5 text-[#f2d4a0]">
-            <p className="text-lg leading-relaxed md:text-xl">
-              &quot;Até aqui nos ajudou o Senhor.&quot;
-            </p>
-            <p className="mt-2 text-xs tracking-[0.16em] uppercase text-white/40">
-              1 Samuel 7:12
-            </p>
           </div>
         </div>
 
@@ -194,30 +185,33 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div>
-              <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
-                Siga-nos
-              </p>
-              <p className="mt-2 text-sm text-white/45">
-                Acompanhe a igreja nas redes e veja cultos, avisos e conteúdos da semana.
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 py-7">
+          <div className="text-center text-[#f2d4a0]">
+            <p className="text-lg leading-relaxed md:text-[1.55rem]">
+              &quot;Até aqui nos ajudou o Senhor.&quot;
+            </p>
+            <p className="mt-2 text-xs tracking-[0.16em] uppercase text-white/40">
+              1 Samuel 7:12
+            </p>
+          </div>
 
-            <div className="flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-col items-center gap-4">
+            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Siga-nos
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-3">
               {redes.map((rede) => (
                 <a
                   key={rede.nome}
                   href={rede.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
+                  aria-label={rede.nome}
+                  title={rede.nome}
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
                 >
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white transition-colors group-hover:border-[#111]/20 group-hover:bg-[#111]/10 group-hover:text-[#111]">
-                    {rede.icon}
-                  </span>
-                  <span>{rede.nome}</span>
+                  {rede.icon}
                 </a>
               ))}
             </div>
