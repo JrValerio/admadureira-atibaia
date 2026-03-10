@@ -253,3 +253,19 @@ section[id] {
 .wa-pulse {
   animation: wa-pulse 2s ease-in-out 1s 3;
 }
+
+@keyframes hero-media-in {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-hero-media-in {
+  animation: hero-media-in 0.9s ease-out both;
+}

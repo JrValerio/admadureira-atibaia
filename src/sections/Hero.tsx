@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeroBackgroundMedia from "@/components/HeroBackgroundMedia";
 
 export default function Hero() {
   return (
@@ -16,9 +17,11 @@ export default function Hero() {
         className="object-cover object-[center_18%] md:object-[center_14%] xl:object-[center_12%]"
         priority
       />
+      <HeroBackgroundMedia />
 
       {/* Overlay escuro */}
       <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/45 to-black/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.14),transparent_58%)]" />
 
       {/* Linha decorativa laranja no topo */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
