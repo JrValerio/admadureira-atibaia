@@ -1,7 +1,4 @@
-import { Card } from "@/components/ui/Card";
-import { CardGrid } from "@/components/ui/CardGrid";
-import { Section } from "@/components/ui/Section";
-import { SectionTitle } from "@/components/ui/SectionTitle";
+import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
 
 const cultos = [
   {

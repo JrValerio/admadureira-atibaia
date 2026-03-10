@@ -16,9 +16,10 @@ export function Card<T extends ElementType = "div">({
 }: CardProps<T>) {
   const Component = (as ?? "div") as ElementType;
   const baseClassName = dark ? "ui-card-dark" : "ui-card";
+  const classes = [baseClassName, className].filter(Boolean).join(" ");
 
   return (
-    <Component className={`${baseClassName} ${className}`.trim()} {...props}>
+    <Component className={classes} {...props}>
       {children}
     </Component>
   );
