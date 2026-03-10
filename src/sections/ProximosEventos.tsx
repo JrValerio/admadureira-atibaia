@@ -12,7 +12,7 @@ export default function ProximosEventos() {
   if (eventos.length === 0) return null;
 
   return (
-    <section className="py-20 bg-[#f9f9f9]">
+    <section className="py-24 bg-[#f7f6f2]">
       <div ref={ref} className="max-w-6xl mx-auto px-4 reveal">
         {/* Cabeçalho */}
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
@@ -27,7 +27,7 @@ export default function ProximosEventos() {
           </div>
           <Link
             href="/programacao"
-            className="text-sm font-semibold text-[#ffa726] hover:underline tracking-wide uppercase"
+            className="ui-link-accent"
           >
             Ver agenda completa →
           </Link>
@@ -39,7 +39,7 @@ export default function ProximosEventos() {
             <Link
               key={ev.slug}
               href={`/eventos/${ev.slug}`}
-              className="rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 bg-white group block"
+              className="ui-card rounded-[1.6rem] overflow-hidden group block"
             >
               {/* Banner quando existir */}
               {ev.imagem || ev.banner ? (
@@ -80,7 +80,7 @@ export default function ProximosEventos() {
                 {ev.horario && (
                   <p className="text-[#9e9e9e] text-xs mt-1">{ev.horario}</p>
                 )}
-                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-3">
+                <p className="ui-link-accent mt-4">
                   Ver detalhes →
                 </p>
               </div>

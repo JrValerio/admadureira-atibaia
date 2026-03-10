@@ -44,6 +44,107 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
+.ui-card {
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 1.75rem;
+  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.05);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.ui-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 167, 38, 0.4);
+  box-shadow: 0 24px 55px rgba(17, 17, 17, 0.12);
+}
+
+.ui-btn-primary,
+.ui-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ui-btn-primary {
+  background: #ffa726;
+  color: #212121;
+  box-shadow: 0 14px 32px rgba(255, 167, 38, 0.28);
+}
+
+.ui-btn-primary:hover {
+  background: #ffb74d;
+  transform: translateY(-1px);
+}
+
+.ui-btn-secondary {
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  color: #212121;
+  background: transparent;
+}
+
+.ui-btn-secondary:hover {
+  background: #212121;
+  border-color: #212121;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.ui-link-accent {
+  color: #ef5350;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.ui-link-accent:hover {
+  color: #c62828;
+}
+
+.ui-menu-panel {
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 30px 70px rgba(17, 17, 17, 0.16);
+  backdrop-filter: blur(14px);
+}
+
+.ui-menu-box {
+  display: block;
+  border: 1px solid rgba(17, 17, 17, 0.06);
+  border-radius: 1.25rem;
+  background: #f6f4ef;
+  padding: 1rem;
+  transition:
+    transform 0.22s ease,
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.ui-menu-box:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  border-color: rgba(255, 167, 38, 0.38);
+  box-shadow: 0 18px 36px rgba(17, 17, 17, 0.1);
+}
+
 /* ── Scroll reveal ─────────────────────────────────
    Use className="reveal" no container e o hook useReveal().
    A classe .is-visible é adicionada via JS quando o elemento entra no viewport.

@@ -5,24 +5,50 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
+const desktopNavLinks = [
   { label: "Início", href: "/" },
   { label: "Sobre", href: "/sobre" },
   { label: "Congregações", href: "/congregacoes" },
   { label: "Ministérios", href: "/ministerios" },
-  { label: "Mensagens", href: "/mensagens" },
-  { label: "Testemunhos", href: "/testemunhos" },
   { label: "Programação", href: "/programacao" },
   { label: "Eventos", href: "/eventos" },
-  { label: "Vídeos", href: "/videos" },
-  { label: "Oração", href: "/oracao" },
   { label: "Contato", href: "/contato" },
+];
+
+const resourceLinks = [
+  {
+    label: "Mensagens",
+    href: "/mensagens",
+    description: "Sermões e ensino bíblico da semana.",
+  },
+  {
+    label: "Testemunhos",
+    href: "/testemunhos",
+    description: "Histórias reais de fé e transformação.",
+  },
+  {
+    label: "Vídeos",
+    href: "/videos",
+    description: "Cultos, transmissões e destaques do canal.",
+  },
+  {
+    label: "Oração",
+    href: "/oracao",
+    description: "Pedidos de oração e apoio pastoral.",
+  },
+];
+
+const mobileNavLinks = [
+  ...desktopNavLinks.slice(0, 4),
+  ...resourceLinks.map(({ label, href }) => ({ label, href })),
+  ...desktopNavLinks.slice(4),
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isResourceRoute = resourceLinks.some((link) => pathname === link.href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -88,7 +114,65 @@ export default function Navbar() {
 
           {/* Links desktop */}
           <nav className="hidden xl:flex flex-1 items-center justify-end gap-3 2xl:gap-5 ml-10">
-            {navLinks.map((link) => (
+            {desktopNavLinks.slice(0, 4).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`font-acme text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                  pathname === link.href
+                    ? "text-[#ffa726]"
+                    : "text-white/70 hover:text-[#ffa726]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <div className="relative group/menu">
+              <button
+                type="button"
+                className={`font-acme inline-flex items-center gap-2 text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                  isResourceRoute
+                    ? "text-[#ffa726]"
+                    : "text-white/70 hover:text-[#ffa726]"
+                }`}
+              >
+                Recursos
+                <span className="text-xs">▾</span>
+              </button>
+
+              <div className="pointer-events-none absolute right-0 top-full pt-5 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0">
+                <div className="ui-menu-panel w-[31rem] p-5">
+                  <div className="mb-4">
+                    <p className="text-[#ef5350] text-[11px] font-semibold tracking-[0.24em] uppercase mb-2">
+                      Recursos da comunidade
+                    </p>
+                    <p className="text-[#5f5f5f] text-sm leading-relaxed">
+                      Conteúdo espiritual, acompanhamento e materiais da vida da igreja.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    {resourceLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="ui-menu-box"
+                      >
+                        <p className="font-acme text-lg text-[#212121] tracking-wide mb-1">
+                          {link.label}
+                        </p>
+                        <p className="text-[#5f5f5f] text-sm leading-relaxed">
+                          {link.description}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {desktopNavLinks.slice(4).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -119,7 +203,7 @@ export default function Navbar() {
         {/* Menu mobile */}
         {menuOpen && (
           <div className="xl:hidden bg-[#1a1a1a] px-4 pb-4">
-            {navLinks.map((link) => (
+            {mobileNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

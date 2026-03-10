@@ -33,7 +33,7 @@ export default function UltimasMensagens() {
 
           <Link
             href="/mensagens"
-            className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+            className="ui-btn-primary"
           >
             Ver todas as mensagens
           </Link>
@@ -44,7 +44,7 @@ export default function UltimasMensagens() {
             <Link
               key={mensagem.slug}
               href={`/mensagens/${mensagem.slug}`}
-              className="group rounded-3xl overflow-hidden bg-[#f9f9f9] border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+              className="ui-card group overflow-hidden"
             >
               <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
                 <Image
@@ -70,7 +70,7 @@ export default function UltimasMensagens() {
                 <p className="text-[#777] text-sm">
                   Pregador: {mensagem.pregador ?? "AD Madureira Atibaia"}
                 </p>
-                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
+                <p className="ui-link-accent mt-5">
                   Ver mensagem →
                 </p>
               </div>

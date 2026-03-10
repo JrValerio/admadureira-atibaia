@@ -14,7 +14,7 @@ export default function HistoriasDeFe() {
   const testemunhos = getTestemunhosRecentes(2);
 
   return (
-    <section id="testemunhos" className="py-24 bg-[#f5f5f5]">
+    <section id="testemunhos" className="py-24 bg-[#f7f6f2]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-end justify-between gap-6 flex-wrap mb-12">
           <div className="max-w-2xl">
@@ -34,13 +34,13 @@ export default function HistoriasDeFe() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/testemunhos"
-              className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              className="ui-btn-primary"
             >
               Ver todos os testemunhos
             </Link>
             <Link
               href="/mensagens"
-              className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              className="ui-btn-secondary"
             >
               Ver mensagens
             </Link>
@@ -52,7 +52,7 @@ export default function HistoriasDeFe() {
             <Link
               key={testemunho.slug}
               href={`/testemunhos/${testemunho.slug}`}
-              className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+              className="ui-card group overflow-hidden"
             >
               <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
                 <Image
@@ -81,7 +81,7 @@ export default function HistoriasDeFe() {
                   {testemunho.resumo}
                 </p>
                 <p className="text-[#777] text-sm">Por: {testemunho.nome}</p>
-                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
+                <p className="ui-link-accent mt-5">
                   Ler testemunho →
                 </p>
               </div>
