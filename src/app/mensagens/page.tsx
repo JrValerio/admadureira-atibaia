@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getMensagens } from "@/data/mensagens";
+import { getMensagensRecentes } from "@/data/mensagens";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mensagens | AD Madureira Atibaia",
   description:
     "Assista às mensagens e ministrações da AD Madureira Atibaia, com pregações, versículos-base e acesso rápido ao conteúdo em vídeo.",
+  keywords: [
+    "mensagens bíblicas",
+    "pregações evangélicas",
+    "AD Madureira Atibaia",
+    "cultos igreja atibaia",
+    "ensino bíblico",
+  ],
   alternates: {
     canonical: `${SITE_URL}/mensagens`,
   },
@@ -29,7 +36,7 @@ function formatMensagemDate(data: string) {
 }
 
 export default function MensagensPage() {
-  const mensagens = getMensagens();
+  const mensagens = getMensagensRecentes();
   const mensagensComPregador = mensagens.filter((mensagem) => mensagem.pregador);
 
   return (
@@ -88,11 +95,16 @@ export default function MensagensPage() {
             </div>
           </div>
 
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+          <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
+            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Conteúdo recorrente
             </p>
-            <p className="text-[#5f5f5f] leading-relaxed">
+            <p className="text-[#555] leading-relaxed">
+              Novas mensagens são publicadas semanalmente a partir dos cultos e
+              ministrações da AD Madureira Atibaia. Acompanhe o ensino bíblico
+              compartilhado na igreja e revisite conteúdos que fortalecem a fé.
+            </p>
+            <p className="text-[#777] text-sm leading-relaxed mt-3">
               Esta área concentra mensagens e ministrações publicadas no canal da
               igreja, criando uma biblioteca de ensino bíblico para quem deseja
               revisitar cultos, compartilhar a Palavra e acompanhar o conteúdo da

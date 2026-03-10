@@ -86,13 +86,25 @@ export default async function MensagemPage({ params }: PageProps) {
     description: mensagem.resumo,
     uploadDate: mensagem.data,
     embedUrl: `https://www.youtube.com/embed/${mensagem.youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${mensagem.youtubeId}`,
     url: `${SITE_URL}/mensagens/${mensagem.slug}`,
-    thumbnailUrl: [`${SITE_URL}${mensagem.capa ?? "/pulpito-da-igreja.jpg"}`],
+    thumbnailUrl: [
+      `${SITE_URL}${mensagem.capa ?? "/pulpito-da-igreja.jpg"}`,
+      `https://img.youtube.com/vi/${mensagem.youtubeId}/hqdefault.jpg`,
+    ],
     publisher: {
       "@type": "Church",
       name: "AD Madureira Atibaia",
       url: SITE_URL,
     },
+    ...(mensagem.versiculo
+      ? {
+          about: {
+            "@type": "CreativeWork",
+            name: mensagem.versiculo,
+          },
+        }
+      : {}),
   };
 
   return (

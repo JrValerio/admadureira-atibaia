@@ -4,6 +4,7 @@ import ContadorEvento from "@/components/ContadorEvento";
 import Destaques from "@/sections/Destaques";
 import ProximosEventos from "@/sections/ProximosEventos";
 import Cultos from "@/sections/Cultos";
+import UltimasMensagens from "@/sections/UltimasMensagens";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <ContadorEvento />
       <Destaques />
       <ProximosEventos />
+      <UltimasMensagens />
       <Cultos />
     </main>
   );

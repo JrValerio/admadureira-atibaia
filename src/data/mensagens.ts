@@ -69,3 +69,9 @@ export function getMensagens() {
 export function getMensagemBySlug(slug: string) {
   return mensagens.find((mensagem) => mensagem.slug === slug) ?? null;
 }
+
+export function getMensagensRecentes(limit = mensagens.length) {
+  return [...mensagens]
+    .sort((a, b) => Date.parse(b.data) - Date.parse(a.data))
+    .slice(0, limit);
+}
