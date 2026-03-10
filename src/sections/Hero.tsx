@@ -21,6 +21,7 @@ export default function Hero() {
       {/* Overlay escuro */}
       <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/38 to-black/64" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.1),transparent_60%)]" />
+      <div className="absolute inset-0 hero-vignette pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center">
         {/* Logo */}
