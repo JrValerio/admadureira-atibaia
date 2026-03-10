@@ -79,3 +79,7 @@ export function getMensagensRecentes(limit = mensagens.length) {
     .sort((a, b) => Date.parse(b.data) - Date.parse(a.data))
     .slice(0, limit);
 }
+
+export function getMensagemThumbnailUrl(videoId: string) {
+  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+}

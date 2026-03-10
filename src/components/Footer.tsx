@@ -28,87 +28,80 @@ const redes = [
       </svg>
     ),
   },
-  {
-    nome: "Linktree",
-    href: "https://linktr.ee/admadureira_atibaia",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.517.528.89 1.052.89h6.15c.525 0 .972-.374 1.052-.89 0-.162 0-.323-.08-.486L13.554 9.5h2.59L12 2 7.856 9.5h2.59l-2.493 5.566zm8.047 3.982H8c-.553 0-1 .448-1 1s.447 1 1 1h8c.553 0 1-.448 1-1s-.447-1-1-1z" />
-      </svg>
-    ),
-  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a1a] text-white/60 py-12">
-      {/* Barra laranja no topo */}
-      <div className="h-1 bg-[#ffa726] w-full mb-12" />
-
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Logo + identidade */}
-        <div className="flex flex-col items-start gap-3">
+    <footer className="border-t border-white/10 bg-[#111111] text-white/65">
+      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-3">
+        <div className="flex items-start gap-4">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={72}
-            height={72}
-            className="rounded-full"
+            width={76}
+            height={76}
+            className="rounded-full border border-white/10"
           />
-          <div>
-            <p className="font-acme text-[#ffa726] text-sm tracking-widest uppercase">
+          <div className="space-y-1">
+            <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
               Assembleia de Deus
             </p>
-            <p className="text-white text-sm font-semibold">Ministério Madureira</p>
-            <p className="text-white/50 text-xs">Campo de Atibaia – SP</p>
-            <p className="text-white/30 text-xs mt-1">CNPJ: 48.644.074/0001-97</p>
+            <p className="text-base font-semibold text-white">Ministério Madureira</p>
+            <p className="text-sm text-white/70">Campo de Atibaia</p>
+            <p className="pt-2 text-xs text-white/35">CNPJ: 48.644.074/0001-97</p>
           </div>
         </div>
 
-        {/* Endereço */}
         <div>
-          <h4 className="font-acme text-white text-sm tracking-widest uppercase mb-3">
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Endereço
           </h4>
-          <p className="text-sm leading-relaxed mb-2">
-            Praça Pio XII, 122<br />
-            Centro – Atibaia/SP<br />
-            CEP 12940-160
-          </p>
-          <a
-            href="https://wa.me/5511916116102"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#ffa726] hover:text-[#ffd54f] text-sm transition-colors"
-          >
-            (11) 91611-6102
-          </a>
+          <div className="space-y-2 text-sm leading-relaxed">
+            <p>
+              Praça Pio XII, 122
+              <br />
+              Centro – Atibaia/SP
+              <br />
+              CEP 12940-160
+            </p>
+            <a
+              href="https://wa.me/5511916116102"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
+            >
+              (11) 91611-6102
+            </a>
+          </div>
         </div>
 
-        {/* Redes sociais */}
         <div>
-          <h4 className="font-acme text-white text-sm tracking-widest uppercase mb-4">
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Redes Sociais
           </h4>
-          <div className="flex flex-wrap gap-3">
+          <div className="space-y-3">
             {redes.map((rede) => (
               <a
                 key={rede.nome}
                 href={rede.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={rede.nome}
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#ffa726] hover:text-[#212121] text-white flex items-center justify-center transition-colors duration-200"
+                className="group flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
               >
-                {rede.icon}
+                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors group-hover:border-[#ffa726]/60 group-hover:text-[#ffa726]">
+                  {rede.icon}
+                </span>
+                <span className="group-hover:text-[#ffa726]">{rede.nome}</span>
               </a>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 mt-10 pt-6 border-t border-white/10 text-center text-xs text-white/30">
-        © {new Date().getFullYear()} AD Madureira Atibaia · Todos os direitos reservados
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-5 text-center text-xs text-white/35">
+          © {new Date().getFullYear()} AD Madureira Atibaia · Todos os direitos reservados
+        </div>
       </div>
     </footer>
   );

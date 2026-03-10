@@ -2,29 +2,48 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getProximosEventos } from "@/lib/agenda-utils";
+import { CardGrid, Section, SectionTitle } from "@/components/ui";
+import { getEventosFuturos, getProximosEventos } from "@/lib/agenda-utils";
 import { useReveal } from "@/hooks/useReveal";
 
+const EVENTO_IMPORTANTE = [
+  /santa ceia/i,
+  /mulher/i,
+  /mocidade/i,
+  /jovens?/i,
+  /campanha/i,
+  /congresso/i,
+  /confer[eê]ncia/i,
+  /batismo/i,
+];
+
 export default function ProximosEventos() {
-  const eventos = getProximosEventos(4);
+  const eventosImportantes = getEventosFuturos()
+    .filter(
+      (evento) =>
+        evento.destaque ||
+        EVENTO_IMPORTANTE.some((pattern) => pattern.test(evento.titulo))
+    )
+    .slice(0, 4);
+  const eventos =
+    eventosImportantes.length > 0 ? eventosImportantes : getProximosEventos(4);
   const ref = useReveal();
 
   if (eventos.length === 0) return null;
 
   return (
-    <section className="py-24 bg-[#f7f6f2]">
-      <div ref={ref} className="max-w-6xl mx-auto px-4 reveal">
-        {/* Cabeçalho */}
-        <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-          <div>
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-1">
-              Agenda
-            </p>
-            <h2 className="font-acme text-3xl text-[#212121] tracking-wide">
-              Próximos Eventos
-            </h2>
-            <div className="w-12 h-1 bg-[#ffa726] mt-3" />
-          </div>
+    <Section className="bg-[#f7f6f2]">
+      <div ref={ref} className="reveal">
+        <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <SectionTitle
+            eyebrow="Agenda"
+            eyebrowVariant="gold"
+            title="Próximos Eventos"
+            center={false}
+            divider
+            className="mb-0 max-w-2xl"
+            description="Selecionamos apenas os cultos e encontros mais relevantes da agenda para manter o topo da home mais direto e útil."
+          />
           <Link
             href="/programacao"
             className="ui-link-accent"
@@ -33,15 +52,13 @@ export default function ProximosEventos() {
           </Link>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <CardGrid columns={4} breakpoint="lg" className="gap-5">
           {eventos.map((ev) => (
             <Link
               key={ev.slug}
               href={`/eventos/${ev.slug}`}
-              className="ui-card rounded-[1.6rem] overflow-hidden group block"
+              className="ui-card group block overflow-hidden rounded-[1.6rem]"
             >
-              {/* Banner quando existir */}
               {ev.imagem || ev.banner ? (
                 <div className="relative w-full aspect-video">
                   <Image
@@ -49,13 +66,13 @@ export default function ProximosEventos() {
                     alt={ev.titulo}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                   />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
                 </div>
               ) : (
-                /* Badge de data quando não há banner */
-                <div className="bg-[#212121] px-4 py-3 flex items-center gap-3">
-                  <div className="flex flex-col items-center bg-[#ffa726] rounded-lg px-3 py-1 min-w-12 text-center">
+                <div className="flex items-center gap-3 bg-[#212121] px-4 py-4">
+                  <div className="flex min-w-12 flex-col items-center rounded-lg bg-[#ffa726] px-3 py-1 text-center">
                     <span className="text-[#212121] text-xs font-bold tracking-widest uppercase leading-none">
                       {ev.mes.slice(0, 3)}
                     </span>
@@ -67,27 +84,26 @@ export default function ProximosEventos() {
                 </div>
               )}
 
-              {/* Info */}
-              <div className="px-4 py-3">
+              <div className="px-5 py-5">
                 {(ev.imagem || ev.banner) && (
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="mb-2 text-[#ffa726] text-[11px] font-bold tracking-[0.22em] uppercase">
                     {ev.data} · {ev.mes}
                   </p>
                 )}
-                <p className="font-acme text-[#212121] text-base tracking-wide leading-tight">
+                <h3 className="font-acme text-lg leading-tight tracking-wide text-[#212121] transition-colors group-hover:text-[#ef5350]">
                   {ev.titulo}
-                </p>
+                </h3>
                 {ev.horario && (
-                  <p className="text-[#9e9e9e] text-xs mt-1">{ev.horario}</p>
+                  <p className="mt-2 text-sm text-[#6c6c6c]">{ev.horario}</p>
                 )}
-                <p className="ui-link-accent mt-4">
+                <p className="ui-link-accent mt-5">
                   Ver detalhes →
                 </p>
               </div>
             </Link>
           ))}
-        </div>
+        </CardGrid>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -3,12 +3,10 @@ import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
 const cultos = [
   {
     dia: "Terça-feira",
-    icone: "📖",
     horarios: [{ hora: "19h30", nome: "Culto de Ensino" }],
   },
   {
     dia: "Quarta-feira",
-    icone: "🙏",
     horarios: [
       { hora: "09h00", nome: "Consagração" },
       { hora: "15h00", nome: "Círculo de Oração" },
@@ -16,12 +14,10 @@ const cultos = [
   },
   {
     dia: "Quinta-feira",
-    icone: "🕯️",
     horarios: [{ hora: "19h30", nome: "Culto Público" }],
   },
   {
     dia: "Domingo",
-    icone: "☀️",
     horarios: [
       { hora: "09h00", nome: "Escola Bíblica Dominical" },
       { hora: "18h30", nome: "Culto da Família" },
@@ -42,47 +38,49 @@ export default function Cultos() {
         eyebrowVariant="gold"
         title="Horários de Culto"
         divider
+        description="Programação semanal da sede com horários diretos e leitura limpa, sem ruído visual desnecessário."
       />
 
       <CardGrid columns={4} breakpoint="lg" className="mb-12">
-          {cultos.map((culto) => (
-            <Card
-              key={culto.dia}
-              className="p-6 border-t-4 border-[#ffa726]"
-            >
-              <div className="text-3xl mb-3">{culto.icone}</div>
-              <h3 className="font-acme text-[#212121] text-base mb-4 tracking-wide">
-                {culto.dia}
-              </h3>
-              <ul className="space-y-3">
-                {culto.horarios.map((h) => (
-                  <li key={h.hora} className="flex flex-col gap-1">
-                    <span className="bg-[#ffa726] text-[#212121] text-xs font-bold px-3 py-1 rounded-full self-start">
-                      {h.hora}
-                    </span>
-                    <span className="text-[#424242] text-sm">{h.nome}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
+        {cultos.map((culto) => (
+          <Card
+            key={culto.dia}
+            className="border border-black/5 bg-white p-7"
+          >
+            <h3 className="mb-4 font-acme text-xl tracking-wide text-[#212121]">
+              {culto.dia}
+            </h3>
+            <ul className="space-y-3">
+              {culto.horarios.map((horario) => (
+                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-3 first:border-t-0 first:pt-0">
+                  <p className="text-sm font-semibold tracking-wide text-[#212121]">
+                    {horario.hora}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-[#5f5f5f]">
+                    {horario.nome}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        ))}
       </CardGrid>
 
-      <Card className="border border-[#ffa726]/30 p-6 max-w-xl mx-auto text-center">
+      <Card className="mx-auto max-w-2xl border border-[#ffa726]/20 bg-white p-7 text-center">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
           Eventos Mensais
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col justify-center gap-6 sm:flex-row">
           {eventosEspeciais.map((e) => (
             <div key={e.nome}>
-              <p className="text-[#212121] font-semibold text-sm">{e.nome}</p>
-              <p className="text-[#757575] text-xs">{e.detalhe}</p>
+              <p className="text-sm font-semibold text-[#212121]">{e.nome}</p>
+              <p className="mt-1 text-sm text-[#6c6c6c]">{e.detalhe}</p>
             </div>
           ))}
         </div>
       </Card>
 
-      <p className="text-center text-[#9e9e9e] text-sm mt-8">
+      <p className="mt-8 text-center text-sm text-[#7a7a7a]">
         Acompanhe também pelo nosso canal no{" "}
         <a
           href="https://www.youtube.com/@ADMadureiraAtibaia"
