@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Acme, Great_Vibes } from "next/font/google";
+import { Acme, Alex_Brush } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -13,7 +13,7 @@ const acme = Acme({
   variable: "--font-acme",
 });
 
-const greatVibes = Great_Vibes({
+const alexBrush = Alex_Brush({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
@@ -122,7 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(churchSchema) }}
         />
       </head>
-      <body className={`${acme.variable} ${greatVibes.variable} antialiased`}>
+      <body className={`${acme.variable} ${alexBrush.variable} antialiased`}>
         <Navbar />
         {children}
         <Footer />
