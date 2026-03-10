@@ -11,7 +11,7 @@ export interface HeroEvento {
 export const heroEventos: HeroEvento[] = [
   {
     titulo: "Culto para Mulheres",
-    imagem: "/banners/banner-culto-para-mulheres.jpg",
+    imagem: "/banners/banner-culto-para-mulheres.png",
     link: "/programacao",
   },
   {

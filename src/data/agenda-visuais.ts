@@ -33,15 +33,16 @@ export const VISUAIS_EVENTO: Record<EventoTipo, EventoVisual> = {
     banner: "/programacao/culto-de-ceia.png",
   },
   "reuniao-de-obreiros": {
-    imagem: "/programacao/reuniao-ministerial.png",
-    banner: "/programacao/reuniao-ministerial.png",
+    imagem: "/programacao/reuniao-de-obreiro.png",
+    banner: "/programacao/reuniao-de-obreiro.png",
   },
   "dia-das-mulheres": {
-    imagem: "/programacao/dia-da-mulher.png",
-    banner: "/programacao/dia-da-mulher.png",
+    imagem: "/programacao/culto-para-mulheres.png",
+    banner: "/programacao/culto-para-mulheres.png",
   },
   batismo: {
-    imagem: "/fachada-da-igreja.jpg",
+    imagem: "/programacao/batismo.png",
+    banner: "/programacao/batismo.png",
   },
   "culto-com-a-mocidade": {
     imagem: "/programacao/culto-de-jovens.png",

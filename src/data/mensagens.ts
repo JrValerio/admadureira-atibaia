@@ -42,7 +42,7 @@ const mensagens: Mensagem[] = [
     resumo:
       "Culto especial com foco na família e no papel da mulher cristã, reunindo a igreja para um momento de adoração, comunhão e ensino bíblico.",
     youtubeId: "juq8QkL3urY",
-    capa: "/banners/banner-culto-para-mulheres.jpg",
+    capa: "/banners/banner-culto-para-mulheres.png",
   },
   {
     slug: "campanha-jejum-e-oracao-com-pr-wantuil",

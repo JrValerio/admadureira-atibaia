@@ -14,5 +14,5 @@ export const BANNERS_PROGRAMACAO = {
   reuniaoMinisterio: "/programacao/reuniao-ministerial.png",
   cultoJovens: "/programacao/culto-de-jovens.png",
   santaCeia: "/programacao/culto-de-ceia.png",
-  reuniaoObreiros: "/programacao/reuniao-ministerial.png",
+  reuniaoObreiros: "/programacao/reuniao-de-obreiro.png",
 } as const;

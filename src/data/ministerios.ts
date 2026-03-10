@@ -27,7 +27,7 @@ const ministerios: Ministerio[] = [
       "Ações de comunhão, discipulado e oração",
       "Participação em congressos e eventos especiais",
     ],
-    imagem: "/programacao/culto-para-mulheres.jpg",
+    imagem: "/ministerios/confadat.jpg",
     icone: "👑",
   },
   {
@@ -46,7 +46,7 @@ const ministerios: Ministerio[] = [
       "Comunhão entre jovens das congregações",
       "Atividades de discipulado e serviço cristão",
     ],
-    imagem: "/programacao/culto-de-jovens.png",
+    imagem: "/ministerios/umadat.jpg",
     icone: "🔥",
   },
   {
@@ -65,7 +65,7 @@ const ministerios: Ministerio[] = [
       "Participação nos cultos e eventos da igreja",
       "Momentos de comunhão, ensino bíblico e discipulado",
     ],
-    imagem: "/programacao/ensaio-jovens.png",
+    imagem: "/ministerios/rios-de-uncao.png",
     icone: "🌊",
   },
   {
@@ -84,7 +84,7 @@ const ministerios: Ministerio[] = [
       "Momentos de oração e comunhão",
       "Apoio às ações espirituais e sociais da igreja",
     ],
-    imagem: "/programacao/consagracao-mulheres.png",
+    imagem: "/ministerios/baluarte-de-fe.png",
     icone: "🛡️",
   },
   {
@@ -103,7 +103,7 @@ const ministerios: Ministerio[] = [
       "Participação em atividades da Escola Bíblica Dominical",
       "Ações de acolhimento e formação cristã infantil",
     ],
-    imagem: "/programacao/EBD.png",
+    imagem: "/ministerios/infantil.png",
     icone: "🌱",
   },
 ];
