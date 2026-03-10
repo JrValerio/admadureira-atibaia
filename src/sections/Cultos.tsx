@@ -34,25 +34,25 @@ const eventosEspeciais = [
 
 export default function Cultos() {
   return (
-    <section id="cultos" className="py-24 bg-[#f5f5f5]">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="cultos" className="ui-section bg-[#f7f6f2]">
+      <div className="ui-section-container">
         {/* Cabeçalho */}
         <div className="text-center mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+          <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Programação
           </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+          <h2 className="ui-section-title">
             Horários de Culto
           </h2>
           <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
         </div>
 
         {/* Grid de cultos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="ui-card-grid ui-card-grid--4lg mb-12">
           {cultos.map((culto) => (
             <div
               key={culto.dia}
-              className="bg-white rounded-2xl shadow-md p-6 border-t-4 border-[#ffa726] hover:shadow-lg transition-shadow"
+              className="ui-card p-6 border-t-4 border-[#ffa726]"
             >
               <div className="text-3xl mb-3">{culto.icone}</div>
               <h3 className="font-acme text-[#212121] text-base mb-4 tracking-wide">
@@ -73,8 +73,8 @@ export default function Cultos() {
         </div>
 
         {/* Eventos especiais */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[#ffa726]/40 p-6 max-w-xl mx-auto text-center">
-          <p className="text-[#ffa726] text-xs font-semibold tracking-widest uppercase mb-4">
+        <div className="ui-card border border-[#ffa726]/30 p-6 max-w-xl mx-auto text-center">
+          <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
             Eventos Mensais
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -6,13 +6,13 @@ export default function Ministerios() {
   const ministerios = getMinisterios();
 
   return (
-    <section id="ministerios" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="ministerios" className="ui-section bg-white">
+      <div className="ui-section-container">
         <div className="text-center mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+          <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Departamentos
           </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+          <h2 className="ui-section-title">
             Ministérios
           </h2>
           <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
@@ -22,12 +22,12 @@ export default function Ministerios() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="ui-card-grid ui-card-grid--4xl">
           {ministerios.map((min) => (
             <Link
               key={min.slug}
               href={`/ministerios/${min.slug}`}
-              className="group rounded-2xl overflow-hidden border border-gray-100 hover:border-[#ffa726] hover:shadow-md transition-all duration-200 bg-white"
+              className="ui-card group overflow-hidden"
             >
               <div className="relative aspect-[4/3] bg-[#111] overflow-hidden">
                 <Image
@@ -51,7 +51,7 @@ export default function Ministerios() {
                 <p className="text-[#757575] text-sm leading-relaxed line-clamp-3">
                   {min.resumo}
                 </p>
-                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-4">
+                <p className="ui-link-accent mt-4">
                   Ver ministério →
                 </p>
               </div>
@@ -62,13 +62,13 @@ export default function Ministerios() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link
             href="/historia"
-            className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+            className="ui-btn-secondary"
           >
             Ver história da igreja
           </Link>
           <Link
             href="/congregacoes"
-            className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+            className="ui-btn-primary"
           >
             Ver congregações
           </Link>

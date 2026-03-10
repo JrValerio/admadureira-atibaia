@@ -44,6 +44,64 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
+.ui-section {
+  padding: 6rem 0;
+}
+
+.ui-section-container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.ui-section-eyebrow {
+  color: #ef5350;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.ui-section-eyebrow--gold {
+  color: #ffa726;
+}
+
+.ui-section-title {
+  font-family: var(--font-acme), sans-serif;
+  font-size: clamp(1.9rem, 2.4vw, 2.6rem);
+  letter-spacing: 0.04em;
+  color: #212121;
+}
+
+.ui-card-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .ui-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .ui-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ui-card-grid--4lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .ui-card-grid--4xl {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 .ui-card {
   background: #ffffff;
   border: 1px solid rgba(17, 17, 17, 0.06);
@@ -52,13 +110,33 @@ section[id] {
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease,
-    border-color 0.28s ease;
+    border-color 0.28s ease,
+    background-color 0.28s ease;
 }
 
 .ui-card:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 167, 38, 0.4);
   box-shadow: 0 24px 55px rgba(17, 17, 17, 0.12);
+}
+
+.ui-card-dark {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease,
+    background-color 0.28s ease;
+}
+
+.ui-card-dark:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.22);
 }
 
 .ui-btn-primary,

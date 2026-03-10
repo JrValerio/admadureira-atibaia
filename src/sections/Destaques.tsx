@@ -42,16 +42,16 @@ const destaques = [
 
 export default function Destaques() {
   return (
-    <section className="bg-[#212121] py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="ui-section bg-[#212121]">
+      <div className="ui-section-container">
+        <div className="ui-card-grid">
           {destaques.map((item) => (
             <a
               key={item.titulo}
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group flex flex-col items-center text-center p-8 rounded-2xl border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="ui-card-dark group flex flex-col items-center text-center p-8"
             >
               <div className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${item.iconColor}`}>
                 {item.icone}
