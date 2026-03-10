@@ -36,6 +36,10 @@ html {
   font-family: var(--font-acme), sans-serif;
 }
 
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
 section[id] {
   scroll-margin-top: 80px;
 }

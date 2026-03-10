@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative h-[70vh] min-h-[560px] md:min-h-[620px] max-h-[760px] flex items-center justify-center text-white overflow-hidden"
+      className="relative min-h-screen h-screen flex items-center justify-center text-white overflow-hidden"
     >
       {/* Foto da fachada como background */}
       <Image
@@ -13,48 +13,48 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover object-[center_16%] md:object-[center_14%]"
+        className="object-cover object-[center_20%] md:object-[center_18%]"
         priority
       />
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/55 to-black/65" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/45 to-black/70" />
 
       {/* Linha decorativa laranja no topo */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
 
-      <div className="relative z-10 h-full w-full max-w-4xl mx-auto px-6 flex flex-col items-center justify-end text-center pb-16 md:pb-20">
+      <div className="relative z-10 h-full w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-end text-center pb-24 md:pb-28 lg:pb-32">
         {/* Logo */}
-        <div className="flex justify-center mb-5">
+        <div className="flex justify-center mb-4">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={92}
-            height={92}
+            width={112}
+            height={112}
             className="rounded-full border-4 border-[#ffa726] shadow-xl"
           />
         </div>
 
-        {/* Versículo */}
+        <div className="mb-5">
+          <p className="font-script text-[#f7dfbb] text-[2.5rem] md:text-[4.5rem] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+            Assembleia de Deus
+          </p>
+          <p className="text-white/80 text-[11px] md:text-sm tracking-[0.36em] uppercase mt-2">
+            Ministério Madureira · Campo de Atibaia
+          </p>
+        </div>
+
+        {/* Título */}
         <p className="text-[#ffd54f] text-xs font-semibold tracking-widest uppercase mb-3">
           Salmos 122:1
         </p>
-
-        {/* Título */}
-        <h1 className="font-acme text-3xl md:text-5xl leading-tight mb-3 tracking-wide">
+        <h1 className="font-acme text-3xl md:text-5xl lg:text-6xl leading-tight mb-4 tracking-wide">
           Alegrei-me quando me disseram:
           <br />
           <span className="text-[#ffa726]">Vamos à Casa do Senhor</span>
         </h1>
 
-        {/* Subtítulo */}
-        <p className="text-white/70 text-base md:text-lg mb-7 max-w-xl mx-auto">
-          Assembleia de Deus · Ministério Madureira
-          <br />
-          <span className="text-white font-semibold">Campo de Atibaia – SP</span>
-        </p>
-
-        <p className="text-white/80 text-sm md:text-base mb-7 max-w-2xl mx-auto">
+        <p className="text-white/85 text-sm md:text-base mb-8 max-w-2xl mx-auto">
           Praça Pio XII, 122 · Centro · Atibaia/SP
         </p>
 
@@ -76,7 +76,7 @@ export default function Hero() {
       </div>
 
       {/* Seta para baixo */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
         <svg className="w-6 h-6 text-[#ffa726]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>

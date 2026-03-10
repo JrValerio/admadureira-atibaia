@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Acme } from "next/font/google";
+import { Acme, Great_Vibes } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -11,6 +11,13 @@ const acme = Acme({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-acme",
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-script",
 });
 
 const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programação";
@@ -115,7 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(churchSchema) }}
         />
       </head>
-      <body className={`${acme.variable} antialiased`}>
+      <body className={`${acme.variable} ${greatVibes.variable} antialiased`}>
         <Navbar />
         {children}
         <Footer />
