@@ -2,25 +2,33 @@ import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
 
 const cultos = [
   {
+    dia: "Segunda a Sexta",
+    horarios: [{ hora: "06:00 – 07:00", nome: "Oração Matinal" }],
+  },
+  {
     dia: "Terça-feira",
-    horarios: [{ hora: "19h30", nome: "Culto de Ensino" }],
+    horarios: [{ hora: "19:30", nome: "Culto de Ensino" }],
   },
   {
     dia: "Quarta-feira",
     horarios: [
-      { hora: "09h00", nome: "Consagração" },
-      { hora: "15h00", nome: "Círculo de Oração" },
+      { hora: "09:00", nome: "Consagração" },
+      { hora: "15:00", nome: "Círculo de Oração" },
     ],
   },
   {
     dia: "Quinta-feira",
-    horarios: [{ hora: "19h30", nome: "Culto Público" }],
+    horarios: [{ hora: "19:30", nome: "Culto Público" }],
+  },
+  {
+    dia: "Sexta-feira",
+    horarios: [{ hora: "14:30", nome: "Culto de Libertação" }],
   },
   {
     dia: "Domingo",
     horarios: [
-      { hora: "09h00", nome: "Escola Bíblica Dominical" },
-      { hora: "18h30", nome: "Culto da Família" },
+      { hora: "09:00", nome: "Escola Bíblica Dominical" },
+      { hora: "18:30", nome: "Culto da Família" },
     ],
   },
 ];
@@ -38,10 +46,10 @@ export default function Cultos() {
         eyebrowVariant="gold"
         title="Horários de Culto"
         divider
-        description="Programação semanal da sede com horários diretos e leitura limpa, sem ruído visual desnecessário."
+        description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <CardGrid columns={4} breakpoint="lg" className="mb-12">
+      <CardGrid className="mb-12">
         {cultos.map((culto) => (
           <Card
             key={culto.dia}
