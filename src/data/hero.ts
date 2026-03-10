@@ -22,10 +22,16 @@ export const heroEventos: HeroEvento[] = [
     link: "/programacao",
   },
   {
+    titulo: "Santa Ceia",
+    data: "2º Sábado do Mês",
+    imagem: "/banners/banner-culto-de-ceia.png",
+    link: "/programacao",
+  },
+  {
     titulo: "Culto da Família",
     data: "Todo Domingo",
     horario: "18h30",
-    imagem: "/banners/banner-culto-da-familia.jpg",
+    imagem: "/banners/banner-culto-da-familia.png",
     link: "/programacao",
   },
 ];

@@ -26,11 +26,11 @@ export const VISUAIS_EVENTO: Record<EventoTipo, EventoVisual> = {
     banner: "/programacao/reuniao-ministerial.png",
   },
   "curso-de-teologia": {
-    imagem: "/programacao/culto-de-terca.png",
+    imagem: "/programacao/curso-teologia.png",
   },
   "santa-ceia": {
-    imagem: "/programacao/culto-de-domingo.png",
-    banner: "/programacao/culto-de-domingo.png",
+    imagem: "/programacao/culto-de-ceia.png",
+    banner: "/programacao/culto-de-ceia.png",
   },
   "reuniao-de-obreiros": {
     imagem: "/programacao/reuniao-ministerial.png",

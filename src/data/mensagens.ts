@@ -23,7 +23,7 @@ const mensagens: Mensagem[] = [
     resumo:
       "Mensagem ministrada em um culto especial da família, com ênfase na edificação do lar, na comunhão cristã e no fortalecimento da fé.",
     youtubeId: "iXVuDQRxrlw",
-    capa: "/banners/banner-culto-da-familia.jpg",
+    capa: "/banners/banner-culto-da-familia.png",
   },
   {
     slug: "reuniao-de-obreiros-com-cicero-nogueira",
@@ -62,7 +62,7 @@ const mensagens: Mensagem[] = [
     resumo:
       "Culto dedicado ao fortalecimento das famílias, com exortação bíblica, adoração congregacional e encorajamento para a vida cristã no lar.",
     youtubeId: "_OJUyJQhoGQ",
-    capa: "/programacao/culto-da-familia.jpg",
+    capa: "/programacao/culto-de-domingo.png",
   },
 ];
 
