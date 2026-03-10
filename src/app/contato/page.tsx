@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContatoPage() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Contato />
     </main>
   );

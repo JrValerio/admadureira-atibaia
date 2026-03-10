@@ -208,7 +208,7 @@ export default function Contato() {
         </div>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="mt-14 grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <Card className="p-8 md:p-10">
           <div className="mb-8">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -338,8 +338,8 @@ export default function Contato() {
           )}
         </Card>
 
-        <div className="space-y-6">
-          <Card className="p-8">
+        <div>
+          <Card className="h-full p-8">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
               Redes da igreja
             </p>
@@ -366,32 +366,6 @@ export default function Contato() {
                   <span className="font-medium">{rede.nome}</span>
                 </a>
               ))}
-            </div>
-          </Card>
-
-          <Card className="p-8 bg-[#111] text-white">
-            <p className="text-[#ffa726] text-xs font-bold tracking-[0.22em] uppercase">
-              Contato rápido
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Para atendimento imediato, utilize o WhatsApp oficial da igreja ou ligue
-              para o telefone fixo da sede.
-            </p>
-            <div className="mt-6 space-y-3 text-sm">
-              <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-white transition-colors hover:text-[#ffa726]"
-              >
-                WhatsApp: {WHATSAPP_DISPLAY}
-              </a>
-              <a
-                href="tel:+551144116116"
-                className="block text-white transition-colors hover:text-[#ffa726]"
-              >
-                Telefone: {PHONE_DISPLAY}
-              </a>
             </div>
           </Card>
         </div>
