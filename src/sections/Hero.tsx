@@ -35,10 +35,10 @@ export default function Hero() {
         </div>
 
         <div>
-          <p className="font-script text-[#f7dfbb] text-[3rem] md:text-[6rem] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+          <p className="font-script hero-title-glow text-[#f7dfbb] text-[2.6rem] md:text-[4.6rem] lg:text-[5.2rem] leading-none">
             Assembleia de Deus
           </p>
-          <p className="text-white/82 text-[11px] md:text-base tracking-[0.34em] uppercase mt-3">
+          <p className="text-white/82 text-[11px] md:text-base tracking-[0.34em] uppercase mt-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
             Ministério Madureira · Campo de Atibaia
           </p>
         </div>

@@ -10,6 +10,7 @@ type LegacyMediaQueryList = MediaQueryList & {
 export default function HeroBackgroundMedia() {
   const [showAnimatedMedia, setShowAnimatedMedia] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  const [translateY, setTranslateY] = useState(0);
 
   useEffect(() => {
     const desktopMedia = window.matchMedia("(min-width: 768px)") as LegacyMediaQueryList;
@@ -21,6 +22,7 @@ export default function HeroBackgroundMedia() {
 
       if (!shouldShow) {
         setVideoReady(false);
+        setTranslateY(0);
       }
     };
 
@@ -50,27 +52,48 @@ export default function HeroBackgroundMedia() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!showAnimatedMedia) {
+      setTranslateY(0);
+      return;
+    }
+
+    const handleScroll = () => {
+      setTranslateY(Math.min(window.scrollY * 0.08, 18));
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [showAnimatedMedia]);
+
   if (!showAnimatedMedia) {
     return null;
   }
 
   return (
-    <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      poster="/fachada-da-igreja.jpg"
-      aria-hidden="true"
-      className={`pointer-events-none absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ${
-        videoReady ? "opacity-100 animate-hero-media-in" : "opacity-0"
-      }`}
-      onCanPlay={() => setVideoReady(true)}
-      onLoadedData={() => setVideoReady(true)}
-      disablePictureInPicture
+    <div
+      className="pointer-events-none absolute inset-0 will-change-transform"
+      style={{ transform: `translateY(${translateY}px)` }}
     >
-      <source src="/fachada-da-igreja.mp4" type="video/mp4" />
-    </video>
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster="/fachada-da-igreja.jpg"
+        aria-hidden="true"
+        className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ${
+          videoReady ? "opacity-100 animate-hero-media-in" : "opacity-0"
+        }`}
+        onCanPlay={() => setVideoReady(true)}
+        onLoadedData={() => setVideoReady(true)}
+        disablePictureInPicture
+      >
+        <source src="/fachada-da-igreja.mp4" type="video/mp4" />
+      </video>
+    </div>
   );
 }
