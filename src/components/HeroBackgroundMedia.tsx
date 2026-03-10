@@ -85,7 +85,7 @@ export default function HeroBackgroundMedia() {
         preload="metadata"
         poster="/fachada-da-igreja.jpg"
         aria-hidden="true"
-        className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-700 ${
+        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
           videoReady ? "opacity-100 animate-hero-media-in" : "opacity-0"
         }`}
         onCanPlay={() => setVideoReady(true)}

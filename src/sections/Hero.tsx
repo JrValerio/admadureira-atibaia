@@ -13,7 +13,7 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-contain object-center"
+        className="object-cover object-center"
         priority
       />
       <HeroBackgroundMedia />
@@ -31,7 +31,7 @@ export default function Hero() {
             alt="Logo AD Madureira Atibaia"
             width={136}
             height={136}
-            className="rounded-full border-4 border-[#ffa726] shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
+            className="shadow-[0_18px_45px_rgba(0,0,0,0.28)]"
           />
         </div>
 
