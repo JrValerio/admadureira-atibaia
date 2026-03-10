@@ -23,6 +23,15 @@ const MAPS_URL = "https://maps.google.com/?q=Pra%C3%A7a%20Pio%20XII%2C%20122%20A
 
 const redes = [
   {
+    nome: "TikTok",
+    href: "https://www.tiktok.com/@midia.ad.madureira",
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M14.5 3c.27 1.58 1.26 3 2.66 3.92A6.6 6.6 0 0 0 21 8v2.72a9.48 9.48 0 0 1-4.5-1.1v5.7a6.12 6.12 0 1 1-6.12-6.12c.32 0 .64.03.95.08v2.8a3.44 3.44 0 1 0 2.17 3.24V3h1z" />
+      </svg>
+    ),
+  },
+  {
     nome: "Instagram",
     href: "https://www.instagram.com/admadureira_atibaia/",
     icon: (
@@ -41,7 +50,16 @@ const redes = [
     ),
   },
   {
-    nome: "Facebook",
+    nome: "Facebook Sede",
+    href: "https://www.facebook.com/ADMadureiraSedeAtibaia/",
+    icon: (
+      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      </svg>
+    ),
+  },
+  {
+    nome: "Facebook Atibaia",
     href: "https://www.facebook.com/ADMadureiraAtibaiaSede",
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -78,13 +96,25 @@ export default function Footer() {
             <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
               Liderança Pastoral
             </p>
-            <p className="text-white/80">Pr. Dr. Zacarias Bernardes Félix</p>
-            <p className="text-white/80">Pra. Drª Anna Alzira</p>
+            <Link
+              href="/pastores/zacarias-bernardes-felix"
+              className="block text-white/80 transition-colors hover:text-[#ffa726]"
+            >
+              Pr. Dr. Zacarias Bernardes Félix
+            </Link>
+            <Link
+              href="/pastores/anna-alzira"
+              className="block text-white/80 transition-colors hover:text-[#ffa726]"
+            >
+              Pra. Drª Anna Alzira
+            </Link>
           </div>
 
-          <div className="border-l border-[#ffa726]/40 pl-4 text-sm italic leading-relaxed text-[#f2d4a0]">
-            <p>&quot;Até aqui nos ajudou o Senhor.&quot;</p>
-            <p className="mt-1 text-xs not-italic tracking-[0.16em] uppercase text-white/40">
+          <div className="border-l border-[#ffa726]/40 pl-5 text-[#f2d4a0]">
+            <p className="text-lg leading-relaxed md:text-xl">
+              &quot;Até aqui nos ajudou o Senhor.&quot;
+            </p>
+            <p className="mt-2 text-xs tracking-[0.16em] uppercase text-white/40">
               1 Samuel 7:12
             </p>
           </div>
@@ -160,24 +190,34 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+      </div>
 
-          <div>
-            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Siga-nos
-            </h4>
-            <div className="space-y-3">
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
+                Siga-nos
+              </p>
+              <p className="mt-2 text-sm text-white/45">
+                Acompanhe a igreja nas redes e veja cultos, avisos e conteúdos da semana.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
               {redes.map((rede) => (
                 <a
                   key={rede.nome}
                   href={rede.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
+                  className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/70 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors group-hover:border-[#ffa726]/60 group-hover:bg-[#ffa726] group-hover:text-[#111]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white transition-colors group-hover:border-[#111]/20 group-hover:bg-[#111]/10 group-hover:text-[#111]">
                     {rede.icon}
                   </span>
-                  <span className="group-hover:text-[#ffa726]">{rede.nome}</span>
+                  <span>{rede.nome}</span>
                 </a>
               ))}
             </div>
