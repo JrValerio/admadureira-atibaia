@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen h-screen flex items-center justify-center text-white overflow-hidden"
+      className="relative min-h-screen h-screen flex items-center justify-center text-white overflow-hidden pt-36 md:pt-40 lg:pt-44"
     >
       {/* Foto da fachada como background */}
       <Image
@@ -13,7 +13,7 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover object-[center_20%] md:object-[center_18%]"
+        className="object-cover object-[center_18%] md:object-[center_14%] xl:object-[center_12%]"
         priority
       />
 
@@ -23,14 +23,14 @@ export default function Hero() {
       {/* Linha decorativa laranja no topo */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
 
-      <div className="relative z-10 h-full w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-end text-center pb-24 md:pb-28 lg:pb-32">
+      <div className="relative z-10 h-full w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center pb-16 md:pb-20">
         {/* Logo */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-5">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={112}
-            height={112}
+            width={96}
+            height={96}
             className="rounded-full border-4 border-[#ffa726] shadow-xl"
           />
         </div>
