@@ -89,6 +89,8 @@ export default async function MensagemPage({ params }: PageProps) {
     "@type": "CreativeWorkSeries",
     name: MENSAGENS_SERIES_NAME,
     description: MENSAGENS_SERIES_DESCRIPTION,
+    inLanguage: "pt-BR",
+    genre: "Sermons",
     url: `${SITE_URL}/mensagens`,
     publisher: {
       "@type": "Church",
@@ -103,6 +105,7 @@ export default async function MensagemPage({ params }: PageProps) {
     name: mensagem.titulo,
     description: mensagem.resumo,
     uploadDate: mensagem.data,
+    inLanguage: "pt-BR",
     embedUrl: `https://www.youtube.com/embed/${mensagem.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${mensagem.youtubeId}`,
     isFamilyFriendly: true,

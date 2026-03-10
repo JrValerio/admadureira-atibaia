@@ -47,6 +47,8 @@ export default function MensagensPage() {
     "@type": "CreativeWorkSeries",
     name: MENSAGENS_SERIES_NAME,
     description: MENSAGENS_SERIES_DESCRIPTION,
+    inLanguage: "pt-BR",
+    genre: "Sermons",
     url: `${SITE_URL}/mensagens`,
     publisher: {
       "@type": "Church",
