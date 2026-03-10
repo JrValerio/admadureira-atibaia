@@ -16,33 +16,13 @@ const desktopNavLinks = [
 ];
 
 const resourceLinks = [
-  {
-    label: "Mensagens",
-    href: "/mensagens",
-    description: "Sermões e ensino bíblico da semana.",
-  },
-  {
-    label: "Testemunhos",
-    href: "/testemunhos",
-    description: "Histórias reais de fé e transformação.",
-  },
-  {
-    label: "Vídeos",
-    href: "/videos",
-    description: "Cultos, transmissões e destaques do canal.",
-  },
-  {
-    label: "Oração",
-    href: "/oracao",
-    description: "Pedidos de oração e apoio pastoral.",
-  },
+  { label: "Mensagens", href: "/mensagens" },
+  { label: "Testemunhos", href: "/testemunhos" },
+  { label: "Vídeos", href: "/videos" },
+  { label: "Oração", href: "/oracao" },
 ];
 
-const mobileNavLinks = [
-  ...desktopNavLinks.slice(0, 4),
-  ...resourceLinks.map(({ label, href }) => ({ label, href })),
-  ...desktopNavLinks.slice(4),
-];
+const mobileNavLinks = [...desktopNavLinks, ...resourceLinks];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,58 +42,43 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Topbar — some ao rolar */}
+    <header className="sticky top-0 left-0 right-0 z-50">
       <div
-        className={`bg-[#ffa726] transition-all duration-300 overflow-hidden ${
-          scrolled ? "max-h-0 py-0" : "max-h-10 py-1"
-        }`}
-      >
-        <p className="text-[#212121] text-xs font-semibold tracking-widest uppercase text-center px-4">
-          Venha fazer parte desta família · (11) 91611-6102
-        </p>
-      </div>
-
-      {/* Navbar principal */}
-      <div
-        className={`transition-all duration-300 ${
+        className={`border-b border-white/10 transition-all duration-300 ${
           scrolled
-            ? "bg-[#212121]/95 backdrop-blur-sm shadow-xl"
-            : "bg-[#212121]"
+            ? "bg-[#111111]/92 backdrop-blur-md shadow-xl"
+            : "bg-[#111111]/86 backdrop-blur-md"
         }`}
       >
         <div
           className={`max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between gap-8 md:gap-10 transition-all duration-300 ${
-            scrolled ? "py-3.5" : "py-5 md:py-6"
+            scrolled ? "h-16" : "h-20"
           }`}
         >
-          {/* Logo + nome */}
+          {/* Marca */}
           <Link
             href="/"
-            className="flex flex-col items-center justify-center text-center shrink-0 min-w-[160px] md:min-w-[230px]"
+            className="flex items-center gap-3 shrink-0"
           >
             <Image
               src="/logo.jpg"
               alt="AD Madureira Atibaia"
-              width={scrolled ? 52 : 74}
-              height={scrolled ? 52 : 74}
-              className="rounded-full transition-all duration-300 mb-3"
+              width={scrolled ? 42 : 48}
+              height={scrolled ? 42 : 48}
+              className="rounded-full transition-all duration-300"
             />
-            <div className="leading-tight">
-              <p className="font-script text-[#f7dcb0] text-[1.7rem] md:text-[2.35rem] leading-none">
+            <div className="hidden md:block leading-tight">
+              <p className="font-script text-[#f7dcb0] text-[1.55rem] leading-none">
                 Assembleia de Deus
               </p>
-              <p className="text-white/70 text-[10px] md:text-[11px] tracking-[0.32em] uppercase mt-1.5">
-                Ministério Madureira
-              </p>
-              <p className="text-white/80 text-xs md:text-sm mt-1">
-                Campo de Atibaia
+              <p className="text-white/70 text-[10px] tracking-[0.26em] uppercase mt-1.5">
+                Ministério Madureira · Campo de Atibaia
               </p>
             </div>
           </Link>
 
           {/* Links desktop */}
-          <nav className="hidden xl:flex flex-1 items-center justify-end gap-3 2xl:gap-5 ml-10">
+          <nav className="hidden xl:flex flex-1 items-center justify-end gap-5 2xl:gap-7 ml-8">
             {desktopNavLinks.slice(0, 4).map((link) => (
               <Link
                 key={link.href}
@@ -141,33 +106,21 @@ export default function Navbar() {
                 <span className="text-xs">▾</span>
               </button>
 
-              <div className="pointer-events-none absolute right-0 top-full pt-5 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0">
-                <div className="ui-menu-panel w-[31rem] p-5">
-                  <div className="mb-4">
-                    <p className="text-[#ef5350] text-[11px] font-semibold tracking-[0.24em] uppercase mb-2">
-                      Recursos da comunidade
-                    </p>
-                    <p className="text-[#5f5f5f] text-sm leading-relaxed">
-                      Conteúdo espiritual, acompanhamento e materiais da vida da igreja.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {resourceLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="ui-menu-box"
-                      >
-                        <p className="font-acme text-lg text-[#212121] tracking-wide mb-1">
-                          {link.label}
-                        </p>
-                        <p className="text-[#5f5f5f] text-sm leading-relaxed">
-                          {link.description}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
+              <div className="pointer-events-none absolute left-0 top-full pt-4 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0">
+                <div className="min-w-52 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-2xl backdrop-blur-md">
+                  {resourceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                        pathname === link.href
+                          ? "text-[#ffa726] bg-white/6"
+                          : "text-white/75 hover:text-[#ffa726] hover:bg-white/6"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
@@ -202,7 +155,7 @@ export default function Navbar() {
 
         {/* Menu mobile */}
         {menuOpen && (
-          <div className="xl:hidden bg-[#1a1a1a] px-4 pb-4">
+          <div className="xl:hidden bg-[#121212] border-t border-white/10 px-4 pb-4">
             {mobileNavLinks.map((link) => (
               <Link
                 key={link.href}

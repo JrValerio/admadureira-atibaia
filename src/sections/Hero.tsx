@@ -1,12 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 import HeroBackgroundMedia from "@/components/HeroBackgroundMedia";
 
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen h-screen flex items-center justify-center text-white overflow-hidden pt-36 md:pt-40 lg:pt-44"
+      className="relative h-[calc(100svh-5rem)] min-h-[36rem] flex items-center justify-center text-white overflow-hidden bg-[#111]"
     >
       {/* Foto da fachada como background */}
       <Image
@@ -14,67 +13,34 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        className="object-cover object-[center_18%] md:object-[center_14%] xl:object-[center_12%]"
+        className="object-contain object-center"
         priority
       />
       <HeroBackgroundMedia />
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/45 to-black/70" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.14),transparent_58%)]" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/38 to-black/64" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.1),transparent_60%)]" />
 
-      {/* Linha decorativa laranja no topo */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-[#ffa726]" />
-
-      <div className="relative z-10 h-full w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center pb-16 md:pb-20">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center">
         {/* Logo */}
-        <div className="flex justify-center mb-5">
+        <div className="flex justify-center mb-7">
           <Image
             src="/logo.jpg"
             alt="Logo AD Madureira Atibaia"
-            width={96}
-            height={96}
-            className="rounded-full border-4 border-[#ffa726] shadow-xl"
+            width={136}
+            height={136}
+            className="rounded-full border-4 border-[#ffa726] shadow-[0_18px_45px_rgba(0,0,0,0.35)]"
           />
         </div>
 
-        <div className="mb-5">
-          <p className="font-script text-[#f7dfbb] text-[2.5rem] md:text-[4.5rem] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+        <div>
+          <p className="font-script text-[#f7dfbb] text-[3rem] md:text-[6rem] leading-none drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
             Assembleia de Deus
           </p>
-          <p className="text-white/80 text-[11px] md:text-sm tracking-[0.36em] uppercase mt-2">
+          <p className="text-white/82 text-[11px] md:text-base tracking-[0.34em] uppercase mt-3">
             Ministério Madureira · Campo de Atibaia
           </p>
-        </div>
-
-        {/* Título */}
-        <p className="text-[#ffd54f] text-xs font-semibold tracking-widest uppercase mb-3">
-          Salmos 122:1
-        </p>
-        <h1 className="font-acme text-3xl md:text-5xl lg:text-6xl leading-tight mb-4 tracking-wide">
-          Alegrei-me quando me disseram:
-          <br />
-          <span className="text-[#ffa726]">Vamos à Casa do Senhor</span>
-        </h1>
-
-        <p className="text-white/85 text-sm md:text-base mb-8 max-w-2xl mx-auto">
-          Praça Pio XII, 122 · Centro · Atibaia/SP
-        </p>
-
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="#cultos"
-            className="bg-[#ffa726] hover:bg-[#e65100] text-[#212121] font-bold px-8 py-3 rounded-full transition-colors duration-200 text-sm tracking-widest uppercase font-acme"
-          >
-            Horários de Culto
-          </Link>
-          <Link
-            href="/contato"
-            className="border-2 border-[#ffa726] hover:bg-[#ffa726] hover:text-[#212121] text-white font-bold px-8 py-3 rounded-full transition-colors duration-200 text-sm tracking-widest uppercase font-acme"
-          >
-            Como Chegar
-          </Link>
         </div>
       </div>
 
