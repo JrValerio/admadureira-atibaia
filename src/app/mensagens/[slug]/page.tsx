@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getMensagemBySlug, getMensagens } from "@/data/mensagens";
+import {
+  getMensagemBySlug,
+  getMensagens,
+  MENSAGENS_SERIES_DESCRIPTION,
+  MENSAGENS_SERIES_NAME,
+} from "@/data/mensagens";
 import { SITE_URL } from "@/lib/site";
 
 type PageProps = {
@@ -79,6 +84,19 @@ export default async function MensagemPage({ params }: PageProps) {
     notFound();
   }
 
+  const seriesSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    name: MENSAGENS_SERIES_NAME,
+    description: MENSAGENS_SERIES_DESCRIPTION,
+    url: `${SITE_URL}/mensagens`,
+    publisher: {
+      "@type": "Church",
+      name: "AD Madureira Atibaia",
+      url: SITE_URL,
+    },
+  };
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -87,6 +105,7 @@ export default async function MensagemPage({ params }: PageProps) {
     uploadDate: mensagem.data,
     embedUrl: `https://www.youtube.com/embed/${mensagem.youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${mensagem.youtubeId}`,
+    isFamilyFriendly: true,
     url: `${SITE_URL}/mensagens/${mensagem.slug}`,
     thumbnailUrl: [
       `${SITE_URL}${mensagem.capa ?? "/pulpito-da-igreja.jpg"}`,
@@ -97,6 +116,19 @@ export default async function MensagemPage({ params }: PageProps) {
       name: "AD Madureira Atibaia",
       url: SITE_URL,
     },
+    isPartOf: {
+      "@type": "CreativeWorkSeries",
+      name: MENSAGENS_SERIES_NAME,
+      url: `${SITE_URL}/mensagens`,
+    },
+    ...(mensagem.pregador
+      ? {
+          creator: {
+            "@type": "Person",
+            name: mensagem.pregador,
+          },
+        }
+      : {}),
     ...(mensagem.versiculo
       ? {
           about: {
@@ -111,6 +143,10 @@ export default async function MensagemPage({ params }: PageProps) {
     <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(seriesSchema) }}
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}

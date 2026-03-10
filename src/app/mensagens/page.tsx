@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { getMensagensRecentes } from "@/data/mensagens";
+import {
+  getMensagensRecentes,
+  MENSAGENS_SERIES_DESCRIPTION,
+  MENSAGENS_SERIES_NAME,
+} from "@/data/mensagens";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -38,11 +42,35 @@ function formatMensagemDate(data: string) {
 export default function MensagensPage() {
   const mensagens = getMensagensRecentes();
   const mensagensComPregador = mensagens.filter((mensagem) => mensagem.pregador);
+  const mensagensSeriesSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    name: MENSAGENS_SERIES_NAME,
+    description: MENSAGENS_SERIES_DESCRIPTION,
+    url: `${SITE_URL}/mensagens`,
+    publisher: {
+      "@type": "Church",
+      name: "AD Madureira Atibaia",
+      url: SITE_URL,
+    },
+    hasPart: mensagens.map((mensagem) => ({
+      "@type": "VideoObject",
+      name: mensagem.titulo,
+      url: `${SITE_URL}/mensagens/${mensagem.slug}`,
+    })),
+  };
 
   return (
     <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(mensagensSeriesSchema),
+            }}
+          />
+
           <div className="relative overflow-hidden rounded-[2rem] bg-[#212121] text-white mb-12">
             <div className="absolute inset-0 opacity-30">
               <Image

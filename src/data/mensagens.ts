@@ -9,6 +9,10 @@ export interface Mensagem {
   capa?: string;
 }
 
+export const MENSAGENS_SERIES_NAME = "Mensagens da AD Madureira Atibaia";
+export const MENSAGENS_SERIES_DESCRIPTION =
+  "Série de mensagens e pregações bíblicas ministradas nos cultos da Igreja Assembleia de Deus Ministério Madureira em Atibaia.";
+
 const mensagens: Mensagem[] = [
   {
     slug: "culto-da-familia-especial-cristina-maranhao",
