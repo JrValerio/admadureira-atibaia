@@ -4,6 +4,7 @@ import { getCongregacoes } from "@/data/congregacoes";
 import { getMensagens } from "@/data/mensagens";
 import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
+import { getTestemunhos } from "@/data/testemunhos";
 import { SITE_URL } from "@/lib/site";
 
 // Prioridade das páginas para o Google
@@ -19,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/pastores`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/ministerios`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/mensagens`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${SITE_URL}/testemunhos`,   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/videos`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${SITE_URL}/oracao`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/contato`,       lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
@@ -65,6 +67,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const paginasTestemunhos: MetadataRoute.Sitemap = getTestemunhos().map(
+    (testemunho) => ({
+      url: `${SITE_URL}/testemunhos/${testemunho.slug}`,
+      lastModified: new Date(testemunho.data),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
+
   return [
     ...paginasBase,
     ...paginasEvento,
@@ -72,5 +83,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...paginasCongregacoes,
     ...paginasMinisterios,
     ...paginasMensagens,
+    ...paginasTestemunhos,
   ];
 }
