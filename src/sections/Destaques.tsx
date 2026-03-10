@@ -1,3 +1,7 @@
+import { Card } from "@/components/ui/Card";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { Section } from "@/components/ui/Section";
+
 const destaques = [
   {
     titulo: "Culto ao Vivo",
@@ -42,33 +46,37 @@ const destaques = [
 
 export default function Destaques() {
   return (
-    <section className="ui-section bg-[#212121]">
-      <div className="ui-section-container">
-        <div className="ui-card-grid">
+    <Section className="bg-[#212121]">
+      <CardGrid>
           {destaques.map((item) => (
-            <a
+            <Card
               key={item.titulo}
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="ui-card-dark group flex flex-col items-center text-center p-8"
+              as="div"
+              dark
+              className="group"
             >
-              <div className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${item.iconColor}`}>
-                {item.icone}
-              </div>
-              <h3 className={`font-acme text-lg tracking-wide mb-2 ${item.iconColor}`}>
-                {item.titulo}
-              </h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-5">
-                {item.descricao}
-              </p>
-              <span className={`text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border transition-colors duration-200 ${item.iconColor} ${item.borderColor}`}>
-                {item.label}
-              </span>
-            </a>
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="flex h-full flex-col items-center text-center p-8"
+              >
+                <div className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${item.iconColor}`}>
+                  {item.icone}
+                </div>
+                <h3 className={`font-acme text-lg tracking-wide mb-2 ${item.iconColor}`}>
+                  {item.titulo}
+                </h3>
+                <p className="text-white/60 text-sm leading-relaxed mb-5">
+                  {item.descricao}
+                </p>
+                <span className={`text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full border transition-colors duration-200 ${item.iconColor} ${item.borderColor}`}>
+                  {item.label}
+                </span>
+              </a>
+            </Card>
           ))}
-        </div>
-      </div>
-    </section>
+      </CardGrid>
+    </Section>
   );
 }

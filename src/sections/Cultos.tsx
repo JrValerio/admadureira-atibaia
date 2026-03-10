@@ -1,3 +1,8 @@
+import { Card } from "@/components/ui/Card";
+import { CardGrid } from "@/components/ui/CardGrid";
+import { Section } from "@/components/ui/Section";
+import { SectionTitle } from "@/components/ui/SectionTitle";
+
 const cultos = [
   {
     dia: "Terça-feira",
@@ -34,25 +39,19 @@ const eventosEspeciais = [
 
 export default function Cultos() {
   return (
-    <section id="cultos" className="ui-section bg-[#f7f6f2]">
-      <div className="ui-section-container">
-        {/* Cabeçalho */}
-        <div className="text-center mb-16">
-          <p className="ui-section-eyebrow ui-section-eyebrow--gold">
-            Programação
-          </p>
-          <h2 className="ui-section-title">
-            Horários de Culto
-          </h2>
-          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-        </div>
+    <Section id="cultos" className="bg-[#f7f6f2]">
+      <SectionTitle
+        eyebrow="Programação"
+        eyebrowVariant="gold"
+        title="Horários de Culto"
+        divider
+      />
 
-        {/* Grid de cultos */}
-        <div className="ui-card-grid ui-card-grid--4lg mb-12">
+      <CardGrid columns={4} breakpoint="lg" className="mb-12">
           {cultos.map((culto) => (
-            <div
+            <Card
               key={culto.dia}
-              className="ui-card p-6 border-t-4 border-[#ffa726]"
+              className="p-6 border-t-4 border-[#ffa726]"
             >
               <div className="text-3xl mb-3">{culto.icone}</div>
               <h3 className="font-acme text-[#212121] text-base mb-4 tracking-wide">
@@ -68,37 +67,35 @@ export default function Cultos() {
                   </li>
                 ))}
               </ul>
+            </Card>
+          ))}
+      </CardGrid>
+
+      <Card className="border border-[#ffa726]/30 p-6 max-w-xl mx-auto text-center">
+        <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
+          Eventos Mensais
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {eventosEspeciais.map((e) => (
+            <div key={e.nome}>
+              <p className="text-[#212121] font-semibold text-sm">{e.nome}</p>
+              <p className="text-[#757575] text-xs">{e.detalhe}</p>
             </div>
           ))}
         </div>
+      </Card>
 
-        {/* Eventos especiais */}
-        <div className="ui-card border border-[#ffa726]/30 p-6 max-w-xl mx-auto text-center">
-          <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
-            Eventos Mensais
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {eventosEspeciais.map((e) => (
-              <div key={e.nome}>
-                <p className="text-[#212121] font-semibold text-sm">{e.nome}</p>
-                <p className="text-[#757575] text-xs">{e.detalhe}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="text-center text-[#9e9e9e] text-sm mt-8">
-          Acompanhe também pelo nosso canal no{" "}
-          <a
-            href="https://www.youtube.com/@ADMadureiraAtibaia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#ef5350] hover:underline font-semibold"
-          >
-            YouTube
-          </a>
-        </p>
-      </div>
-    </section>
+      <p className="text-center text-[#9e9e9e] text-sm mt-8">
+        Acompanhe também pelo nosso canal no{" "}
+        <a
+          href="https://www.youtube.com/@ADMadureiraAtibaia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#ef5350] hover:underline font-semibold"
+        >
+          YouTube
+        </a>
+      </p>
+    </Section>
   );
 }
