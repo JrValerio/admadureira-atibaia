@@ -1,4 +1,25 @@
+import Link from "next/link";
 import Image from "next/image";
+
+const linksInstitucionais = [
+  { label: "A Igreja", href: "/sobre" },
+  { label: "Nossos Pastores", href: "/pastores" },
+  { label: "Ministérios", href: "/ministerios" },
+  { label: "Programação", href: "/programacao" },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Mensagens", href: "/mensagens" },
+  { label: "Contato", href: "/contato" },
+];
+
+const horariosResumidos = [
+  "Segunda a Sexta — 06:00 / 07:00",
+  "Terça — 19:30",
+  "Quinta — 19:30",
+  "Sexta — 14:30",
+  "Domingo — 09:00 / 18:30",
+];
+
+const MAPS_URL = "https://maps.google.com/?q=Pra%C3%A7a%20Pio%20XII%2C%20122%20Atibaia%20SP";
 
 const redes = [
   {
@@ -33,30 +54,65 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-3">
-        <div className="flex items-start gap-4">
-          <Image
-            src="/logo.jpg"
-            alt="Logo AD Madureira Atibaia"
-            width={76}
-            height={76}
-            className="rounded-full border border-white/10"
-          />
-          <div className="space-y-1">
-            <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
-              Assembleia de Deus
-            </p>
-            <p className="text-base font-semibold text-white">Ministério Madureira</p>
-            <p className="text-sm text-white/70">Campo de Atibaia</p>
-            <p className="pt-2 text-xs text-white/35">CNPJ: 48.644.074/0001-97</p>
+      <div className="max-w-7xl mx-auto grid gap-12 px-6 py-20 md:grid-cols-2 xl:grid-cols-4">
+        <div className="space-y-6">
+          <div className="flex items-start gap-4">
+            <Image
+              src="/logo.jpg"
+              alt="Logo AD Madureira Atibaia"
+              width={76}
+              height={76}
+              className="rounded-full border border-white/10"
+            />
+            <div className="space-y-1">
+              <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
+                Assembleia de Deus
+              </p>
+              <p className="text-base font-semibold text-white">Ministério Madureira</p>
+              <p className="text-sm text-white/70">Campo de Atibaia</p>
+              <p className="pt-2 text-xs text-white/35">CNPJ: 48.644.074/0001-97</p>
+            </div>
           </div>
+
+          <div className="space-y-2 text-sm leading-relaxed">
+            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Liderança Pastoral
+            </p>
+            <p className="text-white/80">Pr. Dr. Zacarias Bernardes Félix</p>
+            <p className="text-white/80">Pra. Drª Anna Alzira</p>
+          </div>
+
+          <div className="border-l border-[#ffa726]/40 pl-4 text-sm italic leading-relaxed text-[#f2d4a0]">
+            <p>&quot;Até aqui nos ajudou o Senhor.&quot;</p>
+            <p className="mt-1 text-xs not-italic tracking-[0.16em] uppercase text-white/40">
+              1 Samuel 7:12
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+            Institucional
+          </h4>
+          <ul className="space-y-3 text-sm">
+            {linksInstitucionais.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="transition-colors hover:text-[#ffa726]"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Endereço
           </h4>
-          <div className="space-y-2 text-sm leading-relaxed">
+          <div className="space-y-3 text-sm leading-relaxed">
             <p>
               Praça Pio XII, 122
               <br />
@@ -68,39 +124,70 @@ export default function Footer() {
               href="https://wa.me/5511916116102"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
+              className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
             >
               (11) 91611-6102
             </a>
+            <div className="space-y-2 pt-1">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white/70 transition-colors hover:text-white"
+              >
+                Ver no Google Maps
+              </a>
+              <Link
+                href="/contato"
+                className="block text-white/70 transition-colors hover:text-white"
+              >
+                Como chegar
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div>
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-            Redes Sociais
-          </h4>
-          <div className="space-y-3">
-            {redes.map((rede) => (
-              <a
-                key={rede.nome}
-                href={rede.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors group-hover:border-[#ffa726]/60 group-hover:text-[#ffa726]">
-                  {rede.icon}
-                </span>
-                <span className="group-hover:text-[#ffa726]">{rede.nome}</span>
-              </a>
-            ))}
+        <div className="space-y-8">
+          <div>
+            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Horários de Culto
+            </h4>
+            <ul className="space-y-3 text-sm leading-relaxed">
+              {horariosResumidos.map((horario) => (
+                <li key={horario} className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0">
+                  {horario}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Siga-nos
+            </h4>
+            <div className="space-y-3">
+              {redes.map((rede) => (
+                <a
+                  key={rede.nome}
+                  href={rede.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 text-sm text-white/65 transition-colors hover:text-white"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors group-hover:border-[#ffa726]/60 group-hover:bg-[#ffa726] group-hover:text-[#111]">
+                    {rede.icon}
+                  </span>
+                  <span className="group-hover:text-[#ffa726]">{rede.nome}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 text-center text-xs text-white/35">
-          © {new Date().getFullYear()} AD Madureira Atibaia · Todos os direitos reservados
+          © {new Date().getFullYear()} Igreja Assembleia de Deus – Ministério Madureira | Campo de Atibaia. Todos os direitos reservados.
         </div>
       </div>
     </footer>
