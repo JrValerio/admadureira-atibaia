@@ -27,7 +27,7 @@ export default function Hero() {
         {/* Logo */}
         <div className="flex justify-center mb-7">
           <Image
-            src="/logo-circle.png"
+            src="/logo-transparent.png"
             alt="Logo AD Madureira Atibaia"
             width={136}
             height={136}

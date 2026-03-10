@@ -76,7 +76,7 @@ export default function Footer() {
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Image
-              src="/logo-circle.png"
+              src="/logo-transparent.png"
               alt="Logo AD Madureira Atibaia"
               width={76}
               height={76}
