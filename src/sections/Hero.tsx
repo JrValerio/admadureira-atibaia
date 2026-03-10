@@ -27,11 +27,11 @@ export default function Hero() {
         {/* Logo */}
         <div className="flex justify-center mb-7">
           <Image
-            src="/logo.jpg"
+            src="/logo-circle.png"
             alt="Logo AD Madureira Atibaia"
             width={136}
             height={136}
-            className="shadow-[0_18px_45px_rgba(0,0,0,0.28)]"
+            className="drop-shadow-[0_18px_32px_rgba(0,0,0,0.26)]"
           />
         </div>
 

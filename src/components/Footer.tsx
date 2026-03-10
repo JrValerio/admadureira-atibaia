@@ -76,11 +76,11 @@ export default function Footer() {
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Image
-              src="/logo.jpg"
+              src="/logo-circle.png"
               alt="Logo AD Madureira Atibaia"
               width={76}
               height={76}
-              className="rounded-full border border-white/10"
+              className="drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
             />
             <div className="space-y-1">
               <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
