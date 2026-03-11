@@ -52,7 +52,7 @@ export default function HistoriaPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-start mb-14">
-            <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+            <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Nossa trajetória
               </p>
@@ -90,7 +90,7 @@ export default function HistoriaPage() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] bg-white border border-black/5 shadow-sm p-6 md:p-10">
+          <div className="rounded-[2rem] bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
                 Linha do tempo
@@ -126,7 +126,7 @@ export default function HistoriaPage() {
                         }`}
                       >
                         <div className="absolute left-[-37px] top-3 w-6 h-6 rounded-full border-4 border-white bg-[#ffa726] shadow-sm md:left-auto md:right-auto md:translate-x-[-50%] md:left-0" />
-                        <div className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 md:p-7 shadow-sm">
+                        <div className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 md:p-7 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
                           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                             {marco.periodo}
                           </p>
@@ -180,7 +180,7 @@ export default function HistoriaPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+              <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Expansão do campo
                 </p>
@@ -211,7 +211,7 @@ export default function HistoriaPage() {
                 </Link>
               </div>
 
-              <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+              <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Vida da igreja
                 </p>

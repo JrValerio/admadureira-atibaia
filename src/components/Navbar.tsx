@@ -97,9 +97,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 left-0 right-0 z-50">
       <div
-        className={`border-b border-white/10 transition-all duration-300 ${
+        className={`border-b border-white/5 transition-all duration-300 ${
           scrolled
-            ? "bg-[#111111]/92 backdrop-blur-md shadow-xl"
+            ? "bg-[#111111]/92 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
             : "bg-[#111111]/86 backdrop-blur-md"
         }`}
       >
@@ -119,13 +119,18 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`font-acme text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/link relative font-acme text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
                     }`}
                   >
                     {item.label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-px bg-[#ffa726] transition-all duration-300 ${
+                        active ? "w-full" : "w-0 group-hover/link:w-full"
+                      }`}
+                    />
                   </Link>
                 );
               }
@@ -134,7 +139,7 @@ export default function Navbar() {
                 <div key={item.label} className="relative group/menu">
                   <button
                     type="button"
-                    className={`font-acme inline-flex items-center gap-2 text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/button relative font-acme inline-flex items-center gap-2 text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -142,10 +147,15 @@ export default function Navbar() {
                   >
                     {item.label}
                     <span className="text-xs">▾</span>
+                    <span
+                      className={`absolute left-0 -bottom-1 h-px bg-[#ffa726] transition-all duration-300 ${
+                        active ? "w-full" : "w-0 group-hover/button:w-full"
+                      }`}
+                    />
                   </button>
 
                   <div className="pointer-events-none absolute left-0 top-full pt-4 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0">
-                    <div className="min-w-56 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-2xl backdrop-blur-md">
+                    <div className="min-w-56 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}

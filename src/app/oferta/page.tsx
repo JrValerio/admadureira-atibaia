@@ -45,7 +45,7 @@ export default function OfertaPage() {
             }}
           />
 
-          <div className="rounded-[2rem] overflow-hidden bg-[#212121] text-white border border-white/10 shadow-xl">
+          <div className="rounded-[2rem] overflow-hidden bg-[#212121] text-white border border-white/10 shadow-[0_10px_32px_rgba(0,0,0,0.08)]">
             <div className="px-6 py-14 md:px-10 md:py-18 text-center">
               <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
                 Contribuição
@@ -62,7 +62,7 @@ export default function OfertaPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 mt-8">
-            <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8 text-center">
+            <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8 text-center">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 PIX
               </p>
@@ -70,7 +70,7 @@ export default function OfertaPage() {
                 QR Code para contribuição
               </h2>
 
-              <div className="inline-flex rounded-[2rem] bg-[#f8f8f8] border border-black/5 p-4 shadow-sm">
+              <div className="inline-flex rounded-[2rem] bg-[#f8f8f8] border border-black/5 p-4 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
                 <Image
                   src={ofertaData.pix.qrCodePath}
                   alt="QR Code PIX da AD Madureira Atibaia"
@@ -116,7 +116,7 @@ export default function OfertaPage() {
             </div>
 
             <div className="space-y-8">
-              <div className="rounded-3xl bg-white border border-black/5 shadow-sm p-6 md:p-8">
+              <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Dados bancários
                 </p>

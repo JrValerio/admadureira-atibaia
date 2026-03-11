@@ -52,7 +52,7 @@ export default function CongregacoesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Congregações mapeadas
               </p>
@@ -60,7 +60,7 @@ export default function CongregacoesPage() {
                 {congregacoes.length}
               </p>
             </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Cidades cadastradas
               </p>
@@ -68,7 +68,7 @@ export default function CongregacoesPage() {
                 {cidades.size}
               </p>
             </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Lideranças destacadas
               </p>
@@ -95,7 +95,7 @@ export default function CongregacoesPage() {
               <Link
                 key={congregacao.slug}
                 href={`/congregacoes/${congregacao.slug}`}
-                className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+                className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow"
               >
                 <div className="relative aspect-[16/9] bg-[#111] overflow-hidden">
                   <Image

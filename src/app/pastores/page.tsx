@@ -16,7 +16,7 @@ function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
   return (
     <Link
       href={`/pastores/${pastor.slug}`}
-      className="group grid lg:grid-cols-[1.05fr_0.95fr] items-center bg-white rounded-3xl shadow-lg overflow-hidden border border-black/5 hover:shadow-xl transition-shadow duration-300"
+      className="group grid lg:grid-cols-[1.05fr_0.95fr] items-center bg-white rounded-3xl overflow-hidden border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-shadow duration-300"
     >
       <div className="relative h-[340px] sm:h-[420px] bg-[#111] overflow-hidden">
         <Image
@@ -49,7 +49,7 @@ function PastorCompactCard({ pastor }: { pastor: Pastor }) {
   return (
     <Link
       href={`/pastores/${pastor.slug}`}
-      className="group bg-white rounded-2xl overflow-hidden border border-black/5 hover:shadow-lg transition-shadow duration-200"
+      className="group bg-white rounded-2xl overflow-hidden border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow duration-200"
     >
       <div className="relative aspect-[4/5] bg-[#111] overflow-hidden">
         <Image
@@ -139,7 +139,7 @@ export default function PastoresPage() {
           </div>
 
           {versiculoInstitucional && (
-            <div className="mt-16 md:mt-20 text-center max-w-3xl mx-auto rounded-3xl bg-white border border-black/5 shadow-sm px-6 py-10">
+            <div className="mt-16 md:mt-20 text-center max-w-3xl mx-auto rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] px-6 py-10">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo que marca a liderança
               </p>
