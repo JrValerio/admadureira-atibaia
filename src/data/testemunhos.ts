@@ -11,14 +11,34 @@ export interface Testemunho {
 
 const testemunhos: Testemunho[] = [
   {
-    slug: "familia-restaurada",
-    nome: "Maria da Silva",
-    titulo: "Uma família restaurada pela fé",
+    slug: "familia-restaurada-em-cristo",
+    nome: "Irmã A. S.",
+    titulo: "Deus restaurou minha casa em um tempo de oração",
     resumo:
-      "Depois de um período difícil em sua família, Maria encontrou na fé e na comunidade da igreja um caminho de restauração.",
+      "Após um período de crise familiar, a irmã encontrou acolhimento na igreja e perseverou em oração até ver Deus restaurar seu lar.",
     historia:
-      "Maria compartilha como Deus transformou sua família através da oração, da Palavra e do apoio da igreja.\n\nDurante um período de dificuldades, ela encontrou na comunhão com a igreja um ambiente de acolhimento, aconselhamento e fortalecimento espiritual.\n\nCom o cuidado pastoral, a perseverança em oração e o apoio da comunidade cristã, sua família foi restaurada e sua caminhada com Deus se tornou ainda mais firme.",
-    data: "2025-10-10",
+      "Durante um período difícil dentro de casa, senti meu coração cansado e sem direção. Foi nesse tempo que comecei a buscar mais a Deus em oração.\n\nNa AD Madureira Atibaia encontrei apoio espiritual, aconselhamento pastoral e comunhão com irmãos que me fortaleceram na fé.\n\nCom o passar do tempo, Deus trouxe paz, reconciliação e restauração para minha família. Hoje testemunho que o Senhor continua operando milagres na vida daqueles que confiam nele.",
+    data: "2026-03-11",
+  },
+  {
+    slug: "renovo-espiritual-na-presenca-de-deus",
+    nome: "Irmão J. R.",
+    titulo: "Encontrei renovo espiritual na presença de Deus",
+    resumo:
+      "Após um período de afastamento espiritual, o irmão voltou a buscar ao Senhor e encontrou renovo em sua vida.",
+    historia:
+      "Houve um tempo em que me senti espiritualmente distante e sem forças para continuar.\n\nAo retornar aos cultos e ouvir novamente a Palavra ministrada na igreja, senti meu coração ser renovado e fortalecido.\n\nHoje posso dizer que Deus restaurou minha alegria espiritual e renovou minha caminhada com Ele.",
+    data: "2026-02-20",
+  },
+  {
+    slug: "provisao-de-deus-em-tempo-dificil",
+    nome: "Irmã M. P.",
+    titulo: "Deus trouxe provisão em um momento de necessidade",
+    resumo:
+      "Mesmo enfrentando dificuldades financeiras, a irmã testemunha como Deus abriu portas e trouxe provisão no momento certo.",
+    historia:
+      "Passei por um período de grande dificuldade financeira e muitas vezes não sabia como resolver certas necessidades.\n\nMesmo assim continuei confiando em Deus e buscando orientação na Palavra.\n\nDe forma surpreendente, o Senhor abriu portas e trouxe provisão no tempo certo, mostrando mais uma vez seu cuidado e fidelidade.",
+    data: "2026-02-10",
   },
 ];
 
