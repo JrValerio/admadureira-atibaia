@@ -81,7 +81,7 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_0.85fr_1fr]">
+      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-14 md:grid-cols-2 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Image
@@ -98,11 +98,10 @@ export default function Footer() {
               <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
                 Campo de Atibaia
               </p>
-              <p className="pt-2 text-xs text-white/35">CNPJ: 48.644.074/0001-97</p>
             </div>
           </div>
 
-          <p className="max-w-sm text-sm leading-relaxed text-white/72">
+          <p className="max-w-xs text-xs leading-relaxed text-white/58">
             {descricaoInstitucional}
           </p>
 
@@ -112,28 +111,6 @@ export default function Footer() {
               {versiculoFooter.referencia}
             </footer>
           </blockquote>
-
-          <div>
-            <p className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Siga-nos
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              {redes.map((rede) => (
-                <a
-                  key={rede.nome}
-                  href={rede.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={rede.nome}
-                  title={rede.nome}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
-                >
-                  {rede.icon}
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
         <div>
@@ -193,21 +170,50 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="border-t border-white/10 pt-8">
-            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Horários de Culto
-            </h4>
-            <ul className="space-y-3 text-sm leading-relaxed">
-              {horariosResumidos.map((horario) => (
-                <li
-                  key={horario}
-                  className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0"
-                >
-                  {horario}
-                </li>
-              ))}
-            </ul>
+        <div>
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+            Horários de Culto
+          </h4>
+          <ul className="space-y-3 text-sm leading-relaxed">
+            {horariosResumidos.map((horario) => (
+              <li
+                key={horario}
+                className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0"
+              >
+                {horario}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 px-6 py-6 md:flex-row md:justify-between">
+          <div className="text-center md:text-left">
+            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Siga-nos
+            </p>
+            <p className="mt-1 text-xs text-white/35">
+              Acompanhe a igreja nas plataformas oficiais.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            {redes.map((rede) => (
+              <a
+                key={rede.nome}
+                href={rede.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={rede.nome}
+                title={rede.nome}
+                className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
+              >
+                {rede.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -218,7 +224,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | Campo de Atibaia. Todos os direitos reservados.
           </p>
-          <p className="mt-2">Praça Pio XII, 122 - Centro - Atibaia/SP</p>
+          <p className="mt-2">
+            Praça Pio XII, 122 - Centro - Atibaia/SP | CNPJ: 48.644.074/0001-97
+          </p>
         </div>
       </div>
     </footer>
