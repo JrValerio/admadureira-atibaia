@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
 
 export default function MinisteriosPage() {
   return (
-    <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
+    <main className="bg-[#f5f5f5] min-h-screen">
       <Ministerios />
     </main>
   );

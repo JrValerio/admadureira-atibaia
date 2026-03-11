@@ -8,13 +8,11 @@ function CardSemanal({
   dia,
   titulo,
   horario,
-  icone,
   banner,
 }: {
   dia: string;
   titulo: string;
   horario?: string;
-  icone?: string;
   banner?: string;
 }) {
   return (
@@ -30,8 +28,10 @@ function CardSemanal({
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-5xl">{icone}</span>
+          <div className="w-full h-full flex items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
+            <span className="font-acme text-[#ffa726] text-xl tracking-wide leading-tight">
+              {titulo}
+            </span>
           </div>
         )}
       </div>

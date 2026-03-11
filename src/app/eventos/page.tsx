@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
 
 export default function EventosPage() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Eventos />
     </main>
   );

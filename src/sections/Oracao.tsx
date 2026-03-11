@@ -59,7 +59,7 @@ export default function Oracao() {
         <div className="bg-[#f5f5f5] rounded-2xl p-8 md:p-12 shadow-sm">
           {status === "sent" ? (
             <div className="text-center py-8">
-              <div className="text-5xl mb-4">🙏</div>
+              <div className="w-14 h-1 rounded-full bg-[#ffa726] mx-auto mb-5" />
               <h3 className="font-acme text-xl text-[#212121] mb-2 tracking-wide">
                 Pedido enviado!
               </h3>

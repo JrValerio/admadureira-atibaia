@@ -34,6 +34,5 @@ export interface ItemSemanal {
   dia: string;
   titulo: string;
   horario?: string;
-  icone?: string;
   banner?: string;
 }

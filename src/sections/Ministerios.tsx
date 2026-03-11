@@ -41,7 +41,6 @@ export default function Ministerios() {
               </div>
 
               <div className="p-5">
-                <div className="text-3xl mb-3">{min.icone}</div>
                 <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
                   {min.escopo}
                 </p>

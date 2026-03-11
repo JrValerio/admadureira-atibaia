@@ -7,7 +7,6 @@ export interface Ministerio {
   lideranca?: string[];
   atividades?: string[];
   imagem?: string;
-  icone?: string;
 }
 
 const ministerios: Ministerio[] = [
@@ -28,7 +27,6 @@ const ministerios: Ministerio[] = [
       "Participação em congressos e eventos especiais",
     ],
     imagem: "/ministerios/confadat.jpg",
-    icone: "👑",
   },
   {
     slug: "umadat",
@@ -47,7 +45,6 @@ const ministerios: Ministerio[] = [
       "Atividades de discipulado e serviço cristão",
     ],
     imagem: "/ministerios/umadat.jpg",
-    icone: "🔥",
   },
   {
     slug: "rios-de-uncao",
@@ -66,7 +63,6 @@ const ministerios: Ministerio[] = [
       "Momentos de comunhão, ensino bíblico e discipulado",
     ],
     imagem: "/ministerios/rios-de-uncao.png",
-    icone: "🌊",
   },
   {
     slug: "baluarte-da-fe",
@@ -85,7 +81,6 @@ const ministerios: Ministerio[] = [
       "Apoio às ações espirituais e sociais da igreja",
     ],
     imagem: "/ministerios/baluarte-de-fe.png",
-    icone: "🛡️",
   },
   {
     slug: "infantil",
@@ -104,7 +99,6 @@ const ministerios: Ministerio[] = [
       "Ações de acolhimento e formação cristã infantil",
     ],
     imagem: "/ministerios/infantil.png",
-    icone: "🌱",
   },
 ];
 

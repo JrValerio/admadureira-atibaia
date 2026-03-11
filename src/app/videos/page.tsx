@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
 
 export default function VideosPage() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Videos />
     </main>
   );

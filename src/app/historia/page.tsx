@@ -18,7 +18,7 @@ export default function HistoriaPage() {
   const congregacoes = getCongregacoes();
 
   return (
-    <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
+    <main className="bg-[#f5f5f5] min-h-screen">
       <section className="relative overflow-hidden bg-[#111] text-white">
         <div className="absolute inset-0">
           <Image

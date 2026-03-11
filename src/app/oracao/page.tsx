@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
 
 export default function OracaoPage() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Oracao />
     </main>
   );

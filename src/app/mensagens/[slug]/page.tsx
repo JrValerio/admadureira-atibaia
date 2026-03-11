@@ -136,7 +136,7 @@ export default async function MensagemPage({ params }: PageProps) {
   };
 
   return (
-    <main className="pt-[80px] bg-[#f5f5f5] min-h-screen">
+    <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <script

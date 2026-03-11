@@ -10,7 +10,7 @@ export const metadata = buildPageMetadata({
 
 export default function SobrePage() {
   return (
-    <main className="pt-[80px]">
+    <main>
       <Sobre />
     </main>
   );
