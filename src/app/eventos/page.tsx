@@ -1,4 +1,6 @@
 import Eventos from "@/sections/Eventos";
+import { getEventosFuturos } from "@/lib/agenda-utils";
+import { buildEventListJsonLd } from "@/lib/event-schema";
 import { buildPageMetadata } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
@@ -9,9 +11,16 @@ export const metadata = buildPageMetadata({
 });
 
 export default function EventosPage() {
+  const eventos = getEventosFuturos(12);
+  const eventListSchema = buildEventListJsonLd(eventos);
+
   return (
     <main>
-      <Eventos />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventListSchema) }}
+      />
+      <Eventos eventos={eventos} />
     </main>
   );
 }

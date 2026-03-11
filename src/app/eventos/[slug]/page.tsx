@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
-import { buildEventSchedule } from "@/lib/event-date";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+import { buildEventJsonLd } from "@/lib/event-schema";
+import { buildPageMetadata } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -51,40 +51,9 @@ export default async function EventoPage({ params }: PageProps) {
     notFound();
   }
 
-  const schedule = buildEventSchedule(evento.data, evento.horario, evento.ano);
   const eventImage =
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
-  const eventSchema = {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: evento.titulo,
-    description:
-      evento.descricao ??
-      `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
-    startDate: schedule.startDate,
-    ...(schedule.endDate ? { endDate: schedule.endDate } : {}),
-    image: [`${SITE_URL}${eventImage}`],
-    location: {
-      "@type": "Place",
-      name: "Igreja Assembleia de Deus – Ministério Madureira",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Praça Pio XII, 122",
-        addressLocality: "Atibaia",
-        addressRegion: "SP",
-        postalCode: "12940-160",
-        addressCountry: "BR",
-      },
-    },
-    organizer: {
-      "@type": "Organization",
-      name: "AD Madureira Atibaia",
-      url: SITE_URL,
-    },
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    url: `${SITE_URL}/eventos/${evento.slug}`,
-  };
+  const eventSchema = buildEventJsonLd(evento);
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">

@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getEventosFuturos } from "@/lib/agenda-utils";
+import type { EventoFuturo } from "@/lib/agenda-utils";
 
-export default function Eventos() {
-  const eventos = getEventosFuturos(12);
-
+export default function Eventos({ eventos }: { eventos: EventoFuturo[] }) {
   return (
     <section id="eventos" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
