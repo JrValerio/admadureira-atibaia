@@ -1,3 +1,4 @@
+import HeroPage from "@/components/HeroPage";
 import Sobre from "@/sections/Sobre";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -10,8 +11,19 @@ export const metadata = buildPageMetadata({
 
 export default function SobrePage() {
   return (
-    <main>
-      <Sobre />
+    <main className="bg-[#f5f5f5] min-h-screen">
+      <section className="pt-16 md:pt-20 pb-0">
+        <div className="max-w-6xl mx-auto px-4">
+          <HeroPage
+            label="Campo de Atibaia"
+            title="Nossa Igreja"
+            description="Conheça a história, a missão, os valores e a liderança pastoral da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia."
+            image="/pulpito-da-igreja.jpg"
+            imageAlt="Púlpito da AD Madureira Atibaia"
+          />
+        </div>
+      </section>
+      <Sobre showHeader={false} />
     </main>
   );
 }

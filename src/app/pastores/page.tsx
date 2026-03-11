@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import HeroPage from "@/components/HeroPage";
 import type { Pastor } from "@/data/pastores";
 import { getPastoresByGrupo } from "@/data/pastores";
 import { buildPageMetadata } from "@/lib/site";
@@ -87,18 +88,14 @@ export default function PastoresPage() {
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-              Liderança Pastoral
-            </p>
-            <h1 className="font-acme text-4xl md:text-5xl text-[#212121] tracking-wide mb-4">
-              Nossos Pastores
-            </h1>
-            <p className="text-[#5f5f5f] leading-relaxed">
-              Conheça a liderança que serve a AD Madureira Atibaia com
-              dedicação, cuidado pastoral e compromisso com a Palavra de Deus.
-            </p>
-          </div>
+          <HeroPage
+            label="Liderança Pastoral"
+            title="Nossos Pastores"
+            description="Conheça a liderança que serve a AD Madureira Atibaia com dedicação, cuidado pastoral e compromisso com a Palavra de Deus."
+            image="/pulpito-da-igreja.jpg"
+            imageAlt="Púlpito da AD Madureira Atibaia"
+            className="mb-14"
+          />
 
           <div className="space-y-14">
             <div>

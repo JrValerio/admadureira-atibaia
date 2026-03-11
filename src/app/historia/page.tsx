@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import HeroPage from "@/components/HeroPage";
 import { getCongregacoes } from "@/data/congregacoes";
 import { marcosHistoricos, historiaEncerramento, historiaIntroducao } from "@/data/historia";
 import { getPastoresByGrupo } from "@/data/pastores";
@@ -19,38 +19,18 @@ export default function HistoriaPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
-      <section className="relative overflow-hidden bg-[#111] text-white">
-        <div className="absolute inset-0">
-          <Image
-            src="/fachada-da-igreja.jpg"
-            alt="Fachada da AD Madureira Atibaia"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_34%]"
-          />
-        </div>
-        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/45" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-18 md:py-24">
-          <div className="max-w-3xl">
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
-              Campo de Atibaia
-            </p>
-            <h1 className="font-acme text-4xl md:text-6xl tracking-wide leading-tight mb-5">
-              História da Igreja
-            </h1>
-            <p className="text-white/80 text-lg leading-relaxed">
-              Conheça a trajetória da Igreja Assembleia de Deus Ministério
-              Madureira no Campo de Atibaia e como Deus tem conduzido esta obra
-              ao longo dos anos.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
+          <HeroPage
+            label="Campo de Atibaia"
+            title="História da Igreja"
+            description="Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e como Deus tem conduzido esta obra ao longo dos anos."
+            image="/fachada-da-igreja.jpg"
+            imageAlt="Fachada da AD Madureira Atibaia"
+            imageClassName="object-[center_34%]"
+            className="mb-12"
+          />
+
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-start mb-14">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">

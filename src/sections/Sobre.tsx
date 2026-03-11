@@ -18,7 +18,11 @@ const valores = [
   },
 ];
 
-export default function Sobre() {
+type SobreProps = {
+  showHeader?: boolean;
+};
+
+export default function Sobre({ showHeader = true }: SobreProps) {
   const pastores = getPastores();
 
   return (
@@ -44,13 +48,17 @@ export default function Sobre() {
 
           {/* Texto + cards */}
           <div>
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-              Quem somos
-            </p>
-            <h2 className="font-acme text-3xl md:text-4xl mb-6 tracking-wide">
-              Nossa Igreja
-            </h2>
-            <div className="w-16 h-1 bg-[#ffa726] mb-6" />
+            {showHeader ? (
+              <>
+                <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+                  Quem somos
+                </p>
+                <h2 className="font-acme text-3xl md:text-4xl mb-6 tracking-wide">
+                  Nossa Igreja
+                </h2>
+                <div className="w-16 h-1 bg-[#ffa726] mb-6" />
+              </>
+            ) : null}
             <p className="text-white/75 text-base leading-relaxed mb-4">
               A Igreja Evangélica Assembleia de Deus Ministério Madureira –
               Campo de Atibaia é uma comunidade cristã comprometida com a

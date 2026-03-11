@@ -3,23 +3,29 @@ import Link from "next/link";
 import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
 import { getMinisterios } from "@/data/ministerios";
 
-export default function Ministerios() {
+type MinisteriosProps = {
+  showHeader?: boolean;
+};
+
+export default function Ministerios({ showHeader = true }: MinisteriosProps) {
   const ministerios = getMinisterios();
 
   return (
     <Section id="ministerios" className="bg-white">
-      <SectionTitle
-        eyebrow="Departamentos"
-        eyebrowVariant="gold"
-        title="Ministérios"
-        divider
-        description={
-          <>
-            Conheça os ministérios que servem a igreja por meio do discipulado,
-            da adoração, da oração e da formação cristã.
-          </>
-        }
-      />
+      {showHeader ? (
+        <SectionTitle
+          eyebrow="Departamentos"
+          eyebrowVariant="gold"
+          title="Ministérios"
+          divider
+          description={
+            <>
+              Conheça os ministérios que servem a igreja por meio do
+              discipulado, da adoração, da oração e da formação cristã.
+            </>
+          }
+        />
+      ) : null}
 
       <CardGrid columns={4}>
           {ministerios.map((min) => (
@@ -59,16 +65,10 @@ export default function Ministerios() {
       </CardGrid>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-        <Link
-          href="/historia"
-          className="ui-btn-secondary"
-        >
+        <Link href="/historia" className="ui-btn-secondary">
           Ver história da igreja
         </Link>
-        <Link
-          href="/congregacoes"
-          className="ui-btn-primary"
-        >
+        <Link href="/congregacoes" className="ui-btn-primary">
           Ver congregações
         </Link>
       </div>

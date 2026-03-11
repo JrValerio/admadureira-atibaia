@@ -133,21 +133,28 @@ function CardMes({ mes }: { mes: MesAgenda }) {
   );
 }
 
+type ProgramacaoProps = {
+  showHeader?: boolean;
+};
+
 /* ── Seção principal ───────────────────────────── */
-export default function Programacao() {
+export default function Programacao({
+  showHeader = true,
+}: ProgramacaoProps = {}) {
   return (
     <section id="programacao" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        {/* Cabeçalho geral */}
-        <div className="text-center mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-            Igreja AD Madureira · Atibaia
-          </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
-            Programação da Igreja
-          </h2>
-          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-        </div>
+        {showHeader ? (
+          <div className="text-center mb-16">
+            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+              Igreja AD Madureira · Atibaia
+            </p>
+            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+              Programação da Igreja
+            </h2>
+            <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
+          </div>
+        ) : null}
 
         {/* ── 1. PROGRAMAÇÃO SEMANAL ── */}
         <div className="mb-20">

@@ -4,7 +4,11 @@ import { useState } from "react";
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
-export default function Oracao() {
+type OracaoProps = {
+  showHeader?: boolean;
+};
+
+export default function Oracao({ showHeader = true }: OracaoProps) {
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -40,20 +44,21 @@ export default function Oracao() {
   return (
     <section id="oracao" className="py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4">
-        {/* Cabeçalho */}
-        <div className="text-center mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-            Estamos aqui por você
-          </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
-            Pedido de Oração
-          </h2>
-          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-          <p className="text-[#757575] text-sm mt-4 max-w-md mx-auto leading-relaxed">
-            Compartilhe seu pedido conosco. Nossa equipe de intercessão orará
-            por você.
-          </p>
-        </div>
+        {showHeader ? (
+          <div className="text-center mb-16">
+            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+              Estamos aqui por você
+            </p>
+            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+              Pedido de Oração
+            </h2>
+            <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
+            <p className="text-[#757575] text-sm mt-4 max-w-md mx-auto leading-relaxed">
+              Compartilhe seu pedido conosco. Nossa equipe de intercessão orará
+              por você.
+            </p>
+          </div>
+        ) : null}
 
         {/* Formulário */}
         <div className="bg-[#f5f5f5] rounded-2xl p-8 md:p-12 shadow-sm">

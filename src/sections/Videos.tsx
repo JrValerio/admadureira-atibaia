@@ -4,7 +4,11 @@ import { FIXED_FEATURED_VIDEO_IDS } from "@/data/featuredVideos";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
 
-export default async function Videos() {
+type VideosProps = {
+  showHeader?: boolean;
+};
+
+export default async function Videos({ showHeader = true }: VideosProps) {
   const { liveNow, recentVideos } = await getYouTubeFeed();
   const fixedFeaturedVideos = FIXED_FEATURED_VIDEO_IDS.map((id) =>
     recentVideos.find((video) => video.id === id)
@@ -30,18 +34,20 @@ export default async function Videos() {
   return (
     <section id="videos" className="py-24 bg-[#f5f5f5]">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
-            Canal no YouTube
-          </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
-            Ultimos Cultos
-          </h2>
-          <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
-          <p className="text-[#757575] text-sm mt-4">
-            Assista nossas pregacoes e transmissoes ao vivo.
-          </p>
-        </div>
+        {showHeader ? (
+          <div className="text-center mb-16">
+            <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
+              Canal no YouTube
+            </p>
+            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+              Ultimos Cultos
+            </h2>
+            <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
+            <p className="text-[#757575] text-sm mt-4">
+              Assista nossas pregacoes e transmissoes ao vivo.
+            </p>
+          </div>
+        ) : null}
 
         {liveNow && (
           <div className="mb-14">

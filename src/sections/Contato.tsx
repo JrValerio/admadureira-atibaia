@@ -70,7 +70,11 @@ const redes = [
   },
 ];
 
-export default function Contato() {
+type ContatoProps = {
+  showHeader?: boolean;
+};
+
+export default function Contato({ showHeader = true }: ContatoProps) {
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -112,13 +116,15 @@ export default function Contato() {
 
   return (
     <Section id="contato" className="bg-[#f5f5f5]">
-      <SectionTitle
-        eyebrow="Venha nos visitar"
-        eyebrowVariant="gold"
-        title="Como Chegar"
-        divider
-        description="Encontre a sede da igreja, consulte nossos horários e utilize os canais oficiais para falar conosco."
-      />
+      {showHeader ? (
+        <SectionTitle
+          eyebrow="Venha nos visitar"
+          eyebrowVariant="gold"
+          title="Como Chegar"
+          divider
+          description="Encontre a sede da igreja, consulte nossos horários e utilize os canais oficiais para falar conosco."
+        />
+      ) : null}
 
       <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
         <div className="space-y-6">

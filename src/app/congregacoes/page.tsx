@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import HeroPage from "@/components/HeroPage";
 import { getCongregacoes } from "@/data/congregacoes";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -23,33 +24,14 @@ export default function CongregacoesPage() {
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#212121] text-white mb-12">
-            <div className="absolute inset-0 opacity-30">
-              <Image
-                src="/fachada-da-igreja.jpg"
-                alt="Fachada da AD Madureira Atibaia"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/55 to-black/35" />
-
-            <div className="relative z-10 px-6 py-14 md:px-10 md:py-18 lg:px-14 max-w-4xl">
-              <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
-                Campo de Atibaia
-              </p>
-              <h1 className="font-acme text-4xl md:text-5xl tracking-wide leading-tight mb-5">
-                Congregações do Campo
-              </h1>
-              <p className="text-white/80 leading-relaxed max-w-2xl">
-                O Campo de Atibaia da Assembleia de Deus Ministério Madureira
-                reúne congregações comprometidas com a pregação do Evangelho, o
-                cuidado das famílias e o fortalecimento da vida cristã na região.
-              </p>
-            </div>
-          </div>
+          <HeroPage
+            label="Campo de Atibaia"
+            title="Congregações do Campo"
+            description="O Campo de Atibaia da Assembleia de Deus Ministério Madureira reúne congregações comprometidas com a pregação do Evangelho, o cuidado das famílias e o fortalecimento da vida cristã na região."
+            image="/fachada-da-igreja.jpg"
+            imageAlt="Fachada da AD Madureira Atibaia"
+            className="mb-12"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">

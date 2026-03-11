@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import HeroPage from "@/components/HeroPage";
 import { getMensagensRecentes } from "@/data/mensagens";
 import {
   buildVideoListJsonLd,
@@ -54,32 +55,14 @@ export default function MensagensPage() {
             }}
           />
 
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#212121] text-white mb-12">
-            <div className="absolute inset-0 opacity-30">
-              <Image
-                src="/pulpito-da-igreja.jpg"
-                alt="Púlpito da AD Madureira Atibaia"
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/60 to-black/35" />
-
-            <div className="relative z-10 px-6 py-14 md:px-10 md:py-18 lg:px-14 max-w-4xl">
-              <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
-                Palavra e ensino
-              </p>
-              <h1 className="font-acme text-4xl md:text-5xl tracking-wide leading-tight mb-5">
-                Mensagens da Igreja
-              </h1>
-              <p className="text-white/80 leading-relaxed max-w-2xl">
-                Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite
-                ministrações que fortalecem a fé, a comunhão e a vida cristã.
-              </p>
-            </div>
-          </div>
+          <HeroPage
+            label="Palavra e ensino"
+            title="Mensagens da Igreja"
+            description="Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite ministrações que fortalecem a fé, a comunhão e a vida cristã."
+            image="/pulpito-da-igreja.jpg"
+            imageAlt="Púlpito da AD Madureira Atibaia"
+            className="mb-12"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">

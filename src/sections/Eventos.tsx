@@ -2,19 +2,29 @@ import Image from "next/image";
 import Link from "next/link";
 import type { EventoFuturo } from "@/lib/agenda-utils";
 
-export default function Eventos({ eventos }: { eventos: EventoFuturo[] }) {
+type EventosProps = {
+  eventos: EventoFuturo[];
+  showHeader?: boolean;
+};
+
+export default function Eventos({
+  eventos,
+  showHeader = true,
+}: EventosProps) {
   return (
     <section id="eventos" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-            Agenda
-          </p>
-          <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
-            Próximos Eventos
-          </h2>
-          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-        </div>
+        {showHeader ? (
+          <div className="text-center mb-16">
+            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+              Agenda
+            </p>
+            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+              Próximos Eventos
+            </h2>
+            <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
+          </div>
+        ) : null}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {eventos.map((evento) => (

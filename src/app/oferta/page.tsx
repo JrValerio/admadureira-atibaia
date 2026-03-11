@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CopyPixButton from "@/components/CopyPixButton";
+import HeroPage from "@/components/HeroPage";
 import { ofertaData } from "@/data/oferta";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
@@ -45,21 +46,15 @@ export default function OfertaPage() {
             }}
           />
 
-          <div className="rounded-[2rem] overflow-hidden bg-[#212121] text-white border border-white/10 shadow-[0_10px_32px_rgba(0,0,0,0.08)]">
-            <div className="px-6 py-14 md:px-10 md:py-18 text-center">
-              <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
-                Contribuição
-              </p>
-              <h1 className="font-acme text-4xl md:text-5xl tracking-wide mb-5">
-                Oferta e contribuição
-              </h1>
-              <p className="text-white/80 leading-relaxed max-w-2xl mx-auto">
-                Sua contribuição ajuda na manutenção da obra de Deus, no apoio
-                às atividades da igreja e no avanço do Evangelho por meio da AD
-                Madureira Atibaia.
-              </p>
-            </div>
-          </div>
+          <HeroPage
+            label="Contribuição"
+            title="Oferta e contribuição"
+            description="Sua contribuição ajuda na manutenção da obra de Deus, no apoio às atividades da igreja e no avanço do Evangelho por meio da AD Madureira Atibaia."
+            image="/fachada-da-igreja.jpg"
+            imageAlt="Fachada da AD Madureira Atibaia"
+            imageClassName="object-[center_34%]"
+            className="mb-8 border border-white/10 shadow-[0_10px_32px_rgba(0,0,0,0.08)]"
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 mt-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8 text-center">
