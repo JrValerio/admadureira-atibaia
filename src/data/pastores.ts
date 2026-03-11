@@ -16,9 +16,22 @@ export interface Pastor {
   ministerio: string[];
   formacao?: string[];
   versiculo?: PastorVersiculo;
+  ministerioInfo?: {
+    inicio?: string;
+    funcao?: string;
+    igreja?: string;
+  };
+  redes?: {
+    instagram?: string;
+    youtube?: string;
+  };
+  seo?: {
+    title?: string;
+    description?: string;
+  };
 }
 
-const pastores: Pastor[] = [
+export const pastores: Pastor[] = [
   {
     slug: "zacarias-bernardes-felix",
     nome: "Pr. Dr. Zacarias Bernardes Félix",
@@ -44,6 +57,16 @@ const pastores: Pastor[] = [
       referencia: "Jeremias 1:5",
       texto: "Antes que te formasse no ventre, eu te conheci.",
     },
+    ministerioInfo: {
+      inicio: "2004",
+      funcao: "Pastor Presidente do Campo de Atibaia",
+      igreja: "Assembleia de Deus Ministério Madureira",
+    },
+    seo: {
+      title: "Pr. Dr. Zacarias Bernardes Félix | AD Madureira Atibaia",
+      description:
+        "Conheça a trajetória pastoral do Pr. Dr. Zacarias Bernardes Félix, presidente do Campo de Atibaia da AD Madureira Atibaia.",
+    },
   },
   {
     slug: "anna-alzira",
@@ -65,6 +88,15 @@ const pastores: Pastor[] = [
       "Graduada em Pedagogia, História e Direito.",
       "Atuou também como educadora e servidora pública.",
     ],
+    ministerioInfo: {
+      funcao: "Pastora Presidente do Campo de Atibaia",
+      igreja: "Assembleia de Deus Ministério Madureira",
+    },
+    seo: {
+      title: "Pra. Drª Anna Alzira | AD Madureira Atibaia",
+      description:
+        "Conheça a atuação pastoral da Pra. Drª Anna Alzira no cuidado das famílias e no discipulado do Campo de Atibaia.",
+    },
   },
   {
     slug: "marcos-spaca",
@@ -82,6 +114,15 @@ const pastores: Pastor[] = [
       "Contribui no discipulado de novos convertidos e no fortalecimento das atividades evangelísticas.",
       "Seu ministério é marcado pelo compromisso com a Palavra de Deus, pela liderança servidora e pelo apoio às diversas frentes de trabalho da igreja.",
     ],
+    ministerioInfo: {
+      funcao: "Pastor Vice-Presidente do Campo de Atibaia",
+      igreja: "Assembleia de Deus Ministério Madureira",
+    },
+    seo: {
+      title: "Pr. Marcos Spaca | AD Madureira Atibaia",
+      description:
+        "Conheça a atuação ministerial do Pr. Marcos Spaca no apoio pastoral e no fortalecimento das congregações do Campo de Atibaia.",
+    },
   },
   {
     slug: "raimundo",
@@ -99,6 +140,15 @@ const pastores: Pastor[] = [
       "Contribui para o discipulado, a formação de novos obreiros e o crescimento espiritual do campo.",
       "Seu trabalho reflete amor pela obra de Deus, compromisso com o ensino bíblico e cuidado com as famílias da igreja.",
     ],
+    ministerioInfo: {
+      funcao: "Pastor Vice-Presidente do Campo de Atibaia",
+      igreja: "Assembleia de Deus Ministério Madureira",
+    },
+    seo: {
+      title: "Pr. Raimundo | AD Madureira Atibaia",
+      description:
+        "Conheça a atuação pastoral do Pr. Raimundo no discipulado, na formação de obreiros e no cuidado espiritual do Campo de Atibaia.",
+    },
   },
   {
     slug: "jorge",
@@ -116,6 +166,15 @@ const pastores: Pastor[] = [
       "Tem desempenhado papel relevante no ensino da Palavra de Deus e no acompanhamento das frentes ministeriais do campo.",
       "Seu trabalho é marcado pela dedicação ao serviço cristão e pelo compromisso com o crescimento espiritual da igreja.",
     ],
+    ministerioInfo: {
+      funcao: "Pastor Vice-Presidente do Campo de Atibaia",
+      igreja: "Assembleia de Deus Ministério Madureira",
+    },
+    seo: {
+      title: "Pr. Jorge | AD Madureira Atibaia",
+      description:
+        "Conheça a atuação do Pr. Jorge no ensino da Palavra e no apoio pastoral às congregações do Campo de Atibaia.",
+    },
   },
 ];
 
@@ -130,4 +189,3 @@ export function getPastorBySlug(slug: string) {
 export function getPastoresByGrupo(grupo: PastorGrupo) {
   return pastores.filter((pastor) => pastor.grupo === grupo);
 }
-

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPastorBySlug, getPastores } from "@/data/pastores";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -30,8 +30,8 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    title: `${pastor.nome} | AD Madureira Atibaia`,
-    description: pastor.resumo,
+    title: pastor.seo?.title ?? `${pastor.nome} | AD Madureira Atibaia`,
+    description: pastor.seo?.description ?? pastor.resumo,
     path: `/pastores/${pastor.slug}`,
     image: pastor.foto,
   });
@@ -93,16 +93,45 @@ export default async function PastorPage({ params }: PageProps) {
     notFound();
   }
 
+  const sameAs = [pastor.redes?.instagram, pastor.redes?.youtube].filter(
+    (value): value is string => Boolean(value)
+  );
+
+  const ministryCards = pastor.ministerioInfo
+    ? [
+        pastor.ministerioInfo.inicio
+          ? {
+              label: "Início do ministério",
+              value: pastor.ministerioInfo.inicio,
+            }
+          : null,
+        pastor.ministerioInfo.funcao
+          ? {
+              label: "Função",
+              value: pastor.ministerioInfo.funcao,
+            }
+          : null,
+        pastor.ministerioInfo.igreja
+          ? {
+              label: "Igreja",
+              value: pastor.ministerioInfo.igreja,
+            }
+          : null,
+      ].filter((item): item is { label: string; value: string } => item !== null)
+    : [];
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: pastor.nome,
     jobTitle: pastor.cargo,
-    image: `${SITE_URL}${pastor.foto}`,
-    url: `${SITE_URL}/pastores/${pastor.slug}`,
+    description: pastor.seo?.description ?? pastor.resumo,
+    image: resolveSiteUrl(pastor.foto),
+    url: resolveSiteUrl(`/pastores/${pastor.slug}`),
     worksFor: {
       "@type": "Organization",
-      name: "Assembleia de Deus Madureira Atibaia",
+      name:
+        pastor.ministerioInfo?.igreja ?? "Assembleia de Deus Madureira Atibaia",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Praça Pio XII, 122",
@@ -112,6 +141,7 @@ export default async function PastorPage({ params }: PageProps) {
         addressCountry: "BR",
       },
     },
+    ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 
   return (
@@ -154,21 +184,30 @@ export default async function PastorPage({ params }: PageProps) {
                   {pastor.resumo}
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <InfoCard label="Cargo" value={pastor.cargo} />
-                  <InfoCard
-                    label="Campo"
-                    value="AD Madureira Atibaia"
-                  />
-                  <InfoCard
-                    label="Atuação"
-                    value={
-                      pastor.grupo === "presidencia"
-                        ? "Liderança pastoral e institucional"
-                        : "Apoio pastoral e fortalecimento das congregações"
-                    }
-                  />
-                </div>
+                {ministryCards.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {ministryCards.map((item) => (
+                      <InfoCard
+                        key={`${item.label}-${item.value}`}
+                        label={item.label}
+                        value={item.value}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <InfoCard label="Cargo" value={pastor.cargo} />
+                    <InfoCard label="Campo" value="AD Madureira Atibaia" />
+                    <InfoCard
+                      label="Atuação"
+                      value={
+                        pastor.grupo === "presidencia"
+                          ? "Liderança pastoral e institucional"
+                          : "Apoio pastoral e fortalecimento das congregações"
+                      }
+                    />
+                  </div>
+                )}
               </div>
             </div>
 
