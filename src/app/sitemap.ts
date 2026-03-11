@@ -115,6 +115,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: resolveSiteUrl("/oferta"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   const paginasEvento: MetadataRoute.Sitemap = eventosFuturos.map((evento) => ({
