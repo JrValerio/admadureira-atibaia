@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-const linksInstitucionais = [
-  { label: "A Igreja", href: "/sobre" },
+const linksIgreja = [
+  { label: "Sobre a Igreja", href: "/sobre" },
+  { label: "Nossa História", href: "/historia" },
   { label: "Nossos Pastores", href: "/pastores" },
   { label: "Ministérios", href: "/ministerios" },
   { label: "Programação", href: "/programacao" },
@@ -18,6 +19,14 @@ const horariosResumidos = [
   "Sexta — 14:30",
   "Domingo — 09:00 / 18:30",
 ];
+
+const descricaoInstitucional =
+  "Uma igreja comprometida com a Palavra de Deus, a oração e a transformação de vidas.";
+
+const versiculoFooter = {
+  texto: "Eu e a minha casa serviremos ao Senhor.",
+  referencia: "Josué 24:15",
+};
 
 const MAPS_URL = "https://maps.google.com/?q=Pra%C3%A7a%20Pio%20XII%2C%20122%20Atibaia%20SP";
 
@@ -83,40 +92,56 @@ export default function Footer() {
               className="drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
             />
             <div className="space-y-1">
-              <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
-                Assembleia de Deus
+              <p className="text-base font-semibold leading-snug text-white">
+                Igreja Assembleia de Deus - Ministério Madureira
               </p>
-              <p className="text-base font-semibold text-white">Ministério Madureira</p>
-              <p className="text-sm text-white/70">Campo de Atibaia</p>
+              <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
+                Campo de Atibaia
+              </p>
               <p className="pt-2 text-xs text-white/35">CNPJ: 48.644.074/0001-97</p>
             </div>
           </div>
 
-          <div className="space-y-2 text-sm leading-relaxed">
-            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Liderança Pastoral
+          <p className="max-w-sm text-sm leading-relaxed text-white/72">
+            {descricaoInstitucional}
+          </p>
+
+          <blockquote className="max-w-sm border-l border-[#ffa726]/40 pl-4 text-sm leading-relaxed text-white/82">
+            <p>&quot;{versiculoFooter.texto}&quot;</p>
+            <footer className="mt-2 text-[11px] tracking-[0.16em] uppercase text-white/45">
+              {versiculoFooter.referencia}
+            </footer>
+          </blockquote>
+
+          <div>
+            <p className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Siga-nos
             </p>
-            <Link
-              href="/pastores/zacarias-bernardes-felix"
-              className="block text-white/80 transition-colors hover:text-[#ffa726]"
-            >
-              Pr. Dr. Zacarias Bernardes Félix
-            </Link>
-            <Link
-              href="/pastores/anna-alzira"
-              className="block text-white/80 transition-colors hover:text-[#ffa726]"
-            >
-              Pra. Drª Anna Alzira
-            </Link>
+
+            <div className="flex flex-wrap gap-3">
+              {redes.map((rede) => (
+                <a
+                  key={rede.nome}
+                  href={rede.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={rede.nome}
+                  title={rede.nome}
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
+                >
+                  {rede.icon}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
         <div>
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-            Institucional
+            A Igreja
           </h4>
           <ul className="space-y-3 text-sm">
-            {linksInstitucionais.map((link) => (
+            {linksIgreja.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -185,43 +210,14 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-7">
-          <div className="text-center text-[#f2d4a0]">
-            <p className="text-lg leading-relaxed md:text-[1.55rem]">
-              &quot;Até aqui nos ajudou o Senhor.&quot;
-            </p>
-            <p className="mt-2 text-xs tracking-[0.16em] uppercase text-white/40">
-              1 Samuel 7:12
-            </p>
-          </div>
-
-          <div className="mt-6 flex flex-col items-center gap-4">
-            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Siga-nos
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-3">
-              {redes.map((rede) => (
-                <a
-                  key={rede.nome}
-                  href={rede.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={rede.nome}
-                  title={rede.nome}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
-                >
-                  {rede.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-5 text-center text-xs text-white/35">
-          © {new Date().getFullYear()} Igreja Assembleia de Deus – Ministério Madureira | Campo de Atibaia. Todos os direitos reservados.
+          <p>
+            © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
+            Madureira | Campo de Atibaia. Todos os direitos reservados.
+          </p>
+          <p className="mt-2">
+            Praça Pio XII, 122 - Centro - Atibaia/SP
+          </p>
         </div>
       </div>
     </footer>
