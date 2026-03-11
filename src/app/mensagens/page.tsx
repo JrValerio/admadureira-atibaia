@@ -13,6 +13,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Assista às mensagens e ministrações da AD Madureira Atibaia, com pregações, versículos-base e acesso rápido ao conteúdo em vídeo.",
   path: "/mensagens",
+  image: "/pulpito-da-igreja.jpg",
   keywords: [
     "mensagens bíblicas",
     "pregações evangélicas",

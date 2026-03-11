@@ -6,8 +6,14 @@ import {
   getMensagemBySlug,
   getMensagens,
 } from "@/data/mensagens";
-import { buildPageMetadata } from "@/lib/site";
-import { buildVideoJsonLd, buildVideoSeriesJsonLd } from "@/lib/video-schema";
+import { SITE_NAME } from "@/lib/site";
+import {
+  buildVideoJsonLd,
+  buildVideoSeriesJsonLd,
+  getVideoEmbedUrl,
+  getVideoPageUrl,
+  getVideoThumbnailUrls,
+} from "@/lib/video-schema";
 
 type PageProps = {
   params: Promise<{
@@ -41,12 +47,42 @@ export async function generateMetadata({
     };
   }
 
-  return buildPageMetadata({
-    title: `${mensagem.titulo} | AD Madureira Atibaia`,
+  const title = `${mensagem.titulo} | AD Madureira Atibaia`;
+  const url = getVideoPageUrl(mensagem);
+  const imageUrls = getVideoThumbnailUrls(mensagem);
+
+  return {
+    title,
     description: mensagem.resumo,
-    path: `/mensagens/${mensagem.slug}`,
-    image: mensagem.capa ?? "/pulpito-da-igreja.jpg",
-  });
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "video.other",
+      locale: "pt_BR",
+      url,
+      siteName: SITE_NAME,
+      title,
+      description: mensagem.resumo,
+      images: imageUrls.map((imageUrl) => ({
+        url: imageUrl,
+        alt: mensagem.titulo,
+      })),
+      videos: [
+        {
+          url: getVideoEmbedUrl(mensagem),
+          secureUrl: getVideoEmbedUrl(mensagem),
+          type: "text/html",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: mensagem.resumo,
+      images: [imageUrls[0]],
+    },
+  };
 }
 
 function Breadcrumb({ nome }: { nome: string }) {

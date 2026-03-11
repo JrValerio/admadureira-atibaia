@@ -14,9 +14,29 @@ const VIDEO_PUBLISHER = {
   url: SITE_URL,
 } as const;
 
+export function getVideoPageUrl(mensagem: Mensagem) {
+  return resolveSiteUrl(`/mensagens/${mensagem.slug}`);
+}
+
+export function getVideoEmbedUrl(mensagem: Mensagem) {
+  return `https://www.youtube.com/embed/${mensagem.youtubeId}`;
+}
+
+export function getVideoContentUrl(mensagem: Mensagem) {
+  return `https://www.youtube.com/watch?v=${mensagem.youtubeId}`;
+}
+
+export function getVideoThumbnailUrls(mensagem: Mensagem) {
+  const thumbnails = [
+    resolveSiteUrl(mensagem.capa ?? getMensagemThumbnailUrl(mensagem.youtubeId)),
+    getMensagemThumbnailUrl(mensagem.youtubeId),
+  ];
+
+  return [...new Set(thumbnails)];
+}
+
 function buildVideoEntity(mensagem: Mensagem) {
-  const url = resolveSiteUrl(`/mensagens/${mensagem.slug}`);
-  const coverUrl = resolveSiteUrl(mensagem.capa ?? "/pulpito-da-igreja.jpg");
+  const url = getVideoPageUrl(mensagem);
 
   return {
     "@type": "VideoObject",
@@ -25,11 +45,11 @@ function buildVideoEntity(mensagem: Mensagem) {
     description: mensagem.resumo,
     inLanguage: "pt-BR",
     uploadDate: mensagem.data,
-    embedUrl: `https://www.youtube.com/embed/${mensagem.youtubeId}`,
-    contentUrl: `https://www.youtube.com/watch?v=${mensagem.youtubeId}`,
+    embedUrl: getVideoEmbedUrl(mensagem),
+    contentUrl: getVideoContentUrl(mensagem),
     isFamilyFriendly: true,
     url,
-    thumbnailUrl: [coverUrl, getMensagemThumbnailUrl(mensagem.youtubeId)],
+    thumbnailUrl: getVideoThumbnailUrls(mensagem),
     publisher: VIDEO_PUBLISHER,
     isPartOf: {
       "@type": "CreativeWorkSeries",
@@ -75,7 +95,7 @@ export function buildVideoListJsonLd(mensagens: Mensagem[]) {
     itemListElement: mensagens.map((mensagem, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: resolveSiteUrl(`/mensagens/${mensagem.slug}`),
+      url: getVideoPageUrl(mensagem),
       item: buildVideoEntity(mensagem),
     })),
   };
@@ -95,7 +115,7 @@ export function buildVideoSeriesJsonLd(mensagens?: Mensagem[]) {
     ...(mensagens
       ? {
           hasPart: mensagens.map((mensagem) => ({
-            "@id": `${resolveSiteUrl(`/mensagens/${mensagem.slug}`)}#video`,
+            "@id": `${getVideoPageUrl(mensagem)}#video`,
           })),
         }
       : {}),
