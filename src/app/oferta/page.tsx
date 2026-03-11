@@ -75,6 +75,17 @@ export default function OfertaPage() {
                   className="rounded-2xl"
                 />
               </div>
+              <p className="text-[#777] text-sm mt-4">
+                Escaneie com o aplicativo do seu banco para contribuir com
+                segurança.
+              </p>
+              <p className="text-xs text-[#999] mt-1">
+                Verifique se o recebedor é{" "}
+                <span className="font-semibold text-[#555]">
+                  Assembleia de Deus Madureira - Campo de Atibaia
+                </span>
+                .
+              </p>
 
               <div className="mt-6">
                 <p className="text-[#777] text-sm uppercase tracking-[0.18em] mb-2">
@@ -90,7 +101,29 @@ export default function OfertaPage() {
                   </span>
                   .
                 </p>
-                <CopyPixButton chave={ofertaData.pix.chave} />
+                <CopyPixButton
+                  value={ofertaData.pix.chave}
+                  label="Copiar chave Pix"
+                />
+              </div>
+
+              <div className="mt-6 rounded-2xl bg-[#f8f8f8] border border-black/5 p-5 text-left">
+                <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
+                  Pix Copia e Cola
+                </p>
+                <p className="text-[#555] text-sm leading-relaxed mb-4">
+                  Se preferir, copie o código completo e cole no campo de Pix do
+                  aplicativo do seu banco.
+                </p>
+                <div className="rounded-xl border border-black/5 bg-white px-4 py-3 text-xs leading-relaxed text-[#555] break-all">
+                  {ofertaData.pix.copiaECola}
+                </div>
+                <CopyPixButton
+                  value={ofertaData.pix.copiaECola}
+                  label="Copiar Pix Copia e Cola"
+                  successLabel="Código copiado"
+                  helperText="Use o código completo na opção Pix Copia e Cola do seu banco."
+                />
               </div>
 
               <div className="mt-8 rounded-2xl bg-[#f8f8f8] border border-black/5 p-5 text-left">

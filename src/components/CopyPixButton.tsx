@@ -3,10 +3,20 @@
 import { useEffect, useState } from "react";
 
 type CopyPixButtonProps = {
-  chave: string;
+  value: string;
+  label?: string;
+  successLabel?: string;
+  helperText?: string;
+  errorText?: string;
 };
 
-export default function CopyPixButton({ chave }: CopyPixButtonProps) {
+export default function CopyPixButton({
+  value,
+  label = "Copiar chave",
+  successLabel = "Chave copiada",
+  helperText = "Copie a chave para abrir o app do seu banco e concluir a contribuição.",
+  errorText = "Não foi possível copiar automaticamente. Copie o conteúdo manualmente.",
+}: CopyPixButtonProps) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   useEffect(() => {
@@ -23,7 +33,7 @@ export default function CopyPixButton({ chave }: CopyPixButtonProps) {
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(chave);
+      await navigator.clipboard.writeText(value);
       setStatus("success");
     } catch {
       setStatus("error");
@@ -50,12 +60,10 @@ export default function CopyPixButton({ chave }: CopyPixButtonProps) {
           <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
         </svg>
-        {status === "success" ? "Chave copiada" : "Copiar chave"}
+        {status === "success" ? successLabel : label}
       </button>
       <p className="mt-2 text-xs text-[#777]">
-        {status === "error"
-          ? "Nao foi possivel copiar automaticamente. Copie a chave manualmente."
-          : "Copie a chave para abrir o app do seu banco e concluir a contribuicao."}
+        {status === "error" ? errorText : helperText}
       </p>
     </div>
   );

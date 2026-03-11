@@ -8,7 +8,9 @@ export const ofertaData = {
     chave: "48644074000197",
     chaveFormatada: "48.644.074/0001-97",
     tipo: "CNPJ",
-    qrCodePath: "/oferta/pix-cnpj-qrcode.png",
+    qrCodePath: "/pix-qrcode.png",
+    copiaECola:
+      "00020126360014BR.GOV.BCB.PIX0114486440740001975204000053039865802BR5901N6001C62220518ADMADUREIRAATIBAIA63048E91",
   },
   favorecido: [
     "IGREJA EVANGELICA ASSEMBLEIA DE DEUS MADUREIRA",
