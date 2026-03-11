@@ -81,7 +81,7 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-2 xl:grid-cols-4">
+      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_0.85fr_1fr]">
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <Image
@@ -154,53 +154,56 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-            Endereço
-          </h4>
-          <div className="space-y-3 text-sm leading-relaxed">
-            <p>
-              Praça Pio XII, 122
-              <br />
-              Centro – Atibaia/SP
-              <br />
-              CEP 12940-160
-            </p>
-            <a
-              href="https://wa.me/5511916116102"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
-            >
-              (11) 91611-6102
-            </a>
-            <div className="space-y-2 pt-1">
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-white/70 transition-colors hover:text-white"
-              >
-                Ver no Google Maps
-              </a>
-              <Link
-                href="/contato"
-                className="block text-white/70 transition-colors hover:text-white"
-              >
-                Como chegar
-              </Link>
-            </div>
-          </div>
-        </div>
-
         <div className="space-y-8">
           <div>
+            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Endereço
+            </h4>
+            <div className="space-y-3 text-sm leading-relaxed">
+              <p>
+                Praça Pio XII, 122
+                <br />
+                Centro - Atibaia/SP
+                <br />
+                CEP 12940-160
+              </p>
+              <a
+                href="https://wa.me/5511916116102"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
+              >
+                (11) 91611-6102
+              </a>
+              <div className="space-y-2 pt-1">
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-white/70 transition-colors hover:text-white"
+                >
+                  Ver no Google Maps
+                </a>
+                <Link
+                  href="/contato"
+                  className="block text-white/70 transition-colors hover:text-white"
+                >
+                  Como chegar
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-8">
             <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
               Horários de Culto
             </h4>
             <ul className="space-y-3 text-sm leading-relaxed">
               {horariosResumidos.map((horario) => (
-                <li key={horario} className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0">
+                <li
+                  key={horario}
+                  className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0"
+                >
                   {horario}
                 </li>
               ))}
@@ -215,9 +218,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | Campo de Atibaia. Todos os direitos reservados.
           </p>
-          <p className="mt-2">
-            Praça Pio XII, 122 - Centro - Atibaia/SP
-          </p>
+          <p className="mt-2">Praça Pio XII, 122 - Centro - Atibaia/SP</p>
         </div>
       </div>
     </footer>
