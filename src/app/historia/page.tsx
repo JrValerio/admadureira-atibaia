@@ -19,18 +19,18 @@ export default function HistoriaPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
+      <HeroPage
+        variant="full"
+        label="Campo de Atibaia"
+        title="História da Igreja"
+        description="Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e como Deus tem conduzido esta obra ao longo dos anos."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+        imageClassName="object-[center_34%]"
+      />
+
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Campo de Atibaia"
-            title="História da Igreja"
-            description="Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e como Deus tem conduzido esta obra ao longo dos anos."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-            imageClassName="object-[center_34%]"
-            className="mb-12"
-          />
-
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-start mb-14">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">

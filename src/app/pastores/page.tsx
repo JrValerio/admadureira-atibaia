@@ -86,17 +86,17 @@ export default function PastoresPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
+      <HeroPage
+        variant="full"
+        label="Liderança Pastoral"
+        title="Nossos Pastores"
+        description="Conheça a liderança que serve a AD Madureira Atibaia com dedicação, cuidado pastoral e compromisso com a Palavra de Deus."
+        image="/pulpito-da-igreja.jpg"
+        imageAlt="Púlpito da AD Madureira Atibaia"
+      />
+
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Liderança Pastoral"
-            title="Nossos Pastores"
-            description="Conheça a liderança que serve a AD Madureira Atibaia com dedicação, cuidado pastoral e compromisso com a Palavra de Deus."
-            image="/pulpito-da-igreja.jpg"
-            imageAlt="Púlpito da AD Madureira Atibaia"
-            className="mb-14"
-          />
-
           <div className="space-y-14">
             <div>
               <div className="flex items-center justify-between gap-4 mb-8">
