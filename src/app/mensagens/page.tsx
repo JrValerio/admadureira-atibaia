@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getMensagensRecentes } from "@/data/mensagens";
 import {
-  getMensagensRecentes,
-  MENSAGENS_SERIES_DESCRIPTION,
-  MENSAGENS_SERIES_NAME,
-} from "@/data/mensagens";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+  buildVideoListJsonLd,
+  buildVideoSeriesJsonLd,
+} from "@/lib/video-schema";
+import { buildPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Mensagens | AD Madureira Atibaia",
@@ -33,30 +33,19 @@ function formatMensagemDate(data: string) {
 export default function MensagensPage() {
   const mensagens = getMensagensRecentes();
   const mensagensComPregador = mensagens.filter((mensagem) => mensagem.pregador);
-  const mensagensSeriesSchema = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWorkSeries",
-    name: MENSAGENS_SERIES_NAME,
-    description: MENSAGENS_SERIES_DESCRIPTION,
-    inLanguage: "pt-BR",
-    genre: "Sermons",
-    url: `${SITE_URL}/mensagens`,
-    publisher: {
-      "@type": "Church",
-      name: "AD Madureira Atibaia",
-      url: SITE_URL,
-    },
-    hasPart: mensagens.map((mensagem) => ({
-      "@type": "VideoObject",
-      name: mensagem.titulo,
-      url: `${SITE_URL}/mensagens/${mensagem.slug}`,
-    })),
-  };
+  const mensagensListSchema = buildVideoListJsonLd(mensagens);
+  const mensagensSeriesSchema = buildVideoSeriesJsonLd(mensagens);
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(mensagensListSchema),
+            }}
+          />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{

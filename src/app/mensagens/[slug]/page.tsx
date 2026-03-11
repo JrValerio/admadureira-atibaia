@@ -5,10 +5,9 @@ import { notFound } from "next/navigation";
 import {
   getMensagemBySlug,
   getMensagens,
-  MENSAGENS_SERIES_DESCRIPTION,
-  MENSAGENS_SERIES_NAME,
 } from "@/data/mensagens";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/site";
+import { buildVideoJsonLd, buildVideoSeriesJsonLd } from "@/lib/video-schema";
 
 type PageProps = {
   params: Promise<{
@@ -77,63 +76,8 @@ export default async function MensagemPage({ params }: PageProps) {
     notFound();
   }
 
-  const seriesSchema = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWorkSeries",
-    name: MENSAGENS_SERIES_NAME,
-    description: MENSAGENS_SERIES_DESCRIPTION,
-    inLanguage: "pt-BR",
-    genre: "Sermons",
-    url: `${SITE_URL}/mensagens`,
-    publisher: {
-      "@type": "Church",
-      name: "AD Madureira Atibaia",
-      url: SITE_URL,
-    },
-  };
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    name: mensagem.titulo,
-    description: mensagem.resumo,
-    uploadDate: mensagem.data,
-    inLanguage: "pt-BR",
-    embedUrl: `https://www.youtube.com/embed/${mensagem.youtubeId}`,
-    contentUrl: `https://www.youtube.com/watch?v=${mensagem.youtubeId}`,
-    isFamilyFriendly: true,
-    url: `${SITE_URL}/mensagens/${mensagem.slug}`,
-    thumbnailUrl: [
-      `${SITE_URL}${mensagem.capa ?? "/pulpito-da-igreja.jpg"}`,
-      `https://img.youtube.com/vi/${mensagem.youtubeId}/hqdefault.jpg`,
-    ],
-    publisher: {
-      "@type": "Church",
-      name: "AD Madureira Atibaia",
-      url: SITE_URL,
-    },
-    isPartOf: {
-      "@type": "CreativeWorkSeries",
-      name: MENSAGENS_SERIES_NAME,
-      url: `${SITE_URL}/mensagens`,
-    },
-    ...(mensagem.pregador
-      ? {
-          creator: {
-            "@type": "Person",
-            name: mensagem.pregador,
-          },
-        }
-      : {}),
-    ...(mensagem.versiculo
-      ? {
-          about: {
-            "@type": "CreativeWork",
-            name: mensagem.versiculo,
-          },
-        }
-      : {}),
-  };
+  const seriesSchema = buildVideoSeriesJsonLd();
+  const schema = buildVideoJsonLd(mensagem);
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
