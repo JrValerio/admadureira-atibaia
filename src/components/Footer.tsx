@@ -224,9 +224,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | Campo de Atibaia. Todos os direitos reservados.
           </p>
-          <p className="mt-2">
-            Praça Pio XII, 122 - Centro - Atibaia/SP | CNPJ: 48.644.074/0001-97
-          </p>
+          <p className="mt-2">CNPJ: 48.644.074/0001-97</p>
         </div>
       </div>
     </footer>
