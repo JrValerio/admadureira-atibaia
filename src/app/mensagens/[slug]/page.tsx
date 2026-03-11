@@ -66,6 +66,8 @@ export async function generateMetadata({
       description: mensagem.resumo,
       images: imageUrls.map((imageUrl) => ({
         url: imageUrl,
+        width: 1200,
+        height: 630,
         alt: mensagem.titulo,
       })),
       videos: [
