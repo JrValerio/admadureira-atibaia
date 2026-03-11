@@ -6,9 +6,9 @@ import { ofertaData } from "@/data/oferta";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Oferta | AD Madureira Atibaia",
+  title: "Dízimos e Ofertas | AD Madureira Atibaia",
   description:
-    "Contribua com a AD Madureira Atibaia por meio da chave PIX e dos dados bancários oficiais da igreja.",
+    "Contribua com a obra de Deus na AD Madureira Atibaia por meio de PIX, transferência bancária ou presencialmente nos cultos da igreja.",
   path: "/oferta",
   image: "/fachada-da-igreja.jpg",
   keywords: [
@@ -20,6 +20,12 @@ export const metadata = buildPageMetadata({
 });
 
 export default function OfertaPage() {
+  const baseBiblica = [
+    "Malaquias 3:10",
+    "2 Coríntios 9:7",
+    "Provérbios 3:9",
+  ];
+
   const donationJsonLd = {
     "@context": "https://schema.org",
     "@type": "DonateAction",
@@ -48,13 +54,81 @@ export default function OfertaPage() {
 
           <HeroPage
             label="Contribuição"
-            title="Oferta e contribuição"
-            description="Sua contribuição ajuda na manutenção da obra de Deus, no apoio às atividades da igreja e no avanço do Evangelho por meio da AD Madureira Atibaia."
+            title="Dízimos e Ofertas"
+            description="Contribua para a obra de Deus e participe da expansão do Evangelho por meio da Assembleia de Deus Ministério Madureira no Campo de Atibaia."
             image="/fachada-da-igreja.jpg"
             imageAlt="Fachada da AD Madureira Atibaia"
             imageClassName="object-[center_34%]"
             className="mb-8 border border-white/10 shadow-[0_10px_32px_rgba(0,0,0,0.08)]"
           />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                Por que contribuímos
+              </p>
+              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                Adoração que também sustenta a obra
+              </h2>
+              <div className="space-y-4 text-[#555] leading-relaxed">
+                <p>
+                  O dízimo e as ofertas fazem parte da vida de adoração do
+                  cristão. Por meio da contribuição, reconhecemos que tudo vem
+                  de Deus e cooperamos com a manutenção da igreja, a obra
+                  missionária e o cuidado com pessoas.
+                </p>
+                <p>
+                  Contribuir é uma expressão de fidelidade, gratidão e
+                  participação prática na missão da igreja na cidade e na
+                  região.
+                </p>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {baseBiblica.map((referencia) => (
+                  <span
+                    key={referencia}
+                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-[#8b5b18]"
+                  >
+                    {referencia}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                Como sua contribuição ajuda
+              </p>
+              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                Destinação da contribuição
+              </h2>
+              <p className="text-[#555] leading-relaxed mb-5">
+                Sua contribuição coopera diretamente com a continuidade da obra
+                de Deus e com as frentes ministeriais mantidas pela igreja.
+              </p>
+              <ul className="space-y-3 text-sm text-[#555]">
+                {ofertaData.destinacao.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-12 mb-6 text-center">
+            <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+              Formas de contribuição
+            </p>
+            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+              Escolha a forma mais conveniente
+            </h2>
+            <p className="mt-4 max-w-2xl mx-auto text-[#666] leading-relaxed">
+              Você pode contribuir via PIX, utilizar os dados bancários da igreja
+              ou realizar sua contribuição presencialmente durante os cultos.
+            </p>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 mt-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8 text-center">
@@ -195,25 +269,22 @@ export default function OfertaPage() {
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                  Palavra e serviço
+                  Presencial e transparência
                 </p>
-                <p className="text-[#555] leading-relaxed mb-5">
-                  Cada contribuição coopera com a manutenção do templo, o apoio
-                  às atividades ministeriais e a continuidade do trabalho
-                  evangelístico da igreja na cidade e na região.
-                </p>
-                <div className="max-w-xl text-sm text-[#555] mb-6">
-                  <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-3">
-                    Como sua contribuição ajuda
+                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                  Outras formas de contribuir
+                </h2>
+                <div className="space-y-4 text-[#555] leading-relaxed">
+                  <p>
+                    Você também pode contribuir presencialmente durante os
+                    cultos realizados na igreja, entregando sua oferta com
+                    reverência e liberdade.
                   </p>
-                  <ul className="space-y-2">
-                    {ofertaData.destinacao.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <p>
+                    Todas as contribuições são destinadas à manutenção da obra,
+                    ao apoio das atividades ministeriais e à administração da
+                    igreja.
+                  </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
@@ -229,7 +300,17 @@ export default function OfertaPage() {
                     Voltar para a home
                   </Link>
                 </div>
-                <p className="text-xs text-[#777] mt-6">
+                <blockquote className="mt-6 rounded-2xl border border-[#ffa726]/20 bg-white/65 px-5 py-4 text-sm leading-relaxed text-[#555]">
+                  <p>
+                    &quot;Cada um contribua segundo propôs no coração, não com
+                    tristeza ou por necessidade, porque Deus ama quem dá com
+                    alegria.&quot;
+                  </p>
+                  <footer className="mt-2 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#8b5b18]">
+                    2 Coríntios 9:7
+                  </footer>
+                </blockquote>
+                <p className="text-xs text-[#777] mt-5">
                   {ofertaData.segurancaMensagem}
                 </p>
               </div>
