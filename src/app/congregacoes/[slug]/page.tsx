@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCongregacaoBySlug, getCongregacoes } from "@/data/congregacoes";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -30,8 +30,9 @@ export async function generateMetadata({
   }
 
   return buildPageMetadata({
-    title: `${congregacao.igreja} | AD Madureira Atibaia`,
-    description: congregacao.resumo,
+    title:
+      congregacao.seo?.title ?? `${congregacao.igreja} | AD Madureira Atibaia`,
+    description: congregacao.seo?.description ?? congregacao.resumo,
     path: `/congregacoes/${congregacao.slug}`,
     image: congregacao.imagem,
   });
@@ -64,21 +65,38 @@ export default async function CongregacaoPage({ params }: PageProps) {
     notFound();
   }
 
+  const locationInfo = {
+    cidade: congregacao.localizacao?.cidade ?? congregacao.cidade,
+    estado: congregacao.localizacao?.estado ?? "SP",
+    pais: congregacao.localizacao?.pais ?? "BR",
+  };
+
   const congregationSchema = {
     "@context": "https://schema.org",
     "@type": "Church",
     name: congregacao.igreja,
-    image: `${SITE_URL}${congregacao.imagem}`,
-    url: `${SITE_URL}/congregacoes/${congregacao.slug}`,
+    description: congregacao.seo?.description ?? congregacao.resumo,
+    image: resolveSiteUrl(congregacao.imagem),
+    url: resolveSiteUrl(`/congregacoes/${congregacao.slug}`),
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Praça Pio XII, 122",
-      addressLocality: congregacao.cidade,
-      addressRegion: "SP",
-      postalCode: "12940-160",
-      addressCountry: "BR",
+      streetAddress: congregacao.endereco,
+      addressLocality: locationInfo.cidade,
+      addressRegion: locationInfo.estado,
+      addressCountry: locationInfo.pais,
     },
     telephone: congregacao.telefone,
+    ...(congregacao.localizacao?.lat !== undefined &&
+    congregacao.localizacao?.lng !== undefined
+      ? {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: congregacao.localizacao.lat,
+            longitude: congregacao.localizacao.lng,
+          },
+        }
+      : {}),
+    ...(congregacao.mapsUrl ? { hasMap: congregacao.mapsUrl } : {}),
   };
 
   return (
@@ -109,7 +127,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
 
             <div className="p-6 md:p-10">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                Campo de Atibaia · {congregacao.cidade}
+                Campo de Atibaia · {locationInfo.cidade}
               </p>
               <h1 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-4">
                 {congregacao.igreja}
@@ -138,7 +156,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                     Cidade
                   </p>
-                  <p className="text-[#212121] text-sm">{congregacao.cidade}</p>
+                  <p className="text-[#212121] text-sm">{locationInfo.cidade}</p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">

@@ -18,9 +18,21 @@ export interface Congregacao {
   mapsUrl?: string;
   horarios: string[];
   lideranca: LiderancaCongregacao[];
+  seo?: {
+    title?: string;
+    description?: string;
+  };
+  localizacao?: {
+    bairro?: string;
+    cidade?: string;
+    estado?: string;
+    pais?: string;
+    lat?: number;
+    lng?: number;
+  };
 }
 
-const congregacoes: Congregacao[] = [
+export const congregacoes: Congregacao[] = [
   {
     slug: "atibaia-sede",
     igreja: "AD Madureira – Templo Sede",
@@ -62,6 +74,19 @@ const congregacoes: Congregacao[] = [
         pastorSlug: "anna-alzira",
       },
     ],
+    seo: {
+      title: "AD Madureira – Templo Sede | Congregações do Campo de Atibaia",
+      description:
+        "Conheça o Templo Sede da AD Madureira Atibaia, com endereço, horários de culto, liderança pastoral e informações de visitação.",
+    },
+    localizacao: {
+      bairro: "Centro",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
+      lat: -23.1171,
+      lng: -46.5567,
+    },
   },
 ];
 
@@ -72,4 +97,3 @@ export function getCongregacoes() {
 export function getCongregacaoBySlug(slug: string) {
   return congregacoes.find((congregacao) => congregacao.slug === slug) ?? null;
 }
-
