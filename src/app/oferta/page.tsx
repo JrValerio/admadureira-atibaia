@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import CopyPixButton from "@/components/CopyPixButton";
 import { ofertaData } from "@/data/oferta";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
   title: "Oferta | AD Madureira Atibaia",
@@ -18,10 +19,32 @@ export const metadata = buildPageMetadata({
 });
 
 export default function OfertaPage() {
+  const donationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DonateAction",
+    name: "Contribuir com a AD Madureira Atibaia",
+    description:
+      "Página oficial de contribuição da AD Madureira Atibaia com chave PIX e dados bancários da igreja.",
+    target: resolveSiteUrl("/oferta"),
+    recipient: {
+      "@type": "Organization",
+      name: ofertaData.instituicao.nome,
+      alternateName: "AD Madureira Atibaia",
+      identifier: ofertaData.instituicao.cnpj,
+    },
+  };
+
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(donationJsonLd),
+            }}
+          />
+
           <div className="rounded-[2rem] overflow-hidden bg-[#212121] text-white border border-white/10 shadow-xl">
             <div className="px-6 py-14 md:px-10 md:py-18 text-center">
               <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
@@ -51,8 +74,8 @@ export default function OfertaPage() {
                 <Image
                   src={ofertaData.pix.qrCodePath}
                   alt="QR Code PIX da AD Madureira Atibaia"
-                  width={280}
-                  height={280}
+                  width={240}
+                  height={240}
                   priority
                   className="rounded-2xl"
                 />
@@ -62,7 +85,7 @@ export default function OfertaPage() {
                 <p className="text-[#777] text-sm uppercase tracking-[0.18em] mb-2">
                   Chave PIX ({ofertaData.pix.tipo})
                 </p>
-                <p className="font-acme text-3xl text-[#ef5350] break-all">
+                <p className="font-acme text-2xl text-[#ef5350] break-all">
                   {ofertaData.pix.chaveFormatada}
                 </p>
                 <p className="text-[#777] text-sm mt-3">
@@ -71,6 +94,23 @@ export default function OfertaPage() {
                     {ofertaData.pix.chave}
                   </span>
                   .
+                </p>
+                <CopyPixButton chave={ofertaData.pix.chave} />
+              </div>
+
+              <div className="mt-8 rounded-2xl bg-[#f8f8f8] border border-black/5 p-5 text-left">
+                <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
+                  Destinatário
+                </p>
+                <p className="text-[#212121] font-semibold leading-relaxed">
+                  {ofertaData.instituicao.nome}
+                </p>
+                <p className="text-[#555] mt-1">
+                  {ofertaData.instituicao.complemento}
+                </p>
+                <hr className="my-4 border-black/5" />
+                <p className="text-[#777] text-xs mt-3">
+                  CNPJ: {ofertaData.instituicao.cnpj}
                 </p>
               </div>
             </div>
@@ -134,6 +174,19 @@ export default function OfertaPage() {
                   às atividades ministeriais e a continuidade do trabalho
                   evangelístico da igreja na cidade e na região.
                 </p>
+                <div className="max-w-xl text-sm text-[#555] mb-6">
+                  <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-3">
+                    Como sua contribuição ajuda
+                  </p>
+                  <ul className="space-y-2">
+                    {ofertaData.destinacao.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/contato"
@@ -148,6 +201,9 @@ export default function OfertaPage() {
                     Voltar para a home
                   </Link>
                 </div>
+                <p className="text-xs text-[#777] mt-6">
+                  {ofertaData.segurancaMensagem}
+                </p>
               </div>
             </div>
           </div>
