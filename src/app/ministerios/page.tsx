@@ -1,22 +1,12 @@
-import type { Metadata } from "next";
 import Ministerios from "@/sections/Ministerios";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Ministérios | AD Madureira Atibaia",
   description:
     "Conheça os ministérios da AD Madureira Atibaia, como CONFADAT, UMADAT, Rios de Unção, Baluarte da Fé e Ministério Infantil.",
-  alternates: {
-    canonical: `${SITE_URL}/ministerios`,
-  },
-  openGraph: {
-    url: `${SITE_URL}/ministerios`,
-    title: "Ministérios | AD Madureira Atibaia",
-    description:
-      "Conheça os ministérios da AD Madureira Atibaia, como CONFADAT, UMADAT, Rios de Unção, Baluarte da Fé e Ministério Infantil.",
-    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
-  },
-};
+  path: "/ministerios",
+});
 
 export default function MinisteriosPage() {
   return (

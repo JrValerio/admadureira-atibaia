@@ -4,23 +4,14 @@ import Link from "next/link";
 import { getCongregacoes } from "@/data/congregacoes";
 import { marcosHistoricos, historiaEncerramento, historiaIntroducao } from "@/data/historia";
 import { getPastoresByGrupo } from "@/data/pastores";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "História da Igreja | AD Madureira Atibaia",
   description:
     "Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e os marcos que marcaram sua história.",
-  alternates: {
-    canonical: `${SITE_URL}/historia`,
-  },
-  openGraph: {
-    url: `${SITE_URL}/historia`,
-    title: "História da Igreja | AD Madureira Atibaia",
-    description:
-      "Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e os marcos que marcaram sua história.",
-    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
-  },
-};
+  path: "/historia",
+});
 
 export default function HistoriaPage() {
   const presidencia = getPastoresByGrupo("presidencia");

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
 import { buildEventSchedule } from "@/lib/event-date";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -30,25 +30,17 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    title: `${evento.titulo} | AD Madureira Atibaia`,
-    description:
-      evento.descricao ??
-      `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
-    alternates: {
-      canonical: `${SITE_URL}/eventos/${evento.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/eventos/${evento.slug}`,
-      title: `${evento.titulo} | AD Madureira Atibaia`,
-      description:
-        evento.descricao ??
-        `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`,
-      images: [
-        `${SITE_URL}${evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"}`,
-      ],
-    },
-  };
+  const title = `${evento.titulo} | AD Madureira Atibaia`;
+  const description =
+    evento.descricao ??
+    `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`;
+
+  return buildPageMetadata({
+    title,
+    description,
+    path: `/eventos/${evento.slug}`,
+    image: evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg",
+  });
 }
 
 export default async function EventoPage({ params }: PageProps) {

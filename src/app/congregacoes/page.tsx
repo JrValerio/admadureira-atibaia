@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getCongregacoes } from "@/data/congregacoes";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Congregações do Campo | AD Madureira Atibaia",
   description:
     "Conheça as congregações ligadas ao Campo de Atibaia da Assembleia de Deus Ministério Madureira.",
-  alternates: {
-    canonical: `${SITE_URL}/congregacoes`,
-  },
-};
+  path: "/congregacoes",
+});
 
 export default function CongregacoesPage() {
   const congregacoes = getCongregacoes();
@@ -136,4 +134,3 @@ export default function CongregacoesPage() {
     </main>
   );
 }
-

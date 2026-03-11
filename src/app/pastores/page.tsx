@@ -3,12 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Pastor } from "@/data/pastores";
 import { getPastoresByGrupo } from "@/data/pastores";
+import { buildPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Nossos Pastores | AD Madureira Atibaia",
   description:
     "Conheça os pastores que lideram o Campo de Atibaia da Assembleia de Deus Ministério Madureira.",
-};
+  path: "/pastores",
+});
 
 function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
   return (

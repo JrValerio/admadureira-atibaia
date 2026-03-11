@@ -6,12 +6,13 @@ import {
   MENSAGENS_SERIES_DESCRIPTION,
   MENSAGENS_SERIES_NAME,
 } from "@/data/mensagens";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Mensagens | AD Madureira Atibaia",
   description:
     "Assista às mensagens e ministrações da AD Madureira Atibaia, com pregações, versículos-base e acesso rápido ao conteúdo em vídeo.",
+  path: "/mensagens",
   keywords: [
     "mensagens bíblicas",
     "pregações evangélicas",
@@ -19,17 +20,7 @@ export const metadata: Metadata = {
     "cultos igreja atibaia",
     "ensino bíblico",
   ],
-  alternates: {
-    canonical: `${SITE_URL}/mensagens`,
-  },
-  openGraph: {
-    url: `${SITE_URL}/mensagens`,
-    title: "Mensagens | AD Madureira Atibaia",
-    description:
-      "Assista às mensagens e ministrações da AD Madureira Atibaia, com pregações, versículos-base e acesso rápido ao conteúdo em vídeo.",
-    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
-  },
-};
+});
 
 function formatMensagemDate(data: string) {
   return new Intl.DateTimeFormat("pt-BR", {

@@ -3,7 +3,12 @@ import { Acme, Alex_Brush } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  SITE_DEFAULT_SHARE_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+  resolveSiteUrl,
+} from "@/lib/site";
 import "./globals.css";
 
 const acme = Acme({
@@ -23,6 +28,7 @@ const alexBrush = Alex_Brush({
 const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programação";
 const SITE_DESC =
   "Igreja Evangélica Assembleia de Deus Ministério Madureira – Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.";
+const SHARE_IMAGE_URL = resolveSiteUrl(SITE_DEFAULT_SHARE_IMAGE);
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     description: SITE_DESC,
     images: [
       {
-        url: `${SITE_URL}/fachada-da-igreja.jpg`,
+        url: SHARE_IMAGE_URL,
         width: 1200,
         height: 630,
         alt: "Assembleia de Deus Madureira Atibaia",
@@ -56,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESC,
-    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
+    images: [SHARE_IMAGE_URL],
   },
   robots: {
     index: true,

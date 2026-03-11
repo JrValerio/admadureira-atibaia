@@ -8,7 +8,7 @@ import {
   MENSAGENS_SERIES_DESCRIPTION,
   MENSAGENS_SERIES_NAME,
 } from "@/data/mensagens";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -42,19 +42,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${mensagem.titulo} | AD Madureira Atibaia`,
     description: mensagem.resumo,
-    alternates: {
-      canonical: `${SITE_URL}/mensagens/${mensagem.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/mensagens/${mensagem.slug}`,
-      title: `${mensagem.titulo} | AD Madureira Atibaia`,
-      description: mensagem.resumo,
-      images: [`${SITE_URL}${mensagem.capa ?? "/pulpito-da-igreja.jpg"}`],
-    },
-  };
+    path: `/mensagens/${mensagem.slug}`,
+    image: mensagem.capa ?? "/pulpito-da-igreja.jpg",
+  });
 }
 
 function Breadcrumb({ nome }: { nome: string }) {

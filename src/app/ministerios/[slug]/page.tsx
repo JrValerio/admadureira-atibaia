@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getMinisterioBySlug, getMinisterios } from "@/data/ministerios";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -29,19 +29,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${ministerio.nome} | AD Madureira Atibaia`,
     description: ministerio.resumo,
-    alternates: {
-      canonical: `${SITE_URL}/ministerios/${ministerio.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/ministerios/${ministerio.slug}`,
-      title: `${ministerio.nome} | AD Madureira Atibaia`,
-      description: ministerio.resumo,
-      images: [`${SITE_URL}${ministerio.imagem ?? "/fachada-da-igreja.jpg"}`],
-    },
-  };
+    path: `/ministerios/${ministerio.slug}`,
+    image: ministerio.imagem ?? "/fachada-da-igreja.jpg",
+  });
 }
 
 function Breadcrumb({ nome }: { nome: string }) {

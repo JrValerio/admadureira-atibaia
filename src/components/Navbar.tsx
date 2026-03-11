@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -35,10 +35,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fecha menu ao trocar de página
-  useEffect(() => {
+  const toggleMenu = () => {
+    setMenuOpen((current) => !current);
+  };
+
+  const closeMenu = () => {
     setMenuOpen(false);
-  }, [pathname]);
+  };
 
   return (
     <header className="sticky top-0 left-0 right-0 z-50">
@@ -121,7 +124,7 @@ export default function Navbar() {
           <button
             type="button"
             className="xl:hidden text-white p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={toggleMenu}
             aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
           >
             <div className="w-5 h-0.5 bg-white mb-1" />
@@ -137,6 +140,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={closeMenu}
                 className={`font-acme block py-2 text-sm uppercase tracking-wider border-b border-white/10 transition-colors ${
                   pathname === link.href
                     ? "text-[#ffa726]"

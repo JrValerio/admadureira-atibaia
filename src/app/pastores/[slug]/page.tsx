@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPastorBySlug, getPastores } from "@/data/pastores";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -29,19 +29,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${pastor.nome} | AD Madureira Atibaia`,
     description: pastor.resumo,
-    alternates: {
-      canonical: `${SITE_URL}/pastores/${pastor.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/pastores/${pastor.slug}`,
-      title: `${pastor.nome} | AD Madureira Atibaia`,
-      description: pastor.resumo,
-      images: [`${SITE_URL}${pastor.foto}`],
-    },
-  };
+    path: `/pastores/${pastor.slug}`,
+    image: pastor.foto,
+  });
 }
 
 function Breadcrumb({ nome }: { nome: string }) {

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCongregacaoBySlug, getCongregacoes } from "@/data/congregacoes";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -29,19 +29,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${congregacao.igreja} | AD Madureira Atibaia`,
     description: congregacao.resumo,
-    alternates: {
-      canonical: `${SITE_URL}/congregacoes/${congregacao.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/congregacoes/${congregacao.slug}`,
-      title: `${congregacao.igreja} | AD Madureira Atibaia`,
-      description: congregacao.resumo,
-      images: [`${SITE_URL}${congregacao.imagem}`],
-    },
-  };
+    path: `/congregacoes/${congregacao.slug}`,
+    image: congregacao.imagem,
+  });
 }
 
 function Breadcrumb({ nome }: { nome: string }) {
@@ -240,4 +233,3 @@ export default async function CongregacaoPage({ params }: PageProps) {
     </main>
   );
 }
-

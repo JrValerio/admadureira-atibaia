@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { YouTubeVideo } from "@/lib/youtube";
 
@@ -53,12 +54,13 @@ export default function YouTubePreviewCard({
             className="group relative w-full h-full text-left cursor-pointer"
             aria-label={`Reproduzir ${video.title}`}
           >
-            <img
+            <Image
               src={thumbnailSrc}
               alt={video.title}
-              loading={destaque ? "eager" : "lazy"}
-              fetchPriority={destaque ? "high" : "auto"}
-              className="w-full h-full object-cover"
+              fill
+              priority={destaque}
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+              className="object-cover"
               onError={() => {
                 setThumbnailIndex((current) =>
                   current < thumbnailSources.length - 1 ? current + 1 : current

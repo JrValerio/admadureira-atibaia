@@ -22,11 +22,10 @@ export default function HeroBackgroundMedia() {
 
       if (!shouldShow) {
         setVideoReady(false);
-        setTranslateY(0);
       }
     };
 
-    const handleMediaChange = (_event: MediaQueryListEvent) => {
+    const handleMediaChange = () => {
       updateVisibility();
     };
 
@@ -54,7 +53,6 @@ export default function HeroBackgroundMedia() {
 
   useEffect(() => {
     if (!showAnimatedMedia) {
-      setTranslateY(0);
       return;
     }
 

@@ -2,23 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getTestemunhosRecentes } from "@/data/testemunhos";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Testemunhos | AD Madureira Atibaia",
   description:
     "Leia e assista testemunhos de fé e histórias de transformação vividas por pessoas da comunidade da AD Madureira Atibaia.",
-  alternates: {
-    canonical: `${SITE_URL}/testemunhos`,
-  },
-  openGraph: {
-    url: `${SITE_URL}/testemunhos`,
-    title: "Testemunhos | AD Madureira Atibaia",
-    description:
-      "Leia e assista testemunhos de fé e histórias de transformação vividas por pessoas da comunidade da AD Madureira Atibaia.",
-    images: [`${SITE_URL}/fachada-da-igreja.jpg`],
-  },
-};
+  path: "/testemunhos",
+});
 
 function formatDate(data: string) {
   return new Intl.DateTimeFormat("pt-BR", {

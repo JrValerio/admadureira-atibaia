@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTestemunhoBySlug, getTestemunhos } from "@/data/testemunhos";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -37,19 +37,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
+  return buildPageMetadata({
     title: `${testemunho.titulo} | Testemunhos`,
     description: testemunho.resumo,
-    alternates: {
-      canonical: `${SITE_URL}/testemunhos/${testemunho.slug}`,
-    },
-    openGraph: {
-      url: `${SITE_URL}/testemunhos/${testemunho.slug}`,
-      title: `${testemunho.titulo} | Testemunhos`,
-      description: testemunho.resumo,
-      images: [`${SITE_URL}${testemunho.foto ?? "/pulpito-da-igreja.jpg"}`],
-    },
-  };
+    path: `/testemunhos/${testemunho.slug}`,
+    image: testemunho.foto ?? "/pulpito-da-igreja.jpg",
+  });
 }
 
 function Breadcrumb({ nome }: { nome: string }) {
