@@ -41,6 +41,17 @@ const menu: MenuItem[] = [
     ],
   },
   {
+    label: "Espiritualidade",
+    children: [
+      { label: "Visão geral", href: "/espiritualidade" },
+      { label: "Bíblia Online", href: "/espiritualidade/biblia" },
+      { label: "Plano de Leitura", href: "/espiritualidade/plano-de-leitura" },
+      { label: "Devocional", href: "/espiritualidade/devocional" },
+      { label: "Rádio", href: "/espiritualidade/radio" },
+      { label: "Podcast", href: "/espiritualidade/podcast" },
+    ],
+  },
+  {
     label: "Participe",
     children: [
       { label: "Programação", href: "/programacao" },

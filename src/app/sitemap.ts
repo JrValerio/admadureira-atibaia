@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getEventosFuturos } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
+import { getDevotionals } from "@/data/devocionais";
 import { getMensagens } from "@/data/mensagens";
 import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
@@ -24,6 +25,7 @@ function getLatestDate(dates: Date[], fallback: Date) {
 export default function sitemap(): MetadataRoute.Sitemap {
   const generatedAt = new Date();
   const mensagens = getMensagens();
+  const devotionals = getDevotionals();
   const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();
 
@@ -33,6 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
   const latestTestemunhoDate = getLatestDate(
     testemunhos.map((testemunho) => parseContentDate(testemunho.data)),
+    generatedAt
+  );
+  const latestDevotionalDate = getLatestDate(
+    devotionals.map((devotional) => parseContentDate(devotional.data)),
     generatedAt
   );
 
@@ -121,6 +127,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: resolveSiteUrl("/espiritualidade"),
+      lastModified: generatedAt,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: resolveSiteUrl("/espiritualidade/biblia"),
+      lastModified: generatedAt,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: resolveSiteUrl("/espiritualidade/plano-de-leitura"),
+      lastModified: generatedAt,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: resolveSiteUrl("/espiritualidade/devocional"),
+      lastModified: latestDevotionalDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: resolveSiteUrl("/espiritualidade/radio"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
+      url: resolveSiteUrl("/espiritualidade/podcast"),
+      lastModified: generatedAt,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 
   const paginasEvento: MetadataRoute.Sitemap = eventosFuturos.map((evento) => ({
@@ -174,6 +216,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const paginasDevocionais: MetadataRoute.Sitemap = devotionals.map(
+    (devotional) => ({
+      url: resolveSiteUrl(`/espiritualidade/devocional/${devotional.slug}`),
+      lastModified: parseContentDate(devotional.data),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    })
+  );
+
   return [
     ...paginasBase,
     ...paginasEvento,
@@ -182,5 +233,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...paginasMinisterios,
     ...paginasMensagens,
     ...paginasTestemunhos,
+    ...paginasDevocionais,
   ];
 }
