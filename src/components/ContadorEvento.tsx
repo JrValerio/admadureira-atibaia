@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProximoEventoComData } from "@/lib/agenda-utils";
 
 interface Tempo {
@@ -36,42 +36,55 @@ function Bloco({ valor, label }: { valor: number; label: string }) {
 }
 
 export default function ContadorEvento() {
-  const resultado = getProximoEventoComData();
+  const [resultado, setResultado] = useState(() => getProximoEventoComData());
   const [tempo, setTempo] = useState<Tempo | null>(null);
 
   useEffect(() => {
-    if (!resultado) return;
+    const atualizarContador = () => {
+      const proximoCompromisso = getProximoEventoComData();
+      setResultado(proximoCompromisso);
+      setTempo(
+        proximoCompromisso ? calcularTempo(proximoCompromisso.dataEvento) : null
+      );
+    };
 
-    const timeoutId = window.setTimeout(() => {
-      setTempo(calcularTempo(resultado.dataEvento));
-    }, 0);
-    const id = setInterval(
-      () => setTempo(calcularTempo(resultado.dataEvento)),
-      1000
-    );
+    const timeoutId = window.setTimeout(atualizarContador, 0);
+    const intervalId = window.setInterval(atualizarContador, 1000);
+
     return () => {
       window.clearTimeout(timeoutId);
-      clearInterval(id);
+      window.clearInterval(intervalId);
     };
-  }, [resultado]);
+  }, []);
 
   if (!resultado || !tempo) return null;
 
   const { evento } = resultado;
   const encerrado = Object.values(tempo).every((v) => v === 0);
+  const botaoLabel =
+    evento.origem === "evento" ? "Ver detalhes do evento" : "Ver programação";
+  const eyebrow =
+    evento.origem === "evento" ? "Próximo evento" : "Próximo compromisso";
 
   return (
     <section className="bg-[#212121] py-10 px-4">
       <div className="max-w-3xl mx-auto text-center">
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
-          Próximo evento
+          {eyebrow}
         </p>
         <h3 className="font-acme text-white text-2xl md:text-3xl tracking-wide mb-6">
           {evento.titulo}
         </h3>
+        {evento.detalhe ? (
+          <p className="text-white/55 text-xs font-bold tracking-widest uppercase mb-5">
+            {evento.detalhe}
+          </p>
+        ) : null}
 
         {encerrado ? (
-          <p className="text-white/60 text-sm">Evento em andamento ou encerrado.</p>
+          <p className="text-white/60 text-sm">
+            Compromisso em andamento ou encerrado.
+          </p>
         ) : (
           <div className="flex items-center justify-center gap-4 md:gap-8">
             <Bloco valor={tempo.dias} label="dias" />
@@ -90,10 +103,10 @@ export default function ContadorEvento() {
         </p>
 
         <Link
-          href={`/eventos/${evento.slug}`}
+          href={evento.href}
           className="mt-5 inline-block text-[#ffa726] text-xs font-bold tracking-widest uppercase hover:underline"
         >
-          Ver detalhes do evento →
+          {botaoLabel} →
         </Link>
       </div>
     </section>
