@@ -21,17 +21,14 @@ export default function EventosPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventListSchema) }}
       />
-      <section className="pt-16 md:pt-20 pb-0">
-        <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Agenda da Igreja"
-            title="Eventos e agenda"
-            description="Confira os próximos eventos da AD Madureira Atibaia, com congressos, vigílias, encontros e cultos especiais para toda a comunidade."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-          />
-        </div>
-      </section>
+      <HeroPage
+        variant="full"
+        label="Agenda da Igreja"
+        title="Eventos e agenda"
+        description="Confira os próximos eventos da AD Madureira Atibaia, com congressos, vigílias, encontros e cultos especiais para toda a comunidade."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+      />
       <Eventos eventos={eventos} showHeader={false} />
     </main>
   );

@@ -12,18 +12,15 @@ export const metadata = buildPageMetadata({
 export default function ContatoPage() {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
-      <section className="pt-16 md:pt-20 pb-0">
-        <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Venha nos visitar"
-            title="Contato e localização"
-            description="Encontre a sede da AD Madureira Atibaia, consulte os canais oficiais e fale com a igreja por WhatsApp, telefone ou redes sociais."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-            imageClassName="object-[center_34%]"
-          />
-        </div>
-      </section>
+      <HeroPage
+        variant="full"
+        label="Venha nos visitar"
+        title="Contato e localização"
+        description="Encontre a sede da AD Madureira Atibaia, consulte os canais oficiais e fale com a igreja por WhatsApp, telefone ou redes sociais."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+        imageClassName="object-[center_34%]"
+      />
       <Contato showHeader={false} />
     </main>
   );

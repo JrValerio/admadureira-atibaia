@@ -12,17 +12,14 @@ export const metadata = buildPageMetadata({
 export default function OracaoPage() {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
-      <section className="pt-16 md:pt-20 pb-0">
-        <div className="max-w-4xl mx-auto px-4">
-          <HeroPage
-            label="Intercessão"
-            title="Pedido de Oração"
-            description="Compartilhe seu pedido conosco. A equipe de intercessão da AD Madureira Atibaia caminha em oração com você e sua família."
-            image="/pulpito-da-igreja.jpg"
-            imageAlt="Púlpito da AD Madureira Atibaia"
-          />
-        </div>
-      </section>
+      <HeroPage
+        variant="full"
+        label="Intercessão"
+        title="Pedido de Oração"
+        description="Compartilhe seu pedido conosco. A equipe de intercessão da AD Madureira Atibaia caminha em oração com você e sua família."
+        image="/pulpito-da-igreja.jpg"
+        imageAlt="Púlpito da AD Madureira Atibaia"
+      />
       <Oracao showHeader={false} />
     </main>
   );

@@ -12,17 +12,14 @@ export const metadata = buildPageMetadata({
 export default function MinisteriosPage() {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
-      <section className="pt-16 md:pt-20 pb-0">
-        <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Departamentos"
-            title="Ministérios da Igreja"
-            description="Conheça os ministérios da AD Madureira Atibaia e veja como cada área serve a igreja por meio do discipulado, da adoração, da oração e da formação cristã."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-          />
-        </div>
-      </section>
+      <HeroPage
+        variant="full"
+        label="Departamentos"
+        title="Ministérios da Igreja"
+        description="Conheça os ministérios da AD Madureira Atibaia e veja como cada área serve a igreja por meio do discipulado, da adoração, da oração e da formação cristã."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+      />
       <Ministerios showHeader={false} />
     </main>
   );

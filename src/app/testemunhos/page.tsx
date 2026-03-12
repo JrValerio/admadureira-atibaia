@@ -28,17 +28,17 @@ export default function TestemunhosPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
+      <HeroPage
+        variant="full"
+        label="Histórias de transformação"
+        title="Testemunhos de Fé"
+        description="Histórias reais de transformação vividas por pessoas da comunidade da Igreja Assembleia de Deus Ministério Madureira em Atibaia, em relatos escritos e também em vídeo."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+        imageClassName="object-[center_34%]"
+      />
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <HeroPage
-            label="Histórias de transformação"
-            title="Testemunhos de Fé"
-            description="Histórias reais de transformação vividas por pessoas da comunidade da Igreja Assembleia de Deus Ministério Madureira em Atibaia, em relatos escritos e também em vídeo."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-            imageClassName="object-[center_34%]"
-            className="mb-12"
-          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">

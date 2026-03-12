@@ -43,24 +43,23 @@ export default function OfertaPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(donationJsonLd),
+        }}
+      />
+      <HeroPage
+        variant="full"
+        label="Contribuição"
+        title="Dízimos e Ofertas"
+        description="Contribua para a obra de Deus e participe da expansão do Evangelho por meio da Assembleia de Deus Ministério Madureira no Campo de Atibaia."
+        image="/fachada-da-igreja.jpg"
+        imageAlt="Fachada da AD Madureira Atibaia"
+        imageClassName="object-[center_34%]"
+      />
       <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(donationJsonLd),
-            }}
-          />
-
-          <HeroPage
-            label="Contribuição"
-            title="Dízimos e Ofertas"
-            description="Contribua para a obra de Deus e participe da expansão do Evangelho por meio da Assembleia de Deus Ministério Madureira no Campo de Atibaia."
-            image="/fachada-da-igreja.jpg"
-            imageAlt="Fachada da AD Madureira Atibaia"
-            imageClassName="object-[center_34%]"
-            className="mb-8 border border-white/10 shadow-[0_10px_32px_rgba(0,0,0,0.08)]"
-          />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">

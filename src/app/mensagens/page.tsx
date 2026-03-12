@@ -40,30 +40,28 @@ export default function MensagensPage() {
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(mensagensListSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(mensagensSeriesSchema),
+        }}
+      />
+      <HeroPage
+        variant="full"
+        label="Palavra e ensino"
+        title="Mensagens da Igreja"
+        description="Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite ministrações que fortalecem a fé, a comunhão e a vida cristã."
+        image="/pulpito-da-igreja.jpg"
+        imageAlt="Púlpito da AD Madureira Atibaia"
+      />
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(mensagensListSchema),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(mensagensSeriesSchema),
-            }}
-          />
-
-          <HeroPage
-            label="Palavra e ensino"
-            title="Mensagens da Igreja"
-            description="Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite ministrações que fortalecem a fé, a comunhão e a vida cristã."
-            image="/pulpito-da-igreja.jpg"
-            imageAlt="Púlpito da AD Madureira Atibaia"
-            className="mb-12"
-          />
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
