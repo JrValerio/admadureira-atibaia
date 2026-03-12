@@ -1,79 +1,198 @@
+import {
+  bibleBooks,
+  getBibleBookBySlug,
+  type BibleBook,
+} from "@/data/biblia-livros";
+
+export type ReadingReference = {
+  livroSlug: string;
+  capitulo: number;
+};
+
 export type ReadingPlanDay = {
   dia: number;
-  leituras: string[];
-  foco: string;
+  leituras: ReadingReference[];
+  foco?: string;
 };
 
 export type ReadingPlan = {
   slug: string;
   titulo: string;
   descricao: string;
+  duracao: number;
   duracaoLabel: string;
   idealPara: string;
   versiculoBase: string;
+  imagem: string;
+  destaque: string;
   dias: ReadingPlanDay[];
 };
 
-const planoEvangelhoJoao: ReadingPlan = {
-  slug: "evangelho-de-joao-21-dias",
-  titulo: "Evangelho de João em 21 dias",
+function createReadingPlanPath(slug: string) {
+  return `/espiritualidade/plano-de-leitura/${slug}`;
+}
+
+export function createReadingPlanDayPath(slug: string, dia: number) {
+  return `${createReadingPlanPath(slug)}/dia/${dia}`;
+}
+
+function createChapterSequence(books: BibleBook[]) {
+  return books.flatMap((book) =>
+    Array.from({ length: book.capitulos }, (_, index) => ({
+      livroSlug: book.slug,
+      capitulo: index + 1,
+    }))
+  );
+}
+
+function createBookSequenceBySlugs(bookSlugs: string[]) {
+  const books = bookSlugs
+    .map((slug) => getBibleBookBySlug(slug))
+    .filter((book): book is BibleBook => book !== null);
+
+  return createChapterSequence(books);
+}
+
+function splitIntoBalancedDays(
+  readings: ReadingReference[],
+  totalDays: number,
+  focusFactory?: (day: number) => string | undefined
+) {
+  let index = 0;
+
+  return Array.from({ length: totalDays }, (_, listIndex) => {
+    const day = listIndex + 1;
+    const remainingReadings = readings.length - index;
+    const remainingDays = totalDays - listIndex;
+    const takeCount = Math.ceil(remainingReadings / remainingDays);
+    const leituras = readings.slice(index, index + takeCount);
+
+    index += takeCount;
+
+    return {
+      dia: day,
+      leituras,
+      foco: focusFactory?.(day),
+    };
+  });
+}
+
+function splitIntoFixedDays(
+  readings: ReadingReference[],
+  perDay: number,
+  focusFactory?: (day: number) => string | undefined
+) {
+  return Array.from({ length: Math.ceil(readings.length / perDay) }, (_, index) => {
+    const day = index + 1;
+
+    return {
+      dia: day,
+      leituras: readings.slice(index * perDay, index * perDay + perDay),
+      foco: focusFactory?.(day),
+    };
+  });
+}
+
+function createBibleInOneYearDays() {
+  const oldTestamentReadings = createChapterSequence(
+    bibleBooks.filter((book) => book.testamento === "Antigo Testamento")
+  );
+  const newTestamentReadings = createChapterSequence(
+    bibleBooks.filter((book) => book.testamento === "Novo Testamento")
+  );
+  let oldIndex = 0;
+  let newIndex = 0;
+
+  return Array.from({ length: 365 }, (_, listIndex) => {
+    const day = listIndex + 1;
+    const remainingDays = 365 - listIndex;
+    const remainingOld = oldTestamentReadings.length - oldIndex;
+    const remainingNew = newTestamentReadings.length - newIndex;
+    const oldCount =
+      remainingOld > 0 ? Math.ceil(remainingOld / remainingDays) : 0;
+    const newCount =
+      remainingNew > 0 ? Math.ceil(remainingNew / remainingDays) : 0;
+    const leituras = [
+      ...oldTestamentReadings.slice(oldIndex, oldIndex + oldCount),
+      ...newTestamentReadings.slice(newIndex, newIndex + newCount),
+    ];
+
+    oldIndex += oldCount;
+    newIndex += newCount;
+
+    return {
+      dia: day,
+      leituras,
+      foco:
+        "Leituras do dia para percorrer a Bíblia com constância ao longo do ano.",
+    };
+  });
+}
+
+const planoBibliaEmUmAno: ReadingPlan = {
+  slug: "biblia-em-1-ano",
+  titulo: "Bíblia em 1 ano",
   descricao:
-    "Plano para quem deseja conhecer mais de perto a pessoa de Jesus, sua mensagem e os sinais registrados no Evangelho de João.",
-  duracaoLabel: "21 dias",
-  idealPara: "Novos convertidos, visitantes e períodos de renovação espiritual.",
+    "Um plano anual para percorrer toda a Bíblia com constância, distribuindo leituras do Antigo e do Novo Testamento ao longo de 365 dias.",
+  duracao: 365,
+  duracaoLabel: "365 dias",
+  idealPara:
+    "Quem deseja criar uma rotina diária e ler toda a Bíblia ao longo do ano.",
+  versiculoBase: "Salmos 119:105",
+  imagem: "/pulpito-da-igreja.jpg",
+  destaque: "Plano completo",
+  dias: createBibleInOneYearDays(),
+};
+
+const planoSalmosEmTrintaDias: ReadingPlan = {
+  slug: "salmos-30-dias",
+  titulo: "Salmos em 30 dias",
+  descricao:
+    "Leia todo o livro de Salmos em um mês, com cinco salmos por dia, fortalecendo oração, louvor e confiança em Deus.",
+  duracao: 30,
+  duracaoLabel: "30 dias",
+  idealPara:
+    "Períodos de oração, fortalecimento espiritual e constância devocional.",
+  versiculoBase: "Salmos 119:11",
+  imagem: "/fachada-da-igreja.jpg",
+  destaque: "Oração diária",
+  dias: splitIntoFixedDays(
+    createBookSequenceBySlugs(["salmos"]),
+    5,
+    (day) => `Dia ${day} para meditar, orar e fortalecer a esperança no Senhor.`
+  ),
+};
+
+const planoEvangelhosEmQuarentaDias: ReadingPlan = {
+  slug: "evangelhos-40-dias",
+  titulo: "Evangelhos em 40 dias",
+  descricao:
+    "Percorra Mateus, Marcos, Lucas e João em quarenta dias, contemplando a vida, os ensinos e a obra de Jesus.",
+  duracao: 40,
+  duracaoLabel: "40 dias",
+  idealPara:
+    "Discipulado, novos convertidos e tempos de renovação centrados em Cristo.",
   versiculoBase: "João 20:31",
-  dias: [
-    { dia: 1, leituras: ["João 1"], foco: "Jesus, a Palavra viva" },
-    { dia: 2, leituras: ["João 2"], foco: "O primeiro sinal e a glória de Cristo" },
-    { dia: 3, leituras: ["João 3"], foco: "Novo nascimento e salvação" },
-    { dia: 4, leituras: ["João 4"], foco: "Adoração verdadeira" },
-    { dia: 5, leituras: ["João 5"], foco: "Autoridade do Filho" },
-    { dia: 6, leituras: ["João 6"], foco: "Jesus, o pão da vida" },
-    { dia: 7, leituras: ["João 7"], foco: "A sede espiritual e o Espírito" },
-    { dia: 8, leituras: ["João 8"], foco: "A verdade que liberta" },
-    { dia: 9, leituras: ["João 9"], foco: "Luz para quem quer enxergar" },
-    { dia: 10, leituras: ["João 10"], foco: "O bom pastor" },
-    { dia: 11, leituras: ["João 11"], foco: "Jesus e a esperança da ressurreição" },
-    { dia: 12, leituras: ["João 12"], foco: "Entrega e adoração" },
-    { dia: 13, leituras: ["João 13"], foco: "Serviço e amor" },
-    { dia: 14, leituras: ["João 14"], foco: "Consolo e promessa" },
-    { dia: 15, leituras: ["João 15"], foco: "Permanecer em Cristo" },
-    { dia: 16, leituras: ["João 16"], foco: "O Espírito Consolador" },
-    { dia: 17, leituras: ["João 17"], foco: "A oração sacerdotal de Jesus" },
-    { dia: 18, leituras: ["João 18"], foco: "Fidelidade em meio ao sofrimento" },
-    { dia: 19, leituras: ["João 19"], foco: "A cruz e a obra consumada" },
-    { dia: 20, leituras: ["João 20"], foco: "A vitória da ressurreição" },
-    { dia: 21, leituras: ["João 21"], foco: "Restauração e chamado" },
-  ],
+  imagem: "/banners/banner-culto-da-familia.png",
+  destaque: "Foco em Cristo",
+  dias: splitIntoBalancedDays(
+    createBookSequenceBySlugs(["mateus", "marcos", "lucas", "joao"]),
+    40,
+    (day) => `Dia ${day} para contemplar a pessoa, os ensinos e os sinais de Jesus.`
+  ),
 };
 
-const planoSalmosEsperanca: ReadingPlan = {
-  slug: "salmos-de-esperanca-14-dias",
-  titulo: "Salmos de esperança em 14 dias",
-  descricao:
-    "Leituras curtas para tempos de oração, consolo e fortalecimento da fé, com foco na confiança em Deus nas lutas diárias.",
-  duracaoLabel: "14 dias",
-  idealPara: "Momentos de oração, aconselhamento e fortalecimento devocional.",
-  versiculoBase: "Salmos 46:1",
-  dias: [
-    { dia: 1, leituras: ["Salmos 1", "Salmos 23"], foco: "O caminho do justo e o cuidado do Pastor" },
-    { dia: 2, leituras: ["Salmos 27"], foco: "Confiança em meio ao temor" },
-    { dia: 3, leituras: ["Salmos 34"], foco: "Deus ouve o clamor" },
-    { dia: 4, leituras: ["Salmos 37"], foco: "Esperar com paciência no Senhor" },
-    { dia: 5, leituras: ["Salmos 42", "Salmos 43"], foco: "Esperança para a alma abatida" },
-    { dia: 6, leituras: ["Salmos 46"], foco: "Refúgio e fortaleza" },
-    { dia: 7, leituras: ["Salmos 51"], foco: "Arrependimento e restauração" },
-    { dia: 8, leituras: ["Salmos 63"], foco: "Sede de Deus" },
-    { dia: 9, leituras: ["Salmos 84"], foco: "Alegria na casa do Senhor" },
-    { dia: 10, leituras: ["Salmos 91"], foco: "Proteção e descanso" },
-    { dia: 11, leituras: ["Salmos 103"], foco: "Lembrar os benefícios do Senhor" },
-    { dia: 12, leituras: ["Salmos 121"], foco: "Socorro que vem do alto" },
-    { dia: 13, leituras: ["Salmos 130"], foco: "Esperar pela misericórdia" },
-    { dia: 14, leituras: ["Salmos 139"], foco: "Conhecidos e guardados por Deus" },
-  ],
-};
+const readingPlans: ReadingPlan[] = [
+  planoBibliaEmUmAno,
+  planoSalmosEmTrintaDias,
+  planoEvangelhosEmQuarentaDias,
+];
 
-const readingPlans: ReadingPlan[] = [planoEvangelhoJoao, planoSalmosEsperanca];
+function formatReadingReference(reading: ReadingReference) {
+  const book = getBibleBookBySlug(reading.livroSlug);
+
+  return `${book?.nome ?? reading.livroSlug} ${reading.capitulo}`;
+}
 
 export function getReadingPlans() {
   return readingPlans;
@@ -81,4 +200,24 @@ export function getReadingPlans() {
 
 export function getReadingPlanBySlug(slug: string) {
   return readingPlans.find((plan) => plan.slug === slug) ?? null;
+}
+
+export function getReadingPlanDay(plan: ReadingPlan, dia: number) {
+  return plan.dias.find((day) => day.dia === dia) ?? null;
+}
+
+export function getReadingPlanSummary(plan: ReadingPlan) {
+  return `${plan.duracaoLabel} • ${plan.idealPara}`;
+}
+
+export function getReadingPlanDailySummary(day: ReadingPlanDay) {
+  return day.leituras.map(formatReadingReference).join(" • ");
+}
+
+export function getSuggestedReadingPlanDay(plan: ReadingPlan, date = new Date()) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date.getTime() - start.getTime();
+  const dayOfYear = Math.floor(diff / 86400000);
+
+  return ((dayOfYear - 1) % plan.duracao) + 1;
 }

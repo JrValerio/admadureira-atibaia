@@ -5,6 +5,7 @@ import { getDevotionals } from "@/data/devocionais";
 import { getMensagens } from "@/data/mensagens";
 import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
+import { getReadingPlans } from "@/data/plano-de-leitura";
 import { getTestemunhos } from "@/data/testemunhos";
 import { resolveSiteUrl } from "@/lib/site";
 
@@ -26,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const generatedAt = new Date();
   const mensagens = getMensagens();
   const devotionals = getDevotionals();
+  const readingPlans = getReadingPlans();
   const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();
 
@@ -225,6 +227,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const paginasPlanosLeitura: MetadataRoute.Sitemap = readingPlans.map((plan) => ({
+    url: resolveSiteUrl(`/espiritualidade/plano-de-leitura/${plan.slug}`),
+    lastModified: generatedAt,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  const paginasDiasPlanoLeitura: MetadataRoute.Sitemap = readingPlans.flatMap((plan) =>
+    plan.dias.map((day) => ({
+      url: resolveSiteUrl(
+        `/espiritualidade/plano-de-leitura/${plan.slug}/dia/${day.dia}`
+      ),
+      lastModified: generatedAt,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }))
+  );
+
   return [
     ...paginasBase,
     ...paginasEvento,
@@ -234,5 +254,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...paginasMensagens,
     ...paginasTestemunhos,
     ...paginasDevocionais,
+    ...paginasPlanosLeitura,
+    ...paginasDiasPlanoLeitura,
   ];
 }
