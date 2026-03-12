@@ -69,14 +69,14 @@ export function gerarAgendaRecorrente(
         criarEventoRecorrente(santaCeia, local, {
           tipo: "santa-ceia",
           titulo: "Santa Ceia",
-          horario: "18h30",
+          horario: "19h00",
           descricao:
             "Culto de comunhão e gratidão em memória do sacrifício de Cristo.",
         }),
         criarEventoRecorrente(reuniaoObreiros, local, {
           tipo: "reuniao-de-obreiros",
           titulo: "Reunião de Obreiros",
-          horario: "18h00",
+          horario: "19h30",
           descricao:
             "Reunião ministerial com obreiros para comunhão, direção e oração.",
         }),
