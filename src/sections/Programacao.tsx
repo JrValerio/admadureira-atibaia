@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { programacaoSemanal, agenda2026 } from "@/data/agenda";
 import type { MesAgenda, Evento } from "@/data/agenda";
+import QuadroSemanal from "@/sections/QuadroSemanal";
 
 /* ── Card da programação semanal ───────────────── */
 function CardSemanal({
@@ -157,10 +158,17 @@ export default function Programacao({
         ) : null}
 
         {/* ── 1. PROGRAMAÇÃO SEMANAL ── */}
+        <QuadroSemanal />
+
         <div className="mb-20">
-          <h3 className="font-acme text-2xl text-[#212121] tracking-wide mb-8 text-center">
-            Programação Semanal
+          <h3 className="font-acme text-2xl text-[#212121] tracking-wide mb-4 text-center">
+            Programação semanal detalhada
           </h3>
+          <p className="text-center text-[#666] leading-relaxed max-w-3xl mx-auto mb-8">
+            Abaixo você encontra cada culto e reunião da semana em cards
+            individuais, com apoio visual para consulta rápida da rotina da
+            igreja.
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {programacaoSemanal.map((item, i) => (
