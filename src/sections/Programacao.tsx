@@ -4,6 +4,38 @@ import { programacaoSemanal, agenda2026 } from "@/data/agenda";
 import type { MesAgenda, Evento } from "@/data/agenda";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 
+function criarDataEvento(
+  ano: number,
+  data: string
+): Date | null {
+  const [dia, mes] = data.split("/").map((parte) => parseInt(parte, 10));
+
+  if (!dia || !mes) {
+    return null;
+  }
+
+  return new Date(ano, mes - 1, dia);
+}
+
+function filtrarAgendaAnual(meses: MesAgenda[]) {
+  const hoje = new Date();
+  hoje.setHours(0, 0, 0, 0);
+
+  return meses
+    .map((mes) => {
+      const eventos = mes.eventos.filter((evento) => {
+        const dataEvento = criarDataEvento(mes.ano, evento.data);
+        return dataEvento ? dataEvento >= hoje : true;
+      });
+
+      return {
+        ...mes,
+        eventos,
+      };
+    })
+    .filter((mes) => mes.eventos.length > 0);
+}
+
 /* ── Card da programação semanal ───────────────── */
 function CardSemanal({
   dia,
@@ -142,6 +174,8 @@ type ProgramacaoProps = {
 export default function Programacao({
   showHeader = true,
 }: ProgramacaoProps = {}) {
+  const agendaVisivel = filtrarAgendaAnual(agenda2026);
+
   return (
     <section id="programacao" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -188,7 +222,7 @@ export default function Programacao({
 
         {/* ── 2. AGENDA ANUAL ── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {agenda2026.map((mes) => (
+          {agendaVisivel.map((mes) => (
             <CardMes key={`${mes.ano}-${mes.mes}`} mes={mes} />
           ))}
         </div>

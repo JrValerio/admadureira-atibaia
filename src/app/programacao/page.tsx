@@ -2,6 +2,8 @@ import HeroPage from "@/components/HeroPage";
 import Programacao from "@/sections/Programacao";
 import { buildPageMetadata } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export const metadata = buildPageMetadata({
   title: "Programação da Igreja | AD Madureira Atibaia",
   description:
