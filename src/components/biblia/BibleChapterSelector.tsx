@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { startTransition, type ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { BibleBook } from "@/data/biblia-livros";
@@ -10,11 +11,16 @@ type BibleChapterSelectorProps = {
   selectedChapter: number;
 };
 
+const POPULAR_CHAPTERS: Partial<Record<string, number[]>> = {
+  salmos: [23, 91, 121, 150],
+};
+
 export default function BibleChapterSelector({
   selectedBook,
   selectedChapter,
 }: BibleChapterSelectorProps) {
   const router = useRouter();
+  const popularChapters = POPULAR_CHAPTERS[selectedBook.slug] ?? [];
 
   const handleChapterChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const chapter = Number(event.target.value);
@@ -46,6 +52,7 @@ export default function BibleChapterSelector({
         Capítulo atual
       </label>
       <select
+        aria-label="Selecionar capítulo da Bíblia"
         value={selectedChapter}
         onChange={handleChapterChange}
         className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
@@ -60,6 +67,33 @@ export default function BibleChapterSelector({
           );
         })}
       </select>
+
+      {popularChapters.length > 0 ? (
+        <div className="mt-6">
+          <p className="mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
+            Capítulos populares
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {popularChapters.map((chapter) => {
+              const isActive = chapter === selectedChapter;
+
+              return (
+                <Link
+                  key={chapter}
+                  href={createBiblePath(selectedBook.slug, chapter)}
+                  className={`inline-flex items-center rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                    isActive
+                      ? "border-[#ffa726] bg-[#ffa726] text-[#212121]"
+                      : "border-black/10 bg-white text-[#555] hover:border-[#ffa726]/60 hover:text-[#212121]"
+                  }`}
+                >
+                  {chapter}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
 
       <p className="mt-4 text-sm text-[#777] leading-relaxed">
         Use também os botões de capítulo anterior e próximo para avançar na leitura

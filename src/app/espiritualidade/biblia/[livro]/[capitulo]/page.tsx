@@ -4,6 +4,7 @@ import HeroPage from "@/components/HeroPage";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import BibleBookSelector from "@/components/biblia/BibleBookSelector";
 import BibleChapterSelector from "@/components/biblia/BibleChapterSelector";
+import BibleShareButton from "@/components/biblia/BibleShareButton";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
@@ -100,6 +101,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
       : null;
   const canonicalPath = createBiblePath(selectedBook.slug, selectedChapter);
   const canonicalUrl = resolveSiteUrl(canonicalPath);
+  const chapterReference = `${selectedBook.nome} ${selectedChapter}`;
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -217,6 +219,10 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
+                  <BibleShareButton
+                    reference={chapterReference}
+                    url={canonicalUrl}
+                  />
                   {previousChapter && (
                     <Link
                       href={previousChapter}
@@ -245,6 +251,13 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                     {verse.texto}
                   </p>
                 ))}
+              </div>
+
+              <div className="mt-10 border-t border-black/5 pt-6">
+                <BibleShareButton
+                  reference={chapterReference}
+                  url={canonicalUrl}
+                />
               </div>
             </div>
           )}
