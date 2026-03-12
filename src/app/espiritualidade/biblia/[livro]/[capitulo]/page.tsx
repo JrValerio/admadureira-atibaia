@@ -6,8 +6,9 @@ import BibleBookSelector from "@/components/biblia/BibleBookSelector";
 import BibleChapterSelector from "@/components/biblia/BibleChapterSelector";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { getBibleChapter } from "@/lib/bible-api";
+import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
 import { clampBibleChapter, createBiblePath } from "@/lib/bible-navigation";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -47,18 +48,14 @@ export async function generateMetadata({ params }: PageProps) {
     chapterNumber === null
       ? 1
       : clampBibleChapter(selectedBook, chapterNumber);
+  const chapterSeo = getBibleChapterSeo(selectedBook, normalizedChapter);
 
   return buildPageMetadata({
-    title: `${selectedBook.nome} ${normalizedChapter} | Bíblia Online`,
-    description: `Leia ${selectedBook.nome} ${normalizedChapter} na tradução João Ferreira de Almeida.`,
+    title: `${chapterSeo.chapterLabel} | Bíblia Online`,
+    description: chapterSeo.metadataDescription,
     path: createBiblePath(selectedBook.slug, normalizedChapter),
     image: "/pulpito-da-igreja.jpg",
-    keywords: [
-      "bíblia online",
-      selectedBook.nome.toLowerCase(),
-      `${selectedBook.nome.toLowerCase()} ${normalizedChapter}`,
-      "joão ferreira de almeida",
-    ],
+    keywords: chapterSeo.keywords,
   });
 }
 
@@ -77,6 +74,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
   }
 
   const selectedChapter = clampBibleChapter(selectedBook, parsedChapter);
+  const chapterSeo = getBibleChapterSeo(selectedBook, selectedChapter);
 
   if (selectedChapter !== parsedChapter) {
     notFound();
@@ -100,9 +98,72 @@ export default async function BibliaChapterPage({ params }: PageProps) {
     selectedChapter < selectedBook.capitulos
       ? createBiblePath(selectedBook.slug, selectedChapter + 1)
       : null;
+  const canonicalPath = createBiblePath(selectedBook.slug, selectedChapter);
+  const canonicalUrl = resolveSiteUrl(canonicalPath);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Espiritualidade",
+        item: resolveSiteUrl("/espiritualidade"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Bíblia Online",
+        item: resolveSiteUrl("/espiritualidade/biblia"),
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: chapterSeo.chapterLabel,
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: `${chapterSeo.chapterLabel} | Bíblia Online`,
+    headline: chapterSeo.introTitle,
+    description: chapterSeo.metadataDescription,
+    url: canonicalUrl,
+    inLanguage: "pt-BR",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: resolveSiteUrl("/"),
+    },
+    about: {
+      "@type": "Book",
+      name: selectedBook.nome,
+      inLanguage: "pt-BR",
+    },
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
       <HeroPage
         variant="full"
         label="Palavra de Deus"
@@ -142,11 +203,14 @@ export default async function BibliaChapterPage({ params }: PageProps) {
               <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start mb-8">
                 <div>
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                    Capítulo carregado
+                    {chapterSeo.groupLabel}
                   </p>
                   <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
-                    {chapterData?.livro} {chapterData?.capitulo}
+                    {chapterSeo.introTitle}
                   </h1>
+                  <p className="text-sm text-[#555] leading-relaxed mb-3">
+                    {chapterSeo.introText}
+                  </p>
                   <p className="text-sm text-[#777] leading-relaxed">
                     Tradução utilizada: {chapterData?.traducao}
                   </p>
