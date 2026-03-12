@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ContinueReading from "@/components/reading/ContinueReading";
 import HeroPage from "@/components/HeroPage";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import {
@@ -106,6 +107,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Sugestão para hoje
               </p>
+              <ContinueReading planSlug={plan.slug} totalDays={plan.dias.length} />
               <p className="font-acme text-4xl text-[#212121] tracking-wide mb-3">
                 Dia {suggestedDay}
               </p>

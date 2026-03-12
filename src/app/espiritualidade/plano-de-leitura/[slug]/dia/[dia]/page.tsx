@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import ReadingProgressTracker from "@/components/reading/ReadingProgressTracker";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import {
   createReadingPlanDayPath,
@@ -124,6 +125,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
 
   return (
     <>
+      <ReadingProgressTracker planSlug={plan.slug} day={day.dia} />
       <HeroPage
         variant="full"
         label="Leitura diária"
