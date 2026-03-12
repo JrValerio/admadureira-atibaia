@@ -1,6 +1,7 @@
 import Hero from "@/sections/Hero";
 import HeroEventos from "@/components/HeroEventos";
 import ContadorEvento from "@/components/ContadorEvento";
+import DailyReminder from "@/components/spiritual/DailyReminder";
 import Destaques from "@/sections/Destaques";
 import ProximosEventos from "@/sections/ProximosEventos";
 import Cultos from "@/sections/Cultos";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main className="pt-0">
       <Hero />
+      <DailyReminder />
       <HeroEventos />
       <ContadorEvento />
       <VersiculoDoDia />
