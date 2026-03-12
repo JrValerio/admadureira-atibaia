@@ -49,12 +49,8 @@ const menu: MenuItem[] = [
     ],
   },
   { label: "Contato", href: "/contato" },
+  { label: "Oferta", href: "/oferta" },
 ];
-
-const ofertaLink: MenuLink = {
-  label: "Oferta",
-  href: "/oferta",
-};
 
 function isDirectMenuItem(item: MenuItem): item is Extract<MenuItem, { href: string }> {
   return typeof item.href === "string";
@@ -111,7 +107,7 @@ export default function Navbar() {
         >
           <div className="hidden xl:block" />
 
-          <nav className="hidden xl:flex items-center justify-center gap-5 2xl:gap-7">
+          <nav className="hidden xl:flex items-center justify-center gap-8 2xl:gap-10">
             {menu.map((item) => {
               const active = isMenuItemActive(pathname, item);
 
@@ -120,7 +116,7 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group/link relative font-acme text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/link relative font-acme text-[14px] 2xl:text-[15px] tracking-[0.16em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -140,14 +136,14 @@ export default function Navbar() {
                 <div key={item.label} className="relative group/menu">
                   <button
                     type="button"
-                    className={`group/button relative font-acme inline-flex items-center gap-2 text-[11px] 2xl:text-sm tracking-wider transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/button relative font-acme inline-flex items-center gap-2 text-[14px] 2xl:text-[15px] tracking-[0.16em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
                     }`}
                   >
                     {item.label}
-                    <span className="text-xs">▾</span>
+                    <span className="text-[10px]">▾</span>
                     <span
                       className={`absolute left-0 -bottom-1 h-px bg-[#ffa726] transition-all duration-300 ${
                         active ? "w-full" : "w-0 group-hover/button:w-full"
@@ -178,17 +174,6 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center justify-end gap-3">
-            <Link
-              href={ofertaLink.href}
-              className={`hidden xl:inline-flex items-center justify-center rounded-full px-5 py-2.5 text-[11px] 2xl:text-sm font-bold tracking-[0.2em] uppercase transition-colors ${
-                isLinkActive(pathname, ofertaLink.href)
-                  ? "bg-[#ef5350] text-white"
-                  : "bg-[#ffa726] text-[#212121] hover:bg-[#ffb74d]"
-              }`}
-            >
-              {ofertaLink.label}
-            </Link>
-
             <button
               type="button"
               className="xl:hidden text-white p-2"
@@ -212,7 +197,7 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`font-acme block text-sm uppercase tracking-wider transition-colors ${
+                    className={`font-acme block text-base uppercase tracking-[0.16em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -225,7 +210,7 @@ export default function Navbar() {
 
               return (
                 <div key={item.label}>
-                  <p className="font-acme text-sm uppercase tracking-wider text-white mb-2">
+                  <p className="font-acme text-base uppercase tracking-[0.16em] text-white mb-2">
                     {item.label}
                   </p>
                   <div className="space-y-2 border-l border-white/10 pl-3">
@@ -234,7 +219,7 @@ export default function Navbar() {
                         key={child.href}
                         href={child.href}
                         onClick={closeMenu}
-                        className={`block text-sm transition-colors ${
+                        className={`block text-base transition-colors ${
                           isLinkActive(pathname, child.href)
                             ? "text-[#ffa726]"
                             : "text-white/70 hover:text-[#ffa726]"
@@ -248,19 +233,6 @@ export default function Navbar() {
               );
             })}
 
-            <div className="pt-2">
-              <Link
-                href={ofertaLink.href}
-                onClick={closeMenu}
-                className={`inline-flex items-center justify-center rounded-full px-5 py-2.5 text-xs font-bold tracking-[0.2em] uppercase transition-colors ${
-                  isLinkActive(pathname, ofertaLink.href)
-                    ? "bg-[#ef5350] text-white"
-                    : "bg-[#ffa726] text-[#212121] hover:bg-[#ffb74d]"
-                }`}
-              >
-                {ofertaLink.label}
-              </Link>
-            </div>
           </div>
         )}
       </div>
