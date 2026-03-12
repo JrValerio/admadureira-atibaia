@@ -3,9 +3,9 @@ import Programacao from "@/sections/Programacao";
 import { buildPageMetadata } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
-  title: "Programação Semanal | AD Madureira Atibaia",
+  title: "Programação da Igreja | AD Madureira Atibaia",
   description:
-    "Veja a programação semanal da AD Madureira Atibaia: cultos, reuniões de jovens, damas, escola bíblica e muito mais.",
+    "Veja a programação semanal da AD Madureira Atibaia e acompanhe a agenda anual de 2026 com cultos, reuniões e eventos especiais da igreja.",
   path: "/programacao",
 });
 
@@ -16,8 +16,8 @@ export default function ProgramacaoPage() {
         <div className="max-w-6xl mx-auto px-4">
           <HeroPage
             label="Vida da Igreja"
-            title="Programação Semanal"
-            description="Veja a programação fixa da AD Madureira Atibaia e acompanhe os cultos, reuniões e encontros que marcam a rotina da igreja."
+            title="Programação da Igreja"
+            description="Veja a programação semanal da AD Madureira Atibaia e acompanhe a agenda anual de 2026 com cultos, reuniões e eventos especiais da igreja."
             image="/fachada-da-igreja.jpg"
             imageAlt="Fachada da AD Madureira Atibaia"
           />

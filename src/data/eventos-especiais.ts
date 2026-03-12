@@ -1,73 +1,211 @@
+import type { EventoTipo } from "@/data/agenda-visuais";
 import type { MesAgendaBase } from "@/data/agenda-types";
 
+type EventoConfig = {
+  slug: string;
+  data: string;
+  titulo: string;
+  tipo: EventoTipo;
+  descricao: string;
+  horario?: string;
+  destaque?: boolean;
+};
+
+function criarEvento(local: string, config: EventoConfig) {
+  return {
+    ...config,
+    local,
+  };
+}
+
 export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
+  const cursoTeologiaDescricao =
+    "Aula de formação bíblica e doutrinária para crescimento espiritual, ensino ministerial e fortalecimento da fé da igreja.";
+
+  const reuniaoMinisterioDescricao =
+    "Encontro de alinhamento, comunhão e oração com a liderança ministerial da igreja.";
+
+  const santaCeiaDescricao =
+    "Culto de comunhão, gratidão e memória do sacrifício de Cristo, reunindo a igreja em adoração e reverência.";
+
+  const reuniaoObreirosDescricao =
+    "Reunião ministerial com obreiros para comunhão, direção pastoral e fortalecimento da obra.";
+
+  const cultoMocidadeDescricao =
+    "Culto especial com a mocidade, reunindo jovens em louvor, comunhão e ministração da Palavra.";
+
+  const batismoDescricao =
+    "Celebração do batismo nas águas para novos convertidos e membros da igreja.";
+
   return [
+    {
+      mes: "Janeiro",
+      mesNumero: 1,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-05-01-2026",
+          data: "05/01",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-e-reuniao-de-obreiros-10-01-2026",
+          data: "10/01",
+          titulo: "Santa Ceia e Reunião de Obreiros",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao:
+            "Culto especial de Santa Ceia com comunhão ministerial e reunião de obreiros no templo sede.",
+          destaque: true,
+        }),
+      ],
+    },
+    {
+      mes: "Fevereiro",
+      mesNumero: 2,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-02-02-2026",
+          data: "02/02",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-09-02-2026",
+          data: "09/02",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-14-02-2026",
+          data: "14/02",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-16-02-2026",
+          data: "16/02",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-21-02-2026",
+          data: "21/02",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-23-02-2026",
+          data: "23/02",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "culto-com-a-mocidade-28-02-2026",
+          data: "28/02",
+          titulo: "Culto com a Mocidade",
+          tipo: "culto-com-a-mocidade",
+          horario: "19h00",
+          descricao: cultoMocidadeDescricao,
+        }),
+      ],
+    },
     {
       mes: "Março",
       mesNumero: 3,
       ano: 2026,
       eventos: [
-        {
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-02-03-2026",
+          data: "02/03",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-09-03-2026",
           data: "09/03",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-14-03-2026",
+          data: "14/03",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-16-03-2026",
           data: "16/03",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-21-03-2026",
+          data: "21/03",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-23-03-2026",
           data: "23/03",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
-          slug: "confraternizacao-dia-das-mulheres-28-03-2026",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "confraternizacao-departamento-feminino-28-03-2026",
           data: "28/03",
-          titulo: "Confraternização Dia das Mulheres",
+          titulo: "Confraternização do Departamento Feminino",
+          tipo: "dia-das-mulheres",
           horario: "19h00",
           descricao:
-            "Culto especial de celebração e comunhão voltado às mulheres, com louvor, ministração e palavra.",
-          local,
-          tipo: "dia-das-mulheres",
+            "Encontro especial do departamento feminino com louvor, comunhão e palavra voltada à edificação das irmãs.",
           destaque: true,
-        },
-        {
+        }),
+        criarEvento(local, {
           slug: "batismo-29-03-2026",
           data: "29/03",
           titulo: "Batismo",
-          horario: "09h00",
-          descricao:
-            "Celebração do batismo nas águas para novos convertidos e membros da igreja.",
-          local,
           tipo: "batismo",
-        },
-        {
+          horario: "09h30",
+          descricao: batismoDescricao,
+          destaque: true,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-30-03-2026",
           data: "30/03",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
       ],
     },
     {
@@ -75,36 +213,64 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       mesNumero: 4,
       ano: 2026,
       eventos: [
-        {
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-06-04-2026",
+          data: "06/04",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-11-04-2026",
+          data: "11/04",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-13-04-2026",
           data: "13/04",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-18-04-2026",
+          data: "18/04",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-20-04-2026",
           data: "20/04",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "congresso-com-as-criancas-25-04-2026",
+          data: "25/04",
+          titulo: "Congresso com as Crianças",
+          tipo: "evento-especial",
+          horario: "19h00",
+          descricao:
+            "Culto especial voltado às crianças, com participação do departamento infantil, louvor e ministração da Palavra.",
+          destaque: true,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-27-04-2026",
           data: "27/04",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
       ],
     },
     {
@@ -112,46 +278,82 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       mesNumero: 5,
       ano: 2026,
       eventos: [
-        {
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-04-05-2026",
+          data: "04/05",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-09-05-2026",
+          data: "09/05",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-11-05-2026",
           data: "11/05",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-16-05-2026",
+          data: "16/05",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-18-05-2026",
           data: "18/05",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "culto-com-a-mocidade-23-05-2026",
+          data: "23/05",
+          titulo: "Culto com a Mocidade",
+          tipo: "culto-com-a-mocidade",
+          horario: "19h00",
+          descricao: cultoMocidadeDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-25-05-2026",
           data: "25/05",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
           slug: "congresso-circulo-de-oracao-29-05-2026",
-          data: "29–30/05",
-          titulo: "Congresso Círculo de Oração",
-          descricao:
-            "Dois dias de culto, oração e ministração especial com a participação do círculo de oração da igreja.",
-          local,
+          data: "29/05",
+          titulo: "Congresso - Círculo de Oração (Sede)",
           tipo: "congresso-circulo-de-oracao",
+          horario: "19h00",
+          descricao:
+            "Primeiro dia do congresso do Círculo de Oração no templo sede, com oração, louvor e ministração especial.",
           destaque: true,
-        },
+        }),
+        criarEvento(local, {
+          slug: "congresso-circulo-de-oracao-30-05-2026",
+          data: "30/05",
+          titulo: "Congresso - Círculo de Oração (Sede)",
+          tipo: "congresso-circulo-de-oracao",
+          horario: "19h00",
+          descricao:
+            "Segundo dia do congresso do Círculo de Oração no templo sede, reunindo a igreja em consagração e comunhão.",
+          destaque: true,
+        }),
       ],
     },
     {
@@ -159,46 +361,480 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       mesNumero: 6,
       ano: 2026,
       eventos: [
-        {
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-01-06-2026",
+          data: "01/06",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-08-06-2026",
           data: "08/06",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-13-06-2026",
+          data: "13/06",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-15-06-2026",
           data: "15/06",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-20-06-2026",
+          data: "20/06",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-22-06-2026",
           data: "22/06",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
-        {
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "culto-com-a-mocidade-27-06-2026",
+          data: "27/06",
+          titulo: "Culto com a Mocidade",
+          tipo: "culto-com-a-mocidade",
+          horario: "19h00",
+          descricao: cultoMocidadeDescricao,
+        }),
+        criarEvento(local, {
+          slug: "batismo-28-06-2026",
+          data: "28/06",
+          titulo: "Batismo",
+          tipo: "batismo",
+          horario: "09h30",
+          descricao: batismoDescricao,
+          destaque: true,
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-29-06-2026",
           data: "29/06",
           titulo: "Curso de Teologia",
-          horario: "19h30",
-          descricao:
-            "Aula de formação bíblica e doutrinária para crescimento espiritual da igreja.",
-          local,
           tipo: "curso-de-teologia",
-        },
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Julho",
+      mesNumero: 7,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-06-07-2026",
+          data: "06/07",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-e-reuniao-de-obreiros-11-07-2026",
+          data: "11/07",
+          titulo: "Santa Ceia e Reunião de Obreiros",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao:
+            "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-13-07-2026",
+          data: "13/07",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "congresso-da-mocidade-local-17-07-2026",
+          data: "17/07",
+          titulo: "Congresso da Mocidade Local (Sede)",
+          tipo: "culto-com-a-mocidade",
+          descricao:
+            "Primeira noite do congresso da mocidade local, reunindo jovens em adoração, comunhão e palavra.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "congresso-da-mocidade-local-18-07-2026",
+          data: "18/07",
+          titulo: "Congresso da Mocidade Local (Sede)",
+          tipo: "culto-com-a-mocidade",
+          descricao:
+            "Segunda noite do congresso da mocidade local no templo sede.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-20-07-2026",
+          data: "20/07",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-27-07-2026",
+          data: "27/07",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Agosto",
+      mesNumero: 8,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-03-08-2026",
+          data: "03/08",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-08-08-2026",
+          data: "08/08",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-10-08-2026",
+          data: "10/08",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-15-08-2026",
+          data: "15/08",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-17-08-2026",
+          data: "17/08",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "culto-com-a-mocidade-22-08-2026",
+          data: "22/08",
+          titulo: "Culto com a Mocidade",
+          tipo: "culto-com-a-mocidade",
+          horario: "19h00",
+          descricao: cultoMocidadeDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-24-08-2026",
+          data: "24/08",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "vigilia-29-08-2026",
+          data: "29/08",
+          titulo: "Vigília",
+          tipo: "evento-especial",
+          descricao:
+            "Noite especial de oração, consagração e busca pela presença de Deus.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-31-08-2026",
+          data: "31/08",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Setembro",
+      mesNumero: 9,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "aniversario-pastor-zacarias-05-09-2026",
+          data: "05/09",
+          titulo: "Aniversário do Pastor Zacarias Bernardes Félix",
+          tipo: "evento-especial",
+          descricao:
+            "Celebração especial em honra ao aniversário do Pastor Zacarias Bernardes Félix.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-07-09-2026",
+          data: "07/09",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-12-09-2026",
+          data: "12/09",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-14-09-2026",
+          data: "14/09",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-19-09-2026",
+          data: "19/09",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-21-09-2026",
+          data: "21/09",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "culto-com-a-mocidade-26-09-2026",
+          data: "26/09",
+          titulo: "Culto com a Mocidade",
+          tipo: "culto-com-a-mocidade",
+          horario: "19h00",
+          descricao: cultoMocidadeDescricao,
+        }),
+        criarEvento(local, {
+          slug: "batismo-27-09-2026",
+          data: "27/09",
+          titulo: "Batismo",
+          tipo: "batismo",
+          horario: "09h30",
+          descricao: batismoDescricao,
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-28-09-2026",
+          data: "28/09",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Outubro",
+      mesNumero: 10,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-05-10-2026",
+          data: "05/10",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-10-10-2026",
+          data: "10/10",
+          titulo: "Santa Ceia",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao: santaCeiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-12-10-2026",
+          data: "12/10",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "reuniao-de-obreiros-17-10-2026",
+          data: "17/10",
+          titulo: "Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-19-10-2026",
+          data: "19/10",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "congresso-geral-umadat-jovem-23-10-2026",
+          data: "23/10",
+          titulo: "Congresso Geral UMADAT Jovem",
+          tipo: "culto-com-a-mocidade",
+          descricao:
+            "Primeira noite do Congresso Geral UMADAT Jovem, reunindo a juventude em adoração e ministração da Palavra.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "congresso-geral-umadat-jovem-24-10-2026",
+          data: "24/10",
+          titulo: "Congresso Geral UMADAT Jovem",
+          tipo: "culto-com-a-mocidade",
+          descricao:
+            "Segunda noite do Congresso Geral UMADAT Jovem no templo sede.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-26-10-2026",
+          data: "26/10",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Novembro",
+      mesNumero: 11,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-02-11-2026",
+          data: "02/11",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-09-11-2026",
+          data: "09/11",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "santa-ceia-e-reuniao-de-obreiros-14-11-2026",
+          data: "14/11",
+          titulo: "Santa Ceia e Reunião de Obreiros",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao:
+            "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-16-11-2026",
+          data: "16/11",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "aniversario-pastora-anna-alzira-21-11-2026",
+          data: "21/11",
+          titulo: "Aniversário da Pastora Anna Alzira",
+          tipo: "evento-especial",
+          descricao:
+            "Celebração especial em honra ao aniversário da Pastora Anna Alzira.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-23-11-2026",
+          data: "23/11",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+        criarEvento(local, {
+          slug: "curso-de-teologia-30-11-2026",
+          data: "30/11",
+          titulo: "Curso de Teologia",
+          tipo: "curso-de-teologia",
+          horario: "19h00",
+          descricao: cursoTeologiaDescricao,
+        }),
+      ],
+    },
+    {
+      mes: "Dezembro",
+      mesNumero: 12,
+      ano: 2026,
+      eventos: [
+        criarEvento(local, {
+          slug: "reuniao-de-ministerio-07-12-2026",
+          data: "07/12",
+          titulo: "Reunião de Ministério",
+          tipo: "reuniao-de-ministerio",
+          horario: "19h30",
+          descricao: reuniaoMinisterioDescricao,
+        }),
+        criarEvento(local, {
+          slug: "ultima-santa-ceia-e-reuniao-de-obreiros-12-12-2026",
+          data: "12/12",
+          titulo: "Reunião de Obreiros / Última Santa Ceia do Ano",
+          tipo: "santa-ceia",
+          horario: "19h00",
+          descricao:
+            "Culto especial de encerramento do ano com Santa Ceia e reunião de obreiros.",
+          destaque: true,
+        }),
+        criarEvento(local, {
+          slug: "batismo-13-12-2026",
+          data: "13/12",
+          titulo: "Batismo",
+          tipo: "batismo",
+          horario: "09h30",
+          descricao: batismoDescricao,
+          destaque: true,
+        }),
       ],
     },
   ];

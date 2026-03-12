@@ -6,6 +6,10 @@ const cultos = [
     horarios: [{ hora: "06:00 – 07:00", nome: "Oração Matinal" }],
   },
   {
+    dia: "Segunda-feira",
+    horarios: [{ hora: "19:30", nome: "Curso de Teologia" }],
+  },
+  {
     dia: "Terça-feira",
     horarios: [{ hora: "19:30", nome: "Culto de Ensino" }],
   },
@@ -14,28 +18,33 @@ const cultos = [
     horarios: [
       { hora: "09:00", nome: "Consagração" },
       { hora: "15:00", nome: "Círculo de Oração" },
+      { hora: "19:00", nome: "Ensaio das Irmãs" },
     ],
   },
   {
     dia: "Quinta-feira",
-    horarios: [{ hora: "19:30", nome: "Culto Público" }],
+    horarios: [{ hora: "19:30", nome: "Quinta da Vitória · Jejum e Oração" }],
   },
   {
     dia: "Sexta-feira",
-    horarios: [{ hora: "14:30", nome: "Culto de Libertação" }],
+    horarios: [{ hora: "14:30", nome: "Tarde de Libertação" }],
   },
   {
     dia: "Domingo",
     horarios: [
-      { hora: "09:00", nome: "Escola Bíblica Dominical" },
+      { hora: "08:00", nome: "Oração Matinal" },
+      { hora: "09:00", nome: "Escola Bíblica Dominical (EBD)" },
+      { hora: "11:00", nome: "Ensaio Jovens Rios de Unção" },
       { hora: "18:30", nome: "Culto da Família" },
     ],
   },
 ];
 
 const eventosEspeciais = [
+  { nome: "Reunião de Ministério", detalhe: "1ª segunda do mês" },
   { nome: "Santa Ceia", detalhe: "2º sábado do mês" },
   { nome: "Reunião de Obreiros", detalhe: "3º sábado do mês" },
+  { nome: "Culto com a Mocidade", detalhe: "4º sábado do mês" },
 ];
 
 export default function Cultos() {

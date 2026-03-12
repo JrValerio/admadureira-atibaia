@@ -1,6 +1,5 @@
 import { getVisualEvento } from "@/data/agenda-visuais";
 import { validateAgenda } from "@/data/agenda-schema";
-import { gerarAgendaRecorrente } from "@/data/agenda-recorrente";
 import { getEventosEspeciais2026 } from "@/data/eventos-especiais";
 import { BANNERS_PROGRAMACAO } from "@/data/programacao-banners";
 import type {
@@ -61,7 +60,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Quinta-feira",
-    titulo: "Quinta da Vitória",
+    titulo: "Quinta da Vitória · Jejum e Oração",
     horario: "19h30",
     banner: BANNERS_PROGRAMACAO.quintaVitoria,
   },
@@ -79,7 +78,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Domingo",
-    titulo: "Escola Bíblica Dominical",
+    titulo: "Escola Bíblica Dominical (EBD)",
     horario: "09h00",
     banner: BANNERS_PROGRAMACAO.ebd,
   },
@@ -94,26 +93,6 @@ export const programacaoSemanal: ItemSemanal[] = [
     titulo: "Culto da Família",
     horario: "18h30",
     banner: BANNERS_PROGRAMACAO.cultoFamilia,
-  },
-  {
-    dia: "1ª Segunda do mês",
-    titulo: "Reunião de Ministério",
-    banner: BANNERS_PROGRAMACAO.reuniaoMinisterio,
-  },
-  {
-    dia: "2º Sábado",
-    titulo: "Santa Ceia",
-    banner: BANNERS_PROGRAMACAO.santaCeia,
-  },
-  {
-    dia: "3º Sábado",
-    titulo: "Reunião de Obreiros",
-    banner: BANNERS_PROGRAMACAO.reuniaoObreiros,
-  },
-  {
-    dia: "4º Sábado",
-    titulo: "Culto com a Mocidade",
-    banner: BANNERS_PROGRAMACAO.cultoJovens,
   },
 ];
 
@@ -154,7 +133,6 @@ function mergeMeses(blocos: MesAgendaBase[]): MesAgendaBase[] {
 
 const agendaBase2026 = validateAgenda(
   mergeMeses([
-    ...gerarAgendaRecorrente(2026, [3, 4, 5, 6], LOCAL_EVENTO_PADRAO),
     ...getEventosEspeciais2026(LOCAL_EVENTO_PADRAO),
   ])
 );

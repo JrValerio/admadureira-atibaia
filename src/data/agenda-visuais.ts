@@ -7,6 +7,7 @@ export const EVENTO_TIPOS = [
   "batismo",
   "culto-com-a-mocidade",
   "congresso-circulo-de-oracao",
+  "evento-especial",
 ] as const;
 
 export type EventoTipo = (typeof EVENTO_TIPOS)[number];
@@ -51,6 +52,10 @@ export const VISUAIS_EVENTO: Record<EventoTipo, EventoVisual> = {
   "congresso-circulo-de-oracao": {
     imagem: "/programacao/circulo-de-oracao.png",
     banner: "/programacao/circulo-de-oracao.png",
+  },
+  "evento-especial": {
+    imagem: "/fachada-da-igreja.jpg",
+    banner: "/fachada-da-igreja.jpg",
   },
 };
 

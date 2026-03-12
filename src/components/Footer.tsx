@@ -14,10 +14,12 @@ const linksIgreja = [
 
 const horariosResumidos = [
   "Segunda a Sexta — 06:00 / 07:00",
+  "Segunda — 19:30",
   "Terça — 19:30",
+  "Quarta — 09:00 / 15:00 / 19:00",
   "Quinta — 19:30",
   "Sexta — 14:30",
-  "Domingo — 09:00 / 18:30",
+  "Domingo — 08:00 / 09:00 / 11:00 / 18:30",
 ];
 
 const descricaoInstitucional =

@@ -43,6 +43,7 @@ const menu: MenuItem[] = [
   {
     label: "Participe",
     children: [
+      { label: "Programação", href: "/programacao" },
       { label: "Eventos", href: "/eventos" },
       { label: "Pedidos de oração", href: "/oracao" },
     ],

@@ -13,12 +13,16 @@ const MAPS_URL =
 
 const horarios = [
   "Segunda a Sexta · 06:00 – 07:00 · Oração Matinal",
+  "Segunda · 19:30 – Curso de Teologia",
   "Terça · 19:30 – Culto de Ensino",
   "Quarta · 09:00 – Consagração",
   "Quarta · 15:00 – Círculo de Oração",
-  "Quinta · 19:30 – Culto Público",
-  "Sexta · 14:30 – Culto de Libertação",
-  "Domingo · 09:00 – Escola Bíblica",
+  "Quarta · 19:00 – Ensaio das Irmãs",
+  "Quinta · 19:30 – Quinta da Vitória · Jejum e Oração",
+  "Sexta · 14:30 – Tarde de Libertação",
+  "Domingo · 08:00 – Oração Matinal",
+  "Domingo · 09:00 – Escola Bíblica Dominical (EBD)",
+  "Domingo · 11:00 – Ensaio Jovens Rios de Unção",
   "Domingo · 18:30 – Culto da Família",
 ];
 
