@@ -66,11 +66,12 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
             <div className="text-center py-8">
               <div className="w-14 h-1 rounded-full bg-[#ffa726] mx-auto mb-5" />
               <h3 className="font-acme text-xl text-[#212121] mb-2 tracking-wide">
-                Pedido enviado!
+                Conversa aberta no WhatsApp
               </h3>
               <p className="text-[#757575] text-sm mb-6">
-                Sua mensagem foi encaminhada via WhatsApp. Estaremos orando por
-                você.
+                Seu pedido foi preparado para envio. Envie a mensagem na
+                conversa aberta para que a equipe de intercessão receba seu
+                pedido.
               </p>
               <button
                 type="button"
@@ -167,8 +168,8 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
               </button>
 
               <p className="text-center text-[#9e9e9e] text-xs">
-                Seu pedido será enviado com segurança para nossa equipe de
-                intercessão.
+                Seu pedido será preparado para envio no WhatsApp oficial da
+                igreja.
               </p>
             </form>
           )}

@@ -37,17 +37,22 @@ function Bloco({ valor, label }: { valor: number; label: string }) {
 
 export default function ContadorEvento() {
   const resultado = getProximoEventoComData();
-  const [tempo, setTempo] = useState<Tempo | null>(
-    resultado ? calcularTempo(resultado.dataEvento) : null
-  );
+  const [tempo, setTempo] = useState<Tempo | null>(null);
 
   useEffect(() => {
     if (!resultado) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setTempo(calcularTempo(resultado.dataEvento));
+    }, 0);
     const id = setInterval(
       () => setTempo(calcularTempo(resultado.dataEvento)),
       1000
     );
-    return () => clearInterval(id);
+    return () => {
+      window.clearTimeout(timeoutId);
+      clearInterval(id);
+    };
   }, [resultado]);
 
   if (!resultado || !tempo) return null;

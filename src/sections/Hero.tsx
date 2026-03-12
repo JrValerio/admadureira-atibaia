@@ -32,6 +32,7 @@ export default function Hero() {
             width={136}
             height={136}
             className="drop-shadow-[0_18px_32px_rgba(0,0,0,0.26)]"
+            style={{ height: "auto" }}
           />
         </div>
 
