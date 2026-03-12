@@ -7,6 +7,13 @@ export type SpiritualFeature = {
 
 export const spiritualFeatures: SpiritualFeature[] = [
   {
+    href: "/espiritualidade/versiculo-do-dia",
+    titulo: "Versículo do Dia",
+    descricao:
+      "Receba uma porção diária da Palavra com link direto para o capítulo bíblico e meditação prática.",
+    destaque: "Atualização diária",
+  },
+  {
     href: "/espiritualidade/biblia",
     titulo: "Bíblia Online",
     descricao:

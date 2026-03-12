@@ -44,6 +44,7 @@ const menu: MenuItem[] = [
     label: "Espiritualidade",
     children: [
       { label: "Visão geral", href: "/espiritualidade" },
+      { label: "Versículo do Dia", href: "/espiritualidade/versiculo-do-dia" },
       { label: "Bíblia Online", href: "/espiritualidade/biblia" },
       { label: "Plano de Leitura", href: "/espiritualidade/plano-de-leitura" },
       { label: "Devocional", href: "/espiritualidade/devocional" },

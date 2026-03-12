@@ -136,6 +136,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: resolveSiteUrl("/espiritualidade/versiculo-do-dia"),
+      lastModified: generatedAt,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
       url: resolveSiteUrl("/espiritualidade/biblia"),
       lastModified: generatedAt,
       changeFrequency: "weekly",
