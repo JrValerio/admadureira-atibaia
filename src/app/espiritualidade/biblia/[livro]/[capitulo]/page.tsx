@@ -4,9 +4,11 @@ import HeroPage from "@/components/HeroPage";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import BibleBookSelector from "@/components/biblia/BibleBookSelector";
 import BibleChapterSelector from "@/components/biblia/BibleChapterSelector";
+import BibleLastReadingTracker from "@/components/biblia/BibleLastReadingTracker";
 import BibleReadingModeToggle from "@/components/biblia/BibleReadingModeToggle";
 import BibleShareButton from "@/components/biblia/BibleShareButton";
 import BibleShareVerseButton from "@/components/biblia/BibleShareVerseButton";
+import BibleVerseAnchorHandler from "@/components/biblia/BibleVerseAnchorHandler";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
@@ -179,6 +181,11 @@ export default async function BibliaChapterPage({ params }: PageProps) {
 
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
+          <BibleLastReadingTracker
+            book={selectedBook.slug}
+            chapter={selectedChapter}
+          />
+          <BibleVerseAnchorHandler />
           <SpiritualBreadcrumb
             items={[
               { label: "Espiritualidade", href: "/espiritualidade" },
@@ -195,6 +202,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
             <BibleChapterSelector
               selectedBook={selectedBook}
               selectedChapter={selectedChapter}
+              verseCount={chapterData?.versiculos.length ?? 0}
             />
           </div>
 
@@ -218,6 +226,14 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                   <p className="text-sm text-[#777] leading-relaxed">
                     Tradução utilizada: {chapterData?.traducao}
                   </p>
+                  <div className="mt-4 flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
+                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
+                      Idioma: Português
+                    </span>
+                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
+                      Versão: Almeida
+                    </span>
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap gap-3">
@@ -253,7 +269,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                   <div
                     key={verse.numero}
                     id={`v${verse.numero}`}
-                    className="group scroll-mt-28 flex items-start gap-3"
+                    className="group -mx-3 flex items-start gap-3 rounded-2xl px-3 py-2 scroll-mt-28 transition-colors duration-300 data-[verse-target=true]:bg-[#fff8ee] data-[verse-target=true]:ring-1 data-[verse-target=true]:ring-[#ffa726]/20"
                   >
                     <span className="mt-1 min-w-[28px] text-xs font-semibold text-[#ef5350]">
                       {verse.numero}

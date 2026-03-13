@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { startTransition, type ChangeEvent, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   getBibleBooksByTestament,
   type BibleBook,
@@ -10,78 +13,101 @@ type BibleBookSelectorProps = {
   selectedChapter: number;
 };
 
-function BookPill({
-  book,
-  selectedBook,
-  selectedChapter,
-}: {
-  book: BibleBook;
-  selectedBook: BibleBook;
-  selectedChapter: number;
-}) {
-  const isActive = book.slug === selectedBook.slug;
-
-  return (
-    <Link
-      href={createBiblePath(book.slug, Math.min(selectedChapter, book.capitulos))}
-      className={`inline-flex rounded-full border px-4 py-2 text-sm transition-colors ${
-        isActive
-          ? "border-[#ffa726] bg-[#ffa726] text-[#212121]"
-          : "border-black/10 bg-white text-[#555] hover:border-[#ffa726]/25 hover:bg-[#fff8ee]"
-      }`}
-    >
-      {book.nome}
-    </Link>
-  );
-}
-
 export default function BibleBookSelector({
   selectedBook,
   selectedChapter,
 }: BibleBookSelectorProps) {
+  const router = useRouter();
+  const [selectedTestament, setSelectedTestament] = useState<BibleBook["testamento"]>(
+    selectedBook.testamento
+  );
   const oldTestamentBooks = getBibleBooksByTestament("Antigo Testamento");
   const newTestamentBooks = getBibleBooksByTestament("Novo Testamento");
+  const filteredBooks = useMemo(
+    () =>
+      selectedTestament === "Antigo Testamento"
+        ? oldTestamentBooks
+        : newTestamentBooks,
+    [newTestamentBooks, oldTestamentBooks, selectedTestament]
+  );
+
+  const handleTestamentChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextTestament = event.target.value as BibleBook["testamento"];
+    const nextBooks =
+      nextTestament === "Antigo Testamento"
+        ? oldTestamentBooks
+        : newTestamentBooks;
+    const nextBook = nextBooks[0];
+
+    setSelectedTestament(nextTestament);
+
+    if (!nextBook) {
+      return;
+    }
+
+    startTransition(() => {
+      router.push(
+        createBiblePath(nextBook.slug, Math.min(selectedChapter, nextBook.capitulos))
+      );
+    });
+  };
+
+  const handleBookChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextBook =
+      filteredBooks.find((book) => book.slug === event.target.value) ?? selectedBook;
+
+    startTransition(() => {
+      router.push(
+        createBiblePath(nextBook.slug, Math.min(selectedChapter, nextBook.capitulos))
+      );
+    });
+  };
 
   return (
     <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
       <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-        Livros da Bíblia
+        Navegação bíblica
       </p>
-      <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-6">
-        Escolha um livro
+      <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+        Livro e testamento
       </h2>
+      <p className="text-sm text-[#555] leading-relaxed mb-6">
+        Escolha o testamento e o livro para navegar pela leitura com o mesmo
+        fluxo compacto usado na seleção de capítulos.
+      </p>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-3">
-            Antigo Testamento
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {oldTestamentBooks.map((book) => (
-              <BookPill
-                key={book.id}
-                book={book}
-                selectedBook={selectedBook}
-                selectedChapter={selectedChapter}
-              />
-            ))}
-          </div>
+          <label className="block mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
+            Testamento
+          </label>
+          <select
+            value={selectedTestament}
+            onChange={handleTestamentChange}
+            aria-label="Selecionar testamento da Bíblia"
+            className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
+          >
+            <option value="Antigo Testamento">Antigo Testamento</option>
+            <option value="Novo Testamento">Novo Testamento</option>
+          </select>
         </div>
 
         <div>
-          <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-3">
-            Novo Testamento
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {newTestamentBooks.map((book) => (
-              <BookPill
-                key={book.id}
-                book={book}
-                selectedBook={selectedBook}
-                selectedChapter={selectedChapter}
-              />
+          <label className="block mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
+            Livro
+          </label>
+          <select
+            value={selectedBook.slug}
+            onChange={handleBookChange}
+            aria-label="Selecionar livro da Bíblia"
+            className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
+          >
+            {filteredBooks.map((book) => (
+              <option key={book.id} value={book.slug}>
+                {book.nome}
+              </option>
             ))}
-          </div>
+          </select>
         </div>
       </div>
     </div>
