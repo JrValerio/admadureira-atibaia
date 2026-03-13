@@ -1,10 +1,9 @@
 import Hero from "@/sections/Hero";
 import HeroEventos from "@/components/HeroEventos";
 import ContadorEvento from "@/components/ContadorEvento";
-import DailyReminder from "@/components/spiritual/DailyReminder";
+import DailySpiritual from "@/sections/DailySpiritual";
 import Destaques from "@/sections/Destaques";
 import Cultos from "@/sections/Cultos";
-import VersiculoDoDia from "@/sections/VersiculoDoDia";
 
 export const revalidate = 86400;
 
@@ -14,8 +13,7 @@ export default function Home() {
       <Hero />
       <HeroEventos />
       <ContadorEvento />
-      <DailyReminder />
-      <VersiculoDoDia />
+      <DailySpiritual />
       <Destaques />
       <Cultos />
     </main>

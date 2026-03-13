@@ -87,10 +87,25 @@ const devotionals: Devotional[] = [
   },
 ];
 
+function getDayOfYear(date = new Date()) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  const diff = date.getTime() - start.getTime();
+  return Math.floor(diff / 86400000);
+}
+
 export function getDevotionals() {
   return devotionals;
 }
 
 export function getDevotionalBySlug(slug: string) {
   return devotionals.find((devotional) => devotional.slug === slug) ?? null;
+}
+
+export function getDevotionalOfTheDay(date = new Date()) {
+  if (devotionals.length === 0) {
+    return null;
+  }
+
+  const index = (getDayOfYear(date) - 1) % devotionals.length;
+  return devotionals[index] ?? null;
 }

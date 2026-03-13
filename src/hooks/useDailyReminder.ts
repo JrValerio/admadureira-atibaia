@@ -28,15 +28,43 @@ function getContinueReadingHref() {
     }
 
     const parsed = JSON.parse(raw) as Record<string, unknown>;
-    const firstEntry = Object.entries(parsed).find(
-      (entry) => typeof entry[0] === "string" && typeof entry[1] === "number"
-    );
+    const firstEntry = Object.entries(parsed).find((entry) => {
+      if (typeof entry[0] !== "string") {
+        return false;
+      }
+
+      if (typeof entry[1] === "number") {
+        return true;
+      }
+
+      if (typeof entry[1] !== "object" || entry[1] === null) {
+        return false;
+      }
+
+      const value = entry[1] as { lastDay?: unknown };
+      return typeof value.lastDay === "number";
+    });
 
     if (!firstEntry) {
       return "/espiritualidade/plano-de-leitura";
     }
 
-    const [planSlug, day] = firstEntry as [string, number];
+    const [planSlug, value] = firstEntry;
+    const typedValue =
+      typeof value === "object" && value !== null
+        ? (value as { lastDay?: unknown })
+        : null;
+    const day =
+      typeof value === "number"
+        ? value
+        : typeof typedValue?.lastDay === "number"
+          ? typedValue.lastDay
+          : null;
+
+    if (!day) {
+      return "/espiritualidade/plano-de-leitura";
+    }
+
     const normalizedDay = Math.max(1, Math.floor(day));
 
     return `/espiritualidade/plano-de-leitura/${planSlug}/dia/${normalizedDay}`;

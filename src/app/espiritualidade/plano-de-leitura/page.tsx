@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import ContinueReading from "@/components/reading/ContinueReading";
+import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgressSummary";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import ReadingPlanCard from "@/components/reading/ReadingPlanCard";
-import { getReadingPlanBySlug, getReadingPlans } from "@/data/plano-de-leitura";
+import { getDevotionalOfTheDay } from "@/data/devocionais";
+import {
+  createReadingPlanDayPath,
+  getReadingPlanBySlug,
+  getReadingPlanDailySummary,
+  getReadingPlans,
+  getSuggestedReadingPlanDay,
+} from "@/data/plano-de-leitura";
 import { buildPageMetadata } from "@/lib/site";
 
 type PageProps = {
@@ -38,6 +48,13 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
   }
 
   const readingPlans = getReadingPlans();
+  const annualPlan = getReadingPlanBySlug("biblia-em-1-ano");
+  const dailyDevotional = getDevotionalOfTheDay();
+  const suggestedAnnualDay = annualPlan ? getSuggestedReadingPlanDay(annualPlan) : null;
+  const annualDay =
+    annualPlan && suggestedAnnualDay
+      ? annualPlan.dias[suggestedAnnualDay - 1] ?? null
+      : null;
 
   return (
     <>
@@ -100,6 +117,73 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
               </ul>
             </div>
           </div>
+
+          {annualPlan && annualDay ? (
+            <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 mb-12">
+              <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
+                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  Bíblia em 1 ano
+                </p>
+                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+                  Leitura e devocional de hoje
+                </h2>
+                <p className="text-sm text-[#777] mb-4">
+                  Dia {annualDay.dia} • {getReadingPlanDailySummary(annualDay)}
+                </p>
+                {annualDay.foco ? (
+                  <p className="text-[#555] leading-relaxed mb-6">{annualDay.foco}</p>
+                ) : null}
+
+                <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-5 mb-6">
+                  <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
+                    Devocional do dia
+                  </p>
+                  {dailyDevotional ? (
+                    <>
+                      <h3 className="font-semibold text-[#212121] text-lg mb-2">
+                        {dailyDevotional.titulo}
+                      </h3>
+                      <p className="text-sm text-[#8b5b18] mb-3">
+                        {dailyDevotional.versiculo}
+                      </p>
+                      <p className="text-sm text-[#555] leading-relaxed mb-4">
+                        {dailyDevotional.resumo}
+                      </p>
+                      <Link
+                        href={`/espiritualidade/devocional/${dailyDevotional.slug}`}
+                        className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase"
+                      >
+                        Ler devocional completo →
+                      </Link>
+                    </>
+                  ) : (
+                    <p className="text-sm text-[#555] leading-relaxed">
+                      Nenhum devocional disponível hoje.
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <Link
+                    href={createReadingPlanDayPath(annualPlan.slug, annualDay.dia)}
+                    className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                  >
+                    Abrir leitura do dia
+                  </Link>
+                </div>
+                <ContinueReading
+                  planSlug={annualPlan.slug}
+                  totalDays={annualPlan.dias.length}
+                />
+              </div>
+
+              <ReadingPlanProgressSummary
+                planSlug={annualPlan.slug}
+                totalDays={annualPlan.dias.length}
+                todayDay={annualDay.dia}
+              />
+            </div>
+          ) : null}
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {readingPlans.map((plan) => (

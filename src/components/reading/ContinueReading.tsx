@@ -13,14 +13,14 @@ export default function ContinueReading({
   planSlug,
   totalDays,
 }: ContinueReadingProps) {
-  const { progress } = useReadingPlanProgress(planSlug);
+  const { lastDay } = useReadingPlanProgress(planSlug);
 
-  if (!progress) {
+  if (!lastDay) {
     return null;
   }
 
   const normalizedProgress =
-    progress > totalDays ? totalDays : progress < 1 ? 1 : progress;
+    lastDay > totalDays ? totalDays : lastDay < 1 ? 1 : lastDay;
 
   return (
     <div className="mb-5 rounded-2xl border border-white/60 bg-white/70 p-4">

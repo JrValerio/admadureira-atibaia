@@ -12,11 +12,11 @@ export default function ReadingProgressTracker({
   planSlug,
   day,
 }: ReadingProgressTrackerProps) {
-  const { saveProgress } = useReadingPlanProgress(planSlug);
+  const { saveLastOpenedDay } = useReadingPlanProgress(planSlug);
 
   useEffect(() => {
-    saveProgress(day);
-  }, [day, saveProgress]);
+    saveLastOpenedDay(day);
+  }, [day, saveLastOpenedDay]);
 
   return null;
 }

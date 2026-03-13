@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContinueReading from "@/components/reading/ContinueReading";
 import HeroPage from "@/components/HeroPage";
+import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgressSummary";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
+import { getDevotionalOfTheDay } from "@/data/devocionais";
 import {
   createReadingPlanDayPath,
   getReadingPlanBySlug,
@@ -51,7 +53,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
   }
 
   const suggestedDay = getSuggestedReadingPlanDay(plan);
-  const progress = Math.max(1, Math.round((suggestedDay / plan.duracao) * 100));
+  const dailyDevotional = getDevotionalOfTheDay();
 
   return (
     <>
@@ -114,13 +116,9 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-sm text-[#555] leading-relaxed mb-4">
                 {getReadingPlanDailySummary(plan.dias[suggestedDay - 1])}
               </p>
-              <div className="h-2 rounded-full bg-white/80 overflow-hidden mb-4">
-                <div
-                  className="h-full rounded-full bg-[#ffa726]"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-              <p className="text-xs text-[#777] mb-6">{progress}% do plano sugerido para o momento do ano.</p>
+              <p className="text-xs text-[#777] mb-6">
+                Abra o dia sugerido para hoje ou retome do ponto em que você parou.
+              </p>
               <Link
                 href={createReadingPlanDayPath(plan.slug, suggestedDay)}
                 className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
@@ -128,6 +126,36 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                 Abrir dia sugerido
               </Link>
             </div>
+          </div>
+
+          {plan.slug === "biblia-em-1-ano" && dailyDevotional ? (
+            <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm mb-8">
+              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                Devocional do dia
+              </p>
+              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-3">
+                {dailyDevotional.titulo}
+              </h2>
+              <p className="text-sm text-[#8b5b18] mb-4">{dailyDevotional.versiculo}</p>
+              <p className="text-[#555] leading-relaxed mb-5">
+                {dailyDevotional.resumo}
+              </p>
+              <Link
+                href={`/espiritualidade/devocional/${dailyDevotional.slug}`}
+                className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase"
+              >
+                Ler devocional completo →
+              </Link>
+            </div>
+          ) : null}
+
+          <div className="mb-8">
+            <ReadingPlanProgressSummary
+              planSlug={plan.slug}
+              totalDays={plan.dias.length}
+              todayDay={suggestedDay}
+              showCalendar={plan.slug === "biblia-em-1-ano"}
+            />
           </div>
 
           <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">

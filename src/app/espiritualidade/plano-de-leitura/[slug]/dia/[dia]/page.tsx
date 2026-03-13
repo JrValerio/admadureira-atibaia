@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import ReadingDayCompletionButton from "@/components/reading/ReadingDayCompletionButton";
 import ReadingProgressTracker from "@/components/reading/ReadingProgressTracker";
+import SpiritualNotesCard from "@/components/spiritual/SpiritualNotesCard";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import {
   createReadingPlanDayPath,
@@ -186,6 +188,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
                     Próximo dia
                   </Link>
                 ) : null}
+                <ReadingDayCompletionButton planSlug={plan.slug} day={day.dia} />
               </div>
               <Link
                 href={`/espiritualidade/plano-de-leitura/${plan.slug}`}
@@ -194,6 +197,14 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
                 Voltar ao plano →
               </Link>
             </div>
+          </div>
+
+          <div className="mb-8">
+            <SpiritualNotesCard
+              noteKey={`reading-plan:${plan.slug}:day:${day.dia}`}
+              title="Minhas anotações deste dia"
+              description="Anote aprendizados, orações e aplicações práticas desta leitura para continuar crescendo com constância na Palavra."
+            />
           </div>
 
           <div className="space-y-8">

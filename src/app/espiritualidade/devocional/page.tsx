@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
-import { getDevotionals } from "@/data/devocionais";
+import { getDevotionalOfTheDay, getDevotionals } from "@/data/devocionais";
+import {
+  getReadingPlanBySlug,
+  getReadingPlanDailySummary,
+  getSuggestedReadingPlanDay,
+} from "@/data/plano-de-leitura";
 import { buildPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -23,6 +29,13 @@ function formatDevotionalDate(date: string) {
 
 export default function DevocionalPage() {
   const devotionals = getDevotionals();
+  const dailyDevotional = getDevotionalOfTheDay();
+  const annualPlan = getReadingPlanBySlug("biblia-em-1-ano");
+  const suggestedDay = annualPlan ? getSuggestedReadingPlanDay(annualPlan) : null;
+  const suggestedDaySummary =
+    annualPlan && suggestedDay
+      ? getReadingPlanDailySummary(annualPlan.dias[suggestedDay - 1])
+      : "";
 
   return (
     <>
@@ -43,6 +56,38 @@ export default function DevocionalPage() {
               { label: "Devocional" },
             ]}
           />
+          {dailyDevotional && annualPlan && suggestedDay ? (
+            <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 mb-12">
+              <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
+                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  Devocional do dia
+                </p>
+                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
+                  {dailyDevotional.titulo}
+                </h2>
+                <p className="text-sm text-[#8b5b18] mb-4">
+                  {dailyDevotional.versiculo}
+                </p>
+                <p className="text-[#555] leading-relaxed mb-5">
+                  {dailyDevotional.resumo}
+                </p>
+                <Link
+                  href={`/espiritualidade/devocional/${dailyDevotional.slug}`}
+                  className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase"
+                >
+                  Ler devocional completo →
+                </Link>
+              </div>
+
+              <ReadingJourneyActions
+                planSlug={annualPlan.slug}
+                totalDays={annualPlan.dias.length}
+                suggestedDay={suggestedDay}
+                suggestedSummary={suggestedDaySummary}
+              />
+            </div>
+          ) : null}
+
           <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Caminhada diária

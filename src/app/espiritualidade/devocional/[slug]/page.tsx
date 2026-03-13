@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
+import SpiritualNotesCard from "@/components/spiritual/SpiritualNotesCard";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { getDevotionalBySlug, getDevotionals } from "@/data/devocionais";
+import {
+  getReadingPlanBySlug,
+  getReadingPlanDailySummary,
+  getSuggestedReadingPlanDay,
+} from "@/data/plano-de-leitura";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 type PageProps = {
@@ -57,6 +64,12 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
   const relatedDevotionals = getDevotionals()
     .filter((item) => item.slug !== devotional.slug)
     .slice(0, 2);
+  const annualPlan = getReadingPlanBySlug("biblia-em-1-ano");
+  const suggestedDay = annualPlan ? getSuggestedReadingPlanDay(annualPlan) : null;
+  const suggestedDaySummary =
+    annualPlan && suggestedDay
+      ? getReadingPlanDailySummary(annualPlan.dias[suggestedDay - 1])
+      : "";
 
   const devotionalSchema = {
     "@context": "https://schema.org",
@@ -160,9 +173,26 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                 </p>
                 <p className="text-[#555] leading-relaxed">{devotional.oracao}</p>
               </div>
+
+              <SpiritualNotesCard
+                noteKey={`devotional:${devotional.slug}`}
+                title="Minhas anotações do devocional"
+                description="Registre aqui o que Deus ministrou ao seu coração, decisões práticas e pedidos de oração relacionados a esta reflexão."
+              />
             </article>
 
             <aside className="space-y-6">
+              {annualPlan && suggestedDay ? (
+                <ReadingJourneyActions
+                  planSlug={annualPlan.slug}
+                  totalDays={annualPlan.dias.length}
+                  suggestedDay={suggestedDay}
+                  suggestedSummary={suggestedDaySummary}
+                  title="Próximo passo na Palavra"
+                  description="Aproveite este momento para retomar sua leitura bíblica, abrir o dia sugerido ou começar hoje a jornada anual."
+                />
+              ) : null}
+
               <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Continue a leitura
