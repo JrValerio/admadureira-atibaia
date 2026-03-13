@@ -22,11 +22,11 @@ export default function ReadingDayCompletionButton({
     <button
       type="button"
       onClick={() => toggleDayCompleted(day)}
-      className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-xs font-bold tracking-widest uppercase transition-colors ${
+      className={
         isCompleted
-          ? "bg-[#2e7d32] text-white hover:bg-[#256429]"
-          : "border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white"
-      }`}
+          ? "inline-flex items-center justify-center rounded-full bg-[#2e7d32] px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-[#256429]"
+          : "ui-btn-secondary"
+      }
     >
       {isCompleted ? completedLabel : pendingLabel}
     </button>

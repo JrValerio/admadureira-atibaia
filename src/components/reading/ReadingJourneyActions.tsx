@@ -44,7 +44,7 @@ export default function ReadingJourneyActions({
         {normalizedLastDay ? (
           <Link
             href={createReadingPlanDayPath(planSlug, normalizedLastDay)}
-            className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+            className="ui-btn-primary"
           >
             Continuar leitura · Dia {normalizedLastDay}
           </Link>
@@ -52,14 +52,14 @@ export default function ReadingJourneyActions({
 
         <Link
           href={createReadingPlanDayPath(planSlug, suggestedDay)}
-          className="inline-flex items-center justify-center rounded-full border border-[#212121] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
+          className="ui-btn-secondary"
         >
           Abrir dia sugerido
         </Link>
 
         <Link
           href={createReadingPlanDayPath(planSlug, 1)}
-          className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:border-[#ffa726]/40 hover:bg-[#fff8ee]"
+          className="ui-btn-ghost"
         >
           Começar agora
         </Link>

@@ -45,11 +45,11 @@ export default function ReadingPlanProgressSummary({
       <button
         type="button"
         onClick={() => toggleDayCompleted(todayDay)}
-        className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-xs font-bold tracking-widest uppercase transition-colors ${
+        className={
           isTodayCompleted
-            ? "bg-[#2e7d32] text-white hover:bg-[#256429]"
-            : "bg-[#ffa726] text-[#212121] hover:bg-[#ffb74d]"
-        }`}
+            ? "inline-flex items-center justify-center rounded-full bg-[#2e7d32] px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-[#256429]"
+            : "ui-btn-primary"
+        }
       >
         {isTodayCompleted
           ? `Dia ${todayDay} marcado como lido`

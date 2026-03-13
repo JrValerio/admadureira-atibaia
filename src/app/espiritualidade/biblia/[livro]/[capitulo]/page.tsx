@@ -266,18 +266,18 @@ export default async function BibliaChapterPage({
             </div>
           ) : (
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start mb-8">
-                <div>
+              <div className="mb-8 space-y-6">
+                <div className="space-y-5">
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                     {chapterSeo.groupLabel}
                   </p>
-                  <h1 className="max-w-4xl font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-2">
+                  <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
                     {chapterSeo.introTitle}
                   </h1>
-                  <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#8b5b18] mb-5">
+                  <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#8b5b18]">
                     {chapterSeo.contextLabel}
                   </p>
-                  <div className="max-w-4xl space-y-4 text-[15px] leading-relaxed text-[#555]">
+                  <div className="max-w-none space-y-4 text-[15px] leading-relaxed text-[#555]">
                     <p>{chapterSeo.overviewText}</p>
                     <p>{chapterSeo.chapterPrompt}</p>
                     <p>
@@ -286,9 +286,6 @@ export default async function BibliaChapterPage({
                       estudo da Palavra.
                     </p>
                   </div>
-                </div>
-
-                <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                   <div className="flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
                     <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
                       {languageLabel}
@@ -297,17 +294,22 @@ export default async function BibliaChapterPage({
                       {versionLabel}
                     </span>
                   </div>
+                </div>
 
+                <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                   <div className="flex flex-wrap gap-3">
                     <BibleReadingModeToggle targetId="bible-reading-container" />
                     <BibleShareButton
                       reference={chapterReference}
                       url={chapterUrl}
                     />
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
                     {previousChapter && (
                       <Link
                         href={previousChapter}
-                        className="inline-flex items-center justify-center rounded-full border border-[#212121] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
+                        className="ui-btn-secondary"
                       >
                         Capítulo anterior
                       </Link>
@@ -315,7 +317,7 @@ export default async function BibliaChapterPage({
                     {nextChapter && (
                       <Link
                         href={nextChapter}
-                        className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                        className="ui-btn-primary"
                       >
                         Próximo capítulo
                       </Link>
