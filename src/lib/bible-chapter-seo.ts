@@ -3,7 +3,13 @@ import type { BibleBook } from "@/data/biblia-livros";
 type BookGroup = {
   label: string;
   metadataSnippet: string;
-  intro: string;
+  fallbackOverview: string;
+  fallbackChapterPrompt: string;
+};
+
+type BookSpecificSummary = {
+  overview: string;
+  chapterPrompt: string;
 };
 
 const PENTATEUCH = new Set([
@@ -79,7 +85,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Pentateuco",
       metadataSnippet:
         "Este livro faz parte do Pentateuco e reúne fundamentos da revelação bíblica, da aliança e da formação do povo de Deus.",
-      intro:
+      fallbackOverview:
+        "Este livro faz parte do Pentateuco e reúne fundamentos da revelação bíblica, da aliança e da formação do povo de Deus.",
+      fallbackChapterPrompt:
         "O Pentateuco apresenta os fundamentos da criação, da aliança e da formação do povo de Deus. Este capítulo pode ser lido para estudo bíblico, meditação e compreensão do início da narrativa bíblica.",
     };
   }
@@ -89,7 +97,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Livros históricos",
       metadataSnippet:
         "Este livro pertence aos livros históricos e mostra como Deus conduziu seu povo em diferentes momentos da história bíblica.",
-      intro:
+      fallbackOverview:
+        "Este livro pertence aos livros históricos e mostra como Deus conduziu seu povo em diferentes momentos da história bíblica.",
+      fallbackChapterPrompt:
         "Os livros históricos registram a atuação de Deus na caminhada do seu povo, revelando obediência, quedas, restauração e direção divina. Este capítulo oferece contexto para leitura devocional e estudo da história bíblica.",
     };
   }
@@ -99,7 +109,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Livros poéticos e sapienciais",
       metadataSnippet:
         "Este livro faz parte dos livros poéticos e sapienciais, com textos de oração, louvor, sabedoria e reflexão espiritual.",
-      intro:
+      fallbackOverview:
+        "Este livro faz parte dos livros poéticos e sapienciais, com textos de oração, louvor, sabedoria e reflexão espiritual.",
+      fallbackChapterPrompt:
         "Os livros poéticos e sapienciais reúnem orações, louvores, sabedoria prática e reflexões sobre a vida diante de Deus. Este capítulo ajuda na meditação, na devoção pessoal e na oração diária.",
     };
   }
@@ -109,7 +121,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Profetas maiores",
       metadataSnippet:
         "Este livro faz parte dos profetas maiores e traz mensagens de exortação, esperança, juízo e restauração.",
-      intro:
+      fallbackOverview:
+        "Este livro faz parte dos profetas maiores e traz mensagens de exortação, esperança, juízo e restauração.",
+      fallbackChapterPrompt:
         "Os profetas maiores registram mensagens de exortação, esperança, juízo e restauração dirigidas ao povo de Deus. Este capítulo ajuda a compreender o chamado à fidelidade e a esperança das promessas divinas.",
     };
   }
@@ -119,7 +133,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Profetas menores",
       metadataSnippet:
         "Este livro pertence ao bloco profético do Antigo Testamento, com apelos à fidelidade, arrependimento e esperança.",
-      intro:
+      fallbackOverview:
+        "Este livro pertence ao bloco profético do Antigo Testamento, com apelos à fidelidade, arrependimento e esperança.",
+      fallbackChapterPrompt:
         "Os profetas do Antigo Testamento chamam o povo à fidelidade, ao arrependimento e à confiança na justiça e misericórdia do Senhor. Este capítulo pode ser usado para reflexão bíblica e estudo temático.",
     };
   }
@@ -129,7 +145,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Evangelhos",
       metadataSnippet:
         "Este livro pertence aos Evangelhos e apresenta a vida, os ensinos, os milagres e a obra redentora de Jesus.",
-      intro:
+      fallbackOverview:
+        "Este livro pertence aos Evangelhos e apresenta a vida, os ensinos, os milagres e a obra redentora de Jesus.",
+      fallbackChapterPrompt:
         "Os Evangelhos apresentam a pessoa de Jesus, seus ensinos, milagres e a obra da salvação. Este capítulo é um ponto importante para leitura cristocêntrica, discipulado e meditação espiritual.",
     };
   }
@@ -139,7 +157,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Igreja primitiva",
       metadataSnippet:
         "Este livro mostra a expansão da igreja primitiva, a ação do Espírito Santo e o avanço do Evangelho.",
-      intro:
+      fallbackOverview:
+        "Este livro mostra a expansão da igreja primitiva, a ação do Espírito Santo e o avanço do Evangelho.",
+      fallbackChapterPrompt:
         "Atos dos Apóstolos registra a expansão da igreja, a ação do Espírito Santo e o avanço do Evangelho entre os povos. Este capítulo fortalece a compreensão da missão cristã e da vida da igreja.",
     };
   }
@@ -149,7 +169,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Cartas paulinas",
       metadataSnippet:
         "Este livro pertence às cartas paulinas, com ensino doutrinário, aconselhamento pastoral e aplicação para a vida cristã.",
-      intro:
+      fallbackOverview:
+        "Este livro pertence às cartas paulinas, com ensino doutrinário, aconselhamento pastoral e aplicação para a vida cristã.",
+      fallbackChapterPrompt:
         "As cartas paulinas oferecem ensino doutrinário, aconselhamento pastoral e aplicação prática para a vida cristã. Este capítulo pode ser usado para estudo bíblico, discipulado e fortalecimento da fé.",
     };
   }
@@ -159,7 +181,9 @@ function getBookGroup(book: BibleBook): BookGroup {
       label: "Cartas gerais",
       metadataSnippet:
         "Este livro pertence às cartas gerais do Novo Testamento e traz exortações para perseverança, santidade e maturidade espiritual.",
-      intro:
+      fallbackOverview:
+        "Este livro pertence às cartas gerais do Novo Testamento e traz exortações para perseverança, santidade e maturidade espiritual.",
+      fallbackChapterPrompt:
         "As cartas gerais do Novo Testamento reúnem exortações à perseverança, santidade e maturidade espiritual. Este capítulo ajuda na leitura pastoral, no encorajamento e na prática da fé.",
     };
   }
@@ -168,21 +192,62 @@ function getBookGroup(book: BibleBook): BookGroup {
     label: "Apocalipse",
     metadataSnippet:
       "Este livro apresenta linguagem profética e esperança escatológica, revelando a soberania de Cristo e a vitória final de Deus.",
-    intro:
+    fallbackOverview:
+      "Este livro apresenta linguagem profética e esperança escatológica, revelando a soberania de Cristo e a vitória final de Deus.",
+    fallbackChapterPrompt:
       "Apocalipse apresenta visões proféticas, esperança escatológica e a certeza da vitória final de Cristo. Este capítulo pode ser lido com reverência, oração e atenção ao consolo que Deus oferece ao seu povo.",
   };
 }
 
+const BOOK_SPECIFIC_SUMMARIES: Partial<Record<string, BookSpecificSummary>> = {
+  ester: {
+    overview:
+      "O livro de Ester revela como Deus conduz a história do seu povo mesmo quando sua presença não é mencionada diretamente no texto. A narrativa acompanha Ester, uma jovem judia que se torna rainha da Pérsia e assume um papel decisivo para salvar os judeus de um decreto de destruição.",
+    chapterPrompt:
+      "Neste capítulo, a narrativa avança em direção a um momento decisivo da história, destacando coragem, prudência e confiança em Deus em meio a circunstâncias perigosas.",
+  },
+  salmos: {
+    overview:
+      "O livro de Salmos reúne orações, cânticos e declarações de confiança que acompanham a vida do povo de Deus em momentos de alegria, angústia, arrependimento e esperança.",
+    chapterPrompt:
+      "Este capítulo convida à meditação, à oração e à adoração, ajudando o leitor a transformar a Palavra em resposta espiritual diante de Deus.",
+  },
+  joao: {
+    overview:
+      "O Evangelho de João apresenta Jesus como o Filho de Deus, enfatizando seus sinais, palavras e a vida eterna oferecida àqueles que creem em seu nome.",
+    chapterPrompt:
+      "Neste capítulo, a narrativa destaca a identidade de Cristo e convida o leitor a uma fé mais profunda, centrada na verdade, no amor e na salvação.",
+  },
+  proverbios: {
+    overview:
+      "O livro de Provérbios reúne instruções de sabedoria para a vida diária, mostrando como o temor do Senhor orienta decisões, relacionamentos e o caráter cristão.",
+    chapterPrompt:
+      "Este capítulo oferece conselhos práticos para a caminhada diária e ajuda o leitor a aplicar a sabedoria bíblica em atitudes, palavras e escolhas.",
+  },
+  romanos: {
+    overview:
+      "A carta aos Romanos apresenta de forma profunda o Evangelho da graça, explicando pecado, salvação, justificação pela fé e a nova vida em Cristo.",
+    chapterPrompt:
+      "Neste capítulo, Paulo desenvolve ensino doutrinário essencial para fortalecer a fé, ampliar a compreensão do Evangelho e conduzir o leitor à obediência cristã.",
+  },
+};
+
 export function getBibleChapterSeo(book: BibleBook, chapter: number) {
   const group = getBookGroup(book);
+  const specificSummary = BOOK_SPECIFIC_SUMMARIES[book.slug];
   const chapterLabel = `${book.nome} ${chapter}`;
+  const overviewText = specificSummary?.overview ?? group.fallbackOverview;
+  const chapterPrompt =
+    specificSummary?.chapterPrompt ?? group.fallbackChapterPrompt;
 
   return {
     chapterLabel,
     groupLabel: group.label,
-    metadataDescription: `Leia ${chapterLabel} na Bíblia Online em português. ${group.metadataSnippet}`,
-    introTitle: `${chapterLabel} na Bíblia Online`,
-    introText: `${group.intro} Leia ${chapterLabel} na tradução João Ferreira de Almeida e use o texto para meditação, leitura devocional e estudo bíblico.`,
+    contextLabel: `${group.label} · ${book.testamento}`,
+    metadataDescription: `Leia ${chapterLabel} na Bíblia. ${overviewText}`,
+    introTitle: chapterLabel,
+    overviewText,
+    chapterPrompt,
     keywords: [
       "bíblia online",
       book.nome.toLowerCase(),

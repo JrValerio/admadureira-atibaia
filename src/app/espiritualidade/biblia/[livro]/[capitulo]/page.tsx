@@ -110,6 +110,8 @@ export default async function BibliaChapterPage({
     selectedLanguage,
     preferences.version
   );
+  const languageLabel = getBibleLanguageLabel(selectedLanguage);
+  const versionLabel = getBibleVersionLabel(selectedLanguage, selectedVersion);
 
   if (selectedChapter !== parsedChapter) {
     notFound();
@@ -269,47 +271,56 @@ export default async function BibliaChapterPage({
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                     {chapterSeo.groupLabel}
                   </p>
-                  <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
+                  <h1 className="max-w-4xl font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-2">
                     {chapterSeo.introTitle}
                   </h1>
-                  <p className="text-sm text-[#555] leading-relaxed mb-3">
-                    {chapterSeo.introText}
+                  <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#8b5b18] mb-5">
+                    {chapterSeo.contextLabel}
                   </p>
-                  <p className="text-sm text-[#777] leading-relaxed">
-                    Tradução utilizada: {chapterData?.traducao}
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
-                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      Idioma: {getBibleLanguageLabel(selectedLanguage)}
-                    </span>
-                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      Versão: {getBibleVersionLabel(selectedLanguage, selectedVersion)}
-                    </span>
+                  <div className="max-w-4xl space-y-4 text-[15px] leading-relaxed text-[#555]">
+                    <p>{chapterSeo.overviewText}</p>
+                    <p>{chapterSeo.chapterPrompt}</p>
+                    <p>
+                      Leia {chapterReference} na tradução {versionLabel} e
+                      use este capítulo para meditação, leitura devocional e
+                      estudo da Palavra.
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <BibleReadingModeToggle targetId="bible-reading-container" />
-                  <BibleShareButton
-                    reference={chapterReference}
-                    url={chapterUrl}
-                  />
-                  {previousChapter && (
-                    <Link
-                      href={previousChapter}
-                      className="inline-flex items-center justify-center rounded-full border border-[#212121] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
-                    >
-                      Capítulo anterior
-                    </Link>
-                  )}
-                  {nextChapter && (
-                    <Link
-                      href={nextChapter}
-                      className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
-                    >
-                      Próximo capítulo
-                    </Link>
-                  )}
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
+                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
+                      {languageLabel}
+                    </span>
+                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
+                      {versionLabel}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    <BibleReadingModeToggle targetId="bible-reading-container" />
+                    <BibleShareButton
+                      reference={chapterReference}
+                      url={chapterUrl}
+                    />
+                    {previousChapter && (
+                      <Link
+                        href={previousChapter}
+                        className="inline-flex items-center justify-center rounded-full border border-[#212121] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
+                      >
+                        Capítulo anterior
+                      </Link>
+                    )}
+                    {nextChapter && (
+                      <Link
+                        href={nextChapter}
+                        className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                      >
+                        Próximo capítulo
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
 

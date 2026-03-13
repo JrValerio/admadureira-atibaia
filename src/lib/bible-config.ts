@@ -14,21 +14,21 @@ export const BIBLE_VERSIONS = {
   pt: [
     {
       id: "almeida",
-      label: "João Ferreira de Almeida",
+      label: "Almeida (JFA)",
     },
   ],
   en: [
     {
+      id: "kjv",
+      label: "KJV — King James Version",
+    },
+    {
       id: "web",
-      label: "World English Bible",
+      label: "WEB — World English Bible",
     },
     {
       id: "bbe",
-      label: "Bible in Basic English",
-    },
-    {
-      id: "kjv",
-      label: "King James Version",
+      label: "BBE — Bible in Basic English",
     },
   ],
 } as const;
