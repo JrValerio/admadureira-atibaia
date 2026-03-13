@@ -4,7 +4,9 @@ import HeroPage from "@/components/HeroPage";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import BibleBookSelector from "@/components/biblia/BibleBookSelector";
 import BibleChapterSelector from "@/components/biblia/BibleChapterSelector";
+import BibleReadingModeToggle from "@/components/biblia/BibleReadingModeToggle";
 import BibleShareButton from "@/components/biblia/BibleShareButton";
+import BibleShareVerseButton from "@/components/biblia/BibleShareVerseButton";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
@@ -219,6 +221,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
+                  <BibleReadingModeToggle targetId="bible-reading-container" />
                   <BibleShareButton
                     reference={chapterReference}
                     url={canonicalUrl}
@@ -242,14 +245,28 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="space-y-5">
+              <div
+                id="bible-reading-container"
+                className="mx-auto max-w-[65ch] space-y-5 text-[1.05rem] leading-[1.85] text-[#4f4f4f] transition-all duration-200 data-[reading-mode=true]:max-w-[60ch] data-[reading-mode=true]:text-[1.12rem] data-[reading-mode=true]:leading-[1.95]"
+              >
                 {chapterData?.versiculos.map((verse) => (
-                  <p key={verse.numero} className="text-[#4f4f4f] leading-relaxed">
-                    <span className="mr-3 font-semibold text-[#ef5350]">
+                  <div
+                    key={verse.numero}
+                    id={`v${verse.numero}`}
+                    className="group scroll-mt-28 flex items-start gap-3"
+                  >
+                    <span className="mt-1 min-w-[28px] text-xs font-semibold text-[#ef5350]">
                       {verse.numero}
                     </span>
-                    {verse.texto}
-                  </p>
+                    <p className="flex-1">
+                      {verse.texto}
+                    </p>
+                    <BibleShareVerseButton
+                      reference={`${selectedBook.nome} ${selectedChapter}:${verse.numero}`}
+                      text={verse.texto}
+                      url={`${canonicalUrl}#v${verse.numero}`}
+                    />
+                  </div>
                 ))}
               </div>
 
