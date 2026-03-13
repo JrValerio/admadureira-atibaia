@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
 import { buildEventJsonLd } from "@/lib/event-schema";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -53,7 +53,33 @@ export default async function EventoPage({ params }: PageProps) {
 
   const eventImage =
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+  const canonicalUrl = resolveSiteUrl(`/eventos/${evento.slug}`);
   const eventSchema = buildEventJsonLd(evento);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Eventos",
+        item: resolveSiteUrl("/eventos"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: evento.titulo,
+        item: canonicalUrl,
+      },
+    ],
+  };
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
@@ -61,15 +87,32 @@ export default async function EventoPage({ params }: PageProps) {
         <div className="max-w-5xl mx-auto px-4">
           <script
             type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(breadcrumbSchema),
+            }}
+          />
+          <script
+            type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
           />
 
-          <Link
-            href="/eventos"
-            className="inline-block text-[#ef5350] text-xs font-semibold tracking-widest uppercase hover:underline mb-6"
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#8a8a8a]"
           >
-            ← Voltar para eventos
-          </Link>
+            <Link href="/" className="transition-colors hover:text-[#212121]">
+              Início
+            </Link>
+            <span>›</span>
+            <Link
+              href="/eventos"
+              className="transition-colors hover:text-[#212121]"
+            >
+              Eventos
+            </Link>
+            <span>›</span>
+            <span className="text-[#212121]">{evento.titulo}</span>
+          </nav>
 
           <div className="rounded-3xl overflow-hidden bg-white shadow-lg border border-black/5">
             <div className="relative w-full aspect-[16/9] bg-[#111]">

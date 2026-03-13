@@ -79,6 +79,17 @@ export default function Programacao({
   return (
     <section id="programacao" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
+        <nav
+          aria-label="Breadcrumb"
+          className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#8a8a8a]"
+        >
+          <Link href="/" className="transition-colors hover:text-[#212121]">
+            Início
+          </Link>
+          <span>›</span>
+          <span className="text-[#212121]">Programação</span>
+        </nav>
+
         {showHeader ? (
           <div className="text-center mb-16">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
