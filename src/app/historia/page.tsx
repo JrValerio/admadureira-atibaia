@@ -14,7 +14,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 export default function HistoriaPage() {
-  const presidencia = getPastoresByGrupo("presidencia");
+  const liderancaPastoral = [
+    ...getPastoresByGrupo("presidencia"),
+    ...getPastoresByGrupo("vice-presidencia"),
+  ];
   const congregacoes = getCongregacoes();
 
   return (
@@ -36,7 +39,7 @@ export default function HistoriaPage() {
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Nossa trajetória
               </p>
-              <div className="space-y-4 text-[#555] leading-relaxed">
+              <div className="space-y-4 text-sm md:text-base text-[#555] leading-7 md:leading-8">
                 {historiaIntroducao.map((paragrafo) => (
                   <p key={paragrafo}>{paragrafo}</p>
                 ))}
@@ -78,7 +81,7 @@ export default function HistoriaPage() {
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
                 Marcos da caminhada da igreja
               </h2>
-              <p className="text-[#5f5f5f] leading-relaxed">
+              <p className="text-sm md:text-base text-[#5f5f5f] leading-7 md:leading-8">
                 Uma trajetória construída com oração, serviço cristão e
                 compromisso com a proclamação do Evangelho.
               </p>
@@ -93,7 +96,7 @@ export default function HistoriaPage() {
                   return (
                     <div
                       key={`${marco.periodo}-${marco.titulo}`}
-                      className="relative grid grid-cols-[24px_1fr] md:grid-cols-2 md:gap-10 items-start"
+                      className="relative pl-8 md:pl-0 grid grid-cols-1 md:grid-cols-2 md:gap-10 items-start"
                     >
                       <div
                         className={`hidden md:block ${
@@ -105,15 +108,15 @@ export default function HistoriaPage() {
                           invertido ? "md:order-1" : "md:order-2"
                         }`}
                       >
-                        <div className="absolute left-[-37px] top-3 w-6 h-6 rounded-full border-4 border-white bg-[#ffa726] shadow-sm md:left-auto md:right-auto md:translate-x-[-50%] md:left-0" />
+                        <div className="absolute left-[-21px] top-3 h-6 w-6 rounded-full border-4 border-white bg-[#ffa726] shadow-sm md:left-0 md:translate-x-[-50%]" />
                         <div className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 md:p-7 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
                           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                             {marco.periodo}
                           </p>
-                          <h3 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">
+                          <h3 className="font-acme text-2xl md:text-[2rem] text-[#212121] tracking-wide mb-3">
                             {marco.titulo}
                           </h3>
-                          <p className="text-[#555] leading-relaxed">
+                          <p className="text-sm md:text-base text-[#555] leading-7 md:leading-8">
                             {marco.descricao}
                           </p>
                         </div>
@@ -133,13 +136,13 @@ export default function HistoriaPage() {
               <h2 className="font-acme text-3xl tracking-wide mb-4">
                 Pastores que servem o campo
               </h2>
-              <p className="text-white/75 leading-relaxed mb-6">
+              <p className="text-sm md:text-base text-white/75 leading-7 md:leading-8 mb-6">
                 A liderança pastoral tem sido fundamental para o desenvolvimento
                 da igreja. Pastores e obreiros dedicam suas vidas ao serviço de
                 Deus e ao cuidado espiritual da comunidade.
               </p>
-              <div className="space-y-3 mb-6">
-                {presidencia.map((pastor) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                {liderancaPastoral.map((pastor) => (
                   <div
                     key={pastor.slug}
                     className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
@@ -147,7 +150,9 @@ export default function HistoriaPage() {
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                       {pastor.cargo}
                     </p>
-                    <p className="text-white">{pastor.nome}</p>
+                    <p className="text-sm md:text-base text-white leading-relaxed">
+                      {pastor.nome}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -167,7 +172,7 @@ export default function HistoriaPage() {
                 <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
                   Uma obra que alcança a região
                 </h2>
-                <p className="text-[#555] leading-relaxed mb-6">
+                <p className="text-sm md:text-base text-[#555] leading-7 md:leading-8 mb-6">
                   Hoje o Campo de Atibaia reúne congregações comprometidas com a
                   proclamação do Evangelho e com o fortalecimento da fé cristã em
                   diferentes cidades da região.
@@ -198,7 +203,7 @@ export default function HistoriaPage() {
                 <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
                   Ministérios que servem a comunidade
                 </h2>
-                <p className="text-[#555] leading-relaxed mb-6">
+                <p className="text-sm md:text-base text-[#555] leading-7 md:leading-8 mb-6">
                   A história da igreja também é contada por meio dos ministérios
                   que acolhem, discipulam, adoram e servem diferentes gerações da
                   comunidade cristã.
@@ -217,7 +222,7 @@ export default function HistoriaPage() {
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Uma história que continua
             </p>
-            <p className="text-white/80 leading-relaxed max-w-3xl mx-auto">
+            <p className="max-w-3xl mx-auto text-sm md:text-base text-white/80 leading-7 md:leading-8">
               {historiaEncerramento}
             </p>
           </div>
