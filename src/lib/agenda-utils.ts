@@ -31,6 +31,29 @@ export interface ProximoCompromisso {
   detalhe?: string;
 }
 
+export interface AtividadeHojeNaIgreja {
+  id: string;
+  dia: string;
+  titulo: string;
+  horario?: string;
+  banner?: string;
+}
+
+export interface HojeNaIgrejaUI {
+  dia: string;
+  titulo: string;
+  atividades: AtividadeHojeNaIgreja[];
+}
+
+export interface EventosPorMesUI {
+  id: string;
+  ano: number;
+  mes: string;
+  mesNumero: number;
+  label: string;
+  eventos: EventoFuturo[];
+}
+
 const diasProgramacao: Record<string, number[]> = {
   "Segunda a Sexta": [1, 2, 3, 4, 5],
   "Segunda-feira": [1],
@@ -40,6 +63,16 @@ const diasProgramacao: Record<string, number[]> = {
   "Sexta-feira": [5],
   Domingo: [0],
 };
+
+const diasSemanaPtBr = [
+  "Domingo",
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Sábado",
+];
 
 function primeiroDia(data: string): number {
   const match = data.match(/\d+/);
@@ -77,6 +110,16 @@ function criarCompromissoEvento(evento: EventoFuturo): ProximoCompromisso {
     href: `/eventos/${evento.slug}`,
     origem: "evento",
   };
+}
+
+function criarIdAtividade(item: ItemSemanal, indice: number) {
+  const base = `${item.dia}-${item.titulo}-${item.horario ?? indice}`;
+  return base
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function encontrarProximaOcorrenciaSemanal(
@@ -185,6 +228,84 @@ export function getEventosFuturos(limite?: number) {
     .map((item) => item.evento);
 
   return typeof limite === "number" ? futuros.slice(0, limite) : futuros;
+}
+
+export function getHojeNaIgreja(referencia = new Date()): HojeNaIgrejaUI {
+  const diaSemana = referencia.getDay();
+  const atividades = programacaoSemanal
+    .filter((item) => (diasProgramacao[item.dia] ?? []).includes(diaSemana))
+    .sort((a, b) => {
+      const horarioA = extrairHorario(a.horario);
+      const horarioB = extrairHorario(b.horario);
+      return (
+        horarioA.hora * 60 +
+        horarioA.minuto -
+        (horarioB.hora * 60 + horarioB.minuto)
+      );
+    })
+    .map((item, indice) => ({
+      id: criarIdAtividade(item, indice),
+      dia: item.dia,
+      titulo: item.titulo,
+      horario: item.horario,
+      banner: item.banner,
+    }));
+
+  return {
+    dia: diasSemanaPtBr[diaSemana] ?? "Hoje",
+    titulo: "Hoje na Igreja",
+    atividades,
+  };
+}
+
+export function getNextCultoSemanal(referencia = new Date()): {
+  evento: ProximoCompromisso;
+  dataEvento: Date;
+} | null {
+  return getProximaProgramacaoSemanal(referencia);
+}
+
+export function getEventosDestaque(
+  limite = 3,
+  incluirFallback = true
+): EventoFuturo[] {
+  const futuros = getEventosFuturos();
+  const destaques = futuros.filter((evento) => evento.destaque);
+
+  if (destaques.length > 0) {
+    return destaques.slice(0, limite);
+  }
+
+  return incluirFallback ? futuros.slice(0, limite) : [];
+}
+
+export function groupEventosPorMes(eventos = getEventosFuturos()): EventosPorMesUI[] {
+  const agrupados = new Map<string, EventosPorMesUI>();
+
+  for (const evento of eventos) {
+    const mesNumero = mesParaNumero[evento.mes] ?? 1;
+    const id = `${evento.ano}-${String(mesNumero).padStart(2, "0")}`;
+    const existente = agrupados.get(id);
+
+    if (existente) {
+      existente.eventos.push(evento);
+      continue;
+    }
+
+    agrupados.set(id, {
+      id,
+      ano: evento.ano,
+      mes: evento.mes,
+      mesNumero,
+      label: `${evento.mes} ${evento.ano}`,
+      eventos: [evento],
+    });
+  }
+
+  return [...agrupados.values()].sort((a, b) => {
+    if (a.ano !== b.ano) return a.ano - b.ano;
+    return a.mesNumero - b.mesNumero;
+  });
 }
 
 export function getProximoEventoComData(): {
