@@ -6,6 +6,8 @@ import { useBibleLastReading } from "@/hooks/useBibleLastReading";
 type BibleLastReadingTrackerProps = {
   book: string;
   chapter: number;
+  language: string;
+  version: string;
 };
 
 function readVerseFromHash() {
@@ -22,6 +24,8 @@ function readVerseFromHash() {
 export default function BibleLastReadingTracker({
   book,
   chapter,
+  language,
+  version,
 }: BibleLastReadingTrackerProps) {
   const { saveLastReading } = useBibleLastReading();
 
@@ -31,6 +35,8 @@ export default function BibleLastReadingTracker({
         book,
         chapter,
         verse: readVerseFromHash(),
+        language,
+        version,
       });
     };
 
@@ -40,7 +46,7 @@ export default function BibleLastReadingTracker({
     return () => {
       window.removeEventListener("hashchange", persist);
     };
-  }, [book, chapter, saveLastReading]);
+  }, [book, chapter, language, saveLastReading, version]);
 
   return null;
 }

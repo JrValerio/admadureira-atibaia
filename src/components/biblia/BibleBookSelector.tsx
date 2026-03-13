@@ -1,28 +1,61 @@
 "use client";
 
-import { startTransition, type ChangeEvent, useMemo, useState } from "react";
+import {
+  startTransition,
+  type ChangeEvent,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useRouter } from "next/navigation";
 import {
   getBibleBooksByTestament,
   type BibleBook,
 } from "@/data/biblia-livros";
-import { createBiblePath } from "@/lib/bible-navigation";
+import {
+  getBibleLanguageLabel,
+  getBibleVersionsForLanguage,
+  type BibleLanguage,
+  type BibleVersion,
+} from "@/lib/bible-config";
+import { createBibleHref } from "@/lib/bible-navigation";
 
 type BibleBookSelectorProps = {
   selectedBook: BibleBook;
   selectedChapter: number;
+  selectedLanguage: BibleLanguage;
+  selectedVersion: BibleVersion;
 };
 
 export default function BibleBookSelector({
   selectedBook,
   selectedChapter,
+  selectedLanguage,
+  selectedVersion,
 }: BibleBookSelectorProps) {
   const router = useRouter();
   const [selectedTestament, setSelectedTestament] = useState<BibleBook["testamento"]>(
     selectedBook.testamento
   );
+  const [language, setLanguage] = useState<BibleLanguage>(selectedLanguage);
   const oldTestamentBooks = getBibleBooksByTestament("Antigo Testamento");
   const newTestamentBooks = getBibleBooksByTestament("Novo Testamento");
+  const versions = useMemo(
+    () => getBibleVersionsForLanguage(language),
+    [language]
+  );
+  const resolvedSelectedVersion =
+    versions.find((version) => version.id === selectedVersion)?.id ??
+    versions[0]?.id ??
+    selectedVersion;
+
+  useEffect(() => {
+    setSelectedTestament(selectedBook.testamento);
+  }, [selectedBook.testamento]);
+
+  useEffect(() => {
+    setLanguage(selectedLanguage);
+  }, [selectedLanguage]);
   const filteredBooks = useMemo(
     () =>
       selectedTestament === "Antigo Testamento"
@@ -47,7 +80,14 @@ export default function BibleBookSelector({
 
     startTransition(() => {
       router.push(
-        createBiblePath(nextBook.slug, Math.min(selectedChapter, nextBook.capitulos))
+        createBibleHref(
+          nextBook.slug,
+          Math.min(selectedChapter, nextBook.capitulos),
+          {
+            language,
+            version: resolvedSelectedVersion,
+          }
+        )
       );
     });
   };
@@ -58,7 +98,47 @@ export default function BibleBookSelector({
 
     startTransition(() => {
       router.push(
-        createBiblePath(nextBook.slug, Math.min(selectedChapter, nextBook.capitulos))
+        createBibleHref(
+          nextBook.slug,
+          Math.min(selectedChapter, nextBook.capitulos),
+          {
+            language,
+            version: resolvedSelectedVersion,
+          }
+        )
+      );
+    });
+  };
+
+  const handleLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextLanguage = event.target.value as BibleLanguage;
+    const nextVersion = getBibleVersionsForLanguage(nextLanguage)[0]?.id;
+
+    setLanguage(nextLanguage);
+
+    if (!nextVersion) {
+      return;
+    }
+
+    startTransition(() => {
+      router.push(
+        createBibleHref(selectedBook.slug, selectedChapter, {
+          language: nextLanguage,
+          version: nextVersion,
+        })
+      );
+    });
+  };
+
+  const handleVersionChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const nextVersion = event.target.value as BibleVersion;
+
+    startTransition(() => {
+      router.push(
+        createBibleHref(selectedBook.slug, selectedChapter, {
+          language,
+          version: nextVersion,
+        })
       );
     });
   };
@@ -105,6 +185,39 @@ export default function BibleBookSelector({
             {filteredBooks.map((book) => (
               <option key={book.id} value={book.slug}>
                 {book.nome}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label className="block mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
+            Idioma
+          </label>
+          <select
+            value={language}
+            onChange={handleLanguageChange}
+            aria-label="Selecionar idioma da Bíblia"
+            className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
+          >
+            <option value="pt">{getBibleLanguageLabel("pt")}</option>
+            <option value="en">{getBibleLanguageLabel("en")}</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="block mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
+            Versão
+          </label>
+          <select
+            value={resolvedSelectedVersion}
+            onChange={handleVersionChange}
+            aria-label="Selecionar versão da Bíblia"
+            className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
+          >
+            {versions.map((version) => (
+              <option key={version.id} value={version.id}>
+                {version.label}
               </option>
             ))}
           </select>

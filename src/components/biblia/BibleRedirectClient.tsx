@@ -8,11 +8,19 @@ import {
   getBibleBookBySlug,
 } from "@/data/biblia-livros";
 import { useBibleLastReading } from "@/hooks/useBibleLastReading";
-import { clampBibleChapter, createBiblePath } from "@/lib/bible-navigation";
+import {
+  DEFAULT_BIBLE_LANGUAGE,
+  DEFAULT_BIBLE_VERSION,
+  getBibleLanguage,
+  getBibleVersion,
+} from "@/lib/bible-config";
+import { clampBibleChapter, createBibleHref } from "@/lib/bible-navigation";
 
 type BibleRedirectClientProps = {
   livro?: string;
   capitulo?: string;
+  lang?: string;
+  version?: string;
 };
 
 function parseChapter(value?: string | null) {
@@ -28,6 +36,8 @@ function parseChapter(value?: string | null) {
 export default function BibleRedirectClient({
   livro,
   capitulo,
+  lang,
+  version,
 }: BibleRedirectClientProps) {
   const router = useRouter();
   const { lastReading } = useBibleLastReading();
@@ -44,6 +54,13 @@ export default function BibleRedirectClient({
       queryBook ||
       (lastReading ? getBibleBookBySlug(lastReading.book) : null) ||
       fallbackBook;
+    const selectedLanguage = getBibleLanguage(
+      lang || lastReading?.language || DEFAULT_BIBLE_LANGUAGE
+    );
+    const selectedVersion = getBibleVersion(
+      selectedLanguage,
+      version || lastReading?.version || DEFAULT_BIBLE_VERSION
+    );
 
     const selectedChapter = clampBibleChapter(
       selectedBook,
@@ -53,12 +70,14 @@ export default function BibleRedirectClient({
     );
 
     const selectedVerse = queryBook ? undefined : lastReading?.verse;
-    const path = createBiblePath(selectedBook.slug, selectedChapter);
-    const href =
-      typeof selectedVerse === "number" ? `${path}#v${selectedVerse}` : path;
+    const href = createBibleHref(selectedBook.slug, selectedChapter, {
+      language: selectedLanguage,
+      version: selectedVersion,
+      verse: selectedVerse,
+    });
 
     router.replace(href);
-  }, [capitulo, lastReading, livro, router]);
+  }, [capitulo, lang, lastReading, livro, router, version]);
 
   return (
     <section className="min-h-[40vh] bg-[#f5f5f5] px-4 py-16">

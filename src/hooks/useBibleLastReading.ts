@@ -8,6 +8,8 @@ export type BibleLastReading = {
   book: string;
   chapter: number;
   verse?: number;
+  language?: string;
+  version?: string;
 };
 
 function normalizeLastReading(value: unknown): BibleLastReading | null {
@@ -25,6 +27,10 @@ function normalizeLastReading(value: unknown): BibleLastReading | null {
     book: parsed.book,
     chapter: parsed.chapter,
     ...(typeof parsed.verse === "number" ? { verse: parsed.verse } : {}),
+    ...(typeof parsed.language === "string"
+      ? { language: parsed.language }
+      : {}),
+    ...(typeof parsed.version === "string" ? { version: parsed.version } : {}),
   };
 }
 

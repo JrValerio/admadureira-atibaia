@@ -12,13 +12,27 @@ import BibleVerseAnchorHandler from "@/components/biblia/BibleVerseAnchorHandler
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
-import { clampBibleChapter, createBiblePath } from "@/lib/bible-navigation";
+import {
+  getBibleLanguage,
+  getBibleLanguageLabel,
+  getBibleVersion,
+  getBibleVersionLabel,
+} from "@/lib/bible-config";
+import {
+  clampBibleChapter,
+  createBibleHref,
+  createBiblePath,
+} from "@/lib/bible-navigation";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
     livro: string;
     capitulo: string;
+  }>;
+  searchParams: Promise<{
+    lang?: string;
+    version?: string;
   }>;
 };
 
@@ -34,8 +48,9 @@ function parseChapter(value: string) {
   return parsed;
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params, searchParams }: PageProps) {
   const { livro, capitulo } = await params;
+  const preferences = await searchParams;
   const selectedBook = getBibleBookBySlug(livro);
 
   if (!selectedBook) {
@@ -53,19 +68,29 @@ export async function generateMetadata({ params }: PageProps) {
     chapterNumber === null
       ? 1
       : clampBibleChapter(selectedBook, chapterNumber);
+  const selectedLanguage = getBibleLanguage(preferences.lang);
+  const selectedVersion = getBibleVersion(
+    selectedLanguage,
+    preferences.version
+  );
+  const versionLabel = getBibleVersionLabel(selectedLanguage, selectedVersion);
   const chapterSeo = getBibleChapterSeo(selectedBook, normalizedChapter);
 
   return buildPageMetadata({
-    title: `${chapterSeo.chapterLabel} | Bíblia Online`,
-    description: chapterSeo.metadataDescription,
+    title: `${chapterSeo.chapterLabel} | Bíblia Online ${versionLabel}`,
+    description: `${chapterSeo.metadataDescription} Leitura disponível em ${versionLabel}.`,
     path: createBiblePath(selectedBook.slug, normalizedChapter),
     image: "/pulpito-da-igreja.jpg",
     keywords: chapterSeo.keywords,
   });
 }
 
-export default async function BibliaChapterPage({ params }: PageProps) {
+export default async function BibliaChapterPage({
+  params,
+  searchParams,
+}: PageProps) {
   const { livro, capitulo } = await params;
+  const preferences = await searchParams;
   const selectedBook = getBibleBookBySlug(livro);
 
   if (!selectedBook) {
@@ -80,6 +105,11 @@ export default async function BibliaChapterPage({ params }: PageProps) {
 
   const selectedChapter = clampBibleChapter(selectedBook, parsedChapter);
   const chapterSeo = getBibleChapterSeo(selectedBook, selectedChapter);
+  const selectedLanguage = getBibleLanguage(preferences.lang);
+  const selectedVersion = getBibleVersion(
+    selectedLanguage,
+    preferences.version
+  );
 
   if (selectedChapter !== parsedChapter) {
     notFound();
@@ -89,7 +119,11 @@ export default async function BibliaChapterPage({ params }: PageProps) {
   let errorMessage = "";
 
   try {
-    chapterData = await getBibleChapter(selectedBook.id, selectedChapter);
+    chapterData = await getBibleChapter(
+      selectedBook.id,
+      selectedChapter,
+      selectedVersion
+    );
   } catch {
     errorMessage =
       "Não foi possível carregar este capítulo agora. Tente novamente em instantes ou escolha outra referência.";
@@ -97,14 +131,26 @@ export default async function BibliaChapterPage({ params }: PageProps) {
 
   const previousChapter =
     selectedChapter > 1
-      ? createBiblePath(selectedBook.slug, selectedChapter - 1)
+      ? createBibleHref(selectedBook.slug, selectedChapter - 1, {
+          language: selectedLanguage,
+          version: selectedVersion,
+        })
       : null;
   const nextChapter =
     selectedChapter < selectedBook.capitulos
-      ? createBiblePath(selectedBook.slug, selectedChapter + 1)
+      ? createBibleHref(selectedBook.slug, selectedChapter + 1, {
+          language: selectedLanguage,
+          version: selectedVersion,
+        })
       : null;
   const canonicalPath = createBiblePath(selectedBook.slug, selectedChapter);
   const canonicalUrl = resolveSiteUrl(canonicalPath);
+  const chapterUrl = resolveSiteUrl(
+    createBibleHref(selectedBook.slug, selectedChapter, {
+      language: selectedLanguage,
+      version: selectedVersion,
+    })
+  );
   const chapterReference = `${selectedBook.nome} ${selectedChapter}`;
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -184,6 +230,8 @@ export default async function BibliaChapterPage({ params }: PageProps) {
           <BibleLastReadingTracker
             book={selectedBook.slug}
             chapter={selectedChapter}
+            language={selectedLanguage}
+            version={selectedVersion}
           />
           <BibleVerseAnchorHandler />
           <SpiritualBreadcrumb
@@ -198,11 +246,15 @@ export default async function BibliaChapterPage({ params }: PageProps) {
             <BibleBookSelector
               selectedBook={selectedBook}
               selectedChapter={selectedChapter}
+              selectedLanguage={selectedLanguage}
+              selectedVersion={selectedVersion}
             />
             <BibleChapterSelector
               selectedBook={selectedBook}
               selectedChapter={selectedChapter}
               verseCount={chapterData?.versiculos.length ?? 0}
+              selectedLanguage={selectedLanguage}
+              selectedVersion={selectedVersion}
             />
           </div>
 
@@ -228,10 +280,10 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                   </p>
                   <div className="mt-4 flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
                     <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      Idioma: Português
+                      Idioma: {getBibleLanguageLabel(selectedLanguage)}
                     </span>
                     <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      Versão: Almeida
+                      Versão: {getBibleVersionLabel(selectedLanguage, selectedVersion)}
                     </span>
                   </div>
                 </div>
@@ -240,7 +292,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                   <BibleReadingModeToggle targetId="bible-reading-container" />
                   <BibleShareButton
                     reference={chapterReference}
-                    url={canonicalUrl}
+                    url={chapterUrl}
                   />
                   {previousChapter && (
                     <Link
@@ -280,7 +332,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
                     <BibleShareVerseButton
                       reference={`${selectedBook.nome} ${selectedChapter}:${verse.numero}`}
                       text={verse.texto}
-                      url={`${canonicalUrl}#v${verse.numero}`}
+                      url={`${chapterUrl}#v${verse.numero}`}
                     />
                   </div>
                 ))}
@@ -289,7 +341,7 @@ export default async function BibliaChapterPage({ params }: PageProps) {
               <div className="mt-10 border-t border-black/5 pt-6">
                 <BibleShareButton
                   reference={chapterReference}
-                  url={canonicalUrl}
+                  url={chapterUrl}
                 />
               </div>
             </div>

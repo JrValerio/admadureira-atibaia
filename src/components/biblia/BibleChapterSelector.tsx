@@ -4,12 +4,15 @@ import Link from "next/link";
 import { startTransition, type ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { BibleBook } from "@/data/biblia-livros";
-import { createBiblePath } from "@/lib/bible-navigation";
+import type { BibleLanguage, BibleVersion } from "@/lib/bible-config";
+import { createBibleHref } from "@/lib/bible-navigation";
 
 type BibleChapterSelectorProps = {
   selectedBook: BibleBook;
   selectedChapter: number;
   verseCount: number;
+  selectedLanguage: BibleLanguage;
+  selectedVersion: BibleVersion;
 };
 
 const POPULAR_CHAPTERS: Partial<Record<string, number[]>> = {
@@ -20,6 +23,8 @@ export default function BibleChapterSelector({
   selectedBook,
   selectedChapter,
   verseCount,
+  selectedLanguage,
+  selectedVersion,
 }: BibleChapterSelectorProps) {
   const router = useRouter();
   const popularChapters = POPULAR_CHAPTERS[selectedBook.slug] ?? [];
@@ -51,7 +56,12 @@ export default function BibleChapterSelector({
     }
 
     startTransition(() => {
-      router.push(createBiblePath(selectedBook.slug, chapter));
+      router.push(
+        createBibleHref(selectedBook.slug, chapter, {
+          language: selectedLanguage,
+          version: selectedVersion,
+        })
+      );
     });
   };
 
@@ -135,7 +145,11 @@ export default function BibleChapterSelector({
               return (
                 <Link
                   key={chapter}
-                  href={createBiblePath(selectedBook.slug, chapter)}
+                  href={createBibleHref(selectedBook.slug, chapter, {
+                    language: selectedLanguage,
+                    version: selectedVersion,
+                  })}
+                  aria-label={`Ir para ${selectedBook.nome} capítulo ${chapter}`}
                   className={`inline-flex items-center rounded-full border px-3 py-1.5 text-sm transition-colors ${
                     isActive
                       ? "border-[#ffa726] bg-[#ffa726] text-[#212121]"
