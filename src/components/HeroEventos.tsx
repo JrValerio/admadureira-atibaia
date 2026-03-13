@@ -72,7 +72,7 @@ export default function HeroEventos() {
 
   return (
     <section
-      className="relative w-full aspect-[16/9] overflow-hidden bg-[#111]"
+      className="relative w-full aspect-[5/6] sm:aspect-[4/3] md:aspect-[16/9] overflow-hidden bg-[#111]"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setFocusWithin(true)}
@@ -105,12 +105,12 @@ export default function HeroEventos() {
             fill
             priority={i === 0}
             sizes="100vw"
-            className="object-contain transition-transform duration-500 group-hover:scale-[1.01]"
+            className="object-cover object-center md:object-contain transition-transform duration-500 group-hover:scale-[1.01]"
           />
           <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/20" />
           <div className="absolute inset-0 banner-light pointer-events-none" />
 
-          <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8 md:bottom-10 md:left-10 md:right-auto max-w-xl text-white pointer-events-none">
+          <div className="absolute bottom-8 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8 md:bottom-10 md:left-10 md:right-auto max-w-xl text-white pointer-events-none">
             {(ev.data || ev.horario) && (
               <p className="text-[#ffa726] text-[10px] sm:text-xs font-bold tracking-[0.26em] uppercase mb-2 drop-shadow-[0_3px_8px_rgba(0,0,0,0.6)]">
                 {ev.data}
@@ -118,7 +118,7 @@ export default function HeroEventos() {
                 {ev.horario}
               </p>
             )}
-            <h2 className="font-acme text-white text-2xl sm:text-3xl md:text-4xl tracking-wide leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.72)]">
+            <h2 className="font-acme text-white text-[1.75rem] sm:text-3xl md:text-4xl tracking-wide leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.72)]">
               {ev.titulo}
             </h2>
           </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 type MenuLink = {
@@ -118,6 +119,29 @@ export default function Navbar() {
           }`}
         >
           <div className="hidden xl:block" />
+
+          <Link
+            href="/"
+            className="flex items-center gap-3 xl:hidden"
+            aria-label="Voltar para a página inicial"
+          >
+            <Image
+              src="/logo-transparent.png"
+              alt="Logo AD Madureira Atibaia"
+              width={42}
+              height={42}
+              className="shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+              style={{ height: "auto" }}
+            />
+            <div className="min-w-0">
+              <p className="font-script text-[#f7dfbb] text-[1.6rem] leading-none">
+                Assembleia de Deus
+              </p>
+              <p className="text-white/72 text-[9px] tracking-[0.28em] uppercase mt-1">
+                Madureira · Atibaia
+              </p>
+            </div>
+          </Link>
 
           <nav className="hidden xl:flex items-center justify-center gap-8 2xl:gap-10">
             {menu.map((item) => {

@@ -1,4 +1,4 @@
-import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
+import { Card, Section, SectionTitle } from "@/components/ui";
 
 const cultos = [
   {
@@ -58,11 +58,11 @@ export default function Cultos() {
         description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <CardGrid className="mb-12">
+      <div className="mb-12 -mx-4 flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 xl:grid-cols-3 md:gap-6 md:px-0 md:overflow-visible md:pb-0">
         {cultos.map((culto) => (
           <Card
             key={culto.dia}
-            className="border border-black/5 bg-white p-7"
+            className="min-w-[260px] snap-start border border-black/5 bg-white p-6 md:min-w-0 md:p-7"
           >
             <h3 className="mb-4 font-acme text-xl tracking-wide text-[#212121]">
               {culto.dia}
@@ -81,7 +81,7 @@ export default function Cultos() {
             </ul>
           </Card>
         ))}
-      </CardGrid>
+      </div>
 
       <Card className="mx-auto max-w-2xl border border-[#ffa726]/20 bg-white p-7 text-center">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">

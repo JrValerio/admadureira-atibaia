@@ -166,7 +166,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Horários de Culto
           </h4>
