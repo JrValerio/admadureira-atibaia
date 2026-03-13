@@ -7,7 +7,7 @@ export const revalidate = 3600;
 export const metadata = buildPageMetadata({
   title: "Programação da Igreja | AD Madureira Atibaia",
   description:
-    "Veja a programação semanal da AD Madureira Atibaia e acompanhe a agenda anual de 2026 com cultos, reuniões e eventos especiais da igreja.",
+    "Veja a programação semanal da AD Madureira Atibaia com cultos, reuniões e atividades fixas da igreja ao longo da semana.",
   path: "/programacao",
 });
 
@@ -18,7 +18,7 @@ export default function ProgramacaoPage() {
         variant="full"
         label="Vida da Igreja"
         title="Programação da Igreja"
-        description="Veja a programação semanal da AD Madureira Atibaia e acompanhe a agenda anual de 2026 com cultos, reuniões e eventos especiais da igreja."
+        description="Veja os cultos, reuniões e atividades fixas da AD Madureira Atibaia ao longo da semana."
         image="/fachada-da-igreja.jpg"
         imageAlt="Fachada da AD Madureira Atibaia"
       />
