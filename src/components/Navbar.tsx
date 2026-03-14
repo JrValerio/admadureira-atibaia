@@ -27,6 +27,7 @@ const menu: MenuItem[] = [
   {
     label: "Nossa Igreja",
     children: [
+      { label: "Sobre a Igreja", href: "/sobre" },
       { label: "História", href: "/historia" },
       { label: "Pastores", href: "/pastores" },
       { label: "Congregações", href: "/congregacoes" },
