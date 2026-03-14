@@ -105,6 +105,22 @@ export default function Footer() {
               {versiculoFooter.referencia}
             </footer>
           </blockquote>
+
+          <div className="flex flex-wrap gap-3 pt-1">
+            {redes.map((rede) => (
+              <a
+                key={rede.nome}
+                href={rede.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={rede.nome}
+                title={rede.nome}
+                className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
+              >
+                {rede.icon}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
@@ -170,45 +186,13 @@ export default function Footer() {
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Horários de Culto
           </h4>
-          <ul className="space-y-3 text-sm leading-relaxed">
+          <ul className="space-y-4 text-sm leading-relaxed">
             {horariosResumidos.map((horario) => (
-              <li
-                key={horario}
-                className="border-b border-white/6 pb-2 last:border-b-0 last:pb-0"
-              >
+              <li key={horario}>
                 {horario}
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col items-center gap-4 px-6 py-6 md:flex-row md:justify-between">
-          <div className="text-center md:text-left">
-            <p className="font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Siga-nos
-            </p>
-            <p className="mt-1 text-xs text-white/35">
-              Acompanhe a igreja nas plataformas oficiais.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            {redes.map((rede) => (
-              <a
-                key={rede.nome}
-                href={rede.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={rede.nome}
-                title={rede.nome}
-                className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/75 transition-colors hover:border-[#ffa726]/60 hover:bg-[#ffa726] hover:text-[#111]"
-              >
-                {rede.icon}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
 
