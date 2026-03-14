@@ -79,7 +79,7 @@ export default function HistoriasDeFe() {
                   {testemunho.resumo}
                 </p>
                 <p className="text-[#777] text-sm">Por: {testemunho.nome}</p>
-                <p className="ui-link-accent mt-5">
+                <p className="ui-link-accent mt-5 inline-flex">
                   Ler testemunho →
                 </p>
               </div>

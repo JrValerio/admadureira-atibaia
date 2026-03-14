@@ -28,38 +28,38 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
       ) : null}
 
       <CardGrid columns={4}>
-          {ministerios.map((min) => (
-            <Card
-              key={min.slug}
-              as={Link}
-              href={`/ministerios/${min.slug}`}
-              className="group overflow-hidden"
-            >
-              <CardMedia
-                src={min.imagem}
-                alt={min.nome}
-                variant="institutional"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                imageClassName="group-hover:scale-105"
-                className="rounded-none"
-              />
+        {ministerios.map((min) => (
+          <Card
+            key={min.slug}
+            as={Link}
+            href={`/ministerios/${min.slug}`}
+            className="group overflow-hidden"
+          >
+            <CardMedia
+              src={min.imagem}
+              alt={min.nome}
+              variant="institutional"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              imageClassName="group-hover:scale-105"
+              className="rounded-none"
+            />
 
-              <div className="p-5">
-                <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
-                  {min.escopo}
-                </p>
-                <h3 className="font-acme text-[#212121] text-xl mb-2 group-hover:text-[#ffa726] transition-colors tracking-wide">
-                  {min.nome}
-                </h3>
-                <p className="text-[#757575] text-sm leading-relaxed line-clamp-3">
-                  {min.resumo}
-                </p>
-                <p className="ui-link-accent mt-4">
-                  Ver ministério →
-                </p>
-              </div>
-            </Card>
-          ))}
+            <div className="p-5">
+              <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
+                {min.escopo}
+              </p>
+              <h3 className="font-acme text-[#212121] text-xl mb-2 group-hover:text-[#ffa726] transition-colors tracking-wide">
+                {min.nome}
+              </h3>
+              <p className="text-[#757575] text-sm leading-relaxed line-clamp-3">
+                {min.resumo}
+              </p>
+              <p className="ui-link-accent mt-4 inline-flex">
+                Ver ministério →
+              </p>
+            </div>
+          </Card>
+        ))}
       </CardGrid>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">

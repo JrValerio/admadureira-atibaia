@@ -88,7 +88,7 @@ export default function TestemunhosPage() {
               <Link
                 key={testemunho.slug}
                 href={`/testemunhos/${testemunho.slug}`}
-                className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+                className="ui-card group overflow-hidden"
               >
                 <CardMedia
                   src={testemunho.foto}
@@ -115,7 +115,7 @@ export default function TestemunhosPage() {
                     {testemunho.resumo}
                   </p>
                   <p className="text-[#777] text-sm">Por: {testemunho.nome}</p>
-                  <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
+                  <p className="ui-link-accent mt-5 inline-flex">
                     Ler testemunho →
                   </p>
                 </div>

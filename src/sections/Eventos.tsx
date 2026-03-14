@@ -15,7 +15,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
   return (
     <Link
       href={`/eventos/${evento.slug}`}
-      className="group rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
+      className="ui-card group overflow-hidden rounded-[1.6rem]"
     >
       <CardMedia
         src={evento.imagem ?? evento.banner}
@@ -31,7 +31,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
           {evento.data} · {evento.mes}
         </p>
-        <h3 className="font-acme text-[#212121] text-2xl tracking-wide leading-tight mb-3">
+        <h3 className="font-acme text-[#212121] text-2xl tracking-wide leading-tight mb-3 transition-colors group-hover:text-[#ef5350]">
           {evento.titulo}
         </h3>
         {evento.horario ? (
@@ -40,7 +40,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
         {evento.local ? (
           <p className="text-xs text-[#8a8a8a] leading-relaxed">{evento.local}</p>
         ) : null}
-        <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
+        <p className="ui-link-accent mt-5 inline-flex">
           Ver evento →
         </p>
       </div>

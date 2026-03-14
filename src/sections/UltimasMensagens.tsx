@@ -64,7 +64,7 @@ export default function UltimasMensagens() {
                 <p className="text-[#777] text-sm">
                   Pregador: {mensagem.pregador ?? "AD Madureira Atibaia"}
                 </p>
-                <p className="ui-link-accent mt-5">
+                <p className="ui-link-accent mt-5 inline-flex">
                   Ver mensagem →
                 </p>
               </div>

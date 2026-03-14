@@ -46,7 +46,7 @@ export default function ProximosEventos() {
           />
           <Link
             href="/programacao"
-            className="ui-link-accent"
+            className="ui-link-accent inline-flex"
           >
             Ver agenda completa →
           </Link>
@@ -57,8 +57,8 @@ export default function ProximosEventos() {
             <Link
               key={ev.slug}
               href={`/eventos/${ev.slug}`}
-            className="ui-card group block overflow-hidden rounded-[1.6rem]"
-          >
+              className="ui-card group block overflow-hidden rounded-[1.6rem]"
+            >
               {ev.imagem || ev.banner ? (
                 <CardMedia
                   src={ev.imagem ?? ev.banner}
@@ -89,13 +89,13 @@ export default function ProximosEventos() {
                     {ev.data} · {ev.mes}
                   </p>
                 )}
-                <h3 className="font-acme text-lg leading-tight tracking-wide text-[#212121] transition-colors group-hover:text-[#ef5350]">
+                <h3 className="line-clamp-2 font-acme text-lg leading-tight tracking-wide text-[#212121] transition-colors group-hover:text-[#ef5350]">
                   {ev.titulo}
                 </h3>
                 {ev.horario && (
                   <p className="mt-2 text-sm text-[#6c6c6c]">{ev.horario}</p>
                 )}
-                <p className="ui-link-accent mt-5">
+                <p className="ui-link-accent mt-5 inline-flex">
                   Ver detalhes →
                 </p>
               </div>

@@ -33,7 +33,7 @@ export default function YouTubePreviewCard({
   const thumbnailSrc = thumbnailSources[thumbnailIndex];
 
   return (
-    <div className="rounded-2xl overflow-hidden shadow-md bg-white border border-black/5">
+    <div className="ui-card overflow-hidden">
       <div className="aspect-video bg-[#111]">
         {playing ? (
           <iframe
@@ -81,7 +81,7 @@ export default function YouTubePreviewCard({
             {badge}
           </p>
         )}
-        <p className="font-acme text-[#212121] text-sm tracking-wide">
+        <p className="line-clamp-2 font-acme text-[#212121] text-sm tracking-wide">
           {video.title}
         </p>
       </div>
