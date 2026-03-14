@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import CardMedia from "@/components/media/CardMedia";
 import { CardGrid, Section, SectionTitle } from "@/components/ui";
 import { getEventosFuturos, getProximosEventos } from "@/lib/agenda-utils";
 import { useReveal } from "@/hooks/useReveal";
@@ -57,19 +57,18 @@ export default function ProximosEventos() {
             <Link
               key={ev.slug}
               href={`/eventos/${ev.slug}`}
-              className="ui-card group block overflow-hidden rounded-[1.6rem]"
-            >
+            className="ui-card group block overflow-hidden rounded-[1.6rem]"
+          >
               {ev.imagem || ev.banner ? (
-                <div className="relative w-full aspect-video">
-                  <Image
-                    src={ev.imagem ?? ev.banner ?? "/fachada-da-igreja.jpg"}
-                    alt={ev.titulo}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
-                </div>
+                <CardMedia
+                  src={ev.imagem ?? ev.banner}
+                  alt={ev.titulo}
+                  variant="event"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  zoomOnHover
+                  imageClassName="group-hover:scale-[1.02]"
+                  className="rounded-none"
+                />
               ) : (
                 <div className="flex items-center gap-3 bg-[#212121] px-4 py-4">
                   <div className="flex min-w-12 flex-col items-center rounded-lg bg-[#ffa726] px-3 py-1 text-center">

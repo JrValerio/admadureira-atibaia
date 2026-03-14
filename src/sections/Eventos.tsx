@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import CardMedia from "@/components/media/CardMedia";
 import {
   groupEventosPorMes,
   type EventoFuturo,
@@ -17,15 +17,15 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
       href={`/eventos/${evento.slug}`}
       className="group rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
     >
-      <div className="relative w-full aspect-video bg-[#f5f5f5]">
-        <Image
-          src={evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"}
-          alt={evento.titulo}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-        />
-      </div>
+      <CardMedia
+        src={evento.imagem ?? evento.banner}
+        alt={evento.titulo}
+        variant="event"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        zoomOnHover
+        imageClassName="group-hover:scale-[1.02]"
+        className="rounded-none"
+      />
 
       <div className="p-5">
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">

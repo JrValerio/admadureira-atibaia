@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import CardMedia from "@/components/media/CardMedia";
 import { Card, CardGrid, Section, SectionTitle } from "@/components/ui";
 import { getMinisterios } from "@/data/ministerios";
 
@@ -35,16 +35,14 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
               href={`/ministerios/${min.slug}`}
               className="group overflow-hidden"
             >
-              <div className="relative aspect-[4/3] bg-[#111] overflow-hidden">
-                <Image
-                  src={min.imagem ?? "/fachada-da-igreja.jpg"}
-                  alt={min.nome}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 to-transparent" />
-              </div>
+              <CardMedia
+                src={min.imagem}
+                alt={min.nome}
+                variant="institutional"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                imageClassName="group-hover:scale-105"
+                className="rounded-none"
+              />
 
               <div className="p-5">
                 <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">

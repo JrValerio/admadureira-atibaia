@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import CardMedia from "@/components/media/CardMedia";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getMensagensRecentes } from "@/data/mensagens";
 import {
@@ -112,19 +112,18 @@ export default function MensagensPage() {
                 href={`/mensagens/${mensagem.slug}`}
                 className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
-                  <Image
-                    src={mensagem.capa ?? "/pulpito-da-igreja.jpg"}
-                    alt={mensagem.titulo}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
+                <CardMedia
+                  src={mensagem.capa}
+                  alt={mensagem.titulo}
+                  variant="content"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  zoomOnHover
+                  className="rounded-none"
+                >
                   <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-xs font-semibold tracking-widest uppercase">
                     Assistir mensagem
                   </div>
-                </div>
+                </CardMedia>
 
                 <div className="p-6">
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">

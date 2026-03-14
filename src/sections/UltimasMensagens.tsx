@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import CardMedia from "@/components/media/CardMedia";
 import { CardGrid, Section, SectionTitle } from "@/components/ui";
 import { getMensagemThumbnailUrl, getMensagensRecentes } from "@/data/mensagens";
 
@@ -41,19 +41,18 @@ export default function UltimasMensagens() {
               href={`/mensagens/${mensagem.slug}`}
               className="ui-card group overflow-hidden rounded-[1.6rem]"
             >
-              <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
-                <Image
-                  src={getMensagemThumbnailUrl(mensagem.youtubeId)}
-                  alt={mensagem.titulo}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/25 to-transparent" />
+              <CardMedia
+                src={getMensagemThumbnailUrl(mensagem.youtubeId)}
+                alt={mensagem.titulo}
+                variant="content"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                zoomOnHover
+                className="rounded-none"
+              >
                 <div className="absolute left-4 bottom-4 rounded-full bg-black/55 px-3 py-2 text-white text-[11px] font-semibold tracking-widest uppercase">
                   {formatMensagemDate(mensagem.data)}
                 </div>
-              </div>
+              </CardMedia>
 
               <div className="p-6">
                 <h3 className="font-acme text-xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors line-clamp-2">
