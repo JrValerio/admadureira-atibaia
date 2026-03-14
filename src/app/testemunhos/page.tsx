@@ -26,6 +26,24 @@ export default function TestemunhosPage() {
   const testemunhosEmVideo = testemunhos.filter(
     (testemunho) => testemunho.youtubeId
   ).length;
+  const stats = [
+    {
+      label: "Testemunhos publicados",
+      value: String(testemunhos.length),
+    },
+    ...(testemunhosEmVideo > 0
+      ? [
+          {
+            label: "Testemunhos em vídeo",
+            value: String(testemunhosEmVideo),
+          },
+        ]
+      : []),
+    {
+      label: "Conteúdo local",
+      value: "Atibaia",
+    },
+  ];
 
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
@@ -41,29 +59,24 @@ export default function TestemunhosPage() {
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                Testemunhos publicados
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">
-                {testemunhos.length}
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                Testemunhos em vídeo
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">
-                {testemunhosEmVideo}
-              </p>
-            </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                Conteúdo local
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">Atibaia</p>
-            </div>
+          <div
+            className={`mb-12 grid grid-cols-1 gap-4 ${
+              stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+            }`}
+          >
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm"
+              >
+                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                  {stat.label}
+                </p>
+                <p className="font-acme text-4xl text-[#212121]">
+                  {stat.value}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">

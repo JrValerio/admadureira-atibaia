@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
@@ -5,16 +6,32 @@ import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { podcastConfig } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
 
-export const metadata = buildPageMetadata({
-  title: "Podcast | AD Madureira Atibaia",
-  description:
-    "Página preparada para episódios em áudio, séries temáticas e distribuição do podcast da AD Madureira Atibaia.",
-  path: "/espiritualidade/podcast",
-  image: igrejaHeroMedia.podcast,
-});
+const hasConfiguredPodcastFeed = podcastConfig.spotifyEmbedUrl.length > 0;
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "Podcast | AD Madureira Atibaia",
+    description:
+      "Página preparada para episódios em áudio, séries temáticas e distribuição do podcast da AD Madureira Atibaia.",
+    path: "/espiritualidade/podcast",
+    image: igrejaHeroMedia.podcast,
+  }),
+  ...(!hasConfiguredPodcastFeed
+    ? {
+        robots: {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+          },
+        },
+      }
+    : {}),
+};
 
 export default function PodcastPage() {
-  const hasEmbed = podcastConfig.spotifyEmbedUrl.length > 0;
+  const hasEmbed = hasConfiguredPodcastFeed;
   const statusLabel = hasEmbed ? "Episódios disponíveis" : podcastConfig.statusLabel;
   const statusClassName = hasEmbed
     ? "border-emerald-500/20 bg-emerald-50 text-emerald-700"

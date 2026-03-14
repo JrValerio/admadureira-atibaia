@@ -3,6 +3,7 @@ import { Acme, Alex_Brush } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { programacaoSemanal } from "@/data/agenda";
 import {
   SITE_DEFAULT_SHARE_IMAGE,
   SITE_NAME,
@@ -29,6 +30,90 @@ const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programaçã
 const SITE_DESC =
   "Igreja Evangélica Assembleia de Deus Ministério Madureira – Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.";
 const SHARE_IMAGE_URL = resolveSiteUrl(SITE_DEFAULT_SHARE_IMAGE);
+const diaDaSemanaSchema: Record<string, string[]> = {
+  "Segunda a Sexta": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+  "Segunda-feira": ["Monday"],
+  "Terça-feira": ["Tuesday"],
+  "Quarta-feira": ["Wednesday"],
+  "Quinta-feira": ["Thursday"],
+  "Sexta-feira": ["Friday"],
+  Domingo: ["Sunday"],
+};
+
+function formatTime(value: number) {
+  return String(value).padStart(2, "0");
+}
+
+function parseHorario(horario?: string) {
+  if (!horario) {
+    return null;
+  }
+
+  const match = horario.match(
+    /(\d{1,2})h(\d{2})?(?:\s*[–-]\s*(\d{1,2})h(\d{2})?)?/
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    startHour: parseInt(match[1], 10),
+    startMinute: match[2] ? parseInt(match[2], 10) : 0,
+    endHour: match[3] ? parseInt(match[3], 10) : undefined,
+    endMinute: match[4] ? parseInt(match[4], 10) : 0,
+  };
+}
+
+function addMinutes(hour: number, minute: number, minutesToAdd: number) {
+  const totalMinutes = hour * 60 + minute + minutesToAdd;
+
+  return {
+    hour: Math.floor(totalMinutes / 60),
+    minute: totalMinutes % 60,
+  };
+}
+
+function getDuracaoPadraoMinutos(titulo: string) {
+  if (titulo === "Oração Matinal") {
+    return 60;
+  }
+
+  return 120;
+}
+
+function buildOpeningHoursSpecification() {
+  // A programação pública informa o horário exato de início e, quando não há
+  // faixa explícita, mantemos uma janela padrão para refletir a agenda semanal
+  // publicada no site sem deixar o schema incompleto.
+  return programacaoSemanal.flatMap((item) => {
+    const dias = diaDaSemanaSchema[item.dia] ?? [];
+    const horario = parseHorario(item.horario);
+
+    if (!horario) {
+      return [];
+    }
+
+    const endTime =
+      typeof horario.endHour === "number"
+        ? {
+            hour: horario.endHour,
+            minute: horario.endMinute ?? 0,
+          }
+        : addMinutes(
+            horario.startHour,
+            horario.startMinute,
+            getDuracaoPadraoMinutos(item.titulo)
+          );
+
+    return dias.map((dayOfWeek) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek,
+      opens: `${formatTime(horario.startHour)}:${formatTime(horario.startMinute)}`,
+      closes: `${formatTime(endTime.hour)}:${formatTime(endTime.minute)}`,
+    }));
+  });
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -94,15 +179,8 @@ const churchSchema = {
     latitude: -23.1171,
     longitude: -46.5567,
   },
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Tuesday",  opens: "19:30", closes: "21:30" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "09:00", closes: "11:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "15:00", closes: "17:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday",  opens: "19:30", closes: "21:30" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "09:00", closes: "11:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday",    opens: "18:30", closes: "20:30" },
-  ],
-  foundingDate: "1998",
+  openingHoursSpecification: buildOpeningHoursSpecification(),
+  foundingDate: "1977",
   areaServed: {
     "@type": "City",
     name: "Atibaia",

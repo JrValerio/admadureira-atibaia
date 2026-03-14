@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
@@ -5,16 +6,32 @@ import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { radioConfig } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
 
-export const metadata = buildPageMetadata({
-  title: "Rádio | AD Madureira Atibaia",
-  description:
-    "Acompanhe a estrutura da futura rádio da AD Madureira Atibaia com transmissão cristã, louvores e mensagens em áudio.",
-  path: "/espiritualidade/radio",
-  image: igrejaHeroMedia.radio,
-});
+const hasConfiguredRadioStream = radioConfig.streamUrl.length > 0;
+
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "Rádio | AD Madureira Atibaia",
+    description:
+      "Acompanhe a estrutura da futura rádio da AD Madureira Atibaia com transmissão cristã, louvores e mensagens em áudio.",
+    path: "/espiritualidade/radio",
+    image: igrejaHeroMedia.radio,
+  }),
+  ...(!hasConfiguredRadioStream
+    ? {
+        robots: {
+          index: false,
+          follow: true,
+          googleBot: {
+            index: false,
+            follow: true,
+          },
+        },
+      }
+    : {}),
+};
 
 export default function RadioPage() {
-  const hasStream = radioConfig.streamUrl.length > 0;
+  const hasStream = hasConfiguredRadioStream;
   const statusLabel = hasStream ? "Ao vivo agora" : radioConfig.statusLabel;
   const statusClassName = hasStream
     ? "border-emerald-500/20 bg-emerald-50 text-emerald-700"
