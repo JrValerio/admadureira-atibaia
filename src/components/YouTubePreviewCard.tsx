@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+import CardMedia from "@/components/media/CardMedia";
 import type { YouTubeVideo } from "@/lib/youtube";
 
 function PlayButton() {
@@ -54,23 +54,24 @@ export default function YouTubePreviewCard({
             className="group relative w-full h-full text-left cursor-pointer"
             aria-label={`Reproduzir ${video.title}`}
           >
-            <Image
+            <CardMedia
               src={thumbnailSrc}
               alt={video.title}
-              fill
+              variant="content"
               priority={destaque}
               sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-              className="object-cover"
+              className="rounded-none"
+              imageClassName="group-hover:scale-[1.02]"
               onError={() => {
                 setThumbnailIndex((current) =>
                   current < thumbnailSources.length - 1 ? current + 1 : current
                 );
               }}
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/15 to-transparent" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <PlayButton />
-            </div>
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                <PlayButton />
+              </div>
+            </CardMedia>
           </button>
         )}
       </div>

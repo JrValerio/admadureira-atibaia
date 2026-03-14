@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import CardMedia from "@/components/media/CardMedia";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getTestemunhosRecentes } from "@/data/testemunhos";
 import { buildPageMetadata } from "@/lib/site";
@@ -90,16 +90,14 @@ export default function TestemunhosPage() {
                 href={`/testemunhos/${testemunho.slug}`}
                 className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
               >
-                <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
-                  <Image
-                    src={testemunho.foto ?? "/pulpito-da-igreja.jpg"}
-                    alt={testemunho.titulo}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/20 to-transparent" />
-                </div>
+                <CardMedia
+                  src={testemunho.foto}
+                  alt={testemunho.titulo}
+                  variant="testimony"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  zoomOnHover
+                  className="rounded-none"
+                />
 
                 <div className="p-6 md:p-8">
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">

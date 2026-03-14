@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import CardMedia from "@/components/media/CardMedia";
 import { getTestemunhosRecentes } from "@/data/testemunhos";
 
 function formatDate(data: string) {
@@ -54,19 +54,17 @@ export default function HistoriasDeFe() {
               href={`/testemunhos/${testemunho.slug}`}
               className="ui-card group overflow-hidden"
             >
-              <div className="relative aspect-[16/10] bg-[#111] overflow-hidden">
-                <Image
-                  src={testemunho.foto ?? "/pulpito-da-igreja.jpg"}
-                  alt={testemunho.titulo}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/25 to-transparent" />
+              <CardMedia
+                src={testemunho.foto}
+                alt={testemunho.titulo}
+                variant="testimony"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="rounded-none"
+              >
                 <div className="absolute left-4 bottom-4 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-[11px] font-semibold tracking-widest uppercase">
                   {formatDate(testemunho.data)}
                 </div>
-              </div>
+              </CardMedia>
 
               <div className="p-6 md:p-8">
                 {testemunho.youtubeId && (
