@@ -227,7 +227,7 @@ export default function HistoriaPage() {
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                       Presidência do campo
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 gap-3">
                       {presidencia.map((pastor) => (
                         <div
                           key={pastor.slug}
