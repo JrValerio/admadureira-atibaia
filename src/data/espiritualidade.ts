@@ -45,8 +45,8 @@ export const spiritualFeatures: SpiritualFeature[] = [
     href: "/espiritualidade/podcast",
     titulo: "Podcast",
     descricao:
-      "Base preparada para episódios em áudio com mensagens, entrevistas e séries temáticas da igreja.",
-    destaque: "Distribuição futura",
+      "Área preparada para episódios em áudio com mensagens, conversas, séries temáticas e conteúdos pastorais para ouvir durante a semana.",
+    destaque: "Conteúdo em preparação",
   },
 ];
 
@@ -88,10 +88,35 @@ export const radioConfig = {
 export const podcastConfig = {
   spotifyEmbedUrl: "",
   youtubePlaylistUrl: "https://www.youtube.com/@ADMadureiraAtibaia",
+  statusLabel: "Conteúdo em preparação",
+  resumo:
+    "O podcast da igreja foi pensado para reunir episódios em áudio com mensagens, conversas pastorais, séries temáticas e reflexões para acompanhar a rotina ao longo da semana.",
   plataformas: ["Spotify", "YouTube", "Amazon Music"],
   linhasEditoriais: [
     "Mensagens em áudio para ouvir durante a semana",
     "Séries temáticas sobre família, oração e vida cristã",
     "Cortes e reflexões para distribuição em plataformas digitais",
+  ],
+  seriesPrevistas: [
+    {
+      titulo: "Palavra para a semana",
+      descricao:
+        "Episódios curtos com aplicações bíblicas e reflexões para acompanhar a rotina diária.",
+    },
+    {
+      titulo: "Conversas pastorais",
+      descricao:
+        "Conteúdos sobre família, fé, discipulado e vida cristã com linguagem acessível para a igreja local.",
+    },
+    {
+      titulo: "Recortes de mensagens",
+      descricao:
+        "Trechos em áudio de ministrações e encontros da igreja para distribuição em plataformas digitais.",
+    },
+  ],
+  proximosPassos: [
+    "Definir o feed oficial e as plataformas de publicação",
+    "Publicar os primeiros episódios com identidade editorial da igreja",
+    "Integrar episódios em destaque ao hub espiritual do site",
   ],
 };

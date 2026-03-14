@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
@@ -14,6 +15,10 @@ export const metadata = buildPageMetadata({
 
 export default function PodcastPage() {
   const hasEmbed = podcastConfig.spotifyEmbedUrl.length > 0;
+  const statusLabel = hasEmbed ? "Episódios disponíveis" : podcastConfig.statusLabel;
+  const statusClassName = hasEmbed
+    ? "border-emerald-500/20 bg-emerald-50 text-emerald-700"
+    : "border-[#ffa726]/20 bg-[#fff8ee] text-[#8b5b18]";
 
   return (
     <>
@@ -21,9 +26,10 @@ export default function PodcastPage() {
         variant="full"
         label="Conteúdo em áudio"
         title="Podcast"
-        description="Uma área preparada para receber episódios em áudio, séries temáticas e conversas que fortaleçam a fé ao longo da semana."
+        description="Uma página preparada para reunir episódios em áudio, séries temáticas e conversas que fortaleçam a fé ao longo da semana."
         image={igrejaHeroMedia.podcast}
-        imageAlt="Púlpito da AD Madureira Atibaia"
+        imageAlt="Púlpito da AD Madureira Atibaia preparado para conteúdos em áudio"
+        imageClassName="object-[center_36%]"
       />
 
       <section className="py-16 md:py-20">
@@ -36,35 +42,74 @@ export default function PodcastPage() {
           />
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                Distribuição futura
-              </p>
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <span className="text-[#ffa726] text-xs font-bold tracking-widest uppercase">
+                  Distribuição
+                </span>
+                <span
+                  className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase ${statusClassName}`.trim()}
+                >
+                  {statusLabel}
+                </span>
+              </div>
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
-                Podcast da igreja em preparação
+                Podcast da igreja em construção
               </h2>
-              <p className="text-[#555] leading-relaxed mb-6">
-                O espaço já está pronto para receber episódios em áudio,
-                reflexões temáticas e conteúdos pastorais distribuídos em
-                plataformas digitais.
+              <p className="text-[#555] leading-relaxed mb-4">
+                {podcastConfig.resumo}
+              </p>
+              <p className="text-[#777] text-sm leading-relaxed mb-6">
+                A proposta é transformar esta página no ponto de entrada para
+                ouvir mensagens, reflexões e séries em áudio com identidade
+                própria da igreja, em uma experiência simples e recorrente.
               </p>
 
               {hasEmbed ? (
-                <iframe
-                  title="Podcast AD Madureira Atibaia"
-                  src={podcastConfig.spotifyEmbedUrl}
-                  width="100%"
-                  height="380"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  className="rounded-3xl border-0"
-                />
+                <div className="rounded-3xl border border-emerald-500/15 bg-emerald-50/60 p-5">
+                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-700">
+                    Episódios em destaque
+                  </p>
+                  <iframe
+                    title="Podcast AD Madureira Atibaia"
+                    src={podcastConfig.spotifyEmbedUrl}
+                    width="100%"
+                    height="380"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    className="rounded-3xl border-0"
+                  />
+                </div>
               ) : (
-                <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 text-[#555] leading-relaxed">
-                  O feed do podcast ainda não foi configurado. Assim que os
-                  primeiros episódios forem publicados, o player ficará
-                  disponível nesta página.
+                <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-[#8b5b18]">
+                    Feed em implantação
+                  </p>
+                  <p className="text-[#555] leading-relaxed">
+                    O feed do podcast ainda não foi configurado. Assim que os
+                    primeiros episódios forem publicados, o player ficará
+                    disponível nesta página.
+                  </p>
+                  <p className="mt-4 text-sm text-[#777] leading-relaxed">
+                    Enquanto isso, esta página já organiza a proposta editorial
+                    e os próximos passos para a distribuição em plataformas
+                    digitais.
+                  </p>
                 </div>
               )}
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={podcastConfig.youtubePlaylistUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ui-btn-primary"
+                >
+                  Abrir canal da igreja
+                </a>
+                <Link href="/espiritualidade/radio" className="ui-btn-secondary">
+                  Ver rádio
+                </Link>
+              </div>
             </div>
 
             <div className="space-y-6">
@@ -84,12 +129,27 @@ export default function PodcastPage() {
 
               <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                  Plataformas previstas
+                  Séries previstas
                 </p>
-                <p className="text-sm text-[#555] leading-relaxed mb-4">
-                  A publicação pode ser distribuída nestas plataformas:
+                <div className="space-y-4">
+                  {podcastConfig.seriesPrevistas.map((serie) => (
+                    <div key={serie.titulo}>
+                      <p className="text-sm font-semibold tracking-wide text-[#212121]">
+                        {serie.titulo}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-[#555]">
+                        {serie.descricao}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                  Próximo passo
                 </p>
-                <div className="flex flex-wrap gap-3 mb-4">
+                <div className="flex flex-wrap gap-3 mb-5">
                   {podcastConfig.plataformas.map((platform) => (
                     <span
                       key={platform}
@@ -99,13 +159,21 @@ export default function PodcastPage() {
                     </span>
                   ))}
                 </div>
+                <ul className="space-y-3 text-sm text-[#555] leading-relaxed mb-5">
+                  {podcastConfig.proximosPassos.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
                 <a
                   href={podcastConfig.youtubePlaylistUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                  className="ui-btn-primary"
                 >
-                  Abrir canal da igreja
+                  Acompanhar canal
                 </a>
               </div>
             </div>
