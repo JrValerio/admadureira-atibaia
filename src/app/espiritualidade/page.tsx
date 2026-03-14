@@ -2,6 +2,10 @@ import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import { spiritualFeatures } from "@/data/espiritualidade";
+import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
+import HojeComDeus from "@/sections/HojeComDeus";
+import SuaJornada from "@/sections/SuaJornada";
+import { getSpiritualityHubData } from "@/lib/spirituality-hub";
 import { buildPageMetadata } from "@/lib/site";
 
 export const metadata = buildPageMetadata({
@@ -20,6 +24,8 @@ export const metadata = buildPageMetadata({
 });
 
 export default function EspiritualidadePage() {
+  const hubData = getSpiritualityHubData();
+
   return (
     <>
       <HeroPage
@@ -33,23 +39,32 @@ export default function EspiritualidadePage() {
 
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8 mb-12">
+          <SpiritualBreadcrumb items={[{ label: "Espiritualidade" }]} />
+
+          {hubData ? (
+            <>
+              <HojeComDeus data={hubData} />
+              <SuaJornada data={hubData} />
+            </>
+          ) : null}
+
+          <div className="mb-8 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                Jornada de fé
+                Recursos centrais
               </p>
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
-                Recursos para leitura, oração e constância espiritual
+                Bíblia, devocional e recursos para constância espiritual
               </h2>
               <div className="space-y-4 text-[#555] leading-relaxed">
                 <p>
-                  Esta área organiza recursos práticos para quem deseja manter
-                  uma rotina de leitura bíblica, reflexão devocional e consumo de
-                  conteúdo cristão ao longo da semana.
+                  Esta área reúne os caminhos principais para abrir a Palavra,
+                  seguir um plano de leitura, acompanhar o devocional do dia e
+                  manter uma rotina espiritual recorrente.
                 </p>
                 <p>
-                  O objetivo é transformar o site da igreja em uma plataforma de
-                  apoio espiritual, não apenas em uma vitrine institucional.
+                  Depois de usar o bloco de hoje e retomar sua jornada, explore
+                  abaixo os recursos disponíveis para leitura, áudio e meditação.
                 </p>
               </div>
             </div>
@@ -61,15 +76,15 @@ export default function EspiritualidadePage() {
               <ul className="space-y-4 text-[#555] text-sm leading-relaxed">
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Leia um capítulo da Bíblia e salve sua referência do dia.</span>
+                  <span>Abra o versículo do dia e leia o capítulo relacionado.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Escolha um plano simples de leitura para manter constância.</span>
+                  <span>Retome o plano bíblico do ponto onde você parou.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Leia um devocional curto com aplicação e oração.</span>
+                  <span>Use Rádio e Podcast como apoio para seguir em constância.</span>
                 </li>
               </ul>
             </div>
