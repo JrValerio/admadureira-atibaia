@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { spiritualFeatures } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -8,7 +9,7 @@ export const metadata = buildPageMetadata({
   description:
     "Acesse a área de espiritualidade da AD Madureira Atibaia com Bíblia Online, plano de leitura, devocional, rádio e podcast.",
   path: "/espiritualidade",
-  image: "/fachada-da-igreja.jpg",
+  image: igrejaHeroMedia.espiritualidade,
   keywords: [
     "bíblia online",
     "plano de leitura bíblica",
@@ -26,7 +27,7 @@ export default function EspiritualidadePage() {
         label="Crescimento espiritual"
         title="Espiritualidade"
         description="Uma área dedicada à leitura bíblica, devocionais, planos de leitura e futuros canais de áudio da AD Madureira Atibaia."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.espiritualidade}
         imageAlt="Fachada da AD Madureira Atibaia"
       />
 

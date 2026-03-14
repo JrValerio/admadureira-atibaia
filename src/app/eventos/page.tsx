@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Eventos from "@/sections/Eventos";
 import { getEventosFuturos } from "@/lib/agenda-utils";
 import { buildEventListJsonLd } from "@/lib/event-schema";
@@ -83,7 +84,7 @@ export default function EventosPage() {
           label="Agenda da Igreja"
           title="Eventos da Igreja"
           description="Acompanhe os próximos congressos, campanhas, batismos e celebrações especiais da AD Madureira Atibaia."
-          image="/fachada-da-igreja.jpg"
+          image={igrejaHeroMedia.eventos}
           imageAlt="Fachada da AD Madureira Atibaia"
         />
         <Eventos eventos={eventos} showHeader={false} />

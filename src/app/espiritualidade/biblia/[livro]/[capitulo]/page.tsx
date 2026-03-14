@@ -10,6 +10,7 @@ import BibleShareButton from "@/components/biblia/BibleShareButton";
 import BibleShareVerseButton from "@/components/biblia/BibleShareVerseButton";
 import BibleVerseAnchorHandler from "@/components/biblia/BibleVerseAnchorHandler";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
 import {
@@ -59,7 +60,7 @@ export async function generateMetadata({ params, searchParams }: PageProps) {
       description:
         "Leia capítulos completos da Bíblia Online em português na área de espiritualidade da AD Madureira Atibaia.",
       path: "/espiritualidade/biblia",
-      image: "/pulpito-da-igreja.jpg",
+      image: igrejaHeroMedia.biblia,
     });
   }
 
@@ -80,7 +81,7 @@ export async function generateMetadata({ params, searchParams }: PageProps) {
     title: `${chapterSeo.chapterLabel} | Bíblia Online ${versionLabel}`,
     description: `${chapterSeo.metadataDescription} Leitura disponível em ${versionLabel}.`,
     path: createBiblePath(selectedBook.slug, normalizedChapter),
-    image: "/pulpito-da-igreja.jpg",
+    image: igrejaHeroMedia.biblia,
     keywords: chapterSeo.keywords,
   });
 }
@@ -223,7 +224,7 @@ export default async function BibliaChapterPage({
         label="Palavra de Deus"
         title="Bíblia Online"
         description="Leia a Bíblia por livro e capítulo na tradução João Ferreira de Almeida e mantenha a Palavra sempre ao alcance."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.biblia}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 

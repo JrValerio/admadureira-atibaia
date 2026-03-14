@@ -13,6 +13,7 @@ import {
   getReadingPlanDailySummary,
 } from "@/data/plano-de-leitura";
 import { getBibleBookBySlug } from "@/data/biblia-livros";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getBibleChapter } from "@/lib/bible-api";
 import { createBiblePath } from "@/lib/bible-navigation";
 import { buildPageMetadata } from "@/lib/site";
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description:
         "Acompanhe dias e leituras dos planos bíblicos da área de espiritualidade.",
       path: "/espiritualidade/plano-de-leitura",
-      image: "/pulpito-da-igreja.jpg",
+      image: igrejaHeroMedia.planoDeLeitura,
     });
   }
 

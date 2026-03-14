@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getCongregacoes } from "@/data/congregacoes";
 import { marcosHistoricos, historiaEncerramento, historiaIntroducao } from "@/data/historia";
 import { getPastoresByGrupo } from "@/data/pastores";
@@ -27,7 +28,7 @@ export default function HistoriaPage() {
         label="Campo de Atibaia"
         title="História da Igreja"
         description="Conheça a trajetória da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia e como Deus tem conduzido esta obra ao longo dos anos."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.historia}
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
       />

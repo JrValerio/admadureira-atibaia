@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getMensagensRecentes } from "@/data/mensagens";
 import {
   buildVideoListJsonLd,
@@ -14,7 +15,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Assista às mensagens e ministrações da AD Madureira Atibaia, com pregações, versículos-base e acesso rápido ao conteúdo em vídeo.",
   path: "/mensagens",
-  image: "/pulpito-da-igreja.jpg",
+  image: igrejaHeroMedia.mensagens,
   keywords: [
     "mensagens bíblicas",
     "pregações evangélicas",
@@ -57,7 +58,7 @@ export default function MensagensPage() {
         label="Palavra e ensino"
         title="Mensagens da Igreja"
         description="Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite ministrações que fortalecem a fé, a comunhão e a vida cristã."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.mensagens}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
       <section className="py-16 md:py-20">

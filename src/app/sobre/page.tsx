@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Sobre from "@/sections/Sobre";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -17,7 +18,7 @@ export default function SobrePage() {
         label="Campo de Atibaia"
         title="Nossa Igreja"
         description="Conheça a história, a missão, os valores e a liderança pastoral da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.sobre}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
       <Sobre showHeader={false} />

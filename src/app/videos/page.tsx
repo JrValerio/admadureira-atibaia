@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Videos from "@/sections/Videos";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -17,7 +18,7 @@ export default function VideosPage() {
         label="Canal no YouTube"
         title="Cultos e vídeos"
         description="Assista aos últimos cultos e pregações da AD Madureira Atibaia, com transmissões ao vivo, destaques da semana e biblioteca de vídeos."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.videos}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
       <Videos showHeader={false} />

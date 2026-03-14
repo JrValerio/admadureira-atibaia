@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import type { Pastor } from "@/data/pastores";
 import { getPastoresByGrupo } from "@/data/pastores";
 import { buildPageMetadata } from "@/lib/site";
@@ -91,7 +92,7 @@ export default function PastoresPage() {
         label="Liderança Pastoral"
         title="Nossos Pastores"
         description="Conheça a liderança que serve a AD Madureira Atibaia com dedicação, cuidado pastoral e compromisso com a Palavra de Deus."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.pastores}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 

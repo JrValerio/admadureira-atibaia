@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { getTestemunhosRecentes } from "@/data/testemunhos";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -33,7 +34,7 @@ export default function TestemunhosPage() {
         label="Histórias de transformação"
         title="Testemunhos de Fé"
         description="Histórias reais de transformação vividas por pessoas da comunidade da Igreja Assembleia de Deus Ministério Madureira em Atibaia, em relatos escritos e também em vídeo."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.testemunhos}
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
       />

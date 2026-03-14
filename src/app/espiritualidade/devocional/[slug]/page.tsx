@@ -6,6 +6,7 @@ import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
 import SpiritualNotesCard from "@/components/spiritual/SpiritualNotesCard";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { getDevotionalBySlug, getDevotionals } from "@/data/devocionais";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   getReadingPlanBySlug,
   getReadingPlanDailySummary,
@@ -49,7 +50,7 @@ export async function generateMetadata({
     title: `${devotional.titulo} | Devocional`,
     description: devotional.resumo,
     path: `/espiritualidade/devocional/${devotional.slug}`,
-    image: devotional.imagem ?? "/pulpito-da-igreja.jpg",
+    image: devotional.imagem ?? igrejaHeroMedia.devocional,
   });
 }
 
@@ -78,7 +79,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
     description: devotional.resumo,
     datePublished: devotional.data,
     inLanguage: "pt-BR",
-    image: resolveSiteUrl(devotional.imagem ?? "/pulpito-da-igreja.jpg"),
+    image: resolveSiteUrl(devotional.imagem ?? igrejaHeroMedia.devocional),
     mainEntityOfPage: resolveSiteUrl(
       `/espiritualidade/devocional/${devotional.slug}`
     ),
@@ -100,7 +101,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
         label="Devocional"
         title={devotional.titulo}
         description={devotional.resumo}
-        image={devotional.imagem ?? "/pulpito-da-igreja.jpg"}
+        image={devotional.imagem ?? igrejaHeroMedia.devocional}
         imageAlt={devotional.titulo}
       />
 

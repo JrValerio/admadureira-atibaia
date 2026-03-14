@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { createBiblePath } from "@/lib/bible-navigation";
 import { getDailyVerse } from "@/lib/getDailyVerse";
@@ -15,7 +16,7 @@ export function generateMetadata(): Metadata {
     title: `${verse.referencia} | Versículo do Dia`,
     description: verse.texto,
     path: "/espiritualidade/versiculo-do-dia",
-    image: "/pulpito-da-igreja.jpg",
+    image: igrejaHeroMedia.versiculoDoDia,
     keywords: [
       "versículo do dia",
       verse.referencia.toLowerCase(),
@@ -35,7 +36,7 @@ export default function VersiculoDoDiaPage() {
         label="Leitura diária"
         title="Versículo do Dia"
         description="Uma porção diária da Palavra para meditar, orar e seguir com o coração firmado em Cristo."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.versiculoDoDia}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 

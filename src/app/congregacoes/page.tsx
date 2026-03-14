@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { getCongregacoes } from "@/data/congregacoes";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { buildPageMetadata } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -27,7 +28,7 @@ export default function CongregacoesPage() {
         label="Campo de Atibaia"
         title="Congregações do Campo"
         description="O Campo de Atibaia da Assembleia de Deus Ministério Madureira reúne congregações comprometidas com a pregação do Evangelho, o cuidado das famílias e o fortalecimento da vida cristã na região."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.congregacoes}
         imageAlt="Fachada da AD Madureira Atibaia"
       />
 

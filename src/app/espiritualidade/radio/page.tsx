@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { radioConfig } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
@@ -9,7 +10,7 @@ export const metadata = buildPageMetadata({
   description:
     "Acompanhe a estrutura da futura rádio da AD Madureira Atibaia com transmissão cristã, louvores e mensagens em áudio.",
   path: "/espiritualidade/radio",
-  image: "/fachada-da-igreja.jpg",
+  image: igrejaHeroMedia.radio,
 });
 
 export default function RadioPage() {
@@ -22,7 +23,7 @@ export default function RadioPage() {
         label="Áudio da igreja"
         title="Rádio"
         description="Uma base pronta para transmissões cristãs, períodos de louvor, mensagens e conteúdo contínuo da AD Madureira Atibaia."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.radio}
         imageAlt="Fachada da AD Madureira Atibaia"
       />
 

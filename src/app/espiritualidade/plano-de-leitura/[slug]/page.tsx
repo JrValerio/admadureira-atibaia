@@ -6,6 +6,7 @@ import HeroPage from "@/components/HeroPage";
 import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgressSummary";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { getDevotionalOfTheDay } from "@/data/devocionais";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   createReadingPlanDayPath,
   getReadingPlanBySlug,
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description:
         "Escolha um plano de leitura bíblica na área de espiritualidade da AD Madureira Atibaia.",
       path: "/espiritualidade/plano-de-leitura",
-      image: "/pulpito-da-igreja.jpg",
+      image: igrejaHeroMedia.planoDeLeitura,
     });
   }
 

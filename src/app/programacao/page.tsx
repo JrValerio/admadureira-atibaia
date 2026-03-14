@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Programacao from "@/sections/Programacao";
 import {
   buildPageMetadata,
@@ -71,7 +72,7 @@ export default function ProgramacaoPage() {
           label="Vida da Igreja"
           title="Programação da Igreja"
           description="Veja os cultos, reuniões e atividades fixas da AD Madureira Atibaia ao longo da semana."
-          image="/fachada-da-igreja.jpg"
+          image={igrejaHeroMedia.programacao}
           imageAlt="Fachada da AD Madureira Atibaia"
         />
         <Programacao showHeader={false} />

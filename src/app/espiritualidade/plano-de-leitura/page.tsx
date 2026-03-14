@@ -7,6 +7,7 @@ import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgress
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import ReadingPlanCard from "@/components/reading/ReadingPlanCard";
 import { getDevotionalOfTheDay } from "@/data/devocionais";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   createReadingPlanDayPath,
   getReadingPlanBySlug,
@@ -27,7 +28,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Escolha um plano de leitura bíblica, acompanhe sua jornada espiritual e avance na Palavra com constância.",
   path: "/espiritualidade/plano-de-leitura",
-  image: "/pulpito-da-igreja.jpg",
+  image: igrejaHeroMedia.planoDeLeitura,
   keywords: [
     "plano de leitura bíblica",
     "bíblia em 1 ano",
@@ -63,7 +64,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
         label="Constância na Palavra"
         title="Planos de Leitura"
         description="Escolha um plano, organize sua jornada espiritual e avance com constância na leitura bíblica ao longo dos dias."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.planoDeLeitura}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 

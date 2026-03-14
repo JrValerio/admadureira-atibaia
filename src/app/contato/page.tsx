@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Contato from "@/sections/Contato";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -17,7 +18,7 @@ export default function ContatoPage() {
         label="Venha nos visitar"
         title="Contato e localização"
         description="Encontre a sede da AD Madureira Atibaia, consulte os canais oficiais e fale com a igreja por WhatsApp, telefone ou redes sociais."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.contato}
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
       />

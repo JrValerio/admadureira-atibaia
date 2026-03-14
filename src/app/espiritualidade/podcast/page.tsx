@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { podcastConfig } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
@@ -8,7 +9,7 @@ export const metadata = buildPageMetadata({
   description:
     "Página preparada para episódios em áudio, séries temáticas e distribuição do podcast da AD Madureira Atibaia.",
   path: "/espiritualidade/podcast",
-  image: "/pulpito-da-igreja.jpg",
+  image: igrejaHeroMedia.podcast,
 });
 
 export default function PodcastPage() {
@@ -21,7 +22,7 @@ export default function PodcastPage() {
         label="Conteúdo em áudio"
         title="Podcast"
         description="Uma área preparada para receber episódios em áudio, séries temáticas e conversas que fortaleçam a fé ao longo da semana."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.podcast}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 

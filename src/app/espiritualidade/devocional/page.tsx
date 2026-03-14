@@ -4,6 +4,7 @@ import HeroPage from "@/components/HeroPage";
 import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { getDevotionalOfTheDay, getDevotionals } from "@/data/devocionais";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   getReadingPlanBySlug,
   getReadingPlanDailySummary,
@@ -16,7 +17,7 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Leia devocionais com versículo, reflexão, aplicação e oração na área de espiritualidade da AD Madureira Atibaia.",
   path: "/espiritualidade/devocional",
-  image: "/pulpito-da-igreja.jpg",
+  image: igrejaHeroMedia.devocional,
 });
 
 function formatDevotionalDate(date: string) {
@@ -44,7 +45,7 @@ export default function DevocionalPage() {
         label="Reflexão diária"
         title="Devocional"
         description="Leia reflexões curtas com base bíblica, aplicação prática e oração para fortalecer sua caminhada com Deus."
-        image="/pulpito-da-igreja.jpg"
+        image={igrejaHeroMedia.devocional}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
 
