@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PastoresGrid from "@/components/PastoresGrid";
+import { marcosHistoricos } from "@/data/historia";
 import { getPastores } from "@/data/pastores";
 
 const valores = [
@@ -24,10 +25,49 @@ type SobreProps = {
 
 export default function Sobre({ showHeader = true }: SobreProps) {
   const pastores = getPastores();
+  const marcoFundacao = marcosHistoricos.find(
+    (marco) => marco.titulo === "Fundação da igreja"
+  );
+  const marcoLideranca = marcosHistoricos.find(
+    (marco) => marco.titulo === "Liderança pastoral"
+  );
+  const estatisticasIdentidade = [
+    {
+      valor: marcoFundacao?.periodo ?? "1977",
+      label: "Ano de fundação",
+    },
+    {
+      valor: marcoLideranca?.periodo.replace("Desde ", "") ?? "2004",
+      label: "Liderança atual",
+    },
+    {
+      valor: "Atibaia",
+      label: "Campo de atuação",
+    },
+  ];
 
   return (
     <section id="sobre" className="py-24 bg-[#212121] text-white">
       <div className="max-w-6xl mx-auto px-4">
+        {!showHeader ? (
+          <div className="mb-12 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              Identidade do campo
+            </p>
+            <h2 className="mb-5 font-acme text-3xl tracking-wide text-[#212121]">
+              Uma igreja firmada na Palavra, na liderança pastoral e no serviço a Atibaia
+            </h2>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {estatisticasIdentidade.map((item) => (
+                <div key={item.label}>
+                  <p className="font-acme text-4xl text-[#212121]">{item.valor}</p>
+                  <p className="mt-1 text-sm text-[#555]">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Foto do púlpito */}
           <div className="relative rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full min-h-64">
