@@ -38,7 +38,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     href: "/espiritualidade/radio",
     titulo: "Rádio",
     descricao:
-      "Estrutura pronta para transmissões ao vivo, louvores, mensagens e programação contínua da igreja.",
+      "Área preparada para reunir transmissões da igreja, louvores, mensagens em áudio e blocos de programação ao longo da semana.",
     destaque: "Canal em implantação",
   },
   {
@@ -53,10 +53,35 @@ export const spiritualFeatures: SpiritualFeature[] = [
 export const radioConfig = {
   streamUrl: "",
   streamHostLabel: "Link de streaming ainda não configurado",
+  statusLabel: "Canal em implantação",
+  resumo:
+    "A rádio da igreja foi pensada para concentrar momentos de oração, louvor, ministrações e conteúdos de edificação em uma única experiência de áudio.",
   horarios: [
     "Manhãs de oração e louvor",
     "Mensagens e ministrações da igreja",
     "Programação especial em datas congregacionais",
+  ],
+  faixas: [
+    {
+      titulo: "Oração e louvor",
+      descricao:
+        "Blocos devocionais para começar o dia com louvor, leitura bíblica e intercessão.",
+    },
+    {
+      titulo: "Palavra durante a semana",
+      descricao:
+        "Mensagens em áudio e ministrações da igreja para acompanhar a rotina com constância espiritual.",
+    },
+    {
+      titulo: "Transmissões especiais",
+      descricao:
+        "Cobertura de congressos, cultos especiais e datas congregacionais em formato contínuo.",
+    },
+  ],
+  proximosPassos: [
+    "Publicar o link oficial de transmissão ao vivo",
+    "Organizar blocos fixos de oração, louvor e mensagens",
+    "Divulgar a programação diretamente no hub espiritual do site",
   ],
 };
 
