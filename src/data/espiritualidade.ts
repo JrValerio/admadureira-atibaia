@@ -126,6 +126,7 @@ export const radioConfig = {
 export const podcastConfig = {
   spotifyEmbedUrl: "",
   youtubePlaylistUrl: "https://www.youtube.com/@ADMadureiraAtibaia",
+  youtubeChannelLabel: "Acompanhar no YouTube",
   statusLabel: "Conteúdo em preparação",
   resumo:
     "O podcast da igreja foi pensado para reunir episódios em áudio com mensagens, conversas pastorais, séries temáticas e reflexões para acompanhar a rotina ao longo da semana.",
@@ -151,10 +152,5 @@ export const podcastConfig = {
       descricao:
         "Trechos em áudio de ministrações e encontros da igreja para distribuição em plataformas digitais.",
     },
-  ],
-  proximosPassos: [
-    "Definir o feed oficial e as plataformas de publicação",
-    "Publicar os primeiros episódios com identidade editorial da igreja",
-    "Integrar episódios em destaque ao hub espiritual do site",
   ],
 };

@@ -70,7 +70,7 @@ export default function PodcastPage() {
                 </span>
               </div>
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
-                Podcast da igreja em construção
+                Mensagens em áudio da igreja
               </h2>
               <p className="text-[#555] leading-relaxed mb-4">
                 {podcastConfig.resumo}
@@ -107,9 +107,9 @@ export default function PodcastPage() {
                     disponível nesta página.
                   </p>
                   <p className="mt-4 text-sm text-[#777] leading-relaxed">
-                    Enquanto isso, esta página já organiza a proposta editorial
-                    e os próximos passos para a distribuição em plataformas
-                    digitais.
+                    Enquanto isso, esta página já apresenta a proposta
+                    editorial do canal e os formatos pensados para a
+                    distribuição em plataformas digitais.
                   </p>
                 </div>
               )}
@@ -121,7 +121,7 @@ export default function PodcastPage() {
                   rel="noopener noreferrer"
                   className="ui-btn-primary"
                 >
-                  Abrir canal da igreja
+                  {podcastConfig.youtubeChannelLabel}
                 </a>
                 <Link href="/espiritualidade/radio" className="ui-btn-secondary">
                   Ver rádio
@@ -164,7 +164,12 @@ export default function PodcastPage() {
 
               <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                  Próximo passo
+                  Disponível hoje
+                </p>
+                <p className="text-sm text-[#555] leading-relaxed mb-5">
+                  Enquanto o feed oficial não entra no ar, o canal da igreja no
+                  YouTube continua sendo o destino mais direto para acompanhar
+                  mensagens e novos conteúdos em áudio.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-5">
                   {podcastConfig.plataformas.map((platform) => (
@@ -176,21 +181,13 @@ export default function PodcastPage() {
                     </span>
                   ))}
                 </div>
-                <ul className="space-y-3 text-sm text-[#555] leading-relaxed mb-5">
-                  {podcastConfig.proximosPassos.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
                 <a
                   href={podcastConfig.youtubePlaylistUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ui-btn-primary"
                 >
-                  Acompanhar canal
+                  {podcastConfig.youtubeChannelLabel}
                 </a>
               </div>
             </div>
