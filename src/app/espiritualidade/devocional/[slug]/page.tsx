@@ -197,7 +197,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                   suggestedDay={suggestedDay}
                   suggestedSummary={suggestedDaySummary}
                   title="Próximo passo na Palavra"
-                  description="Aproveite este momento para retomar sua leitura bíblica, abrir o dia sugerido ou começar hoje a jornada anual."
+                  description="Aproveite este momento para retomar sua leitura bíblica e abrir o dia sugerido da jornada anual."
                 />
               ) : null}
 

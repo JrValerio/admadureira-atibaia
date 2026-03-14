@@ -21,7 +21,7 @@ export default function ReadingJourneyActions({
   suggestedDay,
   suggestedSummary,
   title = "Sua jornada de hoje",
-  description = "Retome sua leitura de onde parou, abra o dia sugerido ou comece agora com constância.",
+  description = "Retome sua leitura de onde parou e abra o dia sugerido com mais clareza.",
   showCompletionButton = true,
 }: ReadingJourneyActionsProps) {
   const { lastDay } = useReadingPlanProgress(planSlug);
@@ -55,13 +55,6 @@ export default function ReadingJourneyActions({
           className="ui-btn-secondary whitespace-nowrap"
         >
           Abrir dia sugerido
-        </Link>
-
-        <Link
-          href={createReadingPlanDayPath(planSlug, 1)}
-          className="ui-btn-ghost whitespace-nowrap"
-        >
-          Começar agora
         </Link>
 
         {showCompletionButton ? (
