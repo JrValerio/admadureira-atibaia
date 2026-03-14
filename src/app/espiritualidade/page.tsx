@@ -90,12 +90,43 @@ export default function EspiritualidadePage() {
             </div>
           </div>
 
+          <div className="mb-12 rounded-3xl bg-[#212121] p-6 md:p-8 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
+              <div className="max-w-3xl">
+                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  Descoberta fluida
+                </p>
+                <h2 className="font-acme text-3xl md:text-4xl tracking-wide mb-4">
+                  Leia, medite e ouça durante a semana
+                </h2>
+                <p className="text-white/80 leading-relaxed">
+                  Use Bíblia, versículo, devocional e plano como eixo principal
+                  da sua rotina. Quando quiser seguir em constância ao longo do
+                  dia, Rádio e Podcast entram como apoio em áudio para continuar
+                  perto da Palavra.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <Link href="/espiritualidade/radio" className="ui-btn-primary">
+                  Ouvir rádio
+                </Link>
+                <Link
+                  href="/espiritualidade/podcast"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-white hover:text-[#212121]"
+                >
+                  Explorar podcast
+                </Link>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {spiritualFeatures.map((feature) => (
               <Link
                 key={feature.href}
                 href={feature.href}
-                className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow"
+                className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
               >
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   {feature.destaque}
@@ -103,12 +134,23 @@ export default function EspiritualidadePage() {
                 <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                   {feature.titulo}
                 </h2>
+                <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
+                  {feature.uso}
+                </p>
                 <p className="text-[#555] leading-relaxed mb-6">
                   {feature.descricao}
                 </p>
-                <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase">
-                  Acessar recurso →
-                </p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                  <p className="ui-link-accent inline-flex">{feature.ctaLabel} →</p>
+                  {feature.supportHref && feature.supportLabel ? (
+                    <span className="text-xs text-[#777]">
+                      Continue com{" "}
+                      <span className="font-semibold text-[#212121]">
+                        {feature.supportLabel}
+                      </span>
+                    </span>
+                  ) : null}
+                </div>
               </Link>
             ))}
           </div>
