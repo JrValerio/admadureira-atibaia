@@ -1,3 +1,8 @@
+import {
+  formatSaoPauloDateKey,
+  getSaoPauloDayOfYear,
+} from "@/lib/date-utils";
+
 export type Devotional = {
   slug: string;
   titulo: string;
@@ -88,9 +93,14 @@ const devotionals: Devotional[] = [
 ];
 
 function getDayOfYear(date = new Date()) {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  return Math.floor(diff / 86400000);
+  return getSaoPauloDayOfYear(date);
+}
+
+function createDailyDevotional(devotional: Devotional, date: Date) {
+  return {
+    ...devotional,
+    data: formatSaoPauloDateKey(date),
+  };
 }
 
 export function getDevotionals() {
@@ -107,5 +117,18 @@ export function getDevotionalOfTheDay(date = new Date()) {
   }
 
   const index = (getDayOfYear(date) - 1) % devotionals.length;
-  return devotionals[index] ?? null;
+  const devotional = devotionals[index] ?? null;
+
+  return devotional ? createDailyDevotional(devotional, date) : null;
+}
+
+export function getDevotionalDisplayDate(
+  devotional: Devotional,
+  date = new Date()
+) {
+  const dailyDevotional = getDevotionalOfTheDay(date);
+
+  return dailyDevotional?.slug === devotional.slug
+    ? dailyDevotional.data
+    : devotional.data;
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
 import ContinueReading from "@/components/reading/ContinueReading";
+import ReadingDayCompletionButton from "@/components/reading/ReadingDayCompletionButton";
 import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgressSummary";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import ReadingPlanCard from "@/components/reading/ReadingPlanCard";
@@ -36,6 +37,8 @@ export const metadata: Metadata = buildPageMetadata({
     "evangelhos em 40 dias",
   ],
 });
+
+export const revalidate = 3600;
 
 export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
   const params = await searchParams;
@@ -167,10 +170,14 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
                 <div className="flex flex-wrap gap-3 mb-6">
                   <Link
                     href={createReadingPlanDayPath(annualPlan.slug, annualDay.dia)}
-                    className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                    className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
                   >
                     Abrir leitura do dia
                   </Link>
+                  <ReadingDayCompletionButton
+                    planSlug={annualPlan.slug}
+                    day={annualDay.dia}
+                  />
                 </div>
                 <ContinueReading
                   planSlug={annualPlan.slug}

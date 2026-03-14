@@ -15,7 +15,6 @@ import { getBibleChapter } from "@/lib/bible-api";
 import { getBibleChapterSeo } from "@/lib/bible-chapter-seo";
 import {
   getBibleLanguage,
-  getBibleLanguageLabel,
   getBibleVersion,
   getBibleVersionLabel,
 } from "@/lib/bible-config";
@@ -111,7 +110,6 @@ export default async function BibliaChapterPage({
     selectedLanguage,
     preferences.version
   );
-  const languageLabel = getBibleLanguageLabel(selectedLanguage);
   const versionLabel = getBibleVersionLabel(selectedLanguage, selectedVersion);
 
   if (selectedChapter !== parsedChapter) {
@@ -287,14 +285,6 @@ export default async function BibliaChapterPage({
                       estudo da Palavra.
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-3 text-xs font-bold tracking-widest uppercase text-[#777]">
-                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      {languageLabel}
-                    </span>
-                    <span className="rounded-full border border-black/10 bg-[#f9f9f9] px-3 py-2">
-                      {versionLabel}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
@@ -325,6 +315,13 @@ export default async function BibliaChapterPage({
                     )}
                   </div>
                 </div>
+
+                <Link
+                  href="/espiritualidade/podcast"
+                  className="inline-flex text-xs font-semibold tracking-widest uppercase text-[#ef5350] transition-colors hover:text-[#c62828]"
+                >
+                  Continue com ouvir reflexões em áudio
+                </Link>
               </div>
 
               <div

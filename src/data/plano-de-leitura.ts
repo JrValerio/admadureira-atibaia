@@ -3,6 +3,7 @@ import {
   getBibleBookBySlug,
   type BibleBook,
 } from "@/data/biblia-livros";
+import { getSaoPauloDayOfYear } from "@/lib/date-utils";
 
 export type ReadingReference = {
   livroSlug: string;
@@ -215,9 +216,7 @@ export function getReadingPlanDailySummary(day: ReadingPlanDay) {
 }
 
 export function getSuggestedReadingPlanDay(plan: ReadingPlan, date = new Date()) {
-  const start = new Date(date.getFullYear(), 0, 0);
-  const diff = date.getTime() - start.getTime();
-  const dayOfYear = Math.floor(diff / 86400000);
+  const dayOfYear = getSaoPauloDayOfYear(date);
 
   return ((dayOfYear - 1) % plan.duracao) + 1;
 }

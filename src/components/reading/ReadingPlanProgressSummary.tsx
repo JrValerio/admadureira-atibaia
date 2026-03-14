@@ -15,11 +15,9 @@ export default function ReadingPlanProgressSummary({
   todayDay,
   showCalendar = false,
 }: ReadingPlanProgressSummaryProps) {
-  const { completedCount, isDayCompleted, toggleDayCompleted } =
-    useReadingPlanProgress(planSlug);
+  const { completedCount, isDayCompleted } = useReadingPlanProgress(planSlug);
   const safeTotalDays = Math.max(1, totalDays);
   const progressPercent = Math.round((completedCount / safeTotalDays) * 100);
-  const isTodayCompleted = isDayCompleted(todayDay);
 
   return (
     <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
@@ -41,20 +39,6 @@ export default function ReadingPlanProgressSummary({
         />
       </div>
       <p className="text-xs text-[#777] mb-5">{progressPercent}% concluído.</p>
-
-      <button
-        type="button"
-        onClick={() => toggleDayCompleted(todayDay)}
-        className={
-          isTodayCompleted
-            ? "inline-flex items-center justify-center rounded-full bg-[#2e7d32] px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-[#256429]"
-            : "ui-btn-primary"
-        }
-      >
-        {isTodayCompleted
-          ? `Dia ${todayDay} marcado como lido`
-          : `Marcar dia ${todayDay} como lido`}
-      </button>
 
       {showCalendar ? (
         <div className="mt-6">

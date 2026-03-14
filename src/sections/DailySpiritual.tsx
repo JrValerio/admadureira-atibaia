@@ -73,6 +73,12 @@ export default function DailySpiritual() {
               >
                 Abrir devocional →
               </Link>
+              <Link
+                href="/espiritualidade/podcast"
+                className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-[#8b5b18] transition-colors hover:text-[#ef5350]"
+              >
+                Continue com ouvir reflexões em áudio
+              </Link>
             </div>
           </div>
 

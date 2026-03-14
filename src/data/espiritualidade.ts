@@ -31,8 +31,8 @@ export const spiritualFeatures: SpiritualFeature[] = [
     destaque: "Leitura por capítulo",
     uso: "Quando quiser abrir um capítulo completo e navegar pela Palavra com liberdade.",
     ctaLabel: "Abrir Bíblia",
-    supportLabel: "Ver plano de leitura",
-    supportHref: "/espiritualidade/plano-de-leitura",
+    supportLabel: "Ouvir reflexões em áudio",
+    supportHref: "/espiritualidade/podcast",
     category: "primary",
   },
   {

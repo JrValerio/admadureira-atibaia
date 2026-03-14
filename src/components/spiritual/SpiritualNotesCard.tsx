@@ -68,11 +68,7 @@ export default function SpiritualNotesCard({
           <p className="text-xs font-semibold tracking-widest uppercase text-[#2e7d32]">
             Anotação salva
           </p>
-        ) : (
-          <p className="text-xs text-[#777]">
-            Suas anotações ficam salvas neste navegador.
-          </p>
-        )}
+        ) : null}
       </div>
     </div>
   );

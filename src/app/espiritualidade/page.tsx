@@ -26,6 +26,8 @@ export const metadata = buildPageMetadata({
   ],
 });
 
+export const revalidate = 3600;
+
 export default function EspiritualidadePage() {
   const hubData = getSpiritualityHubData();
 
@@ -141,9 +143,8 @@ export default function EspiritualidadePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {primarySpiritualFeatures.map((feature) => (
-                <Link
+                <article
                   key={feature.href}
-                  href={feature.href}
                   className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
                 >
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
@@ -159,19 +160,22 @@ export default function EspiritualidadePage() {
                     {feature.descricao}
                   </p>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-                    <p className="ui-link-accent inline-flex">
+                    <Link href={feature.href} className="ui-link-accent inline-flex">
                       {feature.ctaLabel} →
-                    </p>
+                    </Link>
                     {feature.supportHref && feature.supportLabel ? (
-                      <span className="text-xs text-[#777]">
+                      <Link
+                        href={feature.supportHref}
+                        className="text-xs text-[#777] transition-colors hover:text-[#212121]"
+                      >
                         Continue com{" "}
                         <span className="font-semibold text-[#212121]">
                           {feature.supportLabel}
                         </span>
-                      </span>
+                      </Link>
                     ) : null}
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
           </div>
@@ -193,9 +197,8 @@ export default function EspiritualidadePage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {complementarySpiritualFeatures.map((feature) => (
-                <Link
+                <article
                   key={feature.href}
-                  href={feature.href}
                   className="group rounded-3xl border border-[#ffa726]/18 bg-[#fff8ee] p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
                 >
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
@@ -211,19 +214,22 @@ export default function EspiritualidadePage() {
                     {feature.descricao}
                   </p>
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-                    <p className="ui-link-accent inline-flex">
+                    <Link href={feature.href} className="ui-link-accent inline-flex">
                       {feature.ctaLabel} →
-                    </p>
+                    </Link>
                     {feature.supportHref && feature.supportLabel ? (
-                      <span className="text-xs text-[#777]">
+                      <Link
+                        href={feature.supportHref}
+                        className="text-xs text-[#777] transition-colors hover:text-[#212121]"
+                      >
                         Continue com{" "}
                         <span className="font-semibold text-[#212121]">
                           {feature.supportLabel}
                         </span>
-                      </span>
+                      </Link>
                     ) : null}
                   </div>
-                </Link>
+                </article>
               ))}
             </div>
           </div>

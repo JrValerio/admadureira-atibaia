@@ -5,7 +5,11 @@ import HeroPage from "@/components/HeroPage";
 import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
 import SpiritualNotesCard from "@/components/spiritual/SpiritualNotesCard";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
-import { getDevotionalBySlug, getDevotionals } from "@/data/devocionais";
+import {
+  getDevotionalBySlug,
+  getDevotionalDisplayDate,
+  getDevotionals,
+} from "@/data/devocionais";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   getReadingPlanBySlug,
@@ -33,6 +37,8 @@ export async function generateStaticParams() {
     slug: devotional.slug,
   }));
 }
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -65,6 +71,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
   const relatedDevotionals = getDevotionals()
     .filter((item) => item.slug !== devotional.slug)
     .slice(0, 2);
+  const devotionalDisplayDate = getDevotionalDisplayDate(devotional);
   const annualPlan = getReadingPlanBySlug("biblia-em-1-ano");
   const suggestedDay = annualPlan ? getSuggestedReadingPlanDay(annualPlan) : null;
   const suggestedDaySummary =
@@ -77,7 +84,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
     "@type": "Article",
     headline: devotional.titulo,
     description: devotional.resumo,
-    datePublished: devotional.data,
+    datePublished: devotionalDisplayDate,
     inLanguage: "pt-BR",
     image: resolveSiteUrl(devotional.imagem ?? igrejaHeroMedia.devocional),
     mainEntityOfPage: resolveSiteUrl(
@@ -124,7 +131,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                       Publicado em
                     </p>
                     <p className="text-[#212121] text-sm">
-                      {formatDevotionalDate(devotional.data)}
+                      {formatDevotionalDate(devotionalDisplayDate)}
                     </p>
                   </div>
                   <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
@@ -232,6 +239,12 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                     className="block text-[#212121] transition-colors hover:text-[#ef5350]"
                   >
                     Abrir a Bíblia Online
+                  </Link>
+                  <Link
+                    href="/espiritualidade/podcast"
+                    className="block text-[#212121] transition-colors hover:text-[#ef5350]"
+                  >
+                    Continue com ouvir reflexões em áudio
                   </Link>
                   <Link
                     href="/oracao"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContinueReading from "@/components/reading/ContinueReading";
 import HeroPage from "@/components/HeroPage";
+import ReadingDayCompletionButton from "@/components/reading/ReadingDayCompletionButton";
 import ReadingPlanProgressSummary from "@/components/reading/ReadingPlanProgressSummary";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import { getDevotionalOfTheDay } from "@/data/devocionais";
@@ -21,6 +22,8 @@ type PageProps = {
     slug: string;
   }>;
 };
+
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -122,10 +125,13 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               </p>
               <Link
                 href={createReadingPlanDayPath(plan.slug, suggestedDay)}
-                className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
               >
                 Abrir dia sugerido
               </Link>
+              <div className="mt-3">
+                <ReadingDayCompletionButton planSlug={plan.slug} day={suggestedDay} />
+              </div>
             </div>
           </div>
 

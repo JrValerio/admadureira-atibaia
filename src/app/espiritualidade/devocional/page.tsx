@@ -3,7 +3,11 @@ import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import ReadingJourneyActions from "@/components/reading/ReadingJourneyActions";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
-import { getDevotionalOfTheDay, getDevotionals } from "@/data/devocionais";
+import {
+  getDevotionalDisplayDate,
+  getDevotionalOfTheDay,
+  getDevotionals,
+} from "@/data/devocionais";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   getReadingPlanBySlug,
@@ -19,6 +23,8 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/espiritualidade/devocional",
   image: igrejaHeroMedia.devocional,
 });
+
+export const revalidate = 3600;
 
 function formatDevotionalDate(date: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -78,6 +84,12 @@ export default function DevocionalPage() {
                 >
                   Ler devocional completo →
                 </Link>
+                <Link
+                  href="/espiritualidade/podcast"
+                  className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-[#8b5b18] transition-colors hover:text-[#ef5350]"
+                >
+                  Continue com ouvir reflexões em áudio
+                </Link>
               </div>
 
               <ReadingJourneyActions
@@ -108,7 +120,7 @@ export default function DevocionalPage() {
                 className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow"
               >
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                  {formatDevotionalDate(devotional.data)}
+                  {formatDevotionalDate(getDevotionalDisplayDate(devotional))}
                 </p>
                 <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                   {devotional.titulo}

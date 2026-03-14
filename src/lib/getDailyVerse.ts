@@ -1,20 +1,9 @@
 import { getBibleBookBySlug } from "@/data/biblia-livros";
 import { dailyVerses } from "@/data/versiculo-do-dia";
-
-function getSaoPauloDate(date = new Date()) {
-  return new Date(
-    date.toLocaleString("en-US", {
-      timeZone: "America/Sao_Paulo",
-    })
-  );
-}
+import { getSaoPauloDayOfYear } from "@/lib/date-utils";
 
 export function getDayOfYear(date = new Date()) {
-  const today = getSaoPauloDate(date);
-  const start = new Date(today.getFullYear(), 0, 0);
-  const diff = today.getTime() - start.getTime();
-
-  return Math.floor(diff / 86400000);
+  return getSaoPauloDayOfYear(date);
 }
 
 export function getDailyVerse(date = new Date()) {

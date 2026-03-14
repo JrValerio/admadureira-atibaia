@@ -44,7 +44,7 @@ export default function ReadingJourneyActions({
         {normalizedLastDay ? (
           <Link
             href={createReadingPlanDayPath(planSlug, normalizedLastDay)}
-            className="ui-btn-primary"
+            className="ui-btn-primary whitespace-nowrap"
           >
             Continuar leitura · Dia {normalizedLastDay}
           </Link>
@@ -52,14 +52,14 @@ export default function ReadingJourneyActions({
 
         <Link
           href={createReadingPlanDayPath(planSlug, suggestedDay)}
-          className="ui-btn-secondary"
+          className="ui-btn-secondary whitespace-nowrap"
         >
           Abrir dia sugerido
         </Link>
 
         <Link
           href={createReadingPlanDayPath(planSlug, 1)}
-          className="ui-btn-ghost"
+          className="ui-btn-ghost whitespace-nowrap"
         >
           Começar agora
         </Link>
@@ -68,8 +68,8 @@ export default function ReadingJourneyActions({
           <ReadingDayCompletionButton
             planSlug={planSlug}
             day={suggestedDay}
-            completedLabel="Leitura do dia concluída"
-            pendingLabel="Marcar leitura do dia"
+            completedLabel="Leitura concluída"
+            pendingLabel="Concluir leitura"
           />
         ) : null}
       </div>

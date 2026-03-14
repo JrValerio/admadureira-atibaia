@@ -123,10 +123,10 @@ export default function BibleChapterSelector({
             onChange={handleVerseChange}
             className="w-full rounded-2xl border border-black/10 bg-white px-4 py-3 text-base text-[#212121] shadow-sm outline-none transition-colors focus:border-[#ffa726]"
           >
-            <option value="">Selecione um versículo</option>
+            <option value="">Versículo</option>
             {verses.map((verse) => (
               <option key={verse} value={verse}>
-                Versículo {verse}
+                {verse}
               </option>
             ))}
           </select>

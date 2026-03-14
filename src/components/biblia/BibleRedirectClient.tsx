@@ -27,7 +27,7 @@ function parseChapter(value?: string | null) {
   const parsed = Number(value);
 
   if (!Number.isFinite(parsed)) {
-    return 3;
+    return 1;
   }
 
   return parsed;
@@ -43,7 +43,7 @@ export default function BibleRedirectClient({
   const { lastReading } = useBibleLastReading();
 
   useEffect(() => {
-    const fallbackBook = getBibleBookBySlug("joao") ?? bibleBooks[0];
+    const fallbackBook = bibleBooks[0] ?? getBibleBookBySlug("genesis");
     const queryBook =
       (livro &&
         (getBibleBookBySlug(livro) ||
@@ -66,7 +66,7 @@ export default function BibleRedirectClient({
       selectedBook,
       queryBook
         ? parseChapter(capitulo)
-        : lastReading?.chapter ?? 3
+        : lastReading?.chapter ?? 1
     );
 
     const selectedVerse = queryBook ? undefined : lastReading?.verse;
@@ -90,7 +90,7 @@ export default function BibleRedirectClient({
         </h1>
         <p className="text-sm leading-7 text-[#555]">
           Estamos levando você para o último capítulo lido ou para a referência
-          padrão da Bíblia Online.
+          inicial da Bíblia Online.
         </p>
       </div>
     </section>
