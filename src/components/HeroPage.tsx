@@ -55,8 +55,8 @@ export default function HeroPage({
       <div
         className={`absolute inset-0 ${
           isFull
-            ? "bg-linear-to-r from-black/85 via-black/60 to-black/45"
-            : "bg-linear-to-r from-black/85 via-black/60 to-black/35"
+            ? "bg-linear-to-b from-black/70 via-black/45 to-black/78"
+            : "bg-linear-to-b from-black/78 via-black/55 to-black/82"
         }`.trim()}
       />
 
@@ -66,7 +66,7 @@ export default function HeroPage({
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
               {label}
             </p>
-            <h1 className="font-acme text-4xl md:text-6xl tracking-wide leading-tight mb-5">
+            <h1 className="font-acme text-4xl md:text-6xl tracking-tight leading-tight mb-5">
               {title}
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
@@ -79,7 +79,7 @@ export default function HeroPage({
           <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
             {label}
           </p>
-          <h1 className="font-acme text-4xl md:text-5xl tracking-wide leading-tight mb-5">
+          <h1 className="font-acme text-4xl md:text-5xl tracking-tight leading-tight mb-5">
             {title}
           </h1>
           <p className="text-white/80 leading-relaxed max-w-2xl">

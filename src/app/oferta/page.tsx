@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import CopyPixButton from "@/components/CopyPixButton";
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import { ofertaData } from "@/data/oferta";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
@@ -10,7 +11,7 @@ export const metadata = buildPageMetadata({
   description:
     "Contribua com a obra de Deus na AD Madureira Atibaia por meio de PIX, transferência bancária ou presencialmente nos cultos da igreja.",
   path: "/oferta",
-  image: "/fachada-da-igreja.jpg",
+  image: igrejaHeroMedia.oferta,
   keywords: [
     "oferta igreja",
     "pix igreja",
@@ -54,9 +55,9 @@ export default function OfertaPage() {
         label="Contribuição"
         title="Dízimos e Ofertas"
         description="Contribua para a obra de Deus e participe da expansão do Evangelho por meio da Assembleia de Deus Ministério Madureira no Campo de Atibaia."
-        image="/fachada-da-igreja.jpg"
+        image={igrejaHeroMedia.oferta}
         imageAlt="Fachada da AD Madureira Atibaia"
-        imageClassName="object-[center_34%]"
+        imageClassName="object-[center_40%]"
       />
       <section className="py-16 md:py-20">
         <div className="max-w-4xl mx-auto px-4">

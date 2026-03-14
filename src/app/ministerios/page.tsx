@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Ministerios from "@/sections/Ministerios";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -17,8 +18,9 @@ export default function MinisteriosPage() {
         label="Departamentos"
         title="Ministérios da Igreja"
         description="Conheça os ministérios da AD Madureira Atibaia e veja como cada área serve a igreja por meio do discipulado, da adoração, da oração e da formação cristã."
-        image="/fachada-da-igreja.jpg"
-        imageAlt="Fachada da AD Madureira Atibaia"
+        image={igrejaHeroMedia.ministerios}
+        imageAlt="Culto na AD Madureira Atibaia"
+        imageClassName="object-[center_34%]"
       />
       <Ministerios showHeader={false} />
     </main>

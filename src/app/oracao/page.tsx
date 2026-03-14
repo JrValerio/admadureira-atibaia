@@ -1,4 +1,5 @@
 import HeroPage from "@/components/HeroPage";
+import { igrejaHeroMedia } from "@/data/igreja-media";
 import Oracao from "@/sections/Oracao";
 import { buildPageMetadata } from "@/lib/site";
 
@@ -17,8 +18,9 @@ export default function OracaoPage() {
         label="Intercessão"
         title="Pedido de Oração"
         description="Compartilhe seu pedido conosco. A equipe de intercessão da AD Madureira Atibaia caminha em oração com você e sua família."
-        image="/pulpito-da-igreja.jpg"
-        imageAlt="Púlpito da AD Madureira Atibaia"
+        image={igrejaHeroMedia.oracao}
+        imageAlt="Interior da AD Madureira Atibaia em momento de oração"
+        imageClassName="object-[center_38%]"
       />
       <Oracao showHeader={false} />
     </main>
