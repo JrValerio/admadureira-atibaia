@@ -7,6 +7,7 @@ export type SpiritualFeature = {
   ctaLabel: string;
   supportLabel?: string;
   supportHref?: string;
+  category: "primary" | "complementary";
 };
 
 export const spiritualFeatures: SpiritualFeature[] = [
@@ -20,6 +21,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Ler hoje",
     supportLabel: "Seguir com devocional",
     supportHref: "/espiritualidade/devocional",
+    category: "primary",
   },
   {
     href: "/espiritualidade/biblia",
@@ -31,6 +33,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Abrir Bíblia",
     supportLabel: "Ver plano de leitura",
     supportHref: "/espiritualidade/plano-de-leitura",
+    category: "primary",
   },
   {
     href: "/espiritualidade/plano-de-leitura",
@@ -42,6 +45,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Continuar plano",
     supportLabel: "Ouvir durante a rotina",
     supportHref: "/espiritualidade/radio",
+    category: "primary",
   },
   {
     href: "/espiritualidade/devocional",
@@ -53,6 +57,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Meditar hoje",
     supportLabel: "Ouvir reflexões em áudio",
     supportHref: "/espiritualidade/podcast",
+    category: "primary",
   },
   {
     href: "/espiritualidade/radio",
@@ -64,6 +69,7 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Ouvir proposta da rádio",
     supportLabel: "Explorar podcast",
     supportHref: "/espiritualidade/podcast",
+    category: "complementary",
   },
   {
     href: "/espiritualidade/podcast",
@@ -75,8 +81,17 @@ export const spiritualFeatures: SpiritualFeature[] = [
     ctaLabel: "Explorar podcast",
     supportLabel: "Ver rádio",
     supportHref: "/espiritualidade/radio",
+    category: "complementary",
   },
 ];
+
+export const primarySpiritualFeatures = spiritualFeatures.filter(
+  (feature) => feature.category === "primary"
+);
+
+export const complementarySpiritualFeatures = spiritualFeatures.filter(
+  (feature) => feature.category === "complementary"
+);
 
 export const radioConfig = {
   streamUrl: "",

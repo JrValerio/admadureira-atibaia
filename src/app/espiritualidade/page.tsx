@@ -1,7 +1,10 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
-import { spiritualFeatures } from "@/data/espiritualidade";
+import {
+  complementarySpiritualFeatures,
+  primarySpiritualFeatures,
+} from "@/data/espiritualidade";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
 import HojeComDeus from "@/sections/HojeComDeus";
 import SuaJornada from "@/sections/SuaJornada";
@@ -121,38 +124,108 @@ export default function EspiritualidadePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {spiritualFeatures.map((feature) => (
-              <Link
-                key={feature.href}
-                href={feature.href}
-                className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
-              >
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                  {feature.destaque}
-                </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
-                  {feature.titulo}
-                </h2>
-                <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
-                  {feature.uso}
-                </p>
-                <p className="text-[#555] leading-relaxed mb-6">
-                  {feature.descricao}
-                </p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-                  <p className="ui-link-accent inline-flex">{feature.ctaLabel} →</p>
-                  {feature.supportHref && feature.supportLabel ? (
-                    <span className="text-xs text-[#777]">
-                      Continue com{" "}
-                      <span className="font-semibold text-[#212121]">
-                        {feature.supportLabel}
+          <div className="mb-12">
+            <div className="mb-6 max-w-3xl">
+              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                Recursos principais
+              </p>
+              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+                O núcleo da sua rotina espiritual diária
+              </h2>
+              <p className="text-[#555] leading-relaxed">
+                Estes são os quatro caminhos principais para abrir a Palavra,
+                meditar com direção e manter constância prática ao longo da
+                semana.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {primarySpiritualFeatures.map((feature) => (
+                <Link
+                  key={feature.href}
+                  href={feature.href}
+                  className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
+                >
+                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                    {feature.destaque}
+                  </p>
+                  <h2 className="font-acme text-3xl md:text-[2.2rem] text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
+                    {feature.titulo}
+                  </h2>
+                  <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
+                    {feature.uso}
+                  </p>
+                  <p className="text-[#555] leading-relaxed mb-6">
+                    {feature.descricao}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                    <p className="ui-link-accent inline-flex">
+                      {feature.ctaLabel} →
+                    </p>
+                    {feature.supportHref && feature.supportLabel ? (
+                      <span className="text-xs text-[#777]">
+                        Continue com{" "}
+                        <span className="font-semibold text-[#212121]">
+                          {feature.supportLabel}
+                        </span>
                       </span>
-                    </span>
-                  ) : null}
-                </div>
-              </Link>
-            ))}
+                    ) : null}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-6 max-w-3xl">
+              <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                Recursos complementares
+              </p>
+              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+                Áudio para acompanhar sua jornada ao longo do dia
+              </h2>
+              <p className="text-[#555] leading-relaxed">
+                Rádio e Podcast funcionam como apoio da rotina espiritual:
+                caminhos em áudio para ouvir durante deslocamentos, trabalho,
+                pausas e momentos de oração ao longo da semana.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {complementarySpiritualFeatures.map((feature) => (
+                <Link
+                  key={feature.href}
+                  href={feature.href}
+                  className="group rounded-3xl border border-[#ffa726]/18 bg-[#fff8ee] p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
+                >
+                  <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                    {feature.destaque}
+                  </p>
+                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
+                    {feature.titulo}
+                  </h2>
+                  <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
+                    {feature.uso}
+                  </p>
+                  <p className="text-[#555] leading-relaxed mb-6">
+                    {feature.descricao}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                    <p className="ui-link-accent inline-flex">
+                      {feature.ctaLabel} →
+                    </p>
+                    {feature.supportHref && feature.supportLabel ? (
+                      <span className="text-xs text-[#777]">
+                        Continue com{" "}
+                        <span className="font-semibold text-[#212121]">
+                          {feature.supportLabel}
+                        </span>
+                      </span>
+                    ) : null}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
