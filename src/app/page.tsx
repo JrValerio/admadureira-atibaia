@@ -5,7 +5,7 @@ import DailySpiritual from "@/sections/DailySpiritual";
 import Destaques from "@/sections/Destaques";
 import Cultos from "@/sections/Cultos";
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export default function Home() {
   return (

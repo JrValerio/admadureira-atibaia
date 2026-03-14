@@ -1,19 +1,29 @@
-import { agenda2026, programacaoSemanal, type Evento, type ItemSemanal } from "@/data/agenda";
+import {
+  agenda2026,
+  programacaoSemanal,
+  type Evento,
+  type ItemSemanal,
+} from "@/data/agenda";
+import { getSaoPauloDate } from "@/lib/date-utils";
 
-const mesParaNumero: Record<string, number> = {
-  Janeiro: 1,
-  Fevereiro: 2,
-  Março: 3,
-  Abril: 4,
-  Maio: 5,
-  Junho: 6,
-  Julho: 7,
-  Agosto: 8,
-  Setembro: 9,
-  Outubro: 10,
-  Novembro: 11,
-  Dezembro: 12,
-};
+const mesesOrdenados = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
+] as const;
+
+const mesParaNumero: Record<string, number> = Object.fromEntries(
+  mesesOrdenados.map((mes, index) => [mes, index + 1])
+);
 
 export interface EventoFuturo extends Evento {
   mes: string;
@@ -37,6 +47,9 @@ export interface AtividadeHojeNaIgreja {
   titulo: string;
   horario?: string;
   banner?: string;
+  href?: string;
+  origem: "evento" | "programacao";
+  detalhe?: string;
 }
 
 export interface HojeNaIgrejaUI {
@@ -53,6 +66,20 @@ export interface EventosPorMesUI {
   label: string;
   eventos: EventoFuturo[];
 }
+
+type AgendaOccurrence = {
+  id: string;
+  titulo: string;
+  horario?: string;
+  banner?: string;
+  href: string;
+  origem: "evento" | "programacao";
+  detalhe?: string;
+  dataEvento: Date;
+  data: string;
+  mes: string;
+  ano: number;
+};
 
 const diasProgramacao: Record<string, number[]> = {
   "Segunda a Sexta": [1, 2, 3, 4, 5],
@@ -100,6 +127,72 @@ function formatarData(data: Date) {
   return `${dia}/${mes}`;
 }
 
+function formatarDataChave(data: Date) {
+  return `${data.getFullYear()}-${String(data.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}-${String(data.getDate()).padStart(2, "0")}`;
+}
+
+function normalizarTexto(valor: string) {
+  return valor
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function criarChaveOcorrencia(titulo: string, dataEvento: Date) {
+  return `${formatarDataChave(dataEvento)}:${normalizarTexto(titulo)}`;
+}
+
+function criarIdAtividade(item: ItemSemanal, indice: number) {
+  const base = `${item.dia}-${item.titulo}-${item.horario ?? indice}`;
+  return normalizarTexto(base);
+}
+
+function criarIdOcorrenciaEvento(evento: EventoFuturo) {
+  return `evento-${evento.slug}`;
+}
+
+function ordenarOcorrencias(
+  esquerda: AgendaOccurrence,
+  direita: AgendaOccurrence
+) {
+  const diff = esquerda.dataEvento.getTime() - direita.dataEvento.getTime();
+
+  if (diff !== 0) {
+    return diff;
+  }
+
+  if (esquerda.origem === direita.origem) {
+    return esquerda.titulo.localeCompare(direita.titulo);
+  }
+
+  return esquerda.origem === "evento" ? -1 : 1;
+}
+
+function combinarOcorrencias(ocorrencias: AgendaOccurrence[]) {
+  const mapa = new Map<string, AgendaOccurrence>();
+
+  for (const ocorrencia of [...ocorrencias].sort(ordenarOcorrencias)) {
+    const chave = criarChaveOcorrencia(ocorrencia.titulo, ocorrencia.dataEvento);
+    const existente = mapa.get(chave);
+
+    if (!existente) {
+      mapa.set(chave, ocorrencia);
+      continue;
+    }
+
+    if (existente.origem === "programacao" && ocorrencia.origem === "evento") {
+      mapa.set(chave, ocorrencia);
+    }
+  }
+
+  return [...mapa.values()].sort(ordenarOcorrencias);
+}
+
 function criarCompromissoEvento(evento: EventoFuturo): ProximoCompromisso {
   return {
     titulo: evento.titulo,
@@ -109,23 +202,54 @@ function criarCompromissoEvento(evento: EventoFuturo): ProximoCompromisso {
     ano: evento.ano,
     href: `/eventos/${evento.slug}`,
     origem: "evento",
+    detalhe: "Agenda especial",
   };
 }
 
-function criarIdAtividade(item: ItemSemanal, indice: number) {
-  const base = `${item.dia}-${item.titulo}-${item.horario ?? indice}`;
-  return base
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+function criarOcorrenciaProgramacao(
+  item: ItemSemanal,
+  dataEvento: Date,
+  indice: number
+): AgendaOccurrence {
+  return {
+    id: criarIdAtividade(item, indice),
+    titulo: item.titulo,
+    horario: item.horario,
+    banner: item.banner,
+    href: "/programacao",
+    origem: "programacao",
+    detalhe: item.dia,
+    dataEvento,
+    data: formatarData(dataEvento),
+    mes: mesesOrdenados[dataEvento.getMonth()] ?? "Janeiro",
+    ano: dataEvento.getFullYear(),
+  };
+}
+
+function criarOcorrenciaEvento(
+  evento: EventoFuturo,
+  dataEvento: Date
+): AgendaOccurrence {
+  return {
+    id: criarIdOcorrenciaEvento(evento),
+    titulo: evento.titulo,
+    horario: evento.horario,
+    banner: evento.banner ?? evento.imagem,
+    href: `/eventos/${evento.slug}`,
+    origem: "evento",
+    detalhe: "Agenda especial",
+    dataEvento,
+    data: evento.data,
+    mes: evento.mes,
+    ano: evento.ano,
+  };
 }
 
 function encontrarProximaOcorrenciaSemanal(
   item: ItemSemanal,
-  referencia: Date
-): Date | null {
+  referencia: Date,
+  indice: number
+): AgendaOccurrence | null {
   const dias = diasProgramacao[item.dia] ?? [];
 
   if (!item.horario || dias.length === 0) {
@@ -133,55 +257,36 @@ function encontrarProximaOcorrenciaSemanal(
   }
 
   const { hora, minuto } = extrairHorario(item.horario);
-  let proximaOcorrencia: Date | null = null;
 
   for (let offset = 0; offset <= 7; offset += 1) {
     const dataCandidata = new Date(referencia);
-    dataCandidata.setDate(referencia.getDate() + offset);
-    dataCandidata.setHours(hora, minuto, 0, 0);
+    dataCandidata.setHours(0, 0, 0, 0);
+    dataCandidata.setDate(dataCandidata.getDate() + offset);
 
     if (!dias.includes(dataCandidata.getDay())) {
       continue;
     }
 
-    if (dataCandidata <= referencia) {
+    dataCandidata.setHours(hora, minuto, 0, 0);
+
+    if (dataCandidata < referencia) {
       continue;
     }
 
-    if (!proximaOcorrencia || dataCandidata < proximaOcorrencia) {
-      proximaOcorrencia = dataCandidata;
-    }
+    return criarOcorrenciaProgramacao(item, dataCandidata, indice);
   }
 
-  return proximaOcorrencia;
+  return null;
 }
 
 function getProximaProgramacaoSemanal(referencia: Date) {
   const proximosCompromissos = programacaoSemanal
-    .map((item) => {
-      const dataEvento = encontrarProximaOcorrenciaSemanal(item, referencia);
+    .map((item, indice) =>
+      encontrarProximaOcorrenciaSemanal(item, referencia, indice)
+    )
+    .filter((item): item is AgendaOccurrence => item !== null);
 
-      if (!dataEvento) {
-        return null;
-      }
-
-      return {
-        evento: {
-          titulo: item.titulo,
-          horario: item.horario,
-          data: formatarData(dataEvento),
-          mes: Object.keys(mesParaNumero)[dataEvento.getMonth()],
-          ano: dataEvento.getFullYear(),
-          href: "/programacao",
-          origem: "programacao" as const,
-          detalhe: item.dia,
-        } satisfies ProximoCompromisso,
-        dataEvento,
-      };
-    })
-    .filter((item) => item !== null);
-
-  return proximosCompromissos.sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime())[0] ?? null;
+  return combinarOcorrencias(proximosCompromissos)[0] ?? null;
 }
 
 function expandirAgenda() {
@@ -211,6 +316,28 @@ function expandirAgenda() {
     .sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime());
 }
 
+function getOcorrenciasEspeciaisDoDia(referencia: Date) {
+  const chaveHoje = formatarDataChave(referencia);
+
+  return expandirAgenda()
+    .filter((item) => formatarDataChave(item.dataEvento) === chaveHoje)
+    .map((item) => criarOcorrenciaEvento(item.evento, item.dataEvento));
+}
+
+function getOcorrenciasSemanaisDoDia(referencia: Date) {
+  const diaSemana = referencia.getDay();
+
+  return programacaoSemanal
+    .filter((item) => (diasProgramacao[item.dia] ?? []).includes(diaSemana))
+    .map((item, indice) => {
+      const { hora, minuto } = extrairHorario(item.horario);
+      const dataEvento = new Date(referencia);
+      dataEvento.setHours(hora, minuto, 0, 0);
+
+      return criarOcorrenciaProgramacao(item, dataEvento, indice);
+    });
+}
+
 export function getEventoBySlug(slug: string) {
   return expandirAgenda().find((item) => item.evento.slug === slug)?.evento ?? null;
 }
@@ -220,7 +347,7 @@ export function getEventosAgenda() {
 }
 
 export function getEventosFuturos(limite?: number) {
-  const hoje = new Date();
+  const hoje = getSaoPauloDate();
   hoje.setHours(0, 0, 0, 0);
 
   const futuros = expandirAgenda()
@@ -231,28 +358,23 @@ export function getEventosFuturos(limite?: number) {
 }
 
 export function getHojeNaIgreja(referencia = new Date()): HojeNaIgrejaUI {
-  const diaSemana = referencia.getDay();
-  const atividades = programacaoSemanal
-    .filter((item) => (diasProgramacao[item.dia] ?? []).includes(diaSemana))
-    .sort((a, b) => {
-      const horarioA = extrairHorario(a.horario);
-      const horarioB = extrairHorario(b.horario);
-      return (
-        horarioA.hora * 60 +
-        horarioA.minuto -
-        (horarioB.hora * 60 + horarioB.minuto)
-      );
-    })
-    .map((item, indice) => ({
-      id: criarIdAtividade(item, indice),
-      dia: item.dia,
-      titulo: item.titulo,
-      horario: item.horario,
-      banner: item.banner,
-    }));
+  const dataReferencia = getSaoPauloDate(referencia);
+  const atividades = combinarOcorrencias([
+    ...getOcorrenciasSemanaisDoDia(dataReferencia),
+    ...getOcorrenciasEspeciaisDoDia(dataReferencia),
+  ]).map((atividade) => ({
+    id: atividade.id,
+    dia: atividade.origem === "evento" ? "Agenda especial" : atividade.detalhe ?? "",
+    titulo: atividade.titulo,
+    horario: atividade.horario,
+    banner: atividade.banner,
+    href: atividade.href,
+    origem: atividade.origem,
+    detalhe: atividade.detalhe,
+  }));
 
   return {
-    dia: diasSemanaPtBr[diaSemana] ?? "Hoje",
+    dia: diasSemanaPtBr[dataReferencia.getDay()] ?? "Hoje",
     titulo: "Hoje na Igreja",
     atividades,
   };
@@ -262,7 +384,27 @@ export function getNextCultoSemanal(referencia = new Date()): {
   evento: ProximoCompromisso;
   dataEvento: Date;
 } | null {
-  return getProximaProgramacaoSemanal(referencia);
+  const proximaProgramacao = getProximaProgramacaoSemanal(
+    getSaoPauloDate(referencia)
+  );
+
+  if (!proximaProgramacao) {
+    return null;
+  }
+
+  return {
+    evento: {
+      titulo: proximaProgramacao.titulo,
+      horario: proximaProgramacao.horario,
+      data: proximaProgramacao.data,
+      mes: proximaProgramacao.mes,
+      ano: proximaProgramacao.ano,
+      href: proximaProgramacao.href,
+      origem: proximaProgramacao.origem,
+      detalhe: proximaProgramacao.detalhe,
+    },
+    dataEvento: proximaProgramacao.dataEvento,
+  };
 }
 
 export function getEventosDestaque(
@@ -308,33 +450,51 @@ export function groupEventosPorMes(eventos = getEventosFuturos()): EventosPorMes
   });
 }
 
-export function getProximoEventoComData(): {
+export function getProximoEventoComData(referencia = new Date()): {
   evento: ProximoCompromisso;
   dataEvento: Date;
 } | null {
-  const agora = new Date();
-  const proximoEvento = expandirAgenda().find((item) => item.dataEvento > agora);
+  const agora = getSaoPauloDate(referencia);
+  const proximoEvento = expandirAgenda()
+    .filter((item) => item.dataEvento >= agora)
+    .map((item) => criarOcorrenciaEvento(item.evento, item.dataEvento))[0];
   const proximaProgramacao = getProximaProgramacaoSemanal(agora);
+  const proximoCompromisso = combinarOcorrencias(
+    [proximoEvento, proximaProgramacao].filter(
+      (item): item is AgendaOccurrence => item !== undefined && item !== null
+    )
+  )[0];
 
-  if (!proximoEvento) {
-    return proximaProgramacao;
+  if (!proximoCompromisso) {
+    return null;
   }
 
-  if (!proximaProgramacao) {
-    return {
-      evento: criarCompromissoEvento(proximoEvento.evento),
-      dataEvento: proximoEvento.dataEvento,
-    };
+  if (proximoCompromisso.origem === "evento") {
+    const evento = getEventoBySlug(
+      proximoCompromisso.href.replace("/eventos/", "")
+    );
+
+    if (evento) {
+      return {
+        evento: criarCompromissoEvento(evento),
+        dataEvento: proximoCompromisso.dataEvento,
+      };
+    }
   }
 
-  if (proximoEvento.dataEvento <= proximaProgramacao.dataEvento) {
-    return {
-      evento: criarCompromissoEvento(proximoEvento.evento),
-      dataEvento: proximoEvento.dataEvento,
-    };
-  }
-
-  return proximaProgramacao;
+  return {
+    evento: {
+      titulo: proximoCompromisso.titulo,
+      horario: proximoCompromisso.horario,
+      data: proximoCompromisso.data,
+      mes: proximoCompromisso.mes,
+      ano: proximoCompromisso.ano,
+      href: proximoCompromisso.href,
+      origem: proximoCompromisso.origem,
+      detalhe: proximoCompromisso.detalhe,
+    },
+    dataEvento: proximoCompromisso.dataEvento,
+  };
 }
 
 export function getProximosEventos(limite = 4) {

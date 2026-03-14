@@ -37,9 +37,14 @@ export default function HojeNaIgreja({
               <h4 className="font-acme text-2xl text-[#212121] tracking-wide mb-2">
                 {atividade.titulo}
               </h4>
-              <p className="text-sm text-[#777] leading-relaxed">
-                {atividade.dia}
-              </p>
+              <div className="flex flex-wrap items-center gap-2 text-sm text-[#777] leading-relaxed">
+                <p>{atividade.dia}</p>
+                {atividade.origem === "evento" ? (
+                  <span className="rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-2 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-[#8b5b18]">
+                    Evento especial
+                  </span>
+                ) : null}
+              </div>
             </article>
           ))}
         </div>

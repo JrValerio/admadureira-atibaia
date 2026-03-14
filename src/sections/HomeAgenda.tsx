@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   getEventosDestaque,
-  getNextCultoSemanal,
+  getProximoEventoComData,
 } from "@/lib/agenda-utils";
 
 function formatarDataCompleta(data: string, mes: string, ano: number) {
@@ -9,10 +9,10 @@ function formatarDataCompleta(data: string, mes: string, ano: number) {
 }
 
 export default function HomeAgenda() {
-  const proximoCulto = getNextCultoSemanal();
+  const proximoCompromisso = getProximoEventoComData();
   const eventoDestaque = getEventosDestaque(1)[0] ?? null;
 
-  if (!proximoCulto && !eventoDestaque) {
+  if (!proximoCompromisso && !eventoDestaque) {
     return null;
   }
 
@@ -20,33 +20,44 @@ export default function HomeAgenda() {
     <section className="bg-[#f7f6f2] py-10 md:py-14">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {proximoCulto ? (
+          {proximoCompromisso ? (
             <article className="rounded-3xl border border-black/5 bg-white p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                Próximo culto
+                Próximo compromisso
               </p>
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
-                {proximoCulto.evento.titulo}
+                {proximoCompromisso.evento.titulo}
               </h2>
               <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-4">
-                {proximoCulto.evento.detalhe ?? "Programação semanal"}
+                {proximoCompromisso.evento.detalhe ?? "Programação semanal"}
               </p>
               <p className="text-[#555] leading-relaxed mb-6">
                 {formatarDataCompleta(
-                  proximoCulto.evento.data,
-                  proximoCulto.evento.mes,
-                  proximoCulto.evento.ano
+                  proximoCompromisso.evento.data,
+                  proximoCompromisso.evento.mes,
+                  proximoCompromisso.evento.ano
                 )}
-                {proximoCulto.evento.horario
-                  ? ` · ${proximoCulto.evento.horario}`
+                {proximoCompromisso.evento.horario
+                  ? ` · ${proximoCompromisso.evento.horario}`
                   : ""}
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link href="/programacao" className="ui-btn-primary">
-                  Ver programação
+                <Link href={proximoCompromisso.evento.href} className="ui-btn-primary">
+                  {proximoCompromisso.evento.origem === "evento"
+                    ? "Ver evento"
+                    : "Ver programação"}
                 </Link>
-                <Link href="/contato" className="ui-btn-secondary">
-                  Como chegar
+                <Link
+                  href={
+                    proximoCompromisso.evento.origem === "evento"
+                      ? "/eventos"
+                      : "/contato"
+                  }
+                  className="ui-btn-secondary"
+                >
+                  {proximoCompromisso.evento.origem === "evento"
+                    ? "Ver agenda"
+                    : "Como chegar"}
                 </Link>
               </div>
             </article>

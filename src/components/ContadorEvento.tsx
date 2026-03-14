@@ -63,8 +63,7 @@ export default function ContadorEvento() {
   const encerrado = Object.values(tempo).every((v) => v === 0);
   const botaoLabel =
     evento.origem === "evento" ? "Ver detalhes do evento" : "Ver programação";
-  const eyebrow =
-    evento.origem === "evento" ? "Próximo evento" : "Próximo compromisso";
+  const eyebrow = "Próximo compromisso";
 
   return (
     <section className="bg-[#212121] py-10 px-4">
