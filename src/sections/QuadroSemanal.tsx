@@ -105,7 +105,7 @@ export default function QuadroSemanal() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4">
+      <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:px-0 md:pb-0 md:overflow-visible xl:grid-cols-6">
         {diasQuadro.map((dia) => {
           const itens = quadro.get(dia.id) ?? [];
           const destaqueHoje = hoje === dia.id;
@@ -113,7 +113,7 @@ export default function QuadroSemanal() {
           return (
             <div
               key={dia.id}
-              className={`rounded-3xl border p-5 transition-colors ${
+              className={`min-w-[260px] snap-start rounded-3xl border p-5 transition-colors md:min-w-0 ${
                 destaqueHoje
                   ? "border-[#ffa726]/50 bg-[#fff8ee] shadow-[0_8px_28px_rgba(0,0,0,0.05)]"
                   : "border-black/5 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.04)]"
