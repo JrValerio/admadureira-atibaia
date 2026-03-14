@@ -70,16 +70,16 @@ export default function RadioPage() {
                 </span>
               </div>
               <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
-                Rádio da igreja em construção
+                Áudio e transmissões da igreja
               </h2>
               <p className="text-[#555] leading-relaxed mb-4">
                 {radioConfig.resumo}
               </p>
               <p className="text-[#777] text-sm leading-relaxed mb-6">
-                A proposta é que esta página se torne o ponto oficial para ouvir
-                a transmissão da igreja, acompanhar blocos de programação e
-                encontrar rapidamente conteúdos de áudio ligados à rotina
-                espiritual da comunidade.
+                Esta página apresenta a proposta editorial da rádio e será o
+                ponto oficial para ouvir a transmissão da igreja, acompanhar
+                blocos de programação e encontrar rapidamente conteúdos de
+                áudio ligados à rotina espiritual da comunidade.
               </p>
 
               {hasStream ? (
@@ -136,6 +136,20 @@ export default function RadioPage() {
 
               <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                  Acompanhe a ativação
+                </p>
+                <p className="text-sm leading-relaxed text-[#555] mb-5">
+                  Se quiser saber quando a transmissão estiver disponível ou
+                  tirar dúvidas sobre a programação da igreja, fale conosco
+                  diretamente.
+                </p>
+                <Link href="/contato" className="ui-btn-primary">
+                  Falar com a igreja
+                </Link>
+              </div>
+
+              <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Faixas previstas
                 </p>
                 <div className="space-y-4">
@@ -150,23 +164,6 @@ export default function RadioPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
-                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                  Próximo passo
-                </p>
-                <ul className="space-y-3 text-sm text-[#555] leading-relaxed mb-5">
-                  {radioConfig.proximosPassos.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/contato" className="ui-btn-primary">
-                  Falar com a igreja
-                </Link>
               </div>
             </div>
           </div>

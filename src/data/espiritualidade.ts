@@ -121,11 +121,6 @@ export const radioConfig = {
         "Cobertura de congressos, cultos especiais e datas congregacionais em formato contínuo.",
     },
   ],
-  proximosPassos: [
-    "Publicar o link oficial de transmissão ao vivo",
-    "Organizar blocos fixos de oração, louvor e mensagens",
-    "Divulgar a programação diretamente no hub espiritual do site",
-  ],
 };
 
 export const podcastConfig = {
