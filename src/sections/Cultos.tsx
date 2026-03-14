@@ -1,44 +1,48 @@
+import { programacaoSemanal, type ItemSemanal } from "@/data/agenda";
 import { Card, Section, SectionTitle } from "@/components/ui";
 
-const cultos = [
-  {
-    dia: "Segunda a Sexta",
-    horarios: [{ hora: "06:00 – 07:00", nome: "Oração Matinal" }],
-  },
-  {
-    dia: "Segunda-feira",
-    horarios: [{ hora: "19:30", nome: "Curso de Teologia" }],
-  },
-  {
-    dia: "Terça-feira",
-    horarios: [{ hora: "19:30", nome: "Culto de Ensino" }],
-  },
-  {
-    dia: "Quarta-feira",
-    horarios: [
-      { hora: "09:00", nome: "Consagração" },
-      { hora: "15:00", nome: "Círculo de Oração" },
-      { hora: "19:00", nome: "Ensaio das Irmãs" },
-    ],
-  },
-  {
-    dia: "Quinta-feira",
-    horarios: [{ hora: "19:30", nome: "Quinta da Vitória · Jejum e Oração" }],
-  },
-  {
-    dia: "Sexta-feira",
-    horarios: [{ hora: "14:30", nome: "Tarde de Libertação" }],
-  },
-  {
-    dia: "Domingo",
-    horarios: [
-      { hora: "08:00", nome: "Oração Matinal" },
-      { hora: "09:00", nome: "Escola Bíblica Dominical (EBD)" },
-      { hora: "11:00", nome: "Ensaio Jovens Rios de Unção" },
-      { hora: "18:30", nome: "Culto da Família" },
-    ],
-  },
-];
+type GrupoCulto = {
+  dia: string;
+  horarios: Array<{ hora: string; nome: string }>;
+};
+
+const ordemCultos = [
+  "Segunda a Sexta",
+  "Segunda-feira",
+  "Terça-feira",
+  "Quarta-feira",
+  "Quinta-feira",
+  "Sexta-feira",
+  "Domingo",
+] as const;
+
+function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
+  const grupos = new Map<string, GrupoCulto["horarios"]>();
+
+  itens.forEach((item) => {
+    if (
+      process.env.NODE_ENV === "development" &&
+      !ordemCultos.includes(item.dia as (typeof ordemCultos)[number])
+    ) {
+      console.warn(`[Cultos] dia nao mapeado em ordemCultos: "${item.dia}"`);
+    }
+
+    const atuais = grupos.get(item.dia) ?? [];
+    atuais.push({
+      hora: item.horario ?? "Horário a confirmar",
+      nome: item.titulo,
+    });
+    grupos.set(item.dia, atuais);
+  });
+
+  return ordemCultos.reduce<GrupoCulto[]>((resultado, dia) => {
+    const horarios = grupos.get(dia);
+    if (!horarios?.length) return resultado;
+
+    resultado.push({ dia, horarios });
+    return resultado;
+  }, []);
+}
 
 const eventosEspeciais = [
   { nome: "Reunião de Ministério", detalhe: "1ª segunda do mês" },
@@ -48,6 +52,8 @@ const eventosEspeciais = [
 ];
 
 export default function Cultos() {
+  const cultos = agruparCultosPorDia(programacaoSemanal);
+
   return (
     <Section id="cultos" className="bg-[#f7f6f2]">
       <SectionTitle
