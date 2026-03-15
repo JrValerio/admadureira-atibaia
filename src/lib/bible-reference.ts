@@ -114,6 +114,10 @@ function parseVerseEnd(verses?: string) {
   return Number.isFinite(lastVerse) ? lastVerse : undefined;
 }
 
+export function normalizeBibleReferenceNotation(text: string) {
+  return text.replace(/(?<=\d)\.(?=\d)/g, ":");
+}
+
 export function extractBibleReferences(text: string): ParsedBibleReference[] {
   if (!text.trim()) {
     return [];

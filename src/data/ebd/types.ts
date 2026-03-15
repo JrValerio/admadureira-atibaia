@@ -9,6 +9,9 @@ export type ClasseEBDInfo = {
   label: string;
   descricao: string;
   horarioLabel: string;
+  textoBaseLabel: string;
+  resumoDestaqueLabel: string;
+  leituraPrincipalLabel: string;
   ordem: number;
 };
 

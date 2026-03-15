@@ -1,4 +1,5 @@
 import type { LicaoEBD, TrimestreEBD } from "./types";
+import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
   numero: number;
@@ -37,6 +38,33 @@ const apoioAlunoBase = [
   "Leia os textos bíblicos antes da aula e leve anotações ou perguntas para compartilhar.",
   "Escolha um passo de obediência para viver durante a semana a partir da lição estudada.",
 ];
+
+function normalizeReferences(referencias: string[]) {
+  return referencias.map((referencia) =>
+    normalizeBibleReferenceNotation(referencia)
+  );
+}
+
+function normalizeAdultSubsidy(
+  subsidio: NonNullable<LicaoEBD["subsidioAdultos"]>
+) {
+  return {
+    ...subsidio,
+    cabecalho: {
+      ...subsidio.cabecalho,
+      textoAureo: subsidio.cabecalho.textoAureo
+        ? normalizeBibleReferenceNotation(subsidio.cabecalho.textoAureo)
+        : subsidio.cabecalho.textoAureo,
+      leituraBiblicaEmClasse: subsidio.cabecalho.leituraBiblicaEmClasse
+        ? normalizeReferences(subsidio.cabecalho.leituraBiblicaEmClasse)
+        : subsidio.cabecalho.leituraBiblicaEmClasse,
+      leituraDiaria: subsidio.cabecalho.leituraDiaria?.map((item) => ({
+        ...item,
+        referencia: normalizeBibleReferenceNotation(item.referencia),
+      })),
+    },
+  };
+}
 
 const objetivosAdultosLicao1 = [
   "Explicar a revelação da Trindade no batismo de Jesus.",
@@ -2576,9 +2604,9 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
     statusEditorial: "published",
     titulo: seed.titulo,
     resumo: seed.resumo,
-    textoChave: seed.textoChave,
+    textoChave: normalizeBibleReferenceNotation(seed.textoChave),
     verdadePratica: seed.verdadePratica,
-    leituraBiblica: seed.leituraBiblica,
+    leituraBiblica: normalizeReferences(seed.leituraBiblica),
     objetivos: [
       `Compreender como ${seed.enfase.toLowerCase()} fortalece a caminhada cristã.`,
       "Relacionar o ensino bíblico da lição com a vida da igreja, da família e do serviço ao próximo.",
@@ -2616,7 +2644,7 @@ function criarLicaoEditorialAdultos(
     apoioProfessor: editorial.apoioProfessor,
     apoioAluno: editorial.apoioAluno,
     esboco: editorial.esboco,
-    subsidioAdultos: editorial.subsidioAdultos,
+    subsidioAdultos: normalizeAdultSubsidy(editorial.subsidioAdultos),
   };
 }
 

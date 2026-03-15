@@ -11,6 +11,9 @@ export const classesEBD: ClasseEBDInfo[] = [
     label: "Adultos",
     descricao: "Classe voltada ao ensino bíblico contínuo para adultos, com ênfase em doutrina, comunhão e missão.",
     horarioLabel: "Todo domingo às 09h",
+    textoBaseLabel: "Texto áureo",
+    resumoDestaqueLabel: "Verdade prática",
+    leituraPrincipalLabel: "Leitura bíblica em classe",
     ordem: 1,
   },
   {
@@ -18,6 +21,9 @@ export const classesEBD: ClasseEBDInfo[] = [
     label: "Jovens",
     descricao: "Classe para formação espiritual da juventude, com temas ligados à identidade, propósito e maturidade cristã.",
     horarioLabel: "Todo domingo às 09h",
+    textoBaseLabel: "Texto principal",
+    resumoDestaqueLabel: "Resumo da lição",
+    leituraPrincipalLabel: "Texto bíblico",
     ordem: 2,
   },
   {
@@ -25,6 +31,9 @@ export const classesEBD: ClasseEBDInfo[] = [
     label: "Infantil",
     descricao: "Classe pensada para crianças crescerem em Jesus com linguagem simples, bíblica e acolhedora.",
     horarioLabel: "Todo domingo às 09h",
+    textoBaseLabel: "Versículo-base",
+    resumoDestaqueLabel: "Resumo da lição",
+    leituraPrincipalLabel: "Leitura bíblica",
     ordem: 3,
   },
 ];

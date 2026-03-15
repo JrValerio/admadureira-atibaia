@@ -1,4 +1,5 @@
 import type { LicaoEBD, TrimestreEBD } from "./types";
+import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
   numero: number;
@@ -37,6 +38,30 @@ const apoioAlunoBase = [
   "Leve anotações da sua leitura da semana e compartilhe uma dúvida ou decisão durante a aula.",
   "Conte a alguém da classe como pretende aplicar a lição durante os próximos dias.",
 ];
+
+function normalizeReferences(referencias: string[]) {
+  return referencias.map((referencia) =>
+    normalizeBibleReferenceNotation(referencia)
+  );
+}
+
+function normalizeYoungSubsidy(
+  subsidio: NonNullable<LicaoEBD["subsidioJovens"]>
+) {
+  return {
+    ...subsidio,
+    cabecalho: {
+      ...subsidio.cabecalho,
+      textoPrincipal: subsidio.cabecalho.textoPrincipal
+        ? normalizeBibleReferenceNotation(subsidio.cabecalho.textoPrincipal)
+        : subsidio.cabecalho.textoPrincipal,
+      leituraSemanal: subsidio.cabecalho.leituraSemanal?.map((item) => ({
+        ...item,
+        referencia: normalizeBibleReferenceNotation(item.referencia),
+      })),
+    },
+  };
+}
 
 const objetivosJovensLicao1 = [
   "Apresentar o conceito bíblico de salvação.",
@@ -2491,9 +2516,9 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
     statusEditorial: "published",
     titulo: seed.titulo,
     resumo: seed.resumo,
-    textoChave: seed.textoChave,
+    textoChave: normalizeBibleReferenceNotation(seed.textoChave),
     verdadePratica: seed.verdadePratica,
-    leituraBiblica: seed.leituraBiblica,
+    leituraBiblica: normalizeReferences(seed.leituraBiblica),
     objetivos: [
       `Entender como ${seed.enfase.toLowerCase()} participa da formação espiritual da juventude.`,
       "Relacionar a lição com decisões concretas, afetos, rotina e testemunho cristão.",
@@ -2531,7 +2556,7 @@ function criarLicaoEditorialJovens(
     apoioProfessor: editorial.apoioProfessor,
     apoioAluno: editorial.apoioAluno,
     esboco: editorial.esboco,
-    subsidioJovens: editorial.subsidioJovens,
+    subsidioJovens: normalizeYoungSubsidy(editorial.subsidioJovens),
   };
 }
 

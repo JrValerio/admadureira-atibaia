@@ -296,7 +296,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   {lessonContext.licao.leituraBiblica.length ? (
                     <div className="mt-8">
                       <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                        Leitura bíblica já confirmada
+                        {classeInfo.leituraPrincipalLabel}
                       </p>
                       <ul className="space-y-3 text-[#555] leading-relaxed">
                         {lessonContext.licao.leituraBiblica.map((item) => (
@@ -340,7 +340,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       </div>
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                          Texto-chave
+                          {classeInfo.textoBaseLabel}
                         </p>
                         <p className="text-sm text-[#212121]">
                           <BibleReferenceText
@@ -354,7 +354,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     {lessonContext.licao.verdadePratica ? (
                       <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
                         <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                          Verdade prática
+                          {classeInfo.resumoDestaqueLabel}
                         </p>
                         <p className="leading-relaxed text-[#555]">
                           <BibleReferenceText text={lessonContext.licao.verdadePratica} />
@@ -364,7 +364,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
                     <div className="mb-8">
                       <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                        Leitura bíblica
+                        {classeInfo.leituraPrincipalLabel}
                       </p>
                       <ul className="space-y-3 text-[#555] leading-relaxed">
                         {lessonContext.licao.leituraBiblica.map((item) => (
