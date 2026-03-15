@@ -564,7 +564,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
           <div className="mt-10 border-t border-black/5 pt-6">
             <nav
               aria-label="Navegação da lição"
-              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold tracking-[0.04em] text-[#212121]"
+              className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-semibold tracking-[0.04em] text-[#212121] md:justify-start"
             >
               {licaoAnterior ? (
                 <Link
