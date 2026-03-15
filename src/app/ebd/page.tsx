@@ -11,8 +11,8 @@ import {
   getProximaLicao,
   getTrimestreEditorialStatus,
   getTrimestrePublishedLessonCount,
+  getTrimestresEbdPublicos,
   getTrimestreAtual,
-  getTrimestresPorClasse,
   isClasseEbdPublicada,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -86,7 +86,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
   const licaoDaSemana = getLicaoDaSemana(classeAtiva);
   const proximaLicao = getProximaLicao(classeAtiva);
   const trimestreAtual = getTrimestreAtual(classeAtiva);
-  const trimestresDaClasse = getTrimestresPorClasse(classeAtiva);
+  const trimestresDaClasse = getTrimestresEbdPublicos(classeAtiva);
   const canonicalUrl = resolveSiteUrl("/ebd");
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -339,11 +339,12 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 Trimestres de 2026
               </p>
               <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
-                Edições da classe {classeInfo.label.toLowerCase()}
+                Edições publicadas da classe {classeInfo.label.toLowerCase()}
               </h2>
               <p className="leading-relaxed text-[#555]">
-                Acompanhe o mapa anual da classe, veja o trimestre atual e
-                saiba quais edições já estão publicadas ou ainda em preparação.
+                Acompanhe o trimestre atual e as edições já publicadas da
+                classe, enquanto os próximos ciclos editoriais seguem em
+                preparação interna.
               </p>
             </div>
 

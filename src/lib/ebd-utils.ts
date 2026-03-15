@@ -195,6 +195,12 @@ export function getTrimestresPorClasse(classe: ClasseEBD) {
   return [...trimestresEBDPorClasse[classe]].sort(compareTrimestresDesc);
 }
 
+export function getTrimestresEbdPublicos(classe: ClasseEBD) {
+  return getTrimestresPorClasse(classe).filter(
+    (trimestre) => !isTrimestreDraft(trimestre)
+  );
+}
+
 export function getTrimestre(classe: ClasseEBD, edicao: string) {
   return (
     trimestresEBDPorClasse[classe].find((trimestre) => trimestre.slug === edicao) ??
