@@ -3,7 +3,7 @@ import { getEventosFuturos } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
 import { getDevotionals } from "@/data/devocionais";
 import {
-  getClassesEbd,
+  getClassesEbdPublicadas,
   getTrimestrePublishedLessonCount,
   getTrimestresPorClasse,
   isLicaoPublished,
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const generatedAt = new Date();
   const mensagens = getMensagens();
   const devotionals = getDevotionals();
-  const classesEbd = getClassesEbd();
+  const classesEbd = getClassesEbdPublicadas();
   const readingPlans = getReadingPlans();
   const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();

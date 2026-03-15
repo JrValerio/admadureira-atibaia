@@ -136,6 +136,20 @@ export function getClassesEbd() {
   return [...classesEBD].sort((a, b) => a.ordem - b.ordem);
 }
 
+export function hasClasseEbdPublicada(classe: ClasseEBD) {
+  return getTrimestresPorClasse(classe).some(
+    (trimestre) => getTrimestrePublishedLessonCount(trimestre) > 0
+  );
+}
+
+export function isClasseEbdPublicada(value: string): value is ClasseEBD {
+  return isClasseEbd(value) && hasClasseEbdPublicada(value);
+}
+
+export function getClassesEbdPublicadas() {
+  return getClassesEbd().filter((classe) => hasClasseEbdPublicada(classe.slug));
+}
+
 export function getTrimestreMaisRecente(classe: ClasseEBD) {
   const trimestres = getTrimestresPorClasse(classe);
 

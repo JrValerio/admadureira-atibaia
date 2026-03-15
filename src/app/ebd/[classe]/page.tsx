@@ -15,6 +15,7 @@ import {
   getTrimestrePublishedLessonCount,
   getTrimestreAtual,
   getTrimestresPorClasse,
+  hasClasseEbdPublicada,
   isClasseEbd,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -72,13 +73,22 @@ export async function generateMetadata({
   }
 
   const classeInfo = getClasseEbdInfo(classe);
-
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     title: `EBD ${classeInfo.label} | AD Madureira Atibaia`,
     description: classeInfo.descricao,
     path: `/ebd/${classeInfo.slug}`,
     image: igrejaHeroMedia.ebd,
   });
+
+  return hasClasseEbdPublicada(classe)
+    ? metadata
+    : {
+        ...metadata,
+        robots: {
+          index: false,
+          follow: true,
+        },
+      };
 }
 
 function Breadcrumb({ classeLabel }: { classeLabel: string }) {

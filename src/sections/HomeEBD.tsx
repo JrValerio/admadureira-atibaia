@@ -2,14 +2,14 @@ import Link from "next/link";
 import {
   formatEbdDate,
   getClasseEbdInfo,
-  getClassesEbd,
+  getClassesEbdPublicadas,
   getLicaoDaSemana,
 } from "@/lib/ebd-utils";
 
 export default function HomeEBD() {
   const classePrincipal = getClasseEbdInfo("adultos");
   const licaoPrincipal = getLicaoDaSemana("adultos");
-  const classes = getClassesEbd().map((classe) => ({
+  const classes = getClassesEbdPublicadas().map((classe) => ({
     classe,
     licaoDaSemana: getLicaoDaSemana(classe.slug),
   }));
@@ -93,11 +93,12 @@ export default function HomeEBD() {
               Classes da semana
             </p>
             <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121]">
-              Adultos, jovens e infantil
+              Classes publicadas
             </h2>
             <p className="mb-6 leading-relaxed text-[#555]">
-              A EBD acontece todo domingo às 09h, com caminhos claros para
-              cada faixa da igreja acompanhar a lição da semana.
+              A EBD acontece todo domingo às 09h, com trilhas publicadas para
+              acompanhar a lição da semana e continuar o estudo ao longo dos
+              dias.
             </p>
 
             <div className="space-y-3">

@@ -5,7 +5,7 @@ import CardMedia from "@/components/media/CardMedia";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   formatEbdDate,
-  getClassesEbd,
+  getClassesEbdPublicadas,
   getClasseEbdInfo,
   getLicaoDaSemana,
   getProximaLicao,
@@ -13,7 +13,7 @@ import {
   getTrimestrePublishedLessonCount,
   getTrimestreAtual,
   getTrimestresPorClasse,
-  isClasseEbd,
+  isClasseEbdPublicada,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -77,11 +77,11 @@ function Breadcrumb() {
 
 export default async function EbdHubPage({ searchParams }: PageProps) {
   const params = await searchParams;
+  const classes = getClassesEbdPublicadas();
   const classeAtiva =
-    typeof params.classe === "string" && isClasseEbd(params.classe)
+    typeof params.classe === "string" && isClasseEbdPublicada(params.classe)
       ? params.classe
       : "adultos";
-  const classes = getClassesEbd();
   const classeInfo = getClasseEbdInfo(classeAtiva);
   const licaoDaSemana = getLicaoDaSemana(classeAtiva);
   const proximaLicao = getProximaLicao(classeAtiva);
@@ -269,12 +269,12 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 Classes disponíveis
               </p>
               <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
-                Adultos, jovens e infantil com caminho claro de estudo
+                Classes publicadas com caminho claro de estudo
               </h2>
               <p className="leading-relaxed text-[#555]">
-                Cada classe reúne trimestres, lições e material de apoio para
-                facilitar a continuidade da Escola Bíblica Dominical ao longo da
-                semana.
+                As classes com conteúdo já publicado reúnem trimestres, lições
+                e material de apoio para facilitar a continuidade da Escola
+                Bíblica Dominical ao longo da semana.
               </p>
             </div>
 
