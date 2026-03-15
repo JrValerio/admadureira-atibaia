@@ -45,10 +45,6 @@ function truncateText(text: string, max: number) {
   return `${truncated.slice(0, lastSpace > 0 ? lastSpace : max).trim()}...`;
 }
 
-function joinCompactItems(items: string[], maxLength: number) {
-  return truncateText(items.join(" • "), maxLength);
-}
-
 function topicosToListaItems(licao: LicaoEBD) {
   return licao.topicos.map((topico) => ({
     titulo: topico.titulo,
@@ -318,6 +314,17 @@ function getSummaryPages(
   classeInfo: ClasseEBDInfo,
   licao: LicaoEBD
 ): PrintablePageSection[][] {
+  const weeklyReadingItems =
+    classeInfo.slug === "adultos"
+      ? (licao.subsidioAdultos?.cabecalho.leituraDiaria ?? []).map((item) => ({
+          titulo: `${item.dia} · ${item.referencia}`,
+          conteudo: item.tema ?? "Leitura de apoio à aula.",
+        }))
+      : (licao.subsidioJovens?.cabecalho.leituraSemanal ?? []).map((item) => ({
+          titulo: `${item.dia} · ${item.referencia}`,
+          conteudo: item.foco ?? "Leitura de apoio à aula.",
+        }));
+
   const summaryHighlights: ListaItem[] =
     classeInfo.slug === "adultos" && licao.subsidioAdultos
       ? [
@@ -433,23 +440,22 @@ function getSummaryPages(
     },
     {
       key: "summary-planejamento",
-      title: "Leitura e objetivos",
+      title: "Leitura bíblica e objetivos",
       weight: sectionWeight(
         estimateStringsWeight(licao.leituraBiblica),
         estimateStringsWeight(licao.objetivos)
       ),
       content: (
         <>
-          <PrintParagraph label="Leitura bíblica">
-            <PrintBibleText
-              text={joinCompactItems(licao.leituraBiblica.slice(0, 5), 320)}
-            />
-          </PrintParagraph>
-          <PrintParagraph label="Objetivos">
-            <PrintBibleText
-              text={joinCompactItems(licao.objetivos.slice(0, 5), 320)}
-            />
-          </PrintParagraph>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Leitura bíblica
+          </p>
+          <PrintBulletList items={licao.leituraBiblica.slice(0, 4)} />
+
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Objetivos
+          </p>
+          <PrintBulletList items={licao.objetivos.slice(0, 4)} />
         </>
       ),
     },
@@ -469,13 +475,26 @@ function getSummaryPages(
             licao.esboco?.length
               ? licao.esboco.slice(0, 3).map((item) => ({
                   ...item,
-                  conteudo: truncateText(item.conteudo, 155),
+                  conteudo: truncateText(item.conteudo, 185),
                 }))
               : topicosToListaItems(licao).slice(0, 3).map((item) => ({
                   ...item,
-                  conteudo: truncateText(item.conteudo, 155),
+                  conteudo: truncateText(item.conteudo, 185),
                 }))
           }
+        />
+      ),
+    },
+    {
+      key: "summary-ritmo",
+      title: "Ritmo da semana",
+      weight: sectionWeight(estimateListaItemsWeight(weeklyReadingItems.slice(0, 4))),
+      content: (
+        <PrintOrderedList
+          items={weeklyReadingItems.slice(0, 4).map((item) => ({
+            ...item,
+            conteudo: truncateText(item.conteudo, 120),
+          }))}
         />
       ),
     },
@@ -484,29 +503,26 @@ function getSummaryPages(
       title: "Tópicos centrais",
       weight: sectionWeight(
         estimateListaItemsWeight(
-          topicosToListaItems(licao).slice(0, 2).map((item) => ({
+          topicosToListaItems(licao).slice(0, 3).map((item) => ({
             ...item,
-            conteudo: truncateText(item.conteudo, 145),
+            conteudo: truncateText(item.conteudo, 170),
           }))
         )
       ),
       content: (
         <PrintOrderedList
-          items={topicosToListaItems(licao).slice(0, 2).map((item) => ({
+          items={topicosToListaItems(licao).slice(0, 3).map((item) => ({
             ...item,
-            conteudo: truncateText(item.conteudo, 145),
+            conteudo: truncateText(item.conteudo, 170),
           }))}
         />
       ),
     },
     {
-      key: "summary-fechamento",
-      title: "Subsídio em foco, revisão e apoio",
+      key: "summary-subsidio",
+      title: "Subsídio em foco",
       weight: sectionWeight(
-        estimateListaItemsWeight(summaryHighlights.slice(0, 3)),
-        estimateStringsWeight(licao.apoioProfessor?.slice(0, 3)),
-        estimateStringsWeight(revisionHighlights.slice(0, 3)),
-        estimateStringsWeight(licao.apoioAluno?.slice(0, 2))
+        estimateListaItemsWeight(summaryHighlights.slice(0, 4))
       ),
       content: (
         <>
@@ -515,16 +531,29 @@ function getSummaryPages(
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Destaques do subsídio
               </p>
-              <PrintOrderedList items={summaryHighlights.slice(0, 3)} />
+              <PrintOrderedList items={summaryHighlights.slice(0, 4)} />
             </>
           ) : null}
+        </>
+      ),
+    },
+    {
+      key: "summary-fechamento",
+      title: "Revisão e apoio",
+      weight: sectionWeight(
+        estimateStringsWeight(licao.apoioProfessor?.slice(0, 4)),
+        estimateStringsWeight(revisionHighlights.slice(0, 4)),
+        estimateStringsWeight(licao.apoioAluno?.slice(0, 3))
+      ),
+      content: (
+        <>
 
           {licao.apoioProfessor?.length ? (
             <>
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Apoio ao professor
               </p>
-              <PrintBulletList items={licao.apoioProfessor.slice(0, 3)} />
+              <PrintBulletList items={licao.apoioProfessor.slice(0, 4)} />
             </>
           ) : null}
 
@@ -533,7 +562,7 @@ function getSummaryPages(
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Revisão rápida
               </p>
-              <PrintBulletList items={revisionHighlights.slice(0, 3)} />
+              <PrintBulletList items={revisionHighlights.slice(0, 4)} />
             </>
           ) : null}
 
@@ -542,7 +571,7 @@ function getSummaryPages(
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Para reforçar durante a semana
               </p>
-              <PrintBulletList items={licao.apoioAluno.slice(0, 2)} />
+              <PrintBulletList items={licao.apoioAluno.slice(0, 3)} />
             </>
           ) : null}
         </>
@@ -550,11 +579,19 @@ function getSummaryPages(
     },
   ];
 
-  const [panorama, planejamento, esboco, topicos, fechamento] = sections;
+  const [
+    panorama,
+    planejamento,
+    esboco,
+    ritmo,
+    topicos,
+    subsidio,
+    fechamento,
+  ] = sections;
 
   return [
-    [panorama, planejamento, esboco],
-    [topicos, fechamento],
+    [panorama, planejamento, esboco, ritmo],
+    [topicos, subsidio, fechamento],
   ];
 }
 
@@ -564,6 +601,13 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
   if (!subsidio) {
     return [];
   }
+
+  const leituraDiariaItems = (subsidio.cabecalho.leituraDiaria ?? []).map(
+    (item) => ({
+      titulo: `${item.dia} · ${item.referencia}`,
+      conteudo: item.tema ?? "Leitura de apoio à aula.",
+    })
+  );
 
   return [
     {
@@ -628,13 +672,8 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
         estimateTextWeight(subsidio.cabecalho.textoAureo),
         estimateTextWeight(subsidio.visaoGeral.resumo),
         estimateTextWeight(subsidio.visaoGeral.ideiaCentral),
-        estimateStringsWeight(subsidio.visaoGeral.objetivos),
-        estimateListaItemsWeight(
-          subsidio.cabecalho.leituraDiaria?.map((item) => ({
-            titulo: `${item.dia} · ${item.referencia}`,
-            conteudo: item.tema ?? "Leitura de apoio à aula.",
-          }))
-        )
+        estimateTextWeight(subsidio.visaoGeral.palavraChave?.definicao),
+        estimateStringsWeight(subsidio.visaoGeral.objetivos)
       ),
       content: (
         <>
@@ -675,18 +714,30 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
               <PrintBulletList items={subsidio.visaoGeral.objetivos} />
             </>
           ) : null}
-
-          {subsidio.cabecalho.leituraDiaria?.length ? (
+        </>
+      ),
+    },
+    {
+      key: "adult-leitura-diaria",
+      title: "Leitura diária e preparação",
+      weight: sectionWeight(estimateListaItemsWeight(leituraDiariaItems)),
+      content: (
+        <>
+          {leituraDiariaItems.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Leitura diária
               </p>
-              <PrintOrderedList
-                items={subsidio.cabecalho.leituraDiaria.map((item) => ({
-                  titulo: `${item.dia} · ${item.referencia}`,
-                  conteudo: item.tema ?? "Leitura de apoio à aula.",
-                }))}
-              />
+              <PrintOrderedList items={leituraDiariaItems} />
+            </>
+          ) : null}
+
+          {licao.apoioProfessor?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Ênfase para a semana
+              </p>
+              <PrintBulletList items={licao.apoioProfessor.slice(0, 2)} />
             </>
           ) : null}
         </>
@@ -768,8 +819,7 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
       weight: sectionWeight(
         estimateStringsWeight(subsidio.aprofundamento?.contextoHistorico),
         estimateStringsWeight(subsidio.aprofundamento?.conceitoTeologico),
-        estimateListaItemsWeight(subsidio.aprofundamento?.notaDeVocabulario),
-        estimateListaItemsWeight(subsidio.aprofundamento?.leituraComplementar)
+        estimateListaItemsWeight(subsidio.aprofundamento?.notaDeVocabulario)
       ),
       content: (
         <>
@@ -799,10 +849,21 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
               <PrintOrderedList items={subsidio.aprofundamento.notaDeVocabulario} />
             </>
           ) : null}
+        </>
+      ),
+    },
+    {
+      key: "adult-leituras-complementares",
+      title: "Leituras complementares",
+      weight: sectionWeight(
+        estimateListaItemsWeight(subsidio.aprofundamento?.leituraComplementar)
+      ),
+      content: (
+        <>
 
           {subsidio.aprofundamento?.leituraComplementar?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Leituras complementares
               </p>
               <PrintOrderedList items={subsidio.aprofundamento.leituraComplementar} />
@@ -898,6 +959,13 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
     return [];
   }
 
+  const leituraSemanalItems = (subsidio.cabecalho.leituraSemanal ?? []).map(
+    (item) => ({
+      titulo: `${item.dia} · ${item.referencia}`,
+      conteudo: item.foco ?? "Leitura de apoio à aula.",
+    })
+  );
+
   return [
     {
       key: "young-base",
@@ -960,15 +1028,8 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       weight: sectionWeight(
         estimateTextWeight(subsidio.cabecalho.textoPrincipal),
         estimateTextWeight(subsidio.cabecalho.resumoDaLicao),
-        estimateStringsWeight(subsidio.arranquePedagogico.objetivos),
         estimateTextWeight(subsidio.arranquePedagogico.interacao),
-        estimateTextWeight(subsidio.arranquePedagogico.orientacaoPedagogica),
-        estimateListaItemsWeight(
-          subsidio.cabecalho.leituraSemanal?.map((item) => ({
-            titulo: `${item.dia} · ${item.referencia}`,
-            conteudo: item.foco ?? "Leitura de apoio à aula.",
-          }))
-        )
+        estimateTextWeight(subsidio.arranquePedagogico.orientacaoPedagogica)
       ),
       content: (
         <>
@@ -984,15 +1045,6 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
             </PrintParagraph>
           ) : null}
 
-          {subsidio.arranquePedagogico.objetivos?.length ? (
-            <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
-                Objetivos
-              </p>
-              <PrintBulletList items={subsidio.arranquePedagogico.objetivos} />
-            </>
-          ) : null}
-
           {subsidio.arranquePedagogico.interacao ? (
             <PrintParagraph label="Interação">
               <PrintBibleText text={subsidio.arranquePedagogico.interacao} />
@@ -1006,18 +1058,34 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
               />
             </PrintParagraph>
           ) : null}
+        </>
+      ),
+    },
+    {
+      key: "young-arranque-leitura",
+      title: "Objetivos e leitura semanal",
+      weight: sectionWeight(
+        estimateStringsWeight(subsidio.arranquePedagogico.objetivos),
+        estimateListaItemsWeight(leituraSemanalItems)
+      ),
+      content: (
+        <>
 
-          {subsidio.cabecalho.leituraSemanal?.length ? (
+          {subsidio.arranquePedagogico.objetivos?.length ? (
+            <>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Objetivos
+              </p>
+              <PrintBulletList items={subsidio.arranquePedagogico.objetivos} />
+            </>
+          ) : null}
+
+          {leituraSemanalItems.length ? (
             <>
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Leitura semanal
               </p>
-              <PrintOrderedList
-                items={subsidio.cabecalho.leituraSemanal.map((item) => ({
-                  titulo: `${item.dia} · ${item.referencia}`,
-                  conteudo: item.foco ?? "Leitura de apoio à aula.",
-                }))}
-              />
+              <PrintOrderedList items={leituraSemanalItems} />
             </>
           ) : null}
         </>
@@ -1094,15 +1162,12 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       ),
     },
     {
-      key: "young-final",
-      title: "Aprofundamento e revisão",
+      key: "young-aprofundamento",
+      title: "Aprofundamento",
       weight: sectionWeight(
         estimateStringsWeight(subsidio.aprofundamentoOpcional?.notaDoutrinariaCurta),
         estimateStringsWeight(subsidio.aprofundamentoOpcional?.contextoBiblico),
-        estimateStringsWeight(subsidio.aprofundamentoOpcional?.conexaoComVidaCrista),
-        estimateStringsWeight(subsidio.revisao?.horaDaRevisao),
-        estimateStringsWeight(subsidio.revisao?.quizCurto),
-        estimateTextWeight(subsidio.revisao?.conclusao)
+        estimateStringsWeight(subsidio.aprofundamentoOpcional?.conexaoComVidaCrista)
       ),
       content: (
         <>
@@ -1136,10 +1201,23 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
               />
             </>
           ) : null}
+        </>
+      ),
+    },
+    {
+      key: "young-revisao",
+      title: "Revisão e fechamento",
+      weight: sectionWeight(
+        estimateStringsWeight(subsidio.revisao?.horaDaRevisao),
+        estimateStringsWeight(subsidio.revisao?.quizCurto),
+        estimateTextWeight(subsidio.revisao?.conclusao)
+      ),
+      content: (
+        <>
 
           {subsidio.revisao?.horaDaRevisao?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Hora da revisão
               </p>
               <PrintBulletList items={subsidio.revisao.horaDaRevisao} />
@@ -1175,6 +1253,9 @@ function getFullPages(
       ? getAdultFullSections(licao)
       : getYoungFullSections(licao);
 
+  const buildPage = (...pageSections: Array<PrintablePageSection | undefined>) =>
+    pageSections.filter(Boolean) as PrintablePageSection[];
+
   if (sections.length <= 4) {
     return compactPageGroups(
       sections.map((section) => [section]),
@@ -1183,54 +1264,63 @@ function getFullPages(
     );
   }
 
-  const [baseSection, planningSection, panoramaSection, ...remainingSections] = sections;
-  const closingCount = classeInfo.slug === "adultos" ? 3 : 2;
-  const closingSections = remainingSections.slice(-closingCount);
-  const developmentSections = remainingSections.slice(0, -closingCount);
-  const pageGroups: PrintablePageSection[][] = [[baseSection, planningSection]];
-
-  if (panoramaSection && developmentSections.length > 0) {
-    pageGroups.push([panoramaSection, developmentSections[0]]);
-  } else if (panoramaSection) {
-    pageGroups.push([panoramaSection]);
-  }
-
-  const remainingDevelopment =
-    panoramaSection && developmentSections.length > 0
-      ? developmentSections.slice(1)
-      : developmentSections;
-
-  for (let index = 0; index < remainingDevelopment.length; index += 2) {
-    pageGroups.push(remainingDevelopment.slice(index, index + 2));
-  }
-
   if (classeInfo.slug === "adultos") {
-    const [apoioSection, aprofundamentoSection, revisaoSection] = closingSections;
+    const baseSection = sections.find((section) => section.key === "adult-base");
+    const planningSection = sections.find(
+      (section) => section.key === "adult-planejamento"
+    );
+    const panoramaSection = sections.find(
+      (section) => section.key === "adult-panorama"
+    );
+    const readingSection = sections.find(
+      (section) => section.key === "adult-leitura-diaria"
+    );
+    const topicoSections = sections.filter((section) =>
+      section.key.startsWith("adult-topico-")
+    );
+    const apoioSection = sections.find((section) => section.key === "adult-apoio");
+    const aprofundamentoSection = sections.find(
+      (section) => section.key === "adult-aprofundamento"
+    );
+    const complementarySection = sections.find(
+      (section) => section.key === "adult-leituras-complementares"
+    );
+    const revisaoSection = sections.find(
+      (section) => section.key === "adult-vida-revisao"
+    );
 
-    if (apoioSection && aprofundamentoSection) {
-      pageGroups.push([apoioSection, aprofundamentoSection]);
-    } else if (apoioSection) {
-      pageGroups.push([apoioSection]);
-    }
-
-    if (revisaoSection) {
-      pageGroups.push([revisaoSection]);
-    }
-
-    return pageGroups.filter((group) => group.length > 0);
+    return [
+      buildPage(baseSection, planningSection, panoramaSection),
+      buildPage(readingSection, topicoSections[0]),
+      buildPage(...topicoSections.slice(1)),
+      buildPage(apoioSection, aprofundamentoSection),
+      buildPage(complementarySection, revisaoSection),
+    ].filter((group) => group.length > 0);
   }
 
-  const [apoioSection, revisaoSection] = closingSections;
+  const baseSection = sections.find((section) => section.key === "young-base");
+  const planningSection = sections.find(
+    (section) => section.key === "young-planejamento"
+  );
+  const arranqueSection = sections.find((section) => section.key === "young-arranque");
+  const arranqueReadingSection = sections.find(
+    (section) => section.key === "young-arranque-leitura"
+  );
+  const topicoSections = sections.filter((section) =>
+    section.key.startsWith("young-topico-")
+  );
+  const apoioSection = sections.find((section) => section.key === "young-apoio");
+  const aprofundamentoSection = sections.find(
+    (section) => section.key === "young-aprofundamento"
+  );
+  const revisaoSection = sections.find((section) => section.key === "young-revisao");
 
-  if (apoioSection) {
-    pageGroups.push([apoioSection]);
-  }
-
-  if (revisaoSection) {
-    pageGroups.push([revisaoSection]);
-  }
-
-  return pageGroups.filter((group) => group.length > 0);
+  return [
+    buildPage(baseSection, planningSection, arranqueSection),
+    buildPage(arranqueReadingSection, ...topicoSections.slice(0, 2)),
+    buildPage(...topicoSections.slice(2), apoioSection),
+    buildPage(aprofundamentoSection, revisaoSection),
+  ].filter((group) => group.length > 0);
 }
 
 export function EbdLessonSummaryPrintDocument({
