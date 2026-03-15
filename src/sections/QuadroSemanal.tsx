@@ -105,7 +105,7 @@ export default function QuadroSemanal() {
         </p>
       </div>
 
-      <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:px-0 md:pb-0 md:overflow-visible xl:grid-cols-6">
+      <div className="-mx-4 flex gap-5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:px-0 md:pb-0 md:overflow-visible xl:grid-cols-3 2xl:grid-cols-6">
         {diasQuadro.map((dia) => {
           const itens = quadro.get(dia.id) ?? [];
           const destaqueHoje = hoje === dia.id;
@@ -113,23 +113,23 @@ export default function QuadroSemanal() {
           return (
             <div
               key={dia.id}
-              className={`min-w-[260px] snap-start rounded-3xl border p-5 transition-colors md:min-w-0 ${
+              className={`min-w-[260px] snap-start rounded-3xl border p-5 transition-colors md:min-w-0 md:p-6 ${
                 destaqueHoje
                   ? "border-[#ffa726]/50 bg-[#fff8ee] shadow-[0_8px_28px_rgba(0,0,0,0.05)]"
                   : "border-black/5 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.04)]"
               }`}
             >
-              <div className="flex items-center justify-between gap-3 mb-5">
+              <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
                 <div>
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                     {dia.sigla}
                   </p>
-                  <h4 className="font-acme text-2xl text-[#212121] tracking-wide">
+                  <h4 className="font-acme text-[1.75rem] text-[#212121] tracking-wide md:text-2xl">
                     {dia.nome}
                   </h4>
                 </div>
                 {destaqueHoje ? (
-                  <span className="inline-flex rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-[#8b5b18]">
+                  <span className="inline-flex shrink-0 rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-[#8b5b18]">
                     Hoje
                   </span>
                 ) : null}

@@ -15,6 +15,17 @@ type CardSemanalProps = {
   banner?: string;
 };
 
+const ordemProgramacaoDetalhada: Record<string, number> = {
+  "Segunda a Sexta": 0,
+  "Segunda-feira": 1,
+  "Terça-feira": 2,
+  "Quarta-feira": 3,
+  "Quinta-feira": 4,
+  "Sexta-feira": 5,
+  Sábado: 6,
+  Domingo: 7,
+};
+
 function extrairOrdemHorario(horario?: string) {
   const match = horario?.match(/(\d{1,2})h(\d{2})?/);
 
@@ -26,6 +37,10 @@ function extrairOrdemHorario(horario?: string) {
   const minutos = match[2] ? parseInt(match[2], 10) : 0;
 
   return horas * 60 + minutos;
+}
+
+function extrairOrdemDia(dia: string) {
+  return ordemProgramacaoDetalhada[dia] ?? Number.MAX_SAFE_INTEGER;
 }
 
 function CardSemanal({
@@ -73,7 +88,9 @@ export default function Programacao({
   showHeader = true,
 }: ProgramacaoProps = {}) {
   const programacaoDetalhada = [...programacaoSemanal].sort(
-    (a, b) => extrairOrdemHorario(a.horario) - extrairOrdemHorario(b.horario)
+    (a, b) =>
+      extrairOrdemDia(a.dia) - extrairOrdemDia(b.dia) ||
+      extrairOrdemHorario(a.horario) - extrairOrdemHorario(b.horario)
   );
 
   return (
