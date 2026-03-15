@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import type {
   ClasseEBDInfo,
@@ -16,19 +17,12 @@ type EbdPrintDocumentProps = {
   licao: LicaoEBD;
 };
 
-type PrintableBlock =
-  | { type: "text"; label: string; text: string }
-  | { type: "list"; label: string; items: string[]; accent?: "orange" | "red" | "dark" }
-  | { type: "items"; label: string; items: ListaItem[] };
-
-type PrintableSection = {
+type PrintablePageSection = {
   key: string;
-  eyebrow: string;
   title: string;
-  blocks: PrintableBlock[];
+  content: ReactNode;
+  weight: number;
 };
-
-type PrintablePage = PrintableSection[];
 
 function PrintBibleText({ text }: { text: string }) {
   return (
@@ -38,34 +32,6 @@ function PrintBibleText({ text }: { text: string }) {
       linkClassName="font-medium text-[#212121]"
     />
   );
-}
-
-function textBlock(label: string, text?: string | null) {
-  return text ? ({ type: "text", label, text } satisfies PrintableBlock) : null;
-}
-
-function listBlock(
-  label: string,
-  items?: string[] | null,
-  accent: "orange" | "red" | "dark" = "orange"
-) {
-  return items?.length
-    ? ({ type: "list", label, items, accent } satisfies PrintableBlock)
-    : null;
-}
-
-function itemsBlock(label: string, items?: ListaItem[] | null) {
-  return items?.length
-    ? ({ type: "items", label, items } satisfies PrintableBlock)
-    : null;
-}
-
-function limitStrings(items: string[] | undefined, max: number) {
-  return items?.slice(0, max) ?? [];
-}
-
-function limitListaItems(items: ListaItem[] | undefined, max: number) {
-  return items?.slice(0, max) ?? [];
 }
 
 function truncateText(text: string, max: number) {
@@ -92,539 +58,1157 @@ function topicosToListaItems(licao: LicaoEBD) {
   }));
 }
 
-function renderBlock(block: PrintableBlock) {
-  if (block.type === "text") {
-    return (
-      <div key={`${block.label}-${block.text}`}>
-        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
-          {block.label}
-        </p>
-        <p className="mt-1.5 text-[12px] leading-relaxed text-[#444]">
-          <PrintBibleText text={block.text} />
-        </p>
-      </div>
-    );
+function estimateTextWeight(text?: string | null, divisor = 340) {
+  if (!text) {
+    return 0;
   }
 
-  if (block.type === "items") {
-    return (
-      <div key={block.label}>
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
-          {block.label}
-        </p>
-        <ol className="ml-5 list-decimal space-y-2 text-[12px] leading-relaxed text-[#444] marker:font-semibold marker:text-[#8b5b18]">
-          {block.items.map((item) => (
-            <li key={`${item.titulo ?? "item"}-${item.conteudo}`}>
-              {item.titulo ? <strong className="text-[#212121]">{item.titulo}: </strong> : null}
-              <PrintBibleText text={item.conteudo} />
-            </li>
-          ))}
-        </ol>
-      </div>
-    );
-  }
-
-  const markerClassName =
-    block.accent === "red"
-      ? "marker:text-[#ef5350]"
-      : block.accent === "dark"
-        ? "marker:text-[#8b5b18]"
-        : "marker:text-[#ffa726]";
-
-  return (
-    <div key={`${block.label}-${block.items.join("|")}`}>
-      <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
-        {block.label}
-      </p>
-      <ul className={`ml-5 list-disc space-y-1.5 text-[12px] leading-relaxed text-[#444] ${markerClassName}`}>
-        {block.items.map((item) => (
-          <li key={item}>
-            <PrintBibleText text={item} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return 0.55 + text.length / divisor;
 }
 
-function RenderSection({ section }: { section: PrintableSection }) {
-  return (
-    <section className="ebd-print-no-break">
-      <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
-        {section.eyebrow}
-      </p>
-      <h3 className="mt-2 font-acme text-[1.3rem] tracking-wide text-[#212121]">
-        {section.title}
-      </h3>
-      <div className="mt-3 space-y-3">{section.blocks.map(renderBlock)}</div>
-    </section>
-  );
+function estimateStringsWeight(items?: string[] | null, divisor = 420) {
+  if (!items?.length) {
+    return 0;
+  }
+
+  const combinedLength = items.reduce((total, item) => total + item.length, 0);
+
+  return 0.45 + items.length * 0.22 + combinedLength / divisor;
 }
 
-function chunkSections<T>(items: T[], size: number) {
-  const pages: T[][] = [];
-
-  for (let index = 0; index < items.length; index += size) {
-    pages.push(items.slice(index, index + size));
+function estimateListaItemsWeight(items?: ListaItem[] | null, divisor = 470) {
+  if (!items?.length) {
+    return 0;
   }
 
-  return pages;
-}
-
-function estimateBlockWeight(block: PrintableBlock) {
-  if (block.type === "text") {
-    return 0.8 + block.text.length / 320;
-  }
-
-  if (block.type === "list") {
-    const textLength = block.items.reduce((total, item) => total + item.length, 0);
-    return 0.9 + block.items.length * 0.45 + textLength / 420;
-  }
-
-  const textLength = block.items.reduce(
+  const combinedLength = items.reduce(
     (total, item) => total + (item.titulo?.length ?? 0) + item.conteudo.length,
     0
   );
 
-  return 1 + block.items.length * 0.5 + textLength / 420;
+  return 0.55 + items.length * 0.24 + combinedLength / divisor;
 }
 
-function estimateSectionWeight(section: PrintableSection) {
-  return 1.2 + section.blocks.reduce((total, block) => total + estimateBlockWeight(block), 0);
+function sectionWeight(...weights: number[]) {
+  return 0.7 + weights.reduce((total, value) => total + value, 0);
 }
 
-function packSectionsIntoPages(sections: PrintableSection[], maxWeight: number) {
-  const pages: PrintablePage[] = [];
-  let currentPage: PrintableSection[] = [];
-  let currentWeight = 0;
+function getPageGroupWeight(group: PrintablePageSection[]) {
+  return group.reduce((total, section) => total + section.weight, 0);
+}
 
-  for (const section of sections) {
-    const sectionWeight = estimateSectionWeight(section);
+function compactPageGroups(
+  groups: PrintablePageSection[][],
+  maxWeight: number,
+  minGroups = 1
+) {
+  const compacted: PrintablePageSection[][] = [];
 
-    if (currentPage.length === 0) {
-      currentPage = [section];
-      currentWeight = sectionWeight;
-      continue;
+  groups.forEach((group, index) => {
+    const previous = compacted[compacted.length - 1];
+    const remainingAfterCurrent = groups.length - index - 1;
+    const canMerge =
+      previous &&
+      getPageGroupWeight(previous) + getPageGroupWeight(group) <= maxWeight &&
+      compacted.length + remainingAfterCurrent >= minGroups;
+
+    if (canMerge) {
+      compacted[compacted.length - 1] = [...previous, ...group];
+      return;
     }
 
-    if (currentWeight + sectionWeight <= maxWeight) {
-      currentPage.push(section);
-      currentWeight += sectionWeight;
-      continue;
-    }
+    compacted.push([...group]);
+  });
 
-    pages.push(currentPage);
-    currentPage = [section];
-    currentWeight = sectionWeight;
-  }
-
-  if (currentPage.length > 0) {
-    pages.push(currentPage);
-  }
-
-  return pages;
+  return compacted;
 }
 
-function getSummarySections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): PrintableSection[] {
-  const summaryHighlights =
+function PrintSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mb-4">
+      <h3 className="keep-with-next font-acme text-[1.05rem] tracking-wide text-[#212121]">
+        {title}
+      </h3>
+      <div className="mt-1.5 space-y-1.5 text-[11px] leading-[1.45] text-[#333]">
+        {children}
+      </div>
+    </section>
+  );
+}
+
+function PrintParagraph({
+  label,
+  children,
+}: {
+  label?: string;
+  children: ReactNode;
+}) {
+  return (
+    <p className="text-[11px] leading-[1.45] text-[#333]">
+      {label ? <strong className="text-[#212121]">{label}: </strong> : null}
+      {children}
+    </p>
+  );
+}
+
+function PrintBulletList({ items }: { items?: string[] }) {
+  if (!items?.length) {
+    return null;
+  }
+
+  return (
+    <ul className="ml-5 list-disc space-y-1 text-[11px] leading-[1.45] text-[#333] marker:text-[#8b5b18]">
+      {items.map((item, index) => (
+        <li key={`${index}-${item.slice(0, 30)}`}>
+          <PrintBibleText text={item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PrintOrderedList({ items }: { items?: ListaItem[] }) {
+  if (!items?.length) {
+    return null;
+  }
+
+  return (
+    <ol className="ml-5 list-decimal space-y-1 text-[11px] leading-[1.45] text-[#333] marker:font-semibold marker:text-[#8b5b18]">
+      {items.map((item, index) => (
+        <li key={`${index}-${item.titulo ?? "item"}`}>
+          {item.titulo ? (
+            <strong className="text-[#212121]">{item.titulo}: </strong>
+          ) : null}
+          <PrintBibleText text={item.conteudo} />
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function adultTopicoSection(topico: TopicoConteudo): PrintablePageSection {
+  return {
+    key: `adult-topico-${topico.id}`,
+    title: topico.titulo,
+    weight: sectionWeight(
+      estimateTextWeight(topico.sinopse),
+      estimateStringsWeight(topico.explicacaoBiblica),
+      estimateStringsWeight(topico.aprofundamentoDoutrinario),
+      estimateStringsWeight(topico.aplicacaoPratica),
+      estimateListaItemsWeight(
+        topico.referenciasCruzadas?.map((item) => ({
+          titulo: item.referencia,
+          conteudo: item.descricao ?? "Referência de apoio à aula.",
+        }))
+      )
+    ),
+    content: (
+      <>
+        {topico.sinopse ? (
+          <PrintParagraph label="Sinopse">
+            <PrintBibleText text={topico.sinopse} />
+          </PrintParagraph>
+        ) : null}
+
+        {topico.explicacaoBiblica?.length ? (
+          <>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Explicação bíblica
+            </p>
+            <PrintBulletList items={topico.explicacaoBiblica} />
+          </>
+        ) : null}
+
+        {topico.aprofundamentoDoutrinario?.length ? (
+          <>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Aprofundamento doutrinário
+            </p>
+            <PrintBulletList items={topico.aprofundamentoDoutrinario} />
+          </>
+        ) : null}
+
+        {topico.aplicacaoPratica?.length ? (
+          <>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Aplicação prática
+            </p>
+            <PrintBulletList items={topico.aplicacaoPratica} />
+          </>
+        ) : null}
+
+        {topico.referenciasCruzadas?.length ? (
+          <>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Referências cruzadas
+            </p>
+            <PrintOrderedList
+              items={topico.referenciasCruzadas.map((item) => ({
+                titulo: item.referencia,
+                conteudo: item.descricao ?? "Referência de apoio à aula.",
+              }))}
+            />
+          </>
+        ) : null}
+      </>
+    ),
+  };
+}
+
+function youngTopicoSection(topico: TopicoJovens): PrintablePageSection {
+  return {
+    key: `young-topico-${topico.id}`,
+    title: topico.titulo,
+    weight: sectionWeight(
+      estimateTextWeight(topico.sinopse),
+      estimateStringsWeight(topico.explicacaoBiblica),
+      estimateStringsWeight(topico.aplicacaoPratica),
+      estimateTextWeight(topico.pense),
+      estimateTextWeight(topico.pontoImportante)
+    ),
+    content: (
+      <>
+        {topico.sinopse ? (
+          <PrintParagraph label="Sinopse">
+            <PrintBibleText text={topico.sinopse} />
+          </PrintParagraph>
+        ) : null}
+
+        {topico.explicacaoBiblica?.length ? (
+          <>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Desenvolvimento
+            </p>
+            <PrintBulletList items={topico.explicacaoBiblica} />
+          </>
+        ) : null}
+
+        {topico.aplicacaoPratica?.length ? (
+          <>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              Aplicação prática
+            </p>
+            <PrintBulletList items={topico.aplicacaoPratica} />
+          </>
+        ) : null}
+
+        {topico.pense ? (
+          <PrintParagraph label="Pense">
+            <PrintBibleText text={topico.pense} />
+          </PrintParagraph>
+        ) : null}
+
+        {topico.pontoImportante ? (
+          <PrintParagraph label="Ponto importante">
+            <PrintBibleText text={topico.pontoImportante} />
+          </PrintParagraph>
+        ) : null}
+      </>
+    ),
+  };
+}
+
+function getSummaryPages(
+  classeInfo: ClasseEBDInfo,
+  licao: LicaoEBD
+): PrintablePageSection[][] {
+  const summaryHighlights: ListaItem[] =
     classeInfo.slug === "adultos" && licao.subsidioAdultos
       ? [
-          licao.subsidioAdultos.visaoGeral.ideiaCentral
-            ? {
-                titulo: "Ideia central",
-                conteudo: truncateText(licao.subsidioAdultos.visaoGeral.ideiaCentral, 140),
-              }
-            : null,
-          licao.subsidioAdultos.visaoGeral.palavraChave
-            ? {
-                titulo: `Palavra-chave · ${licao.subsidioAdultos.visaoGeral.palavraChave.termo}`,
-                conteudo: truncateText(
-                  licao.subsidioAdultos.visaoGeral.palavraChave.definicao ??
-                    "Termo central da lição.",
-                  120
-                ),
-              }
-            : null,
-          ...licao.subsidioAdultos.desenvolvimento.slice(0, 2).map((topico) =>
-            ({
-              titulo: topico.titulo,
-              conteudo: truncateText(
-                topico.sinopse ??
-                  topico.explicacaoBiblica?.[0] ??
-                  topico.aplicacaoPratica?.[0] ??
-                  "Desenvolva este tópico com apoio bíblico e aplicação prática.",
-                120
-              ),
-            })
-          ),
+          ...(licao.subsidioAdultos.visaoGeral.ideiaCentral
+            ? [
+                {
+                  titulo: "Ideia central",
+                  conteudo: truncateText(
+                    licao.subsidioAdultos.visaoGeral.ideiaCentral,
+                    190
+                  ),
+                },
+              ]
+            : []),
+          ...(licao.subsidioAdultos.visaoGeral.palavraChave
+            ? [
+                {
+                  titulo: `Palavra-chave · ${licao.subsidioAdultos.visaoGeral.palavraChave.termo}`,
+                  conteudo: truncateText(
+                    licao.subsidioAdultos.visaoGeral.palavraChave.definicao ??
+                      "Termo central da lição.",
+                    160
+                  ),
+                },
+              ]
+            : []),
+          ...licao.subsidioAdultos.desenvolvimento.slice(0, 2).map((topico) => ({
+            titulo: topico.titulo,
+            conteudo: truncateText(
+              topico.sinopse ??
+                topico.explicacaoBiblica?.[0] ??
+                topico.aplicacaoPratica?.[0] ??
+                "Desenvolva este tópico com apoio bíblico e aplicação prática.",
+              150
+            ),
+          })),
         ]
       : classeInfo.slug === "jovens" && licao.subsidioJovens
         ? [
-            licao.subsidioJovens.cabecalho.resumoDaLicao
-              ? {
-                  titulo: "Resumo da lição",
-                  conteudo: truncateText(
-                    licao.subsidioJovens.cabecalho.resumoDaLicao,
-                    140
-                  ),
-                }
-              : null,
-            licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica
-              ? {
-                  titulo: "Orientação pedagógica",
-                  conteudo: truncateText(
-                    licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica,
-                    120
-                  ),
-                }
-              : null,
-            ...licao.subsidioJovens.desenvolvimento.slice(0, 2).map((topico) =>
-              ({
-                titulo: topico.titulo,
-                conteudo: truncateText(
-                  topico.pontoImportante ??
-                    topico.pense ??
-                    topico.sinopse ??
-                    topico.explicacaoBiblica?.[0] ??
-                    "Leve a classe a relacionar o tema com decisões reais da semana.",
-                  120
-                ),
-              })
-            ),
-        ]
+            ...(licao.subsidioJovens.cabecalho.resumoDaLicao
+              ? [
+                  {
+                    titulo: "Resumo da lição",
+                    conteudo: truncateText(
+                      licao.subsidioJovens.cabecalho.resumoDaLicao,
+                      190
+                    ),
+                  },
+                ]
+              : []),
+            ...(licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica
+              ? [
+                  {
+                    titulo: "Orientação pedagógica",
+                    conteudo: truncateText(
+                      licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica,
+                      160
+                    ),
+                  },
+                ]
+              : []),
+            ...licao.subsidioJovens.desenvolvimento.slice(0, 2).map((topico) => ({
+              titulo: topico.titulo,
+              conteudo: truncateText(
+                topico.pontoImportante ??
+                  topico.pense ??
+                  topico.sinopse ??
+                  topico.explicacaoBiblica?.[0] ??
+                  "Leve a classe a relacionar o tema com decisões reais da semana.",
+                150
+              ),
+            })),
+          ]
         : [];
 
   const revisionHighlights =
     classeInfo.slug === "adultos"
       ? [
-          ...limitStrings(licao.subsidioAdultos?.revisao?.pontosChave, 3),
-          ...limitStrings(licao.subsidioAdultos?.revisao?.perguntas, 2),
-        ].slice(0, 4)
+          ...(licao.subsidioAdultos?.revisao?.pontosChave ?? []),
+          ...(licao.subsidioAdultos?.revisao?.perguntas ?? []),
+        ]
       : [
-          ...limitStrings(licao.subsidioJovens?.revisao?.horaDaRevisao, 2),
-          ...limitStrings(licao.subsidioJovens?.revisao?.quizCurto, 2),
-        ].slice(0, 4);
+          ...(licao.subsidioJovens?.revisao?.horaDaRevisao ?? []),
+          ...(licao.subsidioJovens?.revisao?.quizCurto ?? []),
+        ];
+
+  const sections: PrintablePageSection[] = [
+    {
+      key: "summary-panorama",
+      title: "Panorama e aplicação",
+      weight: sectionWeight(
+        estimateTextWeight(licao.textoChave),
+        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(licao.resumo),
+        estimateTextWeight(licao.aplicacao)
+      ),
+      content: (
+        <>
+          <PrintParagraph label={classeInfo.textoBaseLabel}>
+            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+          </PrintParagraph>
+          <PrintParagraph label={classeInfo.resumoDestaqueLabel}>
+            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Resumo da lição">
+            <PrintBibleText text={licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Aplicação prática">
+            <PrintBibleText text={licao.aplicacao} />
+          </PrintParagraph>
+        </>
+      ),
+    },
+    {
+      key: "summary-planejamento",
+      title: "Leitura e objetivos",
+      weight: sectionWeight(
+        estimateStringsWeight(licao.leituraBiblica),
+        estimateStringsWeight(licao.objetivos)
+      ),
+      content: (
+        <>
+          <PrintParagraph label="Leitura bíblica">
+            <PrintBibleText
+              text={joinCompactItems(licao.leituraBiblica.slice(0, 5), 320)}
+            />
+          </PrintParagraph>
+          <PrintParagraph label="Objetivos">
+            <PrintBibleText
+              text={joinCompactItems(licao.objetivos.slice(0, 5), 320)}
+            />
+          </PrintParagraph>
+        </>
+      ),
+    },
+    {
+      key: "summary-esboco",
+      title: "Esboço da aula",
+      weight: sectionWeight(
+        estimateListaItemsWeight(
+          licao.esboco?.length
+            ? licao.esboco.slice(0, 3)
+            : topicosToListaItems(licao).slice(0, 3)
+        )
+      ),
+      content: (
+        <PrintOrderedList
+          items={
+            licao.esboco?.length
+              ? licao.esboco.slice(0, 3).map((item) => ({
+                  ...item,
+                  conteudo: truncateText(item.conteudo, 155),
+                }))
+              : topicosToListaItems(licao).slice(0, 3).map((item) => ({
+                  ...item,
+                  conteudo: truncateText(item.conteudo, 155),
+                }))
+          }
+        />
+      ),
+    },
+    {
+      key: "summary-topicos",
+      title: "Tópicos centrais",
+      weight: sectionWeight(
+        estimateListaItemsWeight(
+          topicosToListaItems(licao).slice(0, 2).map((item) => ({
+            ...item,
+            conteudo: truncateText(item.conteudo, 145),
+          }))
+        )
+      ),
+      content: (
+        <PrintOrderedList
+          items={topicosToListaItems(licao).slice(0, 2).map((item) => ({
+            ...item,
+            conteudo: truncateText(item.conteudo, 145),
+          }))}
+        />
+      ),
+    },
+    {
+      key: "summary-fechamento",
+      title: "Subsídio em foco, revisão e apoio",
+      weight: sectionWeight(
+        estimateListaItemsWeight(summaryHighlights.slice(0, 3)),
+        estimateStringsWeight(licao.apoioProfessor?.slice(0, 3)),
+        estimateStringsWeight(revisionHighlights.slice(0, 3)),
+        estimateStringsWeight(licao.apoioAluno?.slice(0, 2))
+      ),
+      content: (
+        <>
+          {summaryHighlights.length ? (
+            <>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Destaques do subsídio
+              </p>
+              <PrintOrderedList items={summaryHighlights.slice(0, 3)} />
+            </>
+          ) : null}
+
+          {licao.apoioProfessor?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Apoio ao professor
+              </p>
+              <PrintBulletList items={licao.apoioProfessor.slice(0, 3)} />
+            </>
+          ) : null}
+
+          {revisionHighlights.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Revisão rápida
+              </p>
+              <PrintBulletList items={revisionHighlights.slice(0, 3)} />
+            </>
+          ) : null}
+
+          {licao.apoioAluno?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Para reforçar durante a semana
+              </p>
+              <PrintBulletList items={licao.apoioAluno.slice(0, 2)} />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+  ];
+
+  const [panorama, planejamento, esboco, topicos, fechamento] = sections;
+
+  return [
+    [panorama, planejamento, esboco],
+    [topicos, fechamento],
+  ];
+}
+
+function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
+  const subsidio = licao.subsidioAdultos;
+
+  if (!subsidio) {
+    return [];
+  }
 
   return [
     {
-      key: "resumo-panorama",
-      eyebrow: "Resumo da aula",
-      title: "Panorama e planejamento",
-      blocks: [
-        itemsBlock("Visão geral da lição", [
-          {
-            titulo: classeInfo.textoBaseLabel,
-            conteudo: licao.textoChave ?? "Referência central da lição.",
-          },
-          {
-            titulo: classeInfo.resumoDestaqueLabel,
-            conteudo: truncateText(licao.verdadePratica ?? licao.resumo, 140),
-          },
-          {
-            titulo: "Aplicação prática",
-            conteudo: truncateText(licao.aplicacao, 140),
-          },
-        ]),
-        itemsBlock("Planejamento rápido", [
-          {
-            titulo: "Leitura bíblica",
-            conteudo: joinCompactItems(limitStrings(licao.leituraBiblica, 3), 120),
-          },
-          {
-            titulo: "Objetivos",
-            conteudo: joinCompactItems(limitStrings(licao.objetivos, 3), 160),
-          },
-        ]),
-      ].filter(Boolean) as PrintableBlock[],
-    },
-    {
-      key: "resumo-conducao",
-      eyebrow: "Condução da aula",
-      title: "Esboço, revisão e apoio",
-      blocks: [
-        itemsBlock(
-          "Esboço da aula",
-          (licao.esboco?.length
-            ? limitListaItems(licao.esboco, 3)
-            : limitListaItems(topicosToListaItems(licao), 3)
-          ).map((item) => ({
-            ...item,
-            conteudo: truncateText(item.conteudo, 110),
-          }))
-        ),
-        itemsBlock("Pontos para condução", [
-          {
-            titulo: "Tópicos centrais",
-            conteudo: joinCompactItems(
-              limitListaItems(topicosToListaItems(licao), 2).map((item) =>
-                truncateText(`${item.titulo}: ${item.conteudo}`, 90)
-              ),
-              180
-            ),
-          },
-          {
-            titulo: "Apoio ao professor",
-            conteudo: joinCompactItems(
-              limitStrings(licao.apoioProfessor, 2).map((item) => truncateText(item, 80)),
-              160
-            ),
-          },
-          {
-            titulo: "Revisão rápida",
-            conteudo: joinCompactItems(
-              revisionHighlights.slice(0, 2).map((item) => truncateText(item, 70)),
-              140
-            ),
-          },
-          {
-            titulo: "Fechamento da semana",
-            conteudo: truncateText(
-              (summaryHighlights.filter(Boolean) as ListaItem[])[0]?.conteudo ??
-                licao.apoioAluno?.[0] ??
-                licao.aplicacao,
-              120
-            ),
-          },
-        ]),
-      ].filter(Boolean) as PrintableBlock[],
-    },
-  ];
-}
-
-function adultTopicoSection(topico: TopicoConteudo): PrintableSection {
-  return {
-    key: `adult-topico-${topico.id}`,
-    eyebrow: "Desenvolvimento",
-    title: topico.titulo,
-    blocks: [
-      textBlock("Sinopse", topico.sinopse),
-      listBlock("Explicação bíblica", topico.explicacaoBiblica, "orange"),
-      listBlock("Aprofundamento doutrinário", topico.aprofundamentoDoutrinario, "red"),
-      listBlock("Aplicação prática", topico.aplicacaoPratica, "dark"),
-      itemsBlock(
-        "Referências cruzadas",
-        topico.referenciasCruzadas?.map((item) => ({
-          titulo: item.referencia,
-          conteudo: item.descricao ?? "Referência de apoio à aula.",
-        }))
+      key: "adult-base",
+      title: "Base da lição",
+      weight: sectionWeight(
+        estimateTextWeight(licao.textoChave),
+        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(licao.resumo),
+        estimateTextWeight(licao.aplicacao)
       ),
-    ].filter(Boolean) as PrintableBlock[],
-  };
-}
-
-function youngTopicoSection(topico: TopicoJovens): PrintableSection {
-  return {
-    key: `young-topico-${topico.id}`,
-    eyebrow: "Desenvolvimento",
-    title: topico.titulo,
-    blocks: [
-      textBlock("Sinopse", topico.sinopse),
-      listBlock("Desenvolvimento", topico.explicacaoBiblica, "orange"),
-      listBlock("Aplicação prática", topico.aplicacaoPratica, "dark"),
-      textBlock("Pense", topico.pense),
-      textBlock("Ponto importante", topico.pontoImportante),
-    ].filter(Boolean) as PrintableBlock[],
-  };
-}
-
-function getFullSections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): PrintableSection[] {
-  const baseSections: PrintableSection[] = [
-    {
-      key: "base-licao",
-      eyebrow: "Base da lição",
-      title: "Resumo, leitura e aplicação",
-      blocks: [
-        textBlock(classeInfo.textoBaseLabel, licao.textoChave),
-        textBlock(classeInfo.resumoDestaqueLabel, licao.verdadePratica ?? licao.resumo),
-        textBlock("Resumo da lição", licao.resumo),
-        listBlock("Leitura bíblica", licao.leituraBiblica, "orange"),
-        listBlock("Objetivos", licao.objetivos, "red"),
-        textBlock("Aplicação prática", licao.aplicacao),
-      ].filter(Boolean) as PrintableBlock[],
+      content: (
+        <>
+          <PrintParagraph label="Texto áureo">
+            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+          </PrintParagraph>
+          <PrintParagraph label="Verdade prática">
+            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Resumo">
+            <PrintBibleText text={licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Aplicação prática">
+            <PrintBibleText text={licao.aplicacao} />
+          </PrintParagraph>
+        </>
+      ),
     },
     {
-      key: "planejamento-aula",
-      eyebrow: "Planejamento",
-      title: "Esboço, tópicos e apoios",
-      blocks: [
-        itemsBlock("Esboço da aula", licao.esboco),
-        itemsBlock("Tópicos centrais", topicosToListaItems(licao)),
-        listBlock("Apoio ao professor", licao.apoioProfessor, "red"),
-        listBlock("Apoio ao aluno", licao.apoioAluno, "dark"),
-      ].filter(Boolean) as PrintableBlock[],
+      key: "adult-planejamento",
+      title: "Leitura, objetivos e esboço",
+      weight: sectionWeight(
+        estimateStringsWeight(licao.leituraBiblica),
+        estimateStringsWeight(licao.objetivos),
+        estimateListaItemsWeight(licao.esboco ?? topicosToListaItems(licao))
+      ),
+      content: (
+        <>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Leitura bíblica
+          </p>
+          <PrintBulletList items={licao.leituraBiblica} />
+
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Objetivos
+          </p>
+          <PrintBulletList items={licao.objetivos} />
+
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Esboço da aula
+          </p>
+          <PrintOrderedList
+            items={licao.esboco?.length ? licao.esboco : topicosToListaItems(licao)}
+          />
+        </>
+      ),
+    },
+    {
+      key: "adult-panorama",
+      title: "Panorama da lição",
+      weight: sectionWeight(
+        estimateTextWeight(subsidio.cabecalho.textoAureo),
+        estimateTextWeight(subsidio.visaoGeral.resumo),
+        estimateTextWeight(subsidio.visaoGeral.ideiaCentral),
+        estimateStringsWeight(subsidio.visaoGeral.objetivos),
+        estimateListaItemsWeight(
+          subsidio.cabecalho.leituraDiaria?.map((item) => ({
+            titulo: `${item.dia} · ${item.referencia}`,
+            conteudo: item.tema ?? "Leitura de apoio à aula.",
+          }))
+        )
+      ),
+      content: (
+        <>
+          {subsidio.cabecalho.textoAureo ? (
+            <PrintParagraph label="Texto áureo">
+              <PrintBibleText text={subsidio.cabecalho.textoAureo} />
+            </PrintParagraph>
+          ) : null}
+
+          <PrintParagraph label="Resumo expandido">
+            <PrintBibleText text={subsidio.visaoGeral.resumo} />
+          </PrintParagraph>
+
+          {subsidio.visaoGeral.ideiaCentral ? (
+            <PrintParagraph label="Ideia central">
+              <PrintBibleText text={subsidio.visaoGeral.ideiaCentral} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.visaoGeral.palavraChave ? (
+            <PrintParagraph
+              label={`Palavra-chave · ${subsidio.visaoGeral.palavraChave.termo}`}
+            >
+              <PrintBibleText
+                text={
+                  subsidio.visaoGeral.palavraChave.definicao ??
+                  "Termo central da lição."
+                }
+              />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.visaoGeral.objetivos?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Objetivos do subsídio
+              </p>
+              <PrintBulletList items={subsidio.visaoGeral.objetivos} />
+            </>
+          ) : null}
+
+          {subsidio.cabecalho.leituraDiaria?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Leitura diária
+              </p>
+              <PrintOrderedList
+                items={subsidio.cabecalho.leituraDiaria.map((item) => ({
+                  titulo: `${item.dia} · ${item.referencia}`,
+                  conteudo: item.tema ?? "Leitura de apoio à aula.",
+                }))}
+              />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+    ...subsidio.desenvolvimento.map(adultTopicoSection),
+    {
+      key: "adult-apoio",
+      title: "Condução da aula",
+      weight: sectionWeight(
+        estimateTextWeight(subsidio.apoioProfessor.perguntaDeAbertura),
+        estimateTextWeight(subsidio.apoioProfessor.pontoSensivelDaAula),
+        estimateTextWeight(subsidio.apoioProfessor.erroComumDeInterpretacao),
+        estimateStringsWeight(subsidio.apoioProfessor.perguntasParaDebate),
+        estimateTextWeight(subsidio.apoioProfessor.sugestaoDeFechamento),
+        estimateStringsWeight(licao.apoioProfessor),
+        estimateStringsWeight(licao.apoioAluno)
+      ),
+      content: (
+        <>
+          {subsidio.apoioProfessor.perguntaDeAbertura ? (
+            <PrintParagraph label="Pergunta de abertura">
+              <PrintBibleText text={subsidio.apoioProfessor.perguntaDeAbertura} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.pontoSensivelDaAula ? (
+            <PrintParagraph label="Ponto sensível da aula">
+              <PrintBibleText text={subsidio.apoioProfessor.pontoSensivelDaAula} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.erroComumDeInterpretacao ? (
+            <PrintParagraph label="Erro comum de interpretação">
+              <PrintBibleText
+                text={subsidio.apoioProfessor.erroComumDeInterpretacao}
+              />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.perguntasParaDebate?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Perguntas para debate
+              </p>
+              <PrintBulletList items={subsidio.apoioProfessor.perguntasParaDebate} />
+            </>
+          ) : null}
+
+          {subsidio.apoioProfessor.sugestaoDeFechamento ? (
+            <PrintParagraph label="Sugestão de fechamento">
+              <PrintBibleText text={subsidio.apoioProfessor.sugestaoDeFechamento} />
+            </PrintParagraph>
+          ) : null}
+
+          {licao.apoioProfessor?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Apoio ao professor
+              </p>
+              <PrintBulletList items={licao.apoioProfessor} />
+            </>
+          ) : null}
+
+          {licao.apoioAluno?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Apoio ao aluno
+              </p>
+              <PrintBulletList items={licao.apoioAluno} />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      key: "adult-aprofundamento",
+      title: "Aprofundamento doutrinário",
+      weight: sectionWeight(
+        estimateStringsWeight(subsidio.aprofundamento?.contextoHistorico),
+        estimateStringsWeight(subsidio.aprofundamento?.conceitoTeologico),
+        estimateListaItemsWeight(subsidio.aprofundamento?.notaDeVocabulario),
+        estimateListaItemsWeight(subsidio.aprofundamento?.leituraComplementar)
+      ),
+      content: (
+        <>
+          {subsidio.aprofundamento?.contextoHistorico?.length ? (
+            <>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Contexto histórico
+              </p>
+              <PrintBulletList items={subsidio.aprofundamento.contextoHistorico} />
+            </>
+          ) : null}
+
+          {subsidio.aprofundamento?.conceitoTeologico?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Conceito teológico
+              </p>
+              <PrintBulletList items={subsidio.aprofundamento.conceitoTeologico} />
+            </>
+          ) : null}
+
+          {subsidio.aprofundamento?.notaDeVocabulario?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Nota de vocabulário
+              </p>
+              <PrintOrderedList items={subsidio.aprofundamento.notaDeVocabulario} />
+            </>
+          ) : null}
+
+          {subsidio.aprofundamento?.leituraComplementar?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Leituras complementares
+              </p>
+              <PrintOrderedList items={subsidio.aprofundamento.leituraComplementar} />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      key: "adult-vida-revisao",
+      title: "Vida cristã e revisão",
+      weight: sectionWeight(
+        estimateStringsWeight(subsidio.vidaCrista?.oQueConfronta),
+        estimateStringsWeight(subsidio.vidaCrista?.oQueConsola),
+        estimateStringsWeight(subsidio.vidaCrista?.oQueExige),
+        estimateStringsWeight(subsidio.vidaCrista?.oQueRevelaSobreDeus),
+        estimateStringsWeight(subsidio.revisao?.pontosChave),
+        estimateStringsWeight(subsidio.revisao?.perguntas),
+        estimateTextWeight(subsidio.revisao?.fraseDeSintese)
+      ),
+      content: (
+        <>
+
+          {subsidio.vidaCrista?.oQueConfronta?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                O que confronta
+              </p>
+              <PrintBulletList items={subsidio.vidaCrista.oQueConfronta} />
+            </>
+          ) : null}
+
+          {subsidio.vidaCrista?.oQueConsola?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                O que consola
+              </p>
+              <PrintBulletList items={subsidio.vidaCrista.oQueConsola} />
+            </>
+          ) : null}
+
+          {subsidio.vidaCrista?.oQueExige?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                O que exige
+              </p>
+              <PrintBulletList items={subsidio.vidaCrista.oQueExige} />
+            </>
+          ) : null}
+
+          {subsidio.vidaCrista?.oQueRevelaSobreDeus?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                O que revela sobre Deus
+              </p>
+              <PrintBulletList items={subsidio.vidaCrista.oQueRevelaSobreDeus} />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.pontosChave?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Pontos-chave
+              </p>
+              <PrintBulletList items={subsidio.revisao.pontosChave} />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.perguntas?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Perguntas
+              </p>
+              <PrintBulletList items={subsidio.revisao.perguntas} />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.fraseDeSintese ? (
+            <PrintParagraph label="Frase de síntese">
+              <PrintBibleText text={subsidio.revisao.fraseDeSintese} />
+            </PrintParagraph>
+          ) : null}
+        </>
+      ),
     },
   ];
-
-  if (classeInfo.slug === "adultos" && licao.subsidioAdultos) {
-    const subsidio = licao.subsidioAdultos;
-
-    return [
-      ...baseSections,
-      {
-        key: "adult-panorama",
-        eyebrow: "Subsídio do professor",
-        title: "Panorama da lição",
-        blocks: [
-          textBlock("Texto áureo", subsidio.cabecalho.textoAureo),
-          textBlock("Resumo expandido", subsidio.visaoGeral.resumo),
-          textBlock("Ideia central", subsidio.visaoGeral.ideiaCentral),
-          subsidio.visaoGeral.palavraChave
-            ? textBlock(
-                `Palavra-chave · ${subsidio.visaoGeral.palavraChave.termo}`,
-                subsidio.visaoGeral.palavraChave.definicao
-              )
-            : null,
-          listBlock("Objetivos", subsidio.visaoGeral.objetivos, "orange"),
-          itemsBlock(
-            "Leitura diária",
-            subsidio.cabecalho.leituraDiaria?.map((item) => ({
-              titulo: `${item.dia} · ${item.referencia}`,
-              conteudo: item.tema ?? "Leitura de apoio à aula.",
-            }))
-          ),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-      ...subsidio.desenvolvimento.map(adultTopicoSection),
-      {
-        key: "adult-apoio",
-        eyebrow: "Condução da aula",
-        title: "Apoio ao professor",
-        blocks: [
-          textBlock("Pergunta de abertura", subsidio.apoioProfessor.perguntaDeAbertura),
-          textBlock("Ponto sensível da aula", subsidio.apoioProfessor.pontoSensivelDaAula),
-          textBlock(
-            "Erro comum de interpretação",
-            subsidio.apoioProfessor.erroComumDeInterpretacao
-          ),
-          listBlock(
-            "Perguntas para debate",
-            subsidio.apoioProfessor.perguntasParaDebate,
-            "red"
-          ),
-          textBlock(
-            "Sugestão de fechamento",
-            subsidio.apoioProfessor.sugestaoDeFechamento
-          ),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-      {
-        key: "adult-aprofundamento",
-        eyebrow: "Aprofundamento",
-        title: "Doutrina, vida cristã e revisão",
-        blocks: [
-          listBlock("Contexto histórico", subsidio.aprofundamento?.contextoHistorico, "orange"),
-          listBlock("Conceito teológico", subsidio.aprofundamento?.conceitoTeologico, "red"),
-          itemsBlock("Nota de vocabulário", subsidio.aprofundamento?.notaDeVocabulario),
-          itemsBlock(
-            "Leituras complementares",
-            subsidio.aprofundamento?.leituraComplementar
-          ),
-          listBlock("O que confronta", subsidio.vidaCrista?.oQueConfronta, "orange"),
-          listBlock("O que consola", subsidio.vidaCrista?.oQueConsola, "orange"),
-          listBlock("O que exige", subsidio.vidaCrista?.oQueExige, "red"),
-          listBlock(
-            "O que revela sobre Deus",
-            subsidio.vidaCrista?.oQueRevelaSobreDeus,
-            "red"
-          ),
-          listBlock("Perguntas", subsidio.revisao?.perguntas, "orange"),
-          listBlock("Pontos-chave", subsidio.revisao?.pontosChave, "red"),
-          textBlock("Frase de síntese", subsidio.revisao?.fraseDeSintese),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-    ];
-  }
-
-  if (classeInfo.slug === "jovens" && licao.subsidioJovens) {
-    const subsidio = licao.subsidioJovens;
-
-    return [
-      ...baseSections,
-      {
-        key: "young-arranque",
-        eyebrow: "Roteiro do professor",
-        title: "Arranque pedagógico",
-        blocks: [
-          textBlock("Texto principal", subsidio.cabecalho.textoPrincipal),
-          textBlock("Resumo da lição", subsidio.cabecalho.resumoDaLicao),
-          listBlock("Objetivos", subsidio.arranquePedagogico.objetivos, "orange"),
-          textBlock("Interação", subsidio.arranquePedagogico.interacao),
-          textBlock(
-            "Orientação pedagógica",
-            subsidio.arranquePedagogico.orientacaoPedagogica
-          ),
-          itemsBlock(
-            "Leitura semanal",
-            subsidio.cabecalho.leituraSemanal?.map((item) => ({
-              titulo: `${item.dia} · ${item.referencia}`,
-              conteudo: item.foco ?? "Leitura de apoio à aula.",
-            }))
-          ),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-      ...subsidio.desenvolvimento.map(youngTopicoSection),
-      {
-        key: "young-apoio",
-        eyebrow: "Condução da aula",
-        title: "Apoio ao professor",
-        blocks: [
-          textBlock("Quebra-gelo", subsidio.apoioProfessor.quebraGelo),
-          textBlock("Pergunta-chave", subsidio.apoioProfessor.perguntaChave),
-          textBlock(
-            "Dificuldade provável da classe",
-            subsidio.apoioProfessor.dificuldadeProvavelDaClasse
-          ),
-          listBlock(
-            "Condução da conversa",
-            subsidio.apoioProfessor.conducaoDaConversa,
-            "red"
-          ),
-          textBlock("Fechamento", subsidio.apoioProfessor.fechamento),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-      {
-        key: "young-revisao",
-        eyebrow: "Aprofundamento",
-        title: "Notas finais e revisão",
-        blocks: [
-          listBlock(
-            "Nota doutrinária",
-            subsidio.aprofundamentoOpcional?.notaDoutrinariaCurta,
-            "orange"
-          ),
-          listBlock(
-            "Contexto bíblico",
-            subsidio.aprofundamentoOpcional?.contextoBiblico,
-            "red"
-          ),
-          listBlock(
-            "Conexão com a vida cristã",
-            subsidio.aprofundamentoOpcional?.conexaoComVidaCrista,
-            "dark"
-          ),
-          listBlock("Hora da revisão", subsidio.revisao?.horaDaRevisao, "orange"),
-          listBlock("Quiz curto", subsidio.revisao?.quizCurto, "red"),
-          textBlock("Conclusão", subsidio.revisao?.conclusao),
-        ].filter(Boolean) as PrintableBlock[],
-      },
-    ];
-  }
-
-  return baseSections;
 }
 
-function buildFullPages(classeInfo: ClasseEBDInfo, licao: LicaoEBD) {
-  const sections = getFullSections(classeInfo, licao);
-  const sectionChunks = sections.flatMap((section) =>
-    chunkSections(section.blocks, 2).map((blocks, index) => ({
-      ...section,
-      key: `${section.key}-part-${index + 1}`,
-      title: index === 0 ? section.title : `${section.title} · continuação`,
-      blocks,
-    }))
-  );
+function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
+  const subsidio = licao.subsidioJovens;
 
-  return packSectionsIntoPages(sectionChunks, classeInfo.slug === "adultos" ? 13.8 : 13.4);
+  if (!subsidio) {
+    return [];
+  }
+
+  return [
+    {
+      key: "young-base",
+      title: "Base da lição",
+      weight: sectionWeight(
+        estimateTextWeight(licao.textoChave),
+        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(licao.resumo),
+        estimateTextWeight(licao.aplicacao)
+      ),
+      content: (
+        <>
+          <PrintParagraph label="Texto principal">
+            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+          </PrintParagraph>
+          <PrintParagraph label="Resumo da lição">
+            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Síntese">
+            <PrintBibleText text={licao.resumo} />
+          </PrintParagraph>
+          <PrintParagraph label="Aplicação prática">
+            <PrintBibleText text={licao.aplicacao} />
+          </PrintParagraph>
+        </>
+      ),
+    },
+    {
+      key: "young-planejamento",
+      title: "Leitura, objetivos e esboço",
+      weight: sectionWeight(
+        estimateStringsWeight(licao.leituraBiblica),
+        estimateStringsWeight(licao.objetivos),
+        estimateListaItemsWeight(licao.esboco ?? topicosToListaItems(licao))
+      ),
+      content: (
+        <>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Texto bíblico
+          </p>
+          <PrintBulletList items={licao.leituraBiblica} />
+
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Objetivos
+          </p>
+          <PrintBulletList items={licao.objetivos} />
+
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            Esboço da aula
+          </p>
+          <PrintOrderedList
+            items={licao.esboco?.length ? licao.esboco : topicosToListaItems(licao)}
+          />
+        </>
+      ),
+    },
+    {
+      key: "young-arranque",
+      title: "Arranque pedagógico",
+      weight: sectionWeight(
+        estimateTextWeight(subsidio.cabecalho.textoPrincipal),
+        estimateTextWeight(subsidio.cabecalho.resumoDaLicao),
+        estimateStringsWeight(subsidio.arranquePedagogico.objetivos),
+        estimateTextWeight(subsidio.arranquePedagogico.interacao),
+        estimateTextWeight(subsidio.arranquePedagogico.orientacaoPedagogica),
+        estimateListaItemsWeight(
+          subsidio.cabecalho.leituraSemanal?.map((item) => ({
+            titulo: `${item.dia} · ${item.referencia}`,
+            conteudo: item.foco ?? "Leitura de apoio à aula.",
+          }))
+        )
+      ),
+      content: (
+        <>
+          {subsidio.cabecalho.textoPrincipal ? (
+            <PrintParagraph label="Texto principal">
+              <PrintBibleText text={subsidio.cabecalho.textoPrincipal} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.cabecalho.resumoDaLicao ? (
+            <PrintParagraph label="Resumo da lição">
+              <PrintBibleText text={subsidio.cabecalho.resumoDaLicao} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.arranquePedagogico.objetivos?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Objetivos
+              </p>
+              <PrintBulletList items={subsidio.arranquePedagogico.objetivos} />
+            </>
+          ) : null}
+
+          {subsidio.arranquePedagogico.interacao ? (
+            <PrintParagraph label="Interação">
+              <PrintBibleText text={subsidio.arranquePedagogico.interacao} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.arranquePedagogico.orientacaoPedagogica ? (
+            <PrintParagraph label="Orientação pedagógica">
+              <PrintBibleText
+                text={subsidio.arranquePedagogico.orientacaoPedagogica}
+              />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.cabecalho.leituraSemanal?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Leitura semanal
+              </p>
+              <PrintOrderedList
+                items={subsidio.cabecalho.leituraSemanal.map((item) => ({
+                  titulo: `${item.dia} · ${item.referencia}`,
+                  conteudo: item.foco ?? "Leitura de apoio à aula.",
+                }))}
+              />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+    ...subsidio.desenvolvimento.map(youngTopicoSection),
+    {
+      key: "young-apoio",
+      title: "Condução da aula",
+      weight: sectionWeight(
+        estimateTextWeight(subsidio.apoioProfessor.quebraGelo),
+        estimateTextWeight(subsidio.apoioProfessor.perguntaChave),
+        estimateTextWeight(subsidio.apoioProfessor.dificuldadeProvavelDaClasse),
+        estimateStringsWeight(subsidio.apoioProfessor.conducaoDaConversa),
+        estimateTextWeight(subsidio.apoioProfessor.fechamento),
+        estimateStringsWeight(licao.apoioProfessor),
+        estimateStringsWeight(licao.apoioAluno)
+      ),
+      content: (
+        <>
+          {subsidio.apoioProfessor.quebraGelo ? (
+            <PrintParagraph label="Quebra-gelo">
+              <PrintBibleText text={subsidio.apoioProfessor.quebraGelo} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.perguntaChave ? (
+            <PrintParagraph label="Pergunta-chave">
+              <PrintBibleText text={subsidio.apoioProfessor.perguntaChave} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.dificuldadeProvavelDaClasse ? (
+            <PrintParagraph label="Dificuldade provável da classe">
+              <PrintBibleText
+                text={subsidio.apoioProfessor.dificuldadeProvavelDaClasse}
+              />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.apoioProfessor.conducaoDaConversa?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Condução da conversa
+              </p>
+              <PrintBulletList items={subsidio.apoioProfessor.conducaoDaConversa} />
+            </>
+          ) : null}
+
+          {subsidio.apoioProfessor.fechamento ? (
+            <PrintParagraph label="Fechamento">
+              <PrintBibleText text={subsidio.apoioProfessor.fechamento} />
+            </PrintParagraph>
+          ) : null}
+
+          {licao.apoioProfessor?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Apoio ao professor
+              </p>
+              <PrintBulletList items={licao.apoioProfessor} />
+            </>
+          ) : null}
+
+          {licao.apoioAluno?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Apoio ao aluno
+              </p>
+              <PrintBulletList items={licao.apoioAluno} />
+            </>
+          ) : null}
+        </>
+      ),
+    },
+    {
+      key: "young-final",
+      title: "Aprofundamento e revisão",
+      weight: sectionWeight(
+        estimateStringsWeight(subsidio.aprofundamentoOpcional?.notaDoutrinariaCurta),
+        estimateStringsWeight(subsidio.aprofundamentoOpcional?.contextoBiblico),
+        estimateStringsWeight(subsidio.aprofundamentoOpcional?.conexaoComVidaCrista),
+        estimateStringsWeight(subsidio.revisao?.horaDaRevisao),
+        estimateStringsWeight(subsidio.revisao?.quizCurto),
+        estimateTextWeight(subsidio.revisao?.conclusao)
+      ),
+      content: (
+        <>
+          {subsidio.aprofundamentoOpcional?.notaDoutrinariaCurta?.length ? (
+            <>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Nota doutrinária
+              </p>
+              <PrintBulletList
+                items={subsidio.aprofundamentoOpcional.notaDoutrinariaCurta}
+              />
+            </>
+          ) : null}
+
+          {subsidio.aprofundamentoOpcional?.contextoBiblico?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Contexto bíblico
+              </p>
+              <PrintBulletList items={subsidio.aprofundamentoOpcional.contextoBiblico} />
+            </>
+          ) : null}
+
+          {subsidio.aprofundamentoOpcional?.conexaoComVidaCrista?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Conexão com a vida cristã
+              </p>
+              <PrintBulletList
+                items={subsidio.aprofundamentoOpcional.conexaoComVidaCrista}
+              />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.horaDaRevisao?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Hora da revisão
+              </p>
+              <PrintBulletList items={subsidio.revisao.horaDaRevisao} />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.quizCurto?.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Quiz curto
+              </p>
+              <PrintBulletList items={subsidio.revisao.quizCurto} />
+            </>
+          ) : null}
+
+          {subsidio.revisao?.conclusao ? (
+            <PrintParagraph label="Conclusão">
+              <PrintBibleText text={subsidio.revisao.conclusao} />
+            </PrintParagraph>
+          ) : null}
+        </>
+      ),
+    },
+  ];
+}
+
+function getFullPages(
+  classeInfo: ClasseEBDInfo,
+  licao: LicaoEBD
+): PrintablePageSection[][] {
+  const sections =
+    classeInfo.slug === "adultos"
+      ? getAdultFullSections(licao)
+      : getYoungFullSections(licao);
+
+  if (sections.length <= 4) {
+    return compactPageGroups(
+      sections.map((section) => [section]),
+      classeInfo.slug === "adultos" ? 6.7 : 6.5,
+      3
+    );
+  }
+
+  const [baseSection, planningSection, panoramaSection, ...remainingSections] = sections;
+  const closingCount = classeInfo.slug === "adultos" ? 3 : 2;
+  const closingSections = remainingSections.slice(-closingCount);
+  const developmentSections = remainingSections.slice(0, -closingCount);
+
+  const pageGroups: PrintablePageSection[][] = [[baseSection, planningSection]];
+
+  if (panoramaSection) {
+    pageGroups.push([panoramaSection]);
+  }
+
+  if (developmentSections.length > 0) {
+    pageGroups.push([developmentSections[0]]);
+
+    for (let index = 1; index < developmentSections.length; index += 2) {
+      pageGroups.push(developmentSections.slice(index, index + 2));
+    }
+  }
+
+  if (closingSections.length > 0) {
+    closingSections.forEach((section) => {
+      pageGroups.push([section]);
+    });
+  }
+
+  return pageGroups;
 }
 
 export function EbdLessonSummaryPrintDocument({
@@ -633,12 +1217,12 @@ export function EbdLessonSummaryPrintDocument({
   licao,
 }: EbdPrintDocumentProps) {
   const backHref = `/ebd/${classeInfo.slug}/${trimestre.slug}/${licao.slug}`;
-  const pages = getSummarySections(classeInfo, licao).map((section) => [section]);
+  const pages = getSummaryPages(classeInfo, licao);
 
   return (
     <EbdPrintDocumentLayout
       title={`Resumo da lição ${licao.numero}`}
-      subtitle="Versão enxuta para aula e impressão rápida, pensada para caber idealmente em duas páginas."
+      subtitle="Versão resumida para aula e impressão. O material busca caber em duas páginas, mas pode avançar quando a lição exigir."
       backHref={backHref}
       alternateHref={getEbdPrintRoute(
         classeInfo.slug,
@@ -648,18 +1232,20 @@ export function EbdLessonSummaryPrintDocument({
       )}
       alternateLabel="Abrir subsídio completo"
     >
-      {pages.map((sections, index) => (
+      {pages.map((pageSections, index) => (
         <EbdPrintPage
           key={`summary-page-${index + 1}`}
-          modeLabel="Resumo em até 2 páginas"
+          modeLabel="Resumo da lição"
           classeInfo={classeInfo}
           trimestreLabel={trimestre.rotulo}
           licao={licao}
           pageNumber={index + 1}
           pageCount={pages.length}
         >
-          {sections.map((section) => (
-            <RenderSection key={section.key} section={section} />
+          {pageSections.map((section) => (
+            <PrintSection key={section.key} title={section.title}>
+              {section.content}
+            </PrintSection>
           ))}
         </EbdPrintPage>
       ))}
@@ -673,12 +1259,12 @@ export function EbdLessonFullPrintDocument({
   licao,
 }: EbdPrintDocumentProps) {
   const backHref = `/ebd/${classeInfo.slug}/${trimestre.slug}/${licao.slug}`;
-  const pages = buildFullPages(classeInfo, licao);
+  const pages = getFullPages(classeInfo, licao);
 
   return (
     <EbdPrintDocumentLayout
       title={`Subsídio completo · Lição ${licao.numero}`}
-      subtitle="Versão completa com a estrutura expandida da aula, pronta para impressão e arquivo do professor."
+      subtitle="Versão completa com identidade visual da igreja, em formato editorial de impressão."
       backHref={backHref}
       alternateHref={getEbdPrintRoute(
         classeInfo.slug,
@@ -686,9 +1272,9 @@ export function EbdLessonFullPrintDocument({
         licao.slug,
         "pdf-resumo"
       )}
-      alternateLabel="Abrir resumo em 2 páginas"
+      alternateLabel="Abrir resumo da lição"
     >
-      {pages.map((sections, index) => (
+      {pages.map((pageSections, index) => (
         <EbdPrintPage
           key={`full-page-${index + 1}`}
           modeLabel="Subsídio completo"
@@ -698,8 +1284,10 @@ export function EbdLessonFullPrintDocument({
           pageNumber={index + 1}
           pageCount={pages.length}
         >
-          {sections.map((section) => (
-            <RenderSection key={section.key} section={section} />
+          {pageSections.map((section) => (
+            <PrintSection key={section.key} title={section.title}>
+              {section.content}
+            </PrintSection>
           ))}
         </EbdPrintPage>
       ))}
