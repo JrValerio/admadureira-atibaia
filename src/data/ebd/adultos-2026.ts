@@ -12,6 +12,16 @@ type LicaoSeed = {
   enfase: string;
 };
 
+type AdultosEditorialConfig = {
+  imagem?: string;
+  objetivos: LicaoEBD["objetivos"];
+  topicos: LicaoEBD["topicos"];
+  apoioProfessor: string[];
+  apoioAluno: string[];
+  esboco: NonNullable<LicaoEBD["esboco"]>;
+  subsidioAdultos: NonNullable<LicaoEBD["subsidioAdultos"]>;
+};
+
 const apoioProfessorBase = [
   "Conecte a lição com a vida da igreja local, da família e da missão cristã.",
   "Encerre a aula com revisão dos objetivos, oração e aplicação prática da semana.",
@@ -289,6 +299,539 @@ const subsidioAdultosLicao11: LicaoEBD["subsidioAdultos"] = {
   },
 };
 
+const objetivosAdultosLicao12 = [
+  "Mostrar que a concepção de Jesus foi uma obra sobrenatural do Espírito Santo, preservando a plena divindade e a verdadeira humanidade do Filho.",
+  "Explicar que o ministério terreno de Jesus revela plena dependência do Espírito, sem confundir as Pessoas da Trindade nem reduzir sua glória.",
+  "Destacar que a missão redentora é trinitária: o Pai envia, o Filho obedece e o Espírito capacita e exalta a obra de Cristo.",
+];
+
+const topicosAdultosLicao12 = [
+  {
+    titulo: "O Espírito e a concepção do Filho",
+    conteudo: [
+      "A anunciação a Maria mostra que a encarnação não nasceu de iniciativa humana, mas de intervenção soberana do Espírito Santo.",
+      "A concepção virginal preserva a santidade do Filho e revela que o Verbo assumiu nossa humanidade sem deixar de ser plenamente Deus.",
+      "Desde o início da vida terrena de Jesus, a redenção aparece como obra conjunta do Pai, do Filho e do Espírito.",
+    ],
+  },
+  {
+    titulo: "O Filho viveu em dependência do Espírito",
+    conteudo: [
+      "Jesus não realizou seu ministério como um homem autônomo, mas como o Filho obediente que se move em perfeita comunhão com o Espírito.",
+      "Batismo, tentação, milagres e proclamação do Reino mostram a atuação do Espírito em seu ministério messiânico.",
+      "Essa dependência não diminui o Filho; ela revela a harmonia da Trindade na economia da salvação.",
+    ],
+  },
+  {
+    titulo: "A missão redentora revela a cooperação trinitária",
+    conteudo: [
+      "O Pai envia o Filho ao mundo, o Filho cumpre a vontade do Pai e o Espírito aplica com poder a obra da redenção.",
+      "O Espírito não ocupa o lugar do Filho, mas o glorifica, tornando eficaz na Igreja aquilo que Cristo conquistou na cruz.",
+      "O crente é chamado a responder a essa missão com fé, submissão e dependência do mesmo Espírito que esteve sobre Jesus.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao12: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 12,
+    titulo: "O Filho e o Espírito",
+    data: "2026-03-22",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Lucas 1.35 mostra que a encarnação do Filho foi obra sobrenatural do Espírito, preservando a santidade daquele que viria ao mundo.",
+    verdadePratica:
+      "A redenção é uma obra trinitária: o Pai envia, o Filho obedece e o Espírito capacita e exalta a missão do Salvador.",
+    leituraBiblicaEmClasse: [
+      "Lucas 1.26-38 — a anunciação a Maria e a ação do Espírito na concepção de Jesus.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Lucas 1.35",
+        tema: "A concepção de Jesus nasce da ação sobrenatural do Espírito Santo.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 1.14",
+        tema: "O Verbo se fez carne sem deixar de ser plenamente Deus.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "João 16.14",
+        tema: "O Espírito glorifica o Filho e torna sua obra conhecida ao coração da Igreja.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Mateus 12.28",
+        tema: "Os sinais do Reino revelam o Filho atuando no poder do Espírito.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Atos 10.38",
+        tema: "Jesus foi ungido com o Espírito para fazer o bem e libertar os oprimidos.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Lucas 1.38",
+        tema: "A resposta de fé de Maria ilustra submissão humilde ao plano redentor de Deus.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A lição mostra que da concepção de Jesus ao seu ministério público a relação entre o Filho e o Espírito revela a harmonia da Trindade na salvação. O Espírito atua na encarnação, acompanha o ministério messiânico e glorifica Cristo, enquanto o Filho cumpre com perfeita obediência a vontade do Pai.",
+    ideiaCentral:
+      "O Filho não age isoladamente: sua encarnação, seu ministério e a aplicação da redenção revelam cooperação trinitária perfeita.",
+    objetivos: objetivosAdultosLicao12,
+    palavraChave: {
+      termo: "Dependência",
+      definicao:
+        "No ministério de Cristo, dependência não indica inferioridade ontológica, mas a expressão histórica da obediência do Filho e da unidade da Trindade na redenção.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "concepcao-do-filho",
+      titulo: "O Espírito e a concepção do Filho",
+      sinopse:
+        "A encarnação de Cristo começa com a ação soberana do Espírito e confirma que o nascimento de Jesus pertence ao centro do plano redentor.",
+      explicacaoBiblica: [
+        "Lucas 1.26-38 mostra que o nascimento de Jesus não é apenas extraordinário, mas redentivamente necessário: o Filho assume nossa humanidade por intervenção do Espírito.",
+        "João 1.14 ensina que o Verbo se fez carne, revelando verdadeira humanidade sem perda da plena divindade.",
+        "A santidade do Cristo concebido pelo Espírito aponta para o Salvador sem pecado, apto para representar seu povo diante de Deus.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A encarnação é trinitária: o Pai envia, o Filho assume a natureza humana e o Espírito realiza a concepção milagrosa.",
+        "A união entre divindade e humanidade em Cristo não cria mistura confusa entre naturezas; ela preserva sua identidade plena como Deus e homem.",
+      ],
+      aplicacaoPratica: [
+        "A classe precisa ver que a salvação não começa na iniciativa humana, mas na ação graciosa de Deus que entra em nossa história.",
+        "A resposta humilde de Maria ensina que fé verdadeira acolhe a Palavra de Deus mesmo quando ela ultrapassa a lógica humana.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Lucas 1.35", descricao: "O Espírito Santo virá sobre ti." },
+        { referencia: "João 1.14", descricao: "O Verbo se fez carne e habitou entre nós." },
+        { referencia: "Mateus 1.20-23", descricao: "O nascimento virginal cumpre o plano divino." },
+      ],
+    },
+    {
+      id: "ministerio-no-espirito",
+      titulo: "O Filho e a sua relação com o Espírito",
+      sinopse:
+        "Jesus realizou seu ministério em plena comunhão com o Espírito, mostrando que a obra messiânica é exercida em obediência, poder e santidade.",
+      explicacaoBiblica: [
+        "No batismo de Jesus, o Espírito desce sobre o Filho e o Pai testemunha publicamente sua identidade messiânica.",
+        "Lucas 4 apresenta Jesus cheio do Espírito tanto para resistir à tentação quanto para anunciar as boas-novas aos pobres.",
+        "Atos 10.38 resume o ministério do Senhor como atuação ungida pelo Espírito, marcada por misericórdia, libertação e autoridade santa.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A dependência do Espírito em Jesus não significa limitação essencial do Filho, mas a expressão da sua missão encarnada em perfeita obediência ao Pai.",
+        "O Espírito não substitui o Filho no centro da redenção; Ele confirma e torna visível o caráter messiânico da atuação de Cristo.",
+      ],
+      aplicacaoPratica: [
+        "A igreja precisa rejeitar leituras que opõem Cristo e o Espírito, como se um diminuísse a glória do outro.",
+        "Quem segue Jesus é chamado a servir com a mesma lógica: obediência, dependência do Espírito e centralidade no Reino de Deus.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Lucas 3.21-22", descricao: "Batismo de Jesus e manifestação trinitária." },
+        { referencia: "Lucas 4.1,18", descricao: "Jesus é guiado e ungido pelo Espírito." },
+        { referencia: "Atos 10.38", descricao: "Resumo apostólico do ministério de Cristo." },
+      ],
+    },
+    {
+      id: "missao-redentora-trinitaria",
+      titulo: "A Trindade e a missão redentora",
+      sinopse:
+        "A redenção não é uma ação isolada: Pai, Filho e Espírito atuam juntos para trazer salvação, iluminação e obediência ao povo de Deus.",
+      explicacaoBiblica: [
+        "João 3.16 e João 16 mostram que o Pai entrega o Filho e o Espírito torna eficaz no coração do crente aquilo que Cristo conquistou.",
+        "O Espírito glorifica o Filho, conduzindo a Igreja a compreender a pessoa e a obra do Salvador com fidelidade.",
+        "A resposta humana adequada diante dessa missão é fé obediente, e não curiosidade teórica sobre a Trindade.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Na economia da salvação, há distinção de operações sem separação de essência: o Pai envia, o Filho realiza a redenção e o Espírito aplica seus benefícios.",
+        "A cristologia saudável impede qualquer noção de subordinação ontológica do Filho, ao mesmo tempo que reconhece sua obediência funcional na história da redenção.",
+      ],
+      aplicacaoPratica: [
+        "O professor deve conduzir a classe a contemplar a Trindade com reverência, sem transformar a doutrina em abstração fria.",
+        "A salvação recebida em Cristo pede vida de submissão ao Espírito, serviço humilde e adoração centrada em Deus.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "João 16.13-14", descricao: "O Espírito guia à verdade e glorifica o Filho." },
+        { referencia: "Hebreus 9.14", descricao: "Cristo se oferece a Deus pelo Espírito eterno." },
+        { referencia: "Filipenses 2.5-11", descricao: "A obediência do Filho culmina em sua exaltação." },
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Quando você pensa na vida de Jesus, percebe mais sua glória divina ou sua dependência obediente do Espírito? Como equilibrar as duas verdades?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem confundir dependência com inferioridade. Vale mostrar com cuidado que o Filho não é menor que o Espírito, mas atua em perfeita comunhão com Ele na missão encarnada.",
+    erroComumDeInterpretacao:
+      "Tratar a relação entre Filho e Espírito como competição de protagonismo distorce a doutrina da Trindade e enfraquece a compreensão da redenção.",
+    perguntasParaDebate: [
+      "Por que a concepção virginal é importante para a fé cristã e não apenas um detalhe da narrativa?",
+      "Como explicar a dependência do Espírito no ministério de Jesus sem sugerir inferioridade do Filho?",
+      "De que modo a obra do Espírito hoje continua exaltando a pessoa e a obra de Cristo na Igreja?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua chamando a classe a adorar o Deus triúno pela redenção e a servir como discípulos de Cristo em humilde dependência do Espírito.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "A igreja primitiva precisou defender simultaneamente a plena divindade e a verdadeira humanidade de Cristo contra leituras que enfraqueciam um desses polos.",
+      "A formulação trinitária amadureceu justamente para preservar a unidade divina sem dissolver a distinção entre Pai, Filho e Espírito.",
+    ],
+    conceitoTeologico: [
+      "A encarnação revela que o Filho assume a natureza humana sem abdicar de sua divindade, inaugurando a obra redentora em perfeita harmonia com o Espírito.",
+      "O ministério público de Cristo mostra a economia trinitária da salvação: há distinção nas operações, mas indivisibilidade na vontade e na glória de Deus.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Logos",
+        conteudo:
+          "Em João 1, destaca o Filho eterno que se fez carne, revelando que a encarnação não começou a existência de Cristo, mas sua missão histórica entre nós.",
+      },
+      {
+        titulo: "Hagios",
+        conteudo:
+          "A santidade ligada ao Espírito e ao Filho sublinha pureza absoluta, separação do pecado e adequação perfeita para a obra redentora.",
+      },
+      {
+        titulo: "Doxasei",
+        conteudo:
+          "Em João 16.14, indica que o Espírito glorifica o Filho, tornando sua pessoa e obra conhecidas, honradas e eficazes na vida da Igreja.",
+      },
+      {
+        titulo: "Apostello",
+        conteudo:
+          "A linguagem do envio ajuda a perceber a missão do Filho como iniciativa do Pai, cumprida em obediência e manifestada no poder do Espírito.",
+      },
+    ],
+    leituraComplementar: [
+      {
+        titulo: "Lucas 1.26-38",
+        conteudo:
+          "Observe como a anunciação reúne promessa, milagre, submissão e linguagem trinitária em torno do nascimento de Jesus.",
+      },
+      {
+        titulo: "Lucas 4.1-21",
+        conteudo:
+          "Leia o início do ministério público de Cristo percebendo o papel do Espírito na tentação, no anúncio e na missão messiânica.",
+      },
+      {
+        titulo: "João 16.13-15",
+        conteudo:
+          "Use esse texto para mostrar que a ação do Espírito no presente permanece cristocêntrica e fiel à revelação do Filho.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A tendência de falar sobre o Espírito sem centralidade em Cristo ou de falar sobre Cristo sem dependência do Espírito.",
+      "A autossuficiência ministerial que tenta servir a Deus sem oração, submissão e sensibilidade à direção do Espírito.",
+    ],
+    oQueConsola: [
+      "A redenção não depende de improviso humano; ela nasce do conselho perfeito do Deus triúno.",
+      "O mesmo Espírito que atuou na missão de Cristo hoje fortalece a Igreja a viver e testemunhar com fidelidade.",
+    ],
+    oQueExige: [
+      "Seguir Jesus implica abandonar a lógica da força humana e aprender a depender do Espírito em santidade e serviço.",
+      "A contemplação da Trindade deve produzir obediência concreta, e não mera curiosidade doutrinária.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus age com perfeita unidade na salvação: o Pai planeja, o Filho cumpre e o Espírito aplica com poder e santidade.",
+      "O Deus revelado em Cristo não é distante; Ele entra na história e conduz pessoalmente seu povo à redenção.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Por que a concepção de Jesus pelo Espírito Santo é central para a doutrina da encarnação?",
+      "O que a dependência de Jesus em relação ao Espírito revela sobre sua missão messiânica?",
+      "Como a ação do Espírito continua exaltando Cristo na vida da Igreja?",
+      "De que forma a obra redentora mostra a cooperação entre Pai, Filho e Espírito?",
+    ],
+    pontosChave: [
+      "A concepção virginal revela a ação soberana do Espírito na encarnação do Filho.",
+      "O ministério de Jesus acontece em plena comunhão com o Espírito, sem diminuir sua divindade.",
+      "O Espírito glorifica o Filho e aplica à Igreja a redenção conquistada por Cristo.",
+      "A doutrina da Trindade deve levar a adoração, confiança e dependência obediente.",
+    ],
+    fraseDeSintese:
+      "A relação entre o Filho e o Espírito revela que a redenção é obra do Deus triúno e chama a Igreja a viver em adoração, submissão e missão.",
+  },
+};
+
+const objetivosAdultosLicao13 = [
+  "Mostrar que a redenção da Igreja nasce da atuação conjunta do Pai, do Filho e do Espírito no plano eterno da salvação.",
+  "Explicar que a comunhão cristã só é possível porque a Igreja participa, pela graça, da vida do Deus triúno.",
+  "Destacar que a missão da Igreja é fruto do envio trinitário e depende da presença capacitadora do Espírito Santo.",
+];
+
+const topicosAdultosLicao13 = [
+  {
+    titulo: "A Trindade atua no plano redentor da Igreja",
+    conteudo: [
+      "A eleição do Pai, a redenção do Filho e a santificação do Espírito mostram que a Igreja não nasce do acaso, mas do propósito eterno de Deus.",
+      "A salvação da comunidade cristã é inseparável da cruz de Cristo e da obra santificadora do Espírito.",
+      "O povo de Deus vive seguro porque sua origem está no conselho santo da Trindade, e não na força humana.",
+    ],
+  },
+  {
+    titulo: "A Igreja vive em comunhão com o Deus Triúno",
+    conteudo: [
+      "A comunhão da Igreja vai além de convivência social; ela nasce da graça do Senhor Jesus, do amor do Pai e da comunhão do Espírito Santo.",
+      "A vida cristã saudável reflete essa realidade em unidade, cuidado mútuo, santidade e serviço.",
+      "Quando a Igreja perde a comunhão com o Deus triúno, também enfraquece sua comunhão entre irmãos.",
+    ],
+  },
+  {
+    titulo: "A Igreja é enviada pela Trindade",
+    conteudo: [
+      "O Pai envia, o Filho comissiona e o Espírito capacita a Igreja para testemunhar o Evangelho até os confins da terra.",
+      "Missão não é projeto periférico, mas expressão da própria vida do Deus que salva e reúne um povo para si.",
+      "A fidelidade missionária da Igreja depende de comunhão com Deus, não apenas de estratégia humana.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao13: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 13,
+    titulo: "A Trindade Santa e a Igreja de Cristo",
+    data: "2026-03-29",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Mateus 28.19 mostra que a Igreja nasce e vive debaixo da revelação do Pai, do Filho e do Espírito Santo.",
+    verdadePratica:
+      "A redenção da Igreja é uma obra conjunta da Trindade: o Pai elege, o Filho redime e o Espírito santifica e sustenta a missão do povo de Deus.",
+    leituraBiblicaEmClasse: [
+      "2 Coríntios 13.11-13 — a bênção apostólica revela a comunhão da Igreja com o Deus triúno.",
+      "1 Pedro 1.2-3 — eleição, santificação e redenção estruturam a identidade do povo de Deus.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "1 Pedro 1.2",
+        tema: "A Igreja é conhecida a partir da eleição do Pai, da santificação do Espírito e da obediência a Jesus Cristo.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Efésios 1.4",
+        tema: "O Pai escolheu um povo em Cristo antes da fundação do mundo.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "1 João 1.7",
+        tema: "A comunhão cristã permanece viva sob o sangue purificador de Jesus.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "2 Tessalonicenses 2.13",
+        tema: "O Espírito santifica o povo que Deus separou para si.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "João 15.4",
+        tema: "A permanência em Cristo sustenta a frutificação e a vida comunitária.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "2 Coríntios 13.13",
+        tema: "Graça, amor e comunhão trinitária moldam a vida da Igreja.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A lição conclui o trimestre mostrando que a Igreja de Cristo existe, persevera e cumpre sua missão por causa da atuação do Pai, do Filho e do Espírito Santo. A Trindade aparece no plano redentor, na comunhão do corpo e no envio missionário do povo de Deus.",
+    ideiaCentral:
+      "A Igreja não é apenas uma instituição religiosa; ela é o povo reunido, redimido, santificado e enviado pelo Deus triúno.",
+    objetivos: objetivosAdultosLicao13,
+    palavraChave: {
+      termo: "Trindade",
+      definicao:
+        "A doutrina da Trindade não é apêndice abstrato da fé cristã; ela explica a origem, a comunhão e a missão da Igreja de Cristo.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "plano-redentor-da-igreja",
+      titulo: "A Trindade e o plano redentor",
+      sinopse:
+        "A identidade da Igreja é moldada pela ação conjunta do Pai, do Filho e do Espírito desde o princípio do plano de salvação.",
+      explicacaoBiblica: [
+        "1 Pedro 1.2 apresenta a eleição segundo a presciência do Pai, a santificação do Espírito e a obediência com aspersão do sangue de Jesus Cristo.",
+        "Efésios 1 reforça que a salvação do povo de Deus foi pensada no Pai, realizada em Cristo e aplicada pelo Espírito.",
+        "A Igreja não surge como acidente histórico; ela é fruto do propósito santo e amoroso de Deus.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A eleição não anula a obra do Filho nem substitui a santificação do Espírito; ela revela a unidade do plano redentor na Trindade.",
+        "A redenção da Igreja precisa ser lida de forma cristocêntrica e pneumatológica, sem reduzir a salvação a uma única operação isolada.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve perceber que pertencer à Igreja é resposta a uma graça eterna, não a mera tradição religiosa.",
+        "O senso de pertencimento ao povo de Deus cresce quando enxergamos a Igreja como fruto do plano santo da Trindade.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "1 Pedro 1.2-3", descricao: "A identidade da Igreja nasce da ação trinitária." },
+        { referencia: "Efésios 1.3-14", descricao: "Panorama do plano redentor em Pai, Filho e Espírito." },
+        { referencia: "João 17.6-11", descricao: "Cristo intercede pelo povo que o Pai lhe deu." },
+      ],
+    },
+    {
+      id: "comunhao-com-a-trindade",
+      titulo: "A Igreja e a comunhão com a Trindade",
+      sinopse:
+        "A comunhão cristã é sustentada pela graça do Filho, pelo amor do Pai e pela comunhão do Espírito Santo.",
+      explicacaoBiblica: [
+        "2 Coríntios 13.13 mostra que a bênção apostólica é mais do que fórmula litúrgica: ela descreve a atmosfera espiritual em que a Igreja vive.",
+        "A permanência em Cristo, ensinada em João 15, é condição para frutificação, unidade e perseverança do corpo.",
+        "A comunhão horizontal entre irmãos depende da comunhão vertical com o Deus triúno.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A Igreja reflete a comunhão divina sem reproduzi-la em igualdade de essência; ela participa por graça da vida que vem de Deus.",
+        "Sem comunhão com o Pai, com o Filho e com o Espírito, a vida eclesial se reduz a organização vazia e ativismo sem poder.",
+      ],
+      aplicacaoPratica: [
+        "Conflitos, isolamento e indiferença dentro da igreja devem ser tratados à luz da comunhão trinitária que sustenta o corpo de Cristo.",
+        "A maturidade espiritual aparece quando a graça recebida em Cristo se transforma em perdão, serviço e cuidado mútuo.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "2 Coríntios 13.13", descricao: "Graça, amor e comunhão como fundamento da vida da Igreja." },
+        { referencia: "João 15.4-5", descricao: "Sem permanecer em Cristo a Igreja não frutifica." },
+        { referencia: "Efésios 4.3-6", descricao: "Unidade do Espírito em um só corpo e um só Deus." },
+      ],
+    },
+    {
+      id: "igreja-enviada-pela-trindade",
+      titulo: "A Igreja é enviada pela Trindade",
+      sinopse:
+        "A missão da Igreja nasce do coração de Deus e só pode ser cumprida por um povo que vive em dependência do Espírito.",
+      explicacaoBiblica: [
+        "Mateus 28.19-20 apresenta a missão da Igreja como envio em nome do Pai, do Filho e do Espírito Santo.",
+        "Atos 1.8 revela que o testemunho cristão depende da descida do Espírito e não apenas de boa vontade ou planejamento humano.",
+        "A missão da Igreja prolonga no mundo o plano redentor do Deus que salva, santifica e reúne um povo para si.",
+      ],
+      aprofundamentoDoutrinario: [
+        "O envio missionário da Igreja possui fundamento trinitário: o Pai deseja alcançar povos, o Filho comissiona discípulos e o Espírito os reveste de poder.",
+        "A eclesiologia saudável precisa ser missionária; uma Igreja sem envio perde conexão com a própria lógica da redenção.",
+      ],
+      aplicacaoPratica: [
+        "A igreja local deve avaliar se sua agenda reflete comunhão com o Deus missionário ou apenas manutenção interna.",
+        "Cada crente é chamado a participar da missão com oração, testemunho, serviço e compromisso com o Reino.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Mateus 28.19-20", descricao: "A Grande Comissão é explicitamente trinitária." },
+        { referencia: "Atos 1.8", descricao: "O Espírito capacita a testemunhar até os confins da terra." },
+        { referencia: "João 20.21-22", descricao: "Jesus envia a Igreja e sopra sobre ela o Espírito." },
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Quando falamos sobre a Igreja, pensamos primeiro em estrutura, em pessoas ou no Deus que a reuniu e a enviou?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem ter visão cansada ou ferida da vida comunitária. Mostre que a Igreja de Cristo não se define por falhas humanas, mas pela ação redentora e sustentadora da Trindade.",
+    erroComumDeInterpretacao:
+      "Reduzir a Igreja a organização humana ou tratar missão e comunhão como temas secundários esvazia a força trinitária da eclesiologia bíblica.",
+    perguntasParaDebate: [
+      "Como a doutrina da Trindade corrige uma visão utilitária ou apenas institucional da Igreja?",
+      "De que maneiras a comunhão do Deus triúno deve aparecer na vida prática da igreja local?",
+      "O que muda na missão da Igreja quando lembramos que ela é enviada pelo Pai, comissionada pelo Filho e capacitada pelo Espírito?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre conduzindo a classe a agradecer pela Igreja de Cristo, a renovar o compromisso com a comunhão e a se dispor novamente para a missão.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Desde cedo a Igreja precisou afirmar que sua identidade não nasce do poder político ou cultural, mas da ação salvadora de Deus em Cristo pelo Espírito.",
+      "A bênção apostólica e a linguagem trinitária do Novo Testamento serviram como base para uma compreensão eclesial profundamente cristocêntrica e comunitária.",
+    ],
+    conceitoTeologico: [
+      "A eclesiologia bíblica é inseparável da teologia trinitária: eleição, redenção, santificação e missão pertencem à mesma obra divina.",
+      "A comunhão da Igreja é dom antes de ser tarefa; ela é recebida da Trindade e, por isso, precisa ser preservada com humildade e santidade.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Ekloge",
+        conteudo:
+          "A noção de eleição destaca a iniciativa graciosa do Pai em separar para si um povo que viverá para sua glória.",
+      },
+      {
+        titulo: "Proginosko",
+        conteudo:
+          "A presciência divina em 1 Pedro aponta para o conhecimento amoroso e soberano de Deus dentro do seu plano redentor.",
+      },
+      {
+        titulo: "Hagiasmos",
+        conteudo:
+          "A santificação pelo Espírito descreve a separação progressiva e santa do povo de Deus para viver em obediência.",
+      },
+      {
+        titulo: "Koinonia",
+        conteudo:
+          "A comunhão cristã é participação real em uma vida compartilhada diante de Deus e entre os irmãos, sustentada pelo Espírito Santo.",
+      },
+    ],
+    leituraComplementar: [
+      {
+        titulo: "1 Pedro 1.1-5",
+        conteudo:
+          "Observe como a esperança, a eleição e a santificação aparecem unidas na identidade do povo de Deus.",
+      },
+      {
+        titulo: "2 Coríntios 13.11-13",
+        conteudo:
+          "Use a bênção final de Paulo para mostrar que a comunhão trinitária possui implicações pastorais concretas para a igreja local.",
+      },
+      {
+        titulo: "Mateus 28.18-20",
+        conteudo:
+          "Leia a Grande Comissão destacando sua base cristológica, sua forma trinitária e sua direção missionária.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A visão de igreja como espaço de consumo religioso, sem compromisso real com comunhão, santidade e missão.",
+      "O isolamento espiritual que tenta viver a fé sem corpo, sem vínculo e sem responsabilidade comunitária.",
+    ],
+    oQueConsola: [
+      "A Igreja não se sustenta apenas por competência humana; ela é guardada pela graça do Deus triúno.",
+      "Mesmo em tempos difíceis, o povo de Deus continua inserido em um plano eterno de amor, redenção e santificação.",
+    ],
+    oQueExige: [
+      "Viver em igreja requer compromisso com unidade, reconciliação, serviço e fidelidade à missão de Cristo.",
+      "A comunhão trinitária recebida por graça precisa aparecer em atitudes concretas dentro da congregação local.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus não salva indivíduos soltos apenas para o céu; Ele reúne um povo santo para viver em comunhão e testemunho no mundo.",
+      "O Pai, o Filho e o Espírito Santo estão presentes tanto na origem quanto na permanência e no envio da Igreja de Cristo.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Como 1 Pedro 1.2 resume a participação da Trindade no plano redentor da Igreja?",
+      "O que a bênção apostólica de 2 Coríntios 13.13 ensina sobre comunhão cristã?",
+      "Por que a missão da Igreja precisa ser entendida em chave trinitária?",
+      "Quais perigos aparecem quando a Igreja perde a centralidade da comunhão com o Deus triúno?",
+    ],
+    pontosChave: [
+      "A Igreja nasce do plano do Pai, da redenção do Filho e da santificação do Espírito.",
+      "Comunhão cristã verdadeira flui da graça de Cristo, do amor do Pai e da comunhão do Espírito.",
+      "A missão da Igreja não é acessória; ela nasce do envio trinitário e depende do poder do Espírito.",
+      "A doutrina da Trindade fortalece identidade, vida comunitária e fidelidade missionária.",
+    ],
+    fraseDeSintese:
+      "A Igreja de Cristo vive da graça do Deus triúno: é escolhida pelo Pai, redimida pelo Filho, santificada pelo Espírito e enviada ao mundo com poder.",
+  },
+};
+
 function criarLicao(seed: LicaoSeed): LicaoEBD {
   return {
     id: `adultos-2026-1t-licao-${seed.numero}`,
@@ -325,9 +868,24 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
   };
 }
 
-function criarLicaoPilotoAdultos(seed: LicaoSeed): LicaoEBD {
+function criarLicaoEditorialAdultos(
+  seed: LicaoSeed,
+  editorial: AdultosEditorialConfig
+): LicaoEBD {
   return {
     ...criarLicao(seed),
+    imagem: editorial.imagem,
+    objetivos: editorial.objetivos,
+    topicos: editorial.topicos,
+    apoioProfessor: editorial.apoioProfessor,
+    apoioAluno: editorial.apoioAluno,
+    esboco: editorial.esboco,
+    subsidioAdultos: editorial.subsidioAdultos,
+  };
+}
+
+const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditorialConfig>> = {
+  11: {
     imagem: "/images/EBD/licao-11-adulto.jpg",
     objetivos: objetivosAdultosLicao11,
     topicos: topicosAdultosLicao11,
@@ -357,8 +915,68 @@ function criarLicaoPilotoAdultos(seed: LicaoSeed): LicaoEBD {
       },
     ],
     subsidioAdultos: subsidioAdultosLicao11,
-  };
-}
+  },
+  12: {
+    objetivos: objetivosAdultosLicao12,
+    topicos: topicosAdultosLicao12,
+    apoioProfessor: [
+      "Destaque que a dependência de Jesus em relação ao Espírito pertence ao seu ministério encarnado e não diminui sua plena divindade.",
+      "Conduza a classe a perceber que o Espírito sempre exalta Cristo, evitando leituras que separam ou rivalizam as Pessoas da Trindade.",
+    ],
+    apoioAluno: [
+      "Leia Lucas 1.26-38 e Atos 10.38 durante a semana e anote como esses textos mostram a ação conjunta do Filho e do Espírito.",
+      "Ore pedindo que sua vida de serviço reflita a mesma lógica de Cristo: obediência ao Pai e dependência do Espírito.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Introduza a aula mostrando que a encarnação e o ministério de Jesus não podem ser entendidos sem a atuação do Espírito Santo.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição em três movimentos: a concepção do Filho, o ministério de Cristo em dependência do Espírito e a missão redentora como obra trinitária.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua levando a classe a adorar o Deus triúno e a assumir uma postura de obediência humilde e dependência do Espírito.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao12,
+  },
+  13: {
+    objetivos: objetivosAdultosLicao13,
+    topicos: topicosAdultosLicao13,
+    apoioProfessor: [
+      "Mostre que a doutrina da Trindade não é abstração teórica, mas fundamento da identidade, da comunhão e da missão da Igreja.",
+      "Ajude a turma a ligar vida comunitária, reconciliação e missão ao fato de pertencermos ao Deus triúno.",
+    ],
+    apoioAluno: [
+      "Leia 1 Pedro 1.2-3 e 2 Coríntios 13.13 nesta semana e observe como a Trindade aparece na identidade e na comunhão da Igreja.",
+      "Escolha uma forma concreta de servir a igreja local nesta semana como resposta ao chamado missionário do Deus triúno.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando o que sustenta a Igreja além de estrutura e organização, conduzindo a resposta para a ação do Deus triúno.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize o ensino em três eixos: plano redentor, comunhão da Igreja e envio missionário, sempre mostrando a atuação do Pai, do Filho e do Espírito.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Finalize renovando o compromisso da classe com comunhão, santidade e missão como expressão da vida recebida da Trindade.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao13,
+  },
+};
 
 const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   {
@@ -485,24 +1103,30 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 12,
     data: "2026-03-22",
-    titulo: "Perseverança em tempos difíceis",
-    resumo: "A lição prepara a igreja para permanecer firme quando surgem provações, cansaço e pressões da caminhada.",
-    textoChave: "Romanos 12:12",
-    verdadePratica: "Quem persevera em Cristo aprende a atravessar provações com esperança, oração e confiança no cuidado de Deus.",
-    leituraBiblica: ["Tiago 1:2-8", "Romanos 5:1-5"],
-    aplicacao: "Compartilhe um pedido de oração com alguém de confiança e fortaleça outra pessoa com presença, intercessão e Palavra.",
-    enfase: "a perseverança cristã",
+    titulo: "O Filho e o Espírito",
+    resumo:
+      "Da concepção de Jesus à aplicação da redenção, o Espírito Santo atua em perfeita comunhão com o Filho, revelando a harmonia trinitária da salvação.",
+    textoChave: "Lucas 1:35",
+    verdadePratica:
+      "Na obra da redenção, o Pai envia, o Filho obedece e o Espírito capacita e exalta a missão salvadora de Cristo.",
+    leituraBiblica: ["Lucas 1:26-38"],
+    aplicacao:
+      "Abandone a lógica da autossuficiência espiritual e peça que o Senhor forme em você uma vida de obediência a Cristo em dependência do Espírito.",
+    enfase: "a cooperação entre o Filho e o Espírito na redenção",
   },
   {
     numero: 13,
     data: "2026-03-29",
-    titulo: "Esperança futura e fidelidade presente",
-    resumo: "A esperança eterna sustenta uma vida fiel, sóbria e cheia de propósito no presente.",
-    textoChave: "Apocalipse 21:5",
-    verdadePratica: "A esperança cristã no futuro de Deus fortalece a fidelidade, a santidade e o serviço hoje.",
-    leituraBiblica: ["Apocalipse 21:1-7", "1 Tessalonicenses 4:13-18"],
-    aplicacao: "Conclua o trimestre renovando seu compromisso com a fidelidade a Cristo, com a igreja e com a esperança que não decepciona.",
-    enfase: "a esperança eterna",
+    titulo: "A Trindade Santa e a Igreja de Cristo",
+    resumo:
+      "A Igreja de Cristo nasce do plano do Pai, da redenção do Filho e da santificação do Espírito, vivendo em comunhão com o Deus triúno e sendo enviada em sua missão.",
+    textoChave: "Mateus 28:19",
+    verdadePratica:
+      "A vida e a missão da Igreja só podem ser compreendidas à luz da atuação conjunta do Pai, do Filho e do Espírito Santo.",
+    leituraBiblica: ["2 Coríntios 13:11-13", "1 Pedro 1:2-3"],
+    aplicacao:
+      "Renove seu compromisso com a comunhão da igreja local e com a missão de Cristo, vivendo em dependência do Espírito e sob o amor do Pai.",
+    enfase: "a vida e a missão trinitárias da Igreja",
   },
 ];
 
@@ -520,8 +1144,9 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
     classe: "adultos",
     imagem: "/images/EBD/ebd-1t.png",
     versiculoBase: "Mateus 28:19",
-    licoes: sementesAdultosPrimeiroTrimestre.map((seed) =>
-      seed.numero === 11 ? criarLicaoPilotoAdultos(seed) : criarLicao(seed)
-    ),
+    licoes: sementesAdultosPrimeiroTrimestre.map((seed) => {
+      const editorial = editoriaisAdultosPrimeiroTrimestre[seed.numero];
+      return editorial ? criarLicaoEditorialAdultos(seed, editorial) : criarLicao(seed);
+    }),
   },
 ];
