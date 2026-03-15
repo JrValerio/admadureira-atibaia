@@ -1918,6 +1918,382 @@ const subsidioJovensLicao10: LicaoEBD["subsidioJovens"] = {
   },
 };
 
+const objetivosJovensLicao12 = [
+  "Refletir sobre a necessidade da perseverança para alcançar a promessa.",
+  "Reconhecer que a apostasia é um perigo real para quem se afasta da fé.",
+  "Apresentar os contrapontos entre perseverança e apostasia, incentivando o compromisso de uma vida fiel a Cristo até o fim.",
+];
+
+const topicosJovensLicao12 = [
+  {
+    titulo: "Perseverança para alcançar a promessa",
+    conteudo: [
+      "Perseverar é manter os olhos fixos na promessa de Deus e não nas pressões passageiras do tempo presente.",
+      "A esperança cristã produz coragem, estabilidade e constância mesmo em meio a provações reais.",
+      "Perseverança não é apenas resistir; é continuar fazendo a vontade de Deus com fidelidade prática.",
+    ],
+  },
+  {
+    titulo: "A possibilidade da apostasia",
+    conteudo: [
+      "A apostasia é um afastamento consciente da fé, não um tropeço acidental ou mera ignorância espiritual.",
+      "Ela se torna especialmente grave porque parte de quem conheceu a verdade e ainda assim a abandona deliberadamente.",
+      "O recuo costuma começar em pequenas negligências: oração enfraquecida, comunhão abandonada e concessões ao pecado.",
+    ],
+  },
+  {
+    titulo: "Perseverança x apostasia",
+    conteudo: [
+      "Hebreus mostra dois caminhos opostos: perseverar na fé ou recuar para a perdição.",
+      "A vida cristã fiel escolhe diariamente obedecer a Cristo, mesmo quando isso parece difícil, impopular ou solitário.",
+      "Quem permanece em Cristo vive com convicção, vigilância e esperança, sustentado pelo Espírito Santo.",
+    ],
+  },
+];
+
+const subsidioJovensLicao12: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 12,
+    titulo: "Perseverando na Salvação",
+    data: "2026-03-22",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "Hebreus 10.38 afirma que o justo viverá da fé e alerta para o perigo real do recuo espiritual.",
+    resumoDaLicao:
+      "Perseverar na fé é essencial para a salvação. A apostasia é um risco real, mas pode ser evitada com vigilância, fidelidade e confiança diária em Deus, sob o auxílio do Espírito Santo.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "2 Coríntios 4.17-18",
+        foco: "Perseverar é manter os olhos fixos no que é eterno.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Romanos 12.1-2",
+        foco: "A perseverança se mostra em um estilo de vida alinhado à vontade de Deus.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Colossenses 1.10",
+        foco: "O salvo persevera buscando agradar a Deus em tudo.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Hebreus 3.12-13",
+        foco: "Apostasia e endurecimento são perigos reais para quem negligencia a fé.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "João 16.13; Romanos 8.13-14",
+        foco: "O Espírito Santo auxilia o crente a permanecer firme.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Filipenses 1.6",
+        foco: "Deus é fiel para completar a boa obra iniciada em nós.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao12,
+    interacao:
+      "A aula precisa tratar perseverança como parte essencial da caminhada cristã. O objetivo é mostrar que a fé salvadora não termina em um começo empolgado, mas se revela em fidelidade contínua até o fim.",
+    orientacaoPedagogica:
+      "Comece perguntando o que mais pressiona os jovens a desistirem da caminhada com Cristo. Em seguida, mostre em Hebreus 10 que perseverar envolve esperança, firmeza, vigilância e dependência do Espírito Santo.",
+  },
+  desenvolvimento: [
+    {
+      id: "perseveranca-para-a-promessa",
+      titulo: "Perseverança para alcançar a promessa",
+      sinopse:
+        "A esperança em Deus produz coragem para continuar firme no caminho da fé.",
+      explicacaoBiblica: [
+        "Hebreus 10.35-36 liga confiança, perseverança e promessa em uma mesma dinâmica espiritual.",
+        "A palavra hypomone comunica constância firme mesmo em meio a dores, pressões e sofrimentos.",
+        "Perseverar é também continuar fazendo a vontade de Deus e não apenas suportar circunstâncias difíceis.",
+      ],
+      aplicacaoPratica: [
+        "Leve a turma a identificar como a esperança futura sustenta a fidelidade presente.",
+        "Mostre que perseverança não é impulso de um dia, mas decisão renovada em toda a caminhada.",
+      ],
+      pense:
+        "Sua esperança em Deus tem produzido coragem real para continuar quando a caminhada fica difícil?",
+      pontoImportante:
+        "Quem persevera não vive preso ao presente; vive sustentado pela promessa de Deus.",
+    },
+    {
+      id: "possibilidade-da-apostasia",
+      titulo: "A possibilidade da apostasia",
+      sinopse:
+        "A apostasia é um abandono consciente da fé e precisa ser tratada com seriedade espiritual.",
+      explicacaoBiblica: [
+        "Hebreus 10.26-31 alerta sobre o perigo de rejeitar deliberadamente a verdade depois de conhecê-la.",
+        "A gravidade da apostasia está em desprezar o Filho de Deus, seu sangue e a graça do Espírito.",
+        "O afastamento raramente acontece de uma vez; ele cresce em negligências, concessões e frieza.",
+      ],
+      aplicacaoPratica: [
+        "Ajude os alunos a perceber sinais iniciais de recuo: abandono de oração, distanciamento da igreja e vergonha do testemunho cristão.",
+        "Incentive a turma a tratar pequenas concessões com seriedade, antes que se tornem hábitos de endurecimento.",
+      ],
+      pense:
+        "Há alguma área em que seu coração já começou a recuar em silêncio, por cansaço, orgulho ou indiferença?",
+      pontoImportante:
+        "A apostasia é perigo real, mas a vigilância espiritual e a comunhão viva com Deus interrompem esse caminho.",
+    },
+    {
+      id: "perseveranca-versus-apostasia",
+      titulo: "Perseverança x apostasia",
+      sinopse:
+        "A vida cristã exige escolha diária entre permanecer em Cristo ou recuar da fé.",
+      explicacaoBiblica: [
+        "Hebreus 10.38-39 mostra que o justo vive da fé e não pertence aos que recuam para a perdição.",
+        "A perseverança se expressa em integridade, constância devocional, comunhão e obediência mesmo sob pressão.",
+        "O Espírito Santo sustenta quem decide permanecer fiel a Cristo até o fim.",
+      ],
+      aplicacaoPratica: [
+        "Mostre que perseverar é escolha diária: manter vida devocional, amizades saudáveis, serviço e coragem de testemunho.",
+        "Encoraje a turma a responder às dificuldades com fé madura, e não com fuga silenciosa da comunhão com Deus.",
+      ],
+      pense:
+        "Você tem dado pequenos passos de fidelidade ou pequenas concessões que silenciam seu testemunho?",
+      pontoImportante:
+        "Perseverar é continuar dizendo sim a Cristo quando seria mais fácil recuar.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte quais pressões mais tentam um jovem a desistir da caminhada cristã.",
+    perguntaChave:
+      "O que sustenta a perseverança e como identificar, cedo, o risco da apostasia?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem enxergar apostasia como algo distante demais, sem perceber que ela começa em negligências pequenas e contínuas.",
+    conducaoDaConversa: [
+      "Mostre que perseverança tem dimensão passiva e ativa: resistir e continuar obedecendo.",
+      "Use Hebreus 10 para apresentar tanto o alerta quanto a esperança da permanência fiel.",
+      "Conecte a aula com práticas concretas: oração, comunhão, leitura bíblica e coragem no testemunho.",
+    ],
+    fechamento:
+      "Conclua lembrando que Deus chama seu povo à perseverança e oferece graça suficiente para permanecer firme até o fim.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Perseverança não é autossustentação humana, mas fidelidade contínua sustentada pela graça de Deus.",
+      "A apostasia precisa ser tratada com seriedade porque envolve abandono consciente da fé experimentada.",
+    ],
+    contextoBiblico: [
+      "Hebreus foi escrito para fortalecer crentes pressionados a desistir, e por isso une advertência forte e encorajamento perseverante.",
+      "Textos paulinos e joaninos reforçam que o Espírito Santo é auxílio real no caminho da fidelidade.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens precisam aprender a vigiar hábitos cotidianos, pois a perseverança é construída no ordinário.",
+      "A esperança da promessa futura fortalece o coração para não ceder ao desânimo do presente.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que produz coragem para perseverar na estrada da fé?",
+      "O que significa hypomone?",
+      "Como a apostasia começa e por que é tão grave?",
+      "O que significa viver da fé em tempos difíceis?",
+    ],
+    quizCurto: [
+      "A perseverança é só resistência passiva? Resposta esperada: não.",
+      "A apostasia pode começar em pequenas negligências? Resposta esperada: sim.",
+      "O justo é chamado a viver de quê? Resposta esperada: da fé.",
+    ],
+    conclusao:
+      "Perseverar na salvação é permanecer fiel a Cristo, sustentado pela esperança, pela vigilância e pela graça do Espírito Santo.",
+  },
+};
+
+const objetivosJovensLicao13 = [
+  "Mostrar as diferenças entre o homem terreno e o espiritual.",
+  "Explicar que Deus consumará sua obra ao estabelecer novo céu e nova terra.",
+  "Saber que viver com Deus no centro de tudo é caminhar na contramão de um mundo antropocêntrico.",
+];
+
+const topicosJovensLicao13 = [
+  {
+    titulo: "Do terreno ao celestial",
+    conteudo: [
+      "A glorificação é a etapa final da salvação, quando o corpo corruptível dará lugar à incorruptibilidade.",
+      "Em Adão herdamos a fragilidade do homem terreno; em Cristo herdaremos plenamente a vida do homem celestial.",
+      "A esperança da glorificação nos ajuda a interpretar o presente à luz do que Deus ainda completará.",
+    ],
+  },
+  {
+    titulo: "Uma nova ordem do cosmos",
+    conteudo: [
+      "A consumação da salvação alcançará não apenas o ser humano, mas toda a criação.",
+      "O novo céu e a nova terra revelam um mundo restaurado pela presença de Deus, sem maldição e sem desordem.",
+      "O rio da vida e a árvore da vida apontam para plenitude, cura e comunhão eterna na presença do Senhor.",
+    ],
+  },
+  {
+    titulo: "Vivendo o futuro glorioso no presente trabalhoso",
+    conteudo: [
+      "A esperança da glorificação não produz fuga do presente, mas vida coerente com o Reino agora.",
+      "O salvo é chamado a viver como cidadão celestial, canal da água da vida e testemunha em um mundo desordenado.",
+      "Em contraste com a cultura centrada no ego, o cristão aprende a viver com mentalidade teocêntrica.",
+    ],
+  },
+];
+
+const subsidioJovensLicao13: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 13,
+    titulo: "A Consumação da Salvação",
+    data: "2026-03-29",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "1 Coríntios 15.49 aponta para a grande esperança cristã: assim como trouxemos a imagem do terreno, traremos também a imagem do celestial.",
+    resumoDaLicao:
+      "A certeza da glorificação final nos impulsiona a viver como cidadãos celestiais, mesmo em um mundo em desordem.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Romanos 8.20-21",
+        foco: "A criação aguarda libertação da corrupção.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 7.38-39",
+        foco: "O Espírito já faz jorrar vida em quem crê.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Hebreus 12.1-3",
+        foco: "Cristo inspira perseverança enquanto caminhamos para a glória.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Efésios 1.4",
+        foco: "Fomos escolhidos em Cristo dentro do plano eterno de Deus.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 12.2",
+        foco: "Viver para Deus exige mente renovada em meio a um mundo desordenado.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gálatas 2.20",
+        foco: "A vida centrada em Deus já antecipa a realidade futura do Reino.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao13,
+    interacao:
+      "A última lição do trimestre precisa erguer os olhos da turma para a glorificação final sem desconectá-la da vida presente. Esperança futura e fidelidade cotidiana caminham juntas.",
+    orientacaoPedagogica:
+      "Comece perguntando o que muda hoje quando o cristão sabe para onde está indo. A partir daí, mostre que glorificação, nova criação e vida centrada em Deus não são fuga do mundo, mas força para viver neste mundo com propósito.",
+  },
+  desenvolvimento: [
+    {
+      id: "do-terreno-ao-celestial",
+      titulo: "Do terreno ao celestial",
+      sinopse:
+        "A glorificação consumará a salvação ao transformar completamente o que hoje ainda é marcado pela finitude.",
+      explicacaoBiblica: [
+        "1 Coríntios 15 mostra a transição do corpo corruptível para a incorruptibilidade gloriosa.",
+        "O contraste entre Adão e Cristo ajuda a entender nossa passagem do homem terreno ao homem celestial.",
+        "A esperança cristã inclui transformação real do corpo e libertação final da morte.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a lidar com fraquezas, contradições e dores presentes à luz da promessa de transformação final.",
+        "Mostre que a esperança da glorificação fortalece santidade e perseverança, em vez de produzir alienação.",
+      ],
+      pense:
+        "Você tem interpretado suas limitações presentes à luz da glória futura prometida em Cristo?",
+      pontoImportante:
+        "O corpo atual é marcado pela finitude, mas o corpo glorificado será marcado pela vida incorruptível do Senhor.",
+    },
+    {
+      id: "nova-ordem-do-cosmos",
+      titulo: "Uma nova ordem do cosmos",
+      sinopse:
+        "A consumação da salvação alcançará toda a criação em um novo céu e nova terra.",
+      explicacaoBiblica: [
+        "Apocalipse 22 apresenta a cidade eterna cheia da presença de Deus, do Cordeiro e da vida que flui do seu trono.",
+        "O rio da água da vida e a árvore da vida simbolizam restauração completa, cura e plenitude eterna.",
+        "Romanos 8 conecta essa esperança com a criação que geme aguardando libertação final.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a perceber que o plano de Deus é maior do que sobrevivência pessoal: Ele está restaurando todas as coisas em Cristo.",
+        "Mostre que esperança cósmica fortalece consolo, adoração e compromisso com o Reino.",
+      ],
+      pense:
+        "Sua visão de salvação é ampla o suficiente para incluir a nova criação que Deus prometeu?",
+      pontoImportante:
+        "A redenção consumada incluirá criação restaurada, comunhão plena e Deus no centro para sempre.",
+    },
+    {
+      id: "futuro-glorioso-presente-trabalhoso",
+      titulo: "Vivendo o futuro glorioso no presente trabalhoso",
+      sinopse:
+        "A esperança da glória futura chama o salvo a uma vida teocêntrica e missionária já no presente.",
+      explicacaoBiblica: [
+        "Colossenses 3 e Gálatas 2 mostram que a vida do salvo já está orientada pelo céu mesmo enquanto caminha neste mundo.",
+        "João 7 e Apocalipse 22 ajudam a entender o cristão como canal de vida em um mundo sedento e quebrado.",
+        "Romanos 12 reforça a contracultura do salvo diante de um tempo marcado pelo ego e pela desordem.",
+      ],
+      aplicacaoPratica: [
+        "Incentive a turma a viver com propósito, santidade e serviço, sem esperar a eternidade para começar a refletir o Reino.",
+        "Ajude os alunos a identificar se Deus ou o ego ocupa o centro de suas prioridades, escolhas e estilo de vida.",
+      ],
+      pense:
+        "Quem ocupa o centro das suas decisões diárias: a vontade de Deus ou as exigências do próprio ego?",
+      pontoImportante:
+        "Viver o futuro glorioso no presente é caminhar com mente renovada, coração teocêntrico e esperança firme.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte o que muda hoje quando alguém sabe com clareza qual é o seu destino final em Cristo.",
+    perguntaChave:
+      "Como a glorificação futura transforma a maneira como vivemos, servimos e enfrentamos o presente?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem tratar a eternidade como tema distante demais, sem perceber como ela redefine identidade, prioridades e coragem no presente.",
+    conducaoDaConversa: [
+      "Mostre que glorificação, nova criação e vida presente não competem; uma sustenta a outra.",
+      "Use 1 Coríntios 15 e Apocalipse 22 para unir esperança futura e fidelidade atual.",
+      "Conecte a aula com propósito, santidade e vida centrada em Deus em meio a um mundo antropocêntrico.",
+    ],
+    fechamento:
+      "Conclua lembrando a turma de que a consumação da salvação já lança luz sobre o presente e chama o salvo a viver como cidadão do céu desde agora.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Glorificação é a etapa final da salvação, quando o que começou na graça será plenamente consumado em Cristo.",
+      "A esperança escatológica bíblica é concreta: inclui corpo, criação e comunhão eterna com Deus.",
+    ],
+    contextoBiblico: [
+      "1 Coríntios 15 e Apocalipse 22 oferecem uma das visões mais fortes da transformação final e da nova criação.",
+      "Romanos 8, João 7 e Colossenses 3 ajudam a ligar essa esperança ao presente da igreja.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens que vivem com os olhos na glória futura tendem a encarar o presente com mais santidade, firmeza e esperança.",
+      "Uma vida centrada em Deus hoje já antecipa, em parte, a realidade futura do Reino consumado.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que significa passar do terreno ao celestial?",
+      "Como a nova criação aparece na consumação da salvação?",
+      "O que significa viver o futuro glorioso no presente trabalhoso?",
+      "Como a esperança da glorificação muda nossas prioridades atuais?",
+    ],
+    quizCurto: [
+      "A glorificação é etapa futura da salvação? Resposta esperada: sim.",
+      "A consumação alcança só o ser humano? Resposta esperada: não; alcança também a criação.",
+      "Viver com Deus no centro contrasta com qual mentalidade? Resposta esperada: com a mentalidade antropocêntrica.",
+    ],
+    conclusao:
+      "A consumação da salvação nos lembra que a história caminha para a glória de Cristo, e essa esperança já deve moldar o modo como vivemos hoje.",
+  },
+};
+
 const objetivosJovensLicao11 = [
   "Apresentar a doutrina bíblica da adoção como expressão da graça que nos insere de fato na família de Deus.",
   "Explicar como o Espírito Santo confirma a filiação cristã e nos conduz a uma relação viva com o Pai.",
@@ -2384,24 +2760,30 @@ const sementesJovensPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 12,
     data: "2026-03-22",
-    titulo: "Perseverança quando a fé é provada",
-    resumo: "A juventude é preparada para permanecer firme quando surgem crises, dúvidas e períodos de desânimo.",
-    textoChave: "Hebreus 10:36",
-    verdadePratica: "Fé provada não significa fé perdida; significa oportunidade de amadurecer, depender e perseverar em Deus.",
-    leituraBiblica: ["Tiago 1:2-5", "Hebreus 10:35-39"],
-    aplicacao: "Procure apoio espiritual nesta semana em vez de enfrentar suas lutas sozinho, e transforme sua dificuldade em motivo de oração.",
-    enfase: "a perseverança da juventude",
+    titulo: "Perseverando na Salvação",
+    resumo:
+      "Perseverar na fé é essencial para a salvação. A apostasia é um risco real, mas pode ser evitada com vigilância, fidelidade e confiança diária em Deus, sob o auxílio do Espírito Santo.",
+    textoChave: "Hebreus 10.38",
+    verdadePratica:
+      "Perseverar é escolher, dia após dia, permanecer fiel a Cristo com vigilância, esperança e firmeza na fé.",
+    leituraBiblica: ["Hebreus 10.26-39", "Hebreus 3.12-13", "Romanos 12.1-2", "Filipenses 1.6"],
+    aplicacao:
+      "Revise seus hábitos espirituais nesta semana e fortaleça intencionalmente aquilo que ajuda sua fé a permanecer firme em Cristo.",
+    enfase: "a perseverança na fé",
   },
   {
     numero: 13,
     data: "2026-03-29",
-    titulo: "Juventude que permanece até o fim",
-    resumo: "O encerramento do trimestre celebra uma juventude que deseja seguir firme, madura e disponível para o Reino de Deus.",
-    textoChave: "2 Timóteo 4:7",
-    verdadePratica: "O alvo da juventude cristã não é viver uma fé momentânea, mas permanecer fiel a Cristo até o fim.",
-    leituraBiblica: ["Hebreus 12:1-3", "2 Timóteo 4:6-8"],
-    aplicacao: "Faça uma oração de consagração ao fim deste trimestre, renovando sua disposição de permanecer em Cristo com fidelidade.",
-    enfase: "a perseverança até o fim",
+    titulo: "A Consumação da Salvação",
+    resumo:
+      "A certeza da glorificação final nos impulsiona a viver como cidadãos celestiais, mesmo em um mundo em desordem.",
+    textoChave: "1 Coríntios 15.49",
+    verdadePratica:
+      "A esperança da glorificação final chama o salvo a viver hoje com mente renovada, santidade e Deus no centro de tudo.",
+    leituraBiblica: ["1 Coríntios 15.42-49", "Apocalipse 22.1-5", "Romanos 8.20-21", "Romanos 12.2"],
+    aplicacao:
+      "Consagre esta semana a viver com os olhos na eternidade e os pés firmes no presente, alinhando escolhas e prioridades ao Reino de Deus.",
+    enfase: "a consumação da salvação",
   },
 ];
 
@@ -2748,6 +3130,68 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
       },
     ],
     subsidioJovens: subsidioJovensLicao11,
+  },
+  12: {
+    imagem: "/images/EBD/licao-12-jovens.png",
+    objetivos: objetivosJovensLicao12,
+    topicos: topicosJovensLicao12,
+    apoioProfessor: [
+      "Trabalhe perseverança e apostasia com sensibilidade pastoral e seriedade bíblica, sem banalizar nenhuma das duas.",
+      "Ajude os alunos a reconhecer sinais pequenos de recuo na fé antes que se transformem em hábitos de afastamento.",
+    ],
+    apoioAluno: [
+      "Leia Hebreus 10.35-39 e Hebreus 3.12-13 durante a semana e anote o que mais fortalece sua decisão de permanecer fiel a Cristo.",
+      "Reforce um hábito espiritual concreto nesta semana para combater qualquer início de recuo ou frieza na fé.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando quais pressões mais tentam um jovem a desistir da caminhada com Cristo atualmente.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize a exposição em três eixos: perseverança para alcançar a promessa, perigo real da apostasia e contraste prático entre permanecer e recuar.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua encorajando a turma a perseverar com olhos na promessa, coração vigilante e dependência diária do Espírito Santo.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao12,
+  },
+  13: {
+    imagem: "/images/EBD/licao-13-jovens.png",
+    objetivos: objetivosJovensLicao13,
+    topicos: topicosJovensLicao13,
+    apoioProfessor: [
+      "Conduza a última lição do trimestre com senso de esperança, mostrando que a glorificação futura ilumina o presente em vez de anulá-lo.",
+      "Ajude a turma a aplicar a esperança da nova criação em escolhas, prioridades e serviço no mundo atual.",
+    ],
+    apoioAluno: [
+      "Leia 1 Coríntios 15.42-49 e Apocalipse 22.1-5 durante a semana e anote o que mais desperta sua esperança na consumação da salvação.",
+      "Pergunte a si mesmo em quais áreas você precisa viver de modo mais teocêntrico, com Deus no centro de tudo.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece a aula perguntando o que muda hoje quando sabemos com clareza que a história termina na glória de Cristo.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe a lição em três movimentos: do terreno ao celestial, nova ordem do cosmos e vida presente orientada pela esperança futura.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Finalize consagrando o encerramento do trimestre à esperança da glorificação e ao compromisso de viver com Deus no centro.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao13,
   },
 };
 
