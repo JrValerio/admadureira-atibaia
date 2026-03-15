@@ -334,7 +334,7 @@ function getSummaryPages(
                   titulo: "Ideia central",
                   conteudo: truncateText(
                     licao.subsidioAdultos.visaoGeral.ideiaCentral,
-                    190
+                    250
                   ),
                 },
               ]
@@ -346,19 +346,19 @@ function getSummaryPages(
                   conteudo: truncateText(
                     licao.subsidioAdultos.visaoGeral.palavraChave.definicao ??
                       "Termo central da lição.",
-                    160
+                    220
                   ),
                 },
               ]
             : []),
-          ...licao.subsidioAdultos.desenvolvimento.slice(0, 2).map((topico) => ({
+          ...licao.subsidioAdultos.desenvolvimento.slice(0, 3).map((topico) => ({
             titulo: topico.titulo,
             conteudo: truncateText(
               topico.sinopse ??
                 topico.explicacaoBiblica?.[0] ??
                 topico.aplicacaoPratica?.[0] ??
                 "Desenvolva este tópico com apoio bíblico e aplicação prática.",
-              150
+              220
             ),
           })),
         ]
@@ -369,8 +369,8 @@ function getSummaryPages(
                   {
                     titulo: "Resumo da lição",
                     conteudo: truncateText(
-                      licao.subsidioJovens.cabecalho.resumoDaLicao,
-                      190
+                    licao.subsidioJovens.cabecalho.resumoDaLicao,
+                      240
                     ),
                   },
                 ]
@@ -380,13 +380,13 @@ function getSummaryPages(
                   {
                     titulo: "Orientação pedagógica",
                     conteudo: truncateText(
-                      licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica,
-                      160
+                    licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica,
+                      220
                     ),
                   },
                 ]
               : []),
-            ...licao.subsidioJovens.desenvolvimento.slice(0, 2).map((topico) => ({
+            ...licao.subsidioJovens.desenvolvimento.slice(0, 3).map((topico) => ({
               titulo: topico.titulo,
               conteudo: truncateText(
                 topico.pontoImportante ??
@@ -394,7 +394,7 @@ function getSummaryPages(
                   topico.sinopse ??
                   topico.explicacaoBiblica?.[0] ??
                   "Leve a classe a relacionar o tema com decisões reais da semana.",
-                150
+                220
               ),
             })),
           ]
@@ -450,12 +450,12 @@ function getSummaryPages(
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Leitura bíblica
           </p>
-          <PrintBulletList items={licao.leituraBiblica.slice(0, 4)} />
+          <PrintBulletList items={licao.leituraBiblica.slice(0, 6)} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Objetivos
           </p>
-          <PrintBulletList items={licao.objetivos.slice(0, 4)} />
+          <PrintBulletList items={licao.objetivos.slice(0, 6)} />
         </>
       ),
     },
@@ -465,21 +465,21 @@ function getSummaryPages(
       weight: sectionWeight(
         estimateListaItemsWeight(
           licao.esboco?.length
-            ? licao.esboco.slice(0, 3)
-            : topicosToListaItems(licao).slice(0, 3)
+            ? licao.esboco.slice(0, 4)
+            : topicosToListaItems(licao).slice(0, 4)
         )
       ),
       content: (
         <PrintOrderedList
           items={
             licao.esboco?.length
-              ? licao.esboco.slice(0, 3).map((item) => ({
+              ? licao.esboco.slice(0, 4).map((item) => ({
                   ...item,
-                  conteudo: truncateText(item.conteudo, 185),
+                  conteudo: truncateText(item.conteudo, 240),
                 }))
-              : topicosToListaItems(licao).slice(0, 3).map((item) => ({
+              : topicosToListaItems(licao).slice(0, 4).map((item) => ({
                   ...item,
-                  conteudo: truncateText(item.conteudo, 185),
+                  conteudo: truncateText(item.conteudo, 240),
                 }))
           }
         />
@@ -488,12 +488,12 @@ function getSummaryPages(
     {
       key: "summary-ritmo",
       title: "Ritmo da semana",
-      weight: sectionWeight(estimateListaItemsWeight(weeklyReadingItems.slice(0, 4))),
+      weight: sectionWeight(estimateListaItemsWeight(weeklyReadingItems.slice(0, 6))),
       content: (
         <PrintOrderedList
-          items={weeklyReadingItems.slice(0, 4).map((item) => ({
+          items={weeklyReadingItems.slice(0, 6).map((item) => ({
             ...item,
-            conteudo: truncateText(item.conteudo, 120),
+            conteudo: truncateText(item.conteudo, 170),
           }))}
         />
       ),
@@ -505,7 +505,7 @@ function getSummaryPages(
         estimateListaItemsWeight(
           topicosToListaItems(licao).slice(0, 3).map((item) => ({
             ...item,
-            conteudo: truncateText(item.conteudo, 170),
+            conteudo: truncateText(item.conteudo, 280),
           }))
         )
       ),
@@ -513,7 +513,7 @@ function getSummaryPages(
         <PrintOrderedList
           items={topicosToListaItems(licao).slice(0, 3).map((item) => ({
             ...item,
-            conteudo: truncateText(item.conteudo, 170),
+            conteudo: truncateText(item.conteudo, 280),
           }))}
         />
       ),
@@ -522,7 +522,7 @@ function getSummaryPages(
       key: "summary-subsidio",
       title: "Subsídio em foco",
       weight: sectionWeight(
-        estimateListaItemsWeight(summaryHighlights.slice(0, 4))
+        estimateListaItemsWeight(summaryHighlights.slice(0, 5))
       ),
       content: (
         <>
@@ -531,7 +531,7 @@ function getSummaryPages(
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Destaques do subsídio
               </p>
-              <PrintOrderedList items={summaryHighlights.slice(0, 4)} />
+              <PrintOrderedList items={summaryHighlights.slice(0, 5)} />
             </>
           ) : null}
         </>
@@ -541,9 +541,9 @@ function getSummaryPages(
       key: "summary-fechamento",
       title: "Revisão e apoio",
       weight: sectionWeight(
-        estimateStringsWeight(licao.apoioProfessor?.slice(0, 4)),
-        estimateStringsWeight(revisionHighlights.slice(0, 4)),
-        estimateStringsWeight(licao.apoioAluno?.slice(0, 3))
+        estimateStringsWeight(licao.apoioProfessor?.slice(0, 5)),
+        estimateStringsWeight(revisionHighlights.slice(0, 5)),
+        estimateStringsWeight(licao.apoioAluno?.slice(0, 4))
       ),
       content: (
         <>
@@ -553,7 +553,7 @@ function getSummaryPages(
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Apoio ao professor
               </p>
-              <PrintBulletList items={licao.apoioProfessor.slice(0, 4)} />
+              <PrintBulletList items={licao.apoioProfessor.slice(0, 5)} />
             </>
           ) : null}
 
@@ -562,7 +562,7 @@ function getSummaryPages(
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Revisão rápida
               </p>
-              <PrintBulletList items={revisionHighlights.slice(0, 4)} />
+              <PrintBulletList items={revisionHighlights.slice(0, 5)} />
             </>
           ) : null}
 
@@ -571,7 +571,7 @@ function getSummaryPages(
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Para reforçar durante a semana
               </p>
-              <PrintBulletList items={licao.apoioAluno.slice(0, 3)} />
+              <PrintBulletList items={licao.apoioAluno.slice(0, 4)} />
             </>
           ) : null}
         </>
@@ -606,6 +606,11 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
     (item) => ({
       titulo: `${item.dia} · ${item.referencia}`,
       conteudo: item.tema ?? "Leitura de apoio à aula.",
+    })
+  );
+  const leituraClasseItems = (subsidio.cabecalho.leituraBiblicaEmClasse ?? []).map(
+    (referencia) => ({
+      conteudo: referencia,
     })
   );
 
@@ -670,16 +675,24 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
       title: "Panorama da lição",
       weight: sectionWeight(
         estimateTextWeight(subsidio.cabecalho.textoAureo),
+        estimateTextWeight(subsidio.cabecalho.verdadePratica),
         estimateTextWeight(subsidio.visaoGeral.resumo),
         estimateTextWeight(subsidio.visaoGeral.ideiaCentral),
         estimateTextWeight(subsidio.visaoGeral.palavraChave?.definicao),
-        estimateStringsWeight(subsidio.visaoGeral.objetivos)
+        estimateStringsWeight(subsidio.visaoGeral.objetivos),
+        estimateListaItemsWeight(leituraClasseItems)
       ),
       content: (
         <>
           {subsidio.cabecalho.textoAureo ? (
             <PrintParagraph label="Texto áureo">
               <PrintBibleText text={subsidio.cabecalho.textoAureo} />
+            </PrintParagraph>
+          ) : null}
+
+          {subsidio.cabecalho.verdadePratica ? (
+            <PrintParagraph label="Verdade prática">
+              <PrintBibleText text={subsidio.cabecalho.verdadePratica} />
             </PrintParagraph>
           ) : null}
 
@@ -714,6 +727,15 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
               <PrintBulletList items={subsidio.visaoGeral.objetivos} />
             </>
           ) : null}
+
+          {leituraClasseItems.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Leitura bíblica em classe
+              </p>
+              <PrintOrderedList items={leituraClasseItems} />
+            </>
+          ) : null}
         </>
       ),
     },
@@ -737,7 +759,7 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Ênfase para a semana
               </p>
-              <PrintBulletList items={licao.apoioProfessor.slice(0, 2)} />
+              <PrintBulletList items={licao.apoioProfessor.slice(0, 4)} />
             </>
           ) : null}
         </>
