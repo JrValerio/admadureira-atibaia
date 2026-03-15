@@ -143,6 +143,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const lessonImage = lessonContext.licao.imagem ?? null;
   const pageImage = lessonContext.licao.imagem ?? trimestre.imagem;
   const isDraft = !isLicaoPublished(lessonContext.licao);
+  const lessonTopId = "topo-da-licao";
   const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao =
@@ -247,7 +248,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
         />
 
       <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
+        <div id={lessonTopId} className="mx-auto max-w-6xl px-4 scroll-mt-28">
           <Breadcrumb
             classe={classe}
             classeLabel={classeInfo.label}
@@ -558,6 +559,49 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 </div>
               </div>
             </aside>
+          </div>
+
+          <div className="mt-10 rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+            <div className="mb-6 max-w-3xl">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Navegação rápida
+              </p>
+              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                Continue estudando sem voltar a página inteira
+              </h2>
+              <p className="leading-relaxed text-[#555]">
+                Ao terminar a lição, siga para o próximo passo da EBD, revise a
+                programação da igreja ou volte ao topo da página com um clique.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
+              {licaoAnterior ? (
+                <Link
+                  href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
+                  className="ui-btn-secondary"
+                >
+                  ← Lição anterior
+                </Link>
+              ) : null}
+              {proximaLicao ? (
+                <Link
+                  href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
+                  className="ui-btn-secondary"
+                >
+                  Próxima lição →
+                </Link>
+              ) : null}
+              <Link href={`/ebd/${classe}/${trimestre.slug}`} className="ui-btn-secondary">
+                Voltar ao trimestre
+              </Link>
+              <Link href="/programacao" className="ui-btn-secondary">
+                Ver EBD na programação
+              </Link>
+              <Link href={`#${lessonTopId}`} className="ui-btn-ghost">
+                Voltar ao topo
+              </Link>
+            </div>
           </div>
         </div>
         </section>
