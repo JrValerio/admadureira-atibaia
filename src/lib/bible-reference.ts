@@ -93,6 +93,7 @@ const BIBLE_REFERENCE_REGEX = new RegExp(
   `(?<![\\p{L}\\p{N}])(${bibleBookPattern})\\s+(\\d+)(?:[:.]?(\\d+(?:[-,]\\d+)*))?`,
   "giu"
 );
+const BIBLE_SHORTHAND_REFERENCE_REGEX = /(;+\s*)(\d+)(?:[:.](\d+(?:[-,]\d+)*))?/giu;
 
 function parseVerseStart(verses?: string) {
   if (!verses) {
@@ -123,9 +124,10 @@ export function extractBibleReferences(text: string): ParsedBibleReference[] {
     return [];
   }
 
+  const fullMatches = [...text.matchAll(BIBLE_REFERENCE_REGEX)];
   const matches: ParsedBibleReference[] = [];
 
-  for (const match of text.matchAll(BIBLE_REFERENCE_REGEX)) {
+  for (const [matchIndex, match] of fullMatches.entries()) {
     const [matchedText, rawBook, rawChapter, rawVerses] = match;
     const normalizedBook = normalizeReferenceText(rawBook);
     const book = bibleBookAliasMap.get(normalizedBook);
@@ -152,9 +154,47 @@ export function extractBibleReferences(text: string): ParsedBibleReference[] {
       href,
       index: match.index ?? 0,
     });
+
+    const currentMatchIndex = match.index ?? 0;
+    const currentMatchEnd = currentMatchIndex + matchedText.length;
+    const nextMatchIndex = fullMatches[matchIndex + 1]?.index ?? text.length;
+    const shorthandSegment = text.slice(currentMatchEnd, nextMatchIndex);
+
+    for (const shorthandMatch of shorthandSegment.matchAll(
+      BIBLE_SHORTHAND_REFERENCE_REGEX
+    )) {
+      const [shorthandText, separator, rawShorthandChapter, rawShorthandVerses] =
+        shorthandMatch;
+      const shorthandChapter = Number(rawShorthandChapter);
+
+      if (!Number.isFinite(shorthandChapter)) {
+        continue;
+      }
+
+      const verseStart = parseVerseStart(rawShorthandVerses);
+      const verseEnd = parseVerseEnd(rawShorthandVerses);
+      const shorthandIndex =
+        currentMatchEnd + (shorthandMatch.index ?? 0) + separator.length;
+      const shorthandMatchedText = shorthandText.slice(separator.length);
+      const shorthandHref = createBibleHref(book.slug, shorthandChapter, {
+        verse: verseStart,
+        verseEnd,
+      });
+
+      matches.push({
+        matchedText: shorthandMatchedText,
+        bookSlug: book.slug,
+        bookName: book.name,
+        chapter: shorthandChapter,
+        verseStart,
+        verseEnd,
+        href: shorthandHref,
+        index: shorthandIndex,
+      });
+    }
   }
 
-  return matches;
+  return matches.sort((left, right) => left.index - right.index);
 }
 
 export function buildBibleReferenceHref(reference: string) {
