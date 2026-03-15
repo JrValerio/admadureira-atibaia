@@ -68,12 +68,15 @@ export function EbdPrintDocumentLayout({
       }
 
       .ebd-print-page {
+        box-sizing: border-box !important;
         box-shadow: none !important;
         border: none !important;
         border-radius: 0 !important;
         margin: 0 auto !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
         max-width: none !important;
-        min-height: 0 !important;
+        min-height: calc(297mm - 26mm) !important;
         page-break-after: always;
         break-after: page;
       }
@@ -138,8 +141,7 @@ export function EbdPrintPage({
           width={180}
           height={180}
           aria-hidden="true"
-          className="h-auto w-[180px]"
-          style={{ height: "auto" }}
+          style={{ width: 180, height: 180 }}
         />
         <p
           aria-hidden="true"
@@ -156,19 +158,18 @@ export function EbdPrintPage({
       </div>
 
       <div className="relative z-[1] flex h-full min-h-full flex-col">
-        <header className="border-b border-black/10 pb-5">
-          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+        <header className="border-b border-black/10 pb-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div className="flex items-start gap-4">
               <Image
                 src={EBD_PRINT_BRANDING.logoSrc}
                 alt="Logo da igreja"
-                width={68}
-                height={68}
-                className="h-auto w-[68px]"
-                style={{ height: "auto" }}
+                width={56}
+                height={56}
+                style={{ width: 56, height: 56 }}
               />
               <div>
-                <p className="font-script text-[2rem] leading-none text-[#212121]">
+                <p className="font-script text-[1.75rem] leading-none text-[#212121]">
                   {EBD_PRINT_BRANDING.scriptName}
                 </p>
                 <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.32em] text-[#8b5b18]">
@@ -185,12 +186,12 @@ export function EbdPrintPage({
             </div>
           </div>
 
-          <div className="mt-5 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="mt-4 grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#ef5350]">
                 {classeInfo.label} · {trimestreLabel}
               </p>
-              <h2 className="mt-2 font-acme text-[2rem] leading-tight tracking-wide text-[#212121]">
+              <h2 className="mt-2 font-acme text-[1.7rem] leading-tight tracking-wide text-[#212121]">
                 Lição {licao.numero} · {licao.titulo}
               </h2>
             </div>
@@ -206,9 +207,9 @@ export function EbdPrintPage({
           </div>
         </header>
 
-        <div className="mt-6 flex-1 space-y-5">{children}</div>
+        <div className="mt-5 flex-1 space-y-4">{children}</div>
 
-        <footer className="mt-6 flex items-end justify-between gap-4 border-t border-black/10 pt-4 text-[10px] leading-relaxed text-[#666]">
+        <footer className="mt-5 flex items-end justify-between gap-4 border-t border-black/10 pt-3 text-[10px] leading-relaxed text-[#666]">
           <div>
             <p>{EBD_PRINT_BRANDING.officialName}</p>
             <p>{EBD_PRINT_BRANDING.addressLine}</p>

@@ -66,6 +66,21 @@ function limitListaItems(items: ListaItem[] | undefined, max: number) {
   return items?.slice(0, max) ?? [];
 }
 
+function truncateText(text: string, max: number) {
+  if (text.length <= max) {
+    return text;
+  }
+
+  const truncated = text.slice(0, max);
+  const lastSpace = truncated.lastIndexOf(" ");
+
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : max).trim()}...`;
+}
+
+function joinCompactItems(items: string[], maxLength: number) {
+  return truncateText(items.join(" • "), maxLength);
+}
+
 function topicosToListaItems(licao: LicaoEBD) {
   return licao.topicos.map((topico) => ({
     titulo: topico.titulo,
@@ -80,12 +95,12 @@ function renderBlock(block: PrintableBlock) {
     return (
       <div
         key={`${block.label}-${block.text}`}
-        className="rounded-2xl border border-black/10 bg-white px-4 py-3"
+        className="rounded-2xl border border-black/10 bg-white px-3 py-2.5"
       >
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
           {block.label}
         </p>
-        <p className="mt-2 text-[13px] leading-relaxed text-[#444]">
+        <p className="mt-1.5 text-[12px] leading-relaxed text-[#444]">
           <PrintBibleText text={block.text} />
         </p>
       </div>
@@ -98,18 +113,18 @@ function renderBlock(block: PrintableBlock) {
         <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
           {block.label}
         </p>
-        <div className="space-y-3">
+        <div className="grid gap-2 md:grid-cols-2">
           {block.items.map((item) => (
             <div
               key={`${item.titulo ?? "item"}-${item.conteudo}`}
-              className="rounded-2xl border border-black/10 bg-white px-4 py-3"
+              className="rounded-2xl border border-black/10 bg-white px-3 py-2.5"
             >
               {item.titulo ? (
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
                   {item.titulo}
                 </p>
               ) : null}
-              <p className="mt-2 text-[13px] leading-relaxed text-[#444]">
+              <p className="mt-1.5 text-[12px] leading-relaxed text-[#444]">
                 <PrintBibleText text={item.conteudo} />
               </p>
             </div>
@@ -131,9 +146,9 @@ function renderBlock(block: PrintableBlock) {
       <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
         {block.label}
       </p>
-      <ul className="space-y-2.5">
+      <ul className="grid gap-x-4 gap-y-2 md:grid-cols-2">
         {block.items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[13px] leading-relaxed text-[#444]">
+          <li key={item} className="flex items-start gap-2.5 text-[12px] leading-relaxed text-[#444]">
             <span className={`mt-[7px] h-1.5 w-1.5 rounded-full ${markerClassName}`} />
             <span>
               <PrintBibleText text={item} />
@@ -147,14 +162,14 @@ function renderBlock(block: PrintableBlock) {
 
 function RenderSection({ section }: { section: PrintableSection }) {
   return (
-    <section className="ebd-print-no-break rounded-[1.5rem] border border-black/10 bg-[#fcfbf8] p-5">
+    <section className="ebd-print-no-break rounded-[1.5rem] border border-black/10 bg-[#fcfbf8] p-4">
       <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
         {section.eyebrow}
       </p>
-      <h3 className="mt-2 font-acme text-[1.45rem] tracking-wide text-[#212121]">
+      <h3 className="mt-2 font-acme text-[1.3rem] tracking-wide text-[#212121]">
         {section.title}
       </h3>
-      <div className="mt-4 space-y-4">{section.blocks.map(renderBlock)}</div>
+      <div className="mt-3 grid gap-3 md:grid-cols-2">{section.blocks.map(renderBlock)}</div>
     </section>
   );
 }
@@ -176,25 +191,29 @@ function getSummarySections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): Printab
           licao.subsidioAdultos.visaoGeral.ideiaCentral
             ? {
                 titulo: "Ideia central",
-                conteudo: licao.subsidioAdultos.visaoGeral.ideiaCentral,
+                conteudo: truncateText(licao.subsidioAdultos.visaoGeral.ideiaCentral, 140),
               }
             : null,
           licao.subsidioAdultos.visaoGeral.palavraChave
             ? {
                 titulo: `Palavra-chave · ${licao.subsidioAdultos.visaoGeral.palavraChave.termo}`,
-                conteudo:
+                conteudo: truncateText(
                   licao.subsidioAdultos.visaoGeral.palavraChave.definicao ??
-                  "Termo central da lição.",
+                    "Termo central da lição.",
+                  120
+                ),
               }
             : null,
           ...licao.subsidioAdultos.desenvolvimento.slice(0, 2).map((topico) =>
             ({
               titulo: topico.titulo,
-              conteudo:
+              conteudo: truncateText(
                 topico.sinopse ??
-                topico.explicacaoBiblica?.[0] ??
-                topico.aplicacaoPratica?.[0] ??
-                "Desenvolva este tópico com apoio bíblico e aplicação prática.",
+                  topico.explicacaoBiblica?.[0] ??
+                  topico.aplicacaoPratica?.[0] ??
+                  "Desenvolva este tópico com apoio bíblico e aplicação prática.",
+                120
+              ),
             })
           ),
         ]
@@ -203,28 +222,35 @@ function getSummarySections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): Printab
             licao.subsidioJovens.cabecalho.resumoDaLicao
               ? {
                   titulo: "Resumo da lição",
-                  conteudo: licao.subsidioJovens.cabecalho.resumoDaLicao,
+                  conteudo: truncateText(
+                    licao.subsidioJovens.cabecalho.resumoDaLicao,
+                    140
+                  ),
                 }
               : null,
             licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica
               ? {
                   titulo: "Orientação pedagógica",
-                  conteudo:
+                  conteudo: truncateText(
                     licao.subsidioJovens.arranquePedagogico.orientacaoPedagogica,
+                    120
+                  ),
                 }
               : null,
             ...licao.subsidioJovens.desenvolvimento.slice(0, 2).map((topico) =>
               ({
                 titulo: topico.titulo,
-                conteudo:
+                conteudo: truncateText(
                   topico.pontoImportante ??
-                  topico.pense ??
-                  topico.sinopse ??
-                  topico.explicacaoBiblica?.[0] ??
-                  "Leve a classe a relacionar o tema com decisões reais da semana.",
+                    topico.pense ??
+                    topico.sinopse ??
+                    topico.explicacaoBiblica?.[0] ??
+                    "Leve a classe a relacionar o tema com decisões reais da semana.",
+                  120
+                ),
               })
             ),
-          ]
+        ]
         : [];
 
   const revisionHighlights =
@@ -240,51 +266,85 @@ function getSummarySections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): Printab
 
   return [
     {
-      key: "base",
-      eyebrow: "Panorama",
-      title: "Base da lição",
+      key: "resumo-panorama",
+      eyebrow: "Resumo da aula",
+      title: "Panorama e planejamento",
       blocks: [
-        textBlock(classeInfo.textoBaseLabel, licao.textoChave),
-        textBlock(classeInfo.resumoDestaqueLabel, licao.verdadePratica ?? licao.resumo),
-        textBlock("Resumo", licao.resumo),
-        textBlock("Aplicação prática", licao.aplicacao),
+        itemsBlock("Visão geral da lição", [
+          {
+            titulo: classeInfo.textoBaseLabel,
+            conteudo: licao.textoChave ?? "Referência central da lição.",
+          },
+          {
+            titulo: classeInfo.resumoDestaqueLabel,
+            conteudo: truncateText(licao.verdadePratica ?? licao.resumo, 140),
+          },
+          {
+            titulo: "Aplicação prática",
+            conteudo: truncateText(licao.aplicacao, 140),
+          },
+        ]),
+        itemsBlock("Planejamento rápido", [
+          {
+            titulo: "Leitura bíblica",
+            conteudo: joinCompactItems(limitStrings(licao.leituraBiblica, 3), 120),
+          },
+          {
+            titulo: "Objetivos",
+            conteudo: joinCompactItems(limitStrings(licao.objetivos, 3), 160),
+          },
+        ]),
       ].filter(Boolean) as PrintableBlock[],
     },
     {
-      key: "planejamento",
-      eyebrow: "Planejamento",
-      title: "Leitura e objetivos",
-      blocks: [
-        listBlock("Leitura bíblica", limitStrings(licao.leituraBiblica, 3), "orange"),
-        listBlock("Objetivos", limitStrings(licao.objetivos, 4), "red"),
-      ].filter(Boolean) as PrintableBlock[],
-    },
-    {
-      key: "esboco",
-      eyebrow: "Condução",
-      title: "Esboço e tópicos centrais",
+      key: "resumo-conducao",
+      eyebrow: "Condução da aula",
+      title: "Esboço, revisão e apoio",
       blocks: [
         itemsBlock(
           "Esboço da aula",
-          licao.esboco?.length
-            ? limitListaItems(licao.esboco, 4)
+          (licao.esboco?.length
+            ? limitListaItems(licao.esboco, 3)
             : limitListaItems(topicosToListaItems(licao), 3)
+          ).map((item) => ({
+            ...item,
+            conteudo: truncateText(item.conteudo, 110),
+          }))
         ),
-        itemsBlock("Tópicos centrais", limitListaItems(topicosToListaItems(licao), 3)),
-      ].filter(Boolean) as PrintableBlock[],
-    },
-    {
-      key: "apoio",
-      eyebrow: "Fechamento",
-      title: "Subsídio em foco e revisão",
-      blocks: [
-        itemsBlock(
-          "Destaques do subsídio",
-          summaryHighlights.filter(Boolean) as ListaItem[]
-        ),
-        listBlock("Pontos de apoio ao professor", limitStrings(licao.apoioProfessor, 4), "red"),
-        listBlock("Revisão rápida", revisionHighlights, "orange"),
-        listBlock("Para reforçar durante a semana", limitStrings(licao.apoioAluno, 3), "dark"),
+        itemsBlock("Pontos para condução", [
+          {
+            titulo: "Tópicos centrais",
+            conteudo: joinCompactItems(
+              limitListaItems(topicosToListaItems(licao), 2).map((item) =>
+                truncateText(`${item.titulo}: ${item.conteudo}`, 90)
+              ),
+              180
+            ),
+          },
+          {
+            titulo: "Apoio ao professor",
+            conteudo: joinCompactItems(
+              limitStrings(licao.apoioProfessor, 2).map((item) => truncateText(item, 80)),
+              160
+            ),
+          },
+          {
+            titulo: "Revisão rápida",
+            conteudo: joinCompactItems(
+              revisionHighlights.slice(0, 2).map((item) => truncateText(item, 70)),
+              140
+            ),
+          },
+          {
+            titulo: "Fechamento da semana",
+            conteudo: truncateText(
+              (summaryHighlights.filter(Boolean) as ListaItem[])[0]?.conteudo ??
+                licao.apoioAluno?.[0] ??
+                licao.aplicacao,
+              120
+            ),
+          },
+        ]),
       ].filter(Boolean) as PrintableBlock[],
     },
   ];
@@ -514,13 +574,16 @@ function getFullSections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): PrintableS
 
 function buildFullPages(classeInfo: ClasseEBDInfo, licao: LicaoEBD) {
   const sections = getFullSections(classeInfo, licao);
-  const pages = [
-    ...chunkSections(sections.slice(0, 2), 2),
-    ...chunkSections(sections.slice(2, 4), 2),
-    ...sections.slice(4).map((section) => [section]),
-  ];
-
-  return pages.filter((page) => page.length > 0);
+  return sections.flatMap((section) =>
+    chunkSections(section.blocks, 2).map((blocks, index) => [
+      {
+        ...section,
+        key: `${section.key}-part-${index + 1}`,
+        title: index === 0 ? section.title : `${section.title} · continuação`,
+        blocks,
+      },
+    ])
+  );
 }
 
 export function EbdLessonSummaryPrintDocument({
@@ -529,7 +592,7 @@ export function EbdLessonSummaryPrintDocument({
   licao,
 }: EbdPrintDocumentProps) {
   const backHref = `/ebd/${classeInfo.slug}/${trimestre.slug}/${licao.slug}`;
-  const pages = chunkSections(getSummarySections(classeInfo, licao), 2);
+  const pages = getSummarySections(classeInfo, licao).map((section) => [section]);
 
   return (
     <EbdPrintDocumentLayout
