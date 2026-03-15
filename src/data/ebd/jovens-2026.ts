@@ -602,6 +602,570 @@ const subsidioJovensLicao3: LicaoEBD["subsidioJovens"] = {
   },
 };
 
+const objetivosJovensLicao4 = [
+  "Apresentar o que é a justificação pela fé.",
+  "Explicar como Deus justificou Abraão.",
+  "Conscientizar sobre o livramento da culpa e das consequências eternas do pecado.",
+];
+
+const topicosJovensLicao4 = [
+  {
+    titulo: "O que é a justificação pela fé",
+    conteudo: [
+      "Justificação é a mudança de posição do pecador diante de Deus: de culpado e condenado para perdoado e declarado justo em Cristo.",
+      "Essa obra não se baseia em méritos humanos, mas na justiça de Cristo aplicada ao que crê.",
+      "A justificação pela fé produz paz com Deus e inaugura uma nova maneira de viver diante do Senhor.",
+    ],
+  },
+  {
+    titulo: "Deus justificou Abraão",
+    conteudo: [
+      "Romanos 4 usa Abraão como exemplo para mostrar que a justificação não começou no Novo Testamento; ela já era ensinada no plano de Deus.",
+      "Abraão foi declarado justo porque creu em Deus, e sua obediência surgiu como fruto dessa fé viva.",
+      "Isso mostra que a fé é o gesto de dependência que recebe a graça, e não uma obra que compra salvação.",
+    ],
+  },
+  {
+    titulo: "Livres da culpa e das consequências eternas do pecado",
+    conteudo: [
+      "A justificação remove a condenação e quebra o domínio da culpa sobre quem está em Cristo.",
+      "O salvo aprende a viver sem carregar para sempre o peso do passado, porque foi perdoado e aceito por Deus.",
+      "O Espírito Santo confirma interiormente essa nova identidade e fortalece o crente em sua caminhada.",
+    ],
+  },
+];
+
+const subsidioJovensLicao4: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 4,
+    titulo: "O Deus que Justifica",
+    data: "2026-01-25",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "Romanos 5.1 declara que, justificados pela fé, temos paz com Deus por meio de nosso Senhor Jesus Cristo.",
+    resumoDaLicao:
+      "O jovem cristão que entende a realidade da justificação pela fé vive com ousadia, gratidão e santidade, sabendo que foi perdoado, regenerado e capacitado para vencer em Cristo.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Romanos 5.1",
+        foco: "A justificação traz paz real com Deus por meio de Cristo.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Romanos 4.3",
+        foco: "Abraão foi justificado por crer, e não por obras.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Romanos 8.1",
+        foco: "Quem está em Cristo não vive mais debaixo de condenação.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Romanos 8.16",
+        foco: "O Espírito confirma a nova identidade do salvo.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 8.17",
+        foco: "Filhos justificados aprendem a viver como herdeiros de Deus.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "2 Coríntios 5.17",
+        foco: "A justificação caminha com a nova vida em Cristo.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao4,
+    interacao:
+      "A aula deve mostrar que justificação pela fé não é abstração doutrinária. Ela muda identidade, remove condenação e liberta o jovem para viver com paz, gratidão e ousadia diante de Deus.",
+    orientacaoPedagogica:
+      "Comece perguntando se alguém pode ser salvo por ser uma boa pessoa. Use as respostas para mostrar que a salvação não se firma em mérito, mas na justiça de Cristo recebida pela fé. Depois conecte Romanos 4 e 5 com a vida prática da turma.",
+  },
+  desenvolvimento: [
+    {
+      id: "o-que-e-justificacao",
+      titulo: "O que é a justificação pela fé",
+      sinopse:
+        "Justificação é o ato gracioso de Deus que declara justo o pecador que crê em Cristo.",
+      explicacaoBiblica: [
+        "Romanos 4 e 5 mostram que a justificação não é recompensa por desempenho, mas graça recebida pela fé.",
+        "A justiça que nos falta é suprida por Cristo, e por isso Deus nos declara justos diante dEle.",
+        "Essa declaração muda nossa posição espiritual e inaugura paz com Deus.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a perceber que viver preso à condenação é negar, na prática, a suficiência da obra de Cristo.",
+        "Mostre que a justificação gera humildade, porque toda glória da salvação pertence a Deus.",
+      ],
+      pense:
+        "Você ainda tenta provar valor para Deus por desempenho ou já descansa na justiça de Cristo?",
+      pontoImportante:
+        "A fé não compra salvação; ela recebe a obra perfeita que Deus já ofereceu em Cristo.",
+    },
+    {
+      id: "abraao-justificado",
+      titulo: "Deus justificou Abraão",
+      sinopse:
+        "Abraão mostra que a justificação sempre esteve ligada à fé no Deus que salva.",
+      explicacaoBiblica: [
+        "Romanos 4.1-8 ensina que Abraão foi justificado por crer em Deus, antes de qualquer mérito pessoal.",
+        "A fé de Abraão não foi passiva; ela gerou obediência e caminhada concreta com o Senhor.",
+        "O exemplo do patriarca mostra continuidade entre Antigo e Novo Testamento no plano da salvação.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a enxergar que fé viva sempre se expressa em obediência e dependência de Deus.",
+        "Combata a religiosidade vazia que tenta parecer santa sem ter passado pela justificação.",
+      ],
+      pense:
+        "Sua fé tem sido apenas discurso ou já produz passos concretos de confiança e obediência?",
+      pontoImportante:
+        "A fé ocupa lugar central na justificação e depois produz frutos visíveis na vida do salvo.",
+    },
+    {
+      id: "livres-da-culpa",
+      titulo: "Livres da culpa e das consequências eternas do pecado",
+      sinopse:
+        "O Deus que justifica também liberta da condenação e firma nova identidade no coração do salvo.",
+      explicacaoBiblica: [
+        "Romanos 8.1 afirma que já não há condenação para os que estão em Cristo Jesus.",
+        "O testemunho interior do Espírito fortalece o crente contra a acusação e o medo.",
+        "A justificação não nos autoriza a pecar; ela nos chama a viver de modo coerente com a graça recebida.",
+      ],
+      aplicacaoPratica: [
+        "Ajude os jovens a identificar culpas antigas que ainda tentam definir sua identidade.",
+        "Mostre que a liberdade da justificação produz obediência alegre, e não descuido espiritual.",
+      ],
+      pense:
+        "Você vive como alguém perdoado e aceito por Deus ou ainda como quem está sempre tentando fugir da culpa?",
+      pontoImportante:
+        "O salvo em Cristo não é prisioneiro do passado; ele foi justificado, acolhido e chamado a viver em novidade de vida.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte à turma se uma pessoa pode ser salva só por ser boa e use a discussão para introduzir Romanos 4 e 5.",
+    perguntaChave:
+      "O que significa ser justificado pela fé e como isso muda a relação do jovem com culpa, passado e identidade?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem confundir justificação com licença para pecar ou, no extremo oposto, continuar presos à ideia de que precisam merecer aceitação diante de Deus.",
+    conducaoDaConversa: [
+      "Mostre que a justificação é ato jurídico e gracioso de Deus, mas com efeitos profundos na vida prática.",
+      "Use Abraão para provar que a fé sempre esteve no centro da experiência do povo de Deus.",
+      "Conecte a aula com realidades de culpa, vergonha e medo muito presentes na juventude.",
+    ],
+    fechamento:
+      "Conclua reforçando que Deus justifica o pecador que crê, remove sua culpa e o chama a viver em paz, gratidão e santidade.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Justificação tem forte sentido judicial: o pecador é absolvido porque a justiça de Cristo lhe é imputada pela fé.",
+      "Ela se distingue da regeneração, mas caminha junto dela no plano da salvação.",
+    ],
+    contextoBiblico: [
+      "Romanos 4 conecta Abraão e Davi para mostrar que a salvação pela fé não é inovação tardia, mas fio contínuo da revelação bíblica.",
+      "Romanos 8 mostra que a justificação se desdobra em identidade, herança e vida no Espírito.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens que entendem a justificação aprendem a viver sem performance religiosa e sem desespero condenatório.",
+      "A paz com Deus abre espaço para uma vida santa que brota da graça, não do medo.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que significa ser justificado pela fé?",
+      "Como Abraão ilustra essa doutrina?",
+      "O que a justificação faz com a culpa e a condenação?",
+      "Qual é o papel do Espírito nessa nova identidade?",
+    ],
+    quizCurto: [
+      "A justificação vem por obras ou pela fé em Cristo? Resposta esperada: pela fé em Cristo.",
+      "Abraão foi declarado justo antes ou depois de méritos pessoais? Resposta esperada: antes, por crer em Deus.",
+      "Quem está em Cristo continua debaixo de condenação? Resposta esperada: não.",
+    ],
+    conclusao:
+      "O Deus que justifica livra da culpa, dá paz e firma uma nova identidade para o jovem que confia em Cristo.",
+  },
+};
+
+const objetivosJovensLicao5 = [
+  "Apresentar a tipologia do Cordeiro Pascal.",
+  "Mostrar que Jesus é o Cordeiro de Deus que tira o pecado do mundo, valorizando a obra de Cristo como o único meio de reconciliação com Deus.",
+  "Saber que a redenção e a reconciliação ocorrem por meio da obra salvífica de Cristo.",
+];
+
+const topicosJovensLicao5 = [
+  {
+    titulo: "O Cordeiro da Páscoa como símbolo da salvação",
+    conteudo: [
+      "Êxodo 12 apresenta o cordeiro pascal como sinal de livramento, proteção e saída da escravidão.",
+      "O sangue nas portas marcava as casas do povo de Deus e revelava que a libertação vinha da obediência à palavra do Senhor.",
+      "Essa imagem prepara o coração da Bíblia para o sacrifício perfeito que seria cumprido em Cristo.",
+    ],
+  },
+  {
+    titulo: "Jesus é o Cordeiro de Deus que tira o pecado do mundo",
+    conteudo: [
+      "João Batista identifica Jesus como o Cordeiro definitivo, cujo sacrifício é completo e suficiente para tratar o pecado.",
+      "As imagens do cordeiro pascal, dos sacrifícios do Antigo Testamento e do Servo Sofredor convergem em Cristo.",
+      "Jesus não apenas simboliza redenção; Ele a realiza de uma vez por todas por meio da cruz.",
+    ],
+  },
+  {
+    titulo: "Redenção e reconciliação pela obra de Cristo",
+    conteudo: [
+      "Pelo sangue de Jesus fomos resgatados do domínio do pecado e recebidos novamente em comunhão com o Pai.",
+      "A redenção revela o preço pago; a reconciliação revela o relacionamento restaurado.",
+      "Quem foi alcançado por essa obra é chamado a viver como alguém perdoado, liberto e acolhido por Deus.",
+    ],
+  },
+];
+
+const subsidioJovensLicao5: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 5,
+    titulo: "O Filho que Redime",
+    data: "2026-02-01",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "João 1.29 apresenta Jesus como o Cordeiro de Deus que tira o pecado do mundo, revelando o centro da redenção.",
+    resumoDaLicao:
+      "O sacrifício único de Jesus, como o Cordeiro de Deus, para nos redimir do pecado e nos reconciliar com o Pai, cumpre as profecias, trazendo libertação e perdão definitivo para quem crê.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Êxodo 12.3,5",
+        foco: "O cordeiro pascal já apontava para a pureza do sacrifício preparado por Deus.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Êxodo 12.7",
+        foco: "O sangue do cordeiro era sinal de proteção e livramento.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Êxodo 12.11",
+        foco: "A Páscoa preparava o povo para a libertação realizada pelo Senhor.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "João 1.29",
+        foco: "Jesus é o Cordeiro de Deus anunciado e revelado para tratar o pecado.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Hebreus 9.22",
+        foco: "Sem derramamento de sangue não há remissão.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "1 Pedro 1.18-19",
+        foco: "Fomos resgatados pelo sangue precioso de Cristo.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao5,
+    interacao:
+      "A aula precisa destacar que a cruz não é acidente da história, mas cumprimento de um plano redentor anunciado desde o Antigo Testamento. O Cordeiro de Deus está no centro dessa reconciliação.",
+    orientacaoPedagogica:
+      "Comece perguntando se a turma já experimentou reconciliação depois de um afastamento doloroso. Use essa ponte para mostrar que o pecado nos afastou de Deus, mas Cristo nos redimiu e reconciliou por meio do seu sacrifício.",
+  },
+  desenvolvimento: [
+    {
+      id: "cordeiro-da-pascoa",
+      titulo: "O Cordeiro da Páscoa: um símbolo da salvação",
+      sinopse:
+        "A Páscoa do Antigo Testamento já apontava para um livramento realizado por meio de um cordeiro sem defeito.",
+      explicacaoBiblica: [
+        "Êxodo 12 mostra Israel escravizado e Deus providenciando libertação por meio do cordeiro pascal.",
+        "O sangue nas ombreiras sinalizava vida, proteção e obediência à palavra do Senhor.",
+        "Essa tipologia prepara o entendimento da obra de Cristo como livramento maior e definitivo.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a perceber que a salvação em Cristo não surgiu de improviso; ela já estava anunciada na história da redenção.",
+        "Mostre que o livramento de Deus exige resposta obediente de fé.",
+      ],
+      pense:
+        "Você enxerga a história bíblica como um todo que converge para Cristo ou lê cada texto de forma isolada?",
+      pontoImportante:
+        "O cordeiro pascal não era fim em si mesmo; ele apontava para o Redentor que viria.",
+    },
+    {
+      id: "cordeiro-de-deus",
+      titulo: "Jesus: o Cordeiro de Deus que tira o pecado do mundo",
+      sinopse:
+        "Em Jesus, as figuras do Antigo Testamento se cumprem no sacrifício perfeito e suficiente.",
+      explicacaoBiblica: [
+        "João Batista identifica Jesus como o Cordeiro de Deus, unindo o tema da Páscoa ao problema universal do pecado.",
+        "Hebreus mostra que Cristo não repete sacrifícios antigos; Ele oferece a si mesmo de uma vez por todas.",
+        "A obra de Jesus aniquila o pecado em sua culpa e em seu domínio sobre o ser humano.",
+      ],
+      aplicacaoPratica: [
+        "Mostre que não existe outro mediador, outro preço ou outro caminho de reconciliação fora de Cristo.",
+        "Ajude a turma a responder ao sacrifício de Jesus com adoração, gratidão e dependência.",
+      ],
+      pense:
+        "Sua confiança está realmente no Cordeiro de Deus ou ainda em soluções religiosas e humanas para o pecado?",
+      pontoImportante:
+        "Jesus é o sacrifício perfeito, completo e suficiente para tratar o pecado e reconciliar o homem com Deus.",
+    },
+    {
+      id: "redencao-e-reconciliacao",
+      titulo: "Redenção e reconciliação por meio da obra de Cristo",
+      sinopse:
+        "A cruz nos liberta do pecado e nos devolve à comunhão com o Pai.",
+      explicacaoBiblica: [
+        "1 Pedro 1.18-19 ensina que fomos redimidos por alto preço: o sangue precioso de Cristo.",
+        "2 Coríntios 5.18-19 mostra que Deus estava em Cristo reconciliando consigo o mundo.",
+        "Hebreus 4.16 reforça que, reconciliados, agora nos aproximamos com confiança do trono da graça.",
+      ],
+      aplicacaoPratica: [
+        "Conduza a turma a abandonar mentalidade de escravidão, medo e condenação diante daquilo que Cristo já realizou.",
+        "Mostre que viver como redimidos envolve liberdade santa, intimidade com o Pai e rejeição do passado de pecado.",
+      ],
+      pense:
+        "Você tem vivido como alguém reconciliado com Deus ou ainda como quem permanece preso ao passado?",
+      pontoImportante:
+        "A redenção mostra o preço pago; a reconciliação mostra a comunhão restaurada pelo Filho que redime.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte se a turma já viveu uma reconciliação importante e use isso como ponte para o tema da aula.",
+    perguntaChave:
+      "Como o cordeiro pascal aponta para Cristo e o que sua obra realiza em termos de redenção e reconciliação?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem conhecer a linguagem da cruz, mas sem conectar o Antigo Testamento, o problema do pecado e o acesso restaurado ao Pai.",
+    conducaoDaConversa: [
+      "Trace a linha entre Êxodo 12, João 1.29, Hebreus 9 e 1 Pedro 1 para mostrar unidade bíblica.",
+      "Evite tratar redenção e reconciliação como termos vazios; dê sempre consequência prática e relacional.",
+      "Conecte a aula com culpa, escravidão e comunhão restaurada.",
+    ],
+    fechamento:
+      "Encerre exaltando a obra vicária de Cristo e convidando a turma a viver como gente realmente redimida e reconciliada com Deus.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Redenção aponta para resgate mediante pagamento; reconciliação aponta para restauração de relacionamento.",
+      "O sangue de Cristo cumpre e ultrapassa tudo o que os sacrifícios do Antigo Testamento apenas anunciavam.",
+    ],
+    contextoBiblico: [
+      "Êxodo 12, Isaías 53, João 1 e Hebreus convergem para mostrar Jesus como Cordeiro sacrificial perfeito.",
+      "A Ceia do Senhor mantém viva essa memória na vida da igreja e aponta continuamente para a cruz.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens precisam lembrar que o Evangelho não oferece só melhora moral, mas libertação real do domínio do pecado.",
+      "Viver reconciliado com Deus muda a maneira de orar, adorar, servir e lidar com o passado.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que o cordeiro pascal simboliza na história da redenção?",
+      "Por que João Batista chama Jesus de Cordeiro de Deus?",
+      "Qual a diferença entre redenção e reconciliação?",
+      "Como a cruz muda a vida prática do crente?",
+    ],
+    quizCurto: [
+      "Onde a imagem do cordeiro aparece com clareza pela primeira vez? Resposta esperada: em Êxodo 12.",
+      "Quem é o Cordeiro de Deus que tira o pecado do mundo? Resposta esperada: Jesus.",
+      "A salvação envolve qual alto preço? Resposta esperada: o sangue de Jesus.",
+    ],
+    conclusao:
+      "O Filho que redime nos comprou com seu sangue, destruiu o poder do pecado e restaurou nossa comunhão com o Pai.",
+  },
+};
+
+const objetivosJovensLicao6 = [
+  "Saber o que é a regeneração.",
+  "Mostrar a atuação do Espírito Santo na regeneração.",
+  "Reconhecer a santificação como evidência da obra da salvação, operada pelo Espírito Santo que habita o crente.",
+];
+
+const topicosJovensLicao6 = [
+  {
+    titulo: "O que é a regeneração",
+    conteudo: [
+      "Regeneração é o novo nascimento, a transformação interior realizada pelo Espírito Santo no coração do pecador.",
+      "Não se trata apenas de mudança de comportamento, mas de uma nova vida inaugurada pela graça de Deus.",
+      "Quem nasce de novo começa uma caminhada real com Cristo, marcada por nova natureza e nova direção.",
+    ],
+  },
+  {
+    titulo: "A atuação do Espírito Santo na regeneração",
+    conteudo: [
+      "É o Espírito quem convence do pecado, ilumina a mente, quebranta o coração e gera nova vida.",
+      "A regeneração não nasce de tradição, ritual ou esforço humano, mas do mover gracioso de Deus.",
+      "O Espírito usa a Palavra e sua ação poderosa para produzir esse milagre invisível e real.",
+    ],
+  },
+  {
+    titulo: "O Espírito habita o crente e opera a santificação",
+    conteudo: [
+      "A presença do Espírito no salvo inaugura um processo contínuo de santificação.",
+      "Santificação é resultado da salvação e evidência de que a regeneração realmente aconteceu.",
+      "Quem foi alcançado pela graça aprende a rejeitar o pecado e a refletir o caráter de Cristo no dia a dia.",
+    ],
+  },
+];
+
+const subsidioJovensLicao6: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 6,
+    titulo: "O Espírito Santo que Regenera e Santifica",
+    data: "2026-02-08",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "João 3.5 mostra que ninguém entra no Reino de Deus sem nascer da água e do Espírito.",
+    resumoDaLicao:
+      "A regeneração é uma transformação interior realizada pelo Espírito Santo. Essa obra da graça se evidencia por uma vida de santificação e obediência à vontade de Deus.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "João 3.3,7",
+        foco: "O novo nascimento é indispensável para ver o Reino de Deus.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Tito 3.5",
+        foco: "A regeneração é obra da misericórdia divina, não de mérito humano.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "1 Pedro 1.23",
+        foco: "A Palavra participa do processo pelo qual Deus gera nova vida.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Ezequiel 36.26-27",
+        foco: "Deus promete dar novo coração e colocar seu Espírito no seu povo.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gálatas 5.22-23",
+        foco: "O fruto do Espírito evidencia a nova vida em Cristo.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "1 Coríntios 6.19",
+        foco: "O corpo do crente é templo do Espírito Santo.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao6,
+    interacao:
+      "A aula deve mostrar que regeneração e santificação não são temas opcionais da vida cristã. O Espírito Santo inicia a nova vida e continua operando para formar em nós o caráter de Cristo.",
+    orientacaoPedagogica:
+      "Comece perguntando o que mudou na vida de quem nasceu de novo. Depois leve a conversa para João 3, Tito 3 e Gálatas 5, mostrando que o novo nascimento é obra do Espírito e que a santificação é a evidência contínua dessa obra.",
+  },
+  desenvolvimento: [
+    {
+      id: "o-que-e-regeneracao",
+      titulo: "O que é a regeneração",
+      sinopse:
+        "Regeneração é o novo nascimento operado por Deus no interior do pecador.",
+      explicacaoBiblica: [
+        "João 3 ensina que ninguém entra no Reino sem nascer de novo.",
+        "2 Coríntios 5.17 mostra que, em Cristo, surge uma nova criatura.",
+        "A regeneração envolve nova natureza, novo começo e nova orientação espiritual.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a diferenciar transformação real de mera mudança externa ou aparência religiosa.",
+        "Mostre que ninguém amadurece espiritualmente sem antes nascer de novo.",
+      ],
+      pense:
+        "Sua vida cristã tem sido só ajuste de comportamento ou fruto de um novo nascimento real?",
+      pontoImportante:
+        "Sem regeneração não há vida cristã autêntica; há apenas religiosidade sem nova natureza.",
+    },
+    {
+      id: "atuacao-do-espirito",
+      titulo: "A atuação do Espírito Santo na regeneração",
+      sinopse:
+        "O Espírito convence, transforma e gera nova vida por meio da graça e da Palavra.",
+      explicacaoBiblica: [
+        "O Espírito age como vento: invisível, mas com efeitos reais e perceptíveis.",
+        "Tito 3.5 mostra que a regeneração acontece pela misericórdia de Deus e pela renovação do Espírito Santo.",
+        "Ezequiel 36.26-27 antecipa a promessa do novo coração e da ação interior do Espírito.",
+      ],
+      aplicacaoPratica: [
+        "Leve os alunos a reconhecer que conversão genuína não é produto de carisma humano ou rito religioso.",
+        "Incentive a classe a responder à voz do Espírito com quebrantamento, fé e submissão.",
+      ],
+      pense:
+        "Você tem tratado a obra do Espírito como detalhe da fé ou como fundamento da nova vida?",
+      pontoImportante:
+        "A regeneração é uma obra exclusiva da graça, realizada pelo Espírito e recebida pela fé.",
+    },
+    {
+      id: "santificacao-como-evidencia",
+      titulo: "O Espírito habita o crente e opera a santificação",
+      sinopse:
+        "O mesmo Espírito que regenera permanece no crente e o conduz em santificação.",
+      explicacaoBiblica: [
+        "1 Coríntios 6.19 afirma que o corpo do crente é templo do Espírito Santo.",
+        "Gálatas 5 mostra que o fruto do Espírito aparece na vida de quem caminha sob sua direção.",
+        "Santificação é processo contínuo que evidencia a realidade da salvação operada por Deus.",
+      ],
+      aplicacaoPratica: [
+        "Mostre que santidade não é tentativa de merecer salvação, mas resposta à graça já recebida.",
+        "Ajude a turma a identificar decisões diárias em que precisa cooperar com a obra do Espírito.",
+      ],
+      pense:
+        "Quais sinais de santificação sua rotina já revela e em que área você ainda precisa render-se ao Espírito?",
+      pontoImportante:
+        "A presença do Espírito não é teoria espiritual; ela aparece em vida santa, caráter transformado e obediência prática.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte o que muda em alguém que realmente nasceu de novo e deixe a turma responder antes de abrir João 3.",
+    perguntaChave:
+      "O que o Espírito Santo faz na regeneração e como a santificação evidencia essa obra ao longo da vida cristã?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem separar experiência espiritual de transformação moral, como se novo nascimento não precisasse aparecer em vida santa.",
+    conducaoDaConversa: [
+      "Mostre que regeneração é instantânea, enquanto santificação é contínua, sem separar as duas realidades.",
+      "Use João 3 e Gálatas 5 para ligar novo nascimento a fruto visível na vida.",
+      "Conecte a aula com decisões concretas, hábitos e lutas reais da juventude.",
+    ],
+    fechamento:
+      "Conclua lembrando que o Espírito Santo inicia a nova vida, habita o crente e o conduz diariamente em santificação.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Regeneração é o ponto de partida da nova vida; santificação é o desenvolvimento contínuo dessa vida no poder do Espírito.",
+      "A graça de Deus não apenas perdoa: ela também recria, habita e transforma.",
+    ],
+    contextoBiblico: [
+      "O diálogo com Nicodemos em João 3 é a grande chave do Novo Testamento para compreender o novo nascimento.",
+      "Textos como Ezequiel 36 e Tito 3 mostram continuidade entre promessa, cumprimento e experiência cristã.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens precisam aprender a medir maturidade não só por emoção ou fala religiosa, mas por fruto do Espírito e obediência.",
+      "A certeza de que o Espírito habita o crente fortalece santidade, identidade e perseverança.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que é a regeneração?",
+      "Qual é o papel do Espírito no novo nascimento?",
+      "Como a santificação se relaciona com a salvação?",
+      "Que sinais mostram que a nova vida está realmente operando em alguém?",
+    ],
+    quizCurto: [
+      "Regeneração é obra humana ou ação do Espírito? Resposta esperada: ação do Espírito.",
+      "Santificação vem antes ou depois da salvação? Resposta esperada: é evidência e desdobramento da salvação.",
+      "O fruto do Espírito aponta para quê? Resposta esperada: para a realidade da nova vida em Cristo.",
+    ],
+    conclusao:
+      "O Espírito Santo regenera, habita e santifica, formando no salvo uma vida nova que revela a grandeza da graça de Deus.",
+  },
+};
+
 const objetivosJovensLicao11 = [
   "Apresentar a doutrina bíblica da adoção como expressão da graça que nos insere de fato na família de Deus.",
   "Explicar como o Espírito Santo confirma a filiação cristã e nos conduz a uma relação viva com o Pai.",
@@ -959,35 +1523,44 @@ const sementesJovensPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 4,
     data: "2026-01-25",
-    titulo: "Santidade em meio às escolhas",
-    resumo: "Santidade também se constrói nas escolhas que os jovens fazem em ambiente digital, afetivo e social.",
-    textoChave: "Salmos 119:9",
-    verdadePratica: "Santidade não é isolamento; é discernimento cristão aplicado às decisões mais práticas da juventude.",
-    leituraBiblica: ["Romanos 12:1-2", "1 Tessalonicenses 4:1-8"],
-    aplicacao: "Reavalie uma escolha prática desta semana à luz da santidade e tome uma decisão coerente com sua fé.",
-    enfase: "a santidade prática",
+    titulo: "O Deus que Justifica",
+    resumo:
+      "O jovem cristão, que entende a realidade da justificação pela fé, vive com ousadia, gratidão e santidade, sabendo que foi perdoado, regenerado e capacitado para vencer em Cristo.",
+    textoChave: "Romanos 5.1",
+    verdadePratica:
+      "Justificados pela fé, vivemos em paz com Deus, livres da culpa e firmados em nova identidade em Cristo.",
+    leituraBiblica: ["Romanos 4.1-8", "Romanos 5.1", "Romanos 8.1", "Romanos 8.16-17"],
+    aplicacao:
+      "Durante esta semana, substitua a culpa pela confiança na obra de Cristo e viva conscientemente como alguém justificado pela fé.",
+    enfase: "a justificação pela fé",
   },
   {
     numero: 5,
     data: "2026-02-01",
-    titulo: "Vida devocional que permanece",
-    resumo: "A classe é chamada a cultivar constância espiritual por meio de leitura bíblica, oração e comunhão com Deus.",
-    textoChave: "João 15:4",
-    verdadePratica: "Constância devocional não nasce de emoção passageira, mas de permanência diária em Cristo.",
-    leituraBiblica: ["João 15:1-8", "Salmos 1:1-3"],
-    aplicacao: "Monte um plano simples para seus próximos sete dias de leitura bíblica e oração, com horário e objetivo definidos.",
-    enfase: "a permanência em Cristo",
+    titulo: "O Filho que Redime",
+    resumo:
+      "O sacrifício único de Jesus, como o Cordeiro de Deus, para nos redimir do pecado e nos reconciliar com o Pai, cumpre as profecias, trazendo libertação e perdão definitivo para quem crê.",
+    textoChave: "João 1.29",
+    verdadePratica:
+      "A redenção e a reconciliação só se tornam possíveis por meio da obra salvadora de Cristo, o Cordeiro de Deus.",
+    leituraBiblica: ["Êxodo 12.1-7,11", "João 1.29,32-34", "Hebreus 9.22", "1 Pedro 1.18-19"],
+    aplicacao:
+      "Adore a Cristo durante a semana como o Cordeiro que redime e viva com gratidão por ter sido reconciliado com o Pai.",
+    enfase: "a redenção em Cristo",
   },
   {
     numero: 6,
     data: "2026-02-08",
-    titulo: "Emoções sob a luz do Evangelho",
-    resumo: "A juventude aprende a lidar com medo, ansiedade e frustração à luz da presença e da Palavra de Deus.",
-    textoChave: "Salmos 42:5",
-    verdadePratica: "O Evangelho não ignora emoções humanas; ele as conduz à verdade, à oração e à esperança.",
-    leituraBiblica: ["Salmos 42", "Filipenses 4:4-9"],
-    aplicacao: "Separe um tempo para orar honestamente sobre o que você tem sentido e compartilhe isso com alguém maduro na fé.",
-    enfase: "o cuidado do coração",
+    titulo: "O Espírito Santo que Regenera e Santifica",
+    resumo:
+      "A regeneração é uma transformação interior realizada pelo Espírito Santo. Essa obra da graça se evidencia por uma vida de santificação e obediência à vontade de Deus.",
+    textoChave: "João 3.5",
+    verdadePratica:
+      "O Espírito Santo gera nova vida no salvo e continua operando nele uma santificação visível e diária.",
+    leituraBiblica: ["João 3.1-15", "Tito 3.5", "Ezequiel 36.26-27", "Gálatas 5.22-23"],
+    aplicacao:
+      "Ore pedindo ao Espírito Santo que torne visíveis em sua rotina os frutos da nova vida que Ele operou em você.",
+    enfase: "a regeneração e a santificação",
   },
   {
     numero: 7,
@@ -1163,6 +1736,99 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
       },
     ],
     subsidioJovens: subsidioJovensLicao3,
+  },
+  4: {
+    imagem: "/images/EBD/licao-04-jovens.png",
+    objetivos: objetivosJovensLicao4,
+    topicos: topicosJovensLicao4,
+    apoioProfessor: [
+      "Apresente a justificação pela fé como verdade libertadora, e não como conceito frio ou apenas técnico.",
+      "Ajude a turma a conectar doutrina, identidade e vida prática, especialmente nas áreas de culpa, passado e paz com Deus.",
+    ],
+    apoioAluno: [
+      "Leia Romanos 4.1-8 e Romanos 8.1 durante a semana e anote o que esses textos dizem sobre culpa e nova identidade.",
+      "Troque a linguagem de autoconfiança espiritual por gratidão explícita à justiça de Cristo em sua oração.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece a aula perguntando se uma pessoa pode ser salva apenas por ser boa e use isso como ponte para a doutrina da justificação pela fé.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Explique a lição em três eixos: o que é a justificação, como Abraão ilustra a fé que justifica e como Deus liberta da culpa e da condenação.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua levando a turma a descansar na obra de Cristo e a viver como quem foi realmente perdoado e aceito por Deus.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao4,
+  },
+  5: {
+    imagem: "/images/EBD/licao-05-jovens.jpg",
+    objetivos: objetivosJovensLicao5,
+    topicos: topicosJovensLicao5,
+    apoioProfessor: [
+      "Mantenha a aula centrada na cruz como cumprimento das promessas e figuras do Antigo Testamento.",
+      "Ajude a classe a perceber que redenção e reconciliação não são palavras abstratas, mas efeitos reais da obra vicária de Cristo.",
+    ],
+    apoioAluno: [
+      "Leia João 1.29 e 1 Pedro 1.18-19 durante a semana e escreva o que mais o impressiona no preço da sua redenção.",
+      "Agradeça a Cristo em oração por ter sido reconciliado com Deus e responda com adoração e obediência.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando sobre experiências de reconciliação e use isso como ponte para a reconciliação com Deus em Cristo.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição em três movimentos: o cordeiro pascal como figura, Jesus como Cordeiro de Deus e os efeitos da redenção e da reconciliação.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Finalize exaltando a obra do Filho que redime e convidando a turma a viver sem culpa, perto do coração do Pai.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao5,
+  },
+  6: {
+    imagem: "/images/EBD/licao-06-jovens.png",
+    objetivos: objetivosJovensLicao6,
+    topicos: topicosJovensLicao6,
+    apoioProfessor: [
+      "Mostre com clareza a diferença entre regeneração e santificação, sem separá-las como se fossem realidades desconectadas.",
+      "Conduza a aula para além do discurso espiritual genérico, perguntando onde o fruto do Espírito já aparece ou ainda precisa aparecer na vida da turma.",
+    ],
+    apoioAluno: [
+      "Leia João 3.1-8 e Gálatas 5.22-23 durante a semana e anote sinais concretos do novo nascimento em sua vida.",
+      "Peça ao Espírito Santo que revele áreas em que você precisa crescer em santificação e obediência.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece perguntando o que muda em alguém que realmente nasceu de novo e leve a turma a abrir João 3.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe a aula em três movimentos: conceito de regeneração, atuação do Espírito no novo nascimento e santificação como evidência da salvação.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua desafiando a turma a cooperar com o Espírito em uma vida santa, coerente com a nova vida recebida em Cristo.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao6,
   },
   11: {
     imagem: "/images/EBD/licao-11-jovens.png",
