@@ -81,6 +81,15 @@ type AgendaOccurrence = {
   ano: number;
 };
 
+const TIPOS_EVENTO_PUBLICO = new Set<Evento["tipo"]>([
+  "santa-ceia",
+  "dia-das-mulheres",
+  "batismo",
+  "culto-com-a-mocidade",
+  "congresso-circulo-de-oracao",
+  "evento-especial",
+]);
+
 const diasProgramacao: Record<string, number[]> = {
   "Segunda a Sexta": [1, 2, 3, 4, 5],
   "Segunda-feira": [1],
@@ -289,7 +298,11 @@ function getProximaProgramacaoSemanal(referencia: Date) {
   return combinarOcorrencias(proximosCompromissos)[0] ?? null;
 }
 
-function expandirAgenda() {
+function isEventoPublico(evento: EventoFuturo) {
+  return TIPOS_EVENTO_PUBLICO.has(evento.tipo);
+}
+
+function expandirAgendaCompleta() {
   return agenda2026
     .flatMap((bloco) =>
       bloco.eventos.map((evento) => {
@@ -316,10 +329,14 @@ function expandirAgenda() {
     .sort((a, b) => a.dataEvento.getTime() - b.dataEvento.getTime());
 }
 
+function expandirAgendaPublica() {
+  return expandirAgendaCompleta().filter((item) => isEventoPublico(item.evento));
+}
+
 function getOcorrenciasEspeciaisDoDia(referencia: Date) {
   const chaveHoje = formatarDataChave(referencia);
 
-  return expandirAgenda()
+  return expandirAgendaPublica()
     .filter((item) => formatarDataChave(item.dataEvento) === chaveHoje)
     .map((item) => criarOcorrenciaEvento(item.evento, item.dataEvento));
 }
@@ -339,18 +356,18 @@ function getOcorrenciasSemanaisDoDia(referencia: Date) {
 }
 
 export function getEventoBySlug(slug: string) {
-  return expandirAgenda().find((item) => item.evento.slug === slug)?.evento ?? null;
+  return expandirAgendaPublica().find((item) => item.evento.slug === slug)?.evento ?? null;
 }
 
 export function getEventosAgenda() {
-  return expandirAgenda().map((item) => item.evento);
+  return expandirAgendaPublica().map((item) => item.evento);
 }
 
 export function getEventosFuturos(limite?: number) {
   const hoje = getSaoPauloDate();
   hoje.setHours(0, 0, 0, 0);
 
-  const futuros = expandirAgenda()
+  const futuros = expandirAgendaPublica()
     .filter((item) => item.dataEvento >= hoje)
     .map((item) => item.evento);
 
@@ -455,7 +472,7 @@ export function getProximoEventoComData(referencia = new Date()): {
   dataEvento: Date;
 } | null {
   const agora = getSaoPauloDate(referencia);
-  const proximoEvento = expandirAgenda()
+  const proximoEvento = expandirAgendaPublica()
     .filter((item) => item.dataEvento >= agora)
     .map((item) => criarOcorrenciaEvento(item.evento, item.dataEvento))[0];
   const proximaProgramacao = getProximaProgramacaoSemanal(agora);

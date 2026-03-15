@@ -17,7 +17,7 @@ export const metadata = buildPageMetadata({
 });
 
 export default function EventosPage() {
-  const eventos = getEventosFuturos(12);
+  const eventos = getEventosFuturos();
   const canonicalUrl = resolveSiteUrl("/eventos");
   const eventListSchema = {
     ...buildEventListJsonLd(eventos),
