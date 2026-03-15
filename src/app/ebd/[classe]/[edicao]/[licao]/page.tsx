@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import EbdTeacherSubsidy from "@/components/ebd/EbdTeacherSubsidy";
 import {
   formatEbdDate,
   getClasseEbdInfo,
@@ -54,11 +56,13 @@ export async function generateMetadata({
     };
   }
 
+  const pageImage = lessonContext.licao.imagem ?? lessonContext.trimestre.imagem;
+
   return buildPageMetadata({
     title: `Lição ${lessonContext.licao.numero} | ${lessonContext.licao.titulo}`,
     description: lessonContext.licao.resumo,
     path: `/ebd/${classe}/${edicao}/${licao}`,
-    image: lessonContext.trimestre.imagem,
+    image: pageImage,
   });
 }
 
@@ -122,6 +126,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
   }
 
   const classeInfo = getClasseEbdInfo(classe);
+  const lessonImage = lessonContext.licao.imagem ?? null;
   const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
   const licaoAnterior = currentIndex > 0 ? trimestre.licoes[currentIndex - 1] : null;
   const proximaLicao =
@@ -152,6 +157,21 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
             <article className="space-y-6">
+              {lessonImage ? (
+                <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
+                  <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
+                    <Image
+                      src={lessonImage}
+                      alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw, 420px"
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+              ) : null}
+
               <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
                 <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
@@ -238,6 +258,11 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   {lessonContext.licao.aplicacao}
                 </p>
               </div>
+
+              <EbdTeacherSubsidy
+                classe={classe}
+                licao={lessonContext.licao}
+              />
             </article>
 
             <aside className="space-y-6">
