@@ -20,6 +20,20 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## EBD Editorial Scope
+
+Current published scope for the EBD module:
+
+- `Adultos 1T/2026`: complete from `Lição 1` to `Lição 13`
+- `Jovens 1T/2026`: complete from `Lição 1` to `Lição 13`
+- `Infantil`: architecture kept in place, but editorial production is intentionally paused
+
+Annual structure for `2026-2t`, `2026-3t` and `2026-4t` is already visible in the app, with draft governance and `noindex` where content is still in preparation.
+
+Editorial history note:
+
+- `Jovens Lição 11` was published earlier as the pilot lesson and remained in place while the remaining youth lessons were completed in blocks.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
