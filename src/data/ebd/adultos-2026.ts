@@ -1212,6 +1212,561 @@ const subsidioAdultosLicao6: LicaoEBD["subsidioAdultos"] = {
   },
 };
 
+const objetivosAdultosLicao7 = [
+  "Explicar a humilhação voluntária de Cristo e sua obediência até a cruz.",
+  "Mostrar que a obra redentora do Filho é única, suficiente e vicária.",
+  "Ressaltar a exaltação gloriosa de Cristo e sua soberania universal.",
+];
+
+const topicosAdultosLicao7 = [
+  {
+    titulo: "A humilhação voluntária do Filho",
+    conteudo: [
+      "Filipenses 2 mostra que Cristo não se agarrou à sua glória, mas assumiu a forma de servo em obediência ao Pai.",
+      "A humilhação do Filho não significa perda de divindade, mas manifestação suprema de amor e missão redentora.",
+      "A cruz revela que a obediência de Jesus foi completa, santa e voluntária.",
+    ],
+  },
+  {
+    titulo: "A obra redentora é única e suficiente",
+    conteudo: [
+      "Hebreus 9 destaca que Cristo entrou no santuário celestial com seu próprio sangue, realizando redenção eterna.",
+      "A obra do Filho é vicária: Ele assume em nosso lugar aquilo que nós não poderíamos cumprir.",
+      "Nada precisa ser acrescentado ao sacrifício de Cristo para completar a salvação.",
+    ],
+  },
+  {
+    titulo: "O Filho exaltado reina soberanamente",
+    conteudo: [
+      "A exaltação de Cristo confirma a aprovação do Pai e a vitória plena da obra redentora.",
+      "O nome que está acima de todo nome chama a igreja à adoração, submissão e esperança.",
+      "A soberania do Filho sustenta a missão da igreja e a perseverança do crente.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao7: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 7,
+    titulo: "A Obra do Filho",
+    data: "2026-02-15",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Filipenses 2.9 mostra que a exaltação de Cristo confirma a glória do Filho que se humilhou por nós.",
+    verdadePratica:
+      "A humilhação voluntária, a obra redentora e a exaltação gloriosa de Cristo revelam que só Ele é digno de adoração e obediência.",
+    leituraBiblicaEmClasse: [
+      "Filipenses 2.5-11 — a humilhação e a exaltação do Filho.",
+      "Hebreus 9.24-28 — a obra redentora única e suficiente de Cristo.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A sétima lição apresenta o coração da obra do Filho: sua humilhação voluntária, seu sacrifício suficiente e sua exaltação gloriosa. Em Cristo, a redenção deixa de ser hipótese e se torna obra consumada, capaz de reconciliar o pecador com Deus e sustentar a esperança da igreja.",
+    ideiaCentral:
+      "A obra do Filho une obediência, sacrifício e glória em uma redenção completa e suficiente para o pecador.",
+    objetivos: objetivosAdultosLicao7,
+    palavraChave: {
+      termo: "Redenção",
+      definicao:
+        "A obra pela qual Cristo liberta o pecador do poder do pecado e o reconcilia com Deus por meio de seu sacrifício vicário.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "humilhacao",
+      titulo: "A humilhação voluntária do Filho",
+      sinopse:
+        "Cristo se humilhou em obediência perfeita, sem perder sua dignidade divina.",
+      explicacaoBiblica: [
+        "Filipenses 2 apresenta a encarnação e a cruz como movimentos de obediência e serviço.",
+        "A forma de servo assumida por Cristo revela sua disposição de cumprir plenamente a vontade do Pai.",
+        "A humilhação do Filho é manifestação do amor redentor e não sinal de inferioridade ontológica.",
+      ],
+      aplicacaoPratica: [
+        "A igreja aprende com Cristo a obedecer com humildade e fidelidade, mesmo quando o caminho envolve renúncia.",
+        "A contemplação da cruz combate orgulho, autossuficiência e superficialidade espiritual.",
+      ],
+    },
+    {
+      id: "redencao-suficiente",
+      titulo: "A obra redentora é única e suficiente",
+      sinopse:
+        "O sacrifício do Filho realiza de uma vez por todas aquilo que nenhum sistema religioso poderia completar.",
+      explicacaoBiblica: [
+        "Hebreus 9 mostra que Cristo entrou no verdadeiro santuário com seu próprio sangue.",
+        "Sua oferta é definitiva, diferente dos sacrifícios repetitivos e incapazes de aperfeiçoar plenamente.",
+        "A redenção operada por Cristo é eterna, eficaz e suficiente.",
+      ],
+      aplicacaoPratica: [
+        "A classe precisa sair da lição descansando na suficiência de Cristo e rejeitando toda lógica de mérito complementar.",
+        "A segurança da salvação nasce da obra consumada do Filho, e não do desempenho humano.",
+      ],
+    },
+    {
+      id: "exaltacao",
+      titulo: "O Filho exaltado reina soberanamente",
+      sinopse:
+        "A exaltação confirma a vitória do Filho e chama toda a criação à submissão.",
+      explicacaoBiblica: [
+        "O Pai exaltou o Filho e lhe deu o nome acima de todo nome.",
+        "A soberania de Cristo se estende sobre céus, terra e tudo o que existe.",
+        "A igreja vive sob a certeza de que o Redentor crucificado é também o Senhor glorificado.",
+      ],
+      aplicacaoPratica: [
+        "A exaltação de Cristo fortalece a adoração e a coragem missionária da igreja.",
+        "O crente persevera porque sabe que o Senhor da cruz também é o Senhor do futuro.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Por que a igreja precisa lembrar continuamente que a obra de Cristo é suficiente e definitiva?",
+    pontoSensivelDaAula:
+      "Muitos cristãos vivem como se ainda precisassem provar seu valor a Deus. A aula precisa conduzir a classe ao descanso na obra consumada do Filho.",
+    erroComumDeInterpretacao:
+      "Confundir a humilhação do Filho com inferioridade de sua pessoa enfraquece a cristologia bíblica.",
+    perguntasParaDebate: [
+      "O que a humilhação voluntária de Cristo ensina sobre seu amor e sua obediência?",
+      "Por que Hebreus insiste tanto na suficiência do sacrifício de Cristo?",
+      "Como a exaltação do Filho fortalece a vida da igreja hoje?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a turma a adorar a Cristo como Redentor suficiente e Senhor exaltado, confiando plenamente em sua obra.",
+  },
+  revisao: {
+    perguntas: [
+      "Como Filipenses 2 descreve a humilhação do Filho?",
+      "O que torna a obra redentora de Cristo única e suficiente?",
+      "Por que a exaltação de Cristo é tão importante para a esperança cristã?",
+    ],
+    pontosChave: [
+      "O Filho se humilhou voluntariamente em obediência ao Pai.",
+      "Seu sacrifício é vicário, suficiente e definitivo.",
+      "Cristo exaltado reina soberanamente sobre todas as coisas.",
+    ],
+    fraseDeSintese:
+      "A obra do Filho une cruz e glória, sacrifício e soberania, oferecendo redenção completa ao pecador e esperança segura à igreja.",
+  },
+};
+
+const objetivosAdultosLicao8 = [
+  "Mostrar que o Espírito Santo é uma Pessoa, distinta, mas coigual ao Pai e ao Filho.",
+  "Evidenciar a plena divindade do Espírito Santo e seus atributos.",
+  "Ressaltar as principais obras do Espírito Santo: encarnação, ressurreição e santificação.",
+];
+
+const topicosAdultosLicao8 = [
+  {
+    titulo: "O Espírito Santo é Pessoa divina",
+    conteudo: [
+      "O Espírito Santo ensina, guia, fala e consola, mostrando atributos pessoais e não mera força impessoal.",
+      "Sua distinção em relação ao Pai e ao Filho aparece com clareza nas palavras de Jesus em João 14.",
+      "Reconhecer a pessoalidade do Espírito protege a igreja de reduções místicas e utilitárias.",
+    ],
+  },
+  {
+    titulo: "O Espírito é plenamente Deus",
+    conteudo: [
+      "Os atributos e obras do Espírito Santo revelam sua plena divindade e coigualdade na Trindade.",
+      "O Espírito participa da encarnação, atua na ressurreição e sustenta a santificação do povo de Deus.",
+      "Negar a divindade do Espírito empobrece a doutrina da salvação e a vida da igreja.",
+    ],
+  },
+  {
+    titulo: "As obras do Espírito sustentam a vida cristã",
+    conteudo: [
+      "O Espírito não apenas iniciou a história da redenção; Ele continua atuando na igreja e no crente.",
+      "Santificação, consolo, direção e comunhão pertencem à presença ativa do Espírito na vida dos salvos.",
+      "A igreja pentecostal precisa falar do Espírito com base bíblica e reverência teológica.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao8: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 8,
+    titulo: "O Deus Espírito Santo",
+    data: "2026-02-22",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "João 14.16 mostra que o Espírito Santo é outro Consolador enviado pelo Pai em nome do Filho.",
+    verdadePratica:
+      "O Espírito Santo é a terceira Pessoa da Trindade, plenamente divino, Consolador, Ensinador e Santificador.",
+    leituraBiblicaEmClasse: [
+      "João 14.25-31 — o Consolador enviado à igreja.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A oitava lição centra a atenção da classe no Espírito Santo como Pessoa divina, distinta, coigual e ativa na história da redenção. O mesmo Espírito que participa da encarnação, atua na ressurreição e santifica a igreja continua sendo Consolador, Ensinador e presença viva de Deus entre seu povo.",
+    ideiaCentral:
+      "O Espírito Santo é Deus verdadeiro, Pessoa divina e agente indispensável da salvação e da santificação.",
+    objetivos: objetivosAdultosLicao8,
+    palavraChave: {
+      termo: "Consolador",
+      definicao:
+        "Título que descreve o Espírito Santo como presença pessoal de Deus que auxilia, ensina, lembra e fortalece a igreja.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "pessoa-divina",
+      titulo: "O Espírito Santo é Pessoa divina",
+      sinopse:
+        "O Espírito ensina, lembra, guia e fala, revelando pessoalidade real e distinta.",
+      explicacaoBiblica: [
+        "João 14 apresenta o Espírito como outro Consolador, distinto do Filho e enviado pelo Pai.",
+        "O uso de ações pessoais impede que o tratemos como energia ou influência impessoal.",
+        "A vida da igreja depende de relacionamento reverente com o Espírito Santo.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve abandonar linguagem superficial que reduz o Espírito a sensação ou recurso emocional.",
+        "Reconhecer a pessoalidade do Espírito aprofunda a oração e a dependência cristã.",
+      ],
+    },
+    {
+      id: "divindade",
+      titulo: "O Espírito é plenamente Deus",
+      sinopse:
+        "Os atributos e as obras do Espírito revelam sua plena divindade e coigualdade trinitária.",
+      explicacaoBiblica: [
+        "O Espírito atua na encarnação de Cristo, participa da ressurreição e opera santificação no crente.",
+        "Essas obras pertencem a Deus e mostram que o Espírito não ocupa posição inferior na Trindade.",
+        "A igreja precisa confessar com clareza sua divindade para não empobrecer a fé cristã.",
+      ],
+      aplicacaoPratica: [
+        "A adoração da igreja deve ser marcada por reverência ao Espírito Santo como Deus verdadeiro.",
+        "A doutrina correta do Espírito protege contra exageros místicos e frieza doutrinária.",
+      ],
+    },
+    {
+      id: "obra-na-igreja",
+      titulo: "As obras do Espírito sustentam a vida cristã",
+      sinopse:
+        "O Espírito segue atuando de forma pessoal e santa no cotidiano da igreja e do crente.",
+      explicacaoBiblica: [
+        "Ele ensina, consola, convence, dirige e santifica o povo de Deus.",
+        "A vida cristã se torna árida quando tenta avançar sem dependência real do Espírito.",
+        "A presença do Espírito não elimina a centralidade de Cristo; ao contrário, a confirma.",
+      ],
+      aplicacaoPratica: [
+        "A igreja precisa cultivar uma relação bíblica com o Espírito, marcada por reverência, submissão e sensibilidade à Palavra.",
+        "O crente amadurece quando entende que santificação e consolo caminham juntos na obra do Espírito.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Por que ainda hoje tanta gente fala do Espírito Santo como se Ele fosse apenas força ou sensação?",
+    pontoSensivelDaAula:
+      "A aula precisa equilibrar fervor pentecostal com firmeza bíblica, evitando tanto o reducionismo racional quanto o emocionalismo sem base doutrinária.",
+    erroComumDeInterpretacao:
+      "Tratar o Espírito como poder impessoal ou como manifestação separada do Pai e do Filho rompe a compreensão bíblica da Trindade.",
+    perguntasParaDebate: [
+      "Que evidências bíblicas mostram que o Espírito Santo é Pessoa?",
+      "Como a Bíblia revela sua plena divindade?",
+      "De que modo a igreja deve responder à atuação do Espírito hoje?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a classe a reconhecer o Espírito Santo com reverência, dependência e gratidão por sua presença santa na igreja.",
+  },
+  revisao: {
+    perguntas: [
+      "Quais características pessoais do Espírito aparecem em João 14?",
+      "Que obras do Espírito evidenciam sua divindade?",
+      "Como o Espírito sustenta a vida cristã e a santificação da igreja?",
+    ],
+    pontosChave: [
+      "O Espírito Santo é Pessoa divina, distinta e coigual na Trindade.",
+      "Sua plena divindade aparece em seus atributos e obras.",
+      "A igreja vive, aprende e amadurece pela atuação do Espírito.",
+    ],
+    fraseDeSintese:
+      "O Deus Espírito Santo permanece presente, ativo e santo, sustentando a igreja com consolo, ensino e santificação.",
+  },
+};
+
+const objetivosAdultosLicao9 = [
+  "Explicar que a regeneração é obra trinitária, planejada pelo Pai, realizada pelo Filho e aplicada pelo Espírito Santo.",
+  "Mostrar que a regeneração é transformação espiritual interior e indispensável à salvação.",
+  "Apontar sinais práticos do novo nascimento: justificação, santificação e fruto do Espírito.",
+];
+
+const topicosAdultosLicao9 = [
+  {
+    titulo: "A regeneração é obra da Trindade",
+    conteudo: [
+      "O novo nascimento não nasce de esforço humano, mas da ação conjunta do Pai, do Filho e do Espírito Santo.",
+      "O Pai planeja, o Filho realiza a redenção e o Espírito aplica a vida nova ao coração do pecador.",
+      "Falar de regeneração é falar de milagre espiritual, não de mera reforma de comportamento.",
+    ],
+  },
+  {
+    titulo: "O novo nascimento transforma o interior",
+    conteudo: [
+      "João 3 mostra que nascer de novo é necessidade absoluta para ver e entrar no Reino de Deus.",
+      "A regeneração alcança o coração, muda desejos, abre os olhos espirituais e reorienta a vida para Deus.",
+      "Sem o novo nascimento, a religião permanece externa e incapaz de produzir verdadeira comunhão com Deus.",
+    ],
+  },
+  {
+    titulo: "Evidências práticas da vida regenerada",
+    conteudo: [
+      "A obra do Espírito produz sinais concretos: nova postura diante do pecado, santificação progressiva e fruto espiritual.",
+      "A regeneração não elimina a luta cristã, mas muda a direção da vida e o centro do desejo.",
+      "A igreja precisa discernir entre emoção religiosa passageira e transformação real operada por Deus.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao9: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 9,
+    titulo: "Espírito Santo — O Regenerador",
+    data: "2026-03-01",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "João 3.3 mostra que o novo nascimento é indispensável para ver o Reino de Deus.",
+    verdadePratica:
+      "A regeneração é transformação operada pelo Espírito pela qual o pecador se torna nova criatura.",
+    leituraBiblicaEmClasse: [
+      "João 3.1-8 — a necessidade do novo nascimento e a ação soberana do Espírito.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A nona lição destaca o Espírito Santo como regenerador, mostrando que o novo nascimento é obra indispensável da graça de Deus. A salvação não consiste em ajuste moral externo, mas em transformação interior produzida pelo Espírito, que cria nova vida, novo desejo e nova direção para quem crê em Cristo.",
+    ideiaCentral:
+      "A regeneração é milagre espiritual indispensável, operado pelo Espírito e visível em uma vida transformada.",
+    objetivos: objetivosAdultosLicao9,
+    palavraChave: {
+      termo: "Regeneração",
+      definicao:
+        "Ato pelo qual o Espírito Santo comunica nova vida ao pecador, tornando-o participante da obra de Cristo e da família de Deus.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "obra-trinitaria",
+      titulo: "A regeneração é obra da Trindade",
+      sinopse:
+        "O novo nascimento faz parte do mesmo plano salvador em que Pai, Filho e Espírito atuam harmonicamente.",
+      explicacaoBiblica: [
+        "João 3 apresenta a regeneração como ação que vem de cima, e não como construção da vontade humana.",
+        "A obra regeneradora é inseparável da redenção de Cristo e do propósito do Pai.",
+        "O Espírito Santo aplica ao coração o que o Filho conquistou na cruz.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve rejeitar a ideia de que disciplina religiosa, por si só, produz novo nascimento.",
+        "A salvação precisa ser ensinada como dependência total da graça divina.",
+      ],
+    },
+    {
+      id: "transformacao-interior",
+      titulo: "O novo nascimento transforma o interior",
+      sinopse:
+        "Regeneração é mudança profunda do coração, do entendimento e da disposição diante de Deus.",
+      explicacaoBiblica: [
+        "Nascer da água e do Espírito aponta para purificação e vida nova realizadas por Deus.",
+        "O Espírito opera de modo soberano, invisível e eficaz, como o vento que sopra onde quer.",
+        "A transformação interior explica por que o regenerado passa a amar o que antes rejeitava.",
+      ],
+      aplicacaoPratica: [
+        "A igreja deve confrontar uma religiosidade apenas externa que não produz vida nova.",
+        "O discipulado cristão precisa começar no coração regenerado e avançar em santificação.",
+      ],
+    },
+    {
+      id: "evidencias-praticas",
+      titulo: "Evidências práticas da vida regenerada",
+      sinopse:
+        "O novo nascimento deixa marcas visíveis na caminhada cristã, embora não produza perfeição imediata.",
+      explicacaoBiblica: [
+        "Justificação, santificação e fruto do Espírito surgem como efeitos da nova vida recebida em Cristo.",
+        "A regeneração muda a direção do ser humano, ainda que a luta contra o pecado continue presente.",
+        "A nova criatura passa a responder de maneira diferente à Palavra, à oração e à comunhão da igreja.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a distinguir entre decisão emocional e transformação contínua produzida pelo Espírito.",
+        "Leve os alunos a examinar se há sinais reais de nova vida em seu caminhar com Deus.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que diferencia uma mudança apenas emocional de um novo nascimento verdadeiro?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem associar conversão apenas a experiência passada. A aula precisa mostrar que o novo nascimento continua produzindo efeitos presentes.",
+    erroComumDeInterpretacao:
+      "Reduzir a regeneração a decisão intelectual ou mudança de ambiente enfraquece a gravidade e a beleza da obra do Espírito.",
+    perguntasParaDebate: [
+      "Por que Jesus trata o novo nascimento como necessidade absoluta?",
+      "Como a regeneração se relaciona com o restante da salvação?",
+      "Que sinais práticos ajudam a reconhecer a vida regenerada?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua chamando a classe à gratidão pelo novo nascimento e ao exame sincero diante de Deus sobre os frutos dessa obra na vida diária.",
+  },
+  revisao: {
+    perguntas: [
+      "Por que a regeneração é indispensável para entrar no Reino?",
+      "Como o Espírito opera o novo nascimento no pecador?",
+      "Que sinais práticos acompanham a vida regenerada?",
+    ],
+    pontosChave: [
+      "A regeneração é obra da Trindade aplicada pelo Espírito Santo.",
+      "O novo nascimento transforma o interior e não apenas a aparência religiosa.",
+      "A vida regenerada produz fruto, santificação e nova direção espiritual.",
+    ],
+    fraseDeSintese:
+      "O Espírito Santo regenera o pecador e inaugura uma vida nova que se torna visível em fé, santidade e fruto espiritual.",
+  },
+};
+
+const objetivosAdultosLicao10 = [
+  "Mostrar que o derramamento do Espírito Santo é promessa universal e atual.",
+  "Explicar que o Espírito Santo concede poder para testemunhar de Cristo.",
+  "Destacar que o Espírito distribui dons e fortalece a unidade da Igreja.",
+];
+
+const topicosAdultosLicao10 = [
+  {
+    titulo: "O derramamento do Espírito é promessa para a Igreja",
+    conteudo: [
+      "Joel 2 anuncia que o Espírito seria derramado de forma ampla, alcançando diferentes perfis e gerações.",
+      "Atos 2 mostra que a promessa entrou na história da igreja com poder e continuidade.",
+      "A experiência pentecostal pertence à vida e à missão da igreja de Cristo.",
+    ],
+  },
+  {
+    titulo: "O Espírito capacita para testemunhar",
+    conteudo: [
+      "O batismo no Espírito Santo está ligado à expansão do testemunho cristão e não a mera experiência privada.",
+      "Atos mostra que o poder do Espírito fortalece coragem, ousadia e fidelidade à missão de Cristo.",
+      "A capacitação espiritual não substitui a santidade; ela a acompanha e a impulsiona.",
+    ],
+  },
+  {
+    titulo: "Dons espirituais e unidade do corpo",
+    conteudo: [
+      "O Espírito distribui dons conforme sua vontade para edificação da igreja.",
+      "Diversidade de dons não deve produzir competição, mas serviço mútuo e unidade no corpo.",
+      "A igreja saudável acolhe os dons com ordem, discernimento e propósito cristocêntrico.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao10: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 10,
+    titulo: "Espírito Santo — O Capacitador",
+    data: "2026-03-08",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Joel 2.28 aponta para o derramamento do Espírito como promessa abundante sobre o povo de Deus.",
+    verdadePratica:
+      "O derramamento do Espírito capacita a Igreja com poder para pregar o Evangelho.",
+    leituraBiblicaEmClasse: [
+      "Joel 2.28-29 — a promessa do derramamento do Espírito.",
+      "Atos 2.1-4 — o cumprimento pentecostal da promessa.",
+      "1 Coríntios 12.4-7 — dons espirituais para edificação do corpo.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A décima lição apresenta o Espírito Santo como aquele que capacita a igreja para testemunhar, servir e crescer em unidade. O derramamento prometido em Joel e experimentado em Atos continua sendo referência para a vida pentecostal, enquanto a distribuição dos dons chama a igreja ao serviço ordenado e cristocêntrico.",
+    ideiaCentral:
+      "O Espírito Santo capacita a igreja com poder, dons e direção para testemunhar de Cristo e edificar o corpo.",
+    objetivos: objetivosAdultosLicao10,
+    palavraChave: {
+      termo: "Capacitação",
+      definicao:
+        "Ação do Espírito Santo que fortalece, envia e equipa a igreja para testemunho, serviço e edificação mútua.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "promessa-do-espirito",
+      titulo: "O derramamento do Espírito é promessa para a Igreja",
+      sinopse:
+        "A promessa de Joel e o cumprimento em Atos mostram continuidade, alcance e atualidade da obra do Espírito.",
+      explicacaoBiblica: [
+        "Joel 2 amplia a expectativa do povo de Deus em relação ao Espírito derramado sobre diferentes grupos.",
+        "Atos 2 mostra que a promessa não ficou no futuro; ela entrou no coração da missão da igreja.",
+        "A atualidade da promessa sustenta a esperança e o fervor pentecostal.",
+      ],
+      aplicacaoPratica: [
+        "A igreja deve manter viva a expectativa por atuação santa e poderosa do Espírito.",
+        "A promessa do Espírito não autoriza superficialidade; ela chama à vida de consagração e missão.",
+      ],
+    },
+    {
+      id: "poder-para-testemunhar",
+      titulo: "O Espírito capacita para testemunhar",
+      sinopse:
+        "A capacitação do Espírito tem direção missionária e fortalece a igreja para anunciar Cristo com ousadia.",
+      explicacaoBiblica: [
+        "Em Atos, a ação do Espírito fortalece a proclamação do Evangelho e impulsiona a expansão da igreja.",
+        "O poder do Espírito não se reduz a experiência privada; ele se orienta para testemunho fiel.",
+        "O mesmo Espírito que capacita também santifica e dirige a vida da igreja.",
+      ],
+      aplicacaoPratica: [
+        "A classe precisa ligar experiência espiritual à missão, e não apenas à busca de sensações religiosas.",
+        "A capacitação do Espírito fortalece coragem, oração e compromisso evangelístico.",
+      ],
+    },
+    {
+      id: "dons-e-unidade",
+      titulo: "Dons espirituais e unidade do corpo",
+      sinopse:
+        "Os dons são concedidos para edificação e exigem serviço humilde, discernimento e amor cristão.",
+      explicacaoBiblica: [
+        "1 Coríntios 12 mostra diversidade de dons, mas um mesmo Espírito operando para o bem comum.",
+        "A distribuição dos dons pertence à soberania do Espírito e não ao mérito humano.",
+        "O propósito final dos dons não é autopromoção, mas edificação da igreja.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a perceber que dons espirituais precisam andar com amor, ordem e compromisso com a unidade do corpo.",
+        "A igreja amadurece quando serve com humildade e reconhece a diversidade como graça do Espírito.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que acontece quando a igreja deseja poder espiritual, mas perde de vista missão, santidade e edificação do corpo?",
+    pontoSensivelDaAula:
+      "A aula precisa unir identidade pentecostal e sobriedade bíblica, evitando tanto o esfriamento quanto o exibicionismo espiritual.",
+    erroComumDeInterpretacao:
+      "Separar dons da missão e da edificação da igreja transforma a obra do Espírito em experiência autocentrada.",
+    perguntasParaDebate: [
+      "O que Joel e Atos ensinam sobre a promessa do derramamento do Espírito?",
+      "Por que a capacitação espiritual está ligada ao testemunho de Cristo?",
+      "Como os dons fortalecem a unidade da igreja em vez de produzir competição?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua chamando a classe a buscar poder espiritual com santidade, missão e compromisso com a edificação da igreja.",
+  },
+  revisao: {
+    perguntas: [
+      "Como a promessa de Joel se relaciona com a experiência de Atos 2?",
+      "Por que a capacitação do Espírito está ligada ao testemunho cristão?",
+      "Qual é o propósito dos dons espirituais na igreja?",
+    ],
+    pontosChave: [
+      "O derramamento do Espírito é promessa ampla e atual para a igreja.",
+      "O Espírito concede poder para testemunhar de Cristo.",
+      "Os dons espirituais existem para edificação e unidade do corpo.",
+    ],
+    fraseDeSintese:
+      "O Espírito Santo capacita a igreja com poder, dons e direção para testemunhar de Cristo e edificar o corpo com ordem e amor.",
+  },
+};
+
 const objetivosAdultosLicao11 = [
   "Mostrar como o Espírito Santo liberta o crente da escravidão do pecado e confirma sua filiação em Cristo.",
   "Explicar de que modo o Espírito guia o crente na vontade do Pai em uma vida de comunhão, mortificação da carne e obediência.",
@@ -2311,6 +2866,130 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     ],
     subsidioAdultos: subsidioAdultosLicao6,
   },
+  7: {
+    imagem: "/images/EBD/licao-07-adulto.jpg",
+    objetivos: objetivosAdultosLicao7,
+    topicos: topicosAdultosLicao7,
+    apoioProfessor: [
+      "Leve a classe a contemplar a obra do Filho como suficiente, evitando qualquer linguagem que reintroduza mérito humano na salvação.",
+      "Conecte cruz e exaltação para mostrar que a soberania de Cristo sustenta a missão e a esperança da igreja.",
+    ],
+    apoioAluno: [
+      "Leia Filipenses 2.5-11 e Hebreus 9.24-28 durante a semana e observe como a humilhação, a cruz e a exaltação de Cristo formam uma única obra redentora.",
+      "Agradeça em oração pela suficiência da obra de Cristo e renove sua confiança em seu senhorio.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece perguntando por que a obra de Cristo precisa ser ensinada não só como fato passado, mas como fundamento presente da fé cristã.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe a lição em três movimentos: a humilhação voluntária do Filho, a suficiência do seu sacrifício e sua exaltação gloriosa.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Encerre levando a classe a descansar na obra consumada de Cristo e a adorá-lo como Senhor exaltado.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao7,
+  },
+  8: {
+    imagem: "/images/EBD/licao-08-adulto.jpg",
+    objetivos: objetivosAdultosLicao8,
+    topicos: topicosAdultosLicao8,
+    apoioProfessor: [
+      "Ajude a classe a falar do Espírito Santo com fervor pentecostal e precisão bíblica, sem reduzi-lo a força impessoal.",
+      "Mostre que a obra do Espírito sempre fortalece a centralidade de Cristo e a santidade da igreja.",
+    ],
+    apoioAluno: [
+      "Leia João 14.25-31 durante a semana e anote o que o texto ensina sobre a pessoa e a atuação do Espírito Santo.",
+      "Ore pedindo que sua relação com o Espírito seja marcada por reverência, dependência e sensibilidade à Palavra.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando que erros mais aparecem quando as pessoas falam do Espírito Santo sem base bíblica sólida.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize o ensino em três eixos: a pessoalidade do Espírito, sua plena divindade e suas obras na redenção e na vida da igreja.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua convidando a classe a honrar o Espírito Santo com reverência e dependência prática em sua caminhada cristã.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao8,
+  },
+  9: {
+    imagem: "/images/EBD/licao-09-adulto.jpg",
+    objetivos: objetivosAdultosLicao9,
+    topicos: topicosAdultosLicao9,
+    apoioProfessor: [
+      "Apresente a regeneração como milagre espiritual real, evitando reduzi-la a decisão intelectual ou emoção momentânea.",
+      "Conduza a classe a discernir os sinais práticos do novo nascimento sem cair em moralismo ou superficialidade.",
+    ],
+    apoioAluno: [
+      "Leia João 3.1-8 durante a semana e pergunte diante de Deus quais evidências de nova vida o Espírito tem produzido em você.",
+      "Ore pedindo que a graça do novo nascimento continue gerando fruto, santidade e sensibilidade espiritual em sua vida.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece perguntando o que diferencia uma mudança apenas emocional de um novo nascimento verdadeiro operado por Deus.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe a lição em três passos: a regeneração como obra trinitária, a transformação interior do novo nascimento e suas evidências práticas.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Encerre chamando a classe a examinar a própria vida à luz do novo nascimento e a agradecer ao Espírito pela obra regeneradora.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao9,
+  },
+  10: {
+    imagem: "/images/EBD/licao-10-adulto.jpg",
+    objetivos: objetivosAdultosLicao10,
+    topicos: topicosAdultosLicao10,
+    apoioProfessor: [
+      "Mantenha a identidade pentecostal da aula ligada à missão, à santidade e à edificação da igreja, e não a experiências autocentradas.",
+      "Mostre que dons espirituais e unidade do corpo não competem; pertencem ao mesmo agir do Espírito Santo.",
+    ],
+    apoioAluno: [
+      "Leia Joel 2.28-29, Atos 2.1-4 e 1 Coríntios 12.4-7 durante a semana e observe como a promessa, o poder e os dons se unem na vida da igreja.",
+      "Ore pedindo que o Espírito capacite você a testemunhar de Cristo com mais ousadia, humildade e serviço ao corpo.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando como a igreja pode buscar poder espiritual sem perder missão, amor e ordem bíblica.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição em três movimentos: a promessa do derramamento, a capacitação para testemunhar e a distribuição dos dons para edificação.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua chamando a classe a buscar o Espírito com consagração, coragem missionária e compromisso com a unidade do corpo.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao10,
+  },
   11: {
     imagem: "/images/EBD/licao-11-adulto.jpg",
     objetivos: objetivosAdultosLicao11,
@@ -2492,46 +3171,63 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 7,
     data: "2026-02-15",
-    titulo: "Adoração em espírito e em verdade",
-    resumo: "Adorar vai além do culto público: envolve coração rendido, vida íntegra e centralidade de Cristo.",
-    textoChave: "João 4:23-24",
-    verdadePratica: "A verdadeira adoração nasce de um coração transformado e se expressa em reverência, alegria e obediência.",
-    leituraBiblica: ["João 4:19-26", "Romanos 12:1-2"],
-    aplicacao: "Pergunte a si mesmo como sua rotina desta semana pode expressar adoração a Deus em atitudes, palavras e prioridades.",
-    enfase: "a adoração bíblica",
+    titulo: "A Obra do Filho",
+    resumo:
+      "A lição mostra que a humilhação, a redenção e a exaltação de Cristo formam uma obra única, suficiente e gloriosa para a salvação.",
+    textoChave: "Filipenses 2:9",
+    verdadePratica:
+      "A humilhação voluntária, a obra redentora e a exaltação gloriosa de Cristo revelam que só Ele é digno de adoração e obediência.",
+    leituraBiblica: ["Filipenses 2:5-11", "Hebreus 9:24-28"],
+    aplicacao:
+      "Descanse nesta semana na suficiência da obra de Cristo e responda ao seu senhorio com adoração, gratidão e obediência prática.",
+    enfase: "a obra redentora do Filho",
   },
   {
     numero: 8,
     data: "2026-02-22",
-    titulo: "Santidade no cotidiano",
-    resumo: "Santidade não é isolamento, mas vida separada para Deus no meio das responsabilidades diárias.",
-    textoChave: "1 Pedro 1:15-16",
-    verdadePratica: "A santidade cristã se manifesta em escolhas concretas, coerência moral e temor do Senhor.",
-    leituraBiblica: ["1 Pedro 1:13-21", "Romanos 6:11-14"],
-    aplicacao: "Escolha uma área prática da sua rotina para alinhar com mais clareza ao padrão de santidade ensinado por Cristo.",
-    enfase: "a santidade prática",
+    titulo: "O Deus Espírito Santo",
+    resumo:
+      "A lição apresenta o Espírito Santo como Pessoa divina, Consolador, Ensinador e Santificador, plenamente coigual ao Pai e ao Filho.",
+    textoChave: "João 14:16",
+    verdadePratica:
+      "O Espírito Santo é a terceira Pessoa da Trindade, plenamente divino, Consolador, Ensinador e Santificador.",
+    leituraBiblica: ["João 14:25-31"],
+    aplicacao:
+      "Viva esta semana em reverente dependência do Espírito Santo, buscando sua direção, consolo e santificação na caminhada cristã.",
+    enfase: "a pessoa e a obra do Espírito Santo",
   },
   {
     numero: 9,
     data: "2026-03-01",
-    titulo: "Família firmada na Palavra",
-    resumo: "O ensino bíblico fortalece relacionamentos, gera cuidado mútuo e protege o lar cristão.",
-    textoChave: "Josué 24:15",
-    verdadePratica: "Lares fortalecidos pela Palavra tornam-se ambientes de comunhão, ensino, oração e testemunho.",
-    leituraBiblica: ["Deuteronômio 6:4-9", "Efésios 5:22-33"],
-    aplicacao: "Separe um momento desta semana para reunir sua casa em oração, leitura bíblica e conversa sobre a fé.",
-    enfase: "a formação espiritual da família",
+    titulo: "Espírito Santo — O Regenerador",
+    resumo:
+      "A lição mostra que a regeneração é obra do Espírito Santo, indispensável para a salvação e visível em uma vida transformada.",
+    textoChave: "João 3:3",
+    verdadePratica:
+      "A regeneração é transformação operada pelo Espírito pela qual o pecador se torna nova criatura.",
+    leituraBiblica: ["João 3:1-8"],
+    aplicacao:
+      "Examine nesta semana os sinais do novo nascimento em sua vida e peça ao Espírito que continue produzindo fruto e santidade em você.",
+    enfase: "o novo nascimento",
   },
   {
     numero: 10,
     data: "2026-03-08",
-    titulo: "Dons, serviço e edificação do corpo",
-    resumo: "Dons espirituais e talentos são confiados por Deus para servir e edificar a igreja.",
-    textoChave: "1 Pedro 4:10",
-    verdadePratica: "Servir com humildade e fidelidade é expressão concreta de maturidade cristã e amor ao corpo de Cristo.",
-    leituraBiblica: ["1 Coríntios 12:4-11", "Efésios 4:11-16"],
-    aplicacao: "Pergunte em oração como você pode servir melhor na igreja e dê um passo concreto em direção a esse chamado.",
-    enfase: "o serviço cristão",
+    titulo: "Espírito Santo — O Capacitador",
+    resumo:
+      "A lição mostra que o Espírito Santo derrama poder sobre a igreja para testemunho, distribuição de dons e edificação do corpo de Cristo.",
+    textoChave: "Joel 2:28",
+    verdadePratica:
+      "O derramamento do Espírito capacita a Igreja com poder para pregar o Evangelho.",
+    leituraBiblica: [
+      "Joel 2:28-29",
+      "Atos 2:1-4",
+      "Atos 8:14-17",
+      "1 Coríntios 12:4-7",
+    ],
+    aplicacao:
+      "Busque nesta semana a capacitação do Espírito com foco em testemunho, serviço humilde e edificação da igreja local.",
+    enfase: "a capacitação do Espírito",
   },
   {
     numero: 11,
