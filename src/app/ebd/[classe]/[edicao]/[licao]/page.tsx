@@ -561,25 +561,15 @@ export default async function EbdLessonPage({ params }: PageProps) {
             </aside>
           </div>
 
-          <div className="mt-10 rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-            <div className="mb-6 max-w-3xl">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Navegação rápida
-              </p>
-              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
-                Continue estudando sem voltar a página inteira
-              </h2>
-              <p className="leading-relaxed text-[#555]">
-                Ao terminar a lição, siga para o próximo passo da EBD, revise a
-                programação da igreja ou volte ao topo da página com um clique.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
+          <div className="mt-10 border-t border-black/5 pt-6">
+            <nav
+              aria-label="Navegação da lição"
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold tracking-[0.04em] text-[#212121]"
+            >
               {licaoAnterior ? (
                 <Link
                   href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
-                  className="ui-btn-secondary"
+                  className="transition-colors hover:text-[#8b1e1e]"
                 >
                   ← Lição anterior
                 </Link>
@@ -587,21 +577,30 @@ export default async function EbdLessonPage({ params }: PageProps) {
               {proximaLicao ? (
                 <Link
                   href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
-                  className="ui-btn-secondary"
+                  className="transition-colors hover:text-[#8b1e1e]"
                 >
                   Próxima lição →
                 </Link>
               ) : null}
-              <Link href={`/ebd/${classe}/${trimestre.slug}`} className="ui-btn-secondary">
+              <Link
+                href={`/ebd/${classe}/${trimestre.slug}`}
+                className="transition-colors hover:text-[#8b1e1e]"
+              >
                 Voltar ao trimestre
               </Link>
-              <Link href="/programacao" className="ui-btn-secondary">
+              <Link
+                href="/programacao"
+                className="transition-colors hover:text-[#8b1e1e]"
+              >
                 Ver EBD na programação
               </Link>
-              <Link href={`#${lessonTopId}`} className="ui-btn-ghost">
+              <Link
+                href={`#${lessonTopId}`}
+                className="transition-colors hover:text-[#8b1e1e]"
+              >
                 Voltar ao topo
               </Link>
-            </div>
+            </nav>
           </div>
         </div>
         </section>
