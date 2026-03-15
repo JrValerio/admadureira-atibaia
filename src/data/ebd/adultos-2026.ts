@@ -3022,6 +3022,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao11,
   },
   12: {
+    imagem: "/images/EBD/licao-12-adulto.png",
     objetivos: objetivosAdultosLicao12,
     topicos: topicosAdultosLicao12,
     apoioProfessor: [
@@ -3052,6 +3053,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao12,
   },
   13: {
+    imagem: "/images/EBD/licao-13-adulto.png",
     objetivos: objetivosAdultosLicao13,
     topicos: topicosAdultosLicao13,
     apoioProfessor: [
