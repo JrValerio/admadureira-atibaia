@@ -1166,6 +1166,570 @@ const subsidioJovensLicao6: LicaoEBD["subsidioJovens"] = {
   },
 };
 
+const objetivosJovensLicao7 = [
+  "Compreender a maravilhosa graça na obra da salvação.",
+  "Refletir a respeito da graça de Deus e as obras.",
+  "Mostrar as implicações da graça na vida cristã.",
+];
+
+const topicosJovensLicao7 = [
+  {
+    titulo: "A maravilhosa graça na obra da salvação",
+    conteudo: [
+      "A graça de Deus nos alcança quando estávamos mortos em ofensas e pecados, incapazes de produzir vida espiritual por nós mesmos.",
+      "A salvação nasce da misericórdia divina e nos arranca da morte para a vida em Cristo.",
+      "Entender a graça começa por reconhecer a gravidade da condição humana sem Deus.",
+    ],
+  },
+  {
+    titulo: "A graça de Deus e as obras",
+    conteudo: [
+      "A salvação não vem das obras, mas a graça produz uma vida que transborda em boas obras preparadas por Deus.",
+      "As obras da lei não salvam; as obras da graça revelam o fruto de um coração transformado.",
+      "Fé verdadeira não é estéril: ela se expressa em obediência, amor e serviço.",
+    ],
+  },
+  {
+    titulo: "As implicações da graça na vida cristã",
+    conteudo: [
+      "A graça nos ensina a amar, perdoar e servir, refletindo na prática o que recebemos de Deus.",
+      "Quem foi alcançado pela graça abandona a lógica do mérito e aprende a viver com gratidão diária.",
+      "A vida cristã amadurece quando a graça sai do discurso e alcança relacionamentos, escolhas e serviço.",
+    ],
+  },
+];
+
+const subsidioJovensLicao7: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 7,
+    titulo: "A Graça de Deus",
+    data: "2026-02-15",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "Efésios 2.8-9 declara que a salvação é pela graça, por meio da fé, e não por méritos humanos.",
+    resumoDaLicao:
+      "A salvação pela graça é um presente imerecido de Deus, que transforma o cristão para que viva refletindo essa graça em boas obras, amor, perdão e serviço aos outros.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Efésios 2.8-9",
+        foco: "A salvação é dom gracioso de Deus.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Efésios 2.10",
+        foco: "A graça nos recria para boas obras.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Tiago 2.14-17",
+        foco: "A fé verdadeira se expressa em ações concretas.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Tito 2.11-12",
+        foco: "A graça também educa e corrige o viver do salvo.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Efésios 4.32",
+        foco: "A graça forma uma vida marcada por amor, perdão e bondade.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Colossenses 3.12-14",
+        foco: "A graça nos reveste de misericórdia, paciência e amor.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao7,
+    interacao:
+      "A aula precisa mostrar que graça não é apenas ponto de entrada da vida cristã. Ela continua moldando a forma como o jovem ama, perdoa, serve e responde à vontade de Deus.",
+    orientacaoPedagogica:
+      "Comece perguntando se a turma já recebeu algo que não merecia. Use essa experiência para explicar graça como favor imerecido e, depois, conduza Efésios 2 para mostrar que esse presente gera uma nova vida com boas obras.",
+  },
+  desenvolvimento: [
+    {
+      id: "graca-na-salvacao",
+      titulo: "A maravilhosa graça na obra da salvação",
+      sinopse:
+        "A graça nos encontra em morte espiritual e nos vivifica juntamente com Cristo.",
+      explicacaoBiblica: [
+        "Efésios 2.1-7 descreve a condição humana anterior à graça como morte espiritual e escravidão ao pecado.",
+        "A iniciativa da salvação nasce da misericórdia e do amor de Deus, não do valor do pecador.",
+        "A graça produz uma mudança radical: da morte para a vida, da condenação para a esperança.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a lembrar de onde Deus a tirou para aumentar a gratidão e diminuir o orgulho espiritual.",
+        "Mostre que compreender a graça protege contra autossuficiência e desprezo pelos que ainda não conhecem a Cristo.",
+      ],
+      pense:
+        "Você enxerga a salvação como presente imerecido ou ainda tenta viver como quem precisa conquistá-la?",
+      pontoImportante:
+        "A graça é a única razão pela qual passamos da morte para a vida em Cristo.",
+    },
+    {
+      id: "graca-e-obras",
+      titulo: "A graça de Deus e as obras",
+      sinopse:
+        "Boas obras não compram salvação, mas revelam a transformação operada pela graça.",
+      explicacaoBiblica: [
+        "Efésios 2.8-10 mostra que somos salvos pela graça e criados em Cristo para boas obras.",
+        "Tiago 2 complementa essa verdade ao mostrar que fé viva se manifesta em atitudes concretas.",
+        "A graça não enfraquece a obediência; ela capacita a obediência verdadeira.",
+      ],
+      aplicacaoPratica: [
+        "Conduza a classe a abandonar tanto o legalismo quanto a passividade espiritual.",
+        "Mostre que a pergunta certa não é 'como merecer?', mas 'como responder com fidelidade ao que recebi?'.",
+      ],
+      pense:
+        "Suas ações revelam gratidão pela graça ou apenas religiosidade sem vida?",
+      pontoImportante:
+        "O cristão não é salvo pelas obras, mas a graça o salva para uma vida frutífera.",
+    },
+    {
+      id: "implicacoes-da-graca",
+      titulo: "As implicações da graça na vida cristã",
+      sinopse:
+        "Graça recebida se torna graça praticada em amor, perdão e serviço.",
+      explicacaoBiblica: [
+        "Efésios 4.32 e Colossenses 3 mostram que o perdão recebido em Cristo deve moldar nossa relação com os outros.",
+        "Tito 2 ensina que a graça também educa o salvo a viver de modo santo neste mundo.",
+        "O amor cristão nasce do fato de que fomos amados primeiro por Deus.",
+      ],
+      aplicacaoPratica: [
+        "Ajude os alunos a identificar situações concretas em que precisam praticar graça com família, amigos e igreja.",
+        "Mostre que servir é resposta de gratidão, não tentativa de compensar Deus pelo que Ele fez.",
+      ],
+      pense:
+        "A graça que você celebra nos cultos aparece também no jeito como perdoa, serve e trata pessoas difíceis?",
+      pontoImportante:
+        "A graça de Deus transforma relações, atitudes e prioridades do cristão.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte à turma como se sente alguém que recebe um presente totalmente imerecido.",
+    perguntaChave:
+      "O que a graça de Deus realiza na salvação e como ela se desdobra em boas obras, amor, perdão e serviço?",
+    dificuldadeProvavelDaClasse:
+      "Alguns alunos podem opor graça e obediência, como se a gratuidade da salvação dispensasse transformação prática.",
+    conducaoDaConversa: [
+      "Use Efésios 2 para mostrar que a graça nos salva e nos recria para viver de forma nova.",
+      "Destaque a diferença entre obras da lei e obras como fruto da graça.",
+      "Conecte a aula com conflitos reais em que amor, perdão e serviço precisam aparecer.",
+    ],
+    fechamento:
+      "Conclua lembrando que a graça não é só mensagem para acreditar, mas vida nova para praticar todos os dias.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Graça é favor imerecido, mas também poder divino que sustenta toda a vida cristã do começo ao fim.",
+      "Obras legítimas não competem com a graça; elas testemunham a transformação que a graça produziu.",
+    ],
+    contextoBiblico: [
+      "Efésios 2 é texto-chave para compreender a passagem da morte espiritual para a vida pela graça.",
+      "Tiago complementa Paulo ao mostrar que fé viva se manifesta concretamente no cotidiano.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens que entendem a graça deixam de viver para provar valor e passam a viver em gratidão e serviço.",
+      "A graça recebida precisa alcançar vínculos, feridas, decisões e o modo como tratamos o próximo.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "Qual era nossa condição antes da graça?",
+      "Como a graça se relaciona com as boas obras?",
+      "Por que graça não produz passividade?",
+      "Que implicações práticas a graça traz para amor, perdão e serviço?",
+    ],
+    quizCurto: [
+      "A salvação vem por mérito humano? Resposta esperada: não; vem pela graça.",
+      "Boas obras salvam? Resposta esperada: não; são fruto da salvação.",
+      "A graça ensina o salvo a viver como? Resposta esperada: com amor, perdão, serviço e santidade.",
+    ],
+    conclusao:
+      "A graça de Deus salva, transforma e capacita o cristão a viver refletindo o amor que recebeu.",
+  },
+};
+
+const objetivosJovensLicao8 = [
+  "Apresentar o conceito bíblico de eleição.",
+  "Compreender a eleição bíblica fundamentada em Jesus.",
+  "Conhecer as implicações da eleição bíblica.",
+];
+
+const topicosJovensLicao8 = [
+  {
+    titulo: "O conceito bíblico de eleição",
+    conteudo: [
+      "A eleição bíblica faz parte do plano redentor de Deus e deve ser entendida em conexão com Cristo e com a resposta de fé.",
+      "No testemunho bíblico, a eleição aparece fortemente em chave corporativa: Deus chama um povo para si e o envia em missão.",
+      "Ela não é desculpa para passividade, mas convite para entrega real, santidade e obediência.",
+    ],
+  },
+  {
+    titulo: "A eleição fundamentada em Jesus",
+    conteudo: [
+      "Jesus é o Eleito por excelência, o Cordeiro escolhido antes da fundação do mundo para realizar a redenção.",
+      "Todos os crentes são eleitos nEle, pois a eleição não acontece fora da união com Cristo.",
+      "A escolha divina é profundamente cristocêntrica e nos liga à obra redentora do Filho.",
+    ],
+  },
+  {
+    titulo: "Implicações da eleição bíblica",
+    conteudo: [
+      "A eleição chama o povo de Deus à missão, à santidade e ao serviço no Reino.",
+      "Quem foi alcançado por esse chamado vive para a glória de Deus e participa da proclamação do Evangelho.",
+      "A eleição não é fim em si mesma; ela nos move a uma vida fiel e útil aos propósitos de Deus.",
+    ],
+  },
+];
+
+const subsidioJovensLicao8: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 8,
+    titulo: "A Eleição na Salvação",
+    data: "2026-02-22",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "Efésios 1.4 mostra que Deus nos escolheu em Cristo para uma vida santa e irrepreensível diante dEle.",
+    resumoDaLicao:
+      "A compreensão da eleição nos impulsiona a uma vida de entrega total a Deus, refletindo sua glória e cumprindo seu propósito no mundo.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Efésios 1.4-5",
+        foco: "Deus nos escolheu em Cristo com propósito santo.",
+      },
+      {
+        dia: "Terça",
+        referencia: "2 Timóteo 1.9",
+        foco: "A eleição nos chama a viver segundo o propósito divino.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "1 Pedro 1.2",
+        foco: "Fomos eleitos para a obediência e a santificação.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "1 Pedro 2.9",
+        foco: "A eleição forma um povo de propriedade exclusiva de Deus.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Efésios 2.10",
+        foco: "Os eleitos em Cristo são chamados para boas obras.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Romanos 12.1-2",
+        foco: "A eleição nos conduz a uma vida entregue à vontade de Deus.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao8,
+    interacao:
+      "A aula precisa tratar eleição com reverência bíblica e responsabilidade pastoral, mostrando soberania divina, centralidade de Cristo e resposta humana de fé e obediência.",
+    orientacaoPedagogica:
+      "Comece perguntando se os alunos entendem a eleição como privilégio passivo ou como chamado para viver de modo santo e missionário. Depois organize a aula em torno de Cristo, da Igreja e do propósito de Deus para seu povo.",
+  },
+  desenvolvimento: [
+    {
+      id: "conceito-de-eleicao",
+      titulo: "O conceito bíblico de eleição",
+      sinopse:
+        "A eleição faz parte do plano de Deus e chama um povo a responder em fé e obediência.",
+      explicacaoBiblica: [
+        "Efésios 1 e João 10 ajudam a perceber que a eleição bíblica está ligada à relação com Cristo e à resposta a sua voz.",
+        "No Antigo Testamento, Deus elege Israel como povo para sua glória e para a história da salvação.",
+        "No Novo Testamento, esse chamado se amplia em Cristo, alcançando judeus e gentios pela pregação do Evangelho.",
+      ],
+      aplicacaoPratica: [
+        "Ensine a classe a não tratar eleição como debate estéril, mas como verdade que fortalece compromisso com Cristo.",
+        "Mostre que responder ao chamado de Deus exige entrega, fé e perseverança.",
+      ],
+      pense:
+        "Sua compreensão de eleição produz humildade e compromisso ou apenas curiosidade teológica sem transformação?",
+      pontoImportante:
+        "A eleição bíblica sempre aponta para Cristo e para um povo chamado a refletir sua glória.",
+    },
+    {
+      id: "eleicao-fundamentada-em-jesus",
+      titulo: "A eleição bíblica fundamentada em Jesus",
+      sinopse:
+        "Toda eleição para a salvação se torna realidade em Cristo, o Eleito de Deus.",
+      explicacaoBiblica: [
+        "Jesus é o Cordeiro escolhido antes da fundação do mundo para realizar a obra redentora.",
+        "Efésios 1.4-5 mostra que fomos eleitos nEle e não fora dEle.",
+        "A eleição cristã é cristocêntrica: ela nasce, se sustenta e se cumpre na obra do Filho.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a perceber que segurança espiritual não está em abstrações, mas na união com Cristo.",
+        "Mostre que ser eleito em Cristo significa viver intencionalmente para a glória de Deus.",
+      ],
+      pense:
+        "Você enxerga sua identidade espiritual realmente enraizada em Cristo, ou ainda em desempenho, tradição ou comparação?",
+      pontoImportante:
+        "A eleição bíblica não afasta de Jesus; ela nos leva diretamente para Ele.",
+    },
+    {
+      id: "implicacoes-da-eleicao",
+      titulo: "Implicações da eleição bíblica",
+      sinopse:
+        "Quem foi alcançado pelo chamado de Deus vive em santidade, missão e serviço.",
+      explicacaoBiblica: [
+        "Mateus 28 e 2 Coríntios 5 mostram que a eleição participa do propósito missionário de Deus no mundo.",
+        "1 Pedro 1 e 1 Pedro 2 ligam eleição a santidade, identidade e testemunho público.",
+        "Efésios 2.10 mostra que os eleitos em Cristo são também chamados para boas obras.",
+      ],
+      aplicacaoPratica: [
+        "Leve os alunos a enxergar a eleição como vocação para serviço e não como zona de conforto espiritual.",
+        "Conecte o tema com evangelização, santidade e participação ativa na vida da igreja.",
+      ],
+      pense:
+        "Sua vida tem refletido o propósito de Deus para os eleitos: santidade, missão e serviço?",
+      pontoImportante:
+        "A eleição nos chama não apenas para a salvação, mas também para um viver santo e útil ao Reino de Deus.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Pergunte se os alunos entendem eleição mais como privilégio ou como responsabilidade diante de Deus.",
+    perguntaChave:
+      "Como a eleição bíblica, fundamentada em Cristo, chama o salvo para santidade, missão e serviço?",
+    dificuldadeProvavelDaClasse:
+      "Alguns jovens podem associar eleição a fatalismo espiritual ou tratar o tema apenas como disputa teórica, sem perceber seu eixo cristocêntrico e prático.",
+    conducaoDaConversa: [
+      "Mantenha a explicação ancorada na perspectiva pentecostal/assembleiana já usada pela revista.",
+      "Mostre que a eleição é inseparável de Cristo, da Igreja e da missão no mundo.",
+      "Evite reducionismos individualistas e destaque a dimensão corporativa do povo de Deus.",
+    ],
+    fechamento:
+      "Conclua reforçando que a eleição em Cristo é chamada para viver de modo santo, missionário e obediente, para a glória de Deus.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "A eleição bíblica deve ser lida a partir de Cristo, e não separada dEle.",
+      "Na perspectiva pentecostal, soberania divina e responsabilidade humana não são inimigas, mas caminham juntas no drama da salvação.",
+    ],
+    contextoBiblico: [
+      "Israel é eleito como povo no Antigo Testamento, e a Igreja aparece no Novo como povo eleito em Cristo.",
+      "Textos como Efésios 1, 1 Pedro 1 e 1 Pedro 2 ajudam a ligar identidade, propósito e missão.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens que entendem a eleição corretamente tendem a valorizar mais a graça, a santidade e a evangelização.",
+      "A eleição não alimenta orgulho; ela produz gratidão e disposição para servir.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "Como a eleição bíblica é apresentada nas Escrituras?",
+      "Por que a eleição precisa ser entendida em Cristo?",
+      "Quais implicações práticas a eleição traz para o salvo?",
+      "Como eleição e missão caminham juntas?",
+    ],
+    quizCurto: [
+      "A eleição bíblica está fundamentada em quem? Resposta esperada: em Cristo.",
+      "Ela chama o povo de Deus para quê? Resposta esperada: santidade, missão e serviço.",
+      "A eleição é fim em si mesma? Resposta esperada: não.",
+    ],
+    conclusao:
+      "A eleição na salvação é expressão do amor de Deus em Cristo e chamado a uma vida entregue à sua vontade, em santidade e missão.",
+  },
+};
+
+const objetivosJovensLicao9 = [
+  "Apresentar o livre-arbítrio como um dom de Deus.",
+  "Saber o que é graça preveniente e como ela opera.",
+  "Explicar a salvação como uma escolha capacitada pela graça.",
+];
+
+const topicosJovensLicao9 = [
+  {
+    titulo: "O livre-arbítrio como dom de Deus",
+    conteudo: [
+      "O ser humano foi criado com capacidade de escolha, consciência moral e responsabilidade diante de Deus.",
+      "O pecado afetou profundamente essa capacidade, mas não anulou a dignidade humana nem a responsabilidade pelas escolhas.",
+      "Em Cristo, a graça de Deus restaura a possibilidade de responder ao chamado divino.",
+    ],
+  },
+  {
+    titulo: "A necessidade da graça preveniente",
+    conteudo: [
+      "Por causa da corrupção do pecado, o ser humano não consegue escolher o bem espiritual sem a ação graciosa de Deus.",
+      "A graça preveniente antecede a conversão e desperta o coração para arrependimento e fé.",
+      "Ela é suficiente e universal em alcance, mas pode ser resistida pelo coração humano.",
+    ],
+  },
+  {
+    titulo: "Salvação como escolha capacitada pela graça",
+    conteudo: [
+      "A salvação é dom gratuito de Deus, mas requer resposta humana de fé, arrependimento e perseverança.",
+      "A graça não anula a vontade; ela a restaura e a capacita a dizer sim a Deus.",
+      "Depois da conversão, o crente continua chamado a perseverar diariamente em obediência.",
+    ],
+  },
+];
+
+const subsidioJovensLicao9: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 9,
+    titulo: "O Livre-arbítrio na Salvação",
+    data: "2026-03-01",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "João 3.18 mostra que a resposta pessoal a Cristo está no centro da experiência da salvação.",
+    resumoDaLicao:
+      "A salvação é o dom gracioso de Deus, precedido pela graça preveniente, e requer do ser humano uma resposta de arrependimento, fé e perseverança.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Efésios 2.8-9",
+        foco: "A salvação é dom de Deus, não conquista humana.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Tito 2.11-12",
+        foco: "A graça se manifesta e alcança a todos, chamando ao viver santo.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "João 1.9-12",
+        foco: "A verdadeira luz ilumina e chama a uma resposta.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Deuteronômio 30.19-20",
+        foco: "Deus coloca diante do ser humano a responsabilidade de escolher o caminho da vida.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Hebreus 3.12",
+        foco: "A perseverança continua sendo responsabilidade real do crente.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Filipenses 2.12-13",
+        foco: "O crente coopera com Deus em obediência sustentada pela graça.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao9,
+    interacao:
+      "A aula deve mostrar que a salvação é inteiramente graciosa, mas não transforma o ser humano em robô. Deus chama, ilumina e capacita; o homem responde com fé, arrependimento e perseverança.",
+    orientacaoPedagogica:
+      "Comece perguntando sobre escolhas difíceis da vida e, a partir daí, mostre que o livre-arbítrio, ferido pelo pecado, precisa ser restaurado pela graça preveniente para responder corretamente ao chamado de Deus.",
+  },
+  desenvolvimento: [
+    {
+      id: "livre-arbitrio-dom-de-deus",
+      titulo: "O livre-arbítrio: um dom de Deus",
+      sinopse:
+        "Deus criou o ser humano com consciência e capacidade de escolha, ainda que o pecado tenha corrompido essa realidade.",
+      explicacaoBiblica: [
+        "Gênesis, Deuteronômio e Josué mostram que Deus trata o ser humano como responsável diante de suas decisões.",
+        "A queda afetou profundamente intelecto, vontade e afetos, tornando impossível o bem espiritual sem graça.",
+        "Mesmo assim, a responsabilidade humana permanece, e Deus continua chamando à resposta.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a perceber que escolhas espirituais não são neutras e carregam peso moral diante de Deus.",
+        "Mostre que a liberdade humana deve ser entendida dentro da verdade bíblica, e não como autonomia absoluta.",
+      ],
+      pense:
+        "Você tem tratado suas decisões espirituais como algo sério diante de Deus ou como escolha sem consequências?",
+      pontoImportante:
+        "Livre-arbítrio é dom de Deus, mas o pecado tornou necessária a ação prévia da graça para qualquer resposta salvadora.",
+    },
+    {
+      id: "graca-preveniente",
+      titulo: "A necessidade da graça",
+      sinopse:
+        "A graça preveniente antecede a conversão e desperta o pecador para responder ao chamado de Deus.",
+      explicacaoBiblica: [
+        "João 1.9 e Tito 2.11 mostram o alcance da ação graciosa de Deus em direção ao ser humano.",
+        "João 16.8 revela o Espírito convencendo do pecado, da justiça e do juízo.",
+        "A graça preveniente não salva automaticamente, mas restaura a capacidade de responder com arrependimento e fé.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a valorizar a iniciativa divina em cada processo de conversão genuína.",
+        "Mostre que resistir continuamente à graça é endurecer o coração diante do amor de Deus.",
+      ],
+      pense:
+        "Você reconhece a graça de Deus lhe antecedendo, despertando e atraindo para mais perto de Cristo?",
+      pontoImportante:
+        "A graça preveniente não anula a vontade humana; ela a ilumina, toca e capacita a responder.",
+    },
+    {
+      id: "escolha-capacitada-pela-graca",
+      titulo: "Salvação: uma escolha capacitada pela graça",
+      sinopse:
+        "A resposta salvadora do homem é real, pessoal e sustentada pela graça divina.",
+      explicacaoBiblica: [
+        "A salvação é dom de Deus, mas exige arrependimento e fé como resposta consciente ao Evangelho.",
+        "Após a conversão, a perseverança continua sendo exercício diário de fidelidade na força da graça.",
+        "Filipenses 2.12-13 ajuda a ver essa cooperação: Deus opera, e o crente responde em obediência.",
+      ],
+      aplicacaoPratica: [
+        "Ensine a turma a dizer sim a Deus não apenas no início da caminhada, mas em cada dia da vida cristã.",
+        "Mostre que perseverança não é automação espiritual, mas decisão contínua sustentada pela graça.",
+      ],
+      pense:
+        "Você tem escolhido andar com Cristo todos os dias ou confiado que a vida espiritual se sustenta sozinha?",
+      pontoImportante:
+        "A salvação é dom gracioso, e a resposta humana é capacitada, despertada e sustentada por essa mesma graça.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Peça aos alunos que contem uma escolha difícil e o que pesou na decisão.",
+    perguntaChave:
+      "Como a graça de Deus restaura a capacidade humana de responder ao chamado da salvação com fé e perseverança?",
+    dificuldadeProvavelDaClasse:
+      "Alguns jovens podem confundir graça com automatismo espiritual ou imaginar liberdade humana como independência total de Deus.",
+    conducaoDaConversa: [
+      "Trabalhe a lição mostrando a queda, a necessidade da graça preveniente e a resposta humana à salvação.",
+      "Use Deuteronômio 30 e João 1 para mostrar que Deus chama e o homem responde.",
+      "Conecte o tema com perseverança prática, já que a vontade regenerada continua sendo exercida diariamente.",
+    ],
+    fechamento:
+      "Conclua lembrando que Deus chama com graça, e o salvo responde com fé, arrependimento e perseverança no caminho de Cristo.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Graça preveniente é a ação divina que antecede a conversão e torna possível uma resposta salvadora do pecador.",
+      "A responsabilidade humana permanece real tanto antes quanto depois da conversão.",
+    ],
+    contextoBiblico: [
+      "Deuteronômio 30 e João 1 ajudam a perceber que Deus se revela, ilumina e coloca o ser humano diante de escolha responsável.",
+      "Textos apostólicos mostram que perseverança é continuação da vida de fé, não mera formalidade inicial.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens precisam aprender a não terceirizar a própria resposta a Deus nem reduzir a conversão a evento emocional.",
+      "A graça que chama é a mesma que sustenta decisões diárias de fidelidade.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que é livre-arbítrio?",
+      "Por que a graça preveniente é necessária?",
+      "Como a salvação é escolha capacitada pela graça?",
+      "Qual é o papel da perseverança depois da conversão?",
+    ],
+    quizCurto: [
+      "O pecado anulou totalmente a responsabilidade humana? Resposta esperada: não.",
+      "A graça preveniente salva automaticamente? Resposta esperada: não.",
+      "O crente é chamado a perseverar voluntariamente na fé? Resposta esperada: sim.",
+    ],
+    conclusao:
+      "O livre-arbítrio na salvação só pode ser entendido corretamente à luz da graça de Deus, que chama, capacita e sustenta uma resposta fiel em Cristo.",
+  },
+};
+
 const objetivosJovensLicao11 = [
   "Apresentar a doutrina bíblica da adoção como expressão da graça que nos insere de fato na família de Deus.",
   "Explicar como o Espírito Santo confirma a filiação cristã e nos conduz a uma relação viva com o Pai.",
@@ -1565,35 +2129,44 @@ const sementesJovensPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 7,
     data: "2026-02-15",
-    titulo: "Relacionamentos e sabedoria cristã",
-    resumo: "A lição aborda namoro, limites, intenção e pureza com linguagem pastoral e responsabilidade bíblica.",
-    textoChave: "Provérbios 4:23",
-    verdadePratica: "Relacionamentos saudáveis exigem sabedoria, pureza, responsabilidade e temor do Senhor.",
-    leituraBiblica: ["1 Coríntios 13:4-7", "Cantares 2:7"],
-    aplicacao: "Reflita se suas expectativas afetivas estão alinhadas com sabedoria, pureza e responsabilidade diante de Deus.",
-    enfase: "a sabedoria nos relacionamentos",
+    titulo: "A Graça de Deus",
+    resumo:
+      "A salvação pela graça é um presente imerecido de Deus, que transforma o cristão para que viva refletindo essa graça em boas obras, amor, perdão e serviço aos outros.",
+    textoChave: "Efésios 2.8-9",
+    verdadePratica:
+      "A graça salva gratuitamente e produz uma vida que responde a Deus com gratidão, amor e serviço.",
+    leituraBiblica: ["Efésios 2.1-10", "Tiago 2.14-17", "Tito 2.11-12", "Efésios 4.32"],
+    aplicacao:
+      "Escolha uma atitude concreta de amor, perdão ou serviço para praticar nesta semana como resposta à graça recebida.",
+    enfase: "a graça de Deus na salvação",
   },
   {
     numero: 8,
     data: "2026-02-22",
-    titulo: "Trabalho, estudos e fidelidade cristã",
-    resumo: "Estudos e trabalho também são campos de testemunho, serviço e formação do caráter cristão.",
-    textoChave: "Colossenses 3:23",
-    verdadePratica: "O cristão glorifica a Deus também quando estuda, trabalha e administra com responsabilidade o tempo recebido.",
-    leituraBiblica: ["Colossenses 3:22-24", "Provérbios 22:29"],
-    aplicacao: "Escolha uma atitude prática para demonstrar fidelidade cristã em seus estudos ou no trabalho ainda nesta semana.",
-    enfase: "a fidelidade no cotidiano",
+    titulo: "A Eleição na Salvação",
+    resumo:
+      "A compreensão da eleição nos impulsiona a uma vida de entrega total a Deus, refletindo sua glória e cumprindo seu propósito no mundo.",
+    textoChave: "Efésios 1.4",
+    verdadePratica:
+      "A eleição em Cristo chama o salvo à santidade, à missão e ao serviço para a glória de Deus.",
+    leituraBiblica: ["Efésios 1.3-14", "1 Pedro 1.2", "1 Pedro 2.9", "Romanos 12.1-2"],
+    aplicacao:
+      "Reflita nesta semana de que forma sua vida pode responder com mais entrega ao propósito de Deus para você em Cristo.",
+    enfase: "a eleição em Cristo",
   },
   {
     numero: 9,
     data: "2026-03-01",
-    titulo: "Dons e participação na igreja",
-    resumo: "Os jovens são encorajados a servir de forma concreta, assumindo lugar, responsabilidade e compromisso na vida da igreja.",
-    textoChave: "1 Timóteo 4:12",
-    verdadePratica: "Juventude engajada na igreja aprende a servir com alegria, humildade e disposição para crescer.",
-    leituraBiblica: ["1 Coríntios 12:12-20", "Romanos 12:3-8"],
-    aplicacao: "Converse com sua liderança sobre uma área em que você pode servir ou se desenvolver mais na igreja local.",
-    enfase: "o serviço da juventude",
+    titulo: "O Livre-arbítrio na Salvação",
+    resumo:
+      "A salvação é o dom gracioso de Deus, precedido pela graça preveniente, e requer do ser humano uma resposta de arrependimento, fé e perseverança.",
+    textoChave: "João 3.18",
+    verdadePratica:
+      "A graça de Deus antecede, desperta e capacita o ser humano a responder com fé ao chamado da salvação.",
+    leituraBiblica: ["Deuteronômio 30.15-20", "João 1.6-14", "Tito 2.11-12", "Filipenses 2.12-13"],
+    aplicacao:
+      "Identifique uma decisão espiritual concreta desta semana em que você precisa responder com obediência ao chamado de Deus.",
+    enfase: "a resposta humana capacitada pela graça",
   },
   {
     numero: 10,
@@ -1829,6 +2402,99 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
       },
     ],
     subsidioJovens: subsidioJovensLicao6,
+  },
+  7: {
+    imagem: "/images/EBD/licao-07-jovens.png",
+    objetivos: objetivosJovensLicao7,
+    topicos: topicosJovensLicao7,
+    apoioProfessor: [
+      "Mostre que graça e transformação caminham juntas, evitando tanto legalismo quanto passividade espiritual.",
+      "Leve a turma a aplicar a aula em relações concretas, principalmente nas áreas de perdão, bondade e serviço.",
+    ],
+    apoioAluno: [
+      "Leia Efésios 2.8-10 e Colossenses 3.12-14 durante a semana e anote como a graça precisa aparecer na sua rotina.",
+      "Pratique um gesto concreto de serviço ou reconciliação como resposta à graça recebida em Cristo.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando sobre um presente imerecido e use essa experiência para explicar graça como favor não merecido.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição mostrando a condição humana sem graça, a relação entre graça e obras e as implicações práticas em amor, perdão e serviço.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua lembrando que a graça não só nos salva, mas também nos ensina a viver de modo coerente com o Evangelho.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao7,
+  },
+  8: {
+    imagem: "/images/EBD/licao-08-jovens.png",
+    objetivos: objetivosJovensLicao8,
+    topicos: topicosJovensLicao8,
+    apoioProfessor: [
+      "Trabalhe o tema da eleição em chave pastoral e cristocêntrica, sem transformar a aula em disputa teórica abstrata.",
+      "Mostre que eleição bíblica chama para santidade, missão e serviço, e não para orgulho espiritual.",
+    ],
+    apoioAluno: [
+      "Leia Efésios 1.3-14 e 1 Pedro 2.9 durante a semana e anote o que esses textos dizem sobre identidade e propósito em Cristo.",
+      "Ore pedindo que sua compreensão de eleição produza mais humildade, compromisso missionário e santidade.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece perguntando se eleição é vista pela turma como privilégio ou responsabilidade diante de Deus e organize a conversa a partir disso.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Explique a lição em três eixos: conceito bíblico de eleição, centralidade de Cristo e implicações missionárias, santas e servis do chamado divino.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Finalize reforçando que a eleição em Cristo é convite para uma vida entregue à glória de Deus e útil ao Reino.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao8,
+  },
+  9: {
+    imagem: "/images/EBD/licao-09-jovens.png",
+    objetivos: objetivosJovensLicao9,
+    topicos: topicosJovensLicao9,
+    apoioProfessor: [
+      "Explique livre-arbítrio, graça preveniente e perseverança com clareza, preservando a linha pentecostal/assembleiana da revista.",
+      "Ajude a classe a perceber que resposta humana à salvação é real, mas só acontece porque a graça de Deus veio primeiro.",
+    ],
+    apoioAluno: [
+      "Leia Deuteronômio 30.19-20 e João 1.9-12 durante a semana e observe como Deus chama o ser humano a responder com fé.",
+      "Identifique uma área em que você precisa continuar dizendo sim a Deus com mais constância e perseverança.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula com uma pergunta sobre escolhas difíceis e use isso para introduzir responsabilidade humana diante da salvação.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize a explicação em três partes: livre-arbítrio como dom de Deus, necessidade da graça preveniente e salvação como resposta capacitada pela graça.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua lembrando que a graça chama, capacita e sustenta, mas o crente responde com fé, arrependimento e perseverança.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao9,
   },
   11: {
     imagem: "/images/EBD/licao-11-jovens.png",
