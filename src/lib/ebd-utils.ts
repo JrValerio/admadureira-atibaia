@@ -8,7 +8,11 @@ import {
 } from "@/data/ebd";
 import { getSaoPauloDate } from "@/lib/date-utils";
 
-function getClasseInfo(classe: ClasseEBD): ClasseEBDInfo {
+export function isClasseEbd(value: string): value is ClasseEBD {
+  return classesEBD.some((item) => item.slug === value);
+}
+
+export function getClasseEbdInfo(classe: ClasseEBD): ClasseEBDInfo {
   const classeInfo = classesEBD.find((item) => item.slug === classe);
 
   if (!classeInfo) {
@@ -53,7 +57,7 @@ function getSundayReferenceKey(date = new Date()) {
 }
 
 function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
-  const classeInfo = getClasseInfo(classe);
+  const classeInfo = getClasseEbdInfo(classe);
 
   return trimestresEBDPorClasse[classe]
     .flatMap((trimestre) =>
@@ -68,6 +72,10 @@ function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
 
 export function getClassesEbd() {
   return [...classesEBD].sort((a, b) => a.ordem - b.ordem);
+}
+
+export function getTrimestreAtual(classe: ClasseEBD) {
+  return getTrimestresPorClasse(classe)[0] ?? null;
 }
 
 export function getTrimestresPorClasse(classe: ClasseEBD) {
@@ -95,7 +103,7 @@ export function getLicao(classe: ClasseEBD, edicao: string, licaoSlug: string) {
   }
 
   return {
-    classe: getClasseInfo(classe),
+    classe: getClasseEbdInfo(classe),
     trimestre,
     licao,
   };
@@ -123,4 +131,12 @@ export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
       ({ licao }) => licao.data > licaoDaSemana.licao.data
     ) ?? null
   );
+}
+
+export function formatEbdDate(date: string) {
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(`${date}T12:00:00-03:00`));
 }

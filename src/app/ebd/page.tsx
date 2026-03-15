@@ -1,0 +1,326 @@
+import Link from "next/link";
+import HeroPage from "@/components/HeroPage";
+import CardMedia from "@/components/media/CardMedia";
+import { igrejaHeroMedia } from "@/data/igreja-media";
+import {
+  formatEbdDate,
+  getClassesEbd,
+  getClasseEbdInfo,
+  getLicaoDaSemana,
+  getProximaLicao,
+  getTrimestreAtual,
+  getTrimestresPorClasse,
+  isClasseEbd,
+} from "@/lib/ebd-utils";
+import { buildPageMetadata } from "@/lib/site";
+
+type PageProps = {
+  searchParams: Promise<{
+    classe?: string;
+  }>;
+};
+
+export const metadata = buildPageMetadata({
+  title: "EBD | AD Madureira Atibaia",
+  description:
+    "Acompanhe a Escola Bíblica Dominical da AD Madureira Atibaia com classes, trimestres, lições e acesso rápido ao estudo da semana.",
+  path: "/ebd",
+  image: igrejaHeroMedia.ebd,
+});
+
+export const revalidate = 3600;
+
+function Breadcrumb() {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#777]"
+    >
+      <Link href="/" className="transition-colors hover:text-[#212121]">
+        Início
+      </Link>
+      <span>›</span>
+      <span className="font-medium text-[#212121]">EBD</span>
+    </nav>
+  );
+}
+
+export default async function EbdHubPage({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const classeAtiva =
+    typeof params.classe === "string" && isClasseEbd(params.classe)
+      ? params.classe
+      : "adultos";
+  const classes = getClassesEbd();
+  const classeInfo = getClasseEbdInfo(classeAtiva);
+  const licaoDaSemana = getLicaoDaSemana(classeAtiva);
+  const proximaLicao = getProximaLicao(classeAtiva);
+  const trimestreAtual = getTrimestreAtual(classeAtiva);
+  const trimestresDaClasse = getTrimestresPorClasse(classeAtiva);
+
+  return (
+    <main className="min-h-screen bg-[#f5f5f5]">
+      <HeroPage
+        variant="full"
+        label="Escola Bíblica Dominical"
+        title="EBD da Igreja"
+        description="Uma área dedicada ao ensino bíblico contínuo da AD Madureira Atibaia, com classes, trimestres, lições e acesso rápido ao estudo da semana."
+        image={igrejaHeroMedia.ebd}
+        imageAlt="Capa da Escola Bíblica Dominical da AD Madureira Atibaia"
+      />
+
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <Breadcrumb />
+
+          <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Lição da semana
+              </p>
+              <h1 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                {licaoDaSemana
+                  ? `${classeInfo.label} · ${licaoDaSemana.licao.titulo}`
+                  : `Classe ${classeInfo.label}`}
+              </h1>
+              {licaoDaSemana ? (
+                <>
+                  <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                    Lição {licaoDaSemana.licao.numero} •{" "}
+                    {formatEbdDate(licaoDaSemana.licao.data)}
+                  </p>
+                  <p className="mb-4 leading-relaxed text-[#555]">
+                    {licaoDaSemana.licao.resumo}
+                  </p>
+                  <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
+                    <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                      Verdade prática
+                    </p>
+                    <p className="leading-relaxed text-[#555]">
+                      {licaoDaSemana.licao.verdadePratica}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                    <Link
+                      href={`/ebd/${classeAtiva}/${licaoDaSemana.trimestre.slug}/${licaoDaSemana.licao.slug}`}
+                      className="ui-btn-primary"
+                    >
+                      Ver lição
+                    </Link>
+                    <Link
+                      href={`/ebd/${classeAtiva}`}
+                      className="ui-btn-secondary"
+                    >
+                      Ver classe completa
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <p className="leading-relaxed text-[#555]">
+                  Nenhuma lição da semana foi encontrada para esta classe.
+                </p>
+              )}
+            </div>
+
+            <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                Escolha a classe
+              </p>
+              <div className="mb-6 flex flex-wrap gap-3">
+                {classes.map((classe) => {
+                  const isActive = classe.slug === classeAtiva;
+
+                  return (
+                    <Link
+                      key={classe.slug}
+                      href={`/ebd?classe=${classe.slug}`}
+                      className={`inline-flex rounded-full border px-4 py-2 text-xs font-bold tracking-[0.14em] uppercase transition-colors ${
+                        isActive
+                          ? "border-[#ffa726]/35 bg-white text-[#8b5b18]"
+                          : "border-black/10 bg-transparent text-[#555] hover:border-[#ffa726]/25 hover:text-[#212121]"
+                      }`}
+                    >
+                      {classe.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              <h2 className="mb-3 font-acme text-3xl tracking-wide text-[#212121]">
+                {classeInfo.label}
+              </h2>
+              <p className="mb-4 text-sm leading-relaxed text-[#555]">
+                {classeInfo.descricao}
+              </p>
+              <div className="space-y-4 text-sm leading-relaxed text-[#555]">
+                <p>
+                  <span className="font-semibold text-[#212121]">
+                    Horário:
+                  </span>{" "}
+                  {classeInfo.horarioLabel}
+                </p>
+                {trimestreAtual ? (
+                  <p>
+                    <span className="font-semibold text-[#212121]">
+                      Trimestre atual:
+                    </span>{" "}
+                    {trimestreAtual.rotulo} • {trimestreAtual.titulo}
+                  </p>
+                ) : null}
+                {proximaLicao ? (
+                  <p>
+                    <span className="font-semibold text-[#212121]">
+                      Próxima lição:
+                    </span>{" "}
+                    {proximaLicao.licao.titulo} em{" "}
+                    {formatEbdDate(proximaLicao.licao.data)}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-12">
+            <div className="mb-6 max-w-3xl">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Classes disponíveis
+              </p>
+              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                Adultos, jovens e infantil com caminho claro de estudo
+              </h2>
+              <p className="leading-relaxed text-[#555]">
+                Cada classe reúne trimestres, lições e material de apoio para
+                facilitar a continuidade da Escola Bíblica Dominical ao longo da
+                semana.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+              {classes.map((classe) => {
+                const trimestre = getTrimestreAtual(classe.slug);
+                const licaoAtual = getLicaoDaSemana(classe.slug);
+
+                return (
+                  <Link
+                    key={classe.slug}
+                    href={`/ebd/${classe.slug}`}
+                    className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+                  >
+                    <CardMedia
+                      src={trimestre?.imagem}
+                      alt={`Classe ${classe.label} da EBD`}
+                      variant="content"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className="rounded-none"
+                    >
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          {classe.horarioLabel}
+                        </p>
+                        <h3 className="font-acme text-3xl tracking-wide text-white">
+                          {classe.label}
+                        </h3>
+                      </div>
+                    </CardMedia>
+
+                    <div className="p-6">
+                      <p className="mb-3 text-sm leading-relaxed text-[#555]">
+                        {classe.descricao}
+                      </p>
+                      {licaoAtual ? (
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 mb-5">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                            Esta semana
+                          </p>
+                          <p className="font-semibold text-[#212121]">
+                            {licaoAtual.licao.titulo}
+                          </p>
+                          <p className="mt-1 text-sm text-[#666]">
+                            {formatEbdDate(licaoAtual.licao.data)}
+                          </p>
+                        </div>
+                      ) : null}
+                      <p className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
+                        Ver classe →
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-6 max-w-3xl">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                Trimestres publicados
+              </p>
+              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                Edições da classe {classeInfo.label.toLowerCase()}
+              </h2>
+              <p className="leading-relaxed text-[#555]">
+                Acesse o trimestre atual, revise as lições já publicadas e siga
+                a classe com mais clareza ao longo do período.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              {trimestresDaClasse.map((trimestre) => (
+                <Link
+                  key={trimestre.id}
+                  href={`/ebd/${classeAtiva}/${trimestre.slug}`}
+                  className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+                >
+                  <CardMedia
+                    src={trimestre.imagem}
+                    alt={trimestre.titulo}
+                    variant="content"
+                    sizes="(max-width: 1280px) 100vw, 50vw"
+                    className="rounded-none"
+                  >
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        {trimestre.rotulo}
+                      </p>
+                      <h3 className="font-acme text-3xl tracking-wide text-white">
+                        {trimestre.titulo}
+                      </h3>
+                    </div>
+                  </CardMedia>
+
+                  <div className="p-6">
+                    <p className="mb-4 text-sm leading-relaxed text-[#555]">
+                      {trimestre.descricao}
+                    </p>
+                    <div className="mb-4 grid grid-cols-2 gap-4">
+                      <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Lições
+                        </p>
+                        <p className="font-acme text-3xl text-[#212121]">
+                          {trimestre.licoes.length}
+                        </p>
+                      </div>
+                      <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Versículo-base
+                        </p>
+                        <p className="text-sm leading-relaxed text-[#212121]">
+                          {trimestre.versiculoBase ?? "A confirmar"}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
+                      Ver trimestre →
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
