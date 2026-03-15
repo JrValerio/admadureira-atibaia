@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import { formatEbdDate } from "@/lib/ebd-utils";
 import type {
   ClasseEBD,
@@ -56,7 +57,9 @@ function StringList({
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
           <span className={`mt-[7px] h-1.5 w-1.5 rounded-full ${markerClassName}`} />
-          <span>{item}</span>
+          <span>
+            <BibleReferenceText text={item} />
+          </span>
         </li>
       ))}
     </ul>
@@ -80,7 +83,7 @@ function ListaItemList({ items }: { items?: ListaItem[] }) {
             {item.titulo ? (
               <span className="font-semibold text-[#212121]">{item.titulo}: </span>
             ) : null}
-            {item.conteudo}
+            <BibleReferenceText text={item.conteudo} />
           </span>
         </li>
       ))}
@@ -99,7 +102,12 @@ function ReferenciaList({ items }: { items?: ReferenciaCruzada[] }) {
         <li key={`${item.referencia}-${item.descricao ?? ""}`} className="flex items-start gap-3">
           <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
           <span>
-            <span className="font-semibold text-[#212121]">{item.referencia}</span>
+            <span className="font-semibold text-[#212121]">
+              <BibleReferenceText
+                text={item.referencia}
+                linkClassName="font-semibold text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+              />
+            </span>
             {item.descricao ? ` — ${item.descricao}` : ""}
           </span>
         </li>
@@ -123,9 +131,16 @@ function LeituraDiariaList({ items }: { items?: LeituraDiariaItem[] }) {
           <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
             {item.dia}
           </p>
-          <p className="mt-1 font-semibold text-[#212121]">{item.referencia}</p>
+          <p className="mt-1 font-semibold text-[#212121]">
+            <BibleReferenceText
+              text={item.referencia}
+              linkClassName="font-semibold text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+            />
+          </p>
           {item.tema ? (
-            <p className="mt-2 text-sm leading-relaxed text-[#555]">{item.tema}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[#555]">
+              <BibleReferenceText text={item.tema} />
+            </p>
           ) : null}
         </div>
       ))}
@@ -148,9 +163,16 @@ function LeituraSemanalList({ items }: { items?: LeituraSemanalItem[] }) {
           <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
             {item.dia}
           </p>
-          <p className="mt-1 font-semibold text-[#212121]">{item.referencia}</p>
+          <p className="mt-1 font-semibold text-[#212121]">
+            <BibleReferenceText
+              text={item.referencia}
+              linkClassName="font-semibold text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+            />
+          </p>
           {item.foco ? (
-            <p className="mt-2 text-sm leading-relaxed text-[#555]">{item.foco}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[#555]">
+              <BibleReferenceText text={item.foco} />
+            </p>
           ) : null}
         </div>
       ))}
@@ -165,7 +187,9 @@ function AdultTopicoCard({ topico }: { topico: TopicoConteudo }) {
         {topico.titulo}
       </h4>
       {topico.sinopse ? (
-        <p className="mb-4 text-[#555] leading-relaxed">{topico.sinopse}</p>
+        <p className="mb-4 text-[#555] leading-relaxed">
+          <BibleReferenceText text={topico.sinopse} />
+        </p>
       ) : null}
 
       <div className="space-y-5">
@@ -222,7 +246,9 @@ function YoungTopicoCard({ topico }: { topico: TopicoJovens }) {
         {topico.titulo}
       </h4>
       {topico.sinopse ? (
-        <p className="mb-4 text-[#555] leading-relaxed">{topico.sinopse}</p>
+        <p className="mb-4 text-[#555] leading-relaxed">
+          <BibleReferenceText text={topico.sinopse} />
+        </p>
       ) : null}
 
       <div className="space-y-5">
@@ -249,7 +275,9 @@ function YoungTopicoCard({ topico }: { topico: TopicoJovens }) {
             <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
               Pense
             </p>
-            <p className="text-[#555] leading-relaxed">{topico.pense}</p>
+            <p className="text-[#555] leading-relaxed">
+              <BibleReferenceText text={topico.pense} />
+            </p>
           </div>
         ) : null}
 
@@ -258,7 +286,12 @@ function YoungTopicoCard({ topico }: { topico: TopicoJovens }) {
             <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
               Ponto importante
             </p>
-            <p className="text-white/85 leading-relaxed">{topico.pontoImportante}</p>
+            <p className="text-white/85 leading-relaxed">
+              <BibleReferenceText
+                text={topico.pontoImportante}
+                linkClassName="font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
+              />
+            </p>
           </div>
         ) : null}
       </div>
@@ -272,14 +305,16 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
       <Section eyebrow="Panorama da lição" title="Visão geral da aula">
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="mb-4 text-[#555] leading-relaxed">{subsidio.visaoGeral.resumo}</p>
+            <p className="mb-4 text-[#555] leading-relaxed">
+              <BibleReferenceText text={subsidio.visaoGeral.resumo} />
+            </p>
             {subsidio.visaoGeral.ideiaCentral ? (
               <div className="rounded-2xl border border-[#ffa726]/20 bg-white p-4">
                 <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Ideia central
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.visaoGeral.ideiaCentral}
+                  <BibleReferenceText text={subsidio.visaoGeral.ideiaCentral} />
                 </p>
               </div>
             ) : null}
@@ -304,7 +339,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                 </p>
                 {subsidio.visaoGeral.palavraChave.definicao ? (
                   <p className="mt-2 text-sm leading-relaxed text-[#555]">
-                    {subsidio.visaoGeral.palavraChave.definicao}
+                    <BibleReferenceText text={subsidio.visaoGeral.palavraChave.definicao} />
                   </p>
                 ) : null}
               </div>
@@ -318,7 +353,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
               Texto áureo
             </p>
             <p className="text-sm leading-relaxed text-[#555]">
-              {subsidio.cabecalho.textoAureo ?? "A confirmar"}
+              <BibleReferenceText text={subsidio.cabecalho.textoAureo ?? "A confirmar"} />
             </p>
           </div>
           <div className="rounded-2xl border border-black/5 bg-white p-4">
@@ -378,7 +413,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                   Pergunta de abertura
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.perguntaDeAbertura}
+                  <BibleReferenceText text={subsidio.apoioProfessor.perguntaDeAbertura} />
                 </p>
               </div>
             ) : null}
@@ -388,7 +423,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                   Ponto sensível da aula
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.pontoSensivelDaAula}
+                  <BibleReferenceText text={subsidio.apoioProfessor.pontoSensivelDaAula} />
                 </p>
               </div>
             ) : null}
@@ -398,7 +433,9 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                   Erro comum de interpretação
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.erroComumDeInterpretacao}
+                  <BibleReferenceText
+                    text={subsidio.apoioProfessor.erroComumDeInterpretacao}
+                  />
                 </p>
               </div>
             ) : null}
@@ -422,7 +459,10 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                   Sugestão de fechamento
                 </p>
                 <p className="text-white/85 leading-relaxed">
-                  {subsidio.apoioProfessor.sugestaoDeFechamento}
+                  <BibleReferenceText
+                    text={subsidio.apoioProfessor.sugestaoDeFechamento}
+                    linkClassName="font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
+                  />
                 </p>
               </div>
             ) : null}
@@ -543,7 +583,10 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                 Frase de síntese
               </p>
               <p className="text-white/85 leading-relaxed">
-                {subsidio.revisao.fraseDeSintese}
+                  <BibleReferenceText
+                    text={subsidio.revisao.fraseDeSintese}
+                    linkClassName="font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
+                  />
               </p>
             </div>
           ) : null}
@@ -564,7 +607,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                 Texto principal
               </p>
               <p className="text-sm leading-relaxed text-[#555]">
-                {subsidio.cabecalho.textoPrincipal ?? "A confirmar"}
+                <BibleReferenceText text={subsidio.cabecalho.textoPrincipal ?? "A confirmar"} />
               </p>
             </div>
             {subsidio.cabecalho.resumoDaLicao ? (
@@ -573,7 +616,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Resumo da lição
                 </p>
                 <p className="text-sm leading-relaxed text-[#555]">
-                  {subsidio.cabecalho.resumoDaLicao}
+                  <BibleReferenceText text={subsidio.cabecalho.resumoDaLicao} />
                 </p>
               </div>
             ) : null}
@@ -605,7 +648,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Interação
                 </p>
                 <p className="text-sm leading-relaxed text-[#555]">
-                  {subsidio.arranquePedagogico.interacao}
+                  <BibleReferenceText text={subsidio.arranquePedagogico.interacao} />
                 </p>
               </div>
             ) : null}
@@ -618,7 +661,10 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
               Orientação pedagógica
             </p>
             <p className="text-white/85 leading-relaxed">
-              {subsidio.arranquePedagogico.orientacaoPedagogica}
+              <BibleReferenceText
+                text={subsidio.arranquePedagogico.orientacaoPedagogica}
+                linkClassName="font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
+              />
             </p>
           </div>
         ) : null}
@@ -650,7 +696,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Quebra-gelo
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.quebraGelo}
+                  <BibleReferenceText text={subsidio.apoioProfessor.quebraGelo} />
                 </p>
               </div>
             ) : null}
@@ -660,7 +706,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Pergunta-chave
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.perguntaChave}
+                  <BibleReferenceText text={subsidio.apoioProfessor.perguntaChave} />
                 </p>
               </div>
             ) : null}
@@ -670,7 +716,9 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Dificuldade provável
                 </p>
                 <p className="text-[#555] leading-relaxed">
-                  {subsidio.apoioProfessor.dificuldadeProvavelDaClasse}
+                  <BibleReferenceText
+                    text={subsidio.apoioProfessor.dificuldadeProvavelDaClasse}
+                  />
                 </p>
               </div>
             ) : null}
@@ -694,7 +742,10 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
                   Fechamento
                 </p>
                 <p className="text-white/85 leading-relaxed">
-                  {subsidio.apoioProfessor.fechamento}
+                  <BibleReferenceText
+                    text={subsidio.apoioProfessor.fechamento}
+                    linkClassName="font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
+                  />
                 </p>
               </div>
             ) : null}

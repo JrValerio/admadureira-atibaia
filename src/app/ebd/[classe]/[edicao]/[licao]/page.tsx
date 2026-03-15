@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import EbdTeacherSubsidy from "@/components/ebd/EbdTeacherSubsidy";
 import {
   formatEbdDate,
@@ -274,7 +275,10 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       Texto-chave
                     </p>
                     <p className="text-sm text-[#212121]">
-                      {lessonContext.licao.textoChave ?? "A confirmar"}
+                      <BibleReferenceText
+                        text={lessonContext.licao.textoChave ?? "A confirmar"}
+                        linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+                      />
                     </p>
                   </div>
                 </div>
@@ -285,7 +289,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       Verdade prática
                     </p>
                     <p className="leading-relaxed text-[#555]">
-                      {lessonContext.licao.verdadePratica}
+                      <BibleReferenceText text={lessonContext.licao.verdadePratica} />
                     </p>
                   </div>
                 ) : null}
@@ -298,7 +302,9 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     {lessonContext.licao.leituraBiblica.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>{item}</span>
+                        <span>
+                          <BibleReferenceText text={item} />
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -312,7 +318,9 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     {lessonContext.licao.objetivos.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>{item}</span>
+                        <span>
+                          <BibleReferenceText text={item} />
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -328,7 +336,9 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         {topico.conteudo.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
-                            <span>{item}</span>
+                            <span>
+                              <BibleReferenceText text={item} />
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -342,7 +352,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   Aplicação prática
                 </p>
                 <p className="leading-relaxed text-[#555]">
-                  {lessonContext.licao.aplicacao}
+                  <BibleReferenceText text={lessonContext.licao.aplicacao} />
                 </p>
               </div>
 
@@ -363,7 +373,12 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 <div className="space-y-3 text-sm leading-relaxed text-[#555]">
                   <p>{trimestre.rotulo}</p>
                   <p>{classeInfo.horarioLabel}</p>
-                  <p>{trimestre.versiculoBase ?? "Versículo-base a confirmar"}</p>
+                  <p>
+                    <BibleReferenceText
+                      text={trimestre.versiculoBase ?? "Versículo-base a confirmar"}
+                      linkClassName="font-medium text-[#555] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+                    />
+                  </p>
                 </div>
                 <Link
                   href={`/ebd/${classe}/${trimestre.slug}`}
@@ -382,7 +397,9 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     {lessonContext.licao.apoioProfessor.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>{item}</span>
+                        <span>
+                          <BibleReferenceText text={item} />
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -398,7 +415,9 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     {lessonContext.licao.apoioAluno.map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>{item}</span>
+                        <span>
+                          <BibleReferenceText text={item} />
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -422,7 +441,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           </p>
                         ) : null}
                         <p className="text-sm leading-relaxed text-[#555]">
-                          {item.conteudo}
+                          <BibleReferenceText text={item.conteudo} />
                         </p>
                       </div>
                     ))}

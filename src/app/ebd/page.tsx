@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
+import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import CardMedia from "@/components/media/CardMedia";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
@@ -359,7 +360,10 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                           Versículo-base
                         </p>
                         <p className="text-sm leading-relaxed text-[#212121]">
-                          {trimestre.versiculoBase ?? "A confirmar"}
+                          <BibleReferenceText
+                            text={trimestre.versiculoBase ?? "A confirmar"}
+                            linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+                          />
                         </p>
                       </div>
                     </div>
