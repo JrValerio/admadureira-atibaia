@@ -141,13 +141,18 @@ export default function Programacao({
               <p className="text-[#666] leading-relaxed max-w-3xl">
                 Congressos, batismos, campanhas, Santa Ceia e encontros
                 especiais ficam concentrados na página de eventos, separando a
-                rotina semanal da agenda especial da igreja.
+                rotina semanal da agenda especial da igreja. A Escola Bíblica
+                Dominical acontece todo domingo às 09h, com classes para
+                adultos, jovens e infantil.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-3">
               <Link href="/eventos" className="ui-btn-primary">
                 Ver eventos
+              </Link>
+              <Link href="/ebd" className="ui-btn-secondary">
+                Escola Bíblica Dominical
               </Link>
               <Link href="/contato" className="ui-btn-secondary">
                 Falar com a igreja

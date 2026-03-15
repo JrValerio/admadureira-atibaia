@@ -2,6 +2,7 @@ import Hero from "@/sections/Hero";
 import HomeAgenda from "@/sections/HomeAgenda";
 import HeroEventos from "@/components/HeroEventos";
 import DailySpiritual from "@/sections/DailySpiritual";
+import HomeEBD from "@/sections/HomeEBD";
 import Destaques from "@/sections/Destaques";
 import Cultos from "@/sections/Cultos";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <HomeAgenda />
       <HeroEventos />
       <DailySpiritual />
+      <HomeEBD />
       <Destaques />
       <Cultos />
     </main>

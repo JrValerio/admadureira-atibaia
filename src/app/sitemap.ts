@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getEventosFuturos } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
 import { getDevotionals } from "@/data/devocionais";
+import { getClassesEbd, getTrimestresPorClasse } from "@/lib/ebd-utils";
 import { getMensagens } from "@/data/mensagens";
 import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
@@ -27,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const generatedAt = new Date();
   const mensagens = getMensagens();
   const devotionals = getDevotionals();
+  const classesEbd = getClassesEbd();
   const readingPlans = getReadingPlans();
   const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();
@@ -41,6 +43,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
   const latestDevotionalDate = getLatestDate(
     devotionals.map((devotional) => parseContentDate(devotional.data)),
+    generatedAt
+  );
+  const latestEbdDate = getLatestDate(
+    classesEbd.flatMap((classe) =>
+      getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
+        trimestre.licoes.map((licao) => parseContentDate(licao.data))
+      )
+    ),
     generatedAt
   );
 
@@ -171,6 +181,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: resolveSiteUrl("/ebd"),
+      lastModified: latestEbdDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
 
   const paginasEvento: MetadataRoute.Sitemap = eventosFuturos.map((evento) => ({
@@ -240,6 +256,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const paginasEbdClasse: MetadataRoute.Sitemap = classesEbd.map((classe) => {
+    const trimestres = getTrimestresPorClasse(classe.slug);
+    const lastModified = getLatestDate(
+      trimestres.flatMap((trimestre) =>
+        trimestre.licoes.map((licao) => parseContentDate(licao.data))
+      ),
+      generatedAt
+    );
+
+    return {
+      url: resolveSiteUrl(`/ebd/${classe.slug}`),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    };
+  });
+
+  const paginasEbdTrimestre: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
+    getTrimestresPorClasse(classe.slug).map((trimestre) => ({
+      url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}`),
+      lastModified: getLatestDate(
+        trimestre.licoes.map((licao) => parseContentDate(licao.data)),
+        generatedAt
+      ),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    }))
+  );
+
+  const paginasEbdLicao: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
+    getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
+      trimestre.licoes.map((licao) => ({
+        url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}/${licao.slug}`),
+        lastModified: parseContentDate(licao.data),
+        changeFrequency: "weekly",
+        priority: 0.7,
+      }))
+    )
+  );
+
   const paginasDiasPlanoLeitura: MetadataRoute.Sitemap = readingPlans.flatMap((plan) =>
     plan.dias.map((day) => ({
       url: resolveSiteUrl(
@@ -262,5 +318,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...paginasDevocionais,
     ...paginasPlanosLeitura,
     ...paginasDiasPlanoLeitura,
+    ...paginasEbdClasse,
+    ...paginasEbdTrimestre,
+    ...paginasEbdLicao,
   ];
 }
