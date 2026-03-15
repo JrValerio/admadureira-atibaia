@@ -11,6 +11,10 @@ type EventosProps = {
   showHeader?: boolean;
 };
 
+function getGrupoSectionId(grupo: EventosPorMesUI) {
+  return `agenda-${grupo.id}`;
+}
+
 function EventoCard({ evento }: { evento: EventoFuturo }) {
   return (
     <Link
@@ -50,7 +54,10 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
 
 function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
   return (
-    <div className="rounded-2xl border border-black/5 bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+    <div
+      id={getGrupoSectionId(grupo)}
+      className="scroll-mt-28 rounded-2xl border border-black/5 bg-white p-5 shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
+    >
       <div className="flex items-center justify-between gap-4 mb-5">
         <div>
           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
@@ -160,16 +167,20 @@ export default function Eventos({
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
+          <nav
+            aria-label="Ir para o mês da agenda"
+            className="flex flex-wrap gap-3"
+          >
             {agendaPorMes.map((grupo) => (
-              <span
+              <Link
                 key={grupo.id}
-                className="inline-flex rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold tracking-[0.16em] uppercase text-[#555]"
+                href={`#${getGrupoSectionId(grupo)}`}
+                className="inline-flex rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold tracking-[0.16em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
               >
                 {grupo.mes} · {grupo.eventos.length}
-              </span>
+              </Link>
             ))}
-          </div>
+          </nav>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-20">
