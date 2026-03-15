@@ -27,7 +27,7 @@ export default function EbdPrintControls({
   }, []);
 
   return (
-    <div className="ebd-print-controls mx-auto mb-6 flex max-w-5xl flex-col gap-4 rounded-[1.75rem] border border-black/10 bg-white px-5 py-4 shadow-[0_18px_45px_rgba(0,0,0,0.08)] md:flex-row md:items-center md:justify-between md:px-6">
+    <div className="ebd-print-controls mx-auto mb-6 max-w-[210mm] border-b border-black/10 pb-4 text-[#444]">
       <div>
         <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
           Impressão da lição
@@ -38,18 +38,24 @@ export default function EbdPrintControls({
         <p className="mt-1 text-sm leading-relaxed text-[#666]">{subtitle}</p>
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
         <button
           type="button"
           onClick={() => window.print()}
-          className="ui-btn-primary"
+          className="bg-transparent p-0 text-[#212121] underline decoration-black/20 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
         >
           Imprimir / salvar em PDF
         </button>
-        <Link href={alternateHref} className="ui-btn-secondary">
+        <Link
+          href={alternateHref}
+          className="text-[#212121] underline decoration-black/20 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+        >
           {alternateLabel}
         </Link>
-        <Link href={backHref} className="ui-btn-ghost">
+        <Link
+          href={backHref}
+          className="text-[#212121] underline decoration-black/20 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+        >
           Voltar à lição
         </Link>
       </div>

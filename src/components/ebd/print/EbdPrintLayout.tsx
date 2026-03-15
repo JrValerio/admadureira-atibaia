@@ -131,7 +131,7 @@ export function EbdPrintPage({
 }: EbdPrintPageProps) {
   return (
     <section
-      className="ebd-print-page relative mx-auto mb-8 overflow-hidden rounded-[2rem] border border-black/10 bg-white px-8 py-8 shadow-[0_24px_60px_rgba(0,0,0,0.08)] md:px-10 md:py-10"
+      className="ebd-print-page relative mx-auto mb-8 overflow-hidden bg-white px-8 py-8 md:px-10 md:py-10"
       style={{ maxWidth: "210mm", minHeight: "297mm" }}
     >
       <div className="ebd-print-watermark pointer-events-none absolute inset-0 flex flex-col items-center justify-center opacity-[0.045]">
@@ -181,7 +181,7 @@ export function EbdPrintPage({
               </div>
             </div>
 
-            <div className="self-start rounded-full border border-[#ffa726]/30 bg-[#fff8ee] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
+            <div className="self-start text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
               {modeLabel}
             </div>
           </div>
@@ -196,7 +196,7 @@ export function EbdPrintPage({
               </h2>
             </div>
 
-            <div className="rounded-2xl border border-black/10 bg-[#faf7f1] px-4 py-3 text-right">
+            <div className="text-right">
               <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
                 Data da lição
               </p>

@@ -93,10 +93,7 @@ function topicosToListaItems(licao: LicaoEBD) {
 function renderBlock(block: PrintableBlock) {
   if (block.type === "text") {
     return (
-      <div
-        key={`${block.label}-${block.text}`}
-        className="rounded-2xl border border-black/10 bg-white px-3 py-2.5"
-      >
+      <div key={`${block.label}-${block.text}`}>
         <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
           {block.label}
         </p>
@@ -113,46 +110,34 @@ function renderBlock(block: PrintableBlock) {
         <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
           {block.label}
         </p>
-        <div className="grid gap-2 md:grid-cols-2">
+        <ol className="ml-5 list-decimal space-y-2 text-[12px] leading-relaxed text-[#444] marker:font-semibold marker:text-[#8b5b18]">
           {block.items.map((item) => (
-            <div
-              key={`${item.titulo ?? "item"}-${item.conteudo}`}
-              className="rounded-2xl border border-black/10 bg-white px-3 py-2.5"
-            >
-              {item.titulo ? (
-                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#8b5b18]">
-                  {item.titulo}
-                </p>
-              ) : null}
-              <p className="mt-1.5 text-[12px] leading-relaxed text-[#444]">
-                <PrintBibleText text={item.conteudo} />
-              </p>
-            </div>
+            <li key={`${item.titulo ?? "item"}-${item.conteudo}`}>
+              {item.titulo ? <strong className="text-[#212121]">{item.titulo}: </strong> : null}
+              <PrintBibleText text={item.conteudo} />
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     );
   }
 
   const markerClassName =
     block.accent === "red"
-      ? "bg-[#ef5350]"
+      ? "marker:text-[#ef5350]"
       : block.accent === "dark"
-        ? "bg-[#8b5b18]"
-        : "bg-[#ffa726]";
+        ? "marker:text-[#8b5b18]"
+        : "marker:text-[#ffa726]";
 
   return (
     <div key={`${block.label}-${block.items.join("|")}`}>
       <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
         {block.label}
       </p>
-      <ul className="grid gap-x-4 gap-y-2 md:grid-cols-2">
+      <ul className={`ml-5 list-disc space-y-1.5 text-[12px] leading-relaxed text-[#444] ${markerClassName}`}>
         {block.items.map((item) => (
-          <li key={item} className="flex items-start gap-2.5 text-[12px] leading-relaxed text-[#444]">
-            <span className={`mt-[7px] h-1.5 w-1.5 rounded-full ${markerClassName}`} />
-            <span>
-              <PrintBibleText text={item} />
-            </span>
+          <li key={item}>
+            <PrintBibleText text={item} />
           </li>
         ))}
       </ul>
@@ -162,14 +147,14 @@ function renderBlock(block: PrintableBlock) {
 
 function RenderSection({ section }: { section: PrintableSection }) {
   return (
-    <section className="ebd-print-no-break rounded-[1.5rem] border border-black/10 bg-[#fcfbf8] p-4">
+    <section className="ebd-print-no-break">
       <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
         {section.eyebrow}
       </p>
       <h3 className="mt-2 font-acme text-[1.3rem] tracking-wide text-[#212121]">
         {section.title}
       </h3>
-      <div className="mt-3 grid gap-3 md:grid-cols-2">{section.blocks.map(renderBlock)}</div>
+      <div className="mt-3 space-y-3">{section.blocks.map(renderBlock)}</div>
     </section>
   );
 }
