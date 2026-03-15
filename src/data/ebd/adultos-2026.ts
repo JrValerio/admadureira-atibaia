@@ -38,6 +38,679 @@ const apoioAlunoBase = [
   "Escolha um passo de obediência para viver durante a semana a partir da lição estudada.",
 ];
 
+const objetivosAdultosLicao1 = [
+  "Explicar a revelação da Trindade no batismo de Jesus.",
+  "Mostrar a unidade e a distinção das Pessoas divinas à luz das Escrituras.",
+  "Enfatizar a importância da doutrina trinitária para a fé cristã.",
+];
+
+const topicosAdultosLicao1 = [
+  {
+    titulo: "A Trindade se revela no batismo de Jesus",
+    conteudo: [
+      "Mateus 3.13-17 apresenta, de maneira simultânea, o Filho nas águas, o Espírito descendo como pomba e a voz do Pai declarando seu amor.",
+      "A cena do batismo não inventa uma doutrina abstrata; ela mostra a revelação de um só Deus agindo em perfeita harmonia na história da redenção.",
+      "Ao iniciar o ministério público de Cristo, o texto bíblico já aponta que a salvação não pode ser entendida sem a cooperação entre Pai, Filho e Espírito Santo.",
+    ],
+  },
+  {
+    titulo: "Unidade e distinção das Pessoas divinas",
+    conteudo: [
+      "A fé cristã não confessa três deuses, mas um único Deus subsistindo eternamente em três Pessoas distintas.",
+      "O Pai não é o Filho, o Filho não é o Espírito e o Espírito não é o Pai; ainda assim, os três compartilham a mesma natureza divina.",
+      "A doutrina da Trindade protege a igreja tanto do politeísmo quanto das tentativas de diluir ou confundir as Pessoas divinas.",
+    ],
+  },
+  {
+    titulo: "Por que a Trindade importa para a vida cristã",
+    conteudo: [
+      "A salvação é trinitária: o Pai planeja, o Filho realiza a redenção e o Espírito aplica essa obra ao coração do salvo.",
+      "A igreja adora o Deus verdadeiro quando reconhece a revelação bíblica completa, sem reduzir o mistério divino a fórmulas simplistas.",
+      "Compreender a Trindade fortalece a oração, a adoração, a missão e a confiança do crente no agir de Deus.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao1: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 1,
+    titulo: "O Mistério da Santíssima Trindade",
+    data: "2026-01-04",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Mateus 3.17 revela a voz do Pai sobre o Filho, enquanto o Espírito repousa sobre Jesus, mostrando a beleza da revelação trinitária.",
+    verdadePratica:
+      "A doutrina da Trindade está no coração da fé cristã e mostra um só Deus agindo harmonicamente na salvação.",
+    leituraBiblicaEmClasse: [
+      "Mateus 3.13-17 — a revelação do Pai, do Filho e do Espírito no batismo de Jesus.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Mateus 3.16-17",
+        tema: "O batismo de Jesus revela a ação conjunta das Pessoas divinas.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Mateus 28.19",
+        tema: "A Grande Comissão traz a fórmula trinitária no discipulado cristão.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "2 Coríntios 13.13",
+        tema: "A bênção apostólica mostra a presença do Deus triúno na comunhão da igreja.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "João 14.16-17",
+        tema: "Jesus promete o Consolador sem perder a unidade com o Pai.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "1 Pedro 1.2",
+        tema: "Eleição, santificação e obediência aparecem em chave trinitária.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Efésios 1.3-14",
+        tema: "O plano da salvação exibe a atuação do Pai, do Filho e do Espírito.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A primeira lição estabelece o fundamento de todo o trimestre ao mostrar que a doutrina da Trindade nasce da revelação bíblica e não de especulação humana. O batismo de Jesus ilumina a unidade do Deus único e a distinção eterna das Pessoas divinas, oferecendo à igreja um eixo seguro para adoração, missão e compreensão da salvação.",
+    ideiaCentral:
+      "O mistério da Trindade não é contradição, mas revelação bíblica do Deus único que age em três Pessoas eternas.",
+    objetivos: objetivosAdultosLicao1,
+    palavraChave: {
+      termo: "Trindade",
+      definicao:
+        "Nome dado à revelação bíblica de um único Deus que subsiste eternamente em três Pessoas distintas: Pai, Filho e Espírito Santo.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "batismo-de-jesus",
+      titulo: "A Trindade se revela no batismo de Jesus",
+      sinopse:
+        "O início do ministério público de Cristo já revela a harmonia do Deus triúno na história da redenção.",
+      explicacaoBiblica: [
+        "Mateus 3.13-17 reúne no mesmo acontecimento a obediência do Filho, o selo visível do Espírito e a aprovação verbal do Pai.",
+        "A descida do Espírito não indica inferioridade de Cristo, mas a unção messiânica do Servo perfeito.",
+        "A voz do Pai confirma publicamente a identidade do Filho amado e o sentido redentor do seu ministério.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A doutrina da Trindade nasce da Escritura e deve ser ensinada como resposta reverente à revelação, não como invenção filosófica.",
+        "O batismo de Jesus ajuda a igreja a rejeitar tanto a confusão das Pessoas quanto a fragmentação da divindade.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a perceber que o Evangelho inteiro tem base trinitária, e por isso nossa fé não pode ser rasa ou apenas utilitária.",
+        "A adoração cristã se aprofunda quando reconhecemos a beleza da ação conjunta do Pai, do Filho e do Espírito.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Mateus 28.19", descricao: "A fórmula batismal confirma a revelação trinitária." },
+        { referencia: "2 Coríntios 13.13", descricao: "A comunhão da igreja flui da graça trinitária." },
+      ],
+    },
+    {
+      id: "unidade-distincao",
+      titulo: "Unidade e distinção das Pessoas divinas",
+      sinopse:
+        "A Bíblia preserva ao mesmo tempo o monoteísmo e a distinção real entre as Pessoas divinas.",
+      explicacaoBiblica: [
+        "Deuteronômio 6.4 afirma a unidade de Deus, enquanto o Novo Testamento esclarece a relação eterna entre Pai, Filho e Espírito.",
+        "João 14.16-17 mostra que Jesus fala do Espírito como outro Consolador, sem confundir as Pessoas.",
+        "Textos apostólicos unem as Pessoas divinas na salvação sem diluir sua distinção.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A igreja histórica aprendeu a usar linguagem precisa para dizer que há uma só essência divina e três Pessoas distintas.",
+        "Negar a distinção entre as Pessoas enfraquece o Evangelho e cria confusão sobre quem salva, envia e santifica.",
+      ],
+      aplicacaoPratica: [
+        "Ensine a classe a falar da Trindade com reverência e clareza, evitando caricaturas ou fórmulas apressadas.",
+        "A precisão doutrinária protege a igreja de erros que parecem simples, mas distorcem a fé cristã.",
+      ],
+    },
+    {
+      id: "relevancia-para-a-fe",
+      titulo: "Por que a Trindade importa para a vida cristã",
+      sinopse:
+        "A doutrina trinitária sustenta oração, adoração, missão e salvação.",
+      explicacaoBiblica: [
+        "Efésios 1 mostra o Pai elegendo, o Filho redimindo e o Espírito selando, revelando a estrutura trinitária do plano da salvação.",
+        "A oração cristã se move nessa direção: chegamos ao Pai, por meio do Filho, no poder do Espírito.",
+        "A missão da igreja carrega a mesma marca, pois o discipulado é feito em nome do Pai, do Filho e do Espírito Santo.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A doutrina da Trindade preserva a integridade do Evangelho e ajuda a igreja a entender por que a salvação é obra de Deus do começo ao fim.",
+        "Sem a Trindade, a adoração cristã perde profundidade e a compreensão da redenção fica fragmentada.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve sair desta lição com mais reverência diante de Deus e mais confiança na consistência da fé cristã.",
+        "Reconhecer a ação trinitária na salvação produz humildade, gratidão e compromisso missionário.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Por que a doutrina da Trindade costuma parecer difícil para muitos crentes, mesmo sendo central à fé cristã?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem ter medo de abordar o tema por acharem a Trindade abstrata demais. A aula precisa mostrar que o assunto é bíblico, pastoral e ligado à salvação.",
+    erroComumDeInterpretacao:
+      "Tentar explicar a Trindade por comparações simplistas demais pode confundir mais do que ajudar e levar a erros doutrinários.",
+    perguntasParaDebate: [
+      "O que o batismo de Jesus ensina de forma concreta sobre a Trindade?",
+      "Como manter a unidade de Deus sem negar a distinção das Pessoas?",
+      "De que modo a doutrina trinitária fortalece a adoração e a missão da igreja?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre levando a classe a adorar o Deus triúno com gratidão, reconhecendo que toda a obra da salvação nasce dessa revelação santa.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Desde os primeiros séculos, a igreja precisou defender a fé no Deus único revelado em Pai, Filho e Espírito Santo contra simplificações e distorções.",
+      "O uso do termo Trindade surgiu como tentativa pastoral de resumir, com fidelidade, a revelação bíblica já presente no Novo Testamento.",
+    ],
+    conceitoTeologico: [
+      "A unidade de Deus pertence à essência divina; a distinção pertence às Pessoas eternas do Pai, do Filho e do Espírito Santo.",
+      "A economia da salvação revela externamente aquilo que Deus é eternamente em si mesmo: comunhão perfeita e ação harmônica.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Monoteísmo",
+        conteudo:
+          "Confissão bíblica de que existe um único Deus verdadeiro, sem concorrentes ou divisões em sua essência.",
+      },
+      {
+        titulo: "Economia da salvação",
+        conteudo:
+          "Expressão usada para descrever como Pai, Filho e Espírito atuam de forma harmoniosa na obra redentora.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A tendência de tratar doutrina apenas como teoria sem relação com a vida espiritual.",
+      "A superficialidade que fala de Deus sem conhecer a forma como Ele se revelou nas Escrituras.",
+    ],
+    oQueConsola: [
+      "A salvação não depende de esforço humano isolado, mas da ação coordenada do Deus triúno.",
+      "A igreja é sustentada por um Deus que se revelou com clareza suficiente para nossa fé e obediência.",
+    ],
+    oQueExige: [
+      "Reverência doutrinária, humildade e compromisso com o ensino bíblico fiel.",
+      "Disposição para adorar, servir e anunciar o Evangelho à luz da revelação trinitária.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus é um só em essência e pleno em comunhão eterna entre Pai, Filho e Espírito Santo.",
+      "O próprio modo como Deus salva confirma a unidade e a harmonia do seu ser.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "O que o batismo de Jesus revela sobre a Trindade?",
+      "Como a Bíblia sustenta ao mesmo tempo a unidade de Deus e a distinção das Pessoas?",
+      "Por que a doutrina da Trindade é importante para a salvação e a adoração?",
+    ],
+    pontosChave: [
+      "A Trindade é revelação bíblica, não invenção humana.",
+      "Há um único Deus verdadeiro em três Pessoas distintas.",
+      "A salvação, a missão e a comunhão cristã possuem base trinitária.",
+    ],
+    fraseDeSintese:
+      "Conhecer o Deus triúno é entrar mais fundo no coração da fé cristã e adorar com mais reverência o Senhor que salva.",
+  },
+};
+
+const objetivosAdultosLicao2 = [
+  "Reconhecer, biblicamente, a identidade de Deus Pai.",
+  "Entender que o Pai se revela plenamente em Cristo.",
+  "Identificar atributos e nomes que expressam a natureza de Deus Pai.",
+];
+
+const topicosAdultosLicao2 = [
+  {
+    titulo: "Quem é o Deus Pai nas Escrituras",
+    conteudo: [
+      "A Bíblia apresenta o Pai como o Deus verdadeiro, eterno, santo e digno de toda adoração.",
+      "Conhecer o Pai não significa imaginar uma divindade distante, mas receber a revelação que o próprio Deus oferece em sua Palavra.",
+      "O Pai está na origem do plano redentor, governando a história com sabedoria, poder e bondade.",
+    ],
+  },
+  {
+    titulo: "O Pai se revela no Filho",
+    conteudo: [
+      "Jesus ensina que ninguém conhece plenamente o Pai senão o Filho, e aquele a quem o Filho o quiser revelar.",
+      "A revelação do Pai em Cristo corrige imagens distorcidas de Deus e mostra sua santidade, amor e verdade.",
+      "Olhar para Jesus com fé é encontrar o caminho mais seguro para compreender o caráter do Pai.",
+    ],
+  },
+  {
+    titulo: "Nomes e atributos que sustentam a fé",
+    conteudo: [
+      "Os nomes divinos nas Escrituras não são enfeite religioso; eles revelam aspectos do caráter, da aliança e da ação de Deus.",
+      "Atributos como santidade, amor, justiça, eternidade e fidelidade dão segurança à igreja em meio às lutas.",
+      "Conhecer os atributos do Pai fortalece a oração, a confiança e o temor do Senhor.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao2: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 2,
+    titulo: "O Deus Pai",
+    data: "2026-01-11",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Mateus 11.27 declara que o conhecimento verdadeiro do Pai nos chega por meio do Filho.",
+    verdadePratica:
+      "Conhecemos a identidade, os atributos e a glória do Pai por meio de Cristo e da ação do Espírito Santo.",
+    leituraBiblicaEmClasse: [
+      "Mateus 11.25-27 — o Pai revelado pelo Filho.",
+      "João 14.6-11 — quem vê o Filho conhece o Pai.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Mateus 11.27",
+        tema: "O Filho é o revelador perfeito do Pai.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 14.9",
+        tema: "Conhecer Jesus conduz ao conhecimento verdadeiro do Pai.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Salmos 103.13",
+        tema: "O cuidado paterno de Deus aparece com ternura e compaixão.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Malaquias 3.6",
+        tema: "A imutabilidade divina sustenta a confiança da igreja.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Êxodo 34.6-7",
+        tema: "O nome e o caráter de Deus revelam graça, verdade e justiça.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Tiago 1.17",
+        tema: "O Pai das luzes permanece fiel e constante em todo tempo.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A segunda lição leva a classe a contemplar a identidade do Pai sem cair em abstrações vazias. As Escrituras mostram que o Pai é o Deus verdadeiro, revelado de modo pleno em Cristo, e que seus nomes e atributos não apenas informam a mente, mas sustentam a confiança do povo de Deus em meio à vida real.",
+    ideiaCentral:
+      "Conhecer o Pai biblicamente fortalece a fé porque nos aproxima do Deus que se revelou em Cristo com verdade, santidade e amor.",
+    objetivos: objetivosAdultosLicao2,
+    palavraChave: {
+      termo: "Revelação",
+      definicao:
+        "Não conhecemos o Pai por especulação humana, mas pela iniciativa do próprio Deus em se dar a conhecer por meio da Palavra e de Cristo.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "identidade-do-pai",
+      titulo: "Quem é o Deus Pai nas Escrituras",
+      sinopse:
+        "A Bíblia apresenta o Pai como o Deus verdadeiro, eterno, santo, sábio e soberano.",
+      explicacaoBiblica: [
+        "Jesus se dirige ao Pai como Senhor do céu e da terra, reconhecendo seu governo absoluto.",
+        "O testemunho do Antigo e do Novo Testamento preserva a santidade, a justiça e a bondade do Pai sem oposição interna.",
+        "O Pai não é figura abstrata: Ele planeja, chama, governa e sustenta seu povo.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A paternidade divina não deve ser reduzida a projeções humanas; ela é atributo santo e perfeito em Deus.",
+        "O Pai permanece a fonte do plano redentor sem jamais agir separado do Filho e do Espírito.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a substituir imagens distorcidas de Deus por uma visão moldada pelas Escrituras.",
+        "Conhecer o Pai traz equilíbrio entre reverência profunda e confiança sincera.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Salmos 90.2", descricao: "O Pai é o Deus eterno." },
+        { referencia: "Isaías 6.3", descricao: "A santidade divina molda nossa adoração." },
+      ],
+    },
+    {
+      id: "o-pai-revelado-no-filho",
+      titulo: "O Pai se revela no Filho",
+      sinopse:
+        "Cristo é o caminho seguro para conhecer o Pai de forma verdadeira e redentora.",
+      explicacaoBiblica: [
+        "Mateus 11.27 mostra que o Filho conhece plenamente o Pai e comunica essa revelação aos que nele creem.",
+        "João 14 corrige o desejo de ver o Pai fora de Cristo: quem vê o Filho vê o Pai.",
+        "A encarnação não obscurece o Pai; ela torna sua graça, sua santidade e sua verdade visíveis ao coração humano.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Não existe conhecimento salvífico do Pai independente da pessoa e da obra de Cristo.",
+        "A revelação do Pai no Filho confirma a unidade da Trindade e protege a igreja contra uma espiritualidade vaga e sem centro cristológico.",
+      ],
+      aplicacaoPratica: [
+        "Toda devoção saudável ao Pai precisa passar pelo Cristo das Escrituras.",
+        "A classe deve sair da lição sabendo que o Pai não é menos amoroso do que o Filho, nem mais distante do que imaginam alguns corações feridos.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "João 14.6-11", descricao: "O Filho é o caminho revelador do Pai." },
+        { referencia: "Colossenses 1.15", descricao: "Cristo é a imagem do Deus invisível." },
+      ],
+    },
+    {
+      id: "nomes-e-atributos",
+      titulo: "Nomes e atributos que sustentam a fé",
+      sinopse:
+        "Os nomes e atributos do Pai mostram quem Ele é e como sustenta a vida da igreja.",
+      explicacaoBiblica: [
+        "Êxodo 34.6-7 descreve Deus como misericordioso, longânimo, fiel e justo.",
+        "Tiago 1.17 revela constância no Pai, sem variação ou sombra de mudança.",
+        "Os nomes divinos nas Escrituras apontam para cuidado, aliança, provisão e santidade.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Atributos divinos não são peças soltas; eles expressam o ser perfeito de Deus em sua unidade.",
+        "A igreja cresce em maturidade quando reconhece que amor, justiça, santidade e fidelidade coexistem plenamente no Pai.",
+      ],
+      aplicacaoPratica: [
+        "Conhecer os atributos do Pai fortalece a oração confiante e combate a leitura emocionalmente instável de Deus.",
+        "Os nomes divinos lembram que nossa segurança está no caráter do Pai, e não nas circunstâncias.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Quando as pessoas falam de Deus hoje, que imagens mais distorcidas costumam aparecer sobre o Pai?",
+    pontoSensivelDaAula:
+      "A imagem paterna ferida de alguns alunos pode dificultar a compreensão da paternidade divina. Trate o tema com cuidado pastoral e base bíblica.",
+    erroComumDeInterpretacao:
+      "Separar o Pai de Cristo ou descrevê-lo como mais severo e menos amoroso do que o Filho distorce a revelação bíblica.",
+    perguntasParaDebate: [
+      "Por que o conhecimento do Pai depende da revelação do Filho?",
+      "Como os atributos do Pai fortalecem a confiança cristã?",
+      "Que diferenças práticas surgem quando a igreja conhece o Pai biblicamente?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a classe a agradecer pela revelação do Pai em Cristo e a renovar sua confiança no caráter santo, bom e fiel de Deus.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Ao longo da história, muitos sistemas religiosos falaram de divindade sem oferecer revelação pessoal, santa e redentora do Pai.",
+      "A fé cristã preserva o conhecimento de Deus como revelação e aliança, e não como mera especulação filosófica.",
+    ],
+    conceitoTeologico: [
+      "A revelação do Pai no Filho preserva a transcendência divina sem perder a proximidade da graça.",
+      "Os atributos de Deus não se contradizem; justiça e amor convivem perfeitamente no ser do Pai.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Pai",
+        conteudo:
+          "Na linguagem bíblica, o título expressa relação, origem do plano redentor e cuidado santo, não limitação humana projetada em Deus.",
+      },
+      {
+        titulo: "Imutabilidade",
+        conteudo:
+          "Atributo divino que declara que Deus não muda em seu ser, em seu caráter e em suas promessas.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "Imagens distorcidas de Deus moldadas mais por experiências humanas do que pela Palavra.",
+      "A ideia de que é possível amar a Jesus e permanecer indiferente ao Pai que Ele revela.",
+    ],
+    oQueConsola: [
+      "O Pai que se revela em Cristo é fiel, santo, bondoso e digno de confiança em toda circunstância.",
+      "Conhecer o caráter do Pai cura inseguranças e fortalece a vida de oração.",
+    ],
+    oQueExige: [
+      "Buscar conhecimento bíblico de Deus com reverência, não com curiosidade superficial.",
+      "Responder à revelação do Pai com fé, adoração e vida coerente.",
+    ],
+    oQueRevelaSobreDeus: [
+      "O Pai é santo e amoroso, soberano e próximo, justo e misericordioso.",
+      "Sua glória não está separada da obra de Cristo, mas plenamente revelada nela.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Como a Bíblia apresenta a identidade do Pai?",
+      "Por que conhecer Cristo é essencial para conhecer o Pai?",
+      "Quais atributos do Pai mais fortalecem a vida cristã?",
+    ],
+    pontosChave: [
+      "O Pai é o Deus verdadeiro, santo, eterno e soberano.",
+      "Cristo revela o Pai de maneira plena e confiável.",
+      "Os atributos divinos sustentam a fé, a oração e a adoração da igreja.",
+    ],
+    fraseDeSintese:
+      "Conhecer o Pai biblicamente nos leva a confiar mais, orar melhor e viver com reverência diante do Deus que se revelou em Cristo.",
+  },
+};
+
+const objetivosAdultosLicao3 = [
+  "Compreender que o envio do Filho é a maior prova do amor de Deus Pai.",
+  "Reconhecer que a vinda de Cristo ocorreu na plenitude dos tempos.",
+  "Identificar a atuação da Trindade na execução e aplicação da salvação.",
+];
+
+const topicosAdultosLicao3 = [
+  {
+    titulo: "O amor do Pai no envio do Filho",
+    conteudo: [
+      "O envio do Filho mostra que a salvação nasce da iniciativa amorosa do Pai, e não da busca humana por Deus.",
+      "João 3.16-17 e 1 João 4.9-10 unem amor e missão, revelando que Deus age para resgatar pecadores e não para condená-los sem saída.",
+      "O amor do Pai não é sentimentalismo; é ação redentora concreta em favor de um mundo perdido.",
+    ],
+  },
+  {
+    titulo: "A plenitude dos tempos e a encarnação",
+    conteudo: [
+      "Gálatas 4.4 mostra que a vinda do Filho aconteceu no tempo certo, dentro do governo soberano de Deus.",
+      "A encarnação revela que a história da salvação não é improvisada, mas planejada pelo Pai desde antes da fundação do mundo.",
+      "Cristo veio ao mundo assumindo nossa humanidade para cumprir de modo perfeito aquilo que nós jamais conseguiríamos realizar.",
+    ],
+  },
+  {
+    titulo: "A Trindade aplica a salvação ao crente",
+    conteudo: [
+      "O Pai envia o Filho, o Filho realiza a redenção e o Espírito aplica seus benefícios ao coração do crente.",
+      "A adoção, a justificação e a vida nova em Cristo precisam ser lidas dentro dessa cooperação trinitária.",
+      "O crente encontra segurança quando percebe que toda a salvação nasce do amor do Pai e é sustentada pela ação do Deus triúno.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao3: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 3,
+    titulo: "O Pai Enviou o Filho",
+    data: "2026-01-18",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "1 João 4.9 mostra que o amor de Deus se tornou visível no envio do Filho unigênito ao mundo.",
+    verdadePratica:
+      "O envio do Filho revela o amor do Pai e a unidade da Trindade no plano da salvação.",
+    leituraBiblicaEmClasse: [
+      "João 3.16-17 — o amor do Pai no envio do Filho.",
+      "1 João 4.9-10 — o amor divino manifestado na propiciação.",
+      "Gálatas 4.4-6 — a plenitude dos tempos e a adoção em Cristo.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "João 3.16",
+        tema: "O envio do Filho nasce do amor do Pai pelo mundo perdido.",
+      },
+      {
+        dia: "Terça",
+        referencia: "1 João 4.9-10",
+        tema: "O amor de Deus se manifesta em missão redentora e propiciação.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Gálatas 4.4-5",
+        tema: "Cristo veio na plenitude dos tempos para resgatar os que estavam sob a Lei.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Romanos 8.32",
+        tema: "O Pai não poupou o próprio Filho, antes o entregou por nós.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Efésios 1.4-7",
+        tema: "Eleição, redenção e perdão aparecem no mesmo plano eterno de Deus.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gálatas 4.6",
+        tema: "O Espírito aplica a obra do Filho e confirma nossa adoção.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A terceira lição aprofunda a obra do Pai ao mostrar que a missão de Cristo nasce de seu amor eterno e soberano. O envio do Filho, longe de ser evento isolado, revela a unidade da Trindade na redenção: o Pai envia, o Filho obedece e o Espírito aplica a salvação ao coração do pecador regenerado.",
+    ideiaCentral:
+      "O envio do Filho é a expressão mais alta do amor do Pai e mostra a cooperação trinitária no plano da salvação.",
+    objetivos: objetivosAdultosLicao3,
+    palavraChave: {
+      termo: "Envio",
+      definicao:
+        "O termo resume a iniciativa missionária do Pai, que envia o Filho ao mundo para realizar a redenção no tempo certo.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "amor-do-pai",
+      titulo: "O amor do Pai no envio do Filho",
+      sinopse:
+        "A missão de Cristo tem origem no amor divino e confronta toda visão meritória da salvação.",
+      explicacaoBiblica: [
+        "João 3.16-17 revela que o amor do Pai não fica no discurso; ele se torna ação redentora no envio do Filho.",
+        "1 João 4.9-10 liga amor, envio e propiciação, mostrando que Deus age para salvar pecadores.",
+        "O Pai não envia o Filho por necessidade externa, mas por graça soberana e misericordiosa.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A missão do Filho mostra que o amor divino é santo e eficaz, não mera emoção religiosa.",
+        "A iniciativa do Pai preserva a gratuidade da salvação e humilha todo orgulho humano.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve perceber que o amor de Deus não é teoria distante, mas fundamento concreto da esperança cristã.",
+        "Quem foi alcançado por esse amor aprende a rejeitar autossuficiência e a viver em gratidão.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "João 3.16-17", descricao: "O amor do Pai se manifesta no envio do Filho." },
+        { referencia: "Romanos 5.8", descricao: "Deus prova seu amor ao entregar Cristo por nós." },
+      ],
+    },
+    {
+      id: "plenitude-dos-tempos",
+      titulo: "A plenitude dos tempos e a encarnação",
+      sinopse:
+        "A vinda de Cristo acontece no tempo certo e confirma que o plano da salvação não é improvisado.",
+      explicacaoBiblica: [
+        "Gálatas 4.4 mostra que Deus enviou o Filho na plenitude dos tempos, unindo soberania divina e história concreta.",
+        "O nascimento sob a Lei revela a identificação de Cristo com nossa condição, para cumprir de modo perfeito a vontade do Pai.",
+        "A encarnação confirma que a redenção acontece na história, mas nasce no coração eterno do plano divino.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A plenitude dos tempos mostra que Deus governa o cenário religioso, político e histórico para cumprir sua promessa.",
+        "A obediência do Filho na encarnação faz parte da mesma missão amorosa recebida do Pai.",
+      ],
+      aplicacaoPratica: [
+        "Quando entendemos a soberania de Deus no envio do Filho, aprendemos a confiar em seus tempos mesmo quando a espera é longa.",
+        "A fé cristã olha para a história com esperança porque sabe que Deus não trabalha de forma tardia ou acidental.",
+      ],
+    },
+    {
+      id: "trindade-na-salvacao",
+      titulo: "A Trindade aplica a salvação ao crente",
+      sinopse:
+        "O mesmo amor que envia o Filho também sustenta a aplicação da redenção pelo Espírito Santo.",
+      explicacaoBiblica: [
+        "Gálatas 4.6 mostra que, após a obra do Filho, o Pai envia o Espírito do Filho ao coração dos redimidos.",
+        "A adoção cristã não é etapa separada do plano redentor, mas fruto da mesma ação divina que nos reconciliou com Deus.",
+        "Efésios 1 reforça que eleição, redenção e selo do Espírito pertencem ao mesmo projeto salvador.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A salvação é uma obra trinitária do começo ao fim: o Pai planeja, o Filho executa e o Espírito aplica.",
+        "Essa cooperação divina sustenta a segurança do crente porque sua esperança repousa em Deus inteiro, não em esforço humano.",
+      ],
+      aplicacaoPratica: [
+        "Leve a classe a descansar no fato de que sua salvação não é resultado de improviso nem de mérito pessoal.",
+        "A compreensão trinitária da salvação fortalece gratidão, adoração e segurança espiritual.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que muda em nossa visão da salvação quando entendemos que ela começa na iniciativa amorosa do Pai?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem ter sido marcados por uma visão meritória da fé. A aula precisa mostrar, com clareza, que a salvação nasce do amor e da iniciativa de Deus.",
+    erroComumDeInterpretacao:
+      "Separar o amor do Pai da obra do Filho ou tratar o Espírito como etapa secundária enfraquece a visão trinitária do plano redentor.",
+    perguntasParaDebate: [
+      "Por que o envio do Filho é a maior prova do amor do Pai?",
+      "O que a plenitude dos tempos ensina sobre a soberania de Deus?",
+      "Como a atuação do Espírito completa a aplicação da salvação ao crente?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a turma a agradecer pelo amor do Pai, a obra do Filho e a presença do Espírito, reconhecendo a unidade da Trindade na salvação.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "A linguagem de envio no Novo Testamento comunica missão, autoridade e origem: o Filho não veio por conta própria, mas em obediência ao Pai.",
+      "Paulo usa a expressão plenitude dos tempos para mostrar que Deus governa a história em favor do seu plano redentor.",
+    ],
+    conceitoTeologico: [
+      "A missão do Filho revela o amor do Pai sem diminuir a voluntária obediência de Cristo.",
+      "A aplicação da salvação pelo Espírito confirma que redenção, adoção e vida nova pertencem ao mesmo movimento trinitário.",
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A ideia de que a salvação depende de desempenho humano ou de mérito espiritual.",
+      "A tendência de ler a obra de Cristo sem perceber a iniciativa amorosa do Pai e a aplicação do Espírito.",
+    ],
+    oQueConsola: [
+      "A salvação tem origem no amor do Pai, e isso sustenta o coração do crente em meio às lutas.",
+      "O mesmo Deus que enviou o Filho também nos dá o Espírito para confirmar a adoção e a esperança.",
+    ],
+    oQueExige: [
+      "Responder ao amor divino com fé, arrependimento e gratidão perseverante.",
+      "Viver como quem foi alcançado por um plano redentor completo e confiável.",
+    ],
+    oQueRevelaSobreDeus: [
+      "O Pai ama de modo santo e eficaz, enviando o Filho para salvar.",
+      "A Trindade age em perfeita harmonia na execução e aplicação da redenção.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Como o envio do Filho manifesta o amor do Pai?",
+      "O que significa dizer que Cristo veio na plenitude dos tempos?",
+      "Como Pai, Filho e Espírito aparecem juntos na aplicação da salvação?",
+    ],
+    pontosChave: [
+      "A salvação começa na iniciativa amorosa do Pai.",
+      "A vinda de Cristo aconteceu no tempo perfeito de Deus.",
+      "O Espírito aplica ao crente a obra que o Filho realizou.",
+    ],
+    fraseDeSintese:
+      "O Pai enviou o Filho por amor, no tempo certo, e pelo Espírito torna eficaz em nós a salvação conquistada por Cristo.",
+  },
+};
+
 const objetivosAdultosLicao11 = [
   "Mostrar como o Espírito Santo liberta o crente da escravidão do pecado e confirma sua filiação em Cristo.",
   "Explicar de que modo o Espírito guia o crente na vontade do Pai em uma vida de comunhão, mortificação da carne e obediência.",
@@ -951,6 +1624,99 @@ function criarTrimestrePlaceholder({
 }
 
 const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditorialConfig>> = {
+  1: {
+    imagem: "/images/EBD/licao-01-adulto.jpg",
+    objetivos: objetivosAdultosLicao1,
+    topicos: topicosAdultosLicao1,
+    apoioProfessor: [
+      "Apresente a doutrina da Trindade como revelação bíblica e não como curiosidade teológica distante da vida da igreja.",
+      "Ajude a classe a distinguir reverência diante do mistério de Deus de confusão doutrinária causada por comparações simplistas.",
+    ],
+    apoioAluno: [
+      "Leia Mateus 3.13-17 durante a semana e anote o que esse texto ensina sobre a unidade e a distinção do Pai, do Filho e do Espírito Santo.",
+      "Transforme sua oração da semana em um exercício consciente de adoração ao Deus triúno revelado nas Escrituras.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece a aula pelo batismo de Jesus e peça à classe que identifique no texto a presença simultânea do Pai, do Filho e do Espírito Santo.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Explique a doutrina da Trindade em três movimentos: revelação no batismo, unidade com distinção das Pessoas e relevância para salvação, adoração e missão.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua destacando que a Trindade não é detalhe periférico, mas a forma como Deus se deu a conhecer ao seu povo.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao1,
+  },
+  2: {
+    imagem: "/images/EBD/licao-02-adulto.jpg",
+    objetivos: objetivosAdultosLicao2,
+    topicos: topicosAdultosLicao2,
+    apoioProfessor: [
+      "Conduza a aula de modo pastoral, lembrando que a imagem paterna de alguns alunos pode estar ferida e precisa ser corrigida pelas Escrituras.",
+      "Mostre com clareza que conhecer o Pai biblicamente depende da revelação do Filho e não de projeções emocionais ou tradições vagas.",
+    ],
+    apoioAluno: [
+      "Leia Mateus 11.25-27 e João 14.6-11 durante a semana e observe como Cristo revela o Pai ao coração do crente.",
+      "Separe um momento para agradecer em oração pelos atributos do Pai que mais sustentam sua fé nesta fase da vida.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra perguntando quais imagens distorcidas sobre Deus Pai aparecem com mais frequência hoje e conduza a resposta para a revelação bíblica.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize a aula em três eixos: identidade do Pai nas Escrituras, revelação do Pai no Filho e nomes e atributos que sustentam a fé da igreja.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Encerre destacando que conhecer o Pai em Cristo fortalece a adoração, a oração e a confiança em meio às lutas.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao2,
+  },
+  3: {
+    imagem: "/images/EBD/licao-03-adulto.jpg",
+    objetivos: objetivosAdultosLicao3,
+    topicos: topicosAdultosLicao3,
+    apoioProfessor: [
+      "Ressalte que a salvação nasce do amor do Pai e não do mérito humano, combatendo leituras moralistas do Evangelho.",
+      "Ajude a classe a perceber a cooperação entre Pai, Filho e Espírito sem transformar a redenção em etapas isoladas ou concorrentes.",
+    ],
+    apoioAluno: [
+      "Leia João 3.16-17, 1 João 4.9-10 e Gálatas 4.4-6 durante a semana e anote como esses textos mostram o amor do Pai na missão do Filho.",
+      "Agradeça a Deus em oração pela salvação que nasce de sua iniciativa amorosa e peça que essa verdade fortaleça sua confiança.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece a aula perguntando por que o envio do Filho é a maior demonstração do amor do Pai e deixe a classe responder à luz das Escrituras.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição em três movimentos: o amor do Pai no envio do Filho, a plenitude dos tempos e a atuação trinitária na aplicação da salvação.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Finalize levando a turma a descansar na iniciativa amorosa do Pai e a reconhecer a unidade do Deus triúno na redenção.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao3,
+  },
   11: {
     imagem: "/images/EBD/licao-11-adulto.jpg",
     objetivos: objetivosAdultosLicao11,
@@ -1048,35 +1814,44 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 1,
     data: "2026-01-04",
-    titulo: "A Palavra que sustenta a caminhada",
-    resumo: "A vida cristã amadurece quando a Escritura ocupa o centro do ensino, da comunhão e das decisões da igreja.",
-    textoChave: "2 Timóteo 3:16-17",
-    verdadePratica: "Toda transformação duradoura começa quando a Palavra orienta fé, família e serviço cristão.",
-    leituraBiblica: ["Salmos 119:97-105", "2 Timóteo 3:14-17"],
-    aplicacao: "Separe um horário fixo desta semana para leitura bíblica e trate esse compromisso como parte da sua fidelidade ao Senhor.",
-    enfase: "a centralidade da Palavra",
+    titulo: "O Mistério da Santíssima Trindade",
+    resumo:
+      "A primeira lição do trimestre apresenta a revelação da Trindade no batismo de Jesus e mostra que um só Deus age eternamente em três Pessoas distintas.",
+    textoChave: "Mateus 3:17",
+    verdadePratica:
+      "A doutrina da Trindade é central à fé cristã e mostra um só Deus atuando harmoniosamente na redenção.",
+    leituraBiblica: ["Mateus 3:13-17"],
+    aplicacao:
+      "Adore conscientemente ao Deus triúno nesta semana e permita que essa verdade fortaleça sua oração, sua confiança e sua reverência.",
+    enfase: "a revelação do Deus triúno",
   },
   {
     numero: 2,
     data: "2026-01-11",
-    titulo: "Deus Pai, Filho e Espírito Santo",
-    resumo: "A lição reforça a ação harmoniosa do Pai, do Filho e do Espírito Santo na salvação e na vida da igreja.",
-    textoChave: "Mateus 28:19",
-    verdadePratica: "A fé cristã confessa um só Deus, conhecido na revelação do Pai, do Filho e do Espírito Santo.",
-    leituraBiblica: ["Mateus 3:13-17", "Efésios 1:3-14"],
-    aplicacao: "Transforme sua oração desta semana em um exercício consciente de adoração ao Deus que se revelou em Pai, Filho e Espírito Santo.",
-    enfase: "a revelação do Deus triúno",
+    titulo: "O Deus Pai",
+    resumo:
+      "A lição conduz a igreja a conhecer biblicamente a identidade do Pai, sua revelação em Cristo e os atributos que sustentam a fé cristã.",
+    textoChave: "Mateus 11:27",
+    verdadePratica:
+      "Conhecemos a identidade, os atributos e a glória do Pai por meio de Cristo e da ação do Espírito Santo.",
+    leituraBiblica: ["Mateus 11:25-27", "João 14:6-11"],
+    aplicacao:
+      "Ore nesta semana agradecendo pela revelação do Pai em Cristo e peça que seu coração seja moldado pela verdade do seu caráter santo e fiel.",
+    enfase: "o conhecimento do Pai",
   },
   {
     numero: 3,
     data: "2026-01-18",
-    titulo: "Salvação pela graça em Cristo",
-    resumo: "A igreja relembra que a reconciliação com Deus nasce da graça em Cristo, e não do mérito humano.",
-    textoChave: "Efésios 2:8-9",
-    verdadePratica: "Quem foi alcançado pela graça vive com gratidão, humildade e compromisso com o Evangelho.",
-    leituraBiblica: ["Efésios 2:1-10", "Romanos 5:1-11"],
-    aplicacao: "Lembre-se diariamente de que você vive pela graça e deixe essa verdade moldar sua gratidão, seu serviço e sua humildade.",
-    enfase: "a graça salvadora",
+    titulo: "O Pai Enviou o Filho",
+    resumo:
+      "A lição mostra que o envio de Cristo nasce do amor do Pai e revela a unidade da Trindade na execução e aplicação da salvação.",
+    textoChave: "1 João 4:9",
+    verdadePratica:
+      "O envio do Filho revela o amor do Pai e a unidade da Trindade no plano da salvação.",
+    leituraBiblica: ["João 3:16-17", "1 João 4:9-10", "Gálatas 4:4-6"],
+    aplicacao:
+      "Agradeça ao Pai pelo envio do Filho e viva esta semana com mais confiança na salvação que nasce de sua iniciativa amorosa.",
+    enfase: "o amor do Pai na redenção",
   },
   {
     numero: 4,
