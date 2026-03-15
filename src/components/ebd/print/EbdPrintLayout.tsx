@@ -92,15 +92,31 @@ export function EbdPrintDocumentLayout({
 
       .ebd-print-page {
         box-sizing: border-box !important;
-        width: 100% !important;
-        max-width: none !important;
-        min-height: 0 !important;
+        width: 190mm !important;
+        max-width: 190mm !important;
+        height: 276mm !important;
+        min-height: 276mm !important;
+        max-height: 276mm !important;
         margin: 0 auto !important;
         margin-bottom: 0 !important;
         border: none !important;
         box-shadow: none !important;
+        overflow: hidden !important;
         page-break-after: always;
         break-after: page;
+      }
+
+      .ebd-print-shell {
+        height: 100% !important;
+      }
+
+      .ebd-print-flow {
+        min-height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .ebd-print-footer {
+        margin-top: auto !important;
       }
 
       .ebd-print-page:last-child {
@@ -148,22 +164,27 @@ export function EbdPrintPage({
 }: EbdPrintPageProps) {
   return (
     <section
-      className="ebd-print-page relative mx-auto mb-8 bg-white px-6 py-6 text-[#333] shadow-[0_18px_48px_rgba(0,0,0,0.08)] md:px-7 md:py-7"
-      style={{ maxWidth: "190mm", minHeight: "276mm" }}
+      className="ebd-print-page relative mx-auto mb-8 bg-white px-5 py-5 text-[#333] shadow-[0_18px_48px_rgba(0,0,0,0.08)]"
+      style={{
+        maxWidth: "190mm",
+        height: "276mm",
+        minHeight: "276mm",
+        maxHeight: "276mm",
+      }}
     >
       <div className="ebd-print-watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.038]">
         <div className="text-center">
           <Image
             src={EBD_PRINT_BRANDING.logoSrc}
             alt=""
-            width={140}
-            height={140}
+            width={132}
+            height={132}
             aria-hidden="true"
-            style={{ width: 140, height: 140 }}
+            style={{ width: 132, height: 132 }}
           />
           <p
             aria-hidden="true"
-            className="mt-3 font-script text-[2.1rem] leading-none text-[#212121]"
+            className="mt-2.5 font-script text-[1.95rem] leading-none text-[#212121]"
           >
             {EBD_PRINT_BRANDING.scriptName}
           </p>
@@ -176,59 +197,61 @@ export function EbdPrintPage({
         </div>
       </div>
 
-      <div className="relative z-[1] flex min-h-full flex-col">
-        <header className="shrink-0 border-b border-black/10 pb-3">
-          <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-            <div className="flex items-start gap-3">
+      <div className="ebd-print-shell relative z-[1] flex h-full flex-col">
+        <header className="shrink-0 border-b border-black/10 pb-2.5">
+          <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+            <div className="flex items-start gap-2.5">
               <Image
                 src={EBD_PRINT_BRANDING.logoSrc}
                 alt="Logo da igreja"
-                width={48}
-                height={48}
-                style={{ width: 48, height: 48 }}
+                width={42}
+                height={42}
+                style={{ width: 42, height: 42 }}
               />
               <div>
-                <p className="font-script text-[1.55rem] leading-none text-[#212121]">
+                <p className="font-script text-[1.42rem] leading-none text-[#212121]">
                   {EBD_PRINT_BRANDING.scriptName}
                 </p>
-                <p className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.24em] text-[#8b5b18]">
+                <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.22em] text-[#8b5b18]">
                   {EBD_PRINT_BRANDING.subtitle}
                 </p>
-                <p className="mt-1.5 text-[10px] leading-relaxed text-[#666]">
+                <p className="mt-1 text-[9px] leading-relaxed text-[#666]">
                   {EBD_PRINT_BRANDING.officialName}
                 </p>
               </div>
             </div>
 
-            <div className="self-start text-[9px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
+            <div className="self-start text-[8.5px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
               {modeLabel}
             </div>
           </div>
 
-          <div className="mt-3 grid gap-3 md:grid-cols-[1fr_auto] md:items-end">
+          <div className="mt-2.5 grid gap-2 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-[9px] font-bold uppercase tracking-[0.26em] text-[#ef5350]">
+              <p className="text-[8.5px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
                 {classeInfo.label} · {trimestreLabel}
               </p>
-              <h2 className="mt-1.5 font-acme text-[1.45rem] leading-tight tracking-wide text-[#212121]">
+              <h2 className="mt-1 font-acme text-[1.32rem] leading-tight tracking-wide text-[#212121]">
                 Lição {licao.numero} · {licao.titulo}
               </h2>
             </div>
 
             <div className="text-right">
-              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#8b5b18]">
+              <p className="text-[8.5px] font-bold uppercase tracking-[0.2em] text-[#8b5b18]">
                 Data da lição
               </p>
-              <p className="mt-1 text-[11px] font-semibold text-[#212121]">
+              <p className="mt-0.5 text-[10px] font-semibold text-[#212121]">
                 {formatEbdDate(licao.data)}
               </p>
             </div>
           </div>
         </header>
 
-        <div className="ebd-print-flow mt-4 flex-1">{children}</div>
+        <main className="ebd-print-flow mt-3 min-h-0 flex-1 overflow-hidden">
+          {children}
+        </main>
 
-        <footer className="mt-4 shrink-0 border-t border-black/10 pt-3 text-[9px] leading-relaxed text-[#666]">
+        <footer className="ebd-print-footer mt-auto shrink-0 border-t border-black/10 pt-2 text-[8px] leading-relaxed text-[#666]">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p>{EBD_PRINT_BRANDING.officialName}</p>
@@ -237,7 +260,7 @@ export function EbdPrintPage({
             </div>
 
             <div className="text-right">
-              <p className="font-semibold uppercase tracking-[0.2em] text-[#8b5b18]">
+              <p className="font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Material da lição
               </p>
               <p className="mt-1">

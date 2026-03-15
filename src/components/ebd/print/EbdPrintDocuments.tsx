@@ -131,11 +131,11 @@ function PrintSection({
   children: ReactNode;
 }) {
   return (
-    <section className="mb-4">
-      <h3 className="keep-with-next font-acme text-[1.05rem] tracking-wide text-[#212121]">
+    <section className="mb-3.5">
+      <h3 className="keep-with-next font-acme text-[0.98rem] tracking-wide text-[#212121]">
         {title}
       </h3>
-      <div className="mt-1.5 space-y-1.5 text-[11px] leading-[1.45] text-[#333]">
+      <div className="mt-1.5 space-y-1 text-[10.3px] leading-[1.36] text-[#333]">
         {children}
       </div>
     </section>
@@ -150,7 +150,7 @@ function PrintParagraph({
   children: ReactNode;
 }) {
   return (
-    <p className="text-[11px] leading-[1.45] text-[#333]">
+    <p className="text-[10.3px] leading-[1.36] text-[#333]">
       {label ? <strong className="text-[#212121]">{label}: </strong> : null}
       {children}
     </p>
@@ -163,7 +163,7 @@ function PrintBulletList({ items }: { items?: string[] }) {
   }
 
   return (
-    <ul className="ml-5 list-disc space-y-1 text-[11px] leading-[1.45] text-[#333] marker:text-[#8b5b18]">
+    <ul className="ml-4.5 list-disc space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:text-[#8b5b18]">
       {items.map((item, index) => (
         <li key={`${index}-${item.slice(0, 30)}`}>
           <PrintBibleText text={item} />
@@ -179,7 +179,7 @@ function PrintOrderedList({ items }: { items?: ListaItem[] }) {
   }
 
   return (
-    <ol className="ml-5 list-decimal space-y-1 text-[11px] leading-[1.45] text-[#333] marker:font-semibold marker:text-[#8b5b18]">
+    <ol className="ml-4.5 list-decimal space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:font-semibold marker:text-[#8b5b18]">
       {items.map((item, index) => (
         <li key={`${index}-${item.titulo ?? "item"}`}>
           {item.titulo ? (
@@ -1187,28 +1187,50 @@ function getFullPages(
   const closingCount = classeInfo.slug === "adultos" ? 3 : 2;
   const closingSections = remainingSections.slice(-closingCount);
   const developmentSections = remainingSections.slice(0, -closingCount);
-
   const pageGroups: PrintablePageSection[][] = [[baseSection, planningSection]];
 
-  if (panoramaSection) {
+  if (panoramaSection && developmentSections.length > 0) {
+    pageGroups.push([panoramaSection, developmentSections[0]]);
+  } else if (panoramaSection) {
     pageGroups.push([panoramaSection]);
   }
 
-  if (developmentSections.length > 0) {
-    pageGroups.push([developmentSections[0]]);
+  const remainingDevelopment =
+    panoramaSection && developmentSections.length > 0
+      ? developmentSections.slice(1)
+      : developmentSections;
 
-    for (let index = 1; index < developmentSections.length; index += 2) {
-      pageGroups.push(developmentSections.slice(index, index + 2));
+  for (let index = 0; index < remainingDevelopment.length; index += 2) {
+    pageGroups.push(remainingDevelopment.slice(index, index + 2));
+  }
+
+  if (classeInfo.slug === "adultos") {
+    const [apoioSection, aprofundamentoSection, revisaoSection] = closingSections;
+
+    if (apoioSection && aprofundamentoSection) {
+      pageGroups.push([apoioSection, aprofundamentoSection]);
+    } else if (apoioSection) {
+      pageGroups.push([apoioSection]);
     }
+
+    if (revisaoSection) {
+      pageGroups.push([revisaoSection]);
+    }
+
+    return pageGroups.filter((group) => group.length > 0);
   }
 
-  if (closingSections.length > 0) {
-    closingSections.forEach((section) => {
-      pageGroups.push([section]);
-    });
+  const [apoioSection, revisaoSection] = closingSections;
+
+  if (apoioSection) {
+    pageGroups.push([apoioSection]);
   }
 
-  return pageGroups;
+  if (revisaoSection) {
+    pageGroups.push([revisaoSection]);
+  }
+
+  return pageGroups.filter((group) => group.length > 0);
 }
 
 export function EbdLessonSummaryPrintDocument({
