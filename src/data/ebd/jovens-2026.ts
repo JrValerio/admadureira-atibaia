@@ -1730,6 +1730,194 @@ const subsidioJovensLicao9: LicaoEBD["subsidioJovens"] = {
   },
 };
 
+const objetivosJovensLicao10 = [
+  "Apresentar o conceito de arrependimento e sua importância para receber a salvação.",
+  "Explicar a salvação e a fé salvífica.",
+  "Esclarecer que a cooperação humana no processo da salvação não é mérito.",
+];
+
+const topicosJovensLicao10 = [
+  {
+    titulo: "Salvação e arrependimento",
+    conteudo: [
+      "Arrependimento é mudança de mente, atitude e direção diante de Deus.",
+      "Ele envolve reconhecimento sincero do pecado, abandono do caminho antigo e nova disposição de obedecer ao Senhor.",
+      "O arrependimento não salva por si mesmo, mas prepara o coração para receber a graça de Cristo.",
+    ],
+  },
+  {
+    titulo: "Salvação e fé salvífica",
+    conteudo: [
+      "Fé salvífica é confiança viva em Jesus Cristo como único e suficiente Salvador.",
+      "Ela não se limita a concordância intelectual; envolve entrega, dependência e compromisso com o senhorio de Cristo.",
+      "Por meio dessa fé, o crente é unido a Cristo e participa da sua vida, paz e justiça.",
+    ],
+  },
+  {
+    titulo: "Salvação e decisão pessoal",
+    conteudo: [
+      "A salvação é oferta graciosa de Deus, mas requer resposta pessoal de arrependimento e fé.",
+      "Responder ao Evangelho não é mérito humano; é acolher humildemente a obra que Deus já realizou em Cristo.",
+      "A graça não anula a responsabilidade: ela chama, capacita e aguarda uma entrega consciente e obediente.",
+    ],
+  },
+];
+
+const subsidioJovensLicao10: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 10,
+    titulo: "Arrependimento e Fé como Respostas Humanas",
+    data: "2026-03-08",
+    trimestre: "Plano Perfeito — A Salvação da Humanidade, a Mensagem Central das Escrituras",
+    textoPrincipal:
+      "Marcos 1.15 resume o chamado do Evangelho: arrepender-se e crer na boa notícia do Reino de Deus.",
+    resumoDaLicao:
+      "A salvação é um dom da graça de Deus, recebido mediante arrependimento e fé. Essa resposta pessoal não é mérito humano, mas disposição humilde em receber a obra que Jesus realizou.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "João 16.8",
+        foco: "O Espírito Santo convence o mundo do pecado, da justiça e do juízo.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Atos 2.38",
+        foco: "O chamado apostólico à conversão começa com arrependimento sincero.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Efésios 2.8-9",
+        foco: "A salvação continua sendo dom da graça, não conquista humana.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "João 1.12",
+        foco: "Receber a Cristo pela fé introduz o pecador na família de Deus.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 5.1",
+        foco: "A fé une o salvo a Cristo e o coloca em paz com Deus.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Apocalipse 3.20",
+        foco: "Cristo chama e espera uma resposta pessoal ao seu convite.",
+      },
+    ],
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensLicao10,
+    interacao:
+      "A aula precisa mostrar que arrependimento e fé não são obras meritórias, mas respostas humanas indispensáveis ao convite da graça. O Evangelho chama o coração inteiro a voltar-se para Cristo.",
+    orientacaoPedagogica:
+      "Comece distinguindo arrependimento de remorso e fé salvífica de mera crença intelectual. Depois organize a lição mostrando que o Espírito convence, o pecador responde e a graça continua sendo a base de toda a experiência de salvação.",
+  },
+  desenvolvimento: [
+    {
+      id: "salvacao-e-arrependimento",
+      titulo: "Salvação e arrependimento",
+      sinopse:
+        "Arrependimento é transformação interior que muda mente, direção e vontade diante de Deus.",
+      explicacaoBiblica: [
+        "Marcos 1.15, Atos 2.38 e Atos 3.19 mostram o arrependimento no centro do chamado do Evangelho.",
+        "O Espírito Santo convence o pecador e o conduz a reconhecer o pecado de forma séria e pessoal.",
+        "Sem arrependimento sincero, a fé se torna discurso vazio sem quebrantamento real.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a discernir entre tristeza passageira por consequências e verdadeiro abandono do pecado.",
+        "Mostre que arrependimento contínuo continua sendo parte da caminhada cristã, não apenas do início da conversão.",
+      ],
+      pense:
+        "Seu arrependimento tem produzido mudança real de direção ou apenas sentimento momentâneo?",
+      pontoImportante:
+        "Arrependimento não compra a salvação, mas prepara o coração para receber a graça de Cristo.",
+    },
+    {
+      id: "salvacao-e-fe-salvifica",
+      titulo: "Salvação e fé salvífica",
+      sinopse:
+        "Fé salvífica é confiança viva em Cristo, marcada por entrega e perseverança.",
+      explicacaoBiblica: [
+        "A fé que salva confia em Jesus como Salvador e Senhor, não apenas como ideia religiosa.",
+        "Romanos 10.9-11 mostra fé do coração e confissão pública ligadas à experiência da salvação.",
+        "A fé une o pecador a Cristo, produz paz com Deus e inaugura nova vida no Espírito.",
+      ],
+      aplicacaoPratica: [
+        "Ensine a classe a avaliar se sua fé é apenas linguagem cristã ou dependência real de Jesus.",
+        "Mostre que a fé cresce à medida que o crente permanece em relacionamento com Cristo e sua Palavra.",
+      ],
+      pense:
+        "Sua fé é só concordância com verdades bíblicas ou entrega real do coração ao senhorio de Cristo?",
+      pontoImportante:
+        "A fé salvífica envolve confiança, entrega e compromisso com o Cristo que salva.",
+    },
+    {
+      id: "salvacao-e-decisao-pessoal",
+      titulo: "Salvação e decisão pessoal",
+      sinopse:
+        "A graça chama, e o ser humano responde pessoalmente com fé e arrependimento.",
+      explicacaoBiblica: [
+        "A salvação é oferecida por Deus a todos, mas se torna eficaz nos que respondem voluntariamente ao Evangelho.",
+        "João 1.12 e Apocalipse 3.20 mostram Cristo chamando e aguardando acolhimento pessoal.",
+        "Responder ao chamado não significa mérito humano, mas acolher com humildade o que Deus preparou em Cristo.",
+      ],
+      aplicacaoPratica: [
+        "Leve a turma a assumir responsabilidade espiritual por sua resposta a Deus, sem terceirizar a fé.",
+        "Mostre que decisão pessoal não é evento isolado; ela se prolonga em obediência, fidelidade e perseverança.",
+      ],
+      pense:
+        "Você tem respondido ao chamado de Deus com entrega sincera ou apenas com proximidade religiosa?",
+      pontoImportante:
+        "A graça não anula a responsabilidade humana; ela a desperta e a capacita.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Peça à turma que diga a diferença entre remorso e arrependimento e use isso para abrir a aula.",
+    perguntaChave:
+      "Como arrependimento e fé funcionam como respostas humanas à salvação sem se tornarem mérito humano?",
+    dificuldadeProvavelDaClasse:
+      "Alguns jovens podem reduzir arrependimento a emoção e fé a mera crença mental, sem perceber a profundidade de ambas como resposta ao Evangelho.",
+    conducaoDaConversa: [
+      "Mantenha a distinção entre graça, arrependimento e fé, mostrando que a graça continua sendo a base de tudo.",
+      "Use Marcos 1, João 1 e Romanos 10 para ligar chamada, resposta e união com Cristo.",
+      "Conecte a aula com decisões concretas de obediência, abandono do pecado e perseverança.",
+    ],
+    fechamento:
+      "Conclua lembrando que Deus oferece salvação por graça, e o ser humano responde com arrependimento sincero, fé viva e entrega real a Cristo.",
+  },
+  aprofundamentoOpcional: {
+    notaDoutrinariaCurta: [
+      "Arrependimento e fé não competem com a graça; eles são respostas despertadas e capacitadas pela graça.",
+      "A fé salvífica envolve mais do que assentimento mental: ela abraça Cristo com confiança e submissão.",
+    ],
+    contextoBiblico: [
+      "A pregação de Jesus, de João Batista e dos apóstolos une frequentemente arrependimento e fé no anúncio da salvação.",
+      "Textos como Romanos 10 e João 1 ajudam a mostrar o caráter pessoal da resposta ao Evangelho.",
+    ],
+    conexaoComVidaCrista: [
+      "Jovens precisam aprender a responder a Deus de forma pessoal, e não apenas por ambiente, costume ou pressão externa.",
+      "Arrependimento e fé continuam relevantes para a manutenção de uma vida humilde e dependente de Cristo.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que significa arrependimento bíblico?",
+      "O que distingue a fé salvífica de mera crença intelectual?",
+      "Por que arrependimento e fé não são mérito humano?",
+      "Como a graça e a responsabilidade humana aparecem juntas nessa lição?",
+    ],
+    quizCurto: [
+      "Arrependimento é só remorso? Resposta esperada: não.",
+      "A fé salvífica se limita a acreditar que Deus existe? Resposta esperada: não.",
+      "Responder ao Evangelho com fé é mérito humano? Resposta esperada: não; é resposta à graça.",
+    ],
+    conclusao:
+      "Arrependimento e fé são respostas humanas indispensáveis ao Evangelho, despertadas pela graça e dirigidas ao Cristo que salva.",
+  },
+};
+
 const objetivosJovensLicao11 = [
   "Apresentar a doutrina bíblica da adoção como expressão da graça que nos insere de fato na família de Deus.",
   "Explicar como o Espírito Santo confirma a filiação cristã e nos conduz a uma relação viva com o Pai.",
@@ -2171,13 +2359,16 @@ const sementesJovensPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 10,
     data: "2026-03-08",
-    titulo: "Evangelho e presença nas redes",
-    resumo: "A juventude é chamada a viver coerência cristã também no ambiente digital, onde fala, reage e se posiciona.",
-    textoChave: "Mateus 5:16",
-    verdadePratica: "A presença digital do cristão também deve refletir verdade, graça, sobriedade e temor do Senhor.",
-    leituraBiblica: ["Efésios 4:25-32", "Tiago 3:1-12"],
-    aplicacao: "Revise uma prática digital desta semana e ajuste sua presença online para refletir mais claramente o Evangelho.",
-    enfase: "o testemunho cristão nas redes",
+    titulo: "Arrependimento e Fé como Respostas Humanas",
+    resumo:
+      "A salvação é um dom da graça de Deus, recebido mediante arrependimento e fé. Essa resposta pessoal não é mérito humano, mas disposição humilde em receber a obra que Jesus realizou.",
+    textoChave: "Marcos 1.15",
+    verdadePratica:
+      "Arrependimento e fé são respostas humanas despertadas pela graça e dirigidas ao Cristo que salva.",
+    leituraBiblica: ["Marcos 1.14-15", "Romanos 10.9-11", "João 16.8", "Apocalipse 3.20"],
+    aplicacao:
+      "Faça uma oração de entrega sincera nesta semana, pedindo que Deus aprofunde em você arrependimento real e fé perseverante em Cristo.",
+    enfase: "a resposta humana à salvação",
   },
   {
     numero: 11,
@@ -2495,6 +2686,37 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
       },
     ],
     subsidioJovens: subsidioJovensLicao9,
+  },
+  10: {
+    imagem: "/images/EBD/licao-10-jovens.png",
+    objetivos: objetivosJovensLicao10,
+    topicos: topicosJovensLicao10,
+    apoioProfessor: [
+      "Mostre com clareza que arrependimento e fé são respostas humanas exigidas pelo Evangelho, mas não se transformam em mérito diante de Deus.",
+      "Ajude a turma a diferenciar fé viva de mera concordância intelectual e arrependimento verdadeiro de remorso superficial.",
+    ],
+    apoioAluno: [
+      "Leia Marcos 1.14-15 e Romanos 10.9-11 durante a semana e anote o que esses textos pedem do seu coração.",
+      "Examine se há áreas em que você ainda precisa responder ao chamado de Cristo com mais sinceridade, obediência e confiança.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando a diferença entre remorso e arrependimento e entre acreditar em Deus e confiar-se a Cristo.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe a lição em três movimentos: salvação e arrependimento, salvação e fé salvífica, e salvação como decisão pessoal sem mérito humano.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua convidando a turma a responder à graça de Deus com coração quebrantado, fé viva e obediência prática.",
+      },
+    ],
+    subsidioJovens: subsidioJovensLicao10,
   },
   11: {
     imagem: "/images/EBD/licao-11-jovens.png",
