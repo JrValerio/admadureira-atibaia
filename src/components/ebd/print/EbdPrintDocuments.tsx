@@ -28,6 +28,8 @@ type PrintableSection = {
   blocks: PrintableBlock[];
 };
 
+type PrintablePage = PrintableSection[];
+
 function PrintBibleText({ text }: { text: string }) {
   return (
     <BibleReferenceText
@@ -164,6 +166,60 @@ function chunkSections<T>(items: T[], size: number) {
 
   for (let index = 0; index < items.length; index += size) {
     pages.push(items.slice(index, index + size));
+  }
+
+  return pages;
+}
+
+function estimateBlockWeight(block: PrintableBlock) {
+  if (block.type === "text") {
+    return 0.8 + block.text.length / 320;
+  }
+
+  if (block.type === "list") {
+    const textLength = block.items.reduce((total, item) => total + item.length, 0);
+    return 0.9 + block.items.length * 0.45 + textLength / 420;
+  }
+
+  const textLength = block.items.reduce(
+    (total, item) => total + (item.titulo?.length ?? 0) + item.conteudo.length,
+    0
+  );
+
+  return 1 + block.items.length * 0.5 + textLength / 420;
+}
+
+function estimateSectionWeight(section: PrintableSection) {
+  return 1.2 + section.blocks.reduce((total, block) => total + estimateBlockWeight(block), 0);
+}
+
+function packSectionsIntoPages(sections: PrintableSection[], maxWeight: number) {
+  const pages: PrintablePage[] = [];
+  let currentPage: PrintableSection[] = [];
+  let currentWeight = 0;
+
+  for (const section of sections) {
+    const sectionWeight = estimateSectionWeight(section);
+
+    if (currentPage.length === 0) {
+      currentPage = [section];
+      currentWeight = sectionWeight;
+      continue;
+    }
+
+    if (currentWeight + sectionWeight <= maxWeight) {
+      currentPage.push(section);
+      currentWeight += sectionWeight;
+      continue;
+    }
+
+    pages.push(currentPage);
+    currentPage = [section];
+    currentWeight = sectionWeight;
+  }
+
+  if (currentPage.length > 0) {
+    pages.push(currentPage);
   }
 
   return pages;
@@ -559,16 +615,16 @@ function getFullSections(classeInfo: ClasseEBDInfo, licao: LicaoEBD): PrintableS
 
 function buildFullPages(classeInfo: ClasseEBDInfo, licao: LicaoEBD) {
   const sections = getFullSections(classeInfo, licao);
-  return sections.flatMap((section) =>
-    chunkSections(section.blocks, 2).map((blocks, index) => [
-      {
-        ...section,
-        key: `${section.key}-part-${index + 1}`,
-        title: index === 0 ? section.title : `${section.title} · continuação`,
-        blocks,
-      },
-    ])
+  const sectionChunks = sections.flatMap((section) =>
+    chunkSections(section.blocks, 2).map((blocks, index) => ({
+      ...section,
+      key: `${section.key}-part-${index + 1}`,
+      title: index === 0 ? section.title : `${section.title} · continuação`,
+      blocks,
+    }))
   );
+
+  return packSectionsIntoPages(sectionChunks, classeInfo.slug === "adultos" ? 13.8 : 13.4);
 }
 
 export function EbdLessonSummaryPrintDocument({
