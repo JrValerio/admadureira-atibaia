@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { programacaoSemanal, type ItemSemanal } from "@/data/agenda";
 import { Card, Section, SectionTitle } from "@/components/ui";
 
@@ -47,6 +46,12 @@ function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
 
 export default function Cultos() {
   const cultos = agruparCultosPorDia(programacaoSemanal);
+  const eventosEspeciais = [
+    { nome: "Reunião de Ministério", detalhe: "1ª segunda do mês" },
+    { nome: "Santa Ceia", detalhe: "2º sábado do mês" },
+    { nome: "Reunião de Obreiros", detalhe: "3º sábado do mês" },
+    { nome: "Culto com a Mocidade", detalhe: "4º sábado do mês" },
+  ];
 
   return (
     <Section id="cultos" className="bg-[#f7f6f2]">
@@ -83,25 +88,19 @@ export default function Cultos() {
         ))}
       </div>
 
-      <Card className="mx-auto max-w-3xl border border-[#ffa726]/20 bg-white p-7 text-center">
+      <Card className="mx-auto max-w-2xl border border-[#ffa726]/20 bg-white p-7 text-center">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
-          Agenda especial
+          Eventos Mensais
         </p>
-        <h3 className="font-acme text-3xl tracking-wide text-[#212121]">
-          Eventos especiais ficam na agenda da igreja
-        </h3>
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#6c6c6c]">
-          Santa Ceia, batismos, congressos, campanhas e encontros mensais
-          ficam reunidos na página de eventos, separando a rotina semanal da
-          agenda especial da igreja com mais clareza.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
-          <Link href="/eventos" className="ui-btn-primary">
-            Ver agenda de eventos
-          </Link>
-          <Link href="/contato" className="ui-btn-secondary">
-            Falar com a igreja
-          </Link>
+        <div className="flex flex-col justify-center gap-6 sm:flex-row">
+          {eventosEspeciais.map((evento) => (
+            <div key={evento.nome}>
+              <p className="text-sm font-semibold text-[#212121]">
+                {evento.nome}
+              </p>
+              <p className="mt-1 text-sm text-[#6c6c6c]">{evento.detalhe}</p>
+            </div>
+          ))}
         </div>
       </Card>
 
