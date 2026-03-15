@@ -8,12 +8,13 @@ import {
   formatEbdDate,
   getClasseEbdInfo,
   getClassesEbd,
+  getLicaoAnterior,
   getLicao,
   getTrimestre,
   getTrimestresPorClasse,
   isClasseEbd,
 } from "@/lib/ebd-utils";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -127,23 +128,109 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
   const classeInfo = getClasseEbdInfo(classe);
   const lessonImage = lessonContext.licao.imagem ?? null;
+  const pageImage = lessonContext.licao.imagem ?? trimestre.imagem;
   const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
-  const licaoAnterior = currentIndex > 0 ? trimestre.licoes[currentIndex - 1] : null;
+  const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao =
     currentIndex >= 0 && currentIndex < trimestre.licoes.length - 1
       ? trimestre.licoes[currentIndex + 1]
       : null;
+  const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "EBD",
+        item: resolveSiteUrl("/ebd"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: classeInfo.label,
+        item: resolveSiteUrl(`/ebd/${classe}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: trimestre.rotulo,
+        item: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: `Lição ${lessonContext.licao.numero}`,
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `Lição ${lessonContext.licao.numero} | ${lessonContext.licao.titulo}`,
+    description: lessonContext.licao.resumo,
+    url: canonicalUrl,
+    image: resolveSiteUrl(pageImage),
+    datePublished: lessonContext.licao.data,
+    inLanguage: "pt-BR",
+    articleSection: `EBD ${classeInfo.label}`,
+    isPartOf: {
+      "@type": "CollectionPage",
+      name: `${trimestre.titulo} | EBD ${classeInfo.label}`,
+      url: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`),
+    },
+    author: trimestre.comentarista
+      ? {
+          "@type": "Person",
+          name: trimestre.comentarista,
+        }
+      : {
+          "@type": "Organization",
+          name: SITE_NAME,
+        },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: resolveSiteUrl("/"),
+      logo: {
+        "@type": "ImageObject",
+        url: resolveSiteUrl("/logo.jpg"),
+      },
+    },
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+  };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
-      <HeroPage
-        variant="full"
-        label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
-        title={`Lição ${lessonContext.licao.numero} · ${lessonContext.licao.titulo}`}
-        description={lessonContext.licao.resumo}
-        image={trimestre.imagem}
-        imageAlt={lessonContext.licao.titulo}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      <main className="min-h-screen bg-[#f5f5f5]">
+        <HeroPage
+          variant="full"
+          label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
+          title={`Lição ${lessonContext.licao.numero} · ${lessonContext.licao.titulo}`}
+          description={lessonContext.licao.resumo}
+          image={trimestre.imagem}
+          imageAlt={lessonContext.licao.titulo}
+        />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
@@ -356,7 +443,8 @@ export default async function EbdLessonPage({ params }: PageProps) {
             </aside>
           </div>
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

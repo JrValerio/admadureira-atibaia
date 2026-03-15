@@ -7,13 +7,14 @@ import {
   formatEbdDate,
   getClasseEbdInfo,
   getClassesEbd,
+  getEbdSundayReferenceKey,
   getLicaoDaSemana,
   getProximaLicao,
   getTrimestre,
   getTrimestresPorClasse,
   isClasseEbd,
 } from "@/lib/ebd-utils";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -116,17 +117,82 @@ export default async function EbdQuarterPage({ params }: PageProps) {
     licaoDaSemana?.trimestre.slug === trimestre.slug
       ? licaoDaSemana.licao
       : trimestre.licoes[0] ?? null;
+  const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "EBD",
+        item: resolveSiteUrl("/ebd"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: classeInfo.label,
+        item: resolveSiteUrl(`/ebd/${classe}`),
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: trimestre.rotulo,
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${trimestre.titulo} | EBD ${classeInfo.label}`,
+    description: trimestre.descricao,
+    url: canonicalUrl,
+    image: resolveSiteUrl(trimestre.imagem),
+    inLanguage: "pt-BR",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: resolveSiteUrl("/"),
+    },
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+    hasPart: trimestre.licoes.map((licao) => ({
+      "@type": "Article",
+      headline: `Lição ${licao.numero} | ${licao.titulo}`,
+      url: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao.slug}`),
+      datePublished: licao.data,
+    })),
+  };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
-      <HeroPage
-        variant="full"
-        label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
-        title={trimestre.titulo}
-        description={trimestre.descricao}
-        image={trimestre.imagem}
-        imageAlt={trimestre.titulo}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+
+      <main className="min-h-screen bg-[#f5f5f5]">
+        <HeroPage
+          variant="full"
+          label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
+          title={trimestre.titulo}
+          description={trimestre.descricao}
+          image={trimestre.imagem}
+          imageAlt={trimestre.titulo}
+        />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
@@ -257,9 +323,11 @@ export default async function EbdQuarterPage({ params }: PageProps) {
             classe={classe}
             edicao={trimestre.slug}
             licoes={trimestre.licoes}
+            initialSundayReferenceKey={getEbdSundayReferenceKey()}
           />
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

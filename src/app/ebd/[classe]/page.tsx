@@ -10,10 +10,11 @@ import {
   getClasseEbdInfo,
   getLicaoDaSemana,
   getProximaLicao,
+  getTrimestreAtual,
   getTrimestresPorClasse,
   isClasseEbd,
 } from "@/lib/ebd-utils";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -80,18 +81,75 @@ export default async function EbdClassPage({ params }: PageProps) {
   const trimestres = getTrimestresPorClasse(classe);
   const licaoDaSemana = getLicaoDaSemana(classe);
   const proximaLicao = getProximaLicao(classe);
-  const trimestreAtual = trimestres[0] ?? null;
+  const trimestreAtual = getTrimestreAtual(classe);
+  const canonicalUrl = resolveSiteUrl(`/ebd/${classe}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "EBD",
+        item: resolveSiteUrl("/ebd"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: classeInfo.label,
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `EBD ${classeInfo.label}`,
+    description: classeInfo.descricao,
+    url: canonicalUrl,
+    inLanguage: "pt-BR",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: resolveSiteUrl("/"),
+    },
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+    hasPart: trimestres.map((trimestre) => ({
+      "@type": "CollectionPage",
+      name: `${trimestre.titulo} — ${trimestre.rotulo}`,
+      url: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`),
+    })),
+  };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
-      <HeroPage
-        variant="full"
-        label="Escola Bíblica Dominical"
-        title={`Classe ${classeInfo.label}`}
-        description={`${classeInfo.descricao} ${classeInfo.horarioLabel}.`}
-        image={trimestreAtual?.imagem ?? igrejaHeroMedia.ebd}
-        imageAlt={`Classe ${classeInfo.label} da EBD`}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+
+      <main className="min-h-screen bg-[#f5f5f5]">
+        <HeroPage
+          variant="full"
+          label="Escola Bíblica Dominical"
+          title={`Classe ${classeInfo.label}`}
+          description={`${classeInfo.descricao} ${classeInfo.horarioLabel}.`}
+          image={trimestreAtual?.imagem ?? igrejaHeroMedia.ebd}
+          imageAlt={`Classe ${classeInfo.label} da EBD`}
+        />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
@@ -233,7 +291,8 @@ export default async function EbdClassPage({ params }: PageProps) {
             </div>
           </div>
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

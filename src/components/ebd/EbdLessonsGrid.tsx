@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { ClasseEBD, LicaoEBD } from "@/data/ebd";
-import { formatEbdDate } from "@/lib/ebd-utils";
-import { getSaoPauloDate } from "@/lib/date-utils";
+import { formatEbdDate, getEbdSundayReferenceKey } from "@/lib/ebd-utils";
 
 type EbdLessonsGridProps = {
   classe: ClasseEBD;
   edicao: string;
   licoes: LicaoEBD[];
+  initialSundayReferenceKey: string;
 };
 
 function subscribeReferenceDate(callback: () => void) {
@@ -17,43 +17,11 @@ function subscribeReferenceDate(callback: () => void) {
   return () => window.clearInterval(id);
 }
 
-function formatDateKey(date: Date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
-}
-
-function getSundayReferenceKey(date = new Date()) {
-  const saoPauloDate = getSaoPauloDate(date);
-  const sundayDate = new Date(saoPauloDate);
-  const weekDay = sundayDate.getDay();
-  const daysUntilSunday = weekDay === 0 ? 0 : 7 - weekDay;
-
-  sundayDate.setHours(0, 0, 0, 0);
-  sundayDate.setDate(sundayDate.getDate() + daysUntilSunday);
-
-  return formatDateKey(sundayDate);
-}
-
 function getSnapshot() {
-  return getSundayReferenceKey();
+  return getEbdSundayReferenceKey();
 }
 
-function getServerSnapshot() {
-  return null;
-}
-
-function getLessonStatus(lessonDate: string, sundayReferenceKey: string | null) {
-  if (!sundayReferenceKey) {
-    return {
-      label: "Próxima",
-      cardClassName: "border-black/5 bg-white shadow-sm",
-      badgeClassName: "border-black/10 bg-[#f5f5f5] text-[#666]",
-    };
-  }
-
+function getLessonStatus(lessonDate: string, sundayReferenceKey: string) {
   if (lessonDate < sundayReferenceKey) {
     return {
       label: "Passada",
@@ -82,11 +50,12 @@ export default function EbdLessonsGrid({
   classe,
   edicao,
   licoes,
+  initialSundayReferenceKey,
 }: EbdLessonsGridProps) {
   const sundayReferenceKey = useSyncExternalStore(
     subscribeReferenceDate,
     getSnapshot,
-    getServerSnapshot
+    () => initialSundayReferenceKey
   );
 
   return (

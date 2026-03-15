@@ -42,7 +42,7 @@ function formatDateKey(date: Date) {
   return `${year}-${month}-${day}`;
 }
 
-function getSundayReferenceKey(date = new Date()) {
+export function getEbdSundayReferenceKey(date = new Date()) {
   const saoPauloDate = getSaoPauloDate(date);
   const sundayDate = new Date(saoPauloDate);
   const weekDay = sundayDate.getDay();
@@ -52,6 +52,18 @@ function getSundayReferenceKey(date = new Date()) {
   // para destacar a lição que a igreja está prestes a estudar.
   sundayDate.setHours(0, 0, 0, 0);
   sundayDate.setDate(sundayDate.getDate() + daysUntilSunday);
+
+  return formatDateKey(sundayDate);
+}
+
+export function getEbdStudyReferenceKey(date = new Date()) {
+  const saoPauloDate = getSaoPauloDate(date);
+  const sundayDate = new Date(saoPauloDate);
+  const weekDay = sundayDate.getDay();
+  const daysSinceSunday = weekDay === 0 ? 0 : weekDay;
+
+  sundayDate.setHours(0, 0, 0, 0);
+  sundayDate.setDate(sundayDate.getDate() - daysSinceSunday);
 
   return formatDateKey(sundayDate);
 }
@@ -74,8 +86,39 @@ export function getClassesEbd() {
   return [...classesEBD].sort((a, b) => a.ordem - b.ordem);
 }
 
-export function getTrimestreAtual(classe: ClasseEBD) {
+export function getTrimestreMaisRecente(classe: ClasseEBD) {
   return getTrimestresPorClasse(classe)[0] ?? null;
+}
+
+export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
+  const sundayReferenceKey = getEbdSundayReferenceKey(date);
+  const trimestres = getTrimestresPorClasse(classe);
+
+  const trimestreAtual =
+    trimestres.find((trimestre) => {
+      const primeiraLicao = trimestre.licoes[0];
+      const ultimaLicao = trimestre.licoes.at(-1);
+
+      if (!primeiraLicao || !ultimaLicao) {
+        return false;
+      }
+
+      return (
+        sundayReferenceKey >= primeiraLicao.data &&
+        sundayReferenceKey <= ultimaLicao.data
+      );
+    }) ?? null;
+
+  if (trimestreAtual) {
+    return trimestreAtual;
+  }
+
+  return (
+    trimestres.find((trimestre) => {
+      const primeiraLicao = trimestre.licoes[0];
+      return primeiraLicao ? primeiraLicao.data >= sundayReferenceKey : false;
+    }) ?? getTrimestreMaisRecente(classe)
+  );
 }
 
 export function getTrimestresPorClasse(classe: ClasseEBD) {
@@ -110,13 +153,28 @@ export function getLicao(classe: ClasseEBD, edicao: string, licaoSlug: string) {
 }
 
 export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
-  const sundayReferenceKey = getSundayReferenceKey(date);
+  const sundayReferenceKey = getEbdSundayReferenceKey(date);
 
   return (
     getLicoesComContexto(classe).find(
       ({ licao }) => licao.data >= sundayReferenceKey
     ) ?? null
   );
+}
+
+export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
+  const studyReferenceKey = getEbdStudyReferenceKey(date);
+  const licoes = getLicoesComContexto(classe);
+
+  for (let index = licoes.length - 1; index >= 0; index -= 1) {
+    const licao = licoes[index];
+
+    if (licao.licao.data <= studyReferenceKey) {
+      return licao;
+    }
+  }
+
+  return licoes[0] ?? null;
 }
 
 export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
@@ -131,6 +189,24 @@ export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
       ({ licao }) => licao.data > licaoDaSemana.licao.data
     ) ?? null
   );
+}
+
+export function getLicaoAnterior(
+  classe: ClasseEBD,
+  edicao: string,
+  licaoSlug: string
+) {
+  const trimestre = getTrimestre(classe, edicao);
+
+  if (!trimestre) {
+    return null;
+  }
+
+  const currentIndex = trimestre.licoes.findIndex(
+    (item) => item.slug === licaoSlug
+  );
+
+  return currentIndex > 0 ? trimestre.licoes[currentIndex - 1] : null;
 }
 
 export function formatEbdDate(date: string) {

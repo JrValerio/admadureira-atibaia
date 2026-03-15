@@ -12,7 +12,7 @@ import {
   getTrimestresPorClasse,
   isClasseEbd,
 } from "@/lib/ebd-utils";
-import { buildPageMetadata } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
   searchParams: Promise<{
@@ -57,17 +57,69 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
   const proximaLicao = getProximaLicao(classeAtiva);
   const trimestreAtual = getTrimestreAtual(classeAtiva);
   const trimestresDaClasse = getTrimestresPorClasse(classeAtiva);
+  const canonicalUrl = resolveSiteUrl("/ebd");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${canonicalUrl}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: resolveSiteUrl("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "EBD",
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "EBD",
+    description:
+      "Área da Escola Bíblica Dominical da AD Madureira Atibaia com classes, trimestres, lições e acesso rápido ao estudo da semana.",
+    url: canonicalUrl,
+    inLanguage: "pt-BR",
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: resolveSiteUrl("/"),
+    },
+    breadcrumb: {
+      "@id": `${canonicalUrl}#breadcrumb`,
+    },
+    hasPart: classes.map((classe) => ({
+      "@type": "CollectionPage",
+      name: `EBD ${classe.label}`,
+      url: resolveSiteUrl(`/ebd/${classe.slug}`),
+    })),
+  };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
-      <HeroPage
-        variant="full"
-        label="Escola Bíblica Dominical"
-        title="EBD da Igreja"
-        description="Uma área dedicada ao ensino bíblico contínuo da AD Madureira Atibaia, com classes, trimestres, lições e acesso rápido ao estudo da semana."
-        image={igrejaHeroMedia.ebd}
-        imageAlt="Capa da Escola Bíblica Dominical da AD Madureira Atibaia"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+
+      <main className="min-h-screen bg-[#f5f5f5]">
+        <HeroPage
+          variant="full"
+          label="Escola Bíblica Dominical"
+          title="EBD da Igreja"
+          description="Uma área dedicada ao ensino bíblico contínuo da AD Madureira Atibaia, com classes, trimestres, lições e acesso rápido ao estudo da semana."
+          image={igrejaHeroMedia.ebd}
+          imageAlt="Capa da Escola Bíblica Dominical da AD Madureira Atibaia"
+        />
 
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
@@ -320,7 +372,8 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
             </div>
           </div>
         </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }
