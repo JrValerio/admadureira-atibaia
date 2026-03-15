@@ -11,6 +11,8 @@ import {
   getClasseEbdInfo,
   getLicaoDaSemana,
   getProximaLicao,
+  getTrimestreEditorialStatus,
+  getTrimestrePublishedLessonCount,
   getTrimestreAtual,
   getTrimestresPorClasse,
   isClasseEbd,
@@ -24,6 +26,33 @@ type PageProps = {
 };
 
 export const revalidate = 3600;
+
+function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialStatus>) {
+  if (status === "draft") {
+    return {
+      label: "Em preparação",
+      badgeClassName: "border-black/10 bg-white text-[#666]",
+      description:
+        "Estrutura do trimestre já aberta no site, com publicação gradual das lições conforme a curadoria editorial for concluída.",
+    };
+  }
+
+  if (status === "partial") {
+    return {
+      label: "Em publicação",
+      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
+      description:
+        "Este trimestre já começou a ser publicado e receberá novas lições e subsídios ao longo do período.",
+    };
+  }
+
+  return {
+    label: "Publicado",
+    badgeClassName: "border-[#ef5350]/12 bg-[#fff3f2] text-[#b0453f]",
+    description:
+      "Este trimestre já está disponível para acompanhamento contínuo da classe e consulta das lições publicadas.",
+  };
+}
 
 export async function generateStaticParams() {
   return getClassesEbd().map((classe) => ({
@@ -167,9 +196,8 @@ export default async function EbdClassPage({ params }: PageProps) {
               <div className="space-y-4 leading-relaxed text-[#555]">
                 <p>{classeInfo.descricao}</p>
                 <p>
-                  Esta página reúne os trimestres publicados, a lição da semana
-                  e os caminhos para acompanhar o conteúdo da classe ao longo do
-                  período.
+                  Esta página reúne o mapa anual da classe, a lição da semana e
+                  os caminhos para acompanhar o conteúdo da EBD ao longo do ano.
                 </p>
               </div>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
@@ -225,73 +253,87 @@ export default async function EbdClassPage({ params }: PageProps) {
           <div>
             <div className="mb-6 max-w-3xl">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Trimestres publicados
+                Trimestres de 2026
               </p>
               <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
                 Conteúdo organizado por edição
               </h2>
               <p className="leading-relaxed text-[#555]">
-                Cada trimestre reúne a visão geral da classe e as lições
-                publicadas para acompanhamento contínuo da Escola Bíblica
-                Dominical.
+                Cada trimestre mostra com clareza o que já está publicado e o
+                que ainda está em preparação para a classe.
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {trimestres.map((trimestre) => (
-                <Link
-                  key={trimestre.id}
-                  href={`/ebd/${classe}/${trimestre.slug}`}
-                  className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
-                >
-                  <CardMedia
-                    src={trimestre.imagem}
-                    alt={trimestre.titulo}
-                    variant="content"
-                    sizes="(max-width: 1280px) 100vw, 50vw"
-                    className="rounded-none"
-                  >
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                        {trimestre.rotulo}
-                      </p>
-                      <h3 className="font-acme text-3xl tracking-wide text-white">
-                        {trimestre.titulo}
-                      </h3>
-                    </div>
-                  </CardMedia>
+              {trimestres.map((trimestre) => {
+                const statusMeta = getQuarterStatusMeta(
+                  getTrimestreEditorialStatus(trimestre)
+                );
+                const publishedLessons = getTrimestrePublishedLessonCount(trimestre);
 
-                  <div className="p-6">
-                    <p className="mb-4 text-sm leading-relaxed text-[#555]">
-                      {trimestre.descricao}
-                    </p>
-                    <div className="mb-4 grid grid-cols-2 gap-4">
-                      <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                          Lições
+                return (
+                  <Link
+                    key={trimestre.id}
+                    href={`/ebd/${classe}/${trimestre.slug}`}
+                    className="group overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition-shadow hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]"
+                  >
+                    <CardMedia
+                      src={trimestre.imagem}
+                      alt={trimestre.titulo}
+                      variant="content"
+                      sizes="(max-width: 1280px) 100vw, 50vw"
+                      className="rounded-none"
+                    >
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <div
+                          className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+                        >
+                          {statusMeta.label}
+                        </div>
+                        <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          {trimestre.rotulo}
                         </p>
-                        <p className="font-acme text-3xl text-[#212121]">
-                          {trimestre.licoes.length}
-                        </p>
+                        <h3 className="font-acme text-3xl tracking-wide text-white">
+                          {trimestre.titulo}
+                        </h3>
                       </div>
-                      <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                          Versículo-base
-                        </p>
-                        <p className="text-sm leading-relaxed text-[#212121]">
-                          <BibleReferenceText
-                            text={trimestre.versiculoBase ?? "A confirmar"}
-                            linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-                          />
-                        </p>
+                    </CardMedia>
+
+                    <div className="p-6">
+                      <p className="mb-3 text-sm leading-relaxed text-[#555]">
+                        {trimestre.descricao}
+                      </p>
+                      <p className="mb-4 text-sm leading-relaxed text-[#666]">
+                        {statusMeta.description}
+                      </p>
+                      <div className="mb-4 grid grid-cols-2 gap-4">
+                        <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            Lições publicadas
+                          </p>
+                          <p className="font-acme text-3xl text-[#212121]">
+                            {publishedLessons}
+                          </p>
+                        </div>
+                        <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            Versículo-base
+                          </p>
+                          <p className="text-sm leading-relaxed text-[#212121]">
+                            <BibleReferenceText
+                              text={trimestre.versiculoBase ?? "A confirmar"}
+                              linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+                            />
+                          </p>
+                        </div>
                       </div>
+                      <p className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
+                        Ver trimestre →
+                      </p>
                     </div>
-                    <p className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
-                      Ver trimestre →
-                    </p>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>

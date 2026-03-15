@@ -2,7 +2,13 @@ import type { MetadataRoute } from "next";
 import { getEventosFuturos } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
 import { getDevotionals } from "@/data/devocionais";
-import { getClassesEbd, getTrimestresPorClasse } from "@/lib/ebd-utils";
+import {
+  getClassesEbd,
+  getTrimestrePublishedLessonCount,
+  getTrimestresPorClasse,
+  isLicaoPublished,
+  isTrimestreDraft,
+} from "@/lib/ebd-utils";
 import { getMensagens } from "@/data/mensagens";
 import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
@@ -48,7 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestEbdDate = getLatestDate(
     classesEbd.flatMap((classe) =>
       getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
-        trimestre.licoes.map((licao) => parseContentDate(licao.data))
+        trimestre.licoes
+          .filter((licao) => isLicaoPublished(licao))
+          .map((licao) => parseContentDate(licao.data))
       )
     ),
     generatedAt
@@ -260,7 +268,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const trimestres = getTrimestresPorClasse(classe.slug);
     const lastModified = getLatestDate(
       trimestres.flatMap((trimestre) =>
-        trimestre.licoes.map((licao) => parseContentDate(licao.data))
+        trimestre.licoes
+          .filter((licao) => isLicaoPublished(licao))
+          .map((licao) => parseContentDate(licao.data))
       ),
       generatedAt
     );
@@ -274,25 +284,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   const paginasEbdTrimestre: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
-    getTrimestresPorClasse(classe.slug).map((trimestre) => ({
-      url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}`),
-      lastModified: getLatestDate(
-        trimestre.licoes.map((licao) => parseContentDate(licao.data)),
-        generatedAt
-      ),
-      changeFrequency: "weekly",
-      priority: 0.7,
-    }))
+    getTrimestresPorClasse(classe.slug)
+      .filter((trimestre) => !isTrimestreDraft(trimestre))
+      .map((trimestre) => ({
+        url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}`),
+        lastModified: getLatestDate(
+          trimestre.licoes
+            .filter((licao) => isLicaoPublished(licao))
+            .map((licao) => parseContentDate(licao.data)),
+          generatedAt
+        ),
+        changeFrequency: "weekly",
+        priority: getTrimestrePublishedLessonCount(trimestre) >= 13 ? 0.7 : 0.6,
+      }))
   );
 
   const paginasEbdLicao: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
     getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
-      trimestre.licoes.map((licao) => ({
-        url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}/${licao.slug}`),
-        lastModified: parseContentDate(licao.data),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      }))
+      trimestre.licoes
+        .filter((licao) => isLicaoPublished(licao))
+        .map((licao) => ({
+          url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}/${licao.slug}`),
+          lastModified: parseContentDate(licao.data),
+          changeFrequency: "weekly",
+          priority: 0.7,
+        }))
     )
   );
 

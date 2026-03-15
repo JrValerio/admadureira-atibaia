@@ -10,8 +10,12 @@ import {
   getEbdSundayReferenceKey,
   getLicaoDaSemana,
   getProximaLicao,
+  getTrimestreEditorialStatus,
+  getTrimestrePublishedLessonCount,
   getTrimestre,
   getTrimestresPorClasse,
+  isLicaoPublished,
+  isTrimestreDraft,
   isClasseEbd,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -24,6 +28,33 @@ type PageProps = {
 };
 
 export const revalidate = 3600;
+
+function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialStatus>) {
+  if (status === "draft") {
+    return {
+      label: "Em preparação",
+      badgeClassName: "border-black/10 bg-white text-[#666]",
+      description:
+        "Esta edição já está aberta no site e receberá as lições gradualmente conforme a curadoria e a revisão editorial forem concluídas.",
+    };
+  }
+
+  if (status === "partial") {
+    return {
+      label: "Em publicação",
+      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
+      description:
+        "Este trimestre já começou a ser publicado e receberá novas lições e subsídios ao longo do período.",
+    };
+  }
+
+  return {
+    label: "Publicado",
+    badgeClassName: "border-[#ef5350]/12 bg-[#fff3f2] text-[#b0453f]",
+    description:
+      "Este trimestre já está disponível para acompanhamento contínuo da classe e consulta das lições publicadas.",
+  };
+}
 
 export async function generateStaticParams() {
   return getClassesEbd().flatMap((classe) =>
@@ -54,13 +85,24 @@ export async function generateMetadata({
   }
 
   const classeInfo = getClasseEbdInfo(classe);
+  const isDraft = isTrimestreDraft(trimestre);
 
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     title: `${trimestre.titulo} | EBD ${classeInfo.label}`,
     description: trimestre.descricao,
     path: `/ebd/${classe}/${trimestre.slug}`,
     image: trimestre.imagem,
   });
+
+  return isDraft
+    ? {
+        ...metadata,
+        robots: {
+          index: false,
+          follow: true,
+        },
+      }
+    : metadata;
 }
 
 function Breadcrumb({
@@ -111,12 +153,17 @@ export default async function EbdQuarterPage({ params }: PageProps) {
   }
 
   const classeInfo = getClasseEbdInfo(classe);
+  const statusMeta = getQuarterStatusMeta(getTrimestreEditorialStatus(trimestre));
+  const publishedLessons = getTrimestrePublishedLessonCount(trimestre);
+  const isDraft = isTrimestreDraft(trimestre);
   const licaoDaSemana = getLicaoDaSemana(classe);
   const proximaLicao = getProximaLicao(classe);
+  const primeiraLicaoPublicada =
+    trimestre.licoes.find((licao) => isLicaoPublished(licao)) ?? null;
   const licaoEmDestaque =
     licaoDaSemana?.trimestre.slug === trimestre.slug
       ? licaoDaSemana.licao
-      : trimestre.licoes[0] ?? null;
+      : primeiraLicaoPublicada ?? trimestre.licoes[0] ?? null;
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -165,7 +212,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
     breadcrumb: {
       "@id": `${canonicalUrl}#breadcrumb`,
     },
-    hasPart: trimestre.licoes.map((licao) => ({
+    hasPart: trimestre.licoes.filter((licao) => isLicaoPublished(licao)).map((licao) => ({
       "@type": "Article",
       headline: `Lição ${licao.numero} | ${licao.titulo}`,
       url: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao.slug}`),
@@ -207,6 +254,11 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Visão geral do trimestre
               </p>
+              <div
+                className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+              >
+                {statusMeta.label}
+              </div>
               <h1 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
                 {trimestre.titulo}
               </h1>
@@ -218,9 +270,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               <div className="space-y-4 leading-relaxed text-[#555]">
                 <p>{trimestre.descricao}</p>
                 <p>
-                  Esta edição organiza o conteúdo da classe{" "}
-                  {classeInfo.label.toLowerCase()} em treze lições para
-                  acompanhamento semanal da Escola Bíblica Dominical.
+                  {statusMeta.description}
                 </p>
               </div>
 
@@ -235,10 +285,10 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                 </div>
                 <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
                   <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                    Lições
+                    Lições publicadas
                   </p>
                   <p className="font-acme text-3xl text-[#212121]">
-                    {trimestre.licoes.length}
+                    {publishedLessons}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
@@ -278,7 +328,9 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                     {licaoEmDestaque.resumo}
                   </p>
                   <p className="mb-5 text-sm leading-relaxed text-[#555]">
-                    {licaoDaSemana?.trimestre.slug === trimestre.slug
+                    {isDraft
+                      ? "Este trimestre está visível no site para orientar a navegação anual da classe, mas o conteúdo das lições ainda está em preparação."
+                      : licaoDaSemana?.trimestre.slug === trimestre.slug
                       ? "Esta é a lição que acompanha o domingo mais próximo da classe."
                       : "Esta edição está disponível para consulta e acompanhamento da classe."}
                   </p>
@@ -307,17 +359,18 @@ export default async function EbdQuarterPage({ params }: PageProps) {
           </div>
 
           <div className="mb-6 max-w-3xl">
-            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-              Lições do trimestre
-            </p>
-            <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
-              Acompanhe as 13 lições desta edição
-            </h2>
-            <p className="leading-relaxed text-[#555]">
-              Os badges abaixo indicam a posição de cada lição em relação ao
-              domingo de referência da semana: passada, esta semana ou próxima.
-            </p>
-          </div>
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Lições do trimestre
+              </p>
+              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                Acompanhe as 13 lições desta edição
+              </h2>
+              <p className="leading-relaxed text-[#555]">
+              {isDraft
+                ? "As lições deste trimestre já estão mapeadas no site. Os cards em preparação indicam o caminho da edição sem prometer conteúdo ainda não publicado."
+                : "Os badges abaixo indicam a posição de cada lição em relação ao domingo de referência da semana: passada, esta semana ou próxima."}
+              </p>
+            </div>
 
           <EbdLessonsGrid
             classe={classe}

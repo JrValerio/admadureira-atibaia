@@ -13,6 +13,7 @@ import {
   getLicao,
   getTrimestre,
   getTrimestresPorClasse,
+  isLicaoPublished,
   isClasseEbd,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -59,13 +60,24 @@ export async function generateMetadata({
   }
 
   const pageImage = lessonContext.licao.imagem ?? lessonContext.trimestre.imagem;
+  const isDraft = !isLicaoPublished(lessonContext.licao);
 
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     title: `Lição ${lessonContext.licao.numero} | ${lessonContext.licao.titulo}`,
     description: lessonContext.licao.resumo,
     path: `/ebd/${classe}/${edicao}/${licao}`,
     image: pageImage,
   });
+
+  return isDraft
+    ? {
+        ...metadata,
+        robots: {
+          index: false,
+          follow: true,
+        },
+      }
+    : metadata;
 }
 
 function Breadcrumb({
@@ -130,6 +142,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const classeInfo = getClasseEbdInfo(classe);
   const lessonImage = lessonContext.licao.imagem ?? null;
   const pageImage = lessonContext.licao.imagem ?? trimestre.imagem;
+  const isDraft = !isLicaoPublished(lessonContext.licao);
   const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao =
@@ -245,121 +258,181 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
             <article className="space-y-6">
-              {lessonImage ? (
-                <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
-                  <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
-                    <Image
-                      src={lessonImage}
-                      alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 100vw, 420px"
-                      className="object-contain"
-                    />
+              {isDraft ? (
+                <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+                  <div className="mb-6 inline-flex rounded-full border border-black/10 bg-[#fafafa] px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
+                    Conteúdo em preparação
                   </div>
-                </div>
-              ) : null}
+                  <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Data
+                      </p>
+                      <p className="text-sm text-[#212121]">
+                        {formatEbdDate(lessonContext.licao.data)}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Classe
+                      </p>
+                      <p className="text-sm text-[#212121]">{classeInfo.label}</p>
+                    </div>
+                  </div>
 
-              <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                    <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Data
-                    </p>
-                    <p className="text-sm text-[#212121]">
-                      {formatEbdDate(lessonContext.licao.data)}
-                    </p>
-                  </div>
-                  <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                    <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Texto-chave
-                    </p>
-                    <p className="text-sm text-[#212121]">
-                      <BibleReferenceText
-                        text={lessonContext.licao.textoChave ?? "A confirmar"}
-                        linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-                      />
-                    </p>
-                  </div>
-                </div>
-
-                {lessonContext.licao.verdadePratica ? (
-                  <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Verdade prática
+                      Publicação gradual
                     </p>
                     <p className="leading-relaxed text-[#555]">
-                      <BibleReferenceText text={lessonContext.licao.verdadePratica} />
+                      Esta lição já está mapeada na edição para orientar a navegação
+                      anual da EBD, mas o conteúdo completo ainda está em
+                      preparação. Quando a curadoria editorial for concluída,
+                      esta página receberá resumo, leitura bíblica, apoio ao
+                      professor e revisão final.
                     </p>
                   </div>
-                ) : null}
 
-                <div className="mb-8">
-                  <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Leitura bíblica
-                  </p>
-                  <ul className="space-y-3 text-[#555] leading-relaxed">
-                    {lessonContext.licao.leituraBiblica.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>
-                          <BibleReferenceText text={item} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mb-8">
-                  <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Objetivos da lição
-                  </p>
-                  <ul className="space-y-3 text-[#555] leading-relaxed">
-                    {lessonContext.licao.objetivos.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>
-                          <BibleReferenceText text={item} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="space-y-6">
-                  {lessonContext.licao.topicos.map((topico) => (
-                    <section key={topico.titulo} className="rounded-3xl border border-black/5 bg-[#fafafa] p-5">
-                      <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
-                        {topico.titulo}
-                      </h2>
+                  {lessonContext.licao.leituraBiblica.length ? (
+                    <div className="mt-8">
+                      <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                        Leitura bíblica já confirmada
+                      </p>
                       <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {topico.conteudo.map((item) => (
+                        {lessonContext.licao.leituraBiblica.map((item) => (
                           <li key={item} className="flex items-start gap-3">
-                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
+                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
                             <span>
                               <BibleReferenceText text={item} />
                             </span>
                           </li>
                         ))}
                       </ul>
-                    </section>
-                  ))}
+                    </div>
+                  ) : null}
                 </div>
-              </div>
+              ) : (
+                <>
+                  {lessonImage ? (
+                    <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
+                      <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
+                        <Image
+                          src={lessonImage}
+                          alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
+                          fill
+                          priority
+                          sizes="(max-width: 768px) 100vw, 420px"
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  ) : null}
 
-              <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
-                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                  Aplicação prática
-                </p>
-                <p className="leading-relaxed text-[#555]">
-                  <BibleReferenceText text={lessonContext.licao.aplicacao} />
-                </p>
-              </div>
+                  <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+                    <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Data
+                        </p>
+                        <p className="text-sm text-[#212121]">
+                          {formatEbdDate(lessonContext.licao.data)}
+                        </p>
+                      </div>
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Texto-chave
+                        </p>
+                        <p className="text-sm text-[#212121]">
+                          <BibleReferenceText
+                            text={lessonContext.licao.textoChave ?? "A confirmar"}
+                            linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
+                          />
+                        </p>
+                      </div>
+                    </div>
 
-              <EbdTeacherSubsidy
-                classe={classe}
-                licao={lessonContext.licao}
-              />
+                    {lessonContext.licao.verdadePratica ? (
+                      <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
+                        <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Verdade prática
+                        </p>
+                        <p className="leading-relaxed text-[#555]">
+                          <BibleReferenceText text={lessonContext.licao.verdadePratica} />
+                        </p>
+                      </div>
+                    ) : null}
+
+                    <div className="mb-8">
+                      <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                        Leitura bíblica
+                      </p>
+                      <ul className="space-y-3 text-[#555] leading-relaxed">
+                        {lessonContext.licao.leituraBiblica.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                            <span>
+                              <BibleReferenceText text={item} />
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mb-8">
+                      <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                        Objetivos da lição
+                      </p>
+                      <ul className="space-y-3 text-[#555] leading-relaxed">
+                        {lessonContext.licao.objetivos.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                            <span>
+                              <BibleReferenceText text={item} />
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="space-y-6">
+                      {lessonContext.licao.topicos.map((topico) => (
+                        <section
+                          key={topico.titulo}
+                          className="rounded-3xl border border-black/5 bg-[#fafafa] p-5"
+                        >
+                          <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
+                            {topico.titulo}
+                          </h2>
+                          <ul className="space-y-3 text-[#555] leading-relaxed">
+                            {topico.conteudo.map((item) => (
+                              <li key={item} className="flex items-start gap-3">
+                                <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
+                                <span>
+                                  <BibleReferenceText text={item} />
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </section>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      Aplicação prática
+                    </p>
+                    <p className="leading-relaxed text-[#555]">
+                      <BibleReferenceText text={lessonContext.licao.aplicacao} />
+                    </p>
+                  </div>
+
+                  <EbdTeacherSubsidy
+                    classe={classe}
+                    licao={lessonContext.licao}
+                  />
+                </>
+              )}
             </article>
 
             <aside className="space-y-6">

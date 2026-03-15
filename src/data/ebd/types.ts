@@ -1,6 +1,8 @@
 export type ClasseEBD = "adultos" | "jovens" | "infantil";
 
 export type NumeroTrimestreEBD = 1 | 2 | 3 | 4;
+export type StatusEditorialEBD = "draft" | "partial" | "published";
+export type StatusLicaoEBD = "draft" | "published";
 
 export type ClasseEBDInfo = {
   slug: ClasseEBD;
@@ -140,6 +142,7 @@ export type LicaoEBD = {
   slug: string;
   numero: number;
   data: string;
+  statusEditorial?: StatusLicaoEBD;
   titulo: string;
   resumo: string;
   imagem?: string;
@@ -161,6 +164,7 @@ export type TrimestreEBD = {
   slug: string;
   ano: number;
   trimestre: NumeroTrimestreEBD;
+  statusEditorial?: StatusEditorialEBD;
   rotulo: string;
   titulo: string;
   subtitulo?: string;

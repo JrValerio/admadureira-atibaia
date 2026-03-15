@@ -3,7 +3,10 @@ import {
   trimestresEBDPorClasse,
   type ClasseEBD,
   type ClasseEBDInfo,
+  type LicaoEBD,
   type LicaoEBDComContexto,
+  type StatusEditorialEBD,
+  type StatusLicaoEBD,
   type TrimestreEBD,
 } from "@/data/ebd";
 import { getSaoPauloDate } from "@/lib/date-utils";
@@ -32,6 +35,30 @@ function compareTrimestresDesc(a: TrimestreEBD, b: TrimestreEBD) {
 
 function compareLicoesAsc(a: LicaoEBDComContexto, b: LicaoEBDComContexto) {
   return a.licao.data.localeCompare(b.licao.data);
+}
+
+export function isLicaoPublished(licao: Pick<LicaoEBD, "statusEditorial">) {
+  return (licao.statusEditorial ?? "published") === "published";
+}
+
+export function isTrimestreDraft(
+  trimestre: Pick<TrimestreEBD, "statusEditorial">
+) {
+  return (trimestre.statusEditorial ?? "published") === "draft";
+}
+
+export function getTrimestrePublishedLessonCount(trimestre: TrimestreEBD) {
+  return trimestre.licoes.filter((licao) => isLicaoPublished(licao)).length;
+}
+
+export function getTrimestreEditorialStatus(
+  trimestre: TrimestreEBD
+): StatusEditorialEBD {
+  return trimestre.statusEditorial ?? "published";
+}
+
+export function getLicaoEditorialStatus(licao: LicaoEBD): StatusLicaoEBD {
+  return licao.statusEditorial ?? "published";
 }
 
 function formatDateKey(date: Date) {
@@ -82,12 +109,41 @@ function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
     .sort(compareLicoesAsc);
 }
 
+function getPublishedLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
+  return getLicoesComContexto(classe).filter(
+    ({ trimestre, licao }) =>
+      !isTrimestreDraft(trimestre) && isLicaoPublished(licao)
+  );
+}
+
+function getPrimeiraLicaoPublicada(trimestre: TrimestreEBD) {
+  return trimestre.licoes.find((licao) => isLicaoPublished(licao)) ?? null;
+}
+
+function getUltimaLicaoPublicada(trimestre: TrimestreEBD) {
+  for (let index = trimestre.licoes.length - 1; index >= 0; index -= 1) {
+    const licao = trimestre.licoes[index];
+
+    if (isLicaoPublished(licao)) {
+      return licao;
+    }
+  }
+
+  return null;
+}
+
 export function getClassesEbd() {
   return [...classesEBD].sort((a, b) => a.ordem - b.ordem);
 }
 
 export function getTrimestreMaisRecente(classe: ClasseEBD) {
-  return getTrimestresPorClasse(classe)[0] ?? null;
+  const trimestres = getTrimestresPorClasse(classe);
+
+  return (
+    trimestres.find((trimestre) => getTrimestrePublishedLessonCount(trimestre) > 0) ??
+    trimestres[0] ??
+    null
+  );
 }
 
 export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
@@ -96,8 +152,8 @@ export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
 
   const trimestreAtual =
     trimestres.find((trimestre) => {
-      const primeiraLicao = trimestre.licoes[0];
-      const ultimaLicao = trimestre.licoes.at(-1);
+      const primeiraLicao = getPrimeiraLicaoPublicada(trimestre);
+      const ultimaLicao = getUltimaLicaoPublicada(trimestre);
 
       if (!primeiraLicao || !ultimaLicao) {
         return false;
@@ -115,7 +171,7 @@ export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
 
   return (
     trimestres.find((trimestre) => {
-      const primeiraLicao = trimestre.licoes[0];
+      const primeiraLicao = getPrimeiraLicaoPublicada(trimestre);
       return primeiraLicao ? primeiraLicao.data >= sundayReferenceKey : false;
     }) ?? getTrimestreMaisRecente(classe)
   );
@@ -156,7 +212,7 @@ export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
   const sundayReferenceKey = getEbdSundayReferenceKey(date);
 
   return (
-    getLicoesComContexto(classe).find(
+    getPublishedLicoesComContexto(classe).find(
       ({ licao }) => licao.data >= sundayReferenceKey
     ) ?? null
   );
@@ -164,7 +220,7 @@ export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
 
 export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
   const studyReferenceKey = getEbdStudyReferenceKey(date);
-  const licoes = getLicoesComContexto(classe);
+  const licoes = getPublishedLicoesComContexto(classe);
 
   for (let index = licoes.length - 1; index >= 0; index -= 1) {
     const licao = licoes[index];
@@ -185,7 +241,7 @@ export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
   }
 
   return (
-    getLicoesComContexto(classe).find(
+    getPublishedLicoesComContexto(classe).find(
       ({ licao }) => licao.data > licaoDaSemana.licao.data
     ) ?? null
   );

@@ -22,6 +22,12 @@ type AdultosEditorialConfig = {
   subsidioAdultos: NonNullable<LicaoEBD["subsidioAdultos"]>;
 };
 
+type PlaceholderQuarterConfig = {
+  slug: string;
+  trimestre: TrimestreEBD["trimestre"];
+  imagem: string;
+};
+
 const apoioProfessorBase = [
   "Conecte a lição com a vida da igreja local, da família e da missão cristã.",
   "Encerre a aula com revisão dos objetivos, oração e aplicação prática da semana.",
@@ -838,6 +844,7 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
+    statusEditorial: "published",
     titulo: seed.titulo,
     resumo: seed.resumo,
     textoChave: seed.textoChave,
@@ -881,6 +888,65 @@ function criarLicaoEditorialAdultos(
     apoioAluno: editorial.apoioAluno,
     esboco: editorial.esboco,
     subsidioAdultos: editorial.subsidioAdultos,
+  };
+}
+
+function adicionarSemanas(dataInicial: string, semanas: number) {
+  const date = new Date(`${dataInicial}T12:00:00-03:00`);
+  date.setDate(date.getDate() + semanas * 7);
+  return date.toISOString().slice(0, 10);
+}
+
+function criarLicaoPlaceholder(
+  edicao: string,
+  numero: number,
+  data: string
+): LicaoEBD {
+  return {
+    id: `adultos-${edicao}-licao-${numero}`,
+    slug: `licao-${numero}`,
+    numero,
+    data,
+    statusEditorial: "draft",
+    titulo: `Lição ${numero}`,
+    resumo:
+      "Conteúdo em preparação para a classe de Adultos. Esta lição será publicada no site com texto original e apoio ao professor.",
+    leituraBiblica: [],
+    objetivos: [],
+    topicos: [],
+    aplicacao:
+      "Acompanhe esta edição da EBD e volte em breve para acessar a lição completa.",
+  };
+}
+
+function criarTrimestrePlaceholder({
+  slug,
+  trimestre,
+  imagem,
+}: PlaceholderQuarterConfig): TrimestreEBD {
+  const dataInicialPorEdicao: Record<string, string> = {
+    "2026-2t": "2026-04-05",
+    "2026-3t": "2026-07-05",
+    "2026-4t": "2026-10-04",
+  };
+  const dataInicial = dataInicialPorEdicao[slug];
+
+  return {
+    id: `adultos-${slug}`,
+    slug,
+    ano: 2026,
+    trimestre,
+    statusEditorial: "draft",
+    rotulo: `${trimestre}º Trimestre de 2026`,
+    titulo: `${trimestre}º Trimestre de 2026`,
+    subtitulo: "Conteúdo em preparação",
+    descricao:
+      "Esta edição da classe de Adultos já está aberta no site e receberá as lições progressivamente conforme a curadoria e a revisão editorial forem concluídas.",
+    classe: "adultos",
+    imagem,
+    licoes: Array.from({ length: 13 }, (_, index) =>
+      criarLicaoPlaceholder(slug, index + 1, adicionarSemanas(dataInicial, index))
+    ),
   };
 }
 
@@ -1136,6 +1202,7 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
     slug: "2026-1t",
     ano: 2026,
     trimestre: 1,
+    statusEditorial: "published",
     rotulo: "1º Trimestre de 2026",
     titulo: "A Santíssima Trindade",
     subtitulo: "O Deus Único Revelado em Três Pessoas Eternas",
@@ -1149,4 +1216,19 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
       return editorial ? criarLicaoEditorialAdultos(seed, editorial) : criarLicao(seed);
     }),
   },
+  criarTrimestrePlaceholder({
+    slug: "2026-2t",
+    trimestre: 2,
+    imagem: "/images/EBD/ebd-2t.png",
+  }),
+  criarTrimestrePlaceholder({
+    slug: "2026-3t",
+    trimestre: 3,
+    imagem: "/images/EBD/ebd-2t.png",
+  }),
+  criarTrimestrePlaceholder({
+    slug: "2026-4t",
+    trimestre: 4,
+    imagem: "/images/EBD/ebd-2t.png",
+  }),
 ];

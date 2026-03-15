@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
 import type { ClasseEBD, LicaoEBD } from "@/data/ebd";
-import { formatEbdDate, getEbdSundayReferenceKey } from "@/lib/ebd-utils";
+import {
+  formatEbdDate,
+  getEbdSundayReferenceKey,
+  getLicaoEditorialStatus,
+} from "@/lib/ebd-utils";
 
 type EbdLessonsGridProps = {
   classe: ClasseEBD;
@@ -21,7 +25,17 @@ function getSnapshot() {
   return getEbdSundayReferenceKey();
 }
 
-function getLessonStatus(lessonDate: string, sundayReferenceKey: string) {
+function getLessonStatus(licao: LicaoEBD, sundayReferenceKey: string) {
+  if (getLicaoEditorialStatus(licao) === "draft") {
+    return {
+      label: "Em preparação",
+      cardClassName: "border-black/5 bg-[#fafafa] shadow-sm",
+      badgeClassName: "border-black/10 bg-white text-[#666]",
+    };
+  }
+
+  const lessonDate = licao.data;
+
   if (lessonDate < sundayReferenceKey) {
     return {
       label: "Passada",
@@ -61,7 +75,7 @@ export default function EbdLessonsGrid({
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       {licoes.map((licao) => {
-        const status = getLessonStatus(licao.data, sundayReferenceKey);
+        const status = getLessonStatus(licao, sundayReferenceKey);
 
         return (
           <Link
