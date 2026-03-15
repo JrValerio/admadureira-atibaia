@@ -513,7 +513,3 @@ export function getProximoEventoComData(referencia = new Date()): {
     dataEvento: proximoCompromisso.dataEvento,
   };
 }
-
-export function getProximosEventos(limite = 4) {
-  return getEventosFuturos(limite);
-}
