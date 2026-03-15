@@ -21,7 +21,7 @@ export default function DailySpiritual() {
     : "";
 
   return (
-    <section className="bg-[#f5f5f5] py-10 md:py-14">
+    <section className="bg-[#f5f5f5] pt-10 pb-6 md:pt-14 md:pb-8">
       <div className="max-w-6xl mx-auto px-4">
         <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
           <div className="mb-8">

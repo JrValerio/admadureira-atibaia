@@ -19,7 +19,7 @@ export default function HomeEBD() {
   }
 
   return (
-    <section className="bg-[#f5f5f5] pb-10 md:pb-14">
+    <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.08fr_0.92fr]">
           <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
