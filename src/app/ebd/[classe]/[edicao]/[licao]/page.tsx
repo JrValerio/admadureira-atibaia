@@ -16,6 +16,7 @@ import {
   isLicaoPublished,
   isClasseEbd,
 } from "@/lib/ebd-utils";
+import { getEbdPrintRoute } from "@/lib/ebd-print";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
@@ -144,6 +145,8 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const pageImage = lessonContext.licao.imagem ?? trimestre.imagem;
   const isDraft = !isLicaoPublished(lessonContext.licao);
   const lessonTopId = "topo-da-licao";
+  const summaryPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-resumo");
+  const fullPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-completo");
   const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao =
@@ -519,6 +522,37 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         </p>
                       </div>
                     ))}
+                  </div>
+                </div>
+              ) : null}
+
+              {!isDraft ? (
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                    Material para impressão
+                  </p>
+                  <p className="text-sm leading-relaxed text-[#555]">
+                    Abra uma versão enxuta em até 2 páginas ou o subsídio
+                    completo com identidade visual da igreja para imprimir ou
+                    salvar em PDF.
+                  </p>
+                  <div className="mt-5 flex flex-col gap-3">
+                    <Link
+                      href={summaryPrintHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ui-btn-primary"
+                    >
+                      Baixar resumo em PDF
+                    </Link>
+                    <Link
+                      href={fullPrintHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ui-btn-secondary"
+                    >
+                      Baixar subsídio completo em PDF
+                    </Link>
                   </div>
                 </div>
               ) : null}
