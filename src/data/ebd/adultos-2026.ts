@@ -711,6 +711,507 @@ const subsidioAdultosLicao3: LicaoEBD["subsidioAdultos"] = {
   },
 };
 
+const objetivosAdultosLicao4 = [
+  "Compreender que a paternidade de Deus é eterna e inseparável de sua natureza.",
+  "Reconhecer que confessar a Cristo como Filho é evidência de filiação divina.",
+  "Aplicar os princípios do amor do Pai como base para a vida cristã.",
+];
+
+const topicosAdultosLicao4 = [
+  {
+    titulo: "A paternidade divina é eterna",
+    conteudo: [
+      "A paternidade de Deus não é improvisada nem temporária; ela pertence à forma como o Pai se revela nas Escrituras.",
+      "O Pai não se torna Pai apenas por causa da criação ou da igreja, mas é eternamente Pai em relação ao Filho.",
+      "Essa verdade protege a fé de uma visão frágil de Deus e sustenta a segurança espiritual do crente.",
+    ],
+  },
+  {
+    titulo: "A filiação se evidencia na confissão do Filho",
+    conteudo: [
+      "1 João 4 mostra que confessar a Jesus como Filho de Deus é marca de permanência em Deus.",
+      "A paternidade divina se torna experiência viva quando o crente reconhece Cristo com fé e persevera nessa confissão.",
+      "Não há comunhão verdadeira com o Pai sem reconhecimento sincero da identidade e da obra do Filho.",
+    ],
+  },
+  {
+    titulo: "O amor do Pai aperfeiçoa a vida cristã",
+    conteudo: [
+      "O amor do Pai não apenas acolhe; ele forma o caráter do crente e o conduz à maturidade.",
+      "Quem vive no amor divino aprende a vencer o medo, crescer em comunhão e responder com obediência.",
+      "A paternidade de Deus cria uma comunidade marcada por acolhimento, segurança e verdade.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao4: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 4,
+    titulo: "A Paternidade Divina",
+    data: "2026-01-25",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "1 João 4.14 mostra que o testemunho cristão sobre o Filho está ligado ao conhecimento do amor paterno de Deus.",
+    verdadePratica:
+      "A paternidade de Deus é revelada no envio do Filho e na concessão do Espírito, confirmando a filiação e aperfeiçoando-nos em amor.",
+    leituraBiblicaEmClasse: [
+      "1 João 4.13-16 — a paternidade divina reconhecida na confissão do Filho e no dom do Espírito.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "1 João 4.13-16",
+        tema: "O Pai é conhecido por meio do Filho e do dom do Espírito.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 20.31",
+        tema: "Crer no Filho é entrar na vida que o Pai oferece.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Romanos 8.15",
+        tema: "A paternidade de Deus vence a lógica do medo servil.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Efésios 3.14-15",
+        tema: "Toda verdadeira paternidade encontra seu referencial em Deus.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "1 João 3.1",
+        tema: "O amor do Pai se manifesta ao nos chamar seus filhos.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Hebreus 12.6-7",
+        tema: "A disciplina também pertence ao cuidado paternal de Deus.",
+      },
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A quarta lição mostra que a paternidade divina não é uma imagem sentimental, mas uma verdade eterna revelada nas Escrituras. O Pai se dá a conhecer no envio do Filho, no dom do Espírito e no aperfeiçoamento do amor que sustenta a vida cristã e forma a igreja como família da fé.",
+    ideiaCentral:
+      "A paternidade divina é eterna, cristológica e transformadora: ela acolhe, corrige, amadurece e conduz o crente no amor.",
+    objetivos: objetivosAdultosLicao4,
+    palavraChave: {
+      termo: "Paternidade",
+      definicao:
+        "Na revelação bíblica, a paternidade de Deus expressa sua relação santa e eterna com o Filho e seu cuidado amoroso com os redimidos.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "paternidade-eterna",
+      titulo: "A paternidade divina é eterna",
+      sinopse:
+        "O Pai não recebe esse título de forma acidental; ele se revela assim de modo perfeito e eterno.",
+      explicacaoBiblica: [
+        "A paternidade divina aparece nas Escrituras ligada à relação do Pai com o Filho e ao seu cuidado pactual com o povo.",
+        "Efésios 3.14-15 ajuda a perceber que toda linguagem legítima de paternidade tem sua fonte em Deus.",
+        "Essa verdade impede que reduzamos o Pai a uma projeção humana limitada ou instável.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Deus é Pai eternamente em relação ao Filho, e por isso sua paternidade não depende da criação para existir.",
+        "A igreja precisa distinguir a perfeição da paternidade divina das falhas das referências humanas.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve aprender a confiar no Pai a partir da revelação bíblica e não apenas da experiência emocional.",
+        "A paternidade divina oferece segurança a quem foi marcado por abandono, rejeição ou medo.",
+      ],
+    },
+    {
+      id: "confissao-do-filho",
+      titulo: "A filiação se evidencia na confissão do Filho",
+      sinopse:
+        "A relação com o Pai se manifesta onde Cristo é confessado como Filho de Deus.",
+      explicacaoBiblica: [
+        "1 João 4.15 mostra que a confissão de Cristo não é detalhe doutrinário, mas evidência de permanência em Deus.",
+        "Não existe acesso genuíno ao Pai ignorando a identidade do Filho.",
+        "A presença do Espírito confirma esse testemunho e firma o crente na verdade do Evangelho.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A paternidade divina jamais pode ser isolada da cristologia bíblica.",
+        "A filiação cristã é recebida na união com Cristo e confirmada pelo Espírito Santo.",
+      ],
+      aplicacaoPratica: [
+        "Incentive a classe a perceber que uma fé madura honra o Pai justamente porque honra o Filho que Ele enviou.",
+        "A confissão de Cristo precisa aparecer na igreja não apenas em palavras, mas em fidelidade e perseverança.",
+      ],
+    },
+    {
+      id: "amor-que-aperfeicoa",
+      titulo: "O amor do Pai aperfeiçoa a vida cristã",
+      sinopse:
+        "O amor do Pai forma caráter, vence o medo e fortalece a comunhão dos salvos.",
+      explicacaoBiblica: [
+        "1 João relaciona o amor divino à permanência, à confiança e à transformação da vida cristã.",
+        "Romanos 8.15 mostra que a filiação substitui o espírito de escravidão por intimidade reverente diante de Deus.",
+        "Hebreus 12 lembra que o cuidado paternal de Deus inclui disciplina amorosa para maturidade.",
+      ],
+      aprofundamentoDoutrinario: [
+        "O amor do Pai não é permissividade; é graça que acolhe e disciplina para formar filhos maduros.",
+        "A vida cristã saudável nasce quando comunhão, correção e segurança espiritual caminham juntas.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a identificar áreas em que ainda resiste ao cuidado paternal de Deus.",
+        "A igreja local precisa refletir esse amor paterno em acolhimento, verdade e cuidado mútuo.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Como a compreensão bíblica da paternidade de Deus corrige imagens distorcidas de autoridade, amor e cuidado?",
+    pontoSensivelDaAula:
+      "A palavra pai pode acionar memórias dolorosas em alguns alunos. Trabalhe a aula com sensibilidade pastoral e firmeza bíblica.",
+    erroComumDeInterpretacao:
+      "Reduzir a paternidade divina a sentimentalismo sem santidade, disciplina e verdade enfraquece o ensino bíblico.",
+    perguntasParaDebate: [
+      "Por que a paternidade de Deus precisa ser entendida a partir do Filho?",
+      "Como o amor do Pai combate medo e insegurança espiritual?",
+      "De que modo a igreja pode refletir a paternidade divina em sua vida comunitária?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a classe a agradecer pela paternidade santa e amorosa de Deus, reconhecendo sua segurança em Cristo e no dom do Espírito.",
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A visão de Deus como distante, instável ou emocionalmente imprevisível.",
+      "A tendência de querer comunhão com o Pai sem submissão real ao Filho e ao Espírito.",
+    ],
+    oQueConsola: [
+      "O Pai é constante, santo e presente no cuidado com seus filhos.",
+      "Seu amor aperfeiçoa a vida cristã e sustenta a comunhão da igreja.",
+    ],
+    oQueExige: [
+      "Confessar Cristo com fidelidade e permanecer no amor do Pai.",
+      "Responder ao cuidado divino com confiança, obediência e maturidade.",
+    ],
+    oQueRevelaSobreDeus: [
+      "O Pai se dá a conhecer no Filho e age pelo Espírito em favor do seu povo.",
+      "Sua paternidade é eterna, perfeita e transformadora.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Por que a paternidade de Deus é eterna e não meramente simbólica?",
+      "Como a confissão do Filho se relaciona com a filiação divina?",
+      "De que modo o amor do Pai aperfeiçoa a vida cristã?",
+    ],
+    pontosChave: [
+      "A paternidade divina pertence ao ser e à revelação de Deus.",
+      "A filiação cristã se firma na confissão de Cristo e no dom do Espírito.",
+      "O amor do Pai acolhe, corrige e amadurece seus filhos.",
+    ],
+    fraseDeSintese:
+      "A paternidade divina é santa, eterna e amorosa, formando em Cristo uma família marcada por confiança, verdade e maturidade.",
+  },
+};
+
+const objetivosAdultosLicao5 = [
+  "Explicar a concepção virginal e a deidade absoluta de Jesus.",
+  "Mostrar a centralidade de Cristo como cumprimento da Lei e dos Profetas.",
+  "Enfatizar a exclusividade de Cristo como único mediador e salvador.",
+];
+
+const topicosAdultosLicao5 = [
+  {
+    titulo: "A concepção virginal revela o Deus Filho",
+    conteudo: [
+      "O anúncio do nascimento de Jesus mostra que sua origem é sobrenatural e inseparável da ação de Deus.",
+      "A concepção virginal preserva tanto a verdadeira humanidade quanto a plena divindade do Filho.",
+      "Cristo não é apenas mensageiro exaltado; Ele é o Filho eterno que entrou em nossa história.",
+    ],
+  },
+  {
+    titulo: "A glória do Filho no monte da transfiguração",
+    conteudo: [
+      "Na transfiguração, o Pai ordena que a igreja ouça o Filho acima de toda expectativa religiosa ou tradição humana.",
+      "A presença de Moisés e Elias reforça que Jesus é o centro e o cumprimento da Lei e dos Profetas.",
+      "A glória de Cristo não pode ser reduzida a exemplo moral; ela aponta para sua identidade divina.",
+    ],
+  },
+  {
+    titulo: "O Filho é o único mediador e salvador",
+    conteudo: [
+      "O Deus Filho não divide seu lugar com outros mediadores, porque somente Ele une perfeitamente divindade, humanidade e redenção.",
+      "A exclusividade de Cristo não é arrogância da igreja, mas fidelidade à revelação bíblica.",
+      "Quem conhece o Filho encontra o caminho seguro de reconciliação com o Pai.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao5: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 5,
+    titulo: "O Deus Filho",
+    data: "2026-02-01",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "Mateus 17.5 destaca a voz do Pai chamando a igreja a ouvir o Filho amado em quem sua glória se manifesta.",
+    verdadePratica:
+      "Jesus Cristo, o Deus Filho, é a revelação plena do Pai, centro da revelação divina e único mediador.",
+    leituraBiblicaEmClasse: [
+      "Lucas 1.31-35 — a anunciação e a concepção do Filho.",
+      "Mateus 17.1-8 — a glória do Filho no monte da transfiguração.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A quinta lição concentra a atenção da classe no Deus Filho, mostrando que a concepção virginal, a transfiguração e a exclusividade da mediação de Cristo revelam sua identidade divina. O Filho não ocupa lugar secundário no plano da salvação; Ele é o centro da revelação e da reconciliação entre Deus e os homens.",
+    ideiaCentral:
+      "O Deus Filho se revela em glória, cumpre as Escrituras e permanece como o único mediador entre Deus e os homens.",
+    objetivos: objetivosAdultosLicao5,
+    palavraChave: {
+      termo: "Mediador",
+      definicao:
+        "Aquele que une duas partes e reconcilia o pecador com Deus por meio de sua pessoa e obra redentora.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "concepcao-virginal",
+      titulo: "A concepção virginal revela o Deus Filho",
+      sinopse:
+        "O nascimento de Jesus confirma sua origem divina e sua verdadeira humanidade.",
+      explicacaoBiblica: [
+        "Lucas 1 mostra que o menino prometido não nasce de iniciativa humana, mas de ação soberana de Deus.",
+        "O Filho assume nossa humanidade sem perder sua plena divindade.",
+        "A concepção virginal serve como porta de entrada para uma cristologia bíblica sólida.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Negar a concepção virginal enfraquece a encarnação e distorce a identidade do Salvador.",
+        "A igreja confessa o Filho eterno que entrou na história humana de modo santo e miraculoso.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a perceber que a fé cristã depende de um Cristo real, divino e encarnado.",
+        "A identidade do Filho fortalece a confiança do crente na suficiência da salvação.",
+      ],
+    },
+    {
+      id: "transfiguracao",
+      titulo: "A glória do Filho no monte da transfiguração",
+      sinopse:
+        "A transfiguração confirma publicamente a supremacia do Filho sobre toda expectativa religiosa.",
+      explicacaoBiblica: [
+        "A voz do Pai em Mateus 17 concentra a atenção da igreja em Jesus: 'A ele ouvi'.",
+        "Moisés e Elias apontam para Cristo como cumprimento pleno da revelação anterior.",
+        "A glória momentaneamente descortinada no monte sustenta a certeza da identidade do Filho.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A centralidade de Cristo não elimina a revelação anterior; ela a consuma.",
+        "O Pai autentica o Filho diante dos discípulos para firmar sua fé e obediência.",
+      ],
+      aplicacaoPratica: [
+        "A igreja precisa ouvir o Filho acima de vozes concorrentes, tradições humanas e modismos espirituais.",
+        "Toda leitura saudável da Bíblia conduz à centralidade de Cristo.",
+      ],
+    },
+    {
+      id: "unico-mediador",
+      titulo: "O Filho é o único mediador e salvador",
+      sinopse:
+        "A exclusividade de Cristo faz parte do coração do Evangelho e protege a igreja de substitutos religiosos.",
+      explicacaoBiblica: [
+        "A mediação de Cristo nasce de quem Ele é: verdadeiro Deus e verdadeiro homem.",
+        "Só o Filho pode reconciliar o pecador com o Pai porque sua obra é suficiente e definitiva.",
+        "A salvação cristã não admite competidores para o lugar de Cristo.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A singularidade de Cristo não é intolerância eclesiástica, mas fidelidade ao testemunho das Escrituras.",
+        "Quando a igreja relativiza a mediação do Filho, enfraquece a mensagem do Evangelho.",
+      ],
+      aplicacaoPratica: [
+        "Conduza a classe a renovar sua confiança em Cristo como único Senhor e Salvador.",
+        "A centralidade do Filho impede sincretismos e fortalece a missão evangelística.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Por que a igreja precisa insistir hoje na deidade plena de Cristo e em sua mediação exclusiva?",
+    pontoSensivelDaAula:
+      "Muitos discursos religiosos aceitam Jesus como mestre admirável, mas resistem em reconhecê-lo como Deus Filho e único mediador.",
+    erroComumDeInterpretacao:
+      "Tratar Cristo apenas como exemplo moral ou profeta elevado, sem afirmar sua plena divindade, descaracteriza o Evangelho.",
+    perguntasParaDebate: [
+      "O que a concepção virginal nos ensina sobre a identidade do Filho?",
+      "Por que a transfiguração reforça a centralidade de Cristo?",
+      "Como a igreja deve viver a verdade de que Jesus é o único mediador?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre chamando a classe a ouvir o Filho amado com fé, obediência e confiança total em sua obra salvadora.",
+  },
+  revisao: {
+    perguntas: [
+      "Como a concepção virginal reforça a doutrina do Deus Filho?",
+      "O que a transfiguração ensina sobre a supremacia de Cristo?",
+      "Por que a mediação de Jesus é exclusiva e suficiente?",
+    ],
+    pontosChave: [
+      "Jesus é o Filho eterno que assumiu nossa humanidade.",
+      "A glória de Cristo o coloca no centro da revelação bíblica.",
+      "O Filho é o único mediador e salvador dos pecadores.",
+    ],
+    fraseDeSintese:
+      "O Deus Filho entrou em nossa história, revelou a glória divina e permanece como o único mediador capaz de salvar.",
+  },
+};
+
+const objetivosAdultosLicao6 = [
+  "Explicar a preexistência e a divindade do Verbo.",
+  "Mostrar a atuação do Verbo na criação e como fonte de vida e luz.",
+  "Ressaltar que o Verbo encarnado é a plena revelação do Pai.",
+];
+
+const topicosAdultosLicao6 = [
+  {
+    titulo: "O Verbo eterno estava com Deus e era Deus",
+    conteudo: [
+      "João 1 afirma a preexistência do Verbo e sua plena divindade antes de toda criação.",
+      "O Filho não começou em Belém; Ele já existia eternamente em comunhão com o Pai.",
+      "O prólogo de João oferece uma das declarações mais fortes sobre a identidade divina de Cristo.",
+    ],
+  },
+  {
+    titulo: "O Verbo atua na criação como fonte de vida e luz",
+    conteudo: [
+      "Todas as coisas foram feitas por meio do Verbo, mostrando sua participação ativa na criação.",
+      "A vida que está no Verbo é luz para os homens, confrontando as trevas espirituais.",
+      "Cristo não é apenas resposta para o pecado; Ele é também o fundamento do cosmos e da existência.",
+    ],
+  },
+  {
+    titulo: "O Verbo encarnado revela plenamente o Pai",
+    conteudo: [
+      "João 1.14 mostra que o Verbo se fez carne e habitou entre nós sem perder sua glória.",
+      "Na encarnação, Deus não envia só uma mensagem; Ele mesmo se aproxima em Cristo para revelar graça e verdade.",
+      "Ver o Filho é receber a revelação mais completa do Pai oferecida ao ser humano.",
+    ],
+  },
+];
+
+const subsidioAdultosLicao6: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 6,
+    titulo: "O Filho como o Verbo de Deus",
+    data: "2026-02-08",
+    trimestre: "A Santíssima Trindade — O Deus Único Revelado em Três Pessoas Eternas",
+    comentarista: "Douglas Baptista",
+    textoAureo:
+      "João 1.14 declara que o Verbo eterno se fez carne e manifestou entre nós a glória do Pai.",
+    verdadePratica:
+      "Jesus Cristo, o Verbo eterno, é a revelação plena e visível de Deus ao mundo.",
+    leituraBiblicaEmClasse: [
+      "João 1.1-5,14 — o Verbo eterno, criador, fonte de vida e revelado na encarnação.",
+    ],
+  },
+  visaoGeral: {
+    resumo:
+      "A sexta lição contempla o Filho como o Verbo eterno de Deus. O prólogo de João reúne preexistência, divindade, criação, vida, luz e encarnação em uma síntese magnífica que conduz a igreja a reconhecer em Cristo a plena revelação do Pai e o fundamento da esperança cristã.",
+    ideiaCentral:
+      "O Verbo eterno é Deus, participa da criação e se encarna para revelar plenamente o Pai.",
+    objetivos: objetivosAdultosLicao6,
+    palavraChave: {
+      termo: "Verbo",
+      definicao:
+        "Expressão usada por João para descrever o Filho eterno como autoexpressão de Deus, agente da criação e revelação suprema do Pai.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "verbo-eterno",
+      titulo: "O Verbo eterno estava com Deus e era Deus",
+      sinopse:
+        "João 1 afirma a preexistência do Filho e sua plena divindade com clareza incomum.",
+      explicacaoBiblica: [
+        "O prólogo não começa no nascimento de Jesus, mas na eternidade, antes de todas as coisas.",
+        "O Verbo estava com Deus, indicando distinção relacional, e era Deus, afirmando plena divindade.",
+        "Essa combinação sustenta uma cristologia robusta e trinitária.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A linguagem joanina protege a igreja tanto do subordinacionismo quanto da negação da distinção pessoal entre Pai e Filho.",
+        "A eternidade do Verbo confirma que Cristo não é criatura exaltada, mas Deus verdadeiro.",
+      ],
+      aplicacaoPratica: [
+        "Ensinar a eternidade do Verbo fortalece a confiança da igreja na suficiência de Cristo.",
+        "O crente pode descansar porque o Salvador não é passageiro nem limitado pela história.",
+      ],
+    },
+    {
+      id: "verbo-criador",
+      titulo: "O Verbo atua na criação como fonte de vida e luz",
+      sinopse:
+        "Cristo participa da criação e confronta as trevas como fonte de vida e luz para a humanidade.",
+      explicacaoBiblica: [
+        "João 1.3 declara que nada do que foi feito veio à existência sem o Verbo.",
+        "A vida no Verbo se manifesta como luz que alcança a humanidade caída.",
+        "As trevas não prevalecem contra a luz de Cristo, por mais intensas que pareçam.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A atuação criadora do Verbo mostra que redenção e criação pertencem ao mesmo Senhor.",
+        "Cristo é tanto origem de todas as coisas quanto esperança da nova criação.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve perceber que a luz de Cristo continua sendo resposta para confusão, pecado e desorientação espiritual.",
+        "A vida cristã amadurece quando reconhece em Jesus não apenas auxílio, mas o fundamento de toda existência.",
+      ],
+    },
+    {
+      id: "verbo-encarnado",
+      titulo: "O Verbo encarnado revela plenamente o Pai",
+      sinopse:
+        "Na encarnação, Deus torna visível sua glória e aproxima graça e verdade do ser humano.",
+      explicacaoBiblica: [
+        "João 1.14 descreve o Verbo habitando entre nós em linguagem que lembra a presença de Deus no tabernáculo.",
+        "A glória vista em Cristo é glória do unigênito do Pai, cheia de graça e verdade.",
+        "A encarnação mostra que Deus não fala de longe; Ele se aproxima em Jesus para salvar e revelar.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A encarnação não diminui a divindade do Filho; revela sua graça ao assumir nossa humanidade.",
+        "Cristo é a mais completa manifestação do Pai oferecida ao ser humano pecador.",
+      ],
+      aplicacaoPratica: [
+        "A igreja precisa voltar sempre a Cristo para conhecer Deus com fidelidade e profundidade.",
+        "Graça e verdade não se opõem em Jesus; elas caminham juntas e moldam o discipulado.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que o prólogo de João acrescenta à nossa compreensão sobre quem é Jesus?",
+    pontoSensivelDaAula:
+      "Alguns alunos podem enxergar João 1 apenas como texto elevado e abstrato. A aula precisa mostrar a força pastoral do Verbo eterno que se fez carne.",
+    erroComumDeInterpretacao:
+      "Tratar o Verbo como simples fala de Deus, sem reconhecer a pessoa eterna do Filho, reduz a profundidade do texto joanino.",
+    perguntasParaDebate: [
+      "Como João 1 confirma a preexistência e a divindade de Cristo?",
+      "Por que a atuação do Verbo na criação é importante para a fé cristã?",
+      "O que significa dizer que o Verbo se fez carne e revelou o Pai?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua convidando a classe a contemplar o Verbo encarnado com reverência, fé e gratidão pela revelação plena do Pai em Cristo.",
+  },
+  revisao: {
+    perguntas: [
+      "O que João 1 ensina sobre a eternidade do Verbo?",
+      "Como o Verbo participa da criação e da vida do mundo?",
+      "Por que a encarnação é essencial para conhecer o Pai?",
+    ],
+    pontosChave: [
+      "O Verbo estava com Deus e era Deus.",
+      "Todas as coisas foram feitas por meio do Verbo.",
+      "O Verbo se fez carne e revelou a glória do Pai.",
+    ],
+    fraseDeSintese:
+      "O Filho como Verbo eterno é Deus verdadeiro, Senhor da criação e revelação suprema do Pai para a salvação do mundo.",
+  },
+};
+
 const objetivosAdultosLicao11 = [
   "Mostrar como o Espírito Santo liberta o crente da escravidão do pecado e confirma sua filiação em Cristo.",
   "Explicar de que modo o Espírito guia o crente na vontade do Pai em uma vida de comunhão, mortificação da carne e obediência.",
@@ -1717,6 +2218,99 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     ],
     subsidioAdultos: subsidioAdultosLicao3,
   },
+  4: {
+    imagem: "/images/EBD/licao-04-adulto.jpg",
+    objetivos: objetivosAdultosLicao4,
+    topicos: topicosAdultosLicao4,
+    apoioProfessor: [
+      "Trabalhe a paternidade divina com sensibilidade pastoral, reconhecendo que a experiência humana de paternidade pode estar ferida em muitos corações.",
+      "Mostre que a filiação bíblica se firma na confissão do Filho e no amor que o Pai aperfeiçoa em nós.",
+    ],
+    apoioAluno: [
+      "Leia 1 João 4.13-16 durante a semana e anote como o amor do Pai fortalece sua confiança e sua comunhão com a igreja.",
+      "Ore pedindo que Deus cure imagens distorcidas de paternidade e firme seu coração no amor revelado em Cristo.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando o que a expressão paternidade divina comunica sobre cuidado, segurança e identidade cristã.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Organize a lição em três passos: a paternidade eterna de Deus, a filiação evidenciada na confissão do Filho e o amor do Pai aperfeiçoando a vida cristã.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Encerre reforçando que a paternidade divina acolhe, disciplina, amadurece e forma uma igreja marcada pelo amor.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao4,
+  },
+  5: {
+    imagem: "/images/EBD/licao-05-adulto.jpg",
+    objetivos: objetivosAdultosLicao5,
+    topicos: topicosAdultosLicao5,
+    apoioProfessor: [
+      "Afirme com clareza a deidade absoluta de Jesus, evitando tratá-lo apenas como mestre moral ou personagem central da história bíblica.",
+      "Mostre que a exclusividade de Cristo como mediador não é dureza religiosa, mas fidelidade à própria revelação do Evangelho.",
+    ],
+    apoioAluno: [
+      "Leia Lucas 1.31-35 e Mateus 17.1-8 durante a semana e observe como esses textos revelam a glória e a identidade do Filho.",
+      "Renove sua confiança em Cristo como único Senhor e Salvador, rejeitando substitutos religiosos ou mediadores concorrentes.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Comece a aula perguntando por que a igreja precisa insistir em 2026 que Jesus é mais do que exemplo moral: Ele é o Deus Filho.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Percorra a lição em três eixos: concepção virginal, transfiguração e exclusividade de Cristo como mediador e salvador.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Conclua chamando a classe a ouvir o Filho amado com fé, reverência e submissão prática.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao5,
+  },
+  6: {
+    imagem: "/images/EBD/licao-06-adulto.jpg",
+    objetivos: objetivosAdultosLicao6,
+    topicos: topicosAdultosLicao6,
+    apoioProfessor: [
+      "Mostre que João 1 não é apenas abertura poética do Evangelho, mas uma declaração doutrinária profunda sobre a identidade do Filho.",
+      "Ajude a classe a perceber a força pastoral da encarnação: o Verbo eterno realmente veio ao nosso encontro em Cristo.",
+    ],
+    apoioAluno: [
+      "Leia João 1.1-5,14 durante a semana e anote o que o texto ensina sobre a eternidade, a criação e a encarnação do Verbo.",
+      "Adore conscientemente a Cristo como Senhor da criação e revelação plena do Pai, deixando essa verdade fortalecer sua fé.",
+    ],
+    esboco: [
+      {
+        titulo: "Entrada",
+        conteudo:
+          "Abra a aula perguntando o que muda na vida cristã quando entendemos que Jesus não começou em Belém, mas é o Verbo eterno de Deus.",
+      },
+      {
+        titulo: "Desenvolvimento",
+        conteudo:
+          "Trabalhe o prólogo de João em três movimentos: o Verbo eterno, o Verbo criador e o Verbo encarnado que revela o Pai.",
+      },
+      {
+        titulo: "Fechamento",
+        conteudo:
+          "Encerre chamando a classe a contemplar Cristo com reverência como Deus verdadeiro, Senhor da criação e Salvador revelado na encarnação.",
+      },
+    ],
+    subsidioAdultos: subsidioAdultosLicao6,
+  },
   11: {
     imagem: "/images/EBD/licao-11-adulto.jpg",
     objetivos: objetivosAdultosLicao11,
@@ -1856,35 +2450,44 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 4,
     data: "2026-01-25",
-    titulo: "Arrependimento e novo nascimento",
-    resumo: "Conversão verdadeira envolve arrependimento, fé e transformação operada pelo Espírito Santo.",
-    textoChave: "João 3:3",
-    verdadePratica: "O novo nascimento muda a direção da vida e produz frutos visíveis de obediência.",
-    leituraBiblica: ["João 3:1-8", "Atos 2:37-42"],
-    aplicacao: "Examine uma área concreta da sua vida em que o arrependimento precisa produzir mudança real e leve isso a Deus em oração.",
-    enfase: "a conversão genuína",
+    titulo: "A Paternidade Divina",
+    resumo:
+      "A lição mostra que a paternidade de Deus é eterna, se revela no envio do Filho e aperfeiçoa a vida cristã no amor.",
+    textoChave: "1 João 4:14",
+    verdadePratica:
+      "A paternidade de Deus é revelada no envio do Filho e na concessão do Espírito, confirmando a filiação e aperfeiçoando-nos em amor.",
+    leituraBiblica: ["1 João 4:13-16"],
+    aplicacao:
+      "Viva esta semana com mais confiança no cuidado paternal de Deus, respondendo ao seu amor com obediência e comunhão.",
+    enfase: "a paternidade divina",
   },
   {
     numero: 5,
     data: "2026-02-01",
-    titulo: "Batismo, comunhão e vida em igreja",
-    resumo: "A fé cristã floresce em compromisso público, comunhão fraterna e participação fiel na igreja local.",
-    textoChave: "Atos 2:41-42",
-    verdadePratica: "A caminhada com Cristo se fortalece quando o discípulo vive integrado ao corpo da igreja.",
-    leituraBiblica: ["Atos 2:41-47", "1 Coríntios 12:12-27"],
-    aplicacao: "Fortaleça sua participação na igreja local com presença fiel, comunhão intencional e disposição para servir.",
-    enfase: "a vida no corpo de Cristo",
+    titulo: "O Deus Filho",
+    resumo:
+      "A lição apresenta Jesus como o Deus Filho, revelado na concepção virginal, na transfiguração e em sua mediação exclusiva.",
+    textoChave: "Mateus 17:5",
+    verdadePratica:
+      "Jesus Cristo, o Deus Filho, é a revelação plena do Pai, centro da revelação divina e único mediador.",
+    leituraBiblica: ["Lucas 1:31-35", "Mateus 17:1-8"],
+    aplicacao:
+      "Renove sua confiança em Cristo como único Senhor e Salvador, ouvindo sua voz acima de qualquer autoridade concorrente.",
+    enfase: "a identidade do Deus Filho",
   },
   {
     numero: 6,
     data: "2026-02-08",
-    titulo: "Oração que renova a vida espiritual",
-    resumo: "A lição conduz a igreja a redescobrir a oração como prática de dependência, perseverança e comunhão com Deus.",
-    textoChave: "Filipenses 4:6",
-    verdadePratica: "A oração constante organiza o coração, fortalece a fé e sustenta a igreja em toda circunstância.",
-    leituraBiblica: ["Lucas 11:1-13", "Filipenses 4:4-9"],
-    aplicacao: "Escolha um horário da semana para orar com mais intencionalidade por sua família, pela igreja e pela cidade.",
-    enfase: "a vida de oração",
+    titulo: "O Filho como o Verbo de Deus",
+    resumo:
+      "A lição apresenta o Filho como o Verbo eterno, participante da criação, fonte de vida e luz e revelação plena do Pai.",
+    textoChave: "João 1:14",
+    verdadePratica:
+      "Jesus Cristo, o Verbo eterno, é a revelação plena e visível de Deus ao mundo.",
+    leituraBiblica: ["João 1:1-5", "João 1:14"],
+    aplicacao:
+      "Contemple nesta semana o Verbo encarnado com mais reverência e deixe a graça e a verdade de Cristo moldarem sua caminhada.",
+    enfase: "o Verbo eterno",
   },
   {
     numero: 7,
