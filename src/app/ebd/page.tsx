@@ -176,7 +176,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                   </p>
                   <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
                     <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                      Verdade prática
+                      {classeInfo.resumoDestaqueLabel}
                     </p>
                     <p className="leading-relaxed text-[#555]">
                       {licaoDaSemana.licao.verdadePratica}

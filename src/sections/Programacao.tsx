@@ -143,7 +143,8 @@ export default function Programacao({
                 especiais ficam concentrados na página de eventos, separando a
                 rotina semanal da agenda especial da igreja. A Escola Bíblica
                 Dominical acontece todo domingo às 09h, com classes para
-                adultos, jovens e infantil.
+                adultos, jovens e infantil, enquanto o material publicado no
+                site acompanha hoje as classes de adultos e jovens.
               </p>
             </div>
 
