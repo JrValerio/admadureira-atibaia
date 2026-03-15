@@ -28,7 +28,9 @@ Current published scope for the EBD module:
 - `Jovens 1T/2026`: complete from `Lição 1` to `Lição 13`
 - `Infantil`: architecture kept in place, but editorial production is intentionally paused
 
-Annual structure for `2026-2t`, `2026-3t` and `2026-4t` is already visible in the app, with draft governance and `noindex` where content is still in preparation.
+Future quarters remain prepared internally, but stay out of public discovery until the editorial release gate is met.
+
+See [docs/ebd-governance.md](docs/ebd-governance.md) for the current publication policy, draft rules and the `2026-2t` launch gate.
 
 Editorial history note:
 
