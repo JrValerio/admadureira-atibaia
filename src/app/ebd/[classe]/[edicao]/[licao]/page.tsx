@@ -405,6 +405,31 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 </div>
               ) : null}
 
+              {lessonContext.licao.esboco?.length ? (
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                    Esboço da aula
+                  </p>
+                  <div className="space-y-4">
+                    {lessonContext.licao.esboco.map((item) => (
+                      <div
+                        key={`${item.titulo ?? "esboco"}-${item.conteudo}`}
+                        className="rounded-2xl border border-white/70 bg-white/85 p-4"
+                      >
+                        {item.titulo ? (
+                          <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            {item.titulo}
+                          </p>
+                        ) : null}
+                        <p className="text-sm leading-relaxed text-[#555]">
+                          {item.conteudo}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
               <div className="rounded-3xl bg-[#212121] p-6 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                   Continue estudando
