@@ -169,15 +169,15 @@ export default function Eventos({
 
           <nav
             aria-label="Ir para o mês da agenda"
-            className="flex flex-wrap gap-3"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5"
           >
             {agendaPorMes.map((grupo) => (
               <Link
                 key={grupo.id}
                 href={`#${getGrupoSectionId(grupo)}`}
-                className="inline-flex rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold tracking-[0.16em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
+                className="inline-flex min-h-[3rem] items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-center text-xs font-bold tracking-[0.14em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
               >
-                {grupo.mes} · {grupo.eventos.length}
+                {grupo.mes} ({grupo.eventos.length})
               </Link>
             ))}
           </nav>
