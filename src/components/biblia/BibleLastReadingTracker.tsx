@@ -11,7 +11,7 @@ type BibleLastReadingTrackerProps = {
 };
 
 function readVerseFromHash() {
-  const match = window.location.hash.match(/^#v(\d+)$/);
+  const match = window.location.hash.match(/^#v(\d+)(?:-\d+)?$/);
 
   if (!match) {
     return undefined;

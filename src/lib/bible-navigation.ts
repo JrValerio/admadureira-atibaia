@@ -14,6 +14,7 @@ type BibleNavigationOptions = {
   language?: BibleLanguage;
   version?: BibleVersion;
   verse?: number;
+  verseEnd?: number;
 };
 
 export function createBibleHref(
@@ -33,9 +34,19 @@ export function createBibleHref(
   }
 
   const search = searchParams.toString();
-  const hash =
+  const verseStart =
     typeof options.verse === "number" && Number.isFinite(options.verse)
-      ? `#v${Math.floor(options.verse)}`
+      ? Math.floor(options.verse)
+      : null;
+  const verseEnd =
+    typeof options.verseEnd === "number" && Number.isFinite(options.verseEnd)
+      ? Math.floor(options.verseEnd)
+      : null;
+  const hash =
+    verseStart !== null
+      ? verseEnd !== null && verseEnd > verseStart
+        ? `#v${verseStart}-${verseEnd}`
+        : `#v${verseStart}`
       : "";
 
   return `${path}${search ? `?${search}` : ""}${hash}`;

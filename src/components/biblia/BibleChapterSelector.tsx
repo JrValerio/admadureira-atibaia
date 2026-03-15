@@ -36,7 +36,7 @@ export default function BibleChapterSelector({
 
   useEffect(() => {
     const syncVerseFromHash = () => {
-      const match = window.location.hash.match(/^#v(\d+)$/);
+      const match = window.location.hash.match(/^#v(\d+)(?:-\d+)?$/);
       setSelectedVerse(match ? match[1] : "");
     };
 

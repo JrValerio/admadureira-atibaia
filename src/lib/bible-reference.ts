@@ -135,6 +135,7 @@ export function extractBibleReferences(text: string): ParsedBibleReference[] {
     const verseEnd = parseVerseEnd(rawVerses);
     const href = createBibleHref(book.slug, chapter, {
       verse: verseStart,
+      verseEnd,
     });
 
     matches.push({
