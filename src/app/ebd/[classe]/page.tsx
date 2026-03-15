@@ -333,6 +333,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                             <p className="text-sm leading-relaxed text-[#212121]">
                               <BibleReferenceText
                                 text={trimestre.versiculoBase ?? "A confirmar"}
+                                renderLinks={false}
                                 linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
                               />
                             </p>

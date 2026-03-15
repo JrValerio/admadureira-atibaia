@@ -25,6 +25,10 @@ export function getClasseEbdInfo(classe: ClasseEBD): ClasseEBDInfo {
   return classeInfo;
 }
 
+function isClassePublicadaNoSite(classe: ClasseEBD) {
+  return getClasseEbdInfo(classe).publicadaNoSite;
+}
+
 function compareTrimestresDesc(a: TrimestreEBD, b: TrimestreEBD) {
   if (a.ano !== b.ano) {
     return b.ano - a.ano;
@@ -137,6 +141,10 @@ export function getClassesEbd() {
 }
 
 export function hasClasseEbdPublicada(classe: ClasseEBD) {
+  if (!isClassePublicadaNoSite(classe)) {
+    return false;
+  }
+
   return getTrimestresPorClasse(classe).some(
     (trimestre) => getTrimestrePublishedLessonCount(trimestre) > 0
   );
@@ -161,6 +169,10 @@ export function getTrimestreMaisRecente(classe: ClasseEBD) {
 }
 
 export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
+  if (!hasClasseEbdPublicada(classe)) {
+    return null;
+  }
+
   const sundayReferenceKey = getEbdSundayReferenceKey(date);
   const trimestres = getTrimestresPorClasse(classe);
 
@@ -196,6 +208,10 @@ export function getTrimestresPorClasse(classe: ClasseEBD) {
 }
 
 export function getTrimestresEbdPublicos(classe: ClasseEBD) {
+  if (!isClassePublicadaNoSite(classe)) {
+    return [];
+  }
+
   return getTrimestresPorClasse(classe).filter(
     (trimestre) => !isTrimestreDraft(trimestre)
   );
@@ -229,6 +245,10 @@ export function getLicao(classe: ClasseEBD, edicao: string, licaoSlug: string) {
 }
 
 export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
+  if (!hasClasseEbdPublicada(classe)) {
+    return null;
+  }
+
   const sundayReferenceKey = getEbdSundayReferenceKey(date);
 
   return (
@@ -239,6 +259,10 @@ export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
 }
 
 export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
+  if (!hasClasseEbdPublicada(classe)) {
+    return null;
+  }
+
   const studyReferenceKey = getEbdStudyReferenceKey(date);
   const licoes = getPublishedLicoesComContexto(classe);
 
@@ -254,6 +278,10 @@ export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
 }
 
 export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
+  if (!hasClasseEbdPublicada(classe)) {
+    return null;
+  }
+
   const licaoDaSemana = getLicaoDaSemana(classe, date);
 
   if (!licaoDaSemana) {

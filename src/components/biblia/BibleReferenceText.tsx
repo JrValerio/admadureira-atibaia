@@ -5,6 +5,7 @@ import { extractBibleReferences } from "@/lib/bible-reference";
 type BibleReferenceTextProps = {
   text: string;
   linkClassName?: string;
+  renderLinks?: boolean;
 };
 
 const defaultLinkClassName =
@@ -13,10 +14,11 @@ const defaultLinkClassName =
 export default function BibleReferenceText({
   text,
   linkClassName = defaultLinkClassName,
+  renderLinks = true,
 }: BibleReferenceTextProps) {
   const references = extractBibleReferences(text);
 
-  if (!references.length) {
+  if (!references.length || !renderLinks) {
     return <>{text}</>;
   }
 

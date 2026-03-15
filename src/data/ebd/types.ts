@@ -12,6 +12,7 @@ export type ClasseEBDInfo = {
   textoBaseLabel: string;
   resumoDestaqueLabel: string;
   leituraPrincipalLabel: string;
+  publicadaNoSite: boolean;
   ordem: number;
 };
 

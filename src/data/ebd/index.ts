@@ -14,6 +14,7 @@ export const classesEBD: ClasseEBDInfo[] = [
     textoBaseLabel: "Texto áureo",
     resumoDestaqueLabel: "Verdade prática",
     leituraPrincipalLabel: "Leitura bíblica em classe",
+    publicadaNoSite: true,
     ordem: 1,
   },
   {
@@ -24,6 +25,7 @@ export const classesEBD: ClasseEBDInfo[] = [
     textoBaseLabel: "Texto principal",
     resumoDestaqueLabel: "Resumo da lição",
     leituraPrincipalLabel: "Texto bíblico",
+    publicadaNoSite: true,
     ordem: 2,
   },
   {
@@ -34,6 +36,7 @@ export const classesEBD: ClasseEBDInfo[] = [
     textoBaseLabel: "Versículo-base",
     resumoDestaqueLabel: "Resumo da lição",
     leituraPrincipalLabel: "Leitura bíblica",
+    publicadaNoSite: false,
     ordem: 3,
   },
 ];
