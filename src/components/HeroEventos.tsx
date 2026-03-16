@@ -235,7 +235,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                 tabIndex={slideIndex === index ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
-                <div className="relative w-full h-60 sm:h-75 md:h-90 lg:h-105 xl:h-120">
+                <div className="relative w-full h-65 sm:h-80 md:h-95 lg:h-auto lg:aspect-2400/800">
                   {evento.imagem ? (
                     <>
                       <Image
