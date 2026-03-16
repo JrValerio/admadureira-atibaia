@@ -61,12 +61,12 @@ export default function HeroPage({
       />
 
       {isFull ? (
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-18 md:py-24">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 md:py-18 lg:py-24">
           <div className="max-w-3xl">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
               {label}
             </p>
-            <h1 className="font-acme text-4xl md:text-6xl tracking-tight leading-tight mb-5">
+            <h1 className="font-acme text-3xl sm:text-4xl md:text-6xl tracking-tight leading-tight mb-5">
               {title}
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
@@ -75,11 +75,11 @@ export default function HeroPage({
           </div>
         </div>
       ) : (
-        <div className="relative z-10 px-6 py-14 md:px-10 md:py-18 lg:px-14 max-w-4xl">
+        <div className="relative z-10 px-6 py-8 md:px-10 md:py-14 lg:px-14 lg:py-18 max-w-4xl">
           <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
             {label}
           </p>
-          <h1 className="font-acme text-4xl md:text-5xl tracking-tight leading-tight mb-5">
+          <h1 className="font-acme text-2xl sm:text-4xl md:text-5xl tracking-tight leading-tight mb-5">
             {title}
           </h1>
           <p className="text-white/80 leading-relaxed max-w-2xl">
