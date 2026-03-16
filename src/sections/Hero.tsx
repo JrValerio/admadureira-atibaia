@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import HeroBackgroundMedia from "@/components/HeroBackgroundMedia";
 
 export default function Hero() {
@@ -43,6 +44,15 @@ export default function Hero() {
           <p className="text-white/82 text-[11px] md:text-base tracking-[0.34em] uppercase mt-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
             Ministério Madureira · Campo de Atibaia
           </p>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Link href="/programacao" className="ui-btn-primary">
+            Ver programação
+          </Link>
+          <Link href="/contato" className="ui-btn-secondary">
+            Como chegar
+          </Link>
         </div>
       </div>
 
