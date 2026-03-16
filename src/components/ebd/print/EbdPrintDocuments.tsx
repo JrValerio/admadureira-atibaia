@@ -1356,7 +1356,6 @@ export function EbdLessonSummaryPrintDocument({
   return (
     <EbdPrintDocumentLayout
       title={`Resumo da lição ${licao.numero}`}
-      subtitle="Versão resumida para aula e impressão. O material busca caber em duas páginas, mas pode avançar quando a lição exigir."
       backHref={backHref}
       alternateHref={getEbdPrintRoute(
         classeInfo.slug,
@@ -1398,7 +1397,6 @@ export function EbdLessonFullPrintDocument({
   return (
     <EbdPrintDocumentLayout
       title={`Subsídio completo · Lição ${licao.numero}`}
-      subtitle="Versão completa com identidade visual da igreja, em formato editorial de impressão."
       backHref={backHref}
       alternateHref={getEbdPrintRoute(
         classeInfo.slug,

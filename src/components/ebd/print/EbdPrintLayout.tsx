@@ -7,7 +7,6 @@ import EbdPrintControls from "./EbdPrintControls";
 
 type EbdPrintDocumentLayoutProps = {
   title: string;
-  subtitle: string;
   backHref: string;
   alternateHref: string;
   alternateLabel: string;
@@ -26,7 +25,6 @@ type EbdPrintPageProps = {
 
 export function EbdPrintDocumentLayout({
   title,
-  subtitle,
   backHref,
   alternateHref,
   alternateLabel,
@@ -142,7 +140,6 @@ export function EbdPrintDocumentLayout({
       <main className="ebd-print-root min-h-screen bg-[#efeae2] px-4 py-6 md:px-6 md:py-10">
         <EbdPrintControls
           title={title}
-          subtitle={subtitle}
           backHref={backHref}
           alternateHref={alternateHref}
           alternateLabel={alternateLabel}
@@ -172,29 +169,15 @@ export function EbdPrintPage({
         maxHeight: "276mm",
       }}
     >
-      <div className="ebd-print-watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.038]">
-        <div className="text-center">
-          <Image
-            src={EBD_PRINT_BRANDING.logoSrc}
-            alt=""
-            width={132}
-            height={132}
-            aria-hidden="true"
-            style={{ width: 132, height: 132 }}
-          />
-          <p
-            aria-hidden="true"
-            className="mt-2.5 font-script text-[1.95rem] leading-none text-[#212121]"
-          >
-            {EBD_PRINT_BRANDING.scriptName}
-          </p>
-          <p
-            aria-hidden="true"
-            className="mt-2 text-[9px] font-semibold uppercase tracking-[0.26em] text-[#212121]"
-          >
-            {EBD_PRINT_BRANDING.subtitle}
-          </p>
-        </div>
+      <div className="ebd-print-watermark pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.05]">
+        <Image
+          src={EBD_PRINT_BRANDING.logoSrc}
+          alt=""
+          width={220}
+          height={220}
+          aria-hidden="true"
+          style={{ width: 220, height: 220 }}
+        />
       </div>
 
       <div className="ebd-print-shell relative z-[1] flex h-full flex-col">
@@ -214,9 +197,6 @@ export function EbdPrintPage({
                 </p>
                 <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.22em] text-[#8b5b18]">
                   {EBD_PRINT_BRANDING.subtitle}
-                </p>
-                <p className="mt-1 text-[9px] leading-relaxed text-[#666]">
-                  {EBD_PRINT_BRANDING.officialName}
                 </p>
               </div>
             </div>

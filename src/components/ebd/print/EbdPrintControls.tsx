@@ -5,7 +5,6 @@ import { useEffect } from "react";
 
 type EbdPrintControlsProps = {
   title: string;
-  subtitle: string;
   backHref: string;
   alternateHref: string;
   alternateLabel: string;
@@ -13,7 +12,6 @@ type EbdPrintControlsProps = {
 
 export default function EbdPrintControls({
   title,
-  subtitle,
   backHref,
   alternateHref,
   alternateLabel,
@@ -27,18 +25,17 @@ export default function EbdPrintControls({
   }, []);
 
   return (
-    <div className="ebd-print-controls mx-auto mb-6 max-w-[210mm] border-b border-black/10 pb-4 text-[#444]">
+    <div className="ebd-print-controls mx-auto mb-5 max-w-[190mm] border-b border-black/10 pb-3 text-[#444]">
       <div>
-        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
+        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
           Impressão da lição
         </p>
-        <h1 className="mt-1 font-acme text-2xl tracking-wide text-[#212121]">
+        <h1 className="mt-1 font-acme text-[2rem] leading-tight tracking-wide text-[#212121]">
           {title}
         </h1>
-        <p className="mt-1 text-sm leading-relaxed text-[#666]">{subtitle}</p>
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+      <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[15px] font-medium text-[#212121]">
         <button
           type="button"
           onClick={() => window.print()}
