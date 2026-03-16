@@ -18,9 +18,9 @@ export default function DailySpiritual() {
             Palavra e devocional do dia
           </h2>
 
-          <div className="-mx-5 flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
+          <div className="-mx-5 flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none">
             {/* Versículo */}
-            <div className="min-w-[82vw] snap-start shrink-0 rounded-3xl bg-white/80 border border-white/60 p-5 md:min-w-0 md:p-7">
+            <div className="min-w-[82vw] snap-start shrink-0 rounded-3xl bg-white/80 border border-white/60 p-5 lg:min-w-0 lg:p-7">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo do dia
               </p>
@@ -40,7 +40,7 @@ export default function DailySpiritual() {
 
             {/* Devocional */}
             {devotional ? (
-              <div className="min-w-[82vw] snap-start shrink-0 rounded-3xl bg-white/80 border border-white/60 p-5 md:min-w-0 md:p-7">
+              <div className="min-w-[82vw] snap-start shrink-0 rounded-3xl bg-white/80 border border-white/60 p-5 lg:min-w-0 lg:p-7">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Devocional do dia
                 </p>
