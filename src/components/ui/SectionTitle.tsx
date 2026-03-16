@@ -19,7 +19,7 @@ export function SectionTitle({
   divider = false,
   className = "",
 }: SectionTitleProps) {
-  const wrapperClassName = `${center ? "text-center" : ""} mb-16 ${className}`.trim();
+  const wrapperClassName = `${center ? "text-center" : ""} mb-8 md:mb-16 ${className}`.trim();
   const eyebrowClassName =
     eyebrowVariant === "gold"
       ? "ui-section-eyebrow ui-section-eyebrow--gold"
