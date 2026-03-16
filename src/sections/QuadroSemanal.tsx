@@ -91,12 +91,12 @@ export default function QuadroSemanal() {
   const quadro = montarQuadroSemanal();
 
   return (
-    <section className="mb-20">
-      <div className="text-center max-w-3xl mx-auto mb-10">
+    <section className="mb-10 md:mb-20">
+      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
         <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
           Visão rápida da semana
         </p>
-        <h3 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+        <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
           Programação da Semana
         </h3>
         <p className="text-[#5f5f5f] leading-relaxed">
@@ -113,18 +113,18 @@ export default function QuadroSemanal() {
           return (
             <div
               key={dia.id}
-              className={`min-w-[280px] snap-start rounded-3xl border p-5 transition-colors md:min-w-0 md:p-6 ${
+              className={`min-w-60 snap-start rounded-3xl border p-4 transition-colors md:min-w-0 md:p-6 ${
                 destaqueHoje
                   ? "border-[#ffa726]/50 bg-[#fff8ee] shadow-[0_8px_28px_rgba(0,0,0,0.05)]"
                   : "border-black/5 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.04)]"
               }`}
             >
-              <div className="mb-5 flex flex-wrap items-start justify-between gap-3">
+              <div className="mb-3 md:mb-5 flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                     {dia.sigla}
                   </p>
-                  <h4 className="font-acme text-[1.75rem] text-[#212121] tracking-wide md:text-2xl">
+                  <h4 className="font-acme text-xl text-[#212121] tracking-wide md:text-[1.75rem]">
                     {dia.nome}
                   </h4>
                 </div>
@@ -135,11 +135,11 @@ export default function QuadroSemanal() {
                 ) : null}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2 md:space-y-3">
                 {itens.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-2xl border border-black/5 bg-[#f9f9f9] px-4 py-3"
+                    className="rounded-2xl border border-black/5 bg-[#f9f9f9] px-3 py-2 md:px-4 md:py-3"
                   >
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
                       {item.horario}

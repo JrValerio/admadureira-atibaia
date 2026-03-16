@@ -53,7 +53,7 @@ function CardSemanal({
   return (
     <article
       id={getProgramacaoAnchorId({ dia, titulo })}
-      className="scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
+      className="min-w-[75vw] snap-start scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] sm:min-w-0"
     >
       <div className="relative w-full aspect-video bg-[#212121]">
         {banner ? (
@@ -77,7 +77,7 @@ function CardSemanal({
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
           {dia}
         </p>
-        <h4 className="font-acme text-2xl text-[#212121] tracking-wide leading-tight mb-2">
+        <h4 className="font-acme text-xl md:text-2xl text-[#212121] tracking-wide leading-tight mb-2">
           {titulo}
         </h4>
         {horario ? (
@@ -98,7 +98,7 @@ export default function Programacao({
   );
 
   return (
-    <section id="programacao" className="py-24 bg-white">
+    <section id="programacao" className="py-12 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <nav
           aria-label="Breadcrumb"
@@ -112,11 +112,11 @@ export default function Programacao({
         </nav>
 
         {showHeader ? (
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Vida da Igreja
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
               Programação da Igreja
             </h2>
             <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
@@ -125,16 +125,16 @@ export default function Programacao({
 
         <QuadroSemanal />
 
-        <div className="mb-20">
+        <div className="mb-10 md:mb-20">
           <HojeNaIgreja />
         </div>
 
-        <div className="mb-20">
+        <div className="mb-10 md:mb-20">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Cultos e reuniões da semana
             </p>
-            <h3 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+            <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
               Programação semanal detalhada
             </h3>
             <p className="text-[#5f5f5f] leading-relaxed">
@@ -143,7 +143,7 @@ export default function Programacao({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4">
             {programacaoDetalhada.map((item, index) => (
               <CardSemanal key={`${item.dia}-${item.titulo}-${index}`} {...item} />
             ))}
@@ -156,7 +156,7 @@ export default function Programacao({
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Eventos especiais
               </p>
-              <h3 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
                 Veja a agenda da igreja
               </h3>
               <p className="text-[#666] leading-relaxed max-w-3xl">

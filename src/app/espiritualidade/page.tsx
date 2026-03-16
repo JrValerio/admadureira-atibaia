@@ -58,7 +58,7 @@ export default function EspiritualidadePage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Recursos centrais
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
                 Bíblia, devocional e recursos para constância espiritual
               </h2>
               <div className="space-y-4 text-[#555] leading-relaxed">
@@ -101,7 +101,7 @@ export default function EspiritualidadePage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Descoberta fluida
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl tracking-wide mb-4">
+                <h2 className="font-acme text-xl md:text-3xl lg:text-4xl tracking-wide mb-4">
                   Leia, medite e ouça durante a semana
                 </h2>
                 <p className="text-white/80 leading-relaxed">
@@ -131,7 +131,7 @@ export default function EspiritualidadePage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Recursos principais
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
                 O núcleo da sua rotina espiritual diária
               </h2>
               <p className="text-[#555] leading-relaxed">
@@ -150,7 +150,7 @@ export default function EspiritualidadePage() {
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                     {feature.destaque}
                   </p>
-                  <h2 className="font-acme text-3xl md:text-[2.2rem] text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                     {feature.titulo}
                   </h2>
                   <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
@@ -185,7 +185,7 @@ export default function EspiritualidadePage() {
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Recursos complementares
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
                 Áudio para acompanhar sua jornada ao longo do dia
               </h2>
               <p className="text-[#555] leading-relaxed">
@@ -204,7 +204,7 @@ export default function EspiritualidadePage() {
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                     {feature.destaque}
                   </p>
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                     {feature.titulo}
                   </h2>
                   <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">

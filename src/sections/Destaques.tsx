@@ -48,14 +48,14 @@ export default function Destaques() {
           const cardContent = (
             <Card
               dark
-              className="group h-full border border-white/10 bg-[#1a1a1a] p-8 text-center transition hover:border-[#ffa726]/70"
+              className="group h-full border border-white/10 bg-[#1a1a1a] p-4 md:p-6 lg:p-8 text-center transition hover:border-[#ffa726]/70"
             >
-              <div className="mb-4 flex justify-center text-[#ffa726] transition-transform duration-300 group-hover:scale-110">
+              <div className="mb-2 md:mb-4 flex justify-center text-[#ffa726] transition-transform duration-300 group-hover:scale-110">
                 {item.icone}
               </div>
-              <h3 className="text-lg font-semibold text-white">{item.titulo}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">{item.descricao}</p>
-              <span className="mt-5 inline-block text-sm font-medium text-[#ffa726] group-hover:underline">
+              <h3 className="text-sm md:text-lg font-semibold text-white">{item.titulo}</h3>
+              <p className="mt-1 md:mt-2 text-xs md:text-sm leading-relaxed text-white/60">{item.descricao}</p>
+              <span className="mt-3 md:mt-5 inline-block text-xs md:text-sm font-medium text-[#ffa726] group-hover:underline">
                 {item.label}
               </span>
             </Card>
