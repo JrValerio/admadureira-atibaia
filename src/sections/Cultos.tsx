@@ -92,7 +92,7 @@ export default function Cultos() {
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
           Eventos Mensais
         </p>
-        <div className="flex flex-col justify-center gap-6 sm:flex-row">
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-center sm:gap-6">
           {eventosEspeciais.map((evento) => (
             <div key={evento.nome}>
               <p className="text-sm font-semibold text-[#212121]">

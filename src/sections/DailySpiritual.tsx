@@ -37,7 +37,7 @@ export default function DailySpiritual() {
             </p>
           </div>
 
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 mb-4 sm:grid sm:grid-cols-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible xl:grid-cols-[1.05fr_0.95fr] md:gap-6 md:mb-6">
+          <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 mb-4 sm:grid sm:grid-cols-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible xl:grid-cols-[1.05fr_0.95fr] md:gap-6 md:mb-6">
             <div className="min-w-[88%] shrink-0 snap-center sm:min-w-0 rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo do dia
