@@ -82,7 +82,7 @@ export default function DailySpiritual() {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-[#212121] p-6 md:p-7 text-white">
+          <div className="rounded-3xl bg-[#212121] p-4 md:p-6 lg:p-7 text-white">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-5 items-start">
               <div>
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
