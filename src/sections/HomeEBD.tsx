@@ -106,7 +106,7 @@ export default function HomeEBD() {
                 <Link
                   key={classe.slug}
                   href={`/ebd/${classe.slug}`}
-                  className="group block min-w-[82%] shrink-0 snap-center xl:min-w-0 rounded-2xl border border-white/70 bg-white/80 p-4 transition-colors hover:border-[#ffa726]/25 hover:bg-white"
+                  className="group block min-w-[78%] shrink-0 snap-center xl:min-w-0 rounded-2xl border border-white/70 bg-white/80 p-4 transition-colors hover:border-[#ffa726]/25 hover:bg-white"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

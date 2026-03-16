@@ -37,7 +37,7 @@ export default function DailySpiritual() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 mb-4 sm:grid-cols-2 xl:grid-cols-[1.05fr_0.95fr] md:gap-6 md:mb-6">
+          <div className="grid grid-cols-1 gap-3 mb-4 md:grid-cols-2 xl:grid-cols-[1.05fr_0.95fr] md:gap-6 md:mb-6">
             <div className="rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo do dia
