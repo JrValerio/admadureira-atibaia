@@ -92,10 +92,10 @@ export default function HomeEBD() {
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
               Classes da semana
             </p>
-            <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121]">
+            <h2 className="mb-3 font-acme text-2xl md:text-3xl tracking-wide text-[#212121]">
               Classes publicadas
             </h2>
-            <p className="mb-6 leading-relaxed text-[#555]">
+            <p className="mb-4 md:mb-6 leading-relaxed text-[#555]">
               A EBD acontece todo domingo às 09h, com trilhas publicadas para
               acompanhar a lição da semana e continuar o estudo ao longo dos
               dias.
@@ -113,7 +113,7 @@ export default function HomeEBD() {
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                         {classe.label}
                       </p>
-                      <h3 className="font-acme text-2xl tracking-wide text-[#212121]">
+                      <h3 className="font-acme text-xl md:text-2xl tracking-wide text-[#212121]">
                         {licaoDaSemana?.licao.titulo ?? classe.horarioLabel}
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-[#555]">

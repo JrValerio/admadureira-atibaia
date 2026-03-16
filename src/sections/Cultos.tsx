@@ -67,18 +67,18 @@ export default function Cultos() {
         {cultos.map((culto) => (
           <Card
             key={culto.dia}
-            className="min-w-[260px] snap-start border border-black/5 bg-white p-6 md:min-w-0 md:p-7"
+            className="min-w-55 snap-start border border-black/5 bg-white p-3 md:min-w-0 md:p-5 lg:p-7"
           >
-            <h3 className="mb-4 font-acme text-xl tracking-wide text-[#212121]">
+            <h3 className="mb-2 md:mb-4 font-acme text-base md:text-xl tracking-wide text-[#212121]">
               {culto.dia}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 md:space-y-3">
               {culto.horarios.map((horario) => (
-                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-3 first:border-t-0 first:pt-0">
-                  <p className="text-sm font-semibold tracking-wide text-[#212121]">
+                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 md:pt-3 first:border-t-0 first:pt-0">
+                  <p className="text-xs md:text-sm font-semibold tracking-wide text-[#212121]">
                     {horario.hora}
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-[#5f5f5f]">
+                  <p className="mt-0.5 md:mt-1 text-xs md:text-sm leading-relaxed text-[#5f5f5f]">
                     {horario.nome}
                   </p>
                 </li>
