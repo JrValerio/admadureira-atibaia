@@ -98,7 +98,7 @@ export default function HistoriaPage() {
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Nossa caminhada
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
                   Uma história construída com fé, serviço e permanência
                 </h2>
                 <div className="space-y-4 text-sm md:text-base text-[#555] leading-7 md:leading-8">
@@ -127,22 +127,22 @@ export default function HistoriaPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Marcos institucionais
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                   Da origem da igreja ao cuidado com a cidade
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">1977</p>
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">1977</p>
                     <p className="text-[#555] text-sm mt-1">Ano da fundação</p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">2004</p>
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">2004</p>
                     <p className="text-[#555] text-sm mt-1">
                       Presidência atual
                     </p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">Atibaia</p>
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">Atibaia</p>
                     <p className="text-[#555] text-sm mt-1">
                       Serviço à cidade e à região
                     </p>
@@ -161,7 +161,7 @@ export default function HistoriaPage() {
                 <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
                   Da origem ao presente
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
                   Marcos que ajudam a entender a caminhada da igreja
                 </h2>
                 <p className="text-sm md:text-base text-[#5f5f5f] leading-7 md:leading-8">
@@ -213,7 +213,7 @@ export default function HistoriaPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Legado pastoral
                 </p>
-                <h2 className="font-acme text-3xl tracking-wide mb-4">
+                <h2 className="font-acme text-xl md:text-3xl tracking-wide mb-4">
                   Liderança que serve, cuida e preserva a caminhada da igreja
                 </h2>
                 <p className="text-sm md:text-base text-white/75 leading-7 md:leading-8 mb-6">
@@ -273,7 +273,7 @@ export default function HistoriaPage() {
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                     Crescimento e atuação em Atibaia
                   </p>
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
                     Uma obra que permanece presente na cidade e na região
                   </h2>
                   <p className="text-sm md:text-base text-[#555] leading-7 md:leading-8 mb-6">
@@ -303,7 +303,7 @@ export default function HistoriaPage() {
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                     Conexão com a igreja hoje
                   </p>
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
                     A história continua em cada culto, ministério e família
                   </h2>
                   <p className="text-sm md:text-base text-[#555] leading-7 md:leading-8 mb-4">

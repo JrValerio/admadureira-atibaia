@@ -69,7 +69,7 @@ export default function DevocionalPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Devocional do dia
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
+                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
                   {dailyDevotional.titulo}
                 </h2>
                 <p className="text-sm text-[#8b5b18] mb-4">
@@ -122,7 +122,7 @@ export default function DevocionalPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   {formatDevotionalDate(getDevotionalDisplayDate(devotional))}
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                   {devotional.titulo}
                 </h2>
                 <p className="text-sm text-[#777] mb-4">{devotional.versiculo}</p>

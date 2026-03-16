@@ -94,7 +94,7 @@ export default function CongregacoesPage() {
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Presença do campo
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
                   Uma igreja presente na cidade, com base pastoral e congregacional
                 </h2>
                 <div className="space-y-4 text-sm md:text-base text-[#555] leading-7 md:leading-8">
@@ -125,20 +125,20 @@ export default function CongregacoesPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Base atual do campo
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                   A sede reúne culto, ensino, discipulado e cuidado pastoral
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">Atibaia</p>
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">Atibaia</p>
                     <p className="text-[#555] text-sm mt-1">Cidade base do campo</p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">Sede</p>
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">Sede</p>
                     <p className="text-[#555] text-sm mt-1">Templo congregacional em destaque</p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">
                       {congregacaoSede?.lideranca.length ?? 0}
                     </p>
                     <p className="text-[#555] text-sm mt-1">Lideranças vinculadas</p>
@@ -156,7 +156,7 @@ export default function CongregacoesPage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Congregação em destaque
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
                 Conheça a base congregacional já estruturada no Campo de Atibaia
               </h2>
               <p className="text-[#5f5f5f] leading-relaxed">

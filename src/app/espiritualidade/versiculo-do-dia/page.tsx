@@ -53,7 +53,7 @@ export default function VersiculoDoDiaPage() {
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Palavra para hoje
             </p>
-            <h1 className="font-acme text-4xl md:text-6xl text-[#212121] tracking-wide mb-6">
+            <h1 className="font-acme text-2xl md:text-4xl md:text-6xl text-[#212121] tracking-wide mb-6">
               {verse.referencia}
             </h1>
             <p className="text-xl md:text-2xl leading-relaxed text-[#3f3f3f] mb-8">
@@ -80,7 +80,7 @@ export default function VersiculoDoDiaPage() {
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Tema do dia
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
                 {verse.tema}
               </h2>
               <p className="text-[#555] leading-relaxed">

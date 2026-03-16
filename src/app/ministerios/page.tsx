@@ -99,7 +99,7 @@ export default function MinisteriosPage() {
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Vida da igreja
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
                   Áreas que acolhem, discipulam, servem e fortalecem a comunidade
                 </h2>
                 <div className="space-y-4 text-sm md:text-base text-[#555] leading-7 md:leading-8">
@@ -131,24 +131,24 @@ export default function MinisteriosPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Estrutura ministerial
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                   Do campo à igreja local, cada frente reforça uma dimensão da caminhada cristã
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">
                       {ministerios.length}
                     </p>
                     <p className="text-[#555] text-sm mt-1">Ministérios em destaque</p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">
                       {ministeriosDoCampo.length}
                     </p>
                     <p className="text-[#555] text-sm mt-1">Frentes do campo</p>
                   </div>
                   <div>
-                    <p className="font-acme text-4xl text-[#212121]">
+                    <p className="font-acme text-2xl md:text-4xl text-[#212121]">
                       {ministeriosLocais.length}
                     </p>
                     <p className="text-[#555] text-sm mt-1">Frentes locais</p>

@@ -259,7 +259,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               >
                 {statusMeta.label}
               </div>
-              <h1 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h1 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
                 {trimestre.titulo}
               </h1>
               {trimestre.subtitulo ? (
@@ -279,7 +279,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                     Classe
                   </p>
-                  <p className="font-acme text-3xl text-[#212121]">
+                  <p className="font-acme text-xl md:text-3xl text-[#212121]">
                     {classeInfo.label}
                   </p>
                 </div>
@@ -287,7 +287,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                     Lições publicadas
                   </p>
-                  <p className="font-acme text-3xl text-[#212121]">
+                  <p className="font-acme text-xl md:text-3xl text-[#212121]">
                     {publishedLessons}
                   </p>
                 </div>
@@ -317,7 +317,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               </p>
               {licaoEmDestaque ? (
                 <>
-                  <h2 className="mb-3 font-acme text-3xl tracking-wide text-[#212121]">
+                  <h2 className="mb-3 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
                     {licaoEmDestaque.titulo}
                   </h2>
                   <p className="mb-2 text-sm font-medium text-[#8b5b18]">
@@ -362,7 +362,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Lições do trimestre
               </p>
-              <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
                 Acompanhe as 13 lições desta edição
               </h2>
               <p className="leading-relaxed text-[#555]">

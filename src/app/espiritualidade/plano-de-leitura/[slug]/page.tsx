@@ -85,7 +85,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Visão geral do plano
               </p>
-              <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+              <h1 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
                 {plan.titulo}
               </h1>
               <div className="space-y-4 text-[#555] leading-relaxed">
@@ -114,7 +114,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                 Sugestão para hoje
               </p>
               <ContinueReading planSlug={plan.slug} totalDays={plan.dias.length} />
-              <p className="font-acme text-4xl text-[#212121] tracking-wide mb-3">
+              <p className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-3">
                 Dia {suggestedDay}
               </p>
               <p className="text-sm text-[#555] leading-relaxed mb-4">
@@ -140,7 +140,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Devocional do dia
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-3">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
                 {dailyDevotional.titulo}
               </h2>
               <p className="text-sm text-[#8b5b18] mb-4">{dailyDevotional.versiculo}</p>
@@ -170,7 +170,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Jornada completa
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
                 Dias do plano
               </h2>
               <p className="text-[#555] leading-relaxed">

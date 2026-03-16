@@ -35,7 +35,7 @@ function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
           {pastor.cargo}
         </p>
-        <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide leading-tight mb-4">
+        <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide leading-tight mb-4">
           {pastor.nome}
         </h2>
         <p className="text-[#555] leading-relaxed mb-6">{pastor.resumo}</p>
@@ -105,7 +105,7 @@ export default function PastoresPage() {
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                     Campo de Atibaia
                   </p>
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide">
                     Presidência
                   </h2>
                 </div>
@@ -123,7 +123,7 @@ export default function PastoresPage() {
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                     Apoio Pastoral
                   </p>
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide">
                     Vice-Presidência
                   </h2>
                 </div>

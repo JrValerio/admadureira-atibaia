@@ -67,7 +67,7 @@ export default function OfertaPage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Por que contribuímos
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                 Adoração que também sustenta a obra
               </h2>
               <div className="space-y-4 text-[#555] leading-relaxed">
@@ -99,7 +99,7 @@ export default function OfertaPage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Como sua contribuição ajuda
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                 Destinação da contribuição
               </h2>
               <p className="text-[#555] leading-relaxed mb-5">
@@ -121,7 +121,7 @@ export default function OfertaPage() {
             <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
               Formas de contribuição
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide">
               Escolha a forma mais conveniente
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-[#666] leading-relaxed">
@@ -135,7 +135,7 @@ export default function OfertaPage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 PIX
               </p>
-              <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-6">
+              <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-6">
                 QR Code para contribuição
               </h2>
 
@@ -222,7 +222,7 @@ export default function OfertaPage() {
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Dados bancários
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-6">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-6">
                   Informações da conta
                 </h2>
 
@@ -271,7 +271,7 @@ export default function OfertaPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Presencial e transparência
                 </p>
-                <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
                   Outras formas de contribuir
                 </h2>
                 <div className="space-y-4 text-[#555] leading-relaxed">

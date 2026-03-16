@@ -72,7 +72,7 @@ export default function TestemunhosPage() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                   {stat.label}
                 </p>
-                <p className="font-acme text-4xl text-[#212121]">
+                <p className="font-acme text-2xl md:text-4xl text-[#212121]">
                   {stat.value}
                 </p>
               </div>
@@ -121,7 +121,7 @@ export default function TestemunhosPage() {
                       Vídeo testemunho
                     </p>
                   )}
-                  <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
+                  <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
                     {testemunho.titulo}
                   </h2>
                   <p className="text-[#5f5f5f] leading-relaxed line-clamp-3 mb-4">

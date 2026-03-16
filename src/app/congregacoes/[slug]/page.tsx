@@ -86,7 +86,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
       <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#8b5b18]">
         {label}
       </p>
-      <p className="font-acme text-3xl tracking-wide text-[#212121]">{value}</p>
+      <p className="font-acme text-xl md:text-3xl tracking-wide text-[#212121]">{value}</p>
     </div>
   );
 }
@@ -248,7 +248,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Presença congregacional
                 </p>
-                <h2 className="mb-5 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
                   Uma congregação com Palavra, cuidado pastoral e acolhimento em{" "}
                   {locationInfo.cidade}
                 </h2>
@@ -293,7 +293,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                   Base local
                 </p>
-                <h2 className="mb-5 font-acme text-3xl tracking-wide text-[#212121]">
+                <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
                   Informações rápidas da congregação
                 </h2>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -325,7 +325,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                     Endereço e visitação
                   </p>
-                  <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121]">
+                  <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
                     Como visitar esta congregação
                   </h2>
                   <p className="mb-6 max-w-3xl leading-relaxed text-[#555]">
@@ -378,7 +378,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                     Programação local
                   </p>
-                  <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121]">
+                  <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
                     Cultos, oração e encontros da congregação
                   </h2>
                   <p className="mb-6 max-w-3xl leading-relaxed text-[#555]">
@@ -421,7 +421,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                       <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                         Campo de Atibaia
                       </p>
-                      <h2 className="font-acme text-3xl tracking-wide text-white">
+                      <h2 className="font-acme text-xl md:text-3xl tracking-wide text-white">
                         Congregação em destaque
                       </h2>
                     </div>
@@ -440,7 +440,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Liderança local
                   </p>
-                  <h2 className="mb-5 font-acme text-3xl tracking-wide text-[#212121]">
+                  <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
                     Pessoas que servem nesta frente congregacional
                   </h2>
                   <div className="space-y-4">
@@ -471,7 +471,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                     Próximos passos
                   </p>
-                  <h2 className="mb-4 font-acme text-3xl tracking-wide">
+                  <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide">
                     Continue sua navegação pelo campo
                   </h2>
                   <div className="space-y-3 text-sm leading-relaxed text-white/80">
