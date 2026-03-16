@@ -112,7 +112,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
         imageAlt={devotional.titulo}
       />
 
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-5xl mx-auto px-4">
           <SpiritualBreadcrumb
             items={[
