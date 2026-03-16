@@ -23,7 +23,7 @@ const mensagens: Mensagem[] = [
     resumo:
       "Mensagem ministrada em um culto especial da família, com ênfase na edificação do lar, na comunhão cristã e no fortalecimento da fé.",
     youtubeId: "iXVuDQRxrlw",
-    capa: "/banners/banner-culto-da-familia.png",
+    capa: "/programacao/culto-de-domingo.png",
   },
   {
     slug: "reuniao-de-obreiros-com-cicero-nogueira",
@@ -42,7 +42,7 @@ const mensagens: Mensagem[] = [
     resumo:
       "Culto especial com foco na família e no papel da mulher cristã, reunindo a igreja para um momento de adoração, comunhão e ensino bíblico.",
     youtubeId: "juq8QkL3urY",
-    capa: "/banners/banner-culto-para-mulheres.png",
+    capa: "/banners/banner-Culto-de-Mulhere.png",
   },
   {
     slug: "campanha-jejum-e-oracao-com-pr-wantuil",
@@ -53,7 +53,7 @@ const mensagens: Mensagem[] = [
       "Mensagem ministrada durante a campanha de jejum e oração, chamando a igreja à perseverança espiritual, à consagração e à confiança em Deus.",
     versiculo: "Joel 3:10",
     youtubeId: "l87g14Ei6lc",
-    capa: "/banners/banner-campanha-de-quinta.jpg",
+    capa: "/banners/banner-campanha-jejum-e-oracao.png",
   },
   {
     slug: "culto-da-familia-palavra-para-fortalecer-lares",

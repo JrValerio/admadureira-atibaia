@@ -174,7 +174,7 @@ const planoEvangelhosEmQuarentaDias: ReadingPlan = {
   idealPara:
     "Discipulado, novos convertidos e tempos de renovação centrados em Cristo.",
   versiculoBase: "João 20:31",
-  imagem: "/banners/banner-culto-da-familia.png",
+  imagem: "/pulpito-da-igreja.jpg",
   destaque: "Foco em Cristo",
   dias: splitIntoBalancedDays(
     createBookSequenceBySlugs(["mateus", "marcos", "lucas", "joao"]),
