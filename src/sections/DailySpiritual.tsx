@@ -42,7 +42,7 @@ export default function DailySpiritual() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo do dia
               </p>
-              <p className="text-base md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
+              <p className="text-sm md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
                 &quot;{verse.texto}&quot;
               </p>
               <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-5">
@@ -64,7 +64,7 @@ export default function DailySpiritual() {
                 {devotional.titulo}
               </h3>
               <p className="text-sm text-[#8b5b18] mb-4">{devotional.versiculo}</p>
-              <p className="text-[#555] leading-relaxed mb-5">
+              <p className="text-xs md:text-base text-[#555] leading-relaxed mb-5">
                 {devotional.resumo}
               </p>
               <Link
@@ -91,7 +91,7 @@ export default function DailySpiritual() {
                 <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-3">
                   Dia {suggestedDay}
                 </h3>
-                <p className="text-sm md:text-base text-white/80 leading-relaxed mb-3">
+                <p className="text-xs md:text-base text-white/80 leading-relaxed mb-3">
                   {readingSummary}
                 </p>
                 {readingDay?.foco ? (
