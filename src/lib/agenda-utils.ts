@@ -5,6 +5,7 @@ import {
   type ItemSemanal,
 } from "@/data/agenda";
 import { getSaoPauloDate } from "@/lib/date-utils";
+import { getProgramacaoHref } from "@/lib/programacao-anchor";
 
 const mesesOrdenados = [
   "Janeiro",
@@ -88,6 +89,13 @@ const TIPOS_EVENTO_PUBLICO = new Set<Evento["tipo"]>([
   "culto-com-a-mocidade",
   "congresso-circulo-de-oracao",
   "evento-especial",
+]);
+
+const TIPOS_EVENTO_COM_PAGINA = new Set<Evento["tipo"]>([
+  ...TIPOS_EVENTO_PUBLICO,
+  "curso-de-teologia",
+  "reuniao-de-ministerio",
+  "reuniao-de-obreiros",
 ]);
 
 const diasProgramacao: Record<string, number[]> = {
@@ -225,7 +233,10 @@ function criarOcorrenciaProgramacao(
     titulo: item.titulo,
     horario: item.horario,
     banner: item.banner,
-    href: "/programacao",
+    href: getProgramacaoHref({
+      dia: item.dia,
+      titulo: item.titulo,
+    }),
     origem: "programacao",
     detalhe: item.dia,
     dataEvento,
@@ -302,6 +313,10 @@ function isEventoPublico(evento: EventoFuturo) {
   return TIPOS_EVENTO_PUBLICO.has(evento.tipo);
 }
 
+function isEventoComPagina(evento: EventoFuturo) {
+  return TIPOS_EVENTO_COM_PAGINA.has(evento.tipo);
+}
+
 function expandirAgendaCompleta() {
   return agenda2026
     .flatMap((bloco) =>
@@ -356,11 +371,17 @@ function getOcorrenciasSemanaisDoDia(referencia: Date) {
 }
 
 export function getEventoBySlug(slug: string) {
-  return expandirAgendaPublica().find((item) => item.evento.slug === slug)?.evento ?? null;
+  return (
+    expandirAgendaCompleta().find(
+      (item) => isEventoComPagina(item.evento) && item.evento.slug === slug
+    )?.evento ?? null
+  );
 }
 
 export function getEventosAgenda() {
-  return expandirAgendaPublica().map((item) => item.evento);
+  return expandirAgendaCompleta()
+    .filter((item) => isEventoComPagina(item.evento))
+    .map((item) => item.evento);
 }
 
 export function getEventosFuturos(limite?: number) {
@@ -372,6 +393,24 @@ export function getEventosFuturos(limite?: number) {
     .map((item) => item.evento);
 
   return typeof limite === "number" ? futuros.slice(0, limite) : futuros;
+}
+
+export function getProximoEventoPorTipo(
+  tipos: ReadonlyArray<Evento["tipo"]>,
+  referencia = new Date()
+) {
+  const agora = getSaoPauloDate(referencia);
+
+  return (
+    expandirAgendaCompleta()
+      .filter(
+        (item) =>
+          isEventoComPagina(item.evento) &&
+          tipos.includes(item.evento.tipo) &&
+          item.dataEvento >= agora
+      )
+      .map((item) => item.evento)[0] ?? null
+  );
 }
 
 export function getHojeNaIgreja(referencia = new Date()): HojeNaIgrejaUI {

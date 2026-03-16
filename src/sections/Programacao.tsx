@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { programacaoSemanal } from "@/data/agenda";
 import HojeNaIgreja from "@/components/programacao/HojeNaIgreja";
+import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 
 type ProgramacaoProps = {
@@ -50,7 +51,10 @@ function CardSemanal({
   banner,
 }: CardSemanalProps) {
   return (
-    <article className="rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
+    <article
+      id={getProgramacaoAnchorId({ dia, titulo })}
+      className="scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
+    >
       <div className="relative w-full aspect-video bg-[#212121]">
         {banner ? (
           <Image

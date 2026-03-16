@@ -9,7 +9,7 @@ import {
   useState,
   type PointerEvent as ReactPointerEvent,
 } from "react";
-import { heroEventos } from "@/data/hero";
+import type { HeroEvento } from "@/data/hero";
 
 type LegacyMediaQueryList = MediaQueryList & {
   addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
@@ -20,8 +20,12 @@ const AUTO_PLAY_MS = 5500;
 const RESUME_AFTER_INTERACTION_MS = 9000;
 const SWIPE_THRESHOLD = 56;
 
-export default function HeroEventos() {
-  const total = heroEventos.length;
+type HeroEventosProps = {
+  eventos: HeroEvento[];
+};
+
+export default function HeroEventos({ eventos }: HeroEventosProps) {
+  const total = eventos.length;
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focusWithin, setFocusWithin] = useState(false);
@@ -190,10 +194,10 @@ export default function HeroEventos() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-linear-to-b from-[#17120c] via-[#111111] to-[#181818] py-5 sm:py-6 lg:py-8">
-      <div className="mx-auto max-w-[110rem] px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full overflow-hidden bg-linear-to-b from-[#17120c] via-[#111111] to-[#181818] py-0">
+      <div className="relative w-full">
         <div
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#090909] shadow-[0_28px_84px_rgba(0,0,0,0.34)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
+          className="relative overflow-hidden bg-[#090909] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
           role="region"
           aria-roledescription="carousel"
           aria-label="Banners de destaque da igreja"
@@ -238,7 +242,7 @@ export default function HeroEventos() {
             className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
-            {heroEventos.map((evento, slideIndex) => (
+            {eventos.map((evento, slideIndex) => (
               <Link
                 key={evento.imagem}
                 href={evento.href}
@@ -247,14 +251,14 @@ export default function HeroEventos() {
                 tabIndex={slideIndex === index ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
-                <div className="relative aspect-[16/7] sm:aspect-[18/7] md:aspect-[3/1]">
+                <div className="relative aspect-[16/7] w-full sm:aspect-[18/7] md:aspect-[3/1] xl:aspect-[2400/800]">
                   <Image
                     src={evento.imagem}
                     alt={evento.alt}
                     fill
                     priority={slideIndex === 0}
                     sizes="100vw"
-                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
                 </div>
@@ -262,7 +266,7 @@ export default function HeroEventos() {
             ))}
           </div>
 
-          <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black/48 px-3 py-2 shadow-[0_14px_36px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:bottom-5 sm:px-4">
+          <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/22 px-2.5 py-1.5 backdrop-blur-md sm:bottom-4">
             <button
               type="button"
               onClick={() => {
@@ -270,13 +274,13 @@ export default function HeroEventos() {
                 pauseTemporarily();
               }}
               aria-label="Mostrar banner anterior"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white transition-colors duration-200 hover:bg-white/16 hover:text-[#ffa726]"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-black/28 text-white/70 transition-colors duration-200 hover:bg-black/40 hover:text-white"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
                 fill="none"
-                className="h-4 w-4"
+                className="h-3.5 w-3.5"
               >
                 <path
                   d="m15 18-6-6 6-6"
@@ -289,7 +293,7 @@ export default function HeroEventos() {
             </button>
 
             <div className="flex items-center gap-2">
-              {heroEventos.map((evento, slideIndex) => (
+              {eventos.map((evento, slideIndex) => (
                 <button
                   key={evento.imagem}
                   type="button"
@@ -299,10 +303,10 @@ export default function HeroEventos() {
                   }}
                   aria-label={evento.ariaLabel}
                   aria-current={slideIndex === index}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
                     slideIndex === index
-                      ? "w-8 bg-[#ffa726]"
-                      : "w-2 bg-white/45 hover:bg-white/75"
+                      ? "w-6 bg-white/75"
+                      : "w-1.5 bg-white/30 hover:bg-white/50"
                   }`}
                 />
               ))}
@@ -315,13 +319,13 @@ export default function HeroEventos() {
                 pauseTemporarily();
               }}
               aria-label="Mostrar próximo banner"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/8 text-white transition-colors duration-200 hover:bg-white/16 hover:text-[#ffa726]"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-black/28 text-white/70 transition-colors duration-200 hover:bg-black/40 hover:text-white"
             >
               <svg
                 aria-hidden="true"
                 viewBox="0 0 24 24"
                 fill="none"
-                className="h-4 w-4"
+                className="h-3.5 w-3.5"
               >
                 <path
                   d="m9 6 6 6-6 6"
