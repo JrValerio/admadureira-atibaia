@@ -1,52 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AD Madureira Atibaia — Digital Church Platform
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-Framework-black)
+![React](https://img.shields.io/badge/React-Library-61DAFB?labelColor=222)
+![TypeScript](https://img.shields.io/badge/TypeScript-Language-3178C6)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Styling-38B2AC)
+![Deploy](https://img.shields.io/badge/Deploy-Vercel-black)
 
-First, run the development server:
+Website institucional e hub espiritual digital da **Igreja Assembleia de Deus – Ministério Madureira (Campo de Atibaia)**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Desenvolvido com **Next.js, React, TypeScript e TailwindCSS**, com foco em performance, SEO, organização de conteúdo e experiência mobile-first.
+
+Além da presença institucional, a aplicação funciona como um **hub espiritual digital**, reunindo Bíblia online, devocionais, EBD, agenda e mensagens em um único ponto de acesso.
+
+---
+
+## 🌐 Produção
+
+**[admadureiraatibaia.com.br](https://admadureiraatibaia.com.br)**
+
+---
+
+## 🎯 Problema
+
+Grande parte das igrejas brasileiras concentra sua comunicação exclusivamente em redes sociais, o que gera:
+
+- informações dispersas e de difícil acesso
+- programação sem organização centralizada
+- ausência de recursos espirituais de fácil consulta
+- baixa acessibilidade para visitantes e novos membros
+
+---
+
+## 💡 Solução
+
+Plataforma digital que centraliza:
+
+- programação semanal da igreja
+- agenda de eventos especiais
+- conteúdos bíblicos e devocionais
+- materiais da Escola Bíblica Dominical
+- mensagens e estudos
+- histórico e identidade institucional
+
+---
+
+## ✨ Funcionalidades
+
+### 📅 Programação Semanal
+Exibição estruturada da rotina da igreja: cultos, oração matinal, EBD, campanhas e reuniões ministeriais.
+
+### 📆 Agenda de Eventos
+Sistema separado da programação fixa para eventos especiais: congressos, cultos especiais, campanhas temáticas e eventos do campo de Atibaia.
+
+### 📖 Hub de Espiritualidade
+Área dedicada ao crescimento espiritual diário: Bíblia online, versículo do dia, devocionais, plano de leitura e rádio cristã.
+
+### 🎓 Escola Bíblica Dominical (EBD)
+Lições semanais, resumos, materiais de apoio e versão para impressão — para adultos, jovens e infantil.
+
+### 🎥 Mensagens
+Biblioteca de conteúdos espirituais: vídeos, reflexões e estudos bíblicos.
+
+### 🤝 Ministérios
+Apresentação dos ministérios da igreja com informações e formas de contato.
+
+### 🙏 Pedidos de Oração e Contato
+Canal direto entre membros, visitantes e a liderança da igreja.
+
+---
+
+## 🧠 Arquitetura
+
+```
+src/
+  app/          rotas e páginas (Next.js App Router)
+  components/   componentes reutilizáveis de UI
+  sections/     blocos estruturais de páginas
+  data/         conteúdo e dados institucionais
+  lib/          utilitários, helpers e regras de negócio
+  hooks/        hooks personalizados
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Separação clara entre interface, conteúdo, lógica e utilitários. Ver [docs/architecture.md](docs/architecture.md) para detalhes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Stack
 
-## EBD Editorial Scope
+| Camada | Tecnologia |
+|---|---|
+| Framework | Next.js (App Router) |
+| UI | React + TailwindCSS |
+| Linguagem | TypeScript |
+| Deploy | Vercel |
+| Conteúdo bíblico | YouTube Data API |
 
-Current published scope for the EBD module:
+---
 
-- `Adultos 1T/2026`: complete from `Lição 1` to `Lição 13`
-- `Jovens 1T/2026`: complete from `Lição 1` to `Lição 13`
-- `Infantil`: architecture kept in place, but editorial production is intentionally paused
+## 🛠️ Rodando localmente
 
-Future quarters remain prepared internally, but stay out of public discovery until the editorial release gate is met.
+```bash
+# Clone o repositório
+git clone https://github.com/JrValerio/admadureira-atibaia
 
-See [docs/ebd-governance.md](docs/ebd-governance.md) for the current publication policy, draft rules and the `2026-2t` launch gate.
+# Instale as dependências
+npm install
 
-Editorial history note:
+# Crie o arquivo de variáveis de ambiente
+cp .env.example .env.local
+# Preencha as variáveis necessárias
 
-- `Jovens Lição 11` was published earlier as the pilot lesson and remained in place while the remaining youth lessons were completed in blocks.
+# Execute em modo de desenvolvimento
+npm run dev
+```
 
-## Learn More
+Acesse [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔒 Variáveis de ambiente
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variável | Descrição |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | URL canônica do site em produção |
+| `YOUTUBE_API_KEY` | Chave da YouTube Data API |
+| `YOUTUBE_CHANNEL_ID` | ID do canal no YouTube |
+| `YOUTUBE_CHANNEL_HANDLE` | Handle do canal (ex: `@ADMadureiraAtibaia`) |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 EBD — Escopo editorial
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Escopo atualmente publicado:
+
+- **Adultos 1T/2026** — Lição 1 a 13 (completo)
+- **Jovens 1T/2026** — Lição 1 a 13 (completo)
+- **Infantil** — arquitetura mantida, produção editorial pausada
+
+Trimestres futuros estão preparados internamente, mas ficam fora da descoberta pública até atingir o gate editorial de publicação.
+
+Ver [docs/ebd-governance.md](docs/ebd-governance.md) para a política de publicação, regras de rascunho e o gate de lançamento do `2026-2t`.
+
+---
+
+## 🧭 Roadmap
+
+Ver [docs/roadmap.md](docs/roadmap.md) para o planejamento de evoluções.
+
+---
+
+## 📍 Igreja
+
+**Assembleia de Deus – Ministério Madureira**
+Praça Pio XII, 122 – Centro – Atibaia/SP
+[Instagram](https://www.instagram.com/admadureira_atibaia/) · [YouTube](https://www.youtube.com/@ADMadureiraAtibaia)
