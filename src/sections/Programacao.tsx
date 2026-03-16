@@ -143,7 +143,7 @@ export default function Programacao({
             </p>
           </div>
 
-          <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 xl:grid-cols-4">
+          <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none xl:grid-cols-4">
             {programacaoDetalhada.map((item, index) => (
               <CardSemanal key={`${item.dia}-${item.titulo}-${index}`} {...item} />
             ))}

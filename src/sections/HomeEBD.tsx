@@ -101,7 +101,7 @@ export default function HomeEBD() {
               dias.
             </p>
 
-            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 xl:flex-col xl:overflow-visible xl:mx-0 xl:px-0 xl:pb-0 xl:space-y-3">
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 xl:flex-col xl:overflow-visible xl:mx-0 xl:px-0 xl:pb-0 xl:space-y-3 xl:snap-none">
               {classes.map(({ classe, licaoDaSemana }) => (
                 <Link
                   key={classe.slug}
