@@ -18,10 +18,10 @@ export default function HomeAgenda() {
 
   return (
     <section className="bg-[#f7f6f2] py-10 md:py-14">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 xl:grid xl:grid-cols-2 xl:overflow-visible xl:gap-6 xl:px-4 xl:pb-0">
           {proximoCompromisso ? (
-            <article className="rounded-3xl border border-black/5 bg-white p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <article className="min-w-[88%] shrink-0 snap-center xl:min-w-0 rounded-3xl border border-black/5 bg-white p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Próximo compromisso
               </p>
@@ -64,7 +64,7 @@ export default function HomeAgenda() {
           ) : null}
 
           {eventoDestaque ? (
-            <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <article className="min-w-[88%] shrink-0 snap-center xl:min-w-0 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Evento em destaque
               </p>
