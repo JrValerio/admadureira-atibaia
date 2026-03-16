@@ -17,7 +17,7 @@ export default function HomeAgenda() {
   }
 
   return (
-    <section className="bg-[#f7f6f2] py-10 md:py-14">
+    <section className="bg-[#f7f6f2] py-7 md:py-14">
       <div className="max-w-6xl mx-auto">
         <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 xl:grid xl:grid-cols-2 xl:overflow-visible xl:gap-6 xl:px-4 xl:pb-0">
           {proximoCompromisso ? (
@@ -25,7 +25,7 @@ export default function HomeAgenda() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Próximo compromisso
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-3">
+              <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-3">
                 {proximoCompromisso.evento.titulo}
               </h2>
               <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-4">
@@ -68,7 +68,7 @@ export default function HomeAgenda() {
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Evento em destaque
               </p>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
                 {eventoDestaque.titulo}
               </h2>
               <p className="text-[#555] leading-relaxed mb-3">

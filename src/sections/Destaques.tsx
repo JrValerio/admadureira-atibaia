@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Card, CardGrid, Section } from "@/components/ui";
+import { Card, Section } from "@/components/ui";
 
 const destaques = [
   {
@@ -43,7 +43,7 @@ const destaques = [
 export default function Destaques() {
   return (
     <Section className="bg-[#151515]">
-      <CardGrid className="gap-6">
+      <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0">
         {destaques.map((item) => {
           const cardContent = (
             <Card
@@ -67,17 +67,17 @@ export default function Destaques() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block min-w-[78%] shrink-0 snap-center md:min-w-0"
             >
               {cardContent}
             </a>
           ) : (
-            <Link key={item.titulo} href={item.href} className="block">
+            <Link key={item.titulo} href={item.href} className="block min-w-[78%] shrink-0 snap-center md:min-w-0">
               {cardContent}
             </Link>
           );
         })}
-      </CardGrid>
+      </div>
     </Section>
   );
 }

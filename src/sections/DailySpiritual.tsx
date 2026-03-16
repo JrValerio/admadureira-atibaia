@@ -21,14 +21,14 @@ export default function DailySpiritual() {
     : "";
 
   return (
-    <section className="bg-[#f5f5f5] pt-10 pb-6 md:pt-14 md:pb-8">
+    <section className="bg-[#f5f5f5] pt-8 pb-5 md:pt-14 md:pb-8">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-          <div className="mb-8">
+        <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-5 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+          <div className="mb-5 md:mb-8">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Hoje com Deus
             </p>
-            <h2 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-4">
+            <h2 className="font-acme text-2xl md:text-5xl text-[#212121] tracking-wide mb-3 md:mb-4">
               Palavra, devocional e leitura do dia
             </h2>
             <p className="max-w-3xl text-[#555] leading-relaxed">
@@ -37,12 +37,12 @@ export default function DailySpiritual() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-6 mb-6">
-            <div className="rounded-3xl bg-white/80 border border-white/60 p-6 md:p-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.05fr_0.95fr] gap-4 md:gap-6 mb-4 md:mb-6">
+            <div className="rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Versículo do dia
               </p>
-              <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
+              <p className="text-base md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
                 &quot;{verse.texto}&quot;
               </p>
               <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-5">
@@ -56,11 +56,11 @@ export default function DailySpiritual() {
               </Link>
             </div>
 
-            <div className="rounded-3xl bg-white/80 border border-white/60 p-6 md:p-7">
+            <div className="rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Devocional do dia
               </p>
-              <h3 className="font-acme text-3xl text-[#212121] tracking-wide mb-3">
+              <h3 className="font-acme text-2xl md:text-3xl text-[#212121] tracking-wide mb-3">
                 {devotional.titulo}
               </h3>
               <p className="text-sm text-[#8b5b18] mb-4">{devotional.versiculo}</p>
@@ -88,7 +88,7 @@ export default function DailySpiritual() {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Leitura bíblica do dia
                 </p>
-                <h3 className="font-acme text-3xl md:text-4xl tracking-wide mb-3">
+                <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-3">
                   Dia {suggestedDay}
                 </h3>
                 <p className="text-sm md:text-base text-white/80 leading-relaxed mb-3">

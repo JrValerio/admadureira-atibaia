@@ -22,7 +22,7 @@ export default function HomeEBD() {
     <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16">
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.08fr_0.92fr]">
-          <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+          <article className="rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
               Escola Bíblica Dominical
             </p>
@@ -41,7 +41,7 @@ export default function HomeEBD() {
                   Lição {licaoPrincipal.licao.numero} •{" "}
                   {formatEbdDate(licaoPrincipal.licao.data)}
                 </p>
-                <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                <h2 className="mb-4 font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
                   {licaoPrincipal.licao.titulo}
                 </h2>
                 <p className="mb-5 max-w-3xl leading-relaxed text-[#555]">
@@ -72,7 +72,7 @@ export default function HomeEBD() {
               </>
             ) : (
               <>
-                <h2 className="mb-4 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+                <h2 className="mb-4 font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
                   Ensino bíblico para seguir a semana com direção
                 </h2>
                 <p className="leading-relaxed text-[#555]">
@@ -88,7 +88,7 @@ export default function HomeEBD() {
             )}
           </article>
 
-          <aside className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+          <aside className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
               Classes da semana
             </p>
@@ -101,12 +101,12 @@ export default function HomeEBD() {
               dias.
             </p>
 
-            <div className="space-y-3">
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-5 px-5 pb-2 xl:flex-col xl:overflow-visible xl:mx-0 xl:px-0 xl:pb-0 xl:space-y-3">
               {classes.map(({ classe, licaoDaSemana }) => (
                 <Link
                   key={classe.slug}
                   href={`/ebd/${classe.slug}`}
-                  className="group block rounded-2xl border border-white/70 bg-white/80 p-4 transition-colors hover:border-[#ffa726]/25 hover:bg-white"
+                  className="group block min-w-[82%] shrink-0 snap-center xl:min-w-0 rounded-2xl border border-white/70 bg-white/80 p-4 transition-colors hover:border-[#ffa726]/25 hover:bg-white"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

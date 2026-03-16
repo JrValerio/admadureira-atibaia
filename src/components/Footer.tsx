@@ -74,9 +74,9 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-10 px-6 py-14 md:grid-cols-2 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
-        <div className="space-y-6">
-          <div className="flex items-start gap-4">
+      <div className="max-w-7xl mx-auto grid gap-8 px-6 py-10 md:gap-10 md:grid-cols-2 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
+        <div className="flex flex-col items-center text-center space-y-5 md:items-start md:text-left md:space-y-6">
+          <div className="flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-4">
             <Image
               src="/logo-transparent.png"
               alt="Logo AD Madureira Atibaia"
@@ -99,14 +99,14 @@ export default function Footer() {
             {descricaoInstitucional}
           </p>
 
-          <blockquote className="max-w-sm border-l border-[#ffa726]/40 pl-4 text-sm leading-relaxed text-white/82">
+          <blockquote className="max-w-sm border-l border-[#ffa726]/40 pl-4 text-left text-sm leading-relaxed text-white/82">
             <p>&quot;{versiculoFooter.texto}&quot;</p>
             <footer className="mt-2 text-[11px] tracking-[0.16em] uppercase text-white/45">
               {versiculoFooter.referencia}
             </footer>
           </blockquote>
 
-          <div className="flex flex-wrap gap-3 pt-1">
+          <div className="flex flex-wrap justify-center gap-3 pt-1 md:justify-start">
             {redes.map((rede) => (
               <a
                 key={rede.nome}
@@ -123,7 +123,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
+        <div className="hidden md:block">
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             A Igreja
           </h4>
