@@ -4,6 +4,8 @@ import { getProgramacaoHref } from "@/lib/programacao-anchor";
 
 export interface HeroEvento {
   titulo: string;
+  subtitulo?: string;
+  ctaLabel?: string;
   alt: string;
   imagem: string;
   href: string;
@@ -63,6 +65,15 @@ export function getHeroEventos(): HeroEvento[] {
   );
 
   return [
+    {
+      titulo: "Contribua com a obra",
+      subtitulo: "Sua oferta sustenta o ministério e transforma vidas em Atibaia e região.",
+      ctaLabel: "Fazer oferta online",
+      alt: "Faça sua oferta online — AD Madureira Atibaia",
+      imagem: "",
+      href: "/oferta",
+      ariaLabel: "Abrir página de oferta online",
+    },
     {
       titulo: "Curso de Teologia",
       alt: "Banner do Curso de Teologia da AD Madureira Atibaia",

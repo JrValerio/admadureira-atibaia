@@ -228,7 +228,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           >
             {eventos.map((evento, slideIndex) => (
               <Link
-                key={evento.imagem}
+                key={evento.href + slideIndex}
                 href={evento.href}
                 aria-hidden={slideIndex !== index}
                 aria-label={evento.ariaLabel}
@@ -236,15 +236,39 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                 className="group relative block min-w-full cursor-pointer"
               >
                 <div className="relative aspect-2/1 w-full sm:aspect-16/7 md:aspect-3/1 xl:aspect-2400/800">
-                  <Image
-                    src={evento.imagem}
-                    alt={evento.alt}
-                    fill
-                    priority={slideIndex === 0}
-                    sizes="100vw"
-                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
+                  {evento.imagem ? (
+                    <>
+                      <Image
+                        src={evento.imagem}
+                        alt={evento.alt}
+                        fill
+                        priority={slideIndex === 0}
+                        sizes="100vw"
+                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 bg-linear-to-br from-[#1a1200] via-[#211800] to-[#0f0a00]" />
+                  )}
+
+                  {(evento.subtitulo || evento.ctaLabel) && (
+                    <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-8 bg-[linear-gradient(0deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.18)_60%,transparent_100%)]">
+                      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                        {evento.titulo}
+                      </p>
+                      {evento.subtitulo && (
+                        <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-lg mb-3">
+                          {evento.subtitulo}
+                        </p>
+                      )}
+                      {evento.ctaLabel && (
+                        <span className="inline-flex self-start rounded-full bg-[#ffa726] px-4 py-1.5 text-xs font-bold tracking-widest uppercase text-[#111] transition-opacity group-hover:opacity-90">
+                          {evento.ctaLabel}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Link>
             ))}
