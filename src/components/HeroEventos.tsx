@@ -38,22 +38,6 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
 
   const paused = hovered || focusWithin || dragging || manualPause || prefersReducedMotion;
 
-  const goToSlide = (nextIndex: number) => {
-    if (total === 0) {
-      return;
-    }
-
-    setIndex((nextIndex + total) % total);
-  };
-
-  const goToPrevious = () => {
-    setIndex((current) => (current - 1 + total) % total);
-  };
-
-  const goToNext = () => {
-    setIndex((current) => (current + 1) % total);
-  };
-
   const pauseTemporarily = (duration = RESUME_AFTER_INTERACTION_MS) => {
     setManualPause(true);
 
@@ -154,10 +138,10 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     const delta = endX - startX;
 
     if (delta >= SWIPE_THRESHOLD) {
-      goToPrevious();
+      setIndex((current) => (current - 1 + total) % total);
       pauseTemporarily();
     } else if (delta <= -SWIPE_THRESHOLD) {
-      goToNext();
+      setIndex((current) => (current + 1) % total);
       pauseTemporarily();
     }
 
@@ -213,13 +197,13 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft") {
               event.preventDefault();
-              goToPrevious();
+              setIndex((current) => (current - 1 + total) % total);
               pauseTemporarily();
             }
 
             if (event.key === "ArrowRight") {
               event.preventDefault();
-              goToNext();
+              setIndex((current) => (current + 1) % total);
               pauseTemporarily();
             }
           }}
@@ -266,77 +250,6 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             ))}
           </div>
 
-          <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/22 px-2.5 py-1.5 backdrop-blur-md sm:bottom-4">
-            <button
-              type="button"
-              onClick={() => {
-                goToPrevious();
-                pauseTemporarily();
-              }}
-              aria-label="Mostrar banner anterior"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-black/28 text-white/70 transition-colors duration-200 hover:bg-black/40 hover:text-white"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-3.5 w-3.5"
-              >
-                <path
-                  d="m15 18-6-6 6-6"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-
-            <div className="flex items-center gap-2">
-              {eventos.map((evento, slideIndex) => (
-                <button
-                  key={evento.imagem}
-                  type="button"
-                  onClick={() => {
-                    goToSlide(slideIndex);
-                    pauseTemporarily();
-                  }}
-                  aria-label={evento.ariaLabel}
-                  aria-current={slideIndex === index}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    slideIndex === index
-                      ? "w-6 bg-white/75"
-                      : "w-1.5 bg-white/30 hover:bg-white/50"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => {
-                goToNext();
-                pauseTemporarily();
-              }}
-              aria-label="Mostrar próximo banner"
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-black/28 text-white/70 transition-colors duration-200 hover:bg-black/40 hover:text-white"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="h-3.5 w-3.5"
-              >
-                <path
-                  d="m9 6 6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </section>
