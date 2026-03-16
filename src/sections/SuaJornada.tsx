@@ -13,7 +13,7 @@ export default function SuaJornada({ data }: SuaJornadaProps) {
         <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
           Sua jornada
         </p>
-        <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+        <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
           Retome sua leitura com clareza e constância
         </h2>
         <p className="text-[#555] leading-relaxed">

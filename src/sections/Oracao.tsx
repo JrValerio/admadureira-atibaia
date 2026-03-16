@@ -42,14 +42,14 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
   }
 
   return (
-    <section id="oracao" className="py-24 bg-white">
+    <section id="oracao" className="py-12 md:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4">
         {showHeader ? (
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Estamos aqui por você
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
               Pedido de Oração
             </h2>
             <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
@@ -61,7 +61,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
         ) : null}
 
         {/* Formulário */}
-        <div className="bg-[#f5f5f5] rounded-2xl p-8 md:p-12 shadow-sm">
+        <div className="bg-[#f5f5f5] rounded-2xl p-5 md:p-8 lg:p-12 shadow-sm">
           {status === "sent" ? (
             <div className="text-center py-8">
               <div className="w-14 h-1 rounded-full bg-[#ffa726] mx-auto mb-5" />

@@ -66,14 +66,26 @@ html {
 }
 
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 5rem; /* 80px — matches tallest navbar state */
 }
 
 .ui-section {
   padding: 2rem 0;
 }
 
+@media (min-width: 640px) {
+  .ui-section {
+    padding: 3.5rem 0;
+  }
+}
+
 @media (min-width: 768px) {
+  .ui-section {
+    padding: 5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
   .ui-section {
     padding: 6rem 0;
   }
@@ -177,8 +189,8 @@ section[id] {
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  padding: 0.85rem 1.5rem;
-  font-size: 0.72rem;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -188,6 +200,15 @@ section[id] {
     border-color 0.2s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .ui-btn-primary,
+  .ui-btn-secondary,
+  .ui-btn-ghost {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.72rem;
+  }
 }
 
 .ui-btn-primary {

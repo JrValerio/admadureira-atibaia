@@ -47,14 +47,14 @@ export default function Sobre({ showHeader = true }: SobreProps) {
   ];
 
   return (
-    <section id="sobre" className="py-24 bg-[#212121] text-white">
+    <section id="sobre" className="py-12 md:py-24 bg-[#212121] text-white">
       <div className="max-w-6xl mx-auto px-4">
         {!showHeader ? (
           <div className="mb-12 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
               Identidade do campo
             </p>
-            <h2 className="mb-5 font-acme text-3xl tracking-wide text-[#212121]">
+            <h2 className="mb-5 font-acme text-2xl md:text-3xl tracking-wide text-[#212121]">
               Uma igreja firmada na Palavra, na liderança pastoral e no serviço a Atibaia
             </h2>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -93,7 +93,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
                 <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
                   Quem somos
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl mb-6 tracking-wide">
+                <h2 className="font-acme text-2xl md:text-4xl mb-4 md:mb-6 tracking-wide">
                   Nossa Igreja
                 </h2>
                 <div className="w-16 h-1 bg-[#ffa726] mb-6" />
@@ -150,12 +150,12 @@ export default function Sobre({ showHeader = true }: SobreProps) {
           </div>
         </div>
 
-        <div className="mt-20 pt-16 border-t border-white/10">
+        <div className="mt-12 pt-10 md:mt-20 md:pt-16 border-t border-white/10">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Nossos Pastores
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl tracking-wide mb-4">
+            <h2 className="font-acme text-2xl md:text-4xl tracking-wide mb-4">
               Liderança Pastoral
             </h2>
             <p className="text-white/70 leading-relaxed">

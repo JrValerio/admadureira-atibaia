@@ -107,7 +107,7 @@ export default function Eventos({
   const agendaPorMes = groupEventosPorMes(eventos);
 
   return (
-    <section id="eventos" className="py-24 bg-white">
+    <section id="eventos" className="py-12 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4">
         <nav
           aria-label="Breadcrumb"
@@ -121,23 +121,23 @@ export default function Eventos({
         </nav>
 
         {showHeader ? (
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Agenda especial
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
               Eventos da Igreja
             </h2>
             <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
           </div>
         ) : null}
 
-        <div className="mb-20">
+        <div className="mb-10 md:mb-20">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
               Próximos eventos
             </p>
-            <h3 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+            <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
               Encontros especiais da igreja
             </h3>
             <p className="text-[#5f5f5f] leading-relaxed">
@@ -153,12 +153,12 @@ export default function Eventos({
           </div>
         </div>
 
-        <div className="mb-20 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-sm">
+        <div className="mb-10 md:mb-20 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-sm">
           <div className="mb-6">
             <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
               Linha da agenda
             </p>
-            <h3 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+            <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
               Eventos por mês
             </h3>
             <p className="text-[#666] leading-relaxed max-w-3xl">
@@ -195,7 +195,7 @@ export default function Eventos({
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Programação semanal
               </p>
-              <h3 className="font-acme text-3xl md:text-4xl tracking-wide mb-4">
+              <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-4">
                 Veja os cultos e reuniões da semana
               </h3>
               <p className="text-white/75 leading-relaxed max-w-3xl">

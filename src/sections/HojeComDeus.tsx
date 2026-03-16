@@ -8,12 +8,12 @@ type HojeComDeusProps = {
 export default function HojeComDeus({ data }: HojeComDeusProps) {
   return (
     <section className="mb-10">
-      <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+      <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-4 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
         <div className="mb-8 max-w-3xl">
           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
             Hoje com Deus
           </p>
-          <h2 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-4">
+          <h2 className="font-acme text-2xl md:text-3xl lg:text-5xl text-[#212121] tracking-wide mb-4">
             Palavra, devocional e leitura para hoje
           </h2>
           <p className="text-[#555] leading-relaxed">
@@ -22,7 +22,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
           <div className="rounded-3xl bg-white/85 border border-white/70 p-6 md:p-7">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Versículo do dia
@@ -42,7 +42,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
             <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
               Devocional do dia
             </p>
-            <h3 className="font-acme text-3xl text-[#212121] tracking-wide mb-3">
+            <h3 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
               {data.devotional.titulo}
             </h3>
             <p className="text-sm text-[#8b5b18] mb-4">
@@ -69,7 +69,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Leitura sugerida
               </p>
-              <h3 className="font-acme text-3xl md:text-4xl tracking-wide mb-3">
+              <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-3">
                 Dia {data.suggestedDay}
               </h3>
               <p className="text-sm md:text-base text-white/80 leading-relaxed mb-3">

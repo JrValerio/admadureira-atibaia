@@ -24,7 +24,7 @@ export default function DailySpiritualActions({
   const isSuggestedDayCompleted = isDayCompleted(suggestedDay);
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
       {normalizedLastDay ? (
         <Link
           href={createReadingPlanDayPath(planSlug, normalizedLastDay)}

@@ -14,14 +14,14 @@ export default function HistoriasDeFe() {
   const testemunhos = getTestemunhosRecentes(2);
 
   return (
-    <section id="testemunhos" className="py-24 bg-[#f7f6f2]">
+    <section id="testemunhos" className="py-12 md:py-24 bg-[#f7f6f2]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-end justify-between gap-6 flex-wrap mb-12">
           <div className="max-w-2xl">
             <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
               Comunidade e fé
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+            <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
               Histórias de Fé
             </h2>
             <p className="text-[#5f5f5f] leading-relaxed">
@@ -66,13 +66,13 @@ export default function HistoriasDeFe() {
                 </div>
               </CardMedia>
 
-              <div className="p-6 md:p-8">
+              <div className="p-4 md:p-8">
                 {testemunho.youtubeId && (
                   <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
                     Vídeo testemunho
                   </p>
                 )}
-                <h3 className="font-acme text-3xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
+                <h3 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
                   {testemunho.titulo}
                 </h3>
                 <p className="text-[#5f5f5f] leading-relaxed line-clamp-3 mb-4">

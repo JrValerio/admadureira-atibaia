@@ -43,7 +43,7 @@ const destaques = [
 export default function Destaques() {
   return (
     <Section className="bg-[#151515]">
-      <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0">
+      <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
         {destaques.map((item) => {
           const cardContent = (
             <Card
