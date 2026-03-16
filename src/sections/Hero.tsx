@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative h-[70svh] sm:h-[calc(100svh-5rem)] min-h-[26rem] flex items-center justify-center text-white overflow-hidden bg-[#111]"
+      className="relative h-[65svh] sm:h-[calc(100svh-5rem)] min-h-[24rem] flex items-center justify-center text-white overflow-hidden bg-[#111]"
     >
       {/* Foto da fachada como background */}
       <Image
