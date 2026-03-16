@@ -116,15 +116,15 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+          className={`max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
             scrolled ? "h-16" : "h-20"
           }`}
         >
-          <div className="hidden xl:block" />
+          <div className="hidden lg:block" />
 
           <Link
             href="/"
-            className="flex items-center gap-3 xl:hidden"
+            className="flex items-center gap-3 lg:hidden"
             aria-label="Voltar para a página inicial"
           >
             <Image
@@ -145,7 +145,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden xl:flex items-center justify-center gap-8 2xl:gap-10">
+          <nav className="hidden lg:flex items-center justify-center gap-5 xl:gap-8 2xl:gap-10">
             {menu.map((item) => {
               const active = isMenuItemActive(pathname, item);
 
@@ -214,7 +214,7 @@ export default function Navbar() {
           <div className="flex items-center justify-end gap-3">
             <button
               type="button"
-              className="xl:hidden text-white p-2"
+              className="lg:hidden text-white p-2"
               onClick={toggleMenu}
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
@@ -227,7 +227,7 @@ export default function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="xl:hidden bg-[#121212] border-t border-white/10 px-4 py-4 space-y-5">
+          <div className="lg:hidden bg-[#121212] border-t border-white/10 px-4 py-4 space-y-5">
             {menu.map((item) => {
               if (isDirectMenuItem(item)) {
                 return (
