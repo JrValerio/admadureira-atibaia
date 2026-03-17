@@ -13,6 +13,7 @@ type CardSemanalProps = {
   titulo: string;
   horario?: string;
   banner?: string;
+  slug?: string;
 };
 
 const ordemProgramacaoDetalhada: Record<string, number> = {
@@ -48,12 +49,14 @@ function CardSemanal({
   titulo,
   horario,
   banner,
+  slug,
 }: CardSemanalProps) {
-  return (
-    <article
-      id={getProgramacaoAnchorId({ dia, titulo })}
-      className="min-w-[75vw] snap-start scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] sm:min-w-0"
-    >
+  const anchorId = getProgramacaoAnchorId({ dia, titulo });
+  const cardClassName =
+    "group min-w-[75vw] snap-start scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] sm:min-w-0";
+
+  const inner = (
+    <>
       <div className="relative w-full aspect-video bg-[#212121]">
         {banner ? (
           <Image
@@ -61,7 +64,7 @@ function CardSemanal({
             alt={titulo}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           />
         ) : (
           <div className="flex h-full items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
@@ -83,6 +86,20 @@ function CardSemanal({
           <p className="text-sm text-[#666] leading-relaxed">{horario}</p>
         ) : null}
       </div>
+    </>
+  );
+
+  if (slug) {
+    return (
+      <Link href={`/programacao/${slug}`} id={anchorId} className={cardClassName}>
+        {inner}
+      </Link>
+    );
+  }
+
+  return (
+    <article id={anchorId} className={cardClassName}>
+      {inner}
     </article>
   );
 }
@@ -146,35 +163,30 @@ export default function Programacao({
         </div>
 
         <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
-            <div>
-              <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                Eventos especiais
-              </p>
-              <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
-                Veja a agenda da igreja
-              </h3>
-              <p className="text-[#666] leading-relaxed max-w-3xl">
-                Congressos, batismos, campanhas, Santa Ceia e encontros
-                especiais ficam concentrados na página de eventos, separando a
-                rotina semanal da agenda especial da igreja. A Escola Bíblica
-                Dominical acontece todo domingo às 09h, com classes para
-                adultos, jovens e infantil, enquanto o material publicado no
-                site acompanha hoje as classes de adultos e jovens.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Link href="/eventos" className="ui-btn-primary">
-                Ver eventos
-              </Link>
-              <Link href="/ebd" className="ui-btn-secondary">
-                Escola Bíblica Dominical
-              </Link>
-              <Link href="/contato" className="ui-btn-secondary">
-                Falar com a igreja
-              </Link>
-            </div>
+          <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+            Eventos especiais
+          </p>
+          <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
+            Veja a agenda da igreja
+          </h3>
+          <p className="text-[#666] leading-relaxed mb-6">
+            Congressos, batismos, campanhas, Santa Ceia e encontros especiais
+            ficam concentrados na página de eventos, separando a rotina semanal
+            da agenda especial da igreja. A Escola Bíblica Dominical acontece
+            todo domingo às 09h, com classes para adultos, jovens e infantil,
+            enquanto o material publicado no site acompanha hoje as classes de
+            adultos e jovens.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/eventos" className="ui-btn-primary">
+              Ver eventos
+            </Link>
+            <Link href="/ebd" className="ui-btn-secondary">
+              Escola Bíblica Dominical
+            </Link>
+            <Link href="/contato" className="ui-btn-secondary">
+              Falar com a igreja
+            </Link>
           </div>
         </div>
       </div>
