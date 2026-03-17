@@ -37,13 +37,13 @@ function isEventActive(slide: HeroEvento, today: Date): boolean {
   if (!slide.eventDate) return false;
 
   const start = toMidnight(slide.eventDate);
-  start.setDate(start.getDate() - 2); // promove 2 dias antes
+  start.setDate(start.getDate() - 1); // promove 1 dia antes
 
   const end = slide.eventEndDate
     ? toMidnight(slide.eventEndDate)
     : (() => {
         const d = toMidnight(slide.eventDate);
-        d.setDate(d.getDate() + 1);
+        d.setDate(d.getDate() + 2); // ecoa 2 dias depois
         return d;
       })();
 

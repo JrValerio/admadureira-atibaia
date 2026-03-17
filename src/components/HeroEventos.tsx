@@ -290,9 +290,9 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
               <Link
                 key={`${evento.href}-${slideIndex}`}
                 href={evento.href}
-                aria-hidden={slideIndex !== displayIndex}
+                aria-hidden={slideIndex !== realIndex + 1}
                 aria-label={evento.ariaLabel}
-                tabIndex={slideIndex === displayIndex ? 0 : -1}
+                tabIndex={slideIndex === realIndex + 1 ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
                 <div className="relative w-full h-65 sm:h-80 md:h-95 lg:h-auto lg:aspect-2400/800">
@@ -302,7 +302,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                         src={evento.imagem}
                         alt={evento.alt}
                         fill
-                        priority={slideIndex === (useLoop ? 1 : 0)}
+                        priority={slideIndex <= (useLoop ? 2 : 1)}
                         sizes="100vw"
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                       />
