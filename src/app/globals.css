@@ -248,6 +248,29 @@ section[id] {
   transform: translateY(-1px);
 }
 
+.ui-btn-red {
+  background: #ef5350;
+  color: #ffffff;
+  box-shadow: 0 14px 32px rgba(239, 83, 80, 0.24);
+}
+
+.ui-btn-red:hover {
+  background: #c62828;
+  transform: translateY(-1px);
+}
+
+.ui-btn-ghost-dark {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  background: transparent;
+}
+
+.ui-btn-ghost-dark:hover {
+  border-color: #ffa726;
+  color: #ffa726;
+  transform: translateY(-1px);
+}
+
 .ui-link-accent {
   color: #ef5350;
   font-size: 0.72rem;
