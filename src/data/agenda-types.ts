@@ -35,4 +35,7 @@ export interface ItemSemanal {
   titulo: string;
   horario?: string;
   banner?: string;
+  slug?: string;
+  descricao?: string;
+  convite?: string;
 }

@@ -552,3 +552,11 @@ export function getProximoEventoComData(referencia = new Date()): {
     dataEvento: proximoCompromisso.dataEvento,
   };
 }
+
+export function getCultoBySlug(slug: string): ItemSemanal | undefined {
+  return programacaoSemanal.find((item) => item.slug === slug);
+}
+
+export function getCultosSlugs(): string[] {
+  return programacaoSemanal.flatMap((item) => (item.slug ? [item.slug] : []));
+}

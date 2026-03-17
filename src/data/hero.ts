@@ -1,6 +1,5 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
-import { getProgramacaoHref } from "@/lib/programacao-anchor";
 
 export interface HeroEvento {
   titulo: string;
@@ -104,29 +103,6 @@ function getEventoHref(
 // Banners da home ficam em /public/banners para não misturar
 // com as artes dos cards da programação.
 export function getHeroEventos(): HeroEvento[] {
-  const hrefCursoTeologia = getEventoHref(
-    ["curso-de-teologia"],
-    getProgramacaoHref({
-      dia: "Segunda-feira",
-      titulo: "Curso de Teologia",
-    })
-  );
-
-  const hrefCultoEnsino = getProgramacaoHref({
-    dia: "Terça-feira",
-    titulo: "Culto de Ensino",
-  });
-
-  const hrefCirculoOracao = getProgramacaoHref({
-    dia: "Quarta-feira",
-    titulo: "Círculo de Oração",
-  });
-
-  const hrefCampanhaJejumOracao = getProgramacaoHref({
-    dia: "Quinta-feira",
-    titulo: "Quinta da Vitória · Jejum e Oração",
-  });
-
   const hrefSantaCeia = getEventoHref(["santa-ceia"], "/programacao");
 
   const slides: HeroEvento[] = [
@@ -152,8 +128,8 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Culto de Ensino",
       alt: "Banner do Culto de Ensino da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-ensino.png",
-      href: hrefCultoEnsino,
-      ariaLabel: "Abrir programação do Culto de Ensino",
+      href: "/programacao/culto-de-ensino",
+      ariaLabel: "Abrir página do Culto de Ensino",
       type: "weekly",
       dayOfWeek: 2, // terça-feira
     },
@@ -161,8 +137,8 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Campanha de Jejum e Oração",
       alt: "Banner da Campanha de Jejum e Oração da AD Madureira Atibaia",
       imagem: "/banners/banner-campanha-jejum-e-oracao.png",
-      href: hrefCampanhaJejumOracao,
-      ariaLabel: "Abrir programação da Campanha de Jejum e Oração",
+      href: "/programacao/quinta-da-vitoria",
+      ariaLabel: "Abrir página da Campanha de Jejum e Oração",
       type: "weekly",
       dayOfWeek: 4, // quinta-feira
     },
@@ -170,8 +146,8 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Círculo de Oração",
       alt: "Banner do Círculo de Oração da AD Madureira Atibaia",
       imagem: "/banners/banner-circulo-de-oracao.png",
-      href: hrefCirculoOracao,
-      ariaLabel: "Abrir programação do Círculo de Oração",
+      href: "/programacao/circulo-de-oracao",
+      ariaLabel: "Abrir página do Círculo de Oração",
       type: "weekly",
       dayOfWeek: 3, // quarta-feira
     },
@@ -189,7 +165,7 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Curso de Teologia",
       alt: "Banner do Curso de Teologia da AD Madureira Atibaia",
       imagem: "/banners/banner-curso-de-teologia.png",
-      href: hrefCursoTeologia,
+      href: "/programacao/curso-de-teologia",
       ariaLabel: "Abrir página do Curso de Teologia",
       type: "weekly",
       dayOfWeek: 1, // segunda-feira
