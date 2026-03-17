@@ -49,21 +49,6 @@ export function getHeroEventos(): HeroEvento[] {
 
   const hrefSantaCeia = getEventoHref(["santa-ceia"], "/programacao");
 
-  const hrefCultoMulheres = getEventoHref(
-    ["dia-das-mulheres"],
-    "/ministerios/baluarte-da-fe"
-  );
-
-  const hrefReuniaoMinisterio = getEventoHref(
-    ["reuniao-de-ministerio"],
-    "/eventos"
-  );
-
-  const hrefReuniaoObreiros = getEventoHref(
-    ["reuniao-de-obreiros"],
-    "/eventos"
-  );
-
   return [
     {
       titulo: "Dízimos e Ofertas",
@@ -80,25 +65,11 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir página da Escola Bíblica Dominical",
     },
     {
-      titulo: "Curso de Teologia",
-      alt: "Banner do Curso de Teologia da AD Madureira Atibaia",
-      imagem: "/banners/banner-curso-de-teologia.png",
-      href: hrefCursoTeologia,
-      ariaLabel: "Abrir página do Curso de Teologia",
-    },
-    {
       titulo: "Culto de Ensino",
       alt: "Banner do Culto de Ensino da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-ensino.png",
       href: hrefCultoEnsino,
       ariaLabel: "Abrir programação do Culto de Ensino",
-    },
-    {
-      titulo: "Círculo de Oração",
-      alt: "Banner do Círculo de Oração da AD Madureira Atibaia",
-      imagem: "/banners/banner-circulo-de-oracao.png",
-      href: hrefCirculoOracao,
-      ariaLabel: "Abrir programação do Círculo de Oração",
     },
     {
       titulo: "Campanha de Jejum e Oração",
@@ -108,6 +79,13 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir programação da Campanha de Jejum e Oração",
     },
     {
+      titulo: "Círculo de Oração",
+      alt: "Banner do Círculo de Oração da AD Madureira Atibaia",
+      imagem: "/banners/banner-circulo-de-oracao.png",
+      href: hrefCirculoOracao,
+      ariaLabel: "Abrir programação do Círculo de Oração",
+    },
+    {
       titulo: "Culto de Santa Ceia",
       alt: "Banner do Culto de Santa Ceia da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-santa-ceia.png",
@@ -115,25 +93,11 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir página da Santa Ceia",
     },
     {
-      titulo: "Culto de Mulheres",
-      alt: "Banner do Culto de Mulheres da AD Madureira Atibaia",
-      imagem: "/banners/banner-Culto-de-Mulhere.png",
-      href: hrefCultoMulheres,
-      ariaLabel: "Abrir página do Culto de Mulheres",
-    },
-    {
-      titulo: "Reunião de Ministério",
-      alt: "Banner da Reunião de Ministério da AD Madureira Atibaia",
-      imagem: "/banners/banner-reuniao-de-ministerio.png",
-      href: hrefReuniaoMinisterio,
-      ariaLabel: "Abrir página da Reunião de Ministério",
-    },
-    {
-      titulo: "Reunião de Obreiros",
-      alt: "Banner da Reunião de Obreiros da AD Madureira Atibaia",
-      imagem: "/banners/banner-reuniao-de-obreiros.png",
-      href: hrefReuniaoObreiros,
-      ariaLabel: "Abrir página da Reunião de Obreiros",
+      titulo: "Curso de Teologia",
+      alt: "Banner do Curso de Teologia da AD Madureira Atibaia",
+      imagem: "/banners/banner-curso-de-teologia.png",
+      href: hrefCursoTeologia,
+      ariaLabel: "Abrir página do Curso de Teologia",
     },
   ];
 }
