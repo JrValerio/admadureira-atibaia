@@ -289,13 +289,13 @@ export default function OfertaPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/contato"
-                    className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                    className="ui-btn-primary"
                   >
                     Tirar dúvidas
                   </Link>
                   <Link
                     href="/"
-                    className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                    className="ui-btn-secondary"
                   >
                     Voltar para a home
                   </Link>
