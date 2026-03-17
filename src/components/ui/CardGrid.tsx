@@ -14,11 +14,13 @@ export function CardGrid({
   className = "",
 }: CardGridProps) {
   const modifier =
-    columns === 4
-      ? breakpoint === "lg"
-        ? "ui-card-grid--4lg"
-        : "ui-card-grid--4xl"
-      : "";
+    columns === 2
+      ? "ui-card-grid--2"
+      : columns === 4
+        ? breakpoint === "lg"
+          ? "ui-card-grid--4lg"
+          : "ui-card-grid--4xl"
+        : "";
 
   return <div className={`ui-card-grid ${modifier} ${className}`.trim()}>{children}</div>;
 }
