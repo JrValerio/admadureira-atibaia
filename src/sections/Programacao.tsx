@@ -53,7 +53,7 @@ function CardSemanal({
 }: CardSemanalProps) {
   const anchorId = getProgramacaoAnchorId({ dia, titulo });
   const cardClassName =
-    "group min-w-[75vw] snap-start scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] sm:min-w-0";
+    "group min-w-[75vw] snap-start scroll-mt-28 rounded-2xl overflow-hidden border border-black/5 bg-white shadow-[0_8px_24px_rgba(0,0,0,0.04)] transition-all duration-200 hover:border-[#ffa726]/40 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-2 sm:min-w-0";
 
   const inner = (
     <>
