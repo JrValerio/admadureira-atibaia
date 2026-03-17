@@ -40,11 +40,11 @@ export default async function Videos({ showHeader = true }: VideosProps) {
               Canal no YouTube
             </p>
             <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
-              Ultimos Cultos
+              Últimos Cultos
             </h2>
             <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
             <p className="text-[#757575] text-sm mt-4">
-              Assista nossas pregacoes e transmissoes ao vivo.
+              Assista nossas pregações e transmissões ao vivo.
             </p>
           </div>
         ) : null}
@@ -54,7 +54,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Transmissao no YouTube
+                  Transmissão no YouTube
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
                   Ao Vivo Agora
@@ -66,7 +66,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
                 rel="noopener noreferrer"
                 className="text-sm font-semibold text-[#ef5350] hover:underline tracking-wide uppercase"
               >
-                Ir para o canal -&gt;
+                Ir para o canal →
               </a>
             </div>
 
@@ -79,10 +79,10 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Selecoes da semana
+                  Seleções da semana
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Videos em Destaque
+                  Vídeos em Destaque
                 </h3>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
                   Biblioteca
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Mais Transmissoes
+                  Mais Transmissões
                 </h3>
               </div>
             </div>

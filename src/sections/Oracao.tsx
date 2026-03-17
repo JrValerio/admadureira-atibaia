@@ -162,7 +162,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
               <button
                 type="submit"
                 disabled={status === "sending"}
-                className="w-full font-acme bg-[#ffa726] hover:bg-[#e65100] text-white font-bold py-4 rounded-xl tracking-widest uppercase text-sm transition-colors duration-200 disabled:opacity-60"
+                className="w-full font-acme bg-[#ffa726] hover:bg-[#e65100] text-white font-bold py-4 rounded-xl tracking-widest uppercase text-sm transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {status === "sending" ? "Enviando..." : "Enviar Pedido via WhatsApp"}
               </button>
