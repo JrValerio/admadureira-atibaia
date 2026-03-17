@@ -90,6 +90,7 @@ function isMenuItemActive(pathname: string, item: MenuItem) {
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -104,6 +105,7 @@ export default function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
+    setOpenCategory(null);
   };
 
   return (
@@ -227,7 +229,7 @@ export default function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="lg:hidden bg-[#121212] border-t border-white/10 px-4 py-4 space-y-5">
+          <div className="lg:hidden bg-[#121212] border-t border-white/10 px-4 py-2 max-h-[calc(100dvh-5rem)] overflow-y-auto">
             {menu.map((item) => {
               if (isDirectMenuItem(item)) {
                 return (
@@ -235,7 +237,7 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`font-acme block text-base uppercase tracking-[0.16em] transition-colors ${
+                    className={`font-acme block py-3 text-base uppercase tracking-[0.16em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -246,31 +248,51 @@ export default function Navbar() {
                 );
               }
 
+              const isOpen = openCategory === item.label;
+
               return (
                 <div key={item.label}>
-                  <p className="font-acme text-base uppercase tracking-[0.16em] text-white mb-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setOpenCategory((prev) =>
+                        prev === item.label ? null : item.label
+                      )
+                    }
+                    className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.16em] transition-colors ${
+                      isMenuItemActive(pathname, item)
+                        ? "text-[#ffa726]"
+                        : "text-white/70"
+                    }`}
+                  >
                     {item.label}
-                  </p>
-                  <div className="space-y-2 border-l border-white/10 pl-3">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={closeMenu}
-                        className={`block text-base transition-colors ${
-                          isLinkActive(pathname, child.href)
-                            ? "text-[#ffa726]"
-                            : "text-white/70 hover:text-[#ffa726]"
-                        }`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
+                    <span
+                      className={`text-[10px] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    >
+                      ▾
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="space-y-1 border-l border-white/10 pl-3 pb-3">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={closeMenu}
+                          className={`block py-2 text-sm transition-colors ${
+                            isLinkActive(pathname, child.href)
+                              ? "text-[#ffa726]"
+                              : "text-white/70 hover:text-[#ffa726]"
+                          }`}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             })}
-
           </div>
         )}
       </div>

@@ -141,7 +141,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 text-center md:text-left">
           <div>
             <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
               Endereço
