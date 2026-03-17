@@ -9,6 +9,9 @@
   --orange-dark: #e65100;
   --red: #ef5350;
   --gold: #ffd54f;
+  --radius-card: 1.5rem;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --shadow-card-sm: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
 @theme inline {
@@ -148,8 +151,8 @@ section[id] {
 .ui-card {
   background: #ffffff;
   border: 1px solid rgba(17, 17, 17, 0.06);
-  border-radius: 1.75rem;
-  box-shadow: 0 10px 30px rgba(17, 17, 17, 0.05);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease,
@@ -165,7 +168,7 @@ section[id] {
 
 .ui-card-dark {
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.75rem;
+  border-radius: var(--radius-card);
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 14px 36px rgba(0, 0, 0, 0.16);
   transition:
