@@ -4,7 +4,7 @@ import { Card, Section, SectionTitle } from "@/components/ui";
 
 type GrupoCulto = {
   dia: string;
-  horarios: Array<{ hora: string; nome: string }>;
+  horarios: Array<{ hora: string; nome: string; slug?: string }>;
 };
 
 const ordemCultos = [
@@ -34,6 +34,7 @@ function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
     atuais.push({
       hora: item.horario ?? "Horário a confirmar",
       nome: item.titulo,
+      slug: item.slug,
     });
     grupos.set(item.dia, atuais);
   });
@@ -59,7 +60,7 @@ export default function Cultos() {
   const cultosDestaque = cultos.filter((c) => DIAS_DESTAQUE.includes(c.dia));
 
   return (
-    <Section id="cultos" className="bg-[#f7f6f2]">
+    <Section id="cultos" bg="cream">
       <SectionTitle
         eyebrow="Programação"
         eyebrowVariant="gold"
@@ -80,12 +81,28 @@ export default function Cultos() {
             <ul className="space-y-2">
               {culto.horarios.map((horario) => (
                 <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 first:border-t-0 first:pt-0">
-                  <p className="text-xs font-semibold tracking-wide text-[#212121]">
-                    {horario.hora}
-                  </p>
-                  <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
-                    {horario.nome}
-                  </p>
+                  {horario.slug ? (
+                    <Link
+                      href={`/programacao/${horario.slug}`}
+                      className="block rounded-lg transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
+                    >
+                      <p className="text-xs font-semibold tracking-wide text-[#212121]">
+                        {horario.hora}
+                      </p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
+                        {horario.nome}
+                      </p>
+                    </Link>
+                  ) : (
+                    <>
+                      <p className="text-xs font-semibold tracking-wide text-[#212121]">
+                        {horario.hora}
+                      </p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
+                        {horario.nome}
+                      </p>
+                    </>
+                  )}
                 </li>
               ))}
             </ul>
@@ -93,7 +110,7 @@ export default function Cultos() {
         ))}
       </div>
 
-      <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-white p-5 md:p-6">
+      <div className="mb-8">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4 text-center">
           Eventos Mensais
         </p>
