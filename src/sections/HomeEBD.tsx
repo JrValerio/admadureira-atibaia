@@ -16,7 +16,7 @@ export default function HomeEBD() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none">
           {/* Adultos */}
-          <article className="min-w-[82vw] snap-start shrink-0 rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:min-w-0 lg:p-8">
+          <article className="min-w-85 w-[calc(100vw-3rem)] max-w-125 snap-start shrink-0 rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:min-w-0 lg:p-8">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
               Escola Bíblica Dominical
             </p>
@@ -70,7 +70,7 @@ export default function HomeEBD() {
           </article>
 
           {/* Jovens */}
-          <article className="min-w-[82vw] snap-start shrink-0 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:min-w-0 lg:p-8">
+          <article className="min-w-85 w-[calc(100vw-3rem)] max-w-125 snap-start shrink-0 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:min-w-0 lg:p-8">
             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
               Escola Bíblica Dominical
             </p>
