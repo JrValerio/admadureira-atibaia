@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { programacaoSemanal } from "@/data/agenda";
-import HojeNaIgreja from "@/components/programacao/HojeNaIgreja";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 
@@ -124,10 +123,6 @@ export default function Programacao({
         ) : null}
 
         <QuadroSemanal />
-
-        <div className="mb-10 md:mb-20">
-          <HojeNaIgreja />
-        </div>
 
         <div className="mb-10 md:mb-20">
           <div className="text-center max-w-3xl mx-auto mb-8">
