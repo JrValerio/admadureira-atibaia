@@ -114,19 +114,19 @@ export default function Sobre({ showHeader = true }: SobreProps) {
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mb-8">
               <Link
                 href="/historia"
-                className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                className="ui-btn-primary"
               >
                 Ver história da igreja
               </Link>
               <Link
                 href="/congregacoes"
-                className="inline-flex items-center justify-center border border-white/20 text-white hover:border-[#ffa726] hover:text-[#ffa726] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                className="ui-btn-ghost-dark"
               >
                 Ver congregações
               </Link>
               <Link
                 href="/ministerios"
-                className="inline-flex items-center justify-center border border-white/20 text-white hover:border-[#ffa726] hover:text-[#ffa726] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                className="ui-btn-ghost-dark"
               >
                 Ver ministérios
               </Link>
@@ -169,7 +169,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
           <div className="text-center mt-10">
             <Link
               href="/pastores"
-              className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              className="ui-btn-primary"
             >
               Ver liderança completa
             </Link>

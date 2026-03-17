@@ -88,7 +88,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
               </Link>
               <Link
                 href={data.planHref}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-white hover:text-[#212121]"
+                className="ui-btn-ghost-dark"
               >
                 Ver plano
               </Link>

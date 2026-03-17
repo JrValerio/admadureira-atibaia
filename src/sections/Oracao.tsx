@@ -76,7 +76,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="font-acme text-xs tracking-widest uppercase px-6 py-2 rounded-full border border-[#ffa726] text-[#ffa726] hover:bg-[#ffa726] hover:text-white transition-colors duration-200"
+                className="ui-btn-ghost"
               >
                 Enviar outro pedido
               </button>

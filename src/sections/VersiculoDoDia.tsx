@@ -26,13 +26,13 @@ export default function VersiculoDoDia() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href={createBiblePath(verse.livroSlug, verse.capitulo)}
-                className="inline-flex items-center justify-center rounded-full bg-[#ffa726] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+                className="ui-btn-primary"
               >
                 Ler capítulo
               </Link>
               <Link
                 href="/espiritualidade/versiculo-do-dia"
-                className="inline-flex items-center justify-center rounded-full border border-[#212121] px-5 py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
+                className="ui-btn-secondary"
               >
                 Ver página diária
               </Link>
