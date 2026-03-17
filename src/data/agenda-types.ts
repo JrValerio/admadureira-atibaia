@@ -7,6 +7,7 @@ export interface EventoBase {
   titulo: string;
   horario?: string;
   descricao?: string;
+  convite?: string;
   local?: string;
   destaque?: boolean;
 }

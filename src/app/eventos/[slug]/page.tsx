@@ -161,14 +161,27 @@ export default async function EventoPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="max-w-3xl">
-                <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">
-                  Sobre o evento
-                </h2>
-                <p className="text-[#555] leading-relaxed">
-                  {evento.descricao ??
-                    "Participe deste evento especial na AD Madureira Atibaia e acompanhe nossa programação para mais detalhes."}
-                </p>
+              <div className="max-w-3xl space-y-5">
+                <div>
+                  <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">
+                    Sobre o evento
+                  </h2>
+                  <p className="text-[#555] leading-relaxed">
+                    {evento.descricao ??
+                      "Participe deste evento especial na AD Madureira Atibaia e acompanhe nossa programação para mais detalhes."}
+                  </p>
+                </div>
+
+                {evento.convite && (
+                  <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5">
+                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                      Você é bem-vindo
+                    </p>
+                    <blockquote className="text-[#555] leading-relaxed">
+                      {evento.convite}
+                    </blockquote>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
