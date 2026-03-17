@@ -1,6 +1,7 @@
 import { getYouTubeFeed } from "@/lib/youtube";
 import YouTubePreviewCard from "@/components/YouTubePreviewCard";
 import { FIXED_FEATURED_VIDEO_IDS } from "@/data/featuredVideos";
+import { Section } from "@/components/ui/Section";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
 
@@ -32,8 +33,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
       : otherVideos.slice(featuredVideos.length);
 
   return (
-    <section id="videos" className="py-12 md:py-24 bg-[#f5f5f5]">
-      <div className="max-w-6xl mx-auto px-4">
+    <Section id="videos" bg="gray">
         {showHeader ? (
           <div className="text-center mb-16">
             <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
@@ -134,7 +134,6 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             Ver canal completo
           </a>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

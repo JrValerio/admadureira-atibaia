@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CardMedia from "@/components/media/CardMedia";
 import { getTestemunhosRecentes } from "@/data/testemunhos";
+import { Section } from "@/components/ui/Section";
 
 function formatDate(data: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -14,8 +15,7 @@ export default function HistoriasDeFe() {
   const testemunhos = getTestemunhosRecentes(2);
 
   return (
-    <section id="testemunhos" className="py-12 md:py-24 bg-[#f7f6f2]">
-      <div className="max-w-6xl mx-auto px-4">
+    <Section id="testemunhos" bg="cream">
         <div className="flex items-end justify-between gap-6 flex-wrap mb-12">
           <div className="max-w-2xl">
             <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
@@ -86,7 +86,6 @@ export default function HistoriasDeFe() {
             </Link>
           ))}
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }
