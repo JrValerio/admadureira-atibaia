@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { programacaoSemanal, type ItemSemanal } from "@/data/agenda";
 import { Card, Section, SectionTitle } from "@/components/ui";
 
@@ -15,6 +16,8 @@ const ordemCultos = [
   "Sexta-feira",
   "Domingo",
 ] as const;
+
+const DIAS_DESTAQUE = ["Segunda a Sexta", "Terça-feira", "Quinta-feira", "Domingo"];
 
 function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
   const grupos = new Map<string, GrupoCulto["horarios"]>();
@@ -44,14 +47,16 @@ function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
   }, []);
 }
 
+const eventosEspeciais = [
+  { nome: "Reunião de Ministério", detalhe: "1ª segunda do mês" },
+  { nome: "Santa Ceia", detalhe: "2º sábado do mês" },
+  { nome: "Reunião de Obreiros", detalhe: "3º sábado do mês" },
+  { nome: "Culto com a Mocidade", detalhe: "4º sábado do mês" },
+];
+
 export default function Cultos() {
   const cultos = agruparCultosPorDia(programacaoSemanal);
-  const eventosEspeciais = [
-    { nome: "Reunião de Ministério", detalhe: "1ª segunda do mês" },
-    { nome: "Santa Ceia", detalhe: "2º sábado do mês" },
-    { nome: "Reunião de Obreiros", detalhe: "3º sábado do mês" },
-    { nome: "Culto com a Mocidade", detalhe: "4º sábado do mês" },
-  ];
+  const cultosDestaque = cultos.filter((c) => DIAS_DESTAQUE.includes(c.dia));
 
   return (
     <Section id="cultos" className="bg-[#f7f6f2]">
@@ -63,22 +68,22 @@ export default function Cultos() {
         description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <div className="mb-12 -mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:px-0 md:pb-0 md:gap-5 xl:grid-cols-3 xl:gap-6">
-        {cultos.map((culto) => (
+      <div className="mb-10 -mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:px-0 md:pb-0 md:gap-5 xl:grid-cols-4 xl:gap-6">
+        {cultosDestaque.map((culto) => (
           <Card
             key={culto.dia}
-            className="min-w-55 snap-start border border-black/5 bg-white p-3 md:min-w-0 md:p-5 lg:p-7"
+            className="min-w-55 snap-start border border-black/5 bg-white p-3 md:min-w-0 md:p-5"
           >
             <h3 className="mb-2 md:mb-4 font-acme text-base md:text-xl tracking-wide text-[#212121]">
               {culto.dia}
             </h3>
-            <ul className="space-y-2 md:space-y-3">
+            <ul className="space-y-2">
               {culto.horarios.map((horario) => (
-                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 md:pt-3 first:border-t-0 first:pt-0">
-                  <p className="text-xs md:text-sm font-semibold tracking-wide text-[#212121]">
+                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 first:border-t-0 first:pt-0">
+                  <p className="text-xs font-semibold tracking-wide text-[#212121]">
                     {horario.hora}
                   </p>
-                  <p className="mt-0.5 md:mt-1 text-xs md:text-sm leading-relaxed text-[#5f5f5f]">
+                  <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
                     {horario.nome}
                   </p>
                 </li>
@@ -88,13 +93,13 @@ export default function Cultos() {
         ))}
       </div>
 
-      <Card className="mx-auto max-w-2xl border border-[#ffa726]/20 bg-white p-7 text-center">
-        <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4">
+      <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-white p-5 md:p-6">
+        <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4 text-center">
           Eventos Mensais
         </p>
-        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-center sm:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-center sm:gap-8">
           {eventosEspeciais.map((evento) => (
-            <div key={evento.nome}>
+            <div key={evento.nome} className="text-center">
               <p className="text-sm font-semibold text-[#212121]">
                 {evento.nome}
               </p>
@@ -102,19 +107,24 @@ export default function Cultos() {
             </div>
           ))}
         </div>
-      </Card>
+        <p className="mt-4 text-center text-xs text-[#7a7a7a]">
+          Acompanhe também pelo nosso canal no{" "}
+          <a
+            href="https://www.youtube.com/@ADMadureiraAtibaia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-[#ef5350] hover:underline"
+          >
+            YouTube
+          </a>
+        </p>
+      </div>
 
-      <p className="mt-8 text-center text-sm text-[#7a7a7a]">
-        Acompanhe também pelo nosso canal no{" "}
-        <a
-          href="https://www.youtube.com/@ADMadureiraAtibaia"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#ef5350] hover:underline font-semibold"
-        >
-          YouTube
-        </a>
-      </p>
+      <div className="text-center">
+        <Link href="/programacao" className="ui-btn-primary">
+          Ver programação completa
+        </Link>
+      </div>
     </Section>
   );
 }
