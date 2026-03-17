@@ -121,7 +121,7 @@ export default function OfertaPage() {
             <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
               Formas de contribuição
             </p>
-            <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide">
               Escolha a forma mais conveniente
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-[#666] leading-relaxed">
