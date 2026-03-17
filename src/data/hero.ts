@@ -66,13 +66,18 @@ export function getHeroEventos(): HeroEvento[] {
 
   return [
     {
-      titulo: "Contribua com a obra",
-      subtitulo: "Sua oferta sustenta o ministério e transforma vidas em Atibaia e região.",
-      ctaLabel: "Fazer oferta online",
-      alt: "Faça sua oferta online — AD Madureira Atibaia",
-      imagem: "",
+      titulo: "Dízimos e Ofertas",
+      alt: "Banner de Dízimos e Ofertas da AD Madureira Atibaia",
+      imagem: "/banners/banner-dizimos-e-ofertas.png",
       href: "/oferta",
-      ariaLabel: "Abrir página de oferta online",
+      ariaLabel: "Abrir página de dízimos e ofertas",
+    },
+    {
+      titulo: "Escola Bíblica Dominical",
+      alt: "Banner da Escola Bíblica Dominical da AD Madureira Atibaia",
+      imagem: "/banners/banner-ebd.png",
+      href: "/ebd",
+      ariaLabel: "Abrir página da Escola Bíblica Dominical",
     },
     {
       titulo: "Curso de Teologia",
