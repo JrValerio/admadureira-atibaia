@@ -26,7 +26,19 @@ type HeroEventosProps = {
 
 export default function HeroEventos({ eventos }: HeroEventosProps) {
   const total = eventos.length;
-  const [index, setIndex] = useState(0);
+
+  // Infinite loop: clone last slide at front, first slide at end.
+  // clonedSlides = [eventos[total-1], ...eventos, eventos[0]]
+  // Real slides live at displayIndex 1..total.
+  const useLoop = total > 1;
+  const clonedSlides = useLoop
+    ? [eventos[total - 1], ...eventos, eventos[0]]
+    : eventos;
+  const clonedTotal = clonedSlides.length;
+
+  // Start at index 1 so the first real slide is shown immediately.
+  const [displayIndex, setDisplayIndex] = useState(useLoop ? 1 : 0);
+  const [animated, setAnimated] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [focusWithin, setFocusWithin] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -36,7 +48,17 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   const activePointerIdRef = useRef<number | null>(null);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const paused = hovered || focusWithin || dragging || manualPause || prefersReducedMotion;
+  const paused =
+    hovered || focusWithin || dragging || manualPause || prefersReducedMotion;
+
+  // Real 0-based index for the progress bar and aria states.
+  const realIndex = useLoop
+    ? displayIndex === 0
+      ? total - 1
+      : displayIndex === clonedTotal - 1
+        ? 0
+        : displayIndex - 1
+    : displayIndex;
 
   const pauseTemporarily = (duration = RESUME_AFTER_INTERACTION_MS) => {
     setManualPause(true);
@@ -51,8 +73,47 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   };
 
   const advanceSlide = useEffectEvent(() => {
-    setIndex((current) => (current + 1) % total);
+    setAnimated(true);
+    setDisplayIndex((prev) => prev + 1);
   });
+
+  const goBack = () => {
+    setAnimated(true);
+    setDisplayIndex((prev) => prev - 1);
+    pauseTemporarily();
+  };
+
+  const goForward = () => {
+    setAnimated(true);
+    setDisplayIndex((prev) => prev + 1);
+    pauseTemporarily();
+  };
+
+  // After the transition lands on a clone, snap invisibly to the real slide.
+  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (event.propertyName !== "transform" || !useLoop) return;
+
+    if (displayIndex === clonedTotal - 1) {
+      // Landed on clone of first — jump to real first.
+      setAnimated(false);
+      setDisplayIndex(1);
+    } else if (displayIndex === 0) {
+      // Landed on clone of last — jump to real last.
+      setAnimated(false);
+      setDisplayIndex(total);
+    }
+  };
+
+  // Re-enable animation one frame after the invisible snap is painted.
+  useEffect(() => {
+    if (animated) return;
+
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setAnimated(true));
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [animated]);
 
   useEffect(() => {
     const reducedMotionMedia = window.matchMedia(
@@ -138,11 +199,9 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     const delta = endX - startX;
 
     if (delta >= SWIPE_THRESHOLD) {
-      setIndex((current) => (current - 1 + total) % total);
-      pauseTemporarily();
+      goBack();
     } else if (delta <= -SWIPE_THRESHOLD) {
-      setIndex((current) => (current + 1) % total);
-      pauseTemporarily();
+      goForward();
     }
 
     resetPointerState();
@@ -190,21 +249,21 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           onMouseLeave={() => setHovered(false)}
           onFocusCapture={() => setFocusWithin(true)}
           onBlurCapture={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            if (
+              !event.currentTarget.contains(event.relatedTarget as Node | null)
+            ) {
               setFocusWithin(false);
             }
           }}
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft") {
               event.preventDefault();
-              setIndex((current) => (current - 1 + total) % total);
-              pauseTemporarily();
+              goBack();
             }
 
             if (event.key === "ArrowRight") {
               event.preventDefault();
-              setIndex((current) => (current + 1) % total);
-              pauseTemporarily();
+              goForward();
             }
           }}
           onPointerDown={handlePointerDown}
@@ -218,21 +277,22 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           <div className="absolute left-0 right-0 top-0 z-20 h-[3px] bg-white/8">
             <div
               className="h-full bg-[#ffa726] transition-[width] duration-500 ease-out"
-              style={{ width: `${((index + 1) / total) * 100}%` }}
+              style={{ width: `${((realIndex + 1) / total) * 100}%` }}
             />
           </div>
 
           <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
-            style={{ transform: `translateX(-${index * 100}%)` }}
+            className={`flex will-change-transform ${animated ? "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" : ""}`}
+            style={{ transform: `translateX(-${displayIndex * 100}%)` }}
+            onTransitionEnd={handleTransitionEnd}
           >
-            {eventos.map((evento, slideIndex) => (
+            {clonedSlides.map((evento, slideIndex) => (
               <Link
-                key={evento.href + slideIndex}
+                key={`${evento.href}-${slideIndex}`}
                 href={evento.href}
-                aria-hidden={slideIndex !== index}
+                aria-hidden={slideIndex !== displayIndex}
                 aria-label={evento.ariaLabel}
-                tabIndex={slideIndex === index ? 0 : -1}
+                tabIndex={slideIndex === displayIndex ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
                 <div className="relative w-full h-65 sm:h-80 md:h-95 lg:h-auto lg:aspect-2400/800">
@@ -242,7 +302,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                         src={evento.imagem}
                         alt={evento.alt}
                         fill
-                        priority={slideIndex === 0}
+                        priority={slideIndex === (useLoop ? 1 : 0)}
                         sizes="100vw"
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                       />
@@ -273,7 +333,6 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
               </Link>
             ))}
           </div>
-
         </div>
       </div>
     </section>
