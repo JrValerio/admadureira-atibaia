@@ -40,11 +40,11 @@ export default function ReadingJourneyActions({
         {suggestedSummary ? ` • ${suggestedSummary}` : ""}
       </p>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-col gap-2 [&>*]:w-full">
         {normalizedLastDay ? (
           <Link
             href={createReadingPlanDayPath(planSlug, normalizedLastDay)}
-            className="ui-btn-primary whitespace-nowrap"
+            className="ui-btn-primary"
           >
             Continuar leitura · Dia {normalizedLastDay}
           </Link>
@@ -52,7 +52,7 @@ export default function ReadingJourneyActions({
 
         <Link
           href={createReadingPlanDayPath(planSlug, suggestedDay)}
-          className="ui-btn-secondary whitespace-nowrap"
+          className="ui-btn-secondary"
         >
           Abrir dia sugerido
         </Link>

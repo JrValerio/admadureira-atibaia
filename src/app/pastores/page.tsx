@@ -18,9 +18,9 @@ function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
   return (
     <Link
       href={`/pastores/${pastor.slug}`}
-      className="group grid lg:grid-cols-[1.05fr_0.95fr] items-center bg-white rounded-3xl overflow-hidden border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-shadow duration-300"
+      className="group grid lg:grid-cols-[1.05fr_0.95fr] items-start bg-white rounded-3xl border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.08)] transition-shadow duration-300"
     >
-      <div className="relative h-[340px] sm:h-[420px] bg-[#111] overflow-hidden">
+      <div className="relative h-[340px] sm:h-[420px] bg-[#111] overflow-hidden rounded-t-3xl lg:rounded-t-none lg:rounded-l-3xl">
         <Image
           src={pastor.foto}
           alt={pastor.nome}
