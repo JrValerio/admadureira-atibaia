@@ -15,9 +15,9 @@ export default function VideosPage() {
     <main className="bg-[#f5f5f5] min-h-screen">
       <HeroPage
         variant="full"
-        label="Canal no YouTube"
-        title="Cultos e vídeos"
-        description="Assista aos últimos cultos e pregações da AD Madureira Atibaia, com transmissões ao vivo, destaques da semana e biblioteca de vídeos."
+        label="Transmissões ao vivo"
+        title="Cultos no YouTube"
+        description="Acompanhe as transmissões ao vivo e assista aos cultos mais recentes da AD Madureira Atibaia diretamente do canal oficial no YouTube."
         image={igrejaHeroMedia.videos}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />

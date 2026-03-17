@@ -55,9 +55,9 @@ export default function MensagensPage() {
       />
       <HeroPage
         variant="full"
-        label="Palavra e ensino"
+        label="Pregações e ministrações"
         title="Mensagens da Igreja"
-        description="Acompanhe mensagens pregadas na AD Madureira Atibaia e revisite ministrações que fortalecem a fé, a comunhão e a vida cristã."
+        description="Biblioteca de pregações curadas da AD Madureira Atibaia — com pregador, versículo-base e resumo editorial para revisitar o ensino bíblico com profundidade."
         image={igrejaHeroMedia.mensagens}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
