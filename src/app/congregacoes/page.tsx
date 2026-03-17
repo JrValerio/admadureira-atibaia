@@ -94,7 +94,7 @@ export default function CongregacoesPage() {
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Presença do campo
                 </p>
-                <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+                <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-5">
                   Uma igreja presente na cidade, com base pastoral e congregacional
                 </h2>
                 <div className="space-y-4 text-sm md:text-base text-[#555] leading-7 md:leading-8">
@@ -156,7 +156,7 @@ export default function CongregacoesPage() {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Congregação em destaque
               </p>
-              <h2 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-4">
                 Conheça a base congregacional já estruturada no Campo de Atibaia
               </h2>
               <p className="text-[#5f5f5f] leading-relaxed">

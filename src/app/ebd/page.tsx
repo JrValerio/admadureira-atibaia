@@ -160,7 +160,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Lição da semana
               </p>
-              <h1 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 {licaoDaSemana
                   ? `${classeInfo.label} · ${licaoDaSemana.licao.titulo}`
                   : `Classe ${classeInfo.label}`}
@@ -268,7 +268,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Classes disponíveis
               </p>
-              <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 Classes publicadas com caminho claro de estudo
               </h2>
               <p className="leading-relaxed text-[#555]">
@@ -338,7 +338,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                 Trimestres de 2026
               </p>
-              <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 Edições publicadas da classe {classeInfo.label.toLowerCase()}
               </h2>
               <p className="leading-relaxed text-[#555]">

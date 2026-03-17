@@ -219,7 +219,7 @@ export default function Navbar() {
               className="lg:hidden text-white p-2"
               onClick={toggleMenu}
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-              aria-expanded={menuOpen ? "true" : "false"}
+              aria-expanded={menuOpen}
             >
               <div className="w-5 h-0.5 bg-white mb-1" />
               <div className="w-5 h-0.5 bg-white mb-1" />

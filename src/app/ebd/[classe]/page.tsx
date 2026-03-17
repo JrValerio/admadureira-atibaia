@@ -200,7 +200,7 @@ export default async function EbdClassPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Classe em destaque
               </p>
-              <h1 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 {classeInfo.label}
               </h1>
               <div className="space-y-4 leading-relaxed text-[#555]">
@@ -265,7 +265,7 @@ export default async function EbdClassPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Trimestres de 2026
               </p>
-              <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 Edições publicadas da classe
               </h2>
               <p className="leading-relaxed text-[#555]">

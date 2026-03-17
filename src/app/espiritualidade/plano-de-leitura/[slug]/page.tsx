@@ -85,7 +85,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Visão geral do plano
               </p>
-              <h1 className="font-acme text-xl md:text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+              <h1 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-5">
                 {plan.titulo}
               </h1>
               <div className="space-y-4 text-[#555] leading-relaxed">

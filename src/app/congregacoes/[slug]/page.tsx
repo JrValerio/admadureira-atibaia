@@ -248,7 +248,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Presença congregacional
                 </p>
-                <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+                <h2 className="mb-5 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                   Uma congregação com Palavra, cuidado pastoral e acolhimento em{" "}
                   {locationInfo.cidade}
                 </h2>

@@ -259,7 +259,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               >
                 {statusMeta.label}
               </div>
-              <h1 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 {trimestre.titulo}
               </h1>
               {trimestre.subtitulo ? (
@@ -362,7 +362,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Lições do trimestre
               </p>
-              <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 Acompanhe as 13 lições desta edição
               </h2>
               <p className="leading-relaxed text-[#555]">
