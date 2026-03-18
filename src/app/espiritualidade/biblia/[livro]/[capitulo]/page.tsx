@@ -224,6 +224,7 @@ export default async function BibliaChapterPage({
         description="Leia a Bíblia por livro e capítulo na tradução João Ferreira de Almeida e mantenha a Palavra sempre ao alcance."
         image={igrejaHeroMedia.biblia}
         imageAlt="Púlpito da AD Madureira Atibaia"
+        objectPosition="center 30%"
       />
 
       <section className="py-16 md:py-20">

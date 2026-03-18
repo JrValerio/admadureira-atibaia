@@ -38,6 +38,7 @@ export default function VersiculoDoDiaPage() {
         description="Uma porção diária da Palavra para meditar, orar e seguir com o coração firmado em Cristo."
         image={igrejaHeroMedia.versiculoDoDia}
         imageAlt="Púlpito da AD Madureira Atibaia"
+        objectPosition="center 30%"
       />
 
       <section className="py-16 md:py-20">

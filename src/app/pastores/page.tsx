@@ -94,6 +94,7 @@ export default function PastoresPage() {
         description="Conheça a liderança que serve a AD Madureira Atibaia com dedicação, cuidado pastoral e compromisso com a Palavra de Deus."
         image={igrejaHeroMedia.pastores}
         imageAlt="Púlpito da AD Madureira Atibaia"
+        objectPosition="center 30%"
       />
 
       <section className="py-16 md:py-20">
