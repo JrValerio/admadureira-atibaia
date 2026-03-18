@@ -169,7 +169,7 @@ export default function Eventos({
 
           <nav
             aria-label="Ir para o mês da agenda"
-            className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-5"
+            className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5"
           >
             {agendaPorMes.map((grupo) => (
               <Link
@@ -183,7 +183,7 @@ export default function Eventos({
           </nav>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 md:mb-20">
           {agendaPorMes.map((grupo) => (
             <EventosMes key={grupo.id} grupo={grupo} />
           ))}

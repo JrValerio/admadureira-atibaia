@@ -68,7 +68,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         {/* Foto do púlpito */}
         <div className="relative rounded-2xl overflow-hidden shadow-2xl h-80 md:h-full min-h-64">
           <Image

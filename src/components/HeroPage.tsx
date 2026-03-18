@@ -66,7 +66,7 @@ export default function HeroPage({
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
               {label}
             </p>
-            <h1 className="font-acme text-3xl sm:text-4xl md:text-6xl tracking-tight leading-tight mb-5">
+            <h1 className="font-acme text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-5">
               {title}
             </h1>
             <p className="text-white/80 text-lg leading-relaxed">
@@ -79,7 +79,7 @@ export default function HeroPage({
           <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
             {label}
           </p>
-          <h1 className="font-acme text-2xl sm:text-4xl md:text-5xl tracking-tight leading-tight mb-5">
+          <h1 className="font-acme text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
             {title}
           </h1>
           <p className="text-white/80 leading-relaxed max-w-2xl">
