@@ -45,7 +45,7 @@ export default function ReadingPlanProgressSummary({
           <p className="mb-3 text-[#777] text-xs font-bold tracking-widest uppercase">
             Calendário do plano
           </p>
-          <div className="grid grid-cols-7 gap-2 md:grid-cols-14">
+          <div className="grid grid-cols-7 gap-2 md:grid-cols-[repeat(14,minmax(0,1fr))]">
             {Array.from({ length: safeTotalDays }, (_, index) => {
               const day = index + 1;
               const isCompleted = isDayCompleted(day);
