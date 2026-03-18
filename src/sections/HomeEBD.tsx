@@ -5,7 +5,7 @@ import {
   getLicaoDaSemana,
 } from "@/lib/ebd-utils";
 
-const slideClass = "min-w-80 w-[calc(100vw-3rem)] max-w-120 shrink-0 snap-center lg:min-w-0 lg:w-auto lg:max-w-none";
+const slideClass = "min-w-80 w-[calc(100vw-3rem)] max-w-120 shrink-0 snap-center md:min-w-0 md:w-auto md:max-w-none";
 
 export default function HomeEBD() {
   const classeAdultos = getClasseEbdInfo("adultos");
@@ -16,10 +16,10 @@ export default function HomeEBD() {
   return (
     <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none">
+        <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
           {/* Adultos */}
           <div className={slideClass}>
-            <article className="w-full rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:p-8">
+            <article className="w-full rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Escola Bíblica Dominical
               </p>
@@ -75,7 +75,7 @@ export default function HomeEBD() {
 
           {/* Jovens */}
           <div className={slideClass}>
-            <article className="w-full rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:p-8">
+            <article className="w-full rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Escola Bíblica Dominical
               </p>

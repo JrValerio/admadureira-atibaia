@@ -3,7 +3,7 @@ import { getDevotionalOfTheDay } from "@/data/devocionais";
 import { createBiblePath } from "@/lib/bible-navigation";
 import { getDailyVerse } from "@/lib/getDailyVerse";
 
-const slideClass = "min-w-80 w-[calc(100vw-3rem)] max-w-120 shrink-0 snap-center lg:min-w-0 lg:w-auto lg:max-w-none";
+const slideClass = "min-w-80 w-[calc(100vw-3rem)] max-w-120 shrink-0 snap-center md:min-w-0 md:w-auto md:max-w-none";
 
 export default function DailySpiritual() {
   const verse = getDailyVerse();
@@ -20,10 +20,10 @@ export default function DailySpiritual() {
             Palavra e devocional do dia
           </h2>
 
-          <div className="-mx-5 flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 pb-2 lg:mx-0 lg:grid lg:grid-cols-2 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0 lg:snap-none">
+          <div className="-mx-5 flex gap-4 overflow-x-auto snap-x snap-mandatory px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
             {/* Versículo */}
             <div className={slideClass}>
-              <div className="w-full rounded-3xl bg-white/80 border border-white/60 p-5 lg:p-7">
+              <div className="w-full rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Versículo do dia
                 </p>
@@ -45,7 +45,7 @@ export default function DailySpiritual() {
             {/* Devocional */}
             {devotional ? (
               <div className={slideClass}>
-                <div className="w-full rounded-3xl bg-white/80 border border-white/60 p-5 lg:p-7">
+                <div className="w-full rounded-3xl bg-white/80 border border-white/60 p-5 md:p-7">
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                     Devocional do dia
                   </p>
