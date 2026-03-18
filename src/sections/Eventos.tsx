@@ -19,7 +19,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
   return (
     <Link
       href={`/eventos/${evento.slug}`}
-      className="ui-card group overflow-hidden rounded-[1.6rem]"
+      className="ui-card group min-w-[80vw] shrink-0 snap-start overflow-hidden rounded-[1.6rem] md:min-w-0"
     >
       <CardMedia
         src={evento.imagem ?? evento.banner}
@@ -144,7 +144,7 @@ export default function Eventos({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="-mx-4 flex gap-5 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 md:snap-none lg:grid-cols-3">
             {agendaPrincipal.map((evento) => (
               <EventoCard key={evento.slug} evento={evento} />
             ))}
