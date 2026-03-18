@@ -9,6 +9,7 @@ type HeroPageProps = {
   variant?: "card" | "full";
   className?: string;
   imageClassName?: string;
+  objectPosition?: string;
   priority?: boolean;
 };
 
@@ -21,12 +22,15 @@ export default function HeroPage({
   variant = "card",
   className = "",
   imageClassName = "",
+  objectPosition,
   priority = true,
 }: HeroPageProps) {
   const isFull = variant === "full";
   const rootClassName = [
     "relative overflow-hidden text-white",
-    isFull ? "bg-[#111] min-h-[420px]" : "rounded-[2rem] bg-[#212121]",
+    isFull
+      ? "bg-[#111] h-[36svh] min-h-[18rem] sm:h-[42svh] md:h-[48svh] lg:h-[52svh]"
+      : "rounded-[2rem] bg-[#212121]",
     className,
   ]
     .filter(Boolean)
@@ -50,6 +54,7 @@ export default function HeroPage({
               : "(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
           }
           className={heroImageClassName}
+          style={objectPosition ? { objectPosition } : undefined}
         />
       </div>
       <div
