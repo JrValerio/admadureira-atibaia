@@ -105,7 +105,7 @@ export default function QuadroSemanal() {
         </p>
       </div>
 
-      <div className="-mx-4 flex gap-5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:px-0 md:pb-0 md:overflow-visible md:gap-6 md:snap-none xl:grid-cols-3">
+      <div className="-mx-4 flex gap-5 overflow-x-auto px-4 pb-2 snap-x snap-mandatory md:mx-0 md:grid md:grid-cols-2 md:px-0 md:pb-0 md:overflow-visible md:gap-6 md:snap-none lg:grid-cols-3">
         {diasQuadro.map((dia) => {
           const itens = quadro.get(dia.id) ?? [];
           const destaqueHoje = hoje === dia.id;

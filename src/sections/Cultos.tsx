@@ -69,7 +69,7 @@ export default function Cultos() {
         description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <div className="mb-10 -mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:px-0 md:pb-0 md:gap-5 xl:grid-cols-4 xl:gap-6">
+      <div className="mb-10 -mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:px-0 md:pb-0 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
         {cultosDestaque.map((culto) => (
           <Card
             key={culto.dia}
