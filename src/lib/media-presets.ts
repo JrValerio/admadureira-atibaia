@@ -5,7 +5,8 @@ export type MediaVariant =
   | "content"
   | "institutional"
   | "spiritual"
-  | "testimony";
+  | "testimony"
+  | "poster";
 
 type MediaPreset = {
   aspect: string;
@@ -50,5 +51,12 @@ export const mediaPresets: Record<MediaVariant, MediaPreset> = {
     imageClass: "object-cover",
     overlayClass: "bg-linear-to-t from-black/75 via-black/20 to-transparent",
     fallback: igrejaHeroMedia.testemunhos,
+  },
+  poster: {
+    aspect: "aspect-4/5",
+    containerClass: "overflow-hidden bg-[#111]",
+    imageClass: "object-contain",
+    overlayClass: "",
+    fallback: igrejaHeroMedia.eventos,
   },
 };

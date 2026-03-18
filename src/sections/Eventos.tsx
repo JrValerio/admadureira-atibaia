@@ -24,10 +24,8 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
       <CardMedia
         src={evento.imagem ?? evento.banner}
         alt={evento.titulo}
-        variant="event"
+        variant="poster"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        zoomOnHover
-        imageClassName="group-hover:scale-[1.02]"
         className="rounded-none"
       />
 

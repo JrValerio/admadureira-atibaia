@@ -4,6 +4,7 @@ import { programacaoSemanal } from "@/data/agenda";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
 import { Section } from "@/components/ui/Section";
 import QuadroSemanal from "@/sections/QuadroSemanal";
+import CardMedia from "@/components/media/CardMedia";
 
 type ProgramacaoProps = {
   showHeader?: boolean;
@@ -58,23 +59,21 @@ function CardSemanal({
 
   const inner = (
     <>
-      <div className="relative w-full aspect-video bg-[#212121]">
-        {banner ? (
-          <Image
-            src={banner}
-            alt={titulo}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="flex h-full items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
-            <span className="font-acme text-[#ffa726] text-xl tracking-wide leading-tight">
-              {titulo}
-            </span>
-          </div>
-        )}
-      </div>
+      {banner ? (
+        <CardMedia
+          src={banner}
+          alt={titulo}
+          variant="poster"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="rounded-none"
+        />
+      ) : (
+        <div className="relative aspect-4/5 flex items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
+          <span className="font-acme text-[#ffa726] text-xl tracking-wide leading-tight">
+            {titulo}
+          </span>
+        </div>
+      )}
 
       <div className="px-5 py-4">
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
