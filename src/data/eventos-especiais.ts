@@ -291,7 +291,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           slug: "congresso-com-as-criancas-25-04-2026",
           data: "25/04",
           titulo: "Congresso com as Crianças",
-          tipo: "evento-especial",
+          tipo: "congresso-criancas",
           horario: "19h00",
           descricao:
             "Culto especial voltado às crianças, com participação do departamento infantil, louvor e ministração da Palavra.",
