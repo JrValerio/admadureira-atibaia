@@ -30,6 +30,35 @@ export const revalidate = 3600;
 
 export default function EspiritualidadePage() {
   const hubData = getSpiritualityHubData();
+  const startTodayHref = hubData?.verseChapterHref ?? "/espiritualidade/versiculo-do-dia";
+  const continueJourneyHref = hubData?.readingDayHref ?? "/espiritualidade/plano-de-leitura";
+
+  const guidedSteps = [
+    {
+      step: "Passo 1",
+      title: "Comece pelo que é de hoje",
+      description:
+        "Abra primeiro o bloco do dia com versículo, devocional e leitura sugerida para não começar perdido.",
+      href: hubData ? "#hub-hoje" : startTodayHref,
+      cta: "Ver bloco de hoje",
+    },
+    {
+      step: "Passo 2",
+      title: "Retome sua constância",
+      description:
+        "Depois de usar o conteúdo de hoje, volte para a sua jornada de leitura e siga do ponto onde parou.",
+      href: hubData ? "#hub-jornada" : continueJourneyHref,
+      cta: "Retomar jornada",
+    },
+    {
+      step: "Passo 3",
+      title: "Use áudio como apoio",
+      description:
+        "Rádio e podcast entram como companhia ao longo da semana, não como substitutos da leitura e da meditação.",
+      href: hubData ? "#hub-audio" : "/espiritualidade/radio",
+      cta: "Explorar apoio em áudio",
+    },
+  ];
 
   return (
     <>
@@ -37,10 +66,59 @@ export default function EspiritualidadePage() {
         variant="full"
         label="Crescimento espiritual"
         title="Espiritualidade"
-        description="Uma área dedicada à leitura bíblica, devocionais, planos de leitura e futuros canais de áudio da AD Madureira Atibaia."
+        description="Comece com a Palavra de hoje, retome sua jornada de leitura e use recursos em áudio como apoio para seguir em constância espiritual ao longo da semana."
         image={igrejaHeroMedia.espiritualidade}
         imageAlt="Fachada da AD Madureira Atibaia"
       />
+      <section className="border-b border-black/5 bg-white/90">
+        <div className="ui-page-container py-5 md:py-6">
+          <div className="ui-panel ui-panel-pad-sm">
+            <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+              Comece por aqui
+            </p>
+            <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-3xl">
+                <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
+                  Uma jornada simples para usar esta área sem ficar escolhendo demais
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
+                  Se esta for a sua entrada principal na área de espiritualidade,
+                  siga esta ordem: comece pelo conteúdo de hoje, retome seu plano
+                  bíblico e deixe os recursos em áudio como companhia ao longo da
+                  rotina.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href={startTodayHref} className="ui-btn-primary">
+                  Abrir versículo de hoje
+                </Link>
+                <Link href={continueJourneyHref} className="ui-btn-secondary">
+                  Retomar leitura
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {guidedSteps.map((item) => (
+                <article key={item.title} className="ui-panel-accent ui-panel-pad-sm h-full">
+                  <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                    {item.step}
+                  </p>
+                  <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
+                    {item.description}
+                  </p>
+                  <Link href={item.href} className="ui-link-accent mt-4 inline-flex">
+                    {item.cta} →
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 md:py-20">
         <div className="ui-page-container">
@@ -48,67 +126,77 @@ export default function EspiritualidadePage() {
 
           {hubData ? (
             <>
-              <HojeComDeus data={hubData} />
-              <SuaJornada data={hubData} />
+              <div id="hub-hoje" className="scroll-mt-24">
+                <HojeComDeus data={hubData} />
+              </div>
+              <div id="hub-jornada" className="scroll-mt-24">
+                <SuaJornada data={hubData} />
+              </div>
             </>
           ) : null}
 
           <div className="mb-8 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                Recursos centrais
+                Trilha principal
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
-                Bíblia, devocional e recursos para constância espiritual
+                Hoje, jornada e aprofundamento em sequência
               </h2>
               <div className="space-y-4 text-[#555] leading-relaxed">
                 <p>
-                  Esta área reúne os caminhos principais para abrir a Palavra,
-                  seguir um plano de leitura, acompanhar o devocional do dia e
-                  manter uma rotina espiritual recorrente.
+                  Esta área funciona melhor quando você usa primeiro o conteúdo
+                  do dia, depois retoma sua jornada de leitura e só então
+                  explora os recursos centrais para aprofundar a constância
+                  espiritual.
                 </p>
                 <p>
-                  Depois de usar o bloco de hoje e retomar sua jornada, explore
-                  abaixo os recursos disponíveis para leitura, áudio e meditação.
+                  Bíblia Online, plano de leitura, versículo e devocional não
+                  competem entre si. Eles formam um núcleo único para abrir a
+                  Palavra, meditar com direção e seguir com clareza ao longo da
+                  semana.
                 </p>
               </div>
             </div>
 
             <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                Comece hoje
+                Se esta for a sua primeira visita
               </p>
               <ul className="space-y-4 text-[#555] text-sm leading-relaxed">
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Abra o versículo do dia e leia o capítulo relacionado.</span>
+                  <span>Comece pelo bloco de hoje para receber direção sem precisar escolher entre muitos recursos.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Retome o plano bíblico do ponto onde você parou.</span>
+                  <span>Use a jornada de leitura para ganhar continuidade e evitar que a rotina espiritual dependa só do impulso do momento.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Use Rádio e Podcast como apoio para seguir em constância.</span>
+                  <span>Recursos em áudio entram como apoio durante deslocamentos, trabalho e pausas, não como ponto de partida obrigatório.</span>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="mb-12 rounded-3xl bg-[#212121] p-6 md:p-8 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+          <div
+            id="hub-audio"
+            className="mb-12 rounded-3xl bg-[#212121] p-6 md:p-8 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)] scroll-mt-24"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
               <div className="max-w-3xl">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                  Descoberta fluida
+                  Apoio em áudio
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl lg:text-4xl tracking-wide mb-4">
-                  Leia, medite e ouça durante a semana
+                  Continue perto da Palavra durante a rotina
                 </h2>
                 <p className="text-white/80 leading-relaxed">
-                  Use Bíblia, versículo, devocional e plano como eixo principal
-                  da sua rotina. Quando quiser seguir em constância ao longo do
-                  dia, Rádio e Podcast entram como apoio em áudio para continuar
-                  perto da Palavra.
+                  Depois de abrir a Bíblia, meditar e retomar sua leitura, use
+                  Rádio e Podcast como companhia para continuar perto da Palavra
+                  em deslocamentos, trabalho, pausas e momentos de oração ao
+                  longo da semana.
                 </p>
               </div>
 
@@ -132,12 +220,12 @@ export default function EspiritualidadePage() {
                 Recursos principais
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
-                O núcleo da sua rotina espiritual diária
+                Aprofunde depois de usar o conteúdo do dia
               </h2>
               <p className="text-[#555] leading-relaxed">
-                Estes são os quatro caminhos principais para abrir a Palavra,
-                meditar com direção e manter constância prática ao longo da
-                semana.
+                Estes são os caminhos centrais para transformar o impulso do dia
+                em rotina: abrir a Bíblia, continuar o plano, meditar com
+                direção e manter constância prática ao longo da semana.
               </p>
             </div>
 
