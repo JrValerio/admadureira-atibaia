@@ -118,15 +118,15 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`ui-page-container grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
-            scrolled ? "h-16" : "h-20"
+          className={`ui-page-container grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+            scrolled ? "h-[3.9rem] md:h-[4.15rem]" : "h-[4.5rem] md:h-[4.85rem]"
           }`}
         >
-          <div className="hidden lg:block" />
+          <div className="hidden xl:block" />
 
           <Link
             href="/"
-            className="flex items-center gap-3 lg:hidden"
+            className="flex min-w-0 items-center gap-2.5 md:gap-3.5 xl:hidden"
             aria-label="Voltar para a página inicial"
           >
             <Image
@@ -134,20 +134,20 @@ export default function Navbar() {
               alt="Logo AD Madureira Atibaia"
               width={42}
               height={42}
-              className="shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
+              className="h-auto w-9 shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] md:w-11"
               style={{ width: "auto", height: "auto" }}
             />
             <div className="min-w-0">
-              <p className="font-script text-[#f7dfbb] text-[1.6rem] leading-none">
+              <p className="truncate font-script text-[1.32rem] leading-none text-[#f7dfbb] md:text-[1.55rem]">
                 Assembleia de Deus
               </p>
-              <p className="text-white/72 text-[9px] tracking-[0.28em] uppercase mt-1">
+              <p className="mt-1 text-[8px] tracking-[0.22em] text-white/72 uppercase md:text-[9px] md:tracking-[0.28em]">
                 Madureira · Atibaia
               </p>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center justify-center gap-5 xl:gap-8 2xl:gap-10">
+          <nav className="hidden xl:flex items-center justify-center gap-5 2xl:gap-8">
             {menu.map((item) => {
               const active = isMenuItemActive(pathname, item);
 
@@ -156,7 +156,7 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group/link relative font-acme text-[14px] 2xl:text-[15px] tracking-[0.16em] transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/link relative font-acme text-[13px] 2xl:text-[14px] tracking-[0.15em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -176,7 +176,7 @@ export default function Navbar() {
                 <div key={item.label} className="relative group/menu">
                   <button
                     type="button"
-                    className={`group/button relative font-acme inline-flex items-center gap-2 text-[14px] 2xl:text-[15px] tracking-[0.16em] transition-colors duration-200 uppercase whitespace-nowrap ${
+                    className={`group/button relative font-acme inline-flex items-center gap-2 text-[13px] 2xl:text-[14px] tracking-[0.15em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
                         : "text-white/70 hover:text-[#ffa726]"
@@ -216,7 +216,7 @@ export default function Navbar() {
           <div className="flex items-center justify-end gap-3">
             <button
               type="button"
-              className="lg:hidden text-white p-2"
+              className="rounded-full p-2 text-white transition-colors hover:bg-white/6 xl:hidden"
               onClick={toggleMenu}
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
@@ -229,7 +229,8 @@ export default function Navbar() {
         </div>
 
         {menuOpen && (
-          <div className="lg:hidden bg-[#121212] border-t border-white/10 px-4 py-2 max-h-[calc(100dvh-5rem)] overflow-y-auto">
+          <div className="border-t border-white/10 bg-[#121212] xl:hidden">
+            <div className="ui-page-container max-h-[calc(100dvh-5rem)] overflow-y-auto py-2 md:py-3">
             {menu.map((item) => {
               if (isDirectMenuItem(item)) {
                 return (
@@ -293,6 +294,7 @@ export default function Navbar() {
                 </div>
               );
             })}
+            </div>
           </div>
         )}
       </div>
