@@ -127,7 +127,6 @@ section[id] {
   }
 }
 
-.ui-container,
 .ui-page-container,
 .ui-section-container {
   max-width: 72rem;
@@ -135,20 +134,17 @@ section[id] {
   padding-inline: 1rem;
 }
 
-.ui-container--narrow,
 .ui-page-container--narrow,
 .ui-section-container--narrow {
   max-width: 64rem;
 }
 
-.ui-container--wide,
 .ui-page-container--footer,
 .ui-section-container--wide {
   max-width: 80rem;
 }
 
 @media (min-width: 640px) {
-  .ui-container,
   .ui-page-container,
   .ui-section-container {
     padding-inline: 1.25rem;
@@ -156,7 +152,6 @@ section[id] {
 }
 
 @media (min-width: 1024px) {
-  .ui-container,
   .ui-page-container,
   .ui-section-container {
     padding-inline: 1.5rem;
