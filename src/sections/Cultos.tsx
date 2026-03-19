@@ -124,17 +124,6 @@ export default function Cultos() {
             </div>
           ))}
         </div>
-        <p className="mt-4 text-center text-xs text-[#7a7a7a]">
-          Acompanhe também pelo nosso canal no{" "}
-          <a
-            href="https://www.youtube.com/@ADMadureiraAtibaia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-[#ef5350] hover:underline"
-          >
-            YouTube
-          </a>
-        </p>
       </div>
 
       <div className="text-center">

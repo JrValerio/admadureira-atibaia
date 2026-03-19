@@ -254,8 +254,8 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             Eventos, campanhas e convites especiais
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-            Acompanhe os principais encontros da igreja sem perder de vista a
-            programação da semana e os próximos movimentos da comunidade.
+            Acompanhe os próximos encontros especiais, campanhas e convites da
+            igreja que movimentam o calendário além da rotina semanal.
           </p>
         </div>
       </div>
