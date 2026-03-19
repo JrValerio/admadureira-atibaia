@@ -134,6 +134,8 @@ export default function Navbar() {
               alt="Logo AD Madureira Atibaia"
               width={42}
               height={42}
+              sizes="(max-width: 767px) 36px, 44px"
+              quality={80}
               className="h-auto w-9 shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] md:w-11"
               style={{ width: "auto", height: "auto" }}
             />

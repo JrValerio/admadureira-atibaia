@@ -7,20 +7,61 @@ type LegacyMediaQueryList = MediaQueryList & {
   removeListener?: (listener: (event: MediaQueryListEvent) => void) => void;
 };
 
+type LegacyNetworkInformation = {
+  effectiveType?: string;
+  saveData?: boolean;
+  addEventListener?: (type: "change", listener: () => void) => void;
+  removeEventListener?: (type: "change", listener: () => void) => void;
+  addListener?: (listener: () => void) => void;
+  removeListener?: (listener: () => void) => void;
+};
+
+type NavigatorWithConnection = Navigator & {
+  connection?: LegacyNetworkInformation;
+};
+
+type WindowWithIdleCallback = Window & {
+  requestIdleCallback?: (
+    callback: () => void,
+    options?: { timeout: number }
+  ) => number;
+  cancelIdleCallback?: (handle: number) => void;
+};
+
 export default function HeroBackgroundMedia() {
   const [showAnimatedMedia, setShowAnimatedMedia] = useState(false);
+  const [allowVideoRender, setAllowVideoRender] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [translateY, setTranslateY] = useState(0);
 
   useEffect(() => {
     const desktopMedia = window.matchMedia("(min-width: 768px)") as LegacyMediaQueryList;
     const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)") as LegacyMediaQueryList;
+    const connection = (navigator as NavigatorWithConnection).connection;
+
+    const shouldAvoidHeavyMedia = () => {
+      if (!connection) {
+        return false;
+      }
+
+      return (
+        Boolean(connection.saveData) ||
+        connection.effectiveType === "slow-2g" ||
+        connection.effectiveType === "2g" ||
+        connection.effectiveType === "3g"
+      );
+    };
 
     const updateVisibility = () => {
-      const shouldShow = desktopMedia.matches && !reducedMotionMedia.matches;
+      const shouldShow =
+        desktopMedia.matches &&
+        !reducedMotionMedia.matches &&
+        !shouldAvoidHeavyMedia();
+
       setShowAnimatedMedia(shouldShow);
 
       if (!shouldShow) {
+        setAllowVideoRender(false);
         setVideoReady(false);
       }
     };
@@ -41,18 +82,69 @@ export default function HeroBackgroundMedia() {
       return () => mediaQuery.removeListener?.(handleMediaChange);
     };
 
+    const attachConnectionListener = (
+      networkInformation?: LegacyNetworkInformation
+    ) => {
+      if (!networkInformation) {
+        return () => undefined;
+      }
+
+      if (typeof networkInformation.addEventListener === "function") {
+        networkInformation.addEventListener("change", handleMediaChange);
+
+        return () =>
+          networkInformation.removeEventListener?.("change", handleMediaChange);
+      }
+
+      networkInformation.addListener?.(handleMediaChange);
+
+      return () => networkInformation.removeListener?.(handleMediaChange);
+    };
+
     updateVisibility();
     const detachDesktop = attachListener(desktopMedia);
     const detachReducedMotion = attachListener(reducedMotionMedia);
+    const detachConnection = attachConnectionListener(connection);
 
     return () => {
       detachDesktop();
       detachReducedMotion();
+      detachConnection();
     };
   }, []);
 
   useEffect(() => {
     if (!showAnimatedMedia) {
+      return;
+    }
+
+    const currentWindow = window as WindowWithIdleCallback;
+    let timeoutId: number | null = null;
+    let idleId: number | null = null;
+
+    if (typeof currentWindow.requestIdleCallback === "function") {
+      idleId = currentWindow.requestIdleCallback(() => {
+        setAllowVideoRender(true);
+      }, { timeout: 1400 });
+    } else {
+      timeoutId = window.setTimeout(() => {
+        setAllowVideoRender(true);
+      }, 900);
+    }
+
+    return () => {
+      if (idleId !== null) {
+        currentWindow.cancelIdleCallback?.(idleId);
+      }
+
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [showAnimatedMedia]);
+
+  useEffect(() => {
+    if (!showAnimatedMedia || !allowVideoRender) {
       return;
     }
 
@@ -64,9 +156,9 @@ export default function HeroBackgroundMedia() {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [showAnimatedMedia]);
+  }, [allowVideoRender, showAnimatedMedia]);
 
-  if (!showAnimatedMedia) {
+  if (!showAnimatedMedia || !allowVideoRender) {
     return null;
   }
 
@@ -80,7 +172,7 @@ export default function HeroBackgroundMedia() {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         poster="/fachada-da-igreja.jpg"
         aria-hidden="true"
         className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${

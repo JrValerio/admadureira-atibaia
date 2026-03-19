@@ -14,6 +14,7 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
+        quality={82}
         className="object-cover object-center"
         priority
       />
@@ -32,6 +33,8 @@ export default function Hero() {
             alt="Logo AD Madureira Atibaia"
             width={136}
             height={136}
+            sizes="(max-width: 639px) 86px, (max-width: 767px) 101px, (max-width: 1023px) 116px, (max-width: 1279px) 128px, 139px"
+            quality={80}
             className="h-auto w-[5.35rem] drop-shadow-[0_18px_32px_rgba(0,0,0,0.26)] sm:w-[6.3rem] md:w-[7.25rem] lg:w-[8rem] xl:w-[8.7rem]"
             style={{ height: "auto" }}
           />

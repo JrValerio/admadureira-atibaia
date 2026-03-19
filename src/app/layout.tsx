@@ -200,8 +200,6 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
-        <link rel="preconnect" href="https://www.youtube.com" crossOrigin="" />
-        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(churchSchema) }}

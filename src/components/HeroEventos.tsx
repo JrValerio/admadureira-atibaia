@@ -324,8 +324,9 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                         src={evento.imagem}
                         alt={evento.alt}
                         fill
-                        priority={slideIndex <= (useLoop ? 2 : 1)}
+                        loading="lazy"
                         sizes="100vw"
+                        quality={78}
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
