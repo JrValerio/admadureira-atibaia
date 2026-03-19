@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { programacaoSemanal } from "@/data/agenda";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";

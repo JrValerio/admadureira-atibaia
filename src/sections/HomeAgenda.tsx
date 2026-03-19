@@ -18,7 +18,7 @@ export default function HomeAgenda() {
 
   return (
     <section className="bg-[#f7f6f2] py-7 md:py-14">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="ui-page-container">
         <div className="-mx-4 flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:gap-6 md:px-0 md:pb-0 md:snap-none">
           {proximoCompromisso ? (
             <article className="min-w-[83%] shrink-0 snap-center md:min-w-0 rounded-3xl border border-black/5 bg-white p-4 md:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">

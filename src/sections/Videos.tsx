@@ -39,7 +39,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <p className="text-[#ef5350] text-sm font-semibold tracking-widest uppercase mb-2">
               Canal no YouTube
             </p>
-            <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+            <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
               Últimos Cultos
             </h2>
             <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />

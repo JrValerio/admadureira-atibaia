@@ -106,7 +106,7 @@ export default function Eventos({
 
   return (
     <section id="eventos" className="py-12 md:py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="ui-page-container">
         <nav
           aria-label="Breadcrumb"
           className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#8a8a8a]"

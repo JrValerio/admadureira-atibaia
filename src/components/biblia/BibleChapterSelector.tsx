@@ -81,7 +81,7 @@ export default function BibleChapterSelector({
       <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
         Capítulos
       </p>
-      <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+      <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
         {selectedBook.nome}
       </h2>
       <p className="text-sm text-[#555] leading-relaxed mb-6">

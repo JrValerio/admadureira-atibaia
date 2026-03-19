@@ -24,7 +24,7 @@ export default function ReadingPlanProgressSummary({
       <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
         Progresso do plano
       </p>
-      <h2 className="font-acme text-3xl text-[#212121] tracking-wide mb-4">
+      <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
         {completedCount} de {safeTotalDays} dias
       </h2>
       <p className="text-sm text-[#555] leading-relaxed mb-4">

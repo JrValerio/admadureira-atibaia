@@ -228,7 +228,7 @@ export default async function BibliaChapterPage({
       />
 
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
           <BibleLastReadingTracker
             book={selectedBook.slug}
             chapter={selectedChapter}
@@ -271,7 +271,7 @@ export default async function BibliaChapterPage({
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                     {chapterSeo.groupLabel}
                   </p>
-                  <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide">
+                  <h1 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
                     {chapterSeo.introTitle}
                   </h1>
                   <p className="text-xs font-bold tracking-[0.18em] uppercase text-[#8b5b18]">

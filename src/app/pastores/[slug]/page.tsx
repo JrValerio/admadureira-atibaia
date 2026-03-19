@@ -147,7 +147,7 @@ export default async function PastorPage({ params }: PageProps) {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-8 md:py-16">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
@@ -174,7 +174,7 @@ export default async function PastorPage({ params }: PageProps) {
                     ? "Presidência do Campo"
                     : "Vice-Presidência do Campo"}
                 </p>
-                <h1 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-3">
+                <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-3">
                   {pastor.nome}
                 </h1>
                 <p className="text-[#ef5350] font-semibold tracking-wide uppercase text-sm mb-5">

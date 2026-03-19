@@ -84,7 +84,7 @@ export default async function EventoPage({ params }: PageProps) {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-8 md:py-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="ui-page-container ui-page-container--narrow">
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
@@ -132,7 +132,7 @@ export default async function EventoPage({ params }: PageProps) {
                 {evento.horario && ` · ${evento.horario}`}
               </p>
 
-              <h1 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-6">
+              <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-6">
                 {evento.titulo}
               </h1>
 

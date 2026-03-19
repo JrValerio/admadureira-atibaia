@@ -77,7 +77,7 @@ export default function CongregacoesPage() {
         />
 
         <section className="py-16 md:py-20">
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="ui-page-container">
             <nav
               aria-label="Breadcrumb"
               className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#777]"

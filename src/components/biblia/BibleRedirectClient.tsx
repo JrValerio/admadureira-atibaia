@@ -85,7 +85,7 @@ export default function BibleRedirectClient({
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
           Bíblia Online
         </p>
-        <h1 className="font-acme text-3xl text-[#212121] tracking-wide mb-3">
+        <h1 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
           Abrindo sua leitura
         </h1>
         <p className="text-sm leading-7 text-[#555]">

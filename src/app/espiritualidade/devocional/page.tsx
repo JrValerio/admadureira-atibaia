@@ -56,7 +56,7 @@ export default function DevocionalPage() {
       />
 
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
           <SpiritualBreadcrumb
             items={[
               { label: "Espiritualidade", href: "/espiritualidade" },

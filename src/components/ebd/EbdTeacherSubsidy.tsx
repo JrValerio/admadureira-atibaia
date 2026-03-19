@@ -865,7 +865,7 @@ export default function EbdTeacherSubsidy({
         <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
           {tituloDaSecao}
         </p>
-        <h2 className="mb-3 font-acme text-3xl tracking-wide text-[#212121] md:text-4xl">
+        <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
           {licao.titulo}
         </h2>
         <p className="max-w-3xl text-[#555] leading-relaxed">

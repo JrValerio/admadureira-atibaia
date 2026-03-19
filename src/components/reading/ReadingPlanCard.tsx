@@ -25,7 +25,7 @@ export default function ReadingPlanCard({ plan }: ReadingPlanCardProps) {
           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
             {plan.destaque}
           </p>
-          <h2 className="font-acme text-3xl text-white tracking-wide">
+          <h2 className="font-acme text-2xl md:text-3xl text-white tracking-wide">
             {plan.titulo}
           </h2>
         </div>

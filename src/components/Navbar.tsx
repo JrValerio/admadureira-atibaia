@@ -118,7 +118,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+          className={`ui-page-container grid grid-cols-[1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
             scrolled ? "h-16" : "h-20"
           }`}
         >
@@ -135,7 +135,7 @@ export default function Navbar() {
               width={42}
               height={42}
               className="shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
-              style={{ height: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
             <div className="min-w-0">
               <p className="font-script text-[#f7dfbb] text-[1.6rem] leading-none">

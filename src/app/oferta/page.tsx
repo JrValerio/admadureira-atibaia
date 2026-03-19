@@ -60,7 +60,7 @@ export default function OfertaPage() {
         imageClassName="object-[center_40%]"
       />
       <section className="py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="ui-page-container ui-page-container--narrow">
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">

@@ -11,7 +11,7 @@ export default function DailySpiritual() {
 
   return (
     <section className="bg-[#f5f5f5] pt-8 pb-5 md:pt-14 md:pb-8">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="ui-page-container">
         <div className="rounded-[2rem] border border-[#ffa726]/15 bg-[#fff8ee] p-5 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
           <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
             Hoje com Deus

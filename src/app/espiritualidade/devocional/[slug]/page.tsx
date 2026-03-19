@@ -113,7 +113,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
       />
 
       <section className="py-8 md:py-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="ui-page-container ui-page-container--narrow">
           <SpiritualBreadcrumb
             items={[
               { label: "Espiritualidade", href: "/espiritualidade" },

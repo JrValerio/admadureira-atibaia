@@ -101,7 +101,7 @@ export default async function CultoPage({ params }: Props) {
               <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/80" />
             </>
           )}
-          <div className="relative z-10 flex flex-col justify-end min-h-[320px] max-w-4xl mx-auto px-5 py-10 md:py-14">
+          <div className="relative z-10 ui-page-container ui-page-container--narrow flex min-h-[320px] flex-col justify-end py-10 md:py-14">
             <nav
               aria-label="Breadcrumb"
               className="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/55"
@@ -121,7 +121,7 @@ export default async function CultoPage({ params }: Props) {
               {culto.dia}
               {culto.horario ? ` · ${culto.horario}` : ""}
             </p>
-            <h1 className="font-acme text-3xl md:text-5xl text-white tracking-wide leading-tight">
+            <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-white tracking-wide leading-tight">
               {culto.titulo}
             </h1>
           </div>
@@ -129,7 +129,7 @@ export default async function CultoPage({ params }: Props) {
 
         {/* Conteúdo */}
         <section className="py-12 md:py-16">
-          <div className="max-w-4xl mx-auto px-5 space-y-6">
+          <div className="ui-page-container ui-page-container--narrow space-y-6">
 
             {/* Descrição */}
             {culto.descricao && (

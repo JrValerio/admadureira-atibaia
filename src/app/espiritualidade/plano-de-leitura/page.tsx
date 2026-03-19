@@ -72,7 +72,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
       />
 
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
           <SpiritualBreadcrumb
             items={[
               { label: "Espiritualidade", href: "/espiritualidade" },
@@ -85,7 +85,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Jornada organizada
               </p>
-              <h1 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+              <h1 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
                 Descubra planos para leitura diária e progresso espiritual
               </h1>
               <div className="space-y-4 text-[#555] leading-relaxed">
@@ -128,7 +128,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Bíblia em 1 ano
                 </p>
-                <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-4">
+                <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
                   Leitura e devocional de hoje
                 </h2>
                 <p className="text-sm text-[#777] mb-4">

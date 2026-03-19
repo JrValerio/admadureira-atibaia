@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.1),transparent_60%)]" />
       <div className="absolute inset-0 hero-vignette pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 ui-page-container flex flex-col items-center justify-center text-center">
         {/* Logo */}
         <div className="flex justify-center mb-7">
           <Image
@@ -33,7 +33,7 @@ export default function Hero() {
             width={136}
             height={136}
             className="drop-shadow-[0_18px_32px_rgba(0,0,0,0.26)]"
-            style={{ height: "auto" }}
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
 

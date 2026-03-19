@@ -62,7 +62,7 @@ export default function MensagensPage() {
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">

@@ -50,7 +50,7 @@ export default function RadioPage() {
       />
 
       <section className="py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="ui-page-container ui-page-container--narrow">
           <SpiritualBreadcrumb
             items={[
               { label: "Espiritualidade", href: "/espiritualidade" },
@@ -69,7 +69,7 @@ export default function RadioPage() {
                   {statusLabel}
                 </span>
               </div>
-              <h2 className="font-acme text-3xl md:text-4xl text-[#212121] tracking-wide mb-5">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
                 Áudio e transmissões da igreja
               </h2>
               <p className="text-[#555] leading-relaxed mb-4">

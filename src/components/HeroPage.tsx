@@ -29,7 +29,7 @@ export default function HeroPage({
   const rootClassName = [
     "relative overflow-hidden text-white",
     isFull
-      ? "bg-[#111] h-[36svh] min-h-[18rem] sm:h-[42svh] md:h-[48svh] lg:h-[52svh]"
+      ? "bg-[#111] h-[34svh] min-h-[18rem] sm:h-[40svh] sm:min-h-[20rem] md:h-[43svh] md:min-h-[22rem] lg:h-[48svh] lg:min-h-[24rem] xl:h-[52svh]"
       : "rounded-[2rem] bg-[#212121]",
     className,
   ]
@@ -66,15 +66,15 @@ export default function HeroPage({
       />
 
       {isFull ? (
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-10 md:py-18 lg:py-24">
+        <div className="relative z-10 ui-page-container py-10 md:py-16 lg:py-20">
           <div className="max-w-3xl">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
               {label}
             </p>
-            <h1 className="font-acme text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-5">
+            <h1 className="font-acme text-2xl sm:text-3xl md:text-5xl lg:text-6xl tracking-tight leading-tight mb-5">
               {title}
             </h1>
-            <p className="text-white/80 text-lg leading-relaxed">
+            <p className="text-base text-white/80 leading-relaxed md:text-lg">
               {description}
             </p>
           </div>
@@ -84,7 +84,7 @@ export default function HeroPage({
           <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-3">
             {label}
           </p>
-          <h1 className="font-acme text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
+          <h1 className="font-acme text-xl sm:text-2xl md:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
             {title}
           </h1>
           <p className="text-white/80 leading-relaxed max-w-2xl">

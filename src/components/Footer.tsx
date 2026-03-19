@@ -74,7 +74,7 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="max-w-7xl mx-auto grid gap-8 px-6 py-10 md:gap-10 md:grid-cols-2 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
+      <div className="ui-page-container grid gap-8 py-10 md:grid-cols-2 md:gap-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
         <div className="flex flex-col items-center text-center space-y-5 md:items-start md:text-left md:space-y-6">
           <div className="flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-4">
             <Image
@@ -83,7 +83,7 @@ export default function Footer() {
               width={76}
               height={76}
               className="drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
-              style={{ height: "auto" }}
+              style={{ width: "auto", height: "auto" }}
             />
             <div className="space-y-1">
               <p className="text-base font-semibold leading-snug text-white">
@@ -197,7 +197,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-5 text-center text-xs text-white/35">
+        <div className="ui-page-container py-5 text-center text-xs text-white/35">
           <p>
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | Campo de Atibaia. Todos os direitos reservados.

@@ -444,7 +444,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Contexto da edição
                 </p>
-                <h2 className="mb-3 font-acme text-3xl tracking-wide text-[#212121]">
+                <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl">
                   {trimestre.titulo}
                 </h2>
                 <div className="space-y-3 text-sm leading-relaxed text-[#555]">

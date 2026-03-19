@@ -334,7 +334,7 @@ export default function BibleShareVerseButton({
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                   Compartilhar versículo
                 </p>
-                <h3 className="font-acme text-3xl text-[#212121] tracking-wide">
+                <h3 className="font-acme text-2xl md:text-3xl text-[#212121] tracking-wide">
                   {reference}
                 </h3>
               </div>

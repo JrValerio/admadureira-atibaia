@@ -43,7 +43,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
 
   return (
     <section id="oracao" className="py-12 md:py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="ui-page-container ui-page-container--narrow">
         {showHeader ? (
           <div className="text-center mb-8 md:mb-16">
             <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">

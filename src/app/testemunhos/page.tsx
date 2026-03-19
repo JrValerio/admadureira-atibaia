@@ -57,7 +57,7 @@ export default function TestemunhosPage() {
         imageClassName="object-[center_34%]"
       />
       <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="ui-page-container">
 
           <div
             className={`mb-12 grid grid-cols-1 gap-4 ${

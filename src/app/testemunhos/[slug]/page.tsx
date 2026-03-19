@@ -124,7 +124,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
   return (
     <main className="bg-[#f5f5f5] min-h-screen">
       <section className="py-8 md:py-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="ui-page-container ui-page-container--narrow">
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -155,7 +155,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Testemunho de fé
               </p>
-              <h1 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide mb-4">
+              <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-4">
                 {testemunho.titulo}
               </h1>
               <p className="text-[#555] text-lg leading-relaxed max-w-3xl mb-8">
