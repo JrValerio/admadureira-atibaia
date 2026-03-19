@@ -80,8 +80,8 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="ui-page-container ui-page-container--footer grid gap-8 py-10 md:grid-cols-2 md:gap-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
-        <div className="flex flex-col items-center text-center space-y-5 md:items-start md:text-left md:space-y-6">
+      <div className="ui-page-container ui-page-container--footer grid gap-6 py-8 md:grid-cols-2 md:gap-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr]">
+        <div className="flex flex-col items-center text-center space-y-4 md:items-start md:text-left md:space-y-6">
           <div className="flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-4">
             <Image
               src="/logo-transparent.png"
@@ -112,7 +112,7 @@ export default function Footer() {
             </footer>
           </blockquote>
 
-          <div className="flex flex-wrap justify-center gap-3 pt-1 md:justify-start">
+          <div className="flex flex-wrap justify-center gap-3 pt-0.5 md:justify-start">
             {redes.map((rede) => (
               <a
                 key={rede.nome}
@@ -129,7 +129,46 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-8 text-center md:text-left">
+        <div className="space-y-5 text-center md:hidden">
+          <div>
+            <h4 className="mb-3 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Primeiros passos
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {linksPrimeirosPassos.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[#ffa726]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <details className="group mx-auto max-w-xs text-center [&_summary::-webkit-details-marker]:hidden">
+            <summary className="flex cursor-pointer list-none items-center justify-center gap-2 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              A Igreja
+              <span className="text-[10px] text-white/45">▾</span>
+            </summary>
+            <ul className="mt-3 space-y-2.5 text-sm">
+              {linksIgreja.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[#ffa726]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
+
+        <div className="hidden space-y-8 md:block md:text-left">
           <div>
             <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
               Primeiros passos
@@ -167,9 +206,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-8 text-center md:text-left">
+        <div className="space-y-6 text-center md:space-y-8 md:text-left">
           <div>
-            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+            <h4 className="mb-3 font-acme text-sm tracking-[0.22em] text-white uppercase md:mb-4">
               Endereço
             </h4>
             <div className="space-y-3 text-sm leading-relaxed">
@@ -223,12 +262,12 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="ui-page-container ui-page-container--footer py-5 text-center text-xs text-white/35">
+        <div className="ui-page-container ui-page-container--footer py-4 text-center text-xs text-white/35 md:py-5">
           <p>
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | Campo de Atibaia. Todos os direitos reservados.
           </p>
-          <p className="mt-2">CNPJ: 48.644.074/0001-97</p>
+          <p className="mt-1.5 md:mt-2">CNPJ: 48.644.074/0001-97</p>
         </div>
       </div>
     </footer>
