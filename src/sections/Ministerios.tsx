@@ -11,12 +11,14 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
   const ministerios = getMinisterios();
 
   return (
-    <Section id="ministerios" className="bg-white">
+    <Section id="ministerios" className="bg-white" density="dense">
       {showHeader ? (
         <SectionTitle
           eyebrow="Departamentos"
           eyebrowVariant="gold"
           title="Ministérios"
+          density="dense"
+          descriptionWidth="narrow"
           divider
           description={
             <>
@@ -27,7 +29,7 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
         />
       ) : null}
 
-      <CardGrid columns={4}>
+      <CardGrid columns={4} breakpoint="lg" className="gap-6 lg:gap-7">
         {ministerios.map((min) => (
           <Card
             key={min.slug}
@@ -44,7 +46,7 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
               className="rounded-none"
             />
 
-            <div className="p-5">
+            <div className="p-5 md:p-6">
               <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
                 {min.escopo}
               </p>
@@ -62,7 +64,7 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
         ))}
       </CardGrid>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+      <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
         <Link href="/historia" className="ui-btn-secondary">
           Ver história da igreja
         </Link>

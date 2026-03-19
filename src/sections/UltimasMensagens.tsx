@@ -15,14 +15,16 @@ export default function UltimasMensagens() {
   const mensagens = getMensagensRecentes(3);
 
   return (
-    <Section id="mensagens" className="bg-white">
+    <Section id="mensagens" className="bg-white" density="dense">
       <div>
         <SectionTitle
           eyebrow="Ensino da semana"
           title="Últimas Mensagens"
           center={false}
+          density="dense"
           width="narrow"
-          className="mb-12"
+          descriptionWidth="narrow"
+          className="mb-10"
           description="Novas mensagens são publicadas semanalmente a partir dos cultos e ministrações da AD Madureira Atibaia. Acompanhe o ensino bíblico compartilhado na igreja e revisite conteúdos que fortalecem a fé."
           actions={
             <Link href="/mensagens" className="ui-btn-primary">
@@ -32,7 +34,7 @@ export default function UltimasMensagens() {
           actionsClassName="sm:ml-auto"
         />
 
-        <CardGrid className="gap-8">
+        <CardGrid className="gap-6 lg:gap-7">
           {mensagens.map((mensagem) => (
             <Link
               key={mensagem.slug}
@@ -52,7 +54,7 @@ export default function UltimasMensagens() {
                 </div>
               </CardMedia>
 
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <h3 className="font-acme text-xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors line-clamp-2">
                   {mensagem.titulo}
                 </h3>

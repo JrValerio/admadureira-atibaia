@@ -60,22 +60,24 @@ export default function Cultos() {
   const cultosDestaque = cultos.filter((c) => DIAS_DESTAQUE.includes(c.dia));
 
   return (
-    <Section id="cultos" bg="cream">
+    <Section id="cultos" bg="cream" density="dense">
       <SectionTitle
         eyebrow="Programação"
         eyebrowVariant="gold"
         title="Horários de Culto"
+        density="dense"
+        descriptionWidth="narrow"
         divider
         description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <div className="mb-8 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 md:mb-10 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+      <div className="mb-7 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:mb-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 xl:gap-5">
         {cultosDestaque.map((culto) => (
           <Card
             key={culto.dia}
-            className="h-full border border-black/5 bg-white p-4 md:p-5"
+            className="h-full border border-black/5 bg-white p-4"
           >
-            <h3 className="mb-2 font-acme text-[15px] tracking-wide text-[#212121] md:mb-4 md:text-xl">
+            <h3 className="mb-2 font-acme text-[15px] tracking-wide text-[#212121] sm:mb-3 sm:text-lg">
               {culto.dia}
             </h3>
             <ul className="space-y-2.5">
@@ -110,11 +112,11 @@ export default function Cultos() {
         ))}
       </div>
 
-      <div className="mb-8">
+      <div className="mb-7 sm:mb-8">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold mb-4 text-center">
           Eventos Mensais
         </p>
-        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-center sm:gap-8">
+        <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:justify-center sm:gap-6 lg:gap-8">
           {eventosEspeciais.map((evento) => (
             <div key={evento.nome} className="text-center">
               <p className="text-sm font-semibold text-[#212121]">

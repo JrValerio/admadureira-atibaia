@@ -110,18 +110,20 @@ export default function Contato({ showHeader = true }: ContatoProps) {
   }
 
   return (
-    <Section id="contato" className="bg-[#f5f5f5]">
+    <Section id="contato" className="bg-[#f5f5f5]" density="dense">
       {showHeader ? (
         <SectionTitle
           eyebrow="Venha nos visitar"
           eyebrowVariant="gold"
           title="Como Chegar"
+          density="dense"
+          descriptionWidth="narrow"
           divider
           description="Encontre a sede da igreja, consulte nossos horários e utilize os canais oficiais para falar conosco."
         />
       ) : null}
 
-      <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2 md:gap-10">
         <div className="space-y-6">
           <div className="flex items-start gap-4">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#ffa726]">
@@ -209,9 +211,9 @@ export default function Contato({ showHeader = true }: ContatoProps) {
         </div>
       </div>
 
-      <div className="mt-14 grid grid-cols-1 items-start gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-        <Card className="p-8 md:p-10">
-          <div className="mb-8">
+      <div className="mt-10 grid grid-cols-1 items-start gap-6 md:mt-12 md:gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <Card className="p-6 md:p-8">
+          <div className="mb-6 md:mb-7">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
               Formulário de contato
             </p>
@@ -341,7 +343,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
         </Card>
 
         <div>
-          <Card className="h-full p-8">
+          <Card className="h-full p-6 md:p-8">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
               Redes da igreja
             </p>
