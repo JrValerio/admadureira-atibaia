@@ -62,7 +62,7 @@ const ministerios: Ministerio[] = [
       "Participação nos cultos e eventos da igreja",
       "Momentos de comunhão, ensino bíblico e discipulado",
     ],
-    imagem: "/ministerios/rios-de-uncao.png",
+    imagem: "/ministerios/rios-de-uncao.webp",
   },
   {
     slug: "baluarte-da-fe",
@@ -80,7 +80,7 @@ const ministerios: Ministerio[] = [
       "Momentos de oração e comunhão",
       "Apoio às ações espirituais e sociais da igreja",
     ],
-    imagem: "/ministerios/baluarte-de-fe.png",
+    imagem: "/ministerios/baluarte-de-fe.webp",
   },
   {
     slug: "infantil",

@@ -110,7 +110,7 @@ export function getHeroEventos(): HeroEvento[] {
     {
       titulo: "Dízimos e Ofertas",
       alt: "Banner de Dízimos e Ofertas da AD Madureira Atibaia",
-      imagem: "/banners/banner-dizimos-e-ofertas.png",
+      imagem: "/banners/banner-dizimos-e-ofertas.webp",
       href: "/oferta",
       ariaLabel: "Abrir página de dízimos e ofertas",
       priority: "high",
@@ -174,7 +174,7 @@ export function getHeroEventos(): HeroEvento[] {
     {
       titulo: "Curso de Teologia",
       alt: "Banner do Curso de Teologia da AD Madureira Atibaia",
-      imagem: "/banners/banner-curso-de-teologia.png",
+      imagem: "/banners/banner-curso-de-teologia.webp",
       href: "/programacao/curso-de-teologia",
       ariaLabel: "Abrir página do Curso de Teologia",
       type: "weekly",
