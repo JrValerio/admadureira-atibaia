@@ -237,7 +237,29 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-linear-to-b from-[#17120c] via-[#111111] to-[#181818] py-0">
+    <section
+      id="eventos-destaque"
+      aria-labelledby="home-eventos-destaque-title"
+      className="relative w-full overflow-hidden bg-[#f7f6f2] pt-6 pb-8 md:pt-8 md:pb-12"
+    >
+      <div className="ui-page-container mb-5 md:mb-7">
+        <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+          Agenda em destaque
+        </p>
+        <div className="max-w-3xl">
+          <h2
+            id="home-eventos-destaque-title"
+            className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide"
+          >
+            Eventos, campanhas e convites especiais
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
+            Acompanhe os principais encontros da igreja sem perder de vista a
+            programação da semana e os próximos movimentos da comunidade.
+          </p>
+        </div>
+      </div>
+
       <div className="relative w-full">
         <div
           className="relative overflow-hidden bg-[#090909] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
