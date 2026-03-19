@@ -6,7 +6,7 @@ const destaques = [
     titulo: "Culto ao Vivo",
     descricao: "Assista nossas transmissões no YouTube e acompanhe os cultos da igreja.",
     href: "https://www.youtube.com/@ADMadureiraAtibaia",
-    label: "Assistir agora →",
+    label: "Abrir YouTube →",
     external: true,
     icone: (
       <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -18,7 +18,7 @@ const destaques = [
     titulo: "Pedido de Oração",
     descricao: "Envie seu pedido e nossa equipe de intercessão orará com você.",
     href: "/oracao",
-    label: "Fazer pedido →",
+    label: "Enviar pedido →",
     external: false,
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -30,7 +30,7 @@ const destaques = [
     titulo: "Mensagens",
     descricao: "Encontre pregações, ministrações e cultos especiais publicados pela igreja.",
     href: "/mensagens",
-    label: "Ver mensagens →",
+    label: "Explorar mensagens →",
     external: false,
     icone: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -39,7 +39,7 @@ export default function DailySpiritual() {
                 href={createBiblePath(verse.livroSlug, verse.capitulo)}
                 className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]"
               >
-                Ler capítulo →
+                Ler capítulo completo →
               </Link>
             </article>
           </div>
@@ -62,7 +62,7 @@ export default function DailySpiritual() {
                   href={`/espiritualidade/devocional/${devotional.slug}`}
                   className="text-xs font-semibold tracking-widest uppercase text-[#ef5350]"
                 >
-                  Abrir devocional →
+                  Ler devocional →
                 </Link>
               </article>
             </div>
@@ -71,7 +71,7 @@ export default function DailySpiritual() {
 
         <div className="mt-6 flex flex-wrap justify-center gap-3 md:mt-8">
           <Link href="/espiritualidade" className="ui-btn-secondary">
-            Devocional e plano de leitura
+            Abrir central de espiritualidade
           </Link>
         </div>
       </div>

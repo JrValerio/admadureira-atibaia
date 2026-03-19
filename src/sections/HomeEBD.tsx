@@ -64,11 +64,11 @@ export default function HomeEBD() {
                     href={`/ebd/adultos/${licaoAdultos.trimestre.slug}/${licaoAdultos.licao.slug}`}
                     className="ui-btn-primary"
                   >
-                    Ver lição
+                    Lição da semana
                   </Link>
                 ) : null}
                 <Link href="/ebd/adultos" className="ui-btn-secondary">
-                  Ver classe
+                  Classe de Adultos
                 </Link>
               </div>
             </article>
@@ -120,15 +120,21 @@ export default function HomeEBD() {
                     href={`/ebd/jovens/${licaoJovens.trimestre.slug}/${licaoJovens.licao.slug}`}
                     className="ui-btn-primary"
                   >
-                    Ver lição
+                    Lição da semana
                   </Link>
                 ) : null}
                 <Link href="/ebd/jovens" className="ui-btn-secondary">
-                  Ver classe
+                  Classe dos Jovens
                 </Link>
               </div>
             </article>
           </div>
+        </div>
+
+        <div className="mt-6 flex justify-center md:mt-8">
+          <Link href="/ebd" className="ui-btn-secondary">
+            Ver todas as classes da EBD
+          </Link>
         </div>
       </div>
     </section>

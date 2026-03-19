@@ -358,6 +358,12 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           </div>
         </div>
       </div>
+
+      <div className="ui-page-container mt-5 text-center md:mt-6">
+        <Link href="/eventos" className="ui-btn-secondary">
+          Ver agenda de eventos
+        </Link>
+      </div>
     </section>
   );
 }

@@ -130,7 +130,7 @@ export default function Cultos() {
 
       <div className="text-center">
         <Link href="/programacao" className="ui-btn-primary">
-          Ver programação completa
+          Ver programação semanal
         </Link>
       </div>
     </Section>
