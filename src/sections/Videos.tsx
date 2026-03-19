@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getYouTubeFeed } from "@/lib/youtube";
 import YouTubePreviewCard from "@/components/YouTubePreviewCard";
 import { FIXED_FEATURED_VIDEO_IDS } from "@/data/featuredVideos";
@@ -40,11 +41,11 @@ export default async function Videos({ showHeader = true }: VideosProps) {
               Canal no YouTube
             </p>
             <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
-              Últimos Cultos
+              Cultos e transmissões recentes
             </h2>
             <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
             <p className="text-[#757575] text-sm mt-4">
-              Assista nossas pregações e transmissões ao vivo.
+              Assista ao que está ao vivo e abra rapidamente os vídeos mais recentes da igreja.
             </p>
           </div>
         ) : null}
@@ -79,7 +80,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Seleções da semana
+                  Assista em seguida
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
                   Vídeos em Destaque
@@ -105,10 +106,10 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Biblioteca
+                  Cultos recentes
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Mais Transmissões
+                  Mais vídeos para assistir
                 </h3>
               </div>
             </div>
@@ -121,18 +122,37 @@ export default async function Videos({ showHeader = true }: VideosProps) {
           </div>
         )}
 
-        <div className="text-center">
-          <a
-            href={CANAL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ui-btn-red gap-2"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-            </svg>
-            Ver canal completo
-          </a>
+        <div className="ui-panel ui-panel-pad-sm text-center">
+          <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+            Próximo passo
+          </p>
+          <h3 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
+            Continue no canal certo para o que você precisa agora
+          </h3>
+          <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#5f5f5f] md:text-base">
+            Se quiser assistir imediatamente, siga no YouTube. Se preferir revisar
+            o ensino com mais contexto, abra Mensagens. Se o objetivo for saber
+            quando participar presencialmente, consulte a Programação da igreja.
+          </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <a
+              href={CANAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ui-btn-red gap-2"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+              Abrir canal completo
+            </a>
+            <Link href="/mensagens" className="ui-btn-secondary">
+              Explorar mensagens
+            </Link>
+            <Link href="/programacao" className="ui-btn-secondary">
+              Ver programação
+            </Link>
+          </div>
         </div>
     </Section>
   );
