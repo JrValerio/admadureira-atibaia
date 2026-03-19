@@ -73,27 +73,61 @@ section[id] {
 }
 
 .ui-section {
-  padding: 2rem 0;
+  --ui-section-space-y: 1.75rem;
+  padding-block: var(--ui-section-space-y);
+}
+
+.ui-section--dense {
+  --ui-section-space-y: 1.25rem;
+}
+
+.ui-section--spacious {
+  --ui-section-space-y: 2.25rem;
 }
 
 @media (min-width: 640px) {
   .ui-section {
-    padding: 3.5rem 0;
+    --ui-section-space-y: 2.75rem;
+  }
+
+  .ui-section--dense {
+    --ui-section-space-y: 2rem;
+  }
+
+  .ui-section--spacious {
+    --ui-section-space-y: 3.75rem;
   }
 }
 
 @media (min-width: 768px) {
   .ui-section {
-    padding: 5rem 0;
+    --ui-section-space-y: 4rem;
+  }
+
+  .ui-section--dense {
+    --ui-section-space-y: 2.75rem;
+  }
+
+  .ui-section--spacious {
+    --ui-section-space-y: 5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .ui-section {
-    padding: 6rem 0;
+    --ui-section-space-y: 5rem;
+  }
+
+  .ui-section--dense {
+    --ui-section-space-y: 3.5rem;
+  }
+
+  .ui-section--spacious {
+    --ui-section-space-y: 6.25rem;
   }
 }
 
+.ui-container,
 .ui-page-container,
 .ui-section-container {
   max-width: 72rem;
@@ -101,17 +135,20 @@ section[id] {
   padding-inline: 1rem;
 }
 
+.ui-container--narrow,
 .ui-page-container--narrow,
 .ui-section-container--narrow {
   max-width: 64rem;
 }
 
+.ui-container--wide,
 .ui-page-container--footer,
 .ui-section-container--wide {
   max-width: 80rem;
 }
 
 @media (min-width: 640px) {
+  .ui-container,
   .ui-page-container,
   .ui-section-container {
     padding-inline: 1.25rem;
@@ -119,6 +156,7 @@ section[id] {
 }
 
 @media (min-width: 1024px) {
+  .ui-container,
   .ui-page-container,
   .ui-section-container {
     padding-inline: 1.5rem;
@@ -140,9 +178,43 @@ section[id] {
 
 .ui-section-title {
   font-family: var(--font-acme), sans-serif;
-  font-size: clamp(1.6rem, 1.18rem + 2vw, 2.6rem);
+  font-size: clamp(1.45rem, 1.12rem + 1.4vw, 2.4rem);
+  line-height: 1.08;
   letter-spacing: 0.04em;
   color: #212121;
+}
+
+.ui-section-title--dense {
+  font-size: clamp(1.3rem, 1.06rem + 1vw, 1.95rem);
+}
+
+.ui-section-title--spacious {
+  font-size: clamp(1.65rem, 1.2rem + 1.95vw, 2.85rem);
+}
+
+.ui-section-description {
+  margin-top: 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: #5f5f5f;
+}
+
+.ui-section-description--narrow {
+  max-width: 32rem;
+}
+
+.ui-section-description--default {
+  max-width: 40rem;
+}
+
+.ui-section-description--wide {
+  max-width: 48rem;
+}
+
+@media (min-width: 768px) {
+  .ui-section-description {
+    font-size: 1rem;
+  }
 }
 
 .ui-card-grid {

@@ -10,11 +10,18 @@ const bgMap = {
 type SectionProps = {
   children: ReactNode;
   bg?: keyof typeof bgMap;
+  density?: "default" | "dense" | "spacious";
   className?: string;
   containerClassName?: string;
   containerWidth?: "default" | "narrow" | "wide";
   id?: string;
 };
+
+const densityClassMap = {
+  default: "",
+  dense: "ui-section--dense",
+  spacious: "ui-section--spacious",
+} as const;
 
 const containerWidthMap = {
   default: "",
@@ -25,13 +32,14 @@ const containerWidthMap = {
 export function Section({
   children,
   bg,
+  density = "default",
   className = "",
   containerClassName = "",
   containerWidth = "default",
   id,
 }: SectionProps) {
   const bgClass = bg ? bgMap[bg] : "";
-  const sectionClassName = `ui-section ${bgClass} ${className}`.trim();
+  const sectionClassName = `ui-section ${densityClassMap[density]} ${bgClass} ${className}`.trim();
   const innerClassName = `ui-section-container ${containerWidthMap[containerWidth]} ${containerClassName}`.trim();
 
   return (
