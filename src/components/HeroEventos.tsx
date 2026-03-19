@@ -242,11 +242,11 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
       aria-labelledby="home-eventos-destaque-title"
       className="relative w-full overflow-hidden bg-[#f7f6f2] pt-6 pb-8 md:pt-8 md:pb-12"
     >
-      <div className="ui-page-container mb-5 md:mb-7">
+      <div className="ui-page-container mb-5 text-center md:mb-7">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold">
           Agenda em destaque
         </p>
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           <h2
             id="home-eventos-destaque-title"
             className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide"
