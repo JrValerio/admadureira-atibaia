@@ -25,20 +25,19 @@ type MenuItem =
 const menu: MenuItem[] = [
   { label: "Home", href: "/" },
   {
-    label: "Nossa Igreja",
+    label: "Programação",
     children: [
-      { label: "Sobre a Igreja", href: "/sobre" },
-      { label: "História", href: "/historia" },
-      { label: "Pastores", href: "/pastores" },
-      { label: "Congregações", href: "/congregacoes" },
-      { label: "Ministérios", href: "/ministerios" },
+      { label: "Agenda da igreja", href: "/programacao" },
+      { label: "Eventos especiais", href: "/eventos" },
+      { label: "Pedidos de oração", href: "/oracao" },
+      { label: "Dízimos e ofertas", href: "/oferta" },
     ],
   },
   {
     label: "Conteúdo",
     children: [
-      { label: "EBD", href: "/ebd" },
       { label: "Mensagens", href: "/mensagens" },
+      { label: "EBD", href: "/ebd" },
       { label: "Vídeos", href: "/videos" },
       { label: "Testemunhos", href: "/testemunhos" },
     ],
@@ -56,15 +55,16 @@ const menu: MenuItem[] = [
     ],
   },
   {
-    label: "Participe",
+    label: "Nossa Igreja",
     children: [
-      { label: "Programação", href: "/programacao" },
-      { label: "Eventos", href: "/eventos" },
-      { label: "Pedidos de oração", href: "/oracao" },
+      { label: "Sobre a Igreja", href: "/sobre" },
+      { label: "História", href: "/historia" },
+      { label: "Pastores", href: "/pastores" },
+      { label: "Congregações", href: "/congregacoes" },
+      { label: "Ministérios", href: "/ministerios" },
     ],
   },
   { label: "Contato", href: "/contato" },
-  { label: "Oferta", href: "/oferta" },
 ];
 
 function isDirectMenuItem(item: MenuItem): item is Extract<MenuItem, { href: string }> {

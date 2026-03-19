@@ -1,15 +1,21 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const linksPrimeirosPassos = [
+  { label: "Programação", href: "/programacao" },
+  { label: "Eventos", href: "/eventos" },
+  { label: "Mensagens", href: "/mensagens" },
+  { label: "Pedido de oração", href: "/oracao" },
+  { label: "Contato", href: "/contato" },
+  { label: "Dízimos e ofertas", href: "/oferta" },
+];
+
 const linksIgreja = [
   { label: "Sobre a Igreja", href: "/sobre" },
   { label: "Nossa História", href: "/historia" },
   { label: "Nossos Pastores", href: "/pastores" },
+  { label: "Congregações", href: "/congregacoes" },
   { label: "Ministérios", href: "/ministerios" },
-  { label: "Programação", href: "/programacao" },
-  { label: "Eventos", href: "/eventos" },
-  { label: "Mensagens", href: "/mensagens" },
-  { label: "Contato", href: "/contato" },
 ];
 
 const horariosResumidos = [
@@ -123,22 +129,42 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hidden md:block">
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-            A Igreja
-          </h4>
-          <ul className="space-y-3 text-sm">
-            {linksIgreja.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-[#ffa726]"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="space-y-8 text-center md:text-left">
+          <div>
+            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              Primeiros passos
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {linksPrimeirosPassos.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[#ffa726]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+              A Igreja
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {linksIgreja.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="transition-colors hover:text-[#ffa726]"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="space-y-8 text-center md:text-left">
