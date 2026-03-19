@@ -5,7 +5,8 @@ import {
   getLicaoDaSemana,
 } from "@/lib/ebd-utils";
 
-const slideClass = "min-w-80 w-[calc(100vw-3rem)] max-w-120 shrink-0 snap-center md:min-w-0 md:w-auto md:max-w-none";
+const slideClass =
+  "min-w-[84vw] max-w-[21rem] shrink-0 snap-center sm:min-w-0 sm:max-w-none";
 
 export default function HomeEBD() {
   const classeAdultos = getClasseEbdInfo("adultos");
@@ -16,7 +17,7 @@ export default function HomeEBD() {
   return (
     <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
+        <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none">
           {/* Adultos */}
           <div className={slideClass}>
             <article className="ui-panel ui-panel-pad w-full">

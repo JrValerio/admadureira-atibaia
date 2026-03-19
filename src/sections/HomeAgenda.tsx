@@ -19,9 +19,9 @@ export default function HomeAgenda() {
   return (
     <section className="bg-[#f7f6f2] py-7 md:py-14">
       <div className="ui-page-container">
-        <div className="-mx-4 flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:gap-6 md:px-0 md:pb-0 md:snap-none">
+        <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:gap-6 sm:px-0 sm:pb-0 sm:snap-none">
           {proximoCompromisso ? (
-            <article className="ui-panel ui-panel-pad-sm min-w-[83%] shrink-0 snap-center md:min-w-0">
+            <article className="ui-panel ui-panel-pad-sm min-w-[84vw] max-w-[21rem] shrink-0 snap-center sm:min-w-0 sm:max-w-none">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Próximo compromisso
               </p>
@@ -64,7 +64,7 @@ export default function HomeAgenda() {
           ) : null}
 
           {eventoDestaque ? (
-            <article className="ui-panel-accent ui-panel-pad-sm min-w-[83%] shrink-0 snap-center md:min-w-0">
+            <article className="ui-panel-accent ui-panel-pad-sm min-w-[84vw] max-w-[21rem] shrink-0 snap-center sm:min-w-0 sm:max-w-none">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Evento em destaque
               </p>
