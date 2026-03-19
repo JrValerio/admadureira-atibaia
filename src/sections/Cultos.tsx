@@ -69,16 +69,16 @@ export default function Cultos() {
         description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
-      <div className="mb-10 -mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:snap-none md:overflow-visible md:px-0 md:pb-0 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
+      <div className="mb-8 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 md:mb-10 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 xl:gap-6">
         {cultosDestaque.map((culto) => (
           <Card
             key={culto.dia}
-            className="min-w-55 snap-start border border-black/5 bg-white p-3 md:min-w-0 md:p-5"
+            className="h-full border border-black/5 bg-white p-4 md:p-5"
           >
-            <h3 className="mb-2 md:mb-4 font-acme text-base md:text-xl tracking-wide text-[#212121]">
+            <h3 className="mb-2 font-acme text-[15px] tracking-wide text-[#212121] md:mb-4 md:text-xl">
               {culto.dia}
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {culto.horarios.map((horario) => (
                 <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 first:border-t-0 first:pt-0">
                   {horario.slug ? (
@@ -86,19 +86,19 @@ export default function Cultos() {
                       href={`/programacao/${horario.slug}`}
                       className="block rounded-lg transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
                     >
-                      <p className="text-xs font-semibold tracking-wide text-[#212121]">
+                      <p className="text-[11px] font-semibold tracking-wide text-[#212121] md:text-xs">
                         {horario.hora}
                       </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
+                      <p className="mt-0.5 text-[11px] leading-relaxed text-[#5f5f5f] md:text-xs">
                         {horario.nome}
                       </p>
                     </Link>
                   ) : (
                     <>
-                      <p className="text-xs font-semibold tracking-wide text-[#212121]">
+                      <p className="text-[11px] font-semibold tracking-wide text-[#212121] md:text-xs">
                         {horario.hora}
                       </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-[#5f5f5f]">
+                      <p className="mt-0.5 text-[11px] leading-relaxed text-[#5f5f5f] md:text-xs">
                         {horario.nome}
                       </p>
                     </>
