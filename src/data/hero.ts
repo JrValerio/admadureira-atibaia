@@ -109,11 +109,14 @@ export function getHeroEventos(): HeroEvento[] {
   const slides: HeroEvento[] = [
     {
       titulo: "Dízimos e Ofertas",
+      subtitulo:
+        "Página oficial de contribuição da AD Madureira Atibaia, com PIX, dados bancários e orientação segura para quem deseja cooperar com a obra.",
+      ctaLabel: "Ver formas de contribuir",
       alt: "Banner de Dízimos e Ofertas da AD Madureira Atibaia",
       imagem: "/banners/banner-dizimos-e-ofertas.webp",
       href: "/oferta",
       ariaLabel: "Abrir página de dízimos e ofertas",
-      priority: "high",
+      priority: "normal",
       type: "fixed",
     },
     {

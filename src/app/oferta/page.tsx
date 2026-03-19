@@ -52,13 +52,43 @@ export default function OfertaPage() {
       />
       <HeroPage
         variant="full"
-        label="Contribuição"
+        label="Contribuição oficial"
         title="Dízimos e Ofertas"
-        description="Contribua para a obra de Deus e participe da expansão do Evangelho por meio da Assembleia de Deus Ministério Madureira no Campo de Atibaia."
+        description="Página oficial de contribuição da AD Madureira Atibaia, com PIX, dados bancários e orientações para cooperar com segurança, liberdade e reverência."
         image={igrejaHeroMedia.oferta}
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_40%]"
       />
+      <section className="border-b border-black/5 bg-white/90">
+        <div className="ui-page-container ui-page-container--narrow py-5 md:py-6">
+          <div className="ui-panel ui-panel-pad-sm">
+            <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+              Contribuição com transparência
+            </p>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
+                  Coopere com a obra de forma segura e com contexto institucional
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
+                  Esta é a página oficial de contribuição da AD Madureira
+                  Atibaia. Aqui você encontra os canais corretos para ofertar,
+                  confirmar o recebedor e, se precisar, tirar dúvidas antes de
+                  contribuir.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/contato" className="ui-btn-primary">
+                  Tirar dúvidas
+                </Link>
+                <Link href="/programacao" className="ui-btn-secondary">
+                  Ver programação
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-16 md:py-20">
         <div className="ui-page-container ui-page-container--narrow">
 
