@@ -14,11 +14,11 @@ export default function Home() {
   return (
     <main className="pt-0">
       <Hero />
+      <Cultos />
       <HeroEventos eventos={heroEventos} />
       <Destaques />
       <DailySpiritual />
       <HomeEBD />
-      <Cultos />
     </main>
   );
 }
