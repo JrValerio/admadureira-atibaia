@@ -35,6 +35,7 @@ function formatMensagemDate(data: string) {
 
 export default function MensagensPage() {
   const mensagens = getMensagensRecentes();
+  const mensagemMaisRecente = mensagens[0] ?? null;
   const mensagensComPregador = mensagens.filter((mensagem) => mensagem.pregador);
   const mensagensListSchema = buildVideoListJsonLd(mensagens);
   const mensagensSeriesSchema = buildVideoSeriesJsonLd(mensagens);
@@ -61,6 +62,44 @@ export default function MensagensPage() {
         image={igrejaHeroMedia.mensagens}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
+      <section className="border-b border-black/5 bg-white/90">
+        <div className="ui-page-container py-5 md:py-6">
+          <div className="ui-panel ui-panel-pad-sm">
+            <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+              Próximo passo
+            </p>
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
+                  Revise o ensino mais recente e acompanhe o restante do conteúdo
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
+                  Comece pela mensagem mais recente, abra o canal completo da igreja
+                  e, se quiser participar presencialmente, veja também a programação.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {mensagemMaisRecente ? (
+                  <Link href={`/mensagens/${mensagemMaisRecente.slug}`} className="ui-btn-primary">
+                    Ver mensagem mais recente
+                  </Link>
+                ) : null}
+                <a
+                  href="https://www.youtube.com/@ADMadureiraAtibaia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ui-btn-secondary"
+                >
+                  Abrir canal no YouTube
+                </a>
+                <Link href="/programacao" className="ui-btn-secondary">
+                  Ver programação
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-16 md:py-20">
         <div className="ui-page-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
