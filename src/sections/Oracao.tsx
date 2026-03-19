@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Section, SectionTitle } from "@/components/ui";
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
@@ -42,22 +43,21 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
   }
 
   return (
-    <section id="oracao" className="py-12 md:py-24 bg-white">
-      <div className="ui-page-container ui-page-container--narrow">
+    <Section
+      id="oracao"
+      bg="white"
+      className="py-12 md:py-24"
+      containerWidth="narrow"
+    >
         {showHeader ? (
-          <div className="text-center mb-8 md:mb-16">
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-              Estamos aqui por você
-            </p>
-            <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
-              Pedido de Oração
-            </h2>
-            <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-            <p className="text-[#757575] text-sm mt-4 max-w-md mx-auto leading-relaxed">
-              Compartilhe seu pedido conosco. Nossa equipe de intercessão orará
-              por você.
-            </p>
-          </div>
+          <SectionTitle
+            eyebrow="Estamos aqui por você"
+            eyebrowVariant="gold"
+            title="Pedido de Oração"
+            divider
+            width="narrow"
+            description="Compartilhe seu pedido conosco. Nossa equipe de intercessão orará por você."
+          />
         ) : null}
 
         {/* Formulário */}
@@ -174,7 +174,6 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
             </form>
           )}
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

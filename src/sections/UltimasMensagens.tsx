@@ -17,22 +17,20 @@ export default function UltimasMensagens() {
   return (
     <Section id="mensagens" className="bg-white">
       <div>
-        <div className="flex items-end justify-between gap-6 flex-wrap mb-12">
-          <SectionTitle
-            eyebrow="Ensino da semana"
-            title="Últimas Mensagens"
-            center={false}
-            className="mb-0 max-w-2xl"
-            description="Novas mensagens são publicadas semanalmente a partir dos cultos e ministrações da AD Madureira Atibaia. Acompanhe o ensino bíblico compartilhado na igreja e revisite conteúdos que fortalecem a fé."
-          />
-
-          <Link
-            href="/mensagens"
-            className="ui-btn-primary"
-          >
-            Ver todas as mensagens
-          </Link>
-        </div>
+        <SectionTitle
+          eyebrow="Ensino da semana"
+          title="Últimas Mensagens"
+          center={false}
+          width="narrow"
+          className="mb-12"
+          description="Novas mensagens são publicadas semanalmente a partir dos cultos e ministrações da AD Madureira Atibaia. Acompanhe o ensino bíblico compartilhado na igreja e revisite conteúdos que fortalecem a fé."
+          actions={
+            <Link href="/mensagens" className="ui-btn-primary">
+              Ver todas as mensagens
+            </Link>
+          }
+          actionsClassName="sm:ml-auto"
+        />
 
         <CardGrid className="gap-8">
           {mensagens.map((mensagem) => (

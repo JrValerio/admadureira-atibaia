@@ -101,11 +101,13 @@ section[id] {
   padding-inline: 1rem;
 }
 
-.ui-page-container--narrow {
+.ui-page-container--narrow,
+.ui-section-container--narrow {
   max-width: 64rem;
 }
 
-.ui-page-container--footer {
+.ui-page-container--footer,
+.ui-section-container--wide {
   max-width: 80rem;
 }
 

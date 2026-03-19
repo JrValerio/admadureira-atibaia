@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { programacaoSemanal } from "@/data/agenda";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
-import { Section } from "@/components/ui/Section";
+import { Section, SectionTitle } from "@/components/ui";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 import CardMedia from "@/components/media/CardMedia";
 
@@ -126,32 +126,26 @@ export default function Programacao({
       </nav>
 
       {showHeader ? (
-        <div className="text-center mb-8 md:mb-16">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-            Vida da Igreja
-          </p>
-          <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
-            Programação da Igreja
-          </h2>
-          <div className="w-16 h-1 bg-[#ffa726] mx-auto mt-4" />
-        </div>
+        <SectionTitle
+          eyebrow="Vida da Igreja"
+          eyebrowVariant="gold"
+          title="Programação da Igreja"
+          divider
+          width="narrow"
+        />
       ) : null}
 
       <QuadroSemanal />
 
       <div className="mb-10 md:mb-20">
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
-            Cultos e reuniões da semana
-          </p>
-          <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
-            Programação semanal detalhada
-          </h3>
-          <p className="text-[#5f5f5f] leading-relaxed">
-            Consulte cada culto, reunião e atividade fixa da igreja com
-            apoio visual para acompanhar a rotina semanal com clareza.
-          </p>
-        </div>
+        <SectionTitle
+          eyebrow="Cultos e reuniões da semana"
+          eyebrowVariant="gold"
+          title="Programação semanal detalhada"
+          titleAs="h3"
+          className="mb-8"
+          description="Consulte cada culto, reunião e atividade fixa da igreja com apoio visual para acompanhar a rotina semanal com clareza."
+        />
 
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-3 xl:grid-cols-4">
           {programacaoDetalhada.map((item, index) => (
