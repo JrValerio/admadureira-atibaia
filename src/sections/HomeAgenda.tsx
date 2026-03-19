@@ -21,7 +21,7 @@ export default function HomeAgenda() {
       <div className="ui-page-container">
         <div className="-mx-4 flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:gap-6 md:px-0 md:pb-0 md:snap-none">
           {proximoCompromisso ? (
-            <article className="min-w-[83%] shrink-0 snap-center md:min-w-0 rounded-3xl border border-black/5 bg-white p-4 md:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <article className="ui-panel ui-panel-pad-sm min-w-[83%] shrink-0 snap-center md:min-w-0">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Próximo compromisso
               </p>
@@ -64,7 +64,7 @@ export default function HomeAgenda() {
           ) : null}
 
           {eventoDestaque ? (
-            <article className="min-w-[83%] shrink-0 snap-center md:min-w-0 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <article className="ui-panel-accent ui-panel-pad-sm min-w-[83%] shrink-0 snap-center md:min-w-0">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Evento em destaque
               </p>

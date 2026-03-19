@@ -24,7 +24,7 @@ export default function DailySpiritual() {
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
           {/* Versículo */}
           <div className={slideClass}>
-            <article className="h-full w-full rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+            <article className="ui-panel ui-panel-pad h-full w-full">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Versículo do dia
               </p>
@@ -46,7 +46,7 @@ export default function DailySpiritual() {
           {/* Devocional */}
           {devotional ? (
             <div className={slideClass}>
-              <article className="h-full w-full rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+              <article className="ui-panel-accent ui-panel-pad h-full w-full">
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Devocional do dia
                 </p>

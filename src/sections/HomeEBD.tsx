@@ -19,7 +19,7 @@ export default function HomeEBD() {
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
           {/* Adultos */}
           <div className={slideClass}>
-            <article className="w-full rounded-3xl border border-black/5 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+            <article className="ui-panel ui-panel-pad w-full">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Escola Bíblica Dominical
               </p>
@@ -75,7 +75,7 @@ export default function HomeEBD() {
 
           {/* Jovens */}
           <div className={slideClass}>
-            <article className="w-full rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-8">
+            <article className="ui-panel-accent ui-panel-pad w-full">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Escola Bíblica Dominical
               </p>

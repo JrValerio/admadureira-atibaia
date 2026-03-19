@@ -160,7 +160,7 @@ export default function Programacao({
         </div>
       </div>
 
-      <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-sm">
+      <div className="ui-panel-accent ui-panel-pad-lg">
         <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
           Eventos especiais
         </p>
