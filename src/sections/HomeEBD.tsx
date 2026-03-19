@@ -15,7 +15,7 @@ export default function HomeEBD() {
   const licaoJovens = getLicaoDaSemana("jovens");
 
   return (
-    <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16">
+    <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16 [content-visibility:auto] [contain-intrinsic-size:48rem]">
       <div className="mx-auto max-w-6xl px-4">
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none">
           {/* Adultos */}
