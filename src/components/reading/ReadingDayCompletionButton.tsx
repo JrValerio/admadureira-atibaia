@@ -24,7 +24,7 @@ export default function ReadingDayCompletionButton({
       onClick={() => toggleDayCompleted(day)}
       className={
         isCompleted
-          ? "inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#2e7d32] px-5 py-3 text-xs font-bold tracking-widest uppercase text-white transition-colors hover:bg-[#256429]"
+          ? "ui-btn-success whitespace-nowrap"
           : "ui-btn-secondary whitespace-nowrap"
       }
     >

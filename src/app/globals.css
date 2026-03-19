@@ -216,6 +216,8 @@ section[id] {
 
 .ui-btn-primary,
 .ui-btn-secondary,
+.ui-btn-red,
+.ui-btn-success,
 .ui-btn-ghost,
 .ui-btn-ghost-dark {
   display: inline-flex;
@@ -238,6 +240,8 @@ section[id] {
 @media (min-width: 640px) {
   .ui-btn-primary,
   .ui-btn-secondary,
+.ui-btn-red,
+.ui-btn-success,
   .ui-btn-ghost,
   .ui-btn-ghost-dark {
     padding: 0.85rem 1.5rem;
@@ -290,6 +294,17 @@ section[id] {
 
 .ui-btn-red:hover {
   background: #c62828;
+  transform: translateY(-1px);
+}
+
+.ui-btn-success {
+  background: #2e7d32;
+  color: #ffffff;
+  box-shadow: 0 14px 32px rgba(46, 125, 50, 0.22);
+}
+
+.ui-btn-success:hover {
+  background: #256429;
   transform: translateY(-1px);
 }
 

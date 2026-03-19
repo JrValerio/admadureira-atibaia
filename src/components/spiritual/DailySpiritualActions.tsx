@@ -28,14 +28,14 @@ export default function DailySpiritualActions({
       {normalizedLastDay ? (
         <Link
           href={createReadingPlanDayPath(planSlug, normalizedLastDay)}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#ffa726] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+          className="ui-btn-primary whitespace-nowrap"
         >
           Continuar leitura · Dia {normalizedLastDay}
         </Link>
       ) : (
         <Link
           href={createReadingPlanDayPath(planSlug, 1)}
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-[#ffa726] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#ffb74d]"
+          className="ui-btn-primary whitespace-nowrap"
         >
           Começar agora
         </Link>
@@ -43,7 +43,7 @@ export default function DailySpiritualActions({
 
       <Link
         href={createReadingPlanDayPath(planSlug, suggestedDay)}
-        className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#212121] px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold tracking-widest uppercase text-[#212121] transition-colors hover:bg-[#212121] hover:text-white"
+        className="ui-btn-secondary whitespace-nowrap"
       >
         Abrir dia sugerido
       </Link>
@@ -51,10 +51,10 @@ export default function DailySpiritualActions({
       <button
         type="button"
         onClick={() => toggleDayCompleted(suggestedDay)}
-        className={`inline-flex items-center justify-center whitespace-nowrap rounded-full px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-bold tracking-widest uppercase transition-colors ${
+        className={`whitespace-nowrap ${
           isSuggestedDayCompleted
-            ? "bg-[#2e7d32] text-white hover:bg-[#256429]"
-            : "border border-black/10 bg-white text-[#212121] hover:border-[#ffa726]/35 hover:bg-[#fff8ee]"
+            ? "ui-btn-success"
+            : "ui-btn-secondary"
         }`}
       >
         {isSuggestedDayCompleted ? "Leitura concluída" : "Concluir leitura"}
