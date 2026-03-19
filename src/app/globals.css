@@ -105,6 +105,10 @@ section[id] {
   max-width: 64rem;
 }
 
+.ui-page-container--footer {
+  max-width: 80rem;
+}
+
 @media (min-width: 640px) {
   .ui-page-container,
   .ui-section-container {
