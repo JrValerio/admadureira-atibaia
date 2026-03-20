@@ -10,7 +10,7 @@ Website institucional e hub espiritual digital da **Igreja Assembleia de Deus �
 
 Desenvolvido com **Next.js, React, TypeScript e TailwindCSS**, com foco em performance, SEO, organização de conteúdo e experiência mobile-first.
 
-Além da presença institucional, a aplicação funciona como um **hub espiritual digital**, reunindo Bíblia online, devocionais, EBD, agenda e mensagens em um único ponto de acesso.
+Além da presença institucional, a aplicação funciona como um **hub espiritual digital**, reunindo Bíblia online, devocionais, EBD, agenda, mensagens e canais de contato em um único ponto de acesso.
 
 ---
 
@@ -41,6 +41,7 @@ Plataforma digital que centraliza:
 - materiais da Escola Bíblica Dominical
 - mensagens e estudos
 - histórico e identidade institucional
+- canais diretos de contato, oração e localização
 
 ---
 
@@ -71,7 +72,7 @@ Canal direto entre membros, visitantes e a liderança da igreja.
 
 ## 🧠 Arquitetura
 
-```
+```text
 src/
   app/          rotas e páginas (Next.js App Router)
   components/   componentes reutilizáveis de UI
@@ -93,7 +94,7 @@ Separação clara entre interface, conteúdo, lógica e utilitários. Ver [docs/
 | UI | React + TailwindCSS |
 | Linguagem | TypeScript |
 | Deploy | Vercel |
-| Conteúdo bíblico | YouTube Data API |
+| Integração de mídia | YouTube Data API |
 
 ---
 
@@ -103,18 +104,20 @@ Separação clara entre interface, conteúdo, lógica e utilitários. Ver [docs/
 # Clone o repositório
 git clone https://github.com/JrValerio/admadureira-atibaia
 
+# Entre no diretório
+cd admadureira-atibaia
+
 # Instale as dependências
 npm install
 
 # Crie o arquivo de variáveis de ambiente
 cp .env.example .env.local
-# Preencha as variáveis necessárias
 
 # Execute em modo de desenvolvimento
 npm run dev
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000).
+Acesse `http://localhost:3000`.
 
 ---
 
@@ -131,15 +134,18 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ## 📚 EBD — Escopo editorial
 
-Escopo atualmente publicado:
+O projeto mantém estrutura editorial por trimestre e classe, com conteúdo publicado de forma progressiva conforme governança interna.
 
-- **Adultos 1T/2026** — Lição 1 a 13 (completo)
-- **Jovens 1T/2026** — Lição 1 a 13 (completo)
-- **Infantil** — arquitetura mantida, produção editorial pausada
+Situação atual do repositório:
 
-Trimestres futuros estão preparados internamente, mas ficam fora da descoberta pública até atingir o gate editorial de publicação.
+- **Adultos** — acervo estruturado por trimestre em 2026
+- **Jovens** — acervo estruturado por trimestre em 2026
+- **Infantil** — arquitetura mantida, com foco editorial atual no 1º trimestre de 2026
+- materiais em preparação podem existir internamente sem exposição pública imediata
 
-Ver [docs/ebd-governance.md](docs/ebd-governance.md) para a política de publicação, regras de rascunho e o gate de lançamento do `2026-2t`.
+A publicação no front segue critérios de revisão, disponibilidade de material de apoio e decisão editorial do projeto.
+
+Ver [docs/ebd-governance.md](docs/ebd-governance.md) para regras de publicação, rascunho e governança.
 
 ---
 
@@ -153,4 +159,11 @@ Ver [docs/roadmap.md](docs/roadmap.md) para o planejamento de evoluções.
 
 **Assembleia de Deus – Ministério Madureira**
 Praça Pio XII, 122 – Centro – Atibaia/SP
+
 [Instagram](https://www.instagram.com/admadureira_atibaia/) · [YouTube](https://www.youtube.com/@ADMadureiraAtibaia)
+
+---
+
+## 📄 Licença
+
+Uso institucional da igreja. Avalie a política de conteúdo e direitos antes de redistribuir textos, imagens, materiais editoriais ou conteúdos de terceiros.
