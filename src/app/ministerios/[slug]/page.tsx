@@ -89,7 +89,7 @@ export default async function MinisterioPage({ params }: PageProps) {
           <Breadcrumb nome={ministerio.nome} />
 
           <div className="rounded-3xl overflow-hidden bg-white border border-black/5 shadow-lg">
-            <div className="relative aspect-[16/9] bg-[#111]">
+            <div className="relative aspect-video bg-[#111]">
               <Image
                 src={ministerio.imagem ?? "/fachada-da-igreja.jpg"}
                 alt={ministerio.nome}

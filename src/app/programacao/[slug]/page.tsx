@@ -87,7 +87,7 @@ export default async function CultoPage({ params }: Props) {
 
       <main className="min-h-screen bg-[#f5f5f5]">
         {/* Hero banner */}
-        <div className="relative w-full min-h-[320px] overflow-hidden bg-[#111]">
+        <div className="relative w-full min-h-80 overflow-hidden bg-[#111]">
           {culto.banner && (
             <>
               <Image
@@ -101,7 +101,7 @@ export default async function CultoPage({ params }: Props) {
               <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/80" />
             </>
           )}
-          <div className="relative z-10 ui-page-container ui-page-container--narrow flex min-h-[320px] flex-col justify-end py-10 md:py-14">
+          <div className="relative z-10 ui-page-container ui-page-container--narrow flex min-h-80 flex-col justify-end py-10 md:py-14">
             <nav
               aria-label="Breadcrumb"
               className="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/55"

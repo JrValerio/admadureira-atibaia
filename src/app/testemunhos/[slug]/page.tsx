@@ -139,7 +139,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
           <Breadcrumb nome={testemunho.titulo} />
 
           <div className="rounded-3xl overflow-hidden bg-white border border-black/5 shadow-lg">
-            <div className="relative aspect-[16/9] bg-[#111]">
+            <div className="relative aspect-video bg-[#111]">
               <Image
                 src={testemunho.foto ?? "/pulpito-da-igreja.jpg"}
                 alt={testemunho.titulo}

@@ -169,7 +169,7 @@ export default function OfertaPage() {
                 QR Code para contribuição
               </h2>
 
-              <div className="inline-flex rounded-[2rem] bg-[#f8f8f8] border border-black/5 p-4 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
+              <div className="inline-flex rounded-4xl bg-[#f8f8f8] border border-black/5 p-4 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
                 <Image
                   src={ofertaData.pix.qrCodePath}
                   alt="QR Code PIX da AD Madureira Atibaia"

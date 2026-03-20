@@ -115,7 +115,7 @@ export default async function EventoPage({ params }: PageProps) {
           </nav>
 
           <div className="rounded-3xl overflow-hidden bg-white shadow-lg border border-black/5">
-            <div className="relative w-full aspect-[16/9] bg-[#111]">
+            <div className="relative aspect-video w-full bg-[#111]">
               <Image
                 src={eventImage}
                 alt={evento.titulo}

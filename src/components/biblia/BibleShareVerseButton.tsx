@@ -328,7 +328,7 @@ export default function BibleShareVerseButton({
 
       {isOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
-          <div className="w-full max-w-xl rounded-[2rem] bg-white p-6 shadow-2xl md:p-8">
+          <div className="w-full max-w-xl rounded-4xl bg-white p-6 shadow-2xl md:p-8">
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">

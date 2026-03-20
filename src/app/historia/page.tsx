@@ -156,7 +156,7 @@ export default function HistoriaPage() {
               </div>
             </div>
 
-            <div className="rounded-[2rem] bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
+            <div className="rounded-4xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
               <div className="text-center max-w-3xl mx-auto mb-12">
                 <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
                   Da origem ao presente

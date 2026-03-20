@@ -1,0 +1,8 @@
+{
+  "hints": {
+    "axe/aria": "error",
+    "compat-api/css": "off",
+    "compat-api/html": "off",
+    "no-inline-styles": "off"
+  }
+}

@@ -335,7 +335,7 @@ export default async function BibliaChapterPage({
                     id={`v${verse.numero}`}
                     className="group -mx-3 flex items-start gap-3 rounded-2xl px-3 py-2 scroll-mt-28 transition-colors duration-300 data-[verse-target=true]:bg-[#fff8ee] data-[verse-target=true]:ring-1 data-[verse-target=true]:ring-[#ffa726]/20"
                   >
-                    <span className="mt-1 min-w-[28px] text-xs font-semibold text-[#ef5350]">
+                    <span className="mt-1 min-w-7 text-xs font-semibold text-[#ef5350]">
                       {verse.numero}
                     </span>
                     <p className="flex-1">

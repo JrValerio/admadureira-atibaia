@@ -173,7 +173,7 @@ export default function Eventos({
               <Link
                 key={grupo.id}
                 href={`#${getGrupoSectionId(grupo)}`}
-                className="inline-flex min-h-[3rem] items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-center text-xs font-bold tracking-[0.14em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
+                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-center text-xs font-bold tracking-[0.14em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
               >
                 {grupo.mes} ({grupo.eventos.length})
               </Link>

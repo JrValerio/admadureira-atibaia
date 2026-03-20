@@ -173,7 +173,7 @@ export default function CongregacoesPage() {
                   href={`/congregacoes/${congregacao.slug}`}
                   className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow"
                 >
-                  <div className="relative aspect-[16/9] bg-[#111] overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden bg-[#111]">
                     <Image
                       src={congregacao.imagem}
                       alt={congregacao.igreja}
