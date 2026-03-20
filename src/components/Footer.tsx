@@ -80,16 +80,15 @@ const redes = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="ui-page-container ui-page-container--footer grid gap-6 py-8 md:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)] md:items-start md:gap-8 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.95fr_0.95fr] xl:gap-10">
-        <div className="flex flex-col items-center text-center space-y-4 md:max-w-sm md:items-start md:text-left md:space-y-6">
+      <div className="ui-page-container ui-page-container--footer grid gap-6 py-8 md:grid-cols-2 md:items-start md:gap-x-8 md:gap-y-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.8fr_0.95fr_1fr] xl:gap-x-10 xl:gap-y-8">
+        <div className="flex flex-col items-center space-y-4 text-center md:col-span-2 md:max-w-none md:items-start md:text-left md:space-y-6 xl:col-span-1 xl:max-w-sm">
           <div className="flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-4">
             <Image
               src="/logo-transparent.png"
               alt="Logo AD Madureira Atibaia"
               width={76}
               height={76}
-              className="drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
-              style={{ width: "auto", height: "auto" }}
+              className="h-auto w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
             />
             <div className="space-y-1">
               <p className="text-base font-semibold leading-snug text-white">
@@ -168,139 +167,43 @@ export default function Footer() {
           </details>
         </div>
 
-        <div className="hidden md:grid md:grid-cols-2 md:gap-6 md:text-left xl:hidden">
-          <div className="space-y-6">
-            <div>
-              <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-                Primeiros passos
-              </h4>
-              <ul className="space-y-3 text-sm">
-                {linksPrimeirosPassos.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="transition-colors hover:text-[#ffa726]"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-                A Igreja
-              </h4>
-              <ul className="space-y-3 text-sm">
-                {linksIgreja.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="transition-colors hover:text-[#ffa726]"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-                Endereço
-              </h4>
-              <div className="space-y-3 text-sm leading-relaxed">
-                <p>
-                  Praça Pio XII, 122
-                  <br />
-                  Centro - Atibaia/SP
-                  <br />
-                  CEP 12940-160
-                </p>
-                <a
-                  href="https://wa.me/5511916116102"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
+        <div className="hidden md:block md:text-left">
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+            Primeiros passos
+          </h4>
+          <ul className="space-y-3 text-sm">
+            {linksPrimeirosPassos.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="transition-colors hover:text-[#ffa726]"
                 >
-                  (11) 91611-6102
-                </a>
-                <div className="space-y-2 pt-1">
-                  <a
-                    href={MAPS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-white/70 transition-colors hover:text-white"
-                  >
-                    Ver no Google Maps
-                  </a>
-                  <Link
-                    href="/contato"
-                    className="block text-white/70 transition-colors hover:text-white"
-                  >
-                    Como chegar
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-                Horários de Culto
-              </h4>
-              <ul className="space-y-4 text-sm leading-relaxed">
-                {horariosResumidos.map((horario) => (
-                  <li key={horario}>
-                    {horario}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="hidden space-y-8 xl:block xl:text-left">
-          <div>
-            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Primeiros passos
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {linksPrimeirosPassos.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-[#ffa726]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              A Igreja
-            </h4>
-            <ul className="space-y-3 text-sm">
-              {linksIgreja.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-[#ffa726]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="hidden md:block md:text-left">
+          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+            A Igreja
+          </h4>
+          <ul className="space-y-3 text-sm">
+            {linksIgreja.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="transition-colors hover:text-[#ffa726]"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="space-y-6 text-center md:hidden xl:block xl:space-y-8 xl:text-left">
+        <div className="space-y-6 text-center md:text-left">
           <div>
             <h4 className="mb-3 font-acme text-sm tracking-[0.22em] text-white uppercase md:mb-4">
               Endereço
@@ -341,7 +244,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hidden xl:block">
+        <div className="hidden md:block md:text-left">
           <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
             Horários de Culto
           </h4>
