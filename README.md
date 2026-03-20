@@ -18,6 +18,10 @@ Além da presença institucional, a aplicação funciona como um **hub espiritua
 
 **[admadureiraatibaia.com.br](https://admadureiraatibaia.com.br)**
 
+## 🏠 Home
+
+![Home](./docs/screenshots/home.png)
+
 ---
 
 ## 🎯 Problema
@@ -67,6 +71,22 @@ Apresentação dos ministérios da igreja com informações e formas de contato.
 
 ### 🙏 Pedidos de Oração e Contato
 Canal direto entre membros, visitantes e a liderança da igreja.
+
+---
+
+## 📸 Preview
+
+### Programação
+![Programação](./docs/screenshots/programacao.png)
+
+### EBD
+![EBD](./docs/screenshots/ebd.png)
+
+### Espiritualidade
+![Espiritualidade](./docs/screenshots/espiritualidade.png)
+
+### Conteúdo e vídeos
+![Conteúdo e vídeos](./docs/screenshots/videos.png)
 
 ---
 
