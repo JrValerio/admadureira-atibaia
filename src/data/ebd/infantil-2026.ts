@@ -12,12 +12,6 @@ type LicaoSeed = {
   enfase: string;
 };
 
-type PlaceholderQuarterConfig = {
-  slug: string;
-  trimestre: TrimestreEBD["trimestre"];
-  imagem: string;
-};
-
 const apoioProfessorBase = [
   "Use linguagem simples, participação ativa e exemplos do cotidiano para conectar a lição com a rotina das crianças.",
   "Feche a aula com oração, memorização do versículo e revisão da aplicação da semana.",
@@ -62,65 +56,6 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
     aplicacao: seed.aplicacao,
     apoioProfessor: apoioProfessorBase,
     apoioAluno: apoioAlunoBase,
-  };
-}
-
-function adicionarSemanas(dataInicial: string, semanas: number) {
-  const date = new Date(`${dataInicial}T12:00:00-03:00`);
-  date.setDate(date.getDate() + semanas * 7);
-  return date.toISOString().slice(0, 10);
-}
-
-function criarLicaoPlaceholder(
-  edicao: string,
-  numero: number,
-  data: string
-): LicaoEBD {
-  return {
-    id: `infantil-${edicao}-licao-${numero}`,
-    slug: `licao-${numero}`,
-    numero,
-    data,
-    statusEditorial: "draft",
-    titulo: `Lição ${numero}`,
-    resumo:
-      "Conteúdo em preparação para a classe Infantil. Esta lição será publicada com linguagem simples, bíblica e acolhedora.",
-    leituraBiblica: [],
-    objetivos: [],
-    topicos: [],
-    aplicacao:
-      "Acompanhe esta edição da EBD e volte em breve para acessar a lição completa.",
-  };
-}
-
-function criarTrimestrePlaceholder({
-  slug,
-  trimestre,
-  imagem,
-}: PlaceholderQuarterConfig): TrimestreEBD {
-  const dataInicialPorEdicao: Record<string, string> = {
-    "2026-2t": "2026-04-05",
-    "2026-3t": "2026-07-05",
-    "2026-4t": "2026-10-04",
-  };
-  const dataInicial = dataInicialPorEdicao[slug];
-
-  return {
-    id: `infantil-${slug}`,
-    slug,
-    ano: 2026,
-    trimestre,
-    statusEditorial: "draft",
-    rotulo: `${trimestre}º Trimestre de 2026`,
-    titulo: `${trimestre}º Trimestre de 2026`,
-    subtitulo: "Conteúdo em preparação",
-    descricao:
-      "Esta edição da classe Infantil já está aberta no site e receberá as lições progressivamente conforme a curadoria e a revisão editorial forem concluídas.",
-    classe: "infantil",
-    imagem,
-    licoes: Array.from({ length: 13 }, (_, index) =>
-      criarLicaoPlaceholder(slug, index + 1, adicionarSemanas(dataInicial, index))
-    ),
   };
 }
 
@@ -287,19 +222,4 @@ export const infantil2026Trimestres: TrimestreEBD[] = [
     versiculoBase: "Lucas 2:52",
     licoes: sementesInfantilPrimeiroTrimestre.map(criarLicao),
   },
-  criarTrimestrePlaceholder({
-    slug: "2026-2t",
-    trimestre: 2,
-    imagem: "/images/EBD/ebd-2t.png",
-  }),
-  criarTrimestrePlaceholder({
-    slug: "2026-3t",
-    trimestre: 3,
-    imagem: "/images/EBD/ebd-2t.png",
-  }),
-  criarTrimestrePlaceholder({
-    slug: "2026-4t",
-    trimestre: 4,
-    imagem: "/images/EBD/ebd-2t.png",
-  }),
 ];
