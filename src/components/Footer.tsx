@@ -77,6 +77,69 @@ const redes = [
   },
 ];
 
+function FooterSectionTitle({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <h4
+      className={`font-acme text-sm tracking-[0.22em] text-white uppercase ${className}`.trim()}
+    >
+      {children}
+    </h4>
+  );
+}
+
+function FooterLinkList({
+  links,
+  className = "",
+}: {
+  links: { label: string; href: string }[];
+  className?: string;
+}) {
+  return (
+    <ul className={`text-sm ${className}`.trim()}>
+      {links.map((link) => (
+        <li key={link.href}>
+          <Link
+            href={link.href}
+            className="transition-colors hover:text-[#ffa726]"
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function FooterDisclosure({
+  title,
+  links,
+  className = "",
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+  className?: string;
+}) {
+  return (
+    <details
+      className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden ${className}`.trim()}
+    >
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-[#ffa726] focus-visible:text-[#ffa726]">
+        <FooterSectionTitle>{title}</FooterSectionTitle>
+        <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180">
+          ▾
+        </span>
+      </summary>
+      <FooterLinkList links={links} className="mt-4 space-y-2.5" />
+    </details>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
@@ -128,88 +191,45 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-5 text-center md:hidden">
-          <div>
-            <h4 className="mb-3 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              Primeiros passos
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              {linksPrimeirosPassos.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-[#ffa726]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <details className="group mx-auto max-w-xs text-center [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer list-none items-center justify-center gap-2 font-acme text-sm tracking-[0.22em] text-white uppercase">
-              A Igreja
-              <span className="text-[10px] text-white/45">▾</span>
-            </summary>
-            <ul className="mt-3 space-y-2.5 text-sm">
-              {linksIgreja.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="transition-colors hover:text-[#ffa726]"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </details>
+        <div className="space-y-4 text-center md:col-span-1 md:text-left xl:hidden">
+          <FooterDisclosure
+            title="Primeiros passos"
+            links={linksPrimeirosPassos}
+            className="md:max-w-none"
+          />
+          <FooterDisclosure
+            title="A Igreja"
+            links={linksIgreja}
+            className="md:max-w-none"
+          />
         </div>
 
-        <div className="hidden md:block md:text-left">
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+        <div className="hidden xl:block xl:text-left">
+          <FooterSectionTitle className="mb-4">
             Primeiros passos
-          </h4>
-          <ul className="space-y-3 text-sm">
-            {linksPrimeirosPassos.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-[#ffa726]"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          </FooterSectionTitle>
+          <FooterLinkList links={linksPrimeirosPassos} className="space-y-3" />
         </div>
 
-        <div className="hidden md:block md:text-left">
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+        <div className="hidden xl:block xl:text-left">
+          <FooterSectionTitle className="mb-4">
             A Igreja
-          </h4>
-          <ul className="space-y-3 text-sm">
-            {linksIgreja.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-[#ffa726]"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          </FooterSectionTitle>
+          <FooterLinkList links={linksIgreja} className="space-y-3" />
         </div>
 
         <div className="space-y-6 text-center md:text-left">
           <div>
-            <h4 className="mb-3 font-acme text-sm tracking-[0.22em] text-white uppercase md:mb-4">
+            <FooterSectionTitle className="mb-3 md:mb-4">
               Endereço
-            </h4>
+            </FooterSectionTitle>
             <div className="space-y-3 text-sm leading-relaxed">
-              <p>
+              <p className="xl:hidden">
+                Praça Pio XII, 122 · Centro - Atibaia/SP
+                <br />
+                CEP 12940-160
+              </p>
+              <p className="hidden xl:block">
                 Praça Pio XII, 122
                 <br />
                 Centro - Atibaia/SP
@@ -244,10 +264,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="hidden md:block md:text-left">
-          <h4 className="mb-4 font-acme text-sm tracking-[0.22em] text-white uppercase">
+        <div className="space-y-6 text-center md:text-left">
+          <FooterSectionTitle className="mb-4">
             Horários de Culto
-          </h4>
+          </FooterSectionTitle>
           <ul className="space-y-4 text-sm leading-relaxed">
             {horariosResumidos.map((horario) => (
               <li key={horario}>
