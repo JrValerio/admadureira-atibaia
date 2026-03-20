@@ -20,8 +20,10 @@ type NavigatorWithConnection = Navigator & {
   connection?: LegacyNetworkInformation;
 };
 
-const HERO_SETTLE_DELAY_MS = 1800;
+const HERO_SETTLE_DELAY_MS = 1200;
 const IDLE_CALLBACK_TIMEOUT_MS = 1400;
+const HERO_INTENT_VIDEO_DELAY_MS = 180;
+const HERO_NO_INTENT_FALLBACK_MS = 12000;
 
 export default function HeroBackgroundMedia() {
   const [showAnimatedMedia, setShowAnimatedMedia] = useState(false);
@@ -127,25 +129,74 @@ export default function HeroBackgroundMedia() {
       };
 
     const windowWithIdleCallback = window as WindowWithIdleCallback;
-    let timeoutId: number | null = null;
+    let settleTimeoutId: number | null = null;
     let idleId: number | null = null;
+    let intentTimeoutId: number | null = null;
+    let fallbackTimeoutId: number | null = null;
+    let detachIntentListeners: (() => void) | null = null;
+
+    const cleanupIntentListeners = () => {
+      detachIntentListeners?.();
+      detachIntentListeners = null;
+    };
 
     const finalizeVideoRender = () => {
-      timeoutId = window.setTimeout(() => {
+      cleanupIntentListeners();
+
+      if (fallbackTimeoutId !== null) {
+        window.clearTimeout(fallbackTimeoutId);
+        fallbackTimeoutId = null;
+      }
+
+      if (intentTimeoutId !== null) {
+        return;
+      }
+
+      intentTimeoutId = window.setTimeout(() => {
         setAllowVideoRender(true);
-      }, HERO_SETTLE_DELAY_MS);
+      }, HERO_INTENT_VIDEO_DELAY_MS);
+    };
+
+    const armIntentGate = () => {
+      const interactionEvents = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"] as const;
+      const cleanups = interactionEvents.map((eventName) => {
+        const listener = () => {
+          finalizeVideoRender();
+        };
+
+        window.addEventListener(eventName, listener, {
+          once: true,
+          passive: eventName !== "keydown",
+        });
+
+        return () => window.removeEventListener(eventName, listener);
+      });
+
+      detachIntentListeners = () => {
+        cleanups.forEach((cleanup) => cleanup());
+      };
+
+      fallbackTimeoutId = window.setTimeout(() => {
+        finalizeVideoRender();
+      }, HERO_NO_INTENT_FALLBACK_MS);
     };
 
     const scheduleVideoRender = () => {
+      const armAfterSettle = () => {
+        settleTimeoutId = window.setTimeout(() => {
+          armIntentGate();
+        }, HERO_SETTLE_DELAY_MS);
+      };
+
       if (typeof windowWithIdleCallback.requestIdleCallback === "function") {
         idleId = windowWithIdleCallback.requestIdleCallback(() => {
-          finalizeVideoRender();
+          armAfterSettle();
         }, { timeout: IDLE_CALLBACK_TIMEOUT_MS });
 
         return;
       }
 
-      finalizeVideoRender();
+      armAfterSettle();
     };
 
     if (document.readyState === "complete") {
@@ -164,8 +215,18 @@ export default function HeroBackgroundMedia() {
           windowWithIdleCallback.cancelIdleCallback?.(idleId);
         }
 
-        if (timeoutId !== null) {
-          window.clearTimeout(timeoutId);
+        cleanupIntentListeners();
+
+        if (settleTimeoutId !== null) {
+          window.clearTimeout(settleTimeoutId);
+        }
+
+        if (intentTimeoutId !== null) {
+          window.clearTimeout(intentTimeoutId);
+        }
+
+        if (fallbackTimeoutId !== null) {
+          window.clearTimeout(fallbackTimeoutId);
         }
       };
     }
@@ -175,8 +236,18 @@ export default function HeroBackgroundMedia() {
         windowWithIdleCallback.cancelIdleCallback?.(idleId);
       }
 
-      if (timeoutId !== null) {
-        window.clearTimeout(timeoutId);
+      cleanupIntentListeners();
+
+      if (settleTimeoutId !== null) {
+        window.clearTimeout(settleTimeoutId);
+      }
+
+      if (intentTimeoutId !== null) {
+        window.clearTimeout(intentTimeoutId);
+      }
+
+      if (fallbackTimeoutId !== null) {
+        window.clearTimeout(fallbackTimeoutId);
       }
     };
   }, [showAnimatedMedia]);
