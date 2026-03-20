@@ -87,7 +87,7 @@ export default async function CultoPage({ params }: Props) {
 
       <main className="min-h-screen bg-[#f5f5f5]">
         {/* Hero banner */}
-        <div className="relative w-full bg-[#111] overflow-hidden" style={{ minHeight: "320px" }}>
+        <div className="relative w-full min-h-[320px] overflow-hidden bg-[#111]">
           {culto.banner && (
             <>
               <Image

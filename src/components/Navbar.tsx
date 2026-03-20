@@ -87,11 +87,20 @@ function isMenuItemActive(pathname: string, item: MenuItem) {
   return item.children.some((child) => isLinkActive(pathname, child.href));
 }
 
+function getMobileMenuSectionId(label: string) {
+  return `mobile-menu-section-${label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/\s+/g, "-")}`;
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const pathname = usePathname();
+  const mobileMenuId = "primary-mobile-menu";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -222,6 +231,7 @@ export default function Navbar() {
               onClick={toggleMenu}
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
+              aria-controls={mobileMenuId}
             >
               <div className="w-5 h-0.5 bg-white mb-1" />
               <div className="w-5 h-0.5 bg-white mb-1" />
@@ -230,9 +240,13 @@ export default function Navbar() {
           </div>
         </div>
 
-        {menuOpen && (
-          <div className="border-t border-white/10 bg-[#121212] xl:hidden">
-            <div className="ui-page-container max-h-[calc(100dvh-5rem)] overflow-y-auto py-2 md:py-3">
+        <nav
+          id={mobileMenuId}
+          aria-label="Menu principal"
+          hidden={!menuOpen}
+          className="border-t border-white/10 bg-[#121212] xl:hidden"
+        >
+          <div className="ui-page-container max-h-[calc(100dvh-5rem)] overflow-y-auto py-2 md:py-3">
             {menu.map((item) => {
               if (isDirectMenuItem(item)) {
                 return (
@@ -252,6 +266,7 @@ export default function Navbar() {
               }
 
               const isOpen = openCategory === item.label;
+              const sectionId = getMobileMenuSectionId(item.label);
 
               return (
                 <div key={item.label}>
@@ -267,6 +282,8 @@ export default function Navbar() {
                         ? "text-[#ffa726]"
                         : "text-white/70"
                     }`}
+                    aria-expanded={isOpen}
+                    aria-controls={sectionId}
                   >
                     {item.label}
                     <span
@@ -275,30 +292,31 @@ export default function Navbar() {
                       ▾
                     </span>
                   </button>
-                  {isOpen && (
-                    <div className="space-y-1 border-l border-white/10 pl-3 pb-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={closeMenu}
-                          className={`block py-2 text-sm transition-colors ${
-                            isLinkActive(pathname, child.href)
-                              ? "text-[#ffa726]"
-                              : "text-white/70 hover:text-[#ffa726]"
-                          }`}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div
+                    id={sectionId}
+                    hidden={!isOpen}
+                    className="space-y-1 border-l border-white/10 pl-3 pb-3"
+                  >
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={closeMenu}
+                        className={`block py-2 text-sm transition-colors ${
+                          isLinkActive(pathname, child.href)
+                            ? "text-[#ffa726]"
+                            : "text-white/70 hover:text-[#ffa726]"
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               );
             })}
-            </div>
           </div>
-        )}
+        </nav>
       </div>
     </header>
   );
