@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type LegacyMediaQueryList = MediaQueryList & {
   addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
@@ -20,20 +20,12 @@ type NavigatorWithConnection = Navigator & {
   connection?: LegacyNetworkInformation;
 };
 
-type WindowWithIdleCallback = Window & {
-  requestIdleCallback?: (
-    callback: () => void,
-    options?: { timeout: number }
-  ) => number;
-  cancelIdleCallback?: (handle: number) => void;
-};
+const VIDEO_RENDER_DELAY_MS = 2600;
 
 export default function HeroBackgroundMedia() {
   const [showAnimatedMedia, setShowAnimatedMedia] = useState(false);
   const [allowVideoRender, setAllowVideoRender] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
-  const [translateY, setTranslateY] = useState(0);
-  const mediaLayerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const desktopMedia = window.matchMedia("(min-width: 768px)") as LegacyMediaQueryList;
@@ -119,63 +111,44 @@ export default function HeroBackgroundMedia() {
       return;
     }
 
-    const currentWindow = window as WindowWithIdleCallback;
     let timeoutId: number | null = null;
-    let idleId: number | null = null;
-
-    if (typeof currentWindow.requestIdleCallback === "function") {
-      idleId = currentWindow.requestIdleCallback(() => {
-        setAllowVideoRender(true);
-      }, { timeout: 1400 });
-    } else {
+    const scheduleVideoRender = () => {
       timeoutId = window.setTimeout(() => {
         setAllowVideoRender(true);
-      }, 900);
+      }, VIDEO_RENDER_DELAY_MS);
+    };
+
+    if (document.readyState === "complete") {
+      scheduleVideoRender();
+    } else {
+      const handleLoad = () => {
+        scheduleVideoRender();
+      };
+
+      window.addEventListener("load", handleLoad, { once: true });
+
+      return () => {
+        window.removeEventListener("load", handleLoad);
+
+        if (timeoutId !== null) {
+          window.clearTimeout(timeoutId);
+        }
+      };
     }
 
     return () => {
-      if (idleId !== null) {
-        currentWindow.cancelIdleCallback?.(idleId);
-      }
-
       if (timeoutId !== null) {
         window.clearTimeout(timeoutId);
       }
     };
   }, [showAnimatedMedia]);
 
-  useEffect(() => {
-    if (!showAnimatedMedia || !allowVideoRender) {
-      return;
-    }
-
-    const handleScroll = () => {
-      setTranslateY(Math.min(window.scrollY * 0.08, 18));
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [allowVideoRender, showAnimatedMedia]);
-
-  useLayoutEffect(() => {
-    if (!mediaLayerRef.current) {
-      return;
-    }
-
-    mediaLayerRef.current.style.transform = `translateY(${translateY}px)`;
-  }, [translateY]);
-
   if (!showAnimatedMedia || !allowVideoRender) {
     return null;
   }
 
   return (
-    <div
-      ref={mediaLayerRef}
-      className="pointer-events-none absolute inset-0 will-change-transform"
-    >
+    <div className="pointer-events-none absolute inset-0">
       <video
         autoPlay
         loop
@@ -184,7 +157,7 @@ export default function HeroBackgroundMedia() {
         preload="none"
         poster="/fachada-da-igreja.jpg"
         aria-hidden="true"
-        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-700 ${
+        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ${
           videoReady ? "opacity-100 animate-hero-media-in" : "opacity-0"
         }`}
         onCanPlay={() => setVideoReady(true)}

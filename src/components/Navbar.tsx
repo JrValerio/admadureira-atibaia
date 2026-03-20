@@ -122,8 +122,8 @@ export default function Navbar() {
       <div
         className={`border-b border-white/5 transition-all duration-300 ${
           scrolled
-            ? "bg-[#111111]/92 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
-            : "bg-[#111111]/86 backdrop-blur-md"
+            ? "bg-[#111111]/92 shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
+            : "bg-[#111111]/86"
         }`}
       >
         <div

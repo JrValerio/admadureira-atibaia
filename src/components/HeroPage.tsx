@@ -48,6 +48,9 @@ export default function HeroPage({
           alt={imageAlt}
           fill
           priority={priority}
+          fetchPriority={priority ? "high" : undefined}
+          decoding={isFull ? "sync" : "async"}
+          quality={isFull ? 68 : 72}
           sizes={
             isFull
               ? "100vw"
@@ -60,7 +63,7 @@ export default function HeroPage({
       <div
         className={`absolute inset-0 ${
           isFull
-            ? "bg-linear-to-b from-black/70 via-black/45 to-black/78"
+            ? "bg-linear-to-b from-black/66 via-black/42 to-black/76"
             : "bg-linear-to-b from-black/78 via-black/55 to-black/82"
         }`.trim()}
       />

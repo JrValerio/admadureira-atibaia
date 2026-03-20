@@ -14,15 +14,17 @@ export default function Hero() {
         alt="Fachada da Igreja AD Madureira Atibaia"
         fill
         sizes="100vw"
-        quality={82}
+        quality={74}
+        fetchPriority="high"
+        decoding="sync"
         className="object-cover object-center"
         priority
       />
       <HeroBackgroundMedia />
 
       {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-black/38 to-black/64" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.1),transparent_60%)]" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/48 via-black/36 to-black/62" />
+      <div className="absolute inset-0 hidden lg:block bg-[radial-gradient(circle_at_center,rgba(255,167,38,0.08),transparent_58%)]" />
       <div className="absolute inset-0 hero-vignette pointer-events-none" />
 
       <div className="relative z-10 ui-page-container flex flex-col items-center justify-center pt-8 pb-10 text-center sm:pt-10 sm:pb-12 md:pt-12 md:pb-14 lg:py-0">
