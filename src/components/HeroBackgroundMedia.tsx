@@ -20,7 +20,8 @@ type NavigatorWithConnection = Navigator & {
   connection?: LegacyNetworkInformation;
 };
 
-const VIDEO_RENDER_DELAY_MS = 2600;
+const HERO_SETTLE_DELAY_MS = 1800;
+const IDLE_CALLBACK_TIMEOUT_MS = 1400;
 
 export default function HeroBackgroundMedia() {
   const [showAnimatedMedia, setShowAnimatedMedia] = useState(false);
@@ -111,11 +112,40 @@ export default function HeroBackgroundMedia() {
       return;
     }
 
+    type IdleDeadline = {
+      didTimeout: boolean;
+      timeRemaining: () => number;
+    };
+
+    type WindowWithIdleCallback = Window &
+      typeof globalThis & {
+        requestIdleCallback?: (
+          callback: (deadline: IdleDeadline) => void,
+          options?: { timeout: number }
+        ) => number;
+        cancelIdleCallback?: (handle: number) => void;
+      };
+
+    const windowWithIdleCallback = window as WindowWithIdleCallback;
     let timeoutId: number | null = null;
-    const scheduleVideoRender = () => {
+    let idleId: number | null = null;
+
+    const finalizeVideoRender = () => {
       timeoutId = window.setTimeout(() => {
         setAllowVideoRender(true);
-      }, VIDEO_RENDER_DELAY_MS);
+      }, HERO_SETTLE_DELAY_MS);
+    };
+
+    const scheduleVideoRender = () => {
+      if (typeof windowWithIdleCallback.requestIdleCallback === "function") {
+        idleId = windowWithIdleCallback.requestIdleCallback(() => {
+          finalizeVideoRender();
+        }, { timeout: IDLE_CALLBACK_TIMEOUT_MS });
+
+        return;
+      }
+
+      finalizeVideoRender();
     };
 
     if (document.readyState === "complete") {
@@ -130,6 +160,10 @@ export default function HeroBackgroundMedia() {
       return () => {
         window.removeEventListener("load", handleLoad);
 
+        if (idleId !== null) {
+          windowWithIdleCallback.cancelIdleCallback?.(idleId);
+        }
+
         if (timeoutId !== null) {
           window.clearTimeout(timeoutId);
         }
@@ -137,6 +171,10 @@ export default function HeroBackgroundMedia() {
     }
 
     return () => {
+      if (idleId !== null) {
+        windowWithIdleCallback.cancelIdleCallback?.(idleId);
+      }
+
       if (timeoutId !== null) {
         window.clearTimeout(timeoutId);
       }
@@ -149,23 +187,25 @@ export default function HeroBackgroundMedia() {
 
   return (
     <div className="pointer-events-none absolute inset-0">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster="/fachada-da-igreja.jpg"
-        aria-hidden="true"
-        className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ${
-          videoReady ? "opacity-100 animate-hero-media-in" : "opacity-0"
-        }`}
-        onCanPlay={() => setVideoReady(true)}
-        onLoadedData={() => setVideoReady(true)}
-        disablePictureInPicture
-      >
-        <source src="/fachada-da-igreja.mp4" type="video/mp4" />
-      </video>
+      {/* Keep the still image as the first-paint anchor; the video only enriches it after the hero settles. */}
+      <div className="absolute inset-px overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          className={`absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ${
+            videoReady ? "opacity-[0.72] animate-hero-media-in" : "opacity-0"
+          }`}
+          onCanPlay={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
+          disablePictureInPicture
+        >
+          <source src="/fachada-da-igreja.mp4" type="video/mp4" />
+        </video>
+      </div>
     </div>
   );
 }
