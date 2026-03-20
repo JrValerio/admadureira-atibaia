@@ -1,5 +1,12 @@
 import type { ClasseEBD } from "@/data/ebd";
 import {
+  CHURCH_FIELD_NAME,
+  CHURCH_OFFICIAL_NAME,
+  CHURCH_SCRIPT_NAME,
+  SEDE_ADDRESS_PRINT,
+  SEDE_CONTACT,
+} from "@/data/site";
+import {
   getClassesEbdPublicadas,
   getLicao,
   getTrimestresEbdPublicos,
@@ -11,11 +18,11 @@ import {
 export type EbdPrintMode = "pdf-resumo" | "pdf-completo";
 
 export const EBD_PRINT_BRANDING = {
-  officialName: "Igreja Assembleia de Deus - Ministério Madureira",
-  scriptName: "Assembleia de Deus",
-  subtitle: "Ministério Madureira · Campo de Atibaia",
-  addressLine: "Praça Pio XII, 122 · Centro · Atibaia/SP · CEP 12940-160",
-  phone: "(11) 91611-6102",
+  officialName: CHURCH_OFFICIAL_NAME,
+  scriptName: CHURCH_SCRIPT_NAME,
+  subtitle: `Ministério Madureira · ${CHURCH_FIELD_NAME}`,
+  addressLine: SEDE_ADDRESS_PRINT,
+  phone: SEDE_CONTACT.whatsappDisplay,
   logoSrc: "/logo-transparent.png",
 };
 

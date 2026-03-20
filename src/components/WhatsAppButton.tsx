@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SEDE_WHATSAPP_URL } from "@/data/site";
 
 const WHATSAPP_URL =
-  "https://wa.me/5511916116102?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações.";
+  `${SEDE_WHATSAPP_URL}?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações.`;
 
 export default function WhatsAppButton() {
   const [visivel, setVisivel] = useState(false);

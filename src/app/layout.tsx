@@ -5,6 +5,15 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { programacaoSemanal } from "@/data/agenda";
 import {
+  CHURCH_DISPLAY_NAME,
+  CHURCH_SCHEMA_SAME_AS,
+  CHURCH_SHORT_NAME,
+  SEDE_ADDRESS,
+  SEDE_CONTACT,
+  SEDE_GEO_COORDINATES,
+  SEDE_POSTAL_ADDRESS,
+} from "@/data/site";
+import {
   SITE_DEFAULT_SHARE_IMAGE,
   SITE_NAME,
   SITE_URL,
@@ -26,9 +35,9 @@ const alexBrush = Alex_Brush({
   variable: "--font-script",
 });
 
-const SITE_TITLE = "Assembleia de Deus Madureira Atibaia | Cultos e Programação";
+const SITE_TITLE = `${CHURCH_DISPLAY_NAME} | Cultos e Programação`;
 const SITE_DESC =
-  "Igreja Evangélica Assembleia de Deus Ministério Madureira – Atibaia/SP. Cultos às terças, quartas, quintas e domingos. Praça Pio XII, 122 – Centro.";
+  `Igreja Evangélica Assembleia de Deus Ministério Madureira – ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}. Cultos às terças, quartas, quintas e domingos. ${SEDE_ADDRESS.streetAddress} – ${SEDE_ADDRESS.neighborhood}.`;
 const SHARE_IMAGE_URL = resolveSiteUrl(SITE_DEFAULT_SHARE_IMAGE);
 const diaDaSemanaSchema: Record<string, string[]> = {
   "Segunda a Sexta": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -138,7 +147,7 @@ export const metadata: Metadata = {
         url: SHARE_IMAGE_URL,
         width: 1200,
         height: 630,
-        alt: "Assembleia de Deus Madureira Atibaia",
+        alt: CHURCH_DISPLAY_NAME,
       },
     ],
   },
@@ -161,34 +170,20 @@ const churchSchema = {
   "@context": "https://schema.org",
   "@type": "Church",
   name: "Assembleia de Deus Ministério Madureira – Atibaia",
-  alternateName: "AD Madureira Atibaia",
+  alternateName: CHURCH_SHORT_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/logo.jpg`,
   image: `${SITE_URL}/fachada-da-igreja.jpg`,
-  telephone: "+55-11-91611-6102",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Praça Pio XII, 122",
-    addressLocality: "Atibaia",
-    addressRegion: "SP",
-    postalCode: "12940-160",
-    addressCountry: "BR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: -23.1136683,
-    longitude: -46.5603364,
-  },
+  telephone: SEDE_CONTACT.schemaTelephone,
+  address: SEDE_POSTAL_ADDRESS,
+  geo: SEDE_GEO_COORDINATES,
   openingHoursSpecification: buildOpeningHoursSpecification(),
   foundingDate: "1977",
   areaServed: {
     "@type": "City",
-    name: "Atibaia",
+    name: SEDE_ADDRESS.city,
   },
-  sameAs: [
-    "https://www.instagram.com/admadureira_atibaia/",
-    "https://www.youtube.com/@ADMadureiraAtibaia",
-  ],
+  sameAs: CHURCH_SCHEMA_SAME_AS,
 };
 
 export default function RootLayout({

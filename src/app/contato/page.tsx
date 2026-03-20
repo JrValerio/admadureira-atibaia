@@ -1,17 +1,19 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
+import {
+  SEDE_ADDRESS_SEO,
+  SEDE_CONTACT,
+  SEDE_MAPS_URL,
+  SEDE_WHATSAPP_URL,
+} from "@/data/site";
 import Contato from "@/sections/Contato";
 import { buildPageMetadata } from "@/lib/site";
-
-const WHATSAPP_NUMBER = "5511916116102";
-const MAPS_URL =
-  "https://www.google.com/maps/place/Assembleia+de+Deus+Ministerio+do+Madureira+Campo+de+Atibaia/@-23.1138703,-46.5602967,3a,75y,354.67h,95.37t/data=!3m7!1e1!3m5!1s72i0JDXKPIfhEeF7ZyK18Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.3700000000000045%26panoid%3D72i0JDXKPIfhEeF7ZyK18Q%26yaw%3D354.67!7i16384!8i8192!4m7!3m6!1s0x94cec17bc3bbfe13:0x7d8b6d61fad55210!8m2!3d-23.1136683!4d-46.5603364!10e5!16s%2Fg%2F11j833c2dh?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
 
 export const metadata = buildPageMetadata({
   title: "Contato | AD Madureira Atibaia",
   description:
-    "Entre em contato com a AD Madureira Atibaia. Praça Pio XII, 122 – Centro, Atibaia/SP. WhatsApp: (11) 91611-6102. Telefone: (11) 4411-6116.",
+    `Entre em contato com a AD Madureira Atibaia. ${SEDE_ADDRESS_SEO}. WhatsApp: ${SEDE_CONTACT.whatsappDisplay}. Telefone: ${SEDE_CONTACT.telephoneDisplay}.`,
   path: "/contato",
 });
 
@@ -45,7 +47,7 @@ export default function ContatoPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  href={SEDE_WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ui-btn-primary"
@@ -53,7 +55,7 @@ export default function ContatoPage() {
                   Chamar no WhatsApp
                 </a>
                 <a
-                  href={MAPS_URL}
+                  href={SEDE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ui-btn-secondary"

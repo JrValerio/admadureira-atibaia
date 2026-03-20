@@ -1,6 +1,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  SEDE_PLACE_NAME,
+  SEDE_POSTAL_ADDRESS,
+  SEDE_PROGRAMACAO_LOCATION,
+} from "@/data/site";
 import { getCultoBySlug, getCultosSlugs } from "@/lib/agenda-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -58,14 +63,8 @@ export default async function CultoPage({ params }: Props) {
     },
     location: {
       "@type": "Place",
-      name: "Assembleia de Deus Madureira — Sede",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Praça Pio XII, 122",
-        addressLocality: "Atibaia",
-        addressRegion: "SP",
-        addressCountry: "BR",
-      },
+      name: SEDE_PLACE_NAME,
+      address: SEDE_POSTAL_ADDRESS,
     },
     organizer: {
       "@type": "Organization",
@@ -180,7 +179,7 @@ export default async function CultoPage({ params }: Props) {
                     Local
                   </p>
                   <p className="text-[#212121] font-semibold">
-                    Sede — Praça Pio XII, 122, Centro, Atibaia/SP
+                    {SEDE_PROGRAMACAO_LOCATION}
                   </p>
                 </div>
               </div>

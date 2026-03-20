@@ -1,5 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  CHURCH_FIELD_NAME,
+  CHURCH_OFFICIAL_NAME,
+  OFFICIAL_SOCIAL_LINKS,
+  SEDE_ADDRESS_INLINE,
+  SEDE_ADDRESS_LINES,
+  SEDE_CONTACT,
+  SEDE_HORARIOS_RESUMIDOS,
+  SEDE_MAPS_URL,
+} from "@/data/site";
 
 const linksPrimeirosPassos = [
   { label: "Programação", href: "/programacao" },
@@ -18,16 +28,6 @@ const linksIgreja = [
   { label: "Ministérios", href: "/ministerios" },
 ];
 
-const horariosResumidos = [
-  "Segunda a Sexta — 06:00 / 07:00",
-  "Segunda — 19:30",
-  "Terça — 19:30",
-  "Quarta — 09:00 / 15:00 / 19:00",
-  "Quinta — 19:30",
-  "Sexta — 14:30",
-  "Domingo — 08:00 / 09:00 / 11:00 / 18:30",
-];
-
 const descricaoInstitucional =
   "Uma igreja comprometida com a Palavra de Deus, a oração e a transformação de vidas.";
 
@@ -36,13 +36,10 @@ const versiculoFooter = {
   referencia: "Josué 24:15",
 };
 
-const MAPS_URL =
-  "https://www.google.com/maps/place/Assembleia+de+Deus+Ministerio+do+Madureira+Campo+de+Atibaia/@-23.1138703,-46.5602967,3a,75y,354.67h,95.37t/data=!3m7!1e1!3m5!1s72i0JDXKPIfhEeF7ZyK18Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.3700000000000045%26panoid%3D72i0JDXKPIfhEeF7ZyK18Q%26yaw%3D354.67!7i16384!8i8192!4m7!3m6!1s0x94cec17bc3bbfe13:0x7d8b6d61fad55210!8m2!3d-23.1136683!4d-46.5603364!10e5!16s%2Fg%2F11j833c2dh?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
-
 const redes = [
   {
     nome: "TikTok",
-    href: "https://www.tiktok.com/@midia.ad.madureira",
+    href: OFFICIAL_SOCIAL_LINKS.tiktok,
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M14.5 3c.27 1.58 1.26 3 2.66 3.92A6.6 6.6 0 0 0 21 8v2.72a9.48 9.48 0 0 1-4.5-1.1v5.7a6.12 6.12 0 1 1-6.12-6.12c.32 0 .64.03.95.08v2.8a3.44 3.44 0 1 0 2.17 3.24V3h1z" />
@@ -51,7 +48,7 @@ const redes = [
   },
   {
     nome: "Instagram",
-    href: "https://www.instagram.com/admadureira_atibaia/",
+    href: OFFICIAL_SOCIAL_LINKS.instagram,
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -60,7 +57,7 @@ const redes = [
   },
   {
     nome: "YouTube",
-    href: "https://www.youtube.com/@ADMadureiraAtibaia",
+    href: OFFICIAL_SOCIAL_LINKS.youtube,
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -69,7 +66,7 @@ const redes = [
   },
   {
     nome: "Facebook Sede",
-    href: "https://www.facebook.com/ADMadureiraSedeAtibaia/",
+    href: OFFICIAL_SOCIAL_LINKS.facebook,
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -156,10 +153,10 @@ export default function Footer() {
             />
             <div className="space-y-1">
               <p className="text-base font-semibold leading-snug text-white">
-                Igreja Assembleia de Deus - Ministério Madureira
+                {CHURCH_OFFICIAL_NAME}
               </p>
               <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
-                Campo de Atibaia
+                {CHURCH_FIELD_NAME}
               </p>
             </div>
           </div>
@@ -226,28 +223,28 @@ export default function Footer() {
             </FooterSectionTitle>
             <div className="space-y-3 text-sm leading-relaxed">
               <p className="xl:hidden">
-                Praça Pio XII, 122 · Centro - Atibaia/SP
+                {SEDE_ADDRESS_INLINE}
                 <br />
-                CEP 12940-160
+                {SEDE_ADDRESS_LINES[2]}
               </p>
               <p className="hidden xl:block">
-                Praça Pio XII, 122
+                {SEDE_ADDRESS_LINES[0]}
                 <br />
-                Centro - Atibaia/SP
+                {SEDE_ADDRESS_LINES[1]}
                 <br />
-                CEP 12940-160
+                {SEDE_ADDRESS_LINES[2]}
               </p>
               <a
-                href="https://wa.me/5511916116102"
+                href={`https://wa.me/${SEDE_CONTACT.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
               >
-                (11) 91611-6102
+                {SEDE_CONTACT.whatsappDisplay}
               </a>
               <div className="space-y-2 pt-1">
                 <a
-                  href={MAPS_URL}
+                  href={SEDE_MAPS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-white/70 transition-colors hover:text-white"
@@ -270,7 +267,7 @@ export default function Footer() {
             Horários de Culto
           </FooterSectionTitle>
           <ul className="space-y-4 text-sm leading-relaxed">
-            {horariosResumidos.map((horario) => (
+            {SEDE_HORARIOS_RESUMIDOS.map((horario) => (
               <li key={horario}>
                 {horario}
               </li>
@@ -283,7 +280,7 @@ export default function Footer() {
         <div className="ui-page-container ui-page-container--footer py-4 text-center text-xs text-white/35 md:py-5">
           <p>
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
-            Madureira | Campo de Atibaia. Todos os direitos reservados.
+            Madureira | {CHURCH_FIELD_NAME}. Todos os direitos reservados.
           </p>
           <p className="mt-1.5 md:mt-2">CNPJ: 48.644.074/0001-97</p>
         </div>

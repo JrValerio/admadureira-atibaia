@@ -1,3 +1,12 @@
+import {
+  SEDE_ADDRESS_CONGREGACAO,
+  SEDE_CONTACT,
+  SEDE_COORDINATES,
+  SEDE_HORARIOS_CONGREGACAO,
+  SEDE_MAPS_URL,
+  SEDE_WHATSAPP_CONGREGACAO_URL,
+} from "@/data/site";
+
 export interface LiderancaCongregacao {
   nome: string;
   cargo: string;
@@ -39,29 +48,14 @@ export const congregacoes: Congregacao[] = [
     cidade: "Atibaia",
     pastor: "Pr. Dr. Zacarias Bernardes Félix",
     pastorSlug: "zacarias-bernardes-felix",
-    endereco: "Praça Pio XII, 122 – Centro – Atibaia/SP",
-    telefone: "(11) 91611-6102",
-    whatsappUrl:
-      "https://wa.me/5511916116102?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20a%20congregação.",
+    endereco: SEDE_ADDRESS_CONGREGACAO,
+    telefone: SEDE_CONTACT.whatsappDisplay,
+    whatsappUrl: SEDE_WHATSAPP_CONGREGACAO_URL,
     imagem: "/fachada-da-igreja.jpg",
     resumo:
       "O Templo Sede da AD Madureira Atibaia é o coração do Campo de Atibaia, reunindo cultos, ensino bíblico, discipulado e ações de cuidado pastoral voltadas à cidade e à região.",
-    mapsUrl:
-      "https://www.google.com/maps/place/Assembleia+de+Deus+Ministerio+do+Madureira+Campo+de+Atibaia/@-23.1138703,-46.5602967,3a,75y,354.67h,95.37t/data=!3m7!1e1!3m5!1s72i0JDXKPIfhEeF7ZyK18Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.3700000000000045%26panoid%3D72i0JDXKPIfhEeF7ZyK18Q%26yaw%3D354.67!7i16384!8i8192!4m7!3m6!1s0x94cec17bc3bbfe13:0x7d8b6d61fad55210!8m2!3d-23.1136683!4d-46.5603364!10e5!16s%2Fg%2F11j833c2dh?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D",
-    horarios: [
-      "Segunda a Sexta · 06h00 – 07h00 · Oração Matinal",
-      "Segunda · 19h30 · Curso de Teologia",
-      "Terça · 19h30 · Culto de Ensino",
-      "Quarta · 09h00 · Consagração",
-      "Quarta · 15h00 · Círculo de Oração",
-      "Quarta · 19h00 · Ensaio das Irmãs",
-      "Quinta · 19h30 · Quinta da Vitória · Jejum e Oração",
-      "Sexta · 14h30 · Tarde de Libertação",
-      "Domingo · 08h00 · Oração Matinal",
-      "Domingo · 09h00 · Escola Bíblica Dominical (EBD)",
-      "Domingo · 11h00 · Ensaio Jovens Rios de Unção",
-      "Domingo · 18h30 · Culto da Família",
-    ],
+    mapsUrl: SEDE_MAPS_URL,
+    horarios: [...SEDE_HORARIOS_CONGREGACAO],
     lideranca: [
       {
         nome: "Pr. Dr. Zacarias Bernardes Félix",
@@ -84,8 +78,8 @@ export const congregacoes: Congregacao[] = [
       cidade: "Atibaia",
       estado: "SP",
       pais: "BR",
-      lat: -23.1136683,
-      lng: -46.5603364,
+      lat: SEDE_COORDINATES.lat,
+      lng: SEDE_COORDINATES.lng,
     },
   },
 ];

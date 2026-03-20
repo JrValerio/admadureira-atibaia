@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Section, SectionTitle } from "@/components/ui";
+import { SEDE_WHATSAPP_URL } from "@/data/site";
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
@@ -37,7 +38,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
         `*Pedido:*\n${form.pedido}`
     );
 
-    window.open(`https://wa.me/5511916116102?text=${mensagem}`, "_blank");
+    window.open(`${SEDE_WHATSAPP_URL}?text=${mensagem}`, "_blank");
     setStatus("sent");
     setForm({ nome: "", email: "", telefone: "", pedido: "" });
   }

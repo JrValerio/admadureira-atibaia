@@ -2,6 +2,10 @@ import { getVisualEvento } from "@/data/agenda-visuais";
 import { validateAgenda } from "@/data/agenda-schema";
 import { getEventosEspeciais2026 } from "@/data/eventos-especiais";
 import { BANNERS_PROGRAMACAO } from "@/data/programacao-banners";
+import {
+  SEDE_EVENT_LOCATION,
+  SEDE_PROGRAMACAO_HORARIOS,
+} from "@/data/site";
 import type {
   Evento,
   EventoBase,
@@ -18,14 +22,13 @@ export type {
   MesAgendaBase,
 } from "@/data/agenda-types";
 
-export const LOCAL_EVENTO_PADRAO =
-  "Sede - Praça Pio XII, 122, Centro, Atibaia/SP";
+export const LOCAL_EVENTO_PADRAO = SEDE_EVENT_LOCATION;
 
 export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Segunda a Sexta",
     titulo: "Oração Matinal",
-    horario: "06h00 – 07h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.oracaoMatinalSemana,
     banner: BANNERS_PROGRAMACAO.oracaoMatinal,
     slug: "oracao-matinal",
     descricao:
@@ -36,7 +39,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Segunda-feira",
     titulo: "Curso de Teologia",
-    horario: "19h30",
+    horario: SEDE_PROGRAMACAO_HORARIOS.cursoTeologia,
     banner: BANNERS_PROGRAMACAO.cursoTeologia,
     slug: "curso-de-teologia",
     descricao:
@@ -47,7 +50,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Terça-feira",
     titulo: "Culto de Ensino",
-    horario: "19h30",
+    horario: SEDE_PROGRAMACAO_HORARIOS.cultoEnsino,
     banner: BANNERS_PROGRAMACAO.cultoEnsino,
     slug: "culto-de-ensino",
     descricao:
@@ -58,7 +61,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Quarta-feira",
     titulo: "Consagração",
-    horario: "09h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.consagracao,
     banner: BANNERS_PROGRAMACAO.consagracao,
     slug: "consagracao",
     descricao:
@@ -69,7 +72,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Quarta-feira",
     titulo: "Círculo de Oração",
-    horario: "15h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.circuloOracao,
     banner: BANNERS_PROGRAMACAO.circuloOracao,
     slug: "circulo-de-oracao",
     descricao:
@@ -80,7 +83,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Quarta-feira",
     titulo: "Ensaio das Irmãs",
-    horario: "19h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.ensaioIrmas,
     banner: BANNERS_PROGRAMACAO.ensaioIrmas,
     slug: "ensaio-das-irmas",
     descricao:
@@ -91,7 +94,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Quinta-feira",
     titulo: "Quinta da Vitória · Jejum e Oração",
-    horario: "19h30",
+    horario: SEDE_PROGRAMACAO_HORARIOS.quintaVitoria,
     banner: BANNERS_PROGRAMACAO.quintaVitoria,
     slug: "quinta-da-vitoria",
     descricao:
@@ -102,7 +105,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Sexta-feira",
     titulo: "Tarde de Libertação",
-    horario: "14h30",
+    horario: SEDE_PROGRAMACAO_HORARIOS.tardeLibertacao,
     banner: BANNERS_PROGRAMACAO.libertacao,
     slug: "tarde-de-libertacao",
     descricao:
@@ -113,7 +116,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Domingo",
     titulo: "Oração Matinal",
-    horario: "08h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.oracaoMatinalDomingo,
     banner: BANNERS_PROGRAMACAO.oracaoMatinalDomingo,
     slug: "oracao-matinal-domingo",
     descricao:
@@ -124,7 +127,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Domingo",
     titulo: "Escola Bíblica Dominical (EBD)",
-    horario: "09h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.ebdDomingo,
     banner: BANNERS_PROGRAMACAO.ebd,
     slug: "escola-biblica-dominical",
     descricao:
@@ -135,7 +138,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Domingo",
     titulo: "Ensaio Jovens Rios de Unção",
-    horario: "11h00",
+    horario: SEDE_PROGRAMACAO_HORARIOS.ensaioJovensDomingo,
     banner: BANNERS_PROGRAMACAO.ensaioJovens,
     slug: "ensaio-jovens-rios-de-uncao",
     descricao:
@@ -146,7 +149,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   {
     dia: "Domingo",
     titulo: "Culto da Família",
-    horario: "18h30",
+    horario: SEDE_PROGRAMACAO_HORARIOS.cultoFamiliaDomingo,
     banner: BANNERS_PROGRAMACAO.cultoFamilia,
     slug: "culto-da-familia",
     descricao:

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CHURCH_SHORT_NAME } from "@/data/site";
 
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(
   /\/+$/,
@@ -8,7 +9,7 @@ const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(
 export const SITE_URL =
   configuredSiteUrl || "https://admadureira-atibaia.vercel.app";
 
-export const SITE_NAME = "AD Madureira Atibaia";
+export const SITE_NAME = CHURCH_SHORT_NAME;
 export const SITE_DEFAULT_SHARE_IMAGE = "/opengraph-image";
 
 type BuildPageMetadataInput = {

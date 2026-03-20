@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPastorBySlug, getPastores } from "@/data/pastores";
+import { CHURCH_SHORT_NAME, SEDE_POSTAL_ADDRESS } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
 type PageProps = {
@@ -130,16 +131,8 @@ export default async function PastorPage({ params }: PageProps) {
     url: resolveSiteUrl(`/pastores/${pastor.slug}`),
     worksFor: {
       "@type": "Organization",
-      name:
-        pastor.ministerioInfo?.igreja ?? "Assembleia de Deus Madureira Atibaia",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Praça Pio XII, 122",
-        addressLocality: "Atibaia",
-        addressRegion: "SP",
-        postalCode: "12940-160",
-        addressCountry: "BR",
-      },
+      name: pastor.ministerioInfo?.igreja ?? CHURCH_SHORT_NAME,
+      address: SEDE_POSTAL_ADDRESS,
     },
     ...(sameAs.length > 0 ? { sameAs } : {}),
   };
@@ -197,7 +190,7 @@ export default async function PastorPage({ params }: PageProps) {
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <InfoCard label="Cargo" value={pastor.cargo} />
-                    <InfoCard label="Campo" value="AD Madureira Atibaia" />
+                    <InfoCard label="Campo" value={CHURCH_SHORT_NAME} />
                     <InfoCard
                       label="Atuação"
                       value={
