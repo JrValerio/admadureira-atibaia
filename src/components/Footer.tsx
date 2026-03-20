@@ -143,8 +143,8 @@ function FooterDisclosure({
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#111111] text-white/65">
-      <div className="ui-page-container ui-page-container--footer grid gap-6 py-8 md:grid-cols-2 md:items-start md:gap-x-8 md:gap-y-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.8fr_0.95fr_1fr] xl:gap-x-10 xl:gap-y-8">
-        <div className="flex flex-col items-center space-y-4 text-center md:col-span-2 md:max-w-none md:items-start md:text-left md:space-y-6 xl:col-span-1 xl:max-w-sm">
+      <div className="ui-page-container ui-page-container--footer grid gap-6 py-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)_minmax(0,0.95fr)] md:items-start md:gap-x-8 md:gap-y-10 md:py-14 xl:grid-cols-[1.2fr_0.8fr_0.8fr_0.95fr_1fr] xl:gap-x-10 xl:gap-y-8">
+        <div className="flex flex-col items-center space-y-4 text-center md:max-w-none md:items-start md:text-left md:space-y-6 xl:col-span-1 xl:max-w-sm">
           <div className="flex flex-col items-center gap-3 md:flex-row md:items-start md:gap-4">
             <Image
               src="/logo-transparent.png"
@@ -191,7 +191,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-4 text-center md:col-span-1 md:text-left xl:hidden">
+        <div className="space-y-4 text-center md:text-left xl:hidden">
           <FooterDisclosure
             title="Primeiros passos"
             links={linksPrimeirosPassos}
@@ -264,7 +264,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-6 text-center md:text-left">
+        <div className="hidden xl:block xl:text-left">
           <FooterSectionTitle className="mb-4">
             Horários de Culto
           </FooterSectionTitle>
