@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/site";
 
 const WHATSAPP_NUMBER = "5511916116102";
 const MAPS_URL =
-  "https://maps.google.com/?q=Pra%C3%A7a+Pio+XII,+122,+Centro,+Atibaia,+SP";
+  "https://www.google.com/maps/place/Assembleia+de+Deus+Ministerio+do+Madureira+Campo+de+Atibaia/@-23.1138703,-46.5602967,3a,75y,354.67h,95.37t/data=!3m7!1e1!3m5!1s72i0JDXKPIfhEeF7ZyK18Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.3700000000000045%26panoid%3D72i0JDXKPIfhEeF7ZyK18Q%26yaw%3D354.67!7i16384!8i8192!4m7!3m6!1s0x94cec17bc3bbfe13:0x7d8b6d61fad55210!8m2!3d-23.1136683!4d-46.5603364!10e5!16s%2Fg%2F11j833c2dh?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
 
 export const metadata = buildPageMetadata({
   title: "Contato | AD Madureira Atibaia",

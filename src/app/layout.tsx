@@ -176,8 +176,8 @@ const churchSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: -23.1171,
-    longitude: -46.5567,
+    latitude: -23.1136683,
+    longitude: -46.5603364,
   },
   openingHoursSpecification: buildOpeningHoursSpecification(),
   foundingDate: "1977",

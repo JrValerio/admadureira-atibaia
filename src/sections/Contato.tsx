@@ -9,7 +9,7 @@ const WHATSAPP_NUMBER = "5511916116102";
 const WHATSAPP_DISPLAY = "(11) 91611-6102";
 const PHONE_DISPLAY = "(11) 4411-6116";
 const MAPS_URL =
-  "https://maps.google.com/?q=Pra%C3%A7a+Pio+XII,+122,+Centro,+Atibaia,+SP";
+  "https://www.google.com/maps/place/Assembleia+de+Deus+Ministerio+do+Madureira+Campo+de+Atibaia/@-23.1138703,-46.5602967,3a,75y,354.67h,95.37t/data=!3m7!1e1!3m5!1s72i0JDXKPIfhEeF7ZyK18Q!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-5.3700000000000045%26panoid%3D72i0JDXKPIfhEeF7ZyK18Q%26yaw%3D354.67!7i16384!8i8192!4m7!3m6!1s0x94cec17bc3bbfe13:0x7d8b6d61fad55210!8m2!3d-23.1136683!4d-46.5603364!10e5!16s%2Fg%2F11j833c2dh?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D";
 
 const horarios = [
   "Segunda a Sexta · 06:00 – 07:00 · Oração Matinal",
@@ -200,7 +200,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
         <div className="overflow-hidden rounded-2xl bg-gray-200 shadow-md h-80">
           <iframe
             title="Localização AD Madureira Atibaia"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3664.3!2d-46.5567!3d-23.1171!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cef8a6b1234567%3A0x1234567890abcdef!2sPra%C3%A7a%20Pio%20XII%2C%20122%20-%20Centro%2C%20Atibaia%20-%20SP%2C%2012940-160!5e0!3m2!1spt-BR!2sbr!4v1"
+            src="https://www.google.com/maps/embed?pb=!4v1774042286295!6m8!1m7!1s72i0JDXKPIfhEeF7ZyK18Q!2m2!1d-23.11387028758019!2d-46.56029672665636!3f354.669383463814!4f5.373921824982375!5f0.7820865974627469"
             width="100%"
             height="100%"
             loading="lazy"
