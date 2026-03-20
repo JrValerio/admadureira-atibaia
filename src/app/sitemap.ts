@@ -3,6 +3,10 @@ import { getEventosFuturos } from "@/lib/agenda-utils";
 import { getCongregacoes } from "@/data/congregacoes";
 import { getDevotionals } from "@/data/devocionais";
 import {
+  hasConfiguredPodcastFeed,
+  hasConfiguredRadioStream,
+} from "@/data/espiritualidade";
+import {
   getClassesEbdPublicadas,
   getTrimestrePublishedLessonCount,
   getTrimestresPorClasse,
@@ -54,7 +58,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestEbdDate = getLatestDate(
     classesEbd.flatMap((classe) =>
       getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
-        trimestre.licoes
+        isTrimestreDraft(trimestre)
+          ? []
+          : trimestre.licoes
           .filter((licao) => isLicaoPublished(licao))
           .map((licao) => parseContentDate(licao.data))
       )
@@ -178,18 +184,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: resolveSiteUrl("/espiritualidade/radio"),
-      lastModified: generatedAt,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: resolveSiteUrl("/espiritualidade/podcast"),
-      lastModified: generatedAt,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
       url: resolveSiteUrl("/ebd"),
       lastModified: latestEbdDate,
       changeFrequency: "weekly",
@@ -264,8 +258,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const paginasAudioEspiritualidade: MetadataRoute.Sitemap = [
+    ...(hasConfiguredRadioStream
+      ? [
+          {
+            url: resolveSiteUrl("/espiritualidade/radio"),
+            lastModified: generatedAt,
+            changeFrequency: "monthly" as const,
+            priority: 0.6,
+          },
+        ]
+      : []),
+    ...(hasConfiguredPodcastFeed
+      ? [
+          {
+            url: resolveSiteUrl("/espiritualidade/podcast"),
+            lastModified: generatedAt,
+            changeFrequency: "monthly" as const,
+            priority: 0.6,
+          },
+        ]
+      : []),
+  ];
+
   const paginasEbdClasse: MetadataRoute.Sitemap = classesEbd.map((classe) => {
-    const trimestres = getTrimestresPorClasse(classe.slug);
+    const trimestres = getTrimestresPorClasse(classe.slug).filter(
+      (trimestre) => !isTrimestreDraft(trimestre)
+    );
     const lastModified = getLatestDate(
       trimestres.flatMap((trimestre) =>
         trimestre.licoes
@@ -300,7 +319,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const paginasEbdLicao: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
-    getTrimestresPorClasse(classe.slug).flatMap((trimestre) =>
+    getTrimestresPorClasse(classe.slug)
+      .filter((trimestre) => !isTrimestreDraft(trimestre))
+      .flatMap((trimestre) =>
       trimestre.licoes
         .filter((licao) => isLicaoPublished(licao))
         .map((licao) => ({
@@ -334,6 +355,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...paginasDevocionais,
     ...paginasPlanosLeitura,
     ...paginasDiasPlanoLeitura,
+    ...paginasAudioEspiritualidade,
     ...paginasEbdClasse,
     ...paginasEbdTrimestre,
     ...paginasEbdLicao,

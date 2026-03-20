@@ -3,10 +3,8 @@ import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
-import { radioConfig } from "@/data/espiritualidade";
+import { hasConfiguredRadioStream, radioConfig } from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
-
-const hasConfiguredRadioStream = radioConfig.streamUrl.length > 0;
 
 export const metadata: Metadata = {
   ...buildPageMetadata({

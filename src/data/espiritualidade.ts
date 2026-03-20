@@ -123,6 +123,8 @@ export const radioConfig = {
   ],
 };
 
+export const hasConfiguredRadioStream = radioConfig.streamUrl.trim().length > 0;
+
 export const podcastConfig = {
   spotifyEmbedUrl: "",
   youtubePlaylistUrl: "https://www.youtube.com/@ADMadureiraAtibaia",
@@ -154,3 +156,6 @@ export const podcastConfig = {
     },
   ],
 };
+
+export const hasConfiguredPodcastFeed =
+  podcastConfig.spotifyEmbedUrl.trim().length > 0;

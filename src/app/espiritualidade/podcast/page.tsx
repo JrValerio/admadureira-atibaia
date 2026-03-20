@@ -3,10 +3,11 @@ import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import SpiritualBreadcrumb from "@/components/SpiritualBreadcrumb";
-import { podcastConfig } from "@/data/espiritualidade";
+import {
+  hasConfiguredPodcastFeed,
+  podcastConfig,
+} from "@/data/espiritualidade";
 import { buildPageMetadata } from "@/lib/site";
-
-const hasConfiguredPodcastFeed = podcastConfig.spotifyEmbedUrl.length > 0;
 
 export const metadata: Metadata = {
   ...buildPageMetadata({
