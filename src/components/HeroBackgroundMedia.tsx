@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 type LegacyMediaQueryList = MediaQueryList & {
   addListener?: (listener: (event: MediaQueryListEvent) => void) => void;
@@ -33,6 +33,7 @@ export default function HeroBackgroundMedia() {
   const [allowVideoRender, setAllowVideoRender] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const [translateY, setTranslateY] = useState(0);
+  const mediaLayerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const desktopMedia = window.matchMedia("(min-width: 768px)") as LegacyMediaQueryList;
@@ -158,14 +159,22 @@ export default function HeroBackgroundMedia() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [allowVideoRender, showAnimatedMedia]);
 
+  useLayoutEffect(() => {
+    if (!mediaLayerRef.current) {
+      return;
+    }
+
+    mediaLayerRef.current.style.transform = `translateY(${translateY}px)`;
+  }, [translateY]);
+
   if (!showAnimatedMedia || !allowVideoRender) {
     return null;
   }
 
   return (
     <div
+      ref={mediaLayerRef}
       className="pointer-events-none absolute inset-0 will-change-transform"
-      style={{ transform: `translateY(${translateY}px)` }}
     >
       <video
         autoPlay

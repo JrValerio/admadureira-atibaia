@@ -41,7 +41,6 @@ export default function YouTubePreviewCard({
             height="100%"
             src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`}
             title={video.title}
-            loading="eager"
             className="border-0 w-full h-full"
             referrerPolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   useEffect,
   useEffectEvent,
+  useLayoutEffect,
   useRef,
   useState,
   type PointerEvent as ReactPointerEvent,
@@ -47,6 +48,8 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   const pointerStartXRef = useRef<number | null>(null);
   const activePointerIdRef = useRef<number | null>(null);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const sliderTrackRef = useRef<HTMLDivElement>(null);
 
   const paused =
     hovered || focusWithin || dragging || manualPause || prefersReducedMotion;
@@ -165,6 +168,22 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    if (!progressBarRef.current) {
+      return;
+    }
+
+    progressBarRef.current.style.width = `${((realIndex + 1) / total) * 100}%`;
+  }, [realIndex, total]);
+
+  useLayoutEffect(() => {
+    if (!sliderTrackRef.current) {
+      return;
+    }
+
+    sliderTrackRef.current.style.transform = `translateX(-${displayIndex * 100}%)`;
+  }, [displayIndex]);
+
   if (total === 0) {
     return null;
   }
@@ -262,7 +281,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
 
       <div className="relative w-full">
         <div
-          className="relative overflow-hidden bg-[#090909] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
+          className="relative overflow-hidden bg-[#090909] touch-pan-y focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
           role="region"
           aria-roledescription="carousel"
           aria-label="Banners de destaque da igreja"
@@ -291,21 +310,20 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerCancel}
-          style={{ touchAction: "pan-y" }}
         >
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,167,38,0.16),transparent_52%)]" />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),transparent_22%,rgba(0,0,0,0.18)_100%)]" />
 
           <div className="absolute left-0 right-0 top-0 z-20 h-[3px] bg-white/8">
             <div
+              ref={progressBarRef}
               className="h-full bg-[#ffa726] transition-[width] duration-500 ease-out"
-              style={{ width: `${((realIndex + 1) / total) * 100}%` }}
             />
           </div>
 
           <div
+            ref={sliderTrackRef}
             className={`flex will-change-transform ${animated ? "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]" : ""}`}
-            style={{ transform: `translateX(-${displayIndex * 100}%)` }}
             onTransitionEnd={handleTransitionEnd}
           >
             {clonedSlides.map((evento, slideIndex) => (

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLayoutEffect, useRef } from "react";
 import { useReadingPlanProgress } from "@/hooks/useReadingPlanProgress";
 
 type ReadingPlanProgressSummaryProps = {
@@ -18,6 +19,15 @@ export default function ReadingPlanProgressSummary({
   const { completedCount, isDayCompleted } = useReadingPlanProgress(planSlug);
   const safeTotalDays = Math.max(1, totalDays);
   const progressPercent = Math.round((completedCount / safeTotalDays) * 100);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!progressBarRef.current) {
+      return;
+    }
+
+    progressBarRef.current.style.width = `${progressPercent}%`;
+  }, [progressPercent]);
 
   return (
     <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
@@ -34,8 +44,8 @@ export default function ReadingPlanProgressSummary({
 
       <div className="h-3 overflow-hidden rounded-full bg-white/80 mb-3">
         <div
+          ref={progressBarRef}
           className="h-full rounded-full bg-[#ffa726]"
-          style={{ width: `${progressPercent}%` }}
         />
       </div>
       <p className="text-xs text-[#777] mb-5">{progressPercent}% concluído.</p>
