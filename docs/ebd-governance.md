@@ -5,6 +5,7 @@
 Current public scope for the EBD module:
 
 - `Adultos 1T/2026`: published
+- `Adultos 2T/2026`: in publication, with `Lição 1` already public and the remaining lessons following gradual weekly release
 - `Jovens 1T/2026`: published
 - `Jovens 2T/2026`: in publication, with `Lição 1` already public and the remaining lessons following gradual weekly release
 
@@ -145,14 +146,16 @@ Current front behavior is:
 
 Current release gate by class:
 
-- `Adultos 2T/2026` still follows the existing gradual publication workflow and remains governed independently
+- `Adultos 2T/2026` is now open as a public quarter because `Lição 1` is editorially ready and uses the same localized release override pattern already adopted in `Jovens 2T/2026`
+- `Adultos 2T/2026` uses `statusEditorial: partial`, which allows the quarter page to be discoverable even while lesson publication continues gradually
+- `Lição 1` of `Adultos 2T/2026` uses an explicit release override to become public immediately
+- `Lições 2` to `13` remain under the weekly release window and only enter public discovery when their own release window opens
 - `Jovens 2T/2026` is now open as a public quarter because the teacher magazine and the supporting material are available
 - `Jovens 2T/2026` uses `statusEditorial: partial`, which allows the quarter page to be discoverable even while lesson publication continues gradually
 - `Lição 1` of `Jovens 2T/2026` uses an explicit release override to become public immediately
 - `Lições 2` to `13` remain under the weekly release window and only enter public discovery when their own release window opens
 
-This means `Adultos` and `Jovens` no longer share the exact same `2026-2t` gate.
-Each class now follows the editorial material already available for its own quarter.
+This means `Adultos` and `Jovens` keep independent operational control for `2026-2t`, even though both classes now use the same public-release pattern for their first lesson.
 
 ## Operational Notes
 

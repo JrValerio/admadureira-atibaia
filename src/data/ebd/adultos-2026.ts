@@ -3273,6 +3273,7 @@ const licaoAdultosSegundoTrimestre1: LicaoEBD = {
     editorialAdultosSegundoTrimestreLicao1
   ),
   id: "adultos-2026-2t-licao-1",
+  dataLiberacaoPublica: "2026-03-21",
 };
 
 const adultos2026SegundoTrimestreBase = criarTrimestrePlaceholder({
