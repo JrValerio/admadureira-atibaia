@@ -159,6 +159,10 @@ This means `Adultos` and `Jovens` keep independent operational control for `2026
 
 ## Operational Notes
 
+For the final shared publication snapshot of `2026-2t`, use:
+
+- [docs/ebd/2026-2t-publication-state.md](./ebd/2026-2t-publication-state.md)
+
 For the current weekly operation of `Jovens 2T/2026`, use:
 
 - [docs/ebd/jovens-2t-2026-operacao.md](./ebd/jovens-2t-2026-operacao.md)
