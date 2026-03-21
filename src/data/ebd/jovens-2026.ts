@@ -1,4 +1,8 @@
 import type { LicaoEBD, TrimestreEBD } from "./types";
+import {
+  getEbdLessonImagePath,
+  getEbdQuarterCoverPath,
+} from "./assets";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
@@ -2833,7 +2837,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
   Record<number, JovensEditorialConfig>
 > = {
   1: {
-    imagem: "/images/EBD/licao-01-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 1, "png"),
     objetivos: objetivosJovensLicao1,
     topicos: topicosJovensLicao1,
     apoioProfessor: [
@@ -2864,7 +2868,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao1,
   },
   2: {
-    imagem: "/images/EBD/licao-02-jovens.jpg",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 2, "jpg"),
     objetivos: objetivosJovensLicao2,
     topicos: topicosJovensLicao2,
     apoioProfessor: [
@@ -2895,7 +2899,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao2,
   },
   3: {
-    imagem: "/images/EBD/licao-03-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 3, "png"),
     objetivos: objetivosJovensLicao3,
     topicos: topicosJovensLicao3,
     apoioProfessor: [
@@ -2926,7 +2930,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao3,
   },
   4: {
-    imagem: "/images/EBD/licao-04-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 4, "png"),
     objetivos: objetivosJovensLicao4,
     topicos: topicosJovensLicao4,
     apoioProfessor: [
@@ -2957,7 +2961,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao4,
   },
   5: {
-    imagem: "/images/EBD/licao-05-jovens.jpg",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 5, "jpg"),
     objetivos: objetivosJovensLicao5,
     topicos: topicosJovensLicao5,
     apoioProfessor: [
@@ -2988,7 +2992,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao5,
   },
   6: {
-    imagem: "/images/EBD/licao-06-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 6, "png"),
     objetivos: objetivosJovensLicao6,
     topicos: topicosJovensLicao6,
     apoioProfessor: [
@@ -3019,7 +3023,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao6,
   },
   7: {
-    imagem: "/images/EBD/licao-07-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 7, "png"),
     objetivos: objetivosJovensLicao7,
     topicos: topicosJovensLicao7,
     apoioProfessor: [
@@ -3050,7 +3054,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao7,
   },
   8: {
-    imagem: "/images/EBD/licao-08-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 8, "png"),
     objetivos: objetivosJovensLicao8,
     topicos: topicosJovensLicao8,
     apoioProfessor: [
@@ -3081,7 +3085,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao8,
   },
   9: {
-    imagem: "/images/EBD/licao-09-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 9, "png"),
     objetivos: objetivosJovensLicao9,
     topicos: topicosJovensLicao9,
     apoioProfessor: [
@@ -3112,7 +3116,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao9,
   },
   10: {
-    imagem: "/images/EBD/licao-10-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 10, "png"),
     objetivos: objetivosJovensLicao10,
     topicos: topicosJovensLicao10,
     apoioProfessor: [
@@ -3143,7 +3147,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao10,
   },
   11: {
-    imagem: "/images/EBD/licao-11-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 11, "png"),
     objetivos: objetivosJovensLicao11,
     topicos: topicosJovensLicao11,
     apoioProfessor: [
@@ -3174,7 +3178,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao11,
   },
   12: {
-    imagem: "/images/EBD/licao-12-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 12, "png"),
     objetivos: objetivosJovensLicao12,
     topicos: topicosJovensLicao12,
     apoioProfessor: [
@@ -3205,7 +3209,7 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
     subsidioJovens: subsidioJovensLicao12,
   },
   13: {
-    imagem: "/images/EBD/licao-13-jovens.png",
+    imagem: getEbdLessonImagePath("jovens", "2026-1t", 13, "png"),
     objetivos: objetivosJovensLicao13,
     topicos: topicosJovensLicao13,
     apoioProfessor: [
@@ -3250,7 +3254,7 @@ export const jovens2026Trimestres: TrimestreEBD[] = [
     descricao: "Treze lições para conduzir a juventude pelo plano da salvação, da graça de Deus à perseverança da fé e à consumação em Cristo.",
     comentarista: "Marcelo Oliveira",
     classe: "jovens",
-    imagem: "/images/EBD/ebd-1t-jovens.png",
+    imagem: getEbdQuarterCoverPath("jovens", "2026-1t", "ebd-1t-capa.png"),
     versiculoBase: "João 3:16",
     licoes: sementesJovensPrimeiroTrimestre.map((seed) => {
       const editorial = editoriaisJovensPrimeiroTrimestre[seed.numero];
@@ -3260,16 +3264,16 @@ export const jovens2026Trimestres: TrimestreEBD[] = [
   criarTrimestrePlaceholder({
     slug: "2026-2t",
     trimestre: 2,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
   }),
   criarTrimestrePlaceholder({
     slug: "2026-3t",
     trimestre: 3,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
   }),
   criarTrimestrePlaceholder({
     slug: "2026-4t",
     trimestre: 4,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
   }),
 ];

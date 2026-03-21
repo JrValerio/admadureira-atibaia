@@ -1,4 +1,8 @@
 import type { LicaoEBD, TrimestreEBD } from "./types";
+import {
+  getEbdLessonImagePath,
+  getEbdQuarterCoverPath,
+} from "./assets";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
@@ -2729,7 +2733,7 @@ function criarTrimestrePlaceholder({
 
 const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditorialConfig>> = {
   1: {
-    imagem: "/images/EBD/licao-01-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 1, "jpg"),
     objetivos: objetivosAdultosLicao1,
     topicos: topicosAdultosLicao1,
     apoioProfessor: [
@@ -2760,7 +2764,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao1,
   },
   2: {
-    imagem: "/images/EBD/licao-02-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 2, "jpg"),
     objetivos: objetivosAdultosLicao2,
     topicos: topicosAdultosLicao2,
     apoioProfessor: [
@@ -2791,7 +2795,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao2,
   },
   3: {
-    imagem: "/images/EBD/licao-03-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 3, "jpg"),
     objetivos: objetivosAdultosLicao3,
     topicos: topicosAdultosLicao3,
     apoioProfessor: [
@@ -2822,7 +2826,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao3,
   },
   4: {
-    imagem: "/images/EBD/licao-04-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 4, "jpg"),
     objetivos: objetivosAdultosLicao4,
     topicos: topicosAdultosLicao4,
     apoioProfessor: [
@@ -2853,7 +2857,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao4,
   },
   5: {
-    imagem: "/images/EBD/licao-05-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 5, "jpg"),
     objetivos: objetivosAdultosLicao5,
     topicos: topicosAdultosLicao5,
     apoioProfessor: [
@@ -2884,7 +2888,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao5,
   },
   6: {
-    imagem: "/images/EBD/licao-06-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 6, "jpg"),
     objetivos: objetivosAdultosLicao6,
     topicos: topicosAdultosLicao6,
     apoioProfessor: [
@@ -2915,7 +2919,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao6,
   },
   7: {
-    imagem: "/images/EBD/licao-07-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 7, "jpg"),
     objetivos: objetivosAdultosLicao7,
     topicos: topicosAdultosLicao7,
     apoioProfessor: [
@@ -2946,7 +2950,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao7,
   },
   8: {
-    imagem: "/images/EBD/licao-08-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 8, "jpg"),
     objetivos: objetivosAdultosLicao8,
     topicos: topicosAdultosLicao8,
     apoioProfessor: [
@@ -2977,7 +2981,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao8,
   },
   9: {
-    imagem: "/images/EBD/licao-09-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 9, "jpg"),
     objetivos: objetivosAdultosLicao9,
     topicos: topicosAdultosLicao9,
     apoioProfessor: [
@@ -3008,7 +3012,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao9,
   },
   10: {
-    imagem: "/images/EBD/licao-10-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 10, "jpg"),
     objetivos: objetivosAdultosLicao10,
     topicos: topicosAdultosLicao10,
     apoioProfessor: [
@@ -3039,7 +3043,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao10,
   },
   11: {
-    imagem: "/images/EBD/licao-11-adulto.jpg",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 11, "jpg"),
     objetivos: objetivosAdultosLicao11,
     topicos: topicosAdultosLicao11,
     apoioProfessor: [
@@ -3070,7 +3074,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao11,
   },
   12: {
-    imagem: "/images/EBD/licao-12-adulto.png",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 12, "png"),
     objetivos: objetivosAdultosLicao12,
     topicos: topicosAdultosLicao12,
     apoioProfessor: [
@@ -3101,7 +3105,7 @@ const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditoria
     subsidioAdultos: subsidioAdultosLicao12,
   },
   13: {
-    imagem: "/images/EBD/licao-13-adulto.png",
+    imagem: getEbdLessonImagePath("adultos", "2026-1t", 13, "png"),
     objetivos: objetivosAdultosLicao13,
     topicos: topicosAdultosLicao13,
     apoioProfessor: [
@@ -3333,7 +3337,7 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
     descricao: "Treze lições para contemplar a revelação do Pai, do Filho e do Espírito Santo na obra da redenção e na vida da Igreja.",
     comentarista: "Douglas Baptista",
     classe: "adultos",
-    imagem: "/images/EBD/ebd-1t.png",
+    imagem: getEbdQuarterCoverPath("adultos", "2026-1t", "ebd-1t-capa.png"),
     versiculoBase: "Mateus 28:19",
     licoes: sementesAdultosPrimeiroTrimestre.map((seed) => {
       const editorial = editoriaisAdultosPrimeiroTrimestre[seed.numero];
@@ -3343,16 +3347,16 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
   criarTrimestrePlaceholder({
     slug: "2026-2t",
     trimestre: 2,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
   }),
   criarTrimestrePlaceholder({
     slug: "2026-3t",
     trimestre: 3,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
   }),
   criarTrimestrePlaceholder({
     slug: "2026-4t",
     trimestre: 4,
-    imagem: "/images/EBD/ebd-2t.png",
+    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
   }),
 ];

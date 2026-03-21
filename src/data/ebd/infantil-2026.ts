@@ -1,4 +1,5 @@
 import type { LicaoEBD, TrimestreEBD } from "./types";
+import { EBD_DEFAULT_COVER_IMAGE } from "./assets";
 
 type LicaoSeed = {
   numero: number;
@@ -218,7 +219,7 @@ export const infantil2026Trimestres: TrimestreEBD[] = [
     descricao: "Treze lições para ajudar as crianças a conhecer Jesus, amar a Palavra, viver em oração e praticar a fé com alegria.",
     comentarista: "Material inicial da EBD AD Madureira Atibaia",
     classe: "infantil",
-    imagem: "/images/EBD/ebd-1t.png",
+    imagem: EBD_DEFAULT_COVER_IMAGE,
     versiculoBase: "Lucas 2:52",
     licoes: sementesInfantilPrimeiroTrimestre.map(criarLicao),
   },

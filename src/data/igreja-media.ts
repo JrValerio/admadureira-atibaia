@@ -1,3 +1,5 @@
+import { EBD_DEFAULT_COVER_IMAGE } from "./ebd/assets";
+
 export const igrejaMedia = {
   hero: [
     "/images/igreja/culto/adoracao.jpg",
@@ -48,7 +50,7 @@ export const igrejaHeroMedia = {
   contato: igrejaMedia.nave[6],
   congregacoes: igrejaMedia.nave[2],
   devocional: igrejaMedia.pulpito[4],
-  ebd: "/images/EBD/ebd-1t.png",
+  ebd: EBD_DEFAULT_COVER_IMAGE,
   espiritualidade: igrejaMedia.nave[8],
   eventos: igrejaMedia.nave[1],
   historia: igrejaMedia.historica[1],
