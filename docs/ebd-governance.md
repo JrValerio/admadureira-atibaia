@@ -7,7 +7,26 @@ Current public scope for the EBD module:
 - `Adultos 1T/2026`: published
 - `Jovens 1T/2026`: published
 
-The `Infantil` class remains preserved in the architecture, but editorial production is intentionally paused and it should stay out of public discovery for now.
+The `Infantil` class remains preserved in the architecture, but editorial production is intentionally paused.
+In the current codebase, it stays out of public discovery because the class is not marked for public publication on the site.
+
+## What counts as published
+
+The current project behavior uses three layers of editorial eligibility:
+
+1. **Class visibility**
+   - a class only enters public discovery when it is marked with `publicadaNoSite: true`
+   - the class also needs at least one published lesson to be considered publicly available
+
+2. **Quarter visibility**
+   - quarter pages can exist before launch
+   - quarters marked as `draft` remain out of public discovery
+   - direct routes may still exist for internal review and editorial preparation
+
+3. **Lesson visibility**
+   - lesson routes can exist before launch
+   - only lessons with editorial status `published` are considered public
+   - unpublished lessons remain accessible by direct route only when already prepared internally, but they must stay outside discovery and under `noindex`
 
 ## Draft Policy
 
@@ -19,6 +38,20 @@ Backstage rules:
 - draft quarters and draft lessons must stay out of the public sitemap
 - draft pages must remain `noindex`
 - direct routes may exist for internal review and content preparation
+
+This means route existence is not the same thing as public publication.
+The public layer is defined by the combination of editorial helpers, sitemap eligibility and page-level `robots`.
+
+## Front Behavior Today
+
+Current front behavior is:
+
+- `/ebd` only surfaces classes that are public today
+- class pages surface only the material that is considered public for discovery
+- quarter pages can render an `Em preparação` state when the quarter is still `draft`
+- lesson pages can render a `Conteúdo em preparação` state when the lesson is not published
+- draft quarters and unpublished lessons remain outside the public sitemap
+- draft quarter pages and unpublished lesson pages remain `noindex`
 
 ## 2026 Release Gate
 
