@@ -2,18 +2,20 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import type { ClasseEBD, LicaoEBD } from "@/data/ebd";
+import type { ClasseEBD, LicaoEBD, StatusEditorialEBD } from "@/data/ebd";
 import {
   formatEbdDate,
-  getEbdPublicLessonReferenceKey,
-  getLicaoEditorialStatus,
+  getEstadoProgressaoLicao,
+  getMetaEstadoProgressaoLicao,
+  isLicaoPubliclyAvailable,
 } from "@/lib/ebd-utils";
 
 type EbdLessonsGridProps = {
   classe: ClasseEBD;
   edicao: string;
   licoes: LicaoEBD[];
-  initialSundayReferenceKey: string;
+  trimestreStatusEditorial?: StatusEditorialEBD;
+  initialNowIso: string;
 };
 
 function subscribeReferenceDate(callback: () => void) {
@@ -22,67 +24,42 @@ function subscribeReferenceDate(callback: () => void) {
 }
 
 function getSnapshot() {
-  return getEbdPublicLessonReferenceKey();
-}
-
-function getLessonStatus(licao: LicaoEBD, sundayReferenceKey: string) {
-  if (getLicaoEditorialStatus(licao) === "draft") {
-    return {
-      label: "Em preparação",
-      cardClassName: "border-black/5 bg-[#fafafa] shadow-sm",
-      badgeClassName: "border-black/10 bg-white text-[#666]",
-    };
-  }
-
-  const lessonDate = licao.data;
-
-  if (lessonDate < sundayReferenceKey) {
-    return {
-      label: "Passada",
-      cardClassName: "border-black/5 bg-white/85 shadow-sm",
-      badgeClassName: "border-black/10 bg-[#f5f5f5] text-[#666]",
-    };
-  }
-
-  if (lessonDate === sundayReferenceKey) {
-    return {
-      label: "Esta semana",
-      cardClassName:
-        "border-[#ffa726]/35 bg-[#fff8ee] shadow-[0_12px_30px_rgba(0,0,0,0.06)]",
-      badgeClassName: "border-[#ffa726]/30 bg-white text-[#8b5b18]",
-    };
-  }
-
-  return {
-    label: "Próxima",
-    cardClassName: "border-black/5 bg-white shadow-sm",
-    badgeClassName: "border-[#ef5350]/12 bg-[#fff3f2] text-[#b0453f]",
-  };
+  return new Date().toISOString();
 }
 
 export default function EbdLessonsGrid({
   classe,
   edicao,
   licoes,
-  initialSundayReferenceKey,
+  trimestreStatusEditorial,
+  initialNowIso,
 }: EbdLessonsGridProps) {
-  const sundayReferenceKey = useSyncExternalStore(
+  const currentTimeIso = useSyncExternalStore(
     subscribeReferenceDate,
     getSnapshot,
-    () => initialSundayReferenceKey
+    () => initialNowIso
   );
+  const currentDate = new Date(currentTimeIso);
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       {licoes.map((licao) => {
-        const status = getLessonStatus(licao, sundayReferenceKey);
-
-        return (
-          <Link
-            key={licao.id}
-            href={`/ebd/${classe}/${edicao}/${licao.slug}`}
-            className={`group rounded-3xl border p-5 transition-shadow hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)] ${status.cardClassName}`}
-          >
+        const estado = getEstadoProgressaoLicao(
+          { statusEditorial: trimestreStatusEditorial },
+          licao,
+          currentDate
+        );
+        const status = getMetaEstadoProgressaoLicao(estado);
+        const isNavigable = isLicaoPubliclyAvailable(
+          { statusEditorial: trimestreStatusEditorial },
+          licao,
+          currentDate
+        );
+        const cardClassName = `group block rounded-3xl border p-5 transition-shadow ${
+          isNavigable ? "hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]" : ""
+        } ${status.cardClassName}`;
+        const cardContent = (
+          <>
             <div className="mb-4 flex items-start justify-between gap-3">
               <div>
                 <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
@@ -104,9 +81,27 @@ export default function EbdLessonsGrid({
               {licao.resumo}
             </p>
             <p className="mt-5 text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
-              Ver lição →
+              {status.actionLabel}
             </p>
+          </>
+        );
+
+        return isNavigable ? (
+          <Link
+            key={licao.id}
+            href={`/ebd/${classe}/${edicao}/${licao.slug}`}
+            className={cardClassName}
+          >
+            {cardContent}
           </Link>
+        ) : (
+          <article
+            key={licao.id}
+            data-disabled="true"
+            className={cardClassName}
+          >
+            {cardContent}
+          </article>
         );
       })}
     </div>

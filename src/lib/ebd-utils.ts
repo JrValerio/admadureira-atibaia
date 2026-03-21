@@ -11,6 +11,19 @@ import {
 } from "@/data/ebd";
 import { getSaoPauloDate } from "@/lib/date-utils";
 
+export type EstadoProgressaoLicaoEBD =
+  | "concluida"
+  | "liberada"
+  | "em-breve"
+  | "draft";
+
+export type MetaEstadoProgressaoLicaoEBD = {
+  label: string;
+  cardClassName: string;
+  badgeClassName: string;
+  actionLabel: string;
+};
+
 export function isClasseEbd(value: string): value is ClasseEBD {
   return classesEBD.some((item) => item.slug === value);
 }
@@ -156,6 +169,80 @@ export function getTrimestreEditorialStatus(
 
 export function getLicaoEditorialStatus(licao: LicaoEBD): StatusLicaoEBD {
   return licao.statusEditorial ?? "published";
+}
+
+export function getEstadoProgressaoLicao(
+  trimestre: Pick<TrimestreEBD, "statusEditorial">,
+  licao: Pick<LicaoEBD, "statusEditorial" | "data">,
+  date = new Date()
+): EstadoProgressaoLicaoEBD {
+  if (isTrimestreDraft(trimestre) || !isLicaoPublished(licao)) {
+    return "draft";
+  }
+
+  if (!isLicaoInsideReleaseWindow(licao, date)) {
+    return "em-breve";
+  }
+
+  const referenceKey = getEbdPublicLessonReferenceKey(date);
+
+  return licao.data < referenceKey ? "concluida" : "liberada";
+}
+
+export function getMetaEstadoProgressaoLicao(
+  estado: EstadoProgressaoLicaoEBD
+): MetaEstadoProgressaoLicaoEBD {
+  switch (estado) {
+    case "draft":
+      return {
+        label: "Draft",
+        cardClassName: "border-black/5 bg-[#fafafa] shadow-sm",
+        badgeClassName: "border-black/10 bg-white text-[#666]",
+        actionLabel: "Conteúdo em preparação",
+      };
+    case "em-breve":
+      return {
+        label: "Em breve",
+        cardClassName: "border-[#ffa726]/15 bg-[#fffaf3] shadow-sm",
+        badgeClassName: "border-[#ffa726]/25 bg-white text-[#8b5b18]",
+        actionLabel: "Liberação na janela da semana",
+      };
+    case "liberada":
+      return {
+        label: "Liberada",
+        cardClassName:
+          "border-[#ffa726]/35 bg-[#fff8ee] shadow-[0_12px_30px_rgba(0,0,0,0.06)]",
+        badgeClassName: "border-[#ffa726]/30 bg-white text-[#8b5b18]",
+        actionLabel: "Abrir lição →",
+      };
+    case "concluida":
+    default:
+      return {
+        label: "Concluída",
+        cardClassName: "border-black/5 bg-white/85 shadow-sm",
+        badgeClassName: "border-black/10 bg-[#f5f5f5] text-[#666]",
+        actionLabel: "Abrir lição →",
+      };
+  }
+}
+
+export function getContagemProgressaoDoTrimestre(
+  trimestre: TrimestreEBD,
+  date = new Date()
+) {
+  return trimestre.licoes.reduce(
+    (acc, licao) => {
+      const estado = getEstadoProgressaoLicao(trimestre, licao, date);
+      acc[estado] += 1;
+      return acc;
+    },
+    {
+      concluida: 0,
+      liberada: 0,
+      "em-breve": 0,
+      draft: 0,
+    } as Record<EstadoProgressaoLicaoEBD, number>
+  );
 }
 
 function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
@@ -407,6 +494,46 @@ export function getLicaoProximaNoTrimestre(
   return currentIndex >= 0 && currentIndex < licoesPublicas.length - 1
     ? licoesPublicas[currentIndex + 1]
     : null;
+}
+
+export function getLicaoAdjacenteNoTrimestre(
+  classe: ClasseEBD,
+  edicao: string,
+  licaoSlug: string,
+  direction: "previous" | "next"
+) {
+  const trimestre = getTrimestre(classe, edicao);
+
+  if (!trimestre) {
+    return null;
+  }
+
+  const currentIndex = trimestre.licoes.findIndex(
+    (item) => item.slug === licaoSlug
+  );
+
+  if (currentIndex < 0) {
+    return null;
+  }
+
+  if (direction === "previous") {
+    return currentIndex > 0 ? trimestre.licoes[currentIndex - 1] : null;
+  }
+
+  return currentIndex < trimestre.licoes.length - 1
+    ? trimestre.licoes[currentIndex + 1]
+    : null;
+}
+
+export function getPosicaoDaLicaoNoTrimestre(
+  trimestre: TrimestreEBD,
+  licaoSlug: string
+) {
+  const currentIndex = trimestre.licoes.findIndex(
+    (item) => item.slug === licaoSlug
+  );
+
+  return currentIndex >= 0 ? currentIndex + 1 : null;
 }
 
 export function formatEbdDate(date: string) {

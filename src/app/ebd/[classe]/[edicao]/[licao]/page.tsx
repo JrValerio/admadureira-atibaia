@@ -7,10 +7,15 @@ import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import EbdTeacherSubsidy from "@/components/ebd/EbdTeacherSubsidy";
 import {
   formatEbdDate,
+  getEstadoProgressaoLicao,
   getClasseEbdInfo,
   getClassesEbd,
+  getLicaoAdjacenteNoTrimestre,
   getLicaoAnterior,
+  getLicaoDaSemana,
   getLicao,
+  getMetaEstadoProgressaoLicao,
+  getPosicaoDaLicaoNoTrimestre,
   getLicaoProximaNoTrimestre,
   getTrimestre,
   getTrimestresPorClasse,
@@ -165,6 +170,28 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const fullPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-completo");
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao = getLicaoProximaNoTrimestre(classe, edicao, licao);
+  const licaoAnteriorNaTrilha = getLicaoAdjacenteNoTrimestre(
+    classe,
+    edicao,
+    licao,
+    "previous"
+  );
+  const proximaLicaoNaTrilha = getLicaoAdjacenteNoTrimestre(
+    classe,
+    edicao,
+    licao,
+    "next"
+  );
+  const licaoDaSemana = getLicaoDaSemana(classe);
+  const posicaoDaLicao = getPosicaoDaLicaoNoTrimestre(trimestre, licao);
+  const estadoProgressao = getEstadoProgressaoLicao(
+    trimestre,
+    lessonContext.licao
+  );
+  const metaEstadoProgressao = getMetaEstadoProgressaoLicao(estadoProgressao);
+  const licaoDaSemanaAtual =
+    licaoDaSemana?.trimestre.slug === trimestre.slug &&
+    licaoDaSemana.licao.slug === lessonContext.licao.slug;
   const lessonStructure = getLessonStructure(
     classeInfo,
     trimestre,
@@ -304,6 +331,15 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       </p>
                       <p className="text-sm text-[#212121]">{classeInfo.label}</p>
                     </div>
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:col-span-2">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Trilha do trimestre
+                      </p>
+                      <p className="text-sm text-[#212121]">
+                        Lição {lessonContext.licao.numero} de {trimestre.licoes.length} ·{" "}
+                        {metaEstadoProgressao.label}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
@@ -355,7 +391,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   ) : null}
 
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                    <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                           Data
@@ -374,6 +410,25 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
                           />
                         </p>
+                      </div>
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          Trilha
+                        </p>
+                        <p className="text-sm text-[#212121]">
+                          Lição {posicaoDaLicao ?? lessonContext.licao.numero} de{" "}
+                          {trimestre.licoes.length}
+                        </p>
+                        <div
+                          className={`mt-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${metaEstadoProgressao.badgeClassName}`}
+                        >
+                          {metaEstadoProgressao.label}
+                        </div>
+                        {licaoDaSemanaAtual ? (
+                          <p className="mt-3 text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
+                            Lição da semana
+                          </p>
+                        ) : null}
                       </div>
                     </div>
 
@@ -489,6 +544,78 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 </Link>
               </div>
 
+              <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                  Trilha do trimestre
+                </p>
+                <div className="space-y-3 text-sm leading-relaxed text-[#555]">
+                  <p>
+                    <span className="font-semibold text-[#212121]">
+                      Posição:
+                    </span>{" "}
+                    Lição {posicaoDaLicao ?? lessonContext.licao.numero} de{" "}
+                    {trimestre.licoes.length}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-[#212121]">
+                      Estado:
+                    </span>{" "}
+                    {metaEstadoProgressao.label}
+                  </p>
+                  {licaoDaSemanaAtual ? (
+                    <p>
+                      <span className="font-semibold text-[#212121]">
+                        Semana atual:
+                      </span>{" "}
+                      esta é a lição em destaque na janela pública da classe.
+                    </p>
+                  ) : null}
+                  {licaoAnteriorNaTrilha ? (
+                    <div>
+                      <p className="font-semibold text-[#212121]">
+                        Anterior na trilha
+                      </p>
+                      {licaoAnterior ? (
+                        <Link
+                          href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
+                          className="transition-colors hover:text-[#212121]"
+                        >
+                          Lição {licaoAnteriorNaTrilha.numero} ·{" "}
+                          {licaoAnteriorNaTrilha.titulo}
+                        </Link>
+                      ) : (
+                        <p>
+                          Lição {licaoAnteriorNaTrilha.numero} ·{" "}
+                          {licaoAnteriorNaTrilha.titulo}
+                        </p>
+                      )}
+                    </div>
+                  ) : null}
+                  {proximaLicaoNaTrilha ? (
+                    <div>
+                      <p className="font-semibold text-[#212121]">
+                        Próxima na trilha
+                      </p>
+                      {proximaLicao &&
+                      proximaLicao.slug === proximaLicaoNaTrilha.slug ? (
+                        <Link
+                          href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
+                          className="transition-colors hover:text-[#212121]"
+                        >
+                          Lição {proximaLicaoNaTrilha.numero} ·{" "}
+                          {proximaLicaoNaTrilha.titulo}
+                        </Link>
+                      ) : (
+                        <p>
+                          Lição {proximaLicaoNaTrilha.numero} ·{" "}
+                          {proximaLicaoNaTrilha.titulo}
+                        </p>
+                      )}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+
               {lessonContext.licao.apoioProfessor?.length ? (
                 <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
@@ -591,7 +718,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
                       className="block transition-colors hover:text-white"
                     >
-                      ← Lição anterior
+                      ← Lição {licaoAnterior.numero} · {licaoAnterior.titulo}
                     </Link>
                   ) : null}
                   {proximaLicao ? (
@@ -599,8 +726,13 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
                       className="block transition-colors hover:text-white"
                     >
-                      Próxima lição →
+                      Lição {proximaLicao.numero} · {proximaLicao.titulo} →
                     </Link>
+                  ) : proximaLicaoNaTrilha ? (
+                    <p>
+                      Próxima na trilha: Lição {proximaLicaoNaTrilha.numero} ·{" "}
+                      {proximaLicaoNaTrilha.titulo}
+                    </p>
                   ) : null}
                   <Link
                     href="/programacao"
@@ -629,7 +761,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
                   className="transition-colors hover:text-[#8b1e1e]"
                 >
-                  ← Lição anterior
+                  ← Lição {licaoAnterior.numero}
                 </Link>
               ) : null}
               {proximaLicao ? (
@@ -637,8 +769,16 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
                   className="transition-colors hover:text-[#8b1e1e]"
                 >
-                  Próxima lição →
+                  Lição {proximaLicao.numero} →
                 </Link>
+              ) : proximaLicaoNaTrilha ? (
+                <span className="text-[#555]">
+                  Próxima na trilha: Lição {proximaLicaoNaTrilha.numero} (
+                  {getMetaEstadoProgressaoLicao(
+                    getEstadoProgressaoLicao(trimestre, proximaLicaoNaTrilha)
+                  ).label.toLowerCase()}
+                  )
+                </span>
               ) : null}
               <Link
                 href={`/ebd/${classe}/${trimestre.slug}`}

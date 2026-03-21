@@ -4,12 +4,14 @@ import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
 import EbdLessonsGrid from "@/components/ebd/EbdLessonsGrid";
 import {
+  getContagemProgressaoDoTrimestre,
   formatEbdDate,
   getClasseEbdInfo,
   getClassesEbd,
-  getEbdPublicLessonReferenceKey,
   getLicaoDaSemana,
+  getMetaEstadoProgressaoLicao,
   getProximaLicao,
+  getEstadoProgressaoLicao,
   getTrimestreEditorialStatus,
   getTrimestrePublicLessonCount,
   getTrimestre,
@@ -159,7 +161,6 @@ export default async function EbdQuarterPage({ params }: PageProps) {
   const isDraft = isTrimestreDraft(trimestre);
   const licaoDaSemana = getLicaoDaSemana(classe);
   const proximaLicao = getProximaLicao(classe);
-  const hasPublicLessons = publishedLessons > 0;
   const licoesPublicas = trimestre.licoes.filter((licao) =>
     isLicaoPubliclyAvailable(trimestre, licao)
   );
@@ -168,6 +169,12 @@ export default async function EbdQuarterPage({ params }: PageProps) {
     licaoDaSemana?.trimestre.slug === trimestre.slug
       ? licaoDaSemana.licao
       : primeiraLicaoPublicada ?? trimestre.licoes[0] ?? null;
+  const contagemProgressao = getContagemProgressaoDoTrimestre(trimestre);
+  const estadoLicaoEmDestaque = licaoEmDestaque
+    ? getMetaEstadoProgressaoLicao(
+        getEstadoProgressaoLicao(trimestre, licaoEmDestaque)
+      )
+    : null;
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -328,6 +335,13 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                     Lição {licaoEmDestaque.numero} •{" "}
                     {formatEbdDate(licaoEmDestaque.data)}
                   </p>
+                  {estadoLicaoEmDestaque ? (
+                    <div
+                      className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
+                    >
+                      {estadoLicaoEmDestaque.label}
+                    </div>
+                  ) : null}
                   <p className="mb-4 text-sm leading-relaxed text-[#555]">
                     {licaoEmDestaque.resumo}
                   </p>
@@ -363,28 +377,60 @@ export default async function EbdQuarterPage({ params }: PageProps) {
           </div>
 
           <div className="mb-6 max-w-3xl">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Lições do trimestre
-              </p>
-              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
-                {hasPublicLessons
-                  ? "Acompanhe as lições já liberadas desta edição"
-                  : "Estrutura editorial desta edição"}
-              </h2>
-              <p className="leading-relaxed text-[#555]">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              Trilha do trimestre
+            </p>
+            <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
+              Acompanhe a continuidade das 13 lições desta edição
+            </h2>
+            <p className="leading-relaxed text-[#555]">
               {isDraft
-                ? "As lições deste trimestre já estão mapeadas no site. Os cards em preparação indicam o caminho da edição sem prometer conteúdo ainda não publicado."
-                : hasPublicLessons
-                ? "Os badges abaixo indicam a posição das lições liberadas em relação à janela pública da semana: passada ou esta semana."
-                : "Esta edição já existe no calendário da classe, mas ainda não chegou à janela pública de liberação das lições."}
+                ? "As lições deste trimestre já estão mapeadas no site. Os cards mostram a trilha da edição sem prometer publicação antecipada."
+                : "Os badges abaixo mostram o avanço da edição entre lições concluídas, liberadas, em breve e ainda em draft, sempre respeitando a governança da semana."}
+            </p>
+          </div>
+
+          <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+            <div className="rounded-2xl border border-black/5 bg-white p-4">
+              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Concluídas
+              </p>
+              <p className="font-acme text-2xl text-[#212121]">
+                {contagemProgressao.concluida}
               </p>
             </div>
+            <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Liberadas
+              </p>
+              <p className="font-acme text-2xl text-[#212121]">
+                {contagemProgressao.liberada}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-[#ffa726]/15 bg-[#fffaf3] p-4">
+              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Em breve
+              </p>
+              <p className="font-acme text-2xl text-[#212121]">
+                {contagemProgressao["em-breve"]}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Draft
+              </p>
+              <p className="font-acme text-2xl text-[#212121]">
+                {contagemProgressao.draft}
+              </p>
+            </div>
+          </div>
 
           <EbdLessonsGrid
             classe={classe}
             edicao={trimestre.slug}
-            licoes={hasPublicLessons ? licoesPublicas : trimestre.licoes}
-            initialSundayReferenceKey={getEbdPublicLessonReferenceKey()}
+            licoes={trimestre.licoes}
+            trimestreStatusEditorial={trimestre.statusEditorial}
+            initialNowIso={new Date().toISOString()}
           />
         </div>
         </section>
