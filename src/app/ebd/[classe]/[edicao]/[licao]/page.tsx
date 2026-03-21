@@ -18,6 +18,13 @@ import {
   isLicaoPubliclyAvailable,
   isClasseEbd,
 } from "@/lib/ebd-utils";
+import {
+  getLessonHighlightText,
+  getLessonObjectives,
+  getLessonPrimaryReading,
+  getLessonPrimaryText,
+  getLessonStructure,
+} from "@/lib/ebd-lesson-structure";
 import { getEbdPrintRoute } from "@/lib/ebd-print";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -158,6 +165,16 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const fullPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-completo");
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
   const proximaLicao = getLicaoProximaNoTrimestre(classe, edicao, licao);
+  const lessonStructure = getLessonStructure(
+    classeInfo,
+    trimestre,
+    lessonContext.licao
+  );
+  const lessonPrimaryText =
+    getLessonPrimaryText(lessonStructure) ?? "A confirmar";
+  const lessonHighlight = getLessonHighlightText(lessonStructure);
+  const lessonPrimaryReading = getLessonPrimaryReading(lessonStructure);
+  const lessonObjectives = getLessonObjectives(lessonStructure);
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -302,13 +319,13 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     </p>
                   </div>
 
-                  {lessonContext.licao.leituraBiblica.length ? (
+                  {lessonPrimaryReading.length ? (
                     <div className="mt-8">
                       <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                         {classeInfo.leituraPrincipalLabel}
                       </p>
                       <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {lessonContext.licao.leituraBiblica.map((item) => (
+                        {lessonPrimaryReading.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
                             <span>
@@ -353,46 +370,48 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         </p>
                         <p className="text-sm text-[#212121]">
                           <BibleReferenceText
-                            text={lessonContext.licao.textoChave ?? "A confirmar"}
+                            text={lessonPrimaryText}
                             linkClassName="font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
                           />
                         </p>
                       </div>
                     </div>
 
-                    {lessonContext.licao.verdadePratica ? (
+                    {lessonHighlight ? (
                       <div className="mb-8 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
                         <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                           {classeInfo.resumoDestaqueLabel}
                         </p>
                         <p className="leading-relaxed text-[#555]">
-                          <BibleReferenceText text={lessonContext.licao.verdadePratica} />
+                          <BibleReferenceText text={lessonHighlight} />
                         </p>
                       </div>
                     ) : null}
 
-                    <div className="mb-8">
-                      <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                        {classeInfo.leituraPrincipalLabel}
-                      </p>
-                      <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {lessonContext.licao.leituraBiblica.map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                            <span>
-                              <BibleReferenceText text={item} />
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {lessonPrimaryReading.length ? (
+                      <div className="mb-8">
+                        <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                          {classeInfo.leituraPrincipalLabel}
+                        </p>
+                        <ul className="space-y-3 text-[#555] leading-relaxed">
+                          {lessonPrimaryReading.map((item) => (
+                            <li key={item} className="flex items-start gap-3">
+                              <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
+                              <span>
+                                <BibleReferenceText text={item} />
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
 
                     <div className="mb-8">
                       <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                         Objetivos da lição
                       </p>
                       <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {lessonContext.licao.objetivos.map((item) => (
+                        {lessonObjectives.map((item) => (
                           <li key={item} className="flex items-start gap-3">
                             <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
                             <span>

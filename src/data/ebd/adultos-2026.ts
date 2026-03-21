@@ -2659,6 +2659,10 @@ function criarLicaoPlaceholder(
   numero: number,
   data: string
 ): LicaoEBD {
+  const trimestre = `${edicao.slice(5, 6)}º Trimestre de ${edicao.slice(0, 4)}`;
+  const resumoPlaceholder =
+    "Conteúdo em preparação para a classe de Adultos. Esta lição será publicada no site com texto original e apoio ao professor.";
+
   return {
     id: `adultos-${edicao}-licao-${numero}`,
     slug: `licao-${numero}`,
@@ -2666,13 +2670,29 @@ function criarLicaoPlaceholder(
     data,
     statusEditorial: "draft",
     titulo: `Lição ${numero}`,
-    resumo:
-      "Conteúdo em preparação para a classe de Adultos. Esta lição será publicada no site com texto original e apoio ao professor.",
+    resumo: resumoPlaceholder,
     leituraBiblica: [],
     objetivos: [],
     topicos: [],
     aplicacao:
       "Acompanhe esta edição da EBD e volte em breve para acessar a lição completa.",
+    subsidioAdultos: {
+      cabecalho: {
+        numero,
+        titulo: `Lição ${numero}`,
+        data,
+        trimestre,
+        leituraBiblicaEmClasse: [],
+        leituraDiaria: [],
+        hinosSugeridos: [],
+      },
+      visaoGeral: {
+        resumo: resumoPlaceholder,
+        objetivos: [],
+      },
+      desenvolvimento: [],
+      apoioProfessor: {},
+    },
   };
 }
 

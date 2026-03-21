@@ -15,6 +15,7 @@ import {
   getTrimestreAtual,
   isClasseEbdPublicada,
 } from "@/lib/ebd-utils";
+import { getLessonHighlightText, getLessonStructure } from "@/lib/ebd-lesson-structure";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
@@ -87,6 +88,10 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
   const proximaLicao = getProximaLicao(classeAtiva);
   const trimestreAtual = getTrimestreAtual(classeAtiva);
   const trimestresDaClasse = getTrimestresEbdPublicos(classeAtiva);
+  const lessonStructure = licaoDaSemana
+    ? getLessonStructure(classeInfo, licaoDaSemana.trimestre, licaoDaSemana.licao)
+    : null;
+  const lessonHighlight = getLessonHighlightText(lessonStructure);
   const canonicalUrl = resolveSiteUrl("/ebd");
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -179,7 +184,9 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                       {classeInfo.resumoDestaqueLabel}
                     </p>
                     <p className="leading-relaxed text-[#555]">
-                      {licaoDaSemana.licao.verdadePratica}
+                      {lessonHighlight ??
+                        licaoDaSemana.licao.verdadePratica ??
+                        licaoDaSemana.licao.resumo}
                     </p>
                   </div>
 

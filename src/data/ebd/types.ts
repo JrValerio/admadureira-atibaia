@@ -64,6 +64,7 @@ export type SubsidioAdultos = {
     verdadePratica?: string;
     leituraBiblicaEmClasse?: string[];
     leituraDiaria?: LeituraDiariaItem[];
+    hinosSugeridos?: string[];
   };
   visaoGeral: {
     resumo: string;
@@ -185,3 +186,50 @@ export type LicaoEBDComContexto = {
   trimestre: TrimestreEBD;
   licao: LicaoEBD;
 };
+
+export type LicaoTopoEditorial = {
+  numero: number;
+  data: string;
+  titulo: string;
+  trimestre: string;
+  classe: string;
+  classeSlug: ClasseEBD;
+};
+
+export type LicaoEstruturaAdultos = {
+  tipo: "adultos";
+  topo: LicaoTopoEditorial;
+  resumo: string;
+  aplicacao: string;
+  textoAureo?: string;
+  verdadePratica?: string;
+  leituraBiblicaEmClasse: string[];
+  leituraDiaria: LeituraDiariaItem[];
+  hinosSugeridos: string[];
+  objetivos: string[];
+  apoioProfessor: string[];
+  apoioAluno: string[];
+  esboco: ListaItem[];
+};
+
+export type LicaoEstruturaJovens = {
+  tipo: "jovens";
+  topo: LicaoTopoEditorial;
+  resumo: string;
+  aplicacao: string;
+  textoPrincipal?: string;
+  resumoDaLicao?: string;
+  textoBiblico: string[];
+  leituraSemanal: LeituraSemanalItem[];
+  objetivos: string[];
+  interacao?: string;
+  orientacaoPedagogica?: string;
+  horaDaRevisao: string[];
+  apoioProfessor: string[];
+  apoioAluno: string[];
+  esboco: ListaItem[];
+};
+
+export type LicaoEstruturaPorClasse =
+  | LicaoEstruturaAdultos
+  | LicaoEstruturaJovens;

@@ -394,6 +394,18 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
             <LeituraDiariaList items={subsidio.cabecalho.leituraDiaria} />
           </div>
         ) : null}
+
+        {subsidio.cabecalho.hinosSugeridos?.length ? (
+          <div className="mt-6">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+              Hinos sugeridos
+            </p>
+            <StringList
+              items={subsidio.cabecalho.hinosSugeridos}
+              markerClassName="bg-[#ef5350]"
+            />
+          </div>
+        ) : null}
       </Section>
 
       <Section eyebrow="Desenvolvimento" title="Comentário por tópicos">

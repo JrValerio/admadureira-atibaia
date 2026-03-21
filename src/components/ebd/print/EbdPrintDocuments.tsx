@@ -9,6 +9,15 @@ import type {
   TrimestreEBD,
 } from "@/data/ebd";
 import { getEbdPrintRoute } from "@/lib/ebd-print";
+import {
+  getAdultLessonStructure,
+  getLessonHighlightText,
+  getLessonObjectives,
+  getLessonPrimaryReading,
+  getLessonPrimaryText,
+  getLessonStructure,
+  getYoungLessonStructure,
+} from "@/lib/ebd-lesson-structure";
 import { EbdPrintDocumentLayout, EbdPrintPage } from "./EbdPrintLayout";
 
 type EbdPrintDocumentProps = {
@@ -312,18 +321,28 @@ function youngTopicoSection(topico: TopicoJovens): PrintablePageSection {
 
 function getSummaryPages(
   classeInfo: ClasseEBDInfo,
+  trimestre: TrimestreEBD,
   licao: LicaoEBD
 ): PrintablePageSection[][] {
+  const lessonStructure = getLessonStructure(classeInfo, trimestre, licao);
+  const lessonPrimaryText = getLessonPrimaryText(lessonStructure) ?? "A confirmar";
+  const lessonHighlight = getLessonHighlightText(lessonStructure) ?? licao.resumo;
+  const lessonPrimaryReading = getLessonPrimaryReading(lessonStructure);
+  const lessonObjectives = getLessonObjectives(lessonStructure);
+  const lessonOutline =
+    lessonStructure?.esboco?.length ? lessonStructure.esboco : topicosToListaItems(licao);
   const weeklyReadingItems =
-    classeInfo.slug === "adultos"
-      ? (licao.subsidioAdultos?.cabecalho.leituraDiaria ?? []).map((item) => ({
+    lessonStructure?.tipo === "adultos"
+      ? lessonStructure.leituraDiaria.map((item) => ({
           titulo: `${item.dia} · ${item.referencia}`,
           conteudo: item.tema ?? "Leitura de apoio à aula.",
         }))
-      : (licao.subsidioJovens?.cabecalho.leituraSemanal ?? []).map((item) => ({
+      : lessonStructure?.tipo === "jovens"
+        ? lessonStructure.leituraSemanal.map((item) => ({
           titulo: `${item.dia} · ${item.referencia}`,
           conteudo: item.foco ?? "Leitura de apoio à aula.",
-        }));
+        }))
+        : [];
 
   const summaryHighlights: ListaItem[] =
     classeInfo.slug === "adultos" && licao.subsidioAdultos
@@ -416,18 +435,18 @@ function getSummaryPages(
       key: "summary-panorama",
       title: "Panorama e aplicação",
       weight: sectionWeight(
-        estimateTextWeight(licao.textoChave),
-        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(lessonPrimaryText),
+        estimateTextWeight(lessonHighlight),
         estimateTextWeight(licao.resumo),
         estimateTextWeight(licao.aplicacao)
       ),
       content: (
         <>
           <PrintParagraph label={classeInfo.textoBaseLabel}>
-            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+            <PrintBibleText text={lessonPrimaryText} />
           </PrintParagraph>
           <PrintParagraph label={classeInfo.resumoDestaqueLabel}>
-            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+            <PrintBibleText text={lessonHighlight} />
           </PrintParagraph>
           <PrintParagraph label="Resumo da lição">
             <PrintBibleText text={licao.resumo} />
@@ -442,20 +461,20 @@ function getSummaryPages(
       key: "summary-planejamento",
       title: "Leitura bíblica e objetivos",
       weight: sectionWeight(
-        estimateStringsWeight(licao.leituraBiblica),
-        estimateStringsWeight(licao.objetivos)
+        estimateStringsWeight(lessonPrimaryReading),
+        estimateStringsWeight(lessonObjectives)
       ),
       content: (
         <>
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
-            Leitura bíblica
+            {classeInfo.leituraPrincipalLabel}
           </p>
-          <PrintBulletList items={licao.leituraBiblica.slice(0, 6)} />
+          <PrintBulletList items={lessonPrimaryReading.slice(0, 6)} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Objetivos
           </p>
-          <PrintBulletList items={licao.objetivos.slice(0, 6)} />
+          <PrintBulletList items={lessonObjectives.slice(0, 6)} />
         </>
       ),
     },
@@ -464,23 +483,16 @@ function getSummaryPages(
       title: "Esboço da aula",
       weight: sectionWeight(
         estimateListaItemsWeight(
-          licao.esboco?.length
-            ? licao.esboco.slice(0, 4)
-            : topicosToListaItems(licao).slice(0, 4)
+          lessonOutline.slice(0, 4)
         )
       ),
       content: (
         <PrintOrderedList
           items={
-            licao.esboco?.length
-              ? licao.esboco.slice(0, 4).map((item) => ({
-                  ...item,
-                  conteudo: truncateText(item.conteudo, 240),
-                }))
-              : topicosToListaItems(licao).slice(0, 4).map((item) => ({
-                  ...item,
-                  conteudo: truncateText(item.conteudo, 240),
-                }))
+            lessonOutline.slice(0, 4).map((item) => ({
+              ...item,
+              conteudo: truncateText(item.conteudo, 240),
+            }))
           }
         />
       ),
@@ -595,13 +607,18 @@ function getSummaryPages(
   ];
 }
 
-function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
+function getAdultFullSections(
+  classeInfo: ClasseEBDInfo,
+  trimestre: TrimestreEBD,
+  licao: LicaoEBD
+): PrintablePageSection[] {
   const subsidio = licao.subsidioAdultos;
 
   if (!subsidio) {
     return [];
   }
 
+  const structure = getAdultLessonStructure(classeInfo, trimestre, licao);
   const leituraDiariaItems = (subsidio.cabecalho.leituraDiaria ?? []).map(
     (item) => ({
       titulo: `${item.dia} · ${item.referencia}`,
@@ -619,18 +636,18 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "adult-base",
       title: "Base da lição",
       weight: sectionWeight(
-        estimateTextWeight(licao.textoChave),
-        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(structure.textoAureo),
+        estimateTextWeight(structure.verdadePratica),
         estimateTextWeight(licao.resumo),
         estimateTextWeight(licao.aplicacao)
       ),
       content: (
         <>
           <PrintParagraph label="Texto áureo">
-            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+            <PrintBibleText text={structure.textoAureo ?? "A confirmar"} />
           </PrintParagraph>
           <PrintParagraph label="Verdade prática">
-            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+            <PrintBibleText text={structure.verdadePratica ?? licao.resumo} />
           </PrintParagraph>
           <PrintParagraph label="Resumo">
             <PrintBibleText text={licao.resumo} />
@@ -645,28 +662,26 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "adult-planejamento",
       title: "Leitura, objetivos e esboço",
       weight: sectionWeight(
-        estimateStringsWeight(licao.leituraBiblica),
-        estimateStringsWeight(licao.objetivos),
-        estimateListaItemsWeight(licao.esboco ?? topicosToListaItems(licao))
+        estimateStringsWeight(structure.leituraBiblicaEmClasse),
+        estimateStringsWeight(structure.objetivos),
+        estimateListaItemsWeight(structure.esboco)
       ),
       content: (
         <>
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
-            Leitura bíblica
+            Leitura bíblica em classe
           </p>
-          <PrintBulletList items={licao.leituraBiblica} />
+          <PrintBulletList items={structure.leituraBiblicaEmClasse} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Objetivos
           </p>
-          <PrintBulletList items={licao.objetivos} />
+          <PrintBulletList items={structure.objetivos} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Esboço da aula
           </p>
-          <PrintOrderedList
-            items={licao.esboco?.length ? licao.esboco : topicosToListaItems(licao)}
-          />
+          <PrintOrderedList items={structure.esboco} />
         </>
       ),
     },
@@ -742,7 +757,10 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
     {
       key: "adult-leitura-diaria",
       title: "Leitura diária e preparação",
-      weight: sectionWeight(estimateListaItemsWeight(leituraDiariaItems)),
+      weight: sectionWeight(
+        estimateListaItemsWeight(leituraDiariaItems),
+        estimateStringsWeight(structure.hinosSugeridos)
+      ),
       content: (
         <>
           {leituraDiariaItems.length ? (
@@ -751,6 +769,15 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
                 Leitura diária
               </p>
               <PrintOrderedList items={leituraDiariaItems} />
+            </>
+          ) : null}
+
+          {structure.hinosSugeridos.length ? (
+            <>
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+                Hinos sugeridos
+              </p>
+              <PrintBulletList items={structure.hinosSugeridos} />
             </>
           ) : null}
 
@@ -974,13 +1001,18 @@ function getAdultFullSections(licao: LicaoEBD): PrintablePageSection[] {
   ];
 }
 
-function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
+function getYoungFullSections(
+  classeInfo: ClasseEBDInfo,
+  trimestre: TrimestreEBD,
+  licao: LicaoEBD
+): PrintablePageSection[] {
   const subsidio = licao.subsidioJovens;
 
   if (!subsidio) {
     return [];
   }
 
+  const structure = getYoungLessonStructure(classeInfo, trimestre, licao);
   const leituraSemanalItems = (subsidio.cabecalho.leituraSemanal ?? []).map(
     (item) => ({
       titulo: `${item.dia} · ${item.referencia}`,
@@ -993,18 +1025,18 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "young-base",
       title: "Base da lição",
       weight: sectionWeight(
-        estimateTextWeight(licao.textoChave),
-        estimateTextWeight(licao.verdadePratica ?? licao.resumo),
+        estimateTextWeight(structure.textoPrincipal),
+        estimateTextWeight(structure.resumoDaLicao),
         estimateTextWeight(licao.resumo),
         estimateTextWeight(licao.aplicacao)
       ),
       content: (
         <>
           <PrintParagraph label="Texto principal">
-            <PrintBibleText text={licao.textoChave ?? "A confirmar"} />
+            <PrintBibleText text={structure.textoPrincipal ?? "A confirmar"} />
           </PrintParagraph>
           <PrintParagraph label="Resumo da lição">
-            <PrintBibleText text={licao.verdadePratica ?? licao.resumo} />
+            <PrintBibleText text={structure.resumoDaLicao ?? licao.resumo} />
           </PrintParagraph>
           <PrintParagraph label="Síntese">
             <PrintBibleText text={licao.resumo} />
@@ -1019,28 +1051,26 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "young-planejamento",
       title: "Leitura, objetivos e esboço",
       weight: sectionWeight(
-        estimateStringsWeight(licao.leituraBiblica),
-        estimateStringsWeight(licao.objetivos),
-        estimateListaItemsWeight(licao.esboco ?? topicosToListaItems(licao))
+        estimateStringsWeight(structure.textoBiblico),
+        estimateStringsWeight(structure.objetivos),
+        estimateListaItemsWeight(structure.esboco)
       ),
       content: (
         <>
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Texto bíblico
           </p>
-          <PrintBulletList items={licao.leituraBiblica} />
+          <PrintBulletList items={structure.textoBiblico} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Objetivos
           </p>
-          <PrintBulletList items={licao.objetivos} />
+          <PrintBulletList items={structure.objetivos} />
 
           <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
             Esboço da aula
           </p>
-          <PrintOrderedList
-            items={licao.esboco?.length ? licao.esboco : topicosToListaItems(licao)}
-          />
+          <PrintOrderedList items={structure.esboco} />
         </>
       ),
     },
@@ -1048,36 +1078,34 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "young-arranque",
       title: "Arranque pedagógico",
       weight: sectionWeight(
-        estimateTextWeight(subsidio.cabecalho.textoPrincipal),
-        estimateTextWeight(subsidio.cabecalho.resumoDaLicao),
-        estimateTextWeight(subsidio.arranquePedagogico.interacao),
-        estimateTextWeight(subsidio.arranquePedagogico.orientacaoPedagogica)
+        estimateTextWeight(structure.textoPrincipal),
+        estimateTextWeight(structure.resumoDaLicao),
+        estimateTextWeight(structure.interacao),
+        estimateTextWeight(structure.orientacaoPedagogica)
       ),
       content: (
         <>
-          {subsidio.cabecalho.textoPrincipal ? (
+          {structure.textoPrincipal ? (
             <PrintParagraph label="Texto principal">
-              <PrintBibleText text={subsidio.cabecalho.textoPrincipal} />
+              <PrintBibleText text={structure.textoPrincipal} />
             </PrintParagraph>
           ) : null}
 
-          {subsidio.cabecalho.resumoDaLicao ? (
+          {structure.resumoDaLicao ? (
             <PrintParagraph label="Resumo da lição">
-              <PrintBibleText text={subsidio.cabecalho.resumoDaLicao} />
+              <PrintBibleText text={structure.resumoDaLicao} />
             </PrintParagraph>
           ) : null}
 
-          {subsidio.arranquePedagogico.interacao ? (
+          {structure.interacao ? (
             <PrintParagraph label="Interação">
-              <PrintBibleText text={subsidio.arranquePedagogico.interacao} />
+              <PrintBibleText text={structure.interacao} />
             </PrintParagraph>
           ) : null}
 
-          {subsidio.arranquePedagogico.orientacaoPedagogica ? (
+          {structure.orientacaoPedagogica ? (
             <PrintParagraph label="Orientação pedagógica">
-              <PrintBibleText
-                text={subsidio.arranquePedagogico.orientacaoPedagogica}
-              />
+              <PrintBibleText text={structure.orientacaoPedagogica} />
             </PrintParagraph>
           ) : null}
         </>
@@ -1087,18 +1115,17 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "young-arranque-leitura",
       title: "Objetivos e leitura semanal",
       weight: sectionWeight(
-        estimateStringsWeight(subsidio.arranquePedagogico.objetivos),
+        estimateStringsWeight(structure.objetivos),
         estimateListaItemsWeight(leituraSemanalItems)
       ),
       content: (
         <>
-
-          {subsidio.arranquePedagogico.objetivos?.length ? (
+          {structure.objetivos.length ? (
             <>
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Objetivos
               </p>
-              <PrintBulletList items={subsidio.arranquePedagogico.objetivos} />
+              <PrintBulletList items={structure.objetivos} />
             </>
           ) : null}
 
@@ -1230,19 +1257,18 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
       key: "young-revisao",
       title: "Revisão e fechamento",
       weight: sectionWeight(
-        estimateStringsWeight(subsidio.revisao?.horaDaRevisao),
+        estimateStringsWeight(structure.horaDaRevisao),
         estimateStringsWeight(subsidio.revisao?.quizCurto),
         estimateTextWeight(subsidio.revisao?.conclusao)
       ),
       content: (
         <>
-
-          {subsidio.revisao?.horaDaRevisao?.length ? (
+          {structure.horaDaRevisao.length ? (
             <>
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
                 Hora da revisão
               </p>
-              <PrintBulletList items={subsidio.revisao.horaDaRevisao} />
+              <PrintBulletList items={structure.horaDaRevisao} />
             </>
           ) : null}
 
@@ -1268,12 +1294,13 @@ function getYoungFullSections(licao: LicaoEBD): PrintablePageSection[] {
 
 function getFullPages(
   classeInfo: ClasseEBDInfo,
+  trimestre: TrimestreEBD,
   licao: LicaoEBD
 ): PrintablePageSection[][] {
   const sections =
     classeInfo.slug === "adultos"
-      ? getAdultFullSections(licao)
-      : getYoungFullSections(licao);
+      ? getAdultFullSections(classeInfo, trimestre, licao)
+      : getYoungFullSections(classeInfo, trimestre, licao);
 
   const buildPage = (...pageSections: Array<PrintablePageSection | undefined>) =>
     pageSections.filter(Boolean) as PrintablePageSection[];
@@ -1351,7 +1378,7 @@ export function EbdLessonSummaryPrintDocument({
   licao,
 }: EbdPrintDocumentProps) {
   const backHref = `/ebd/${classeInfo.slug}/${trimestre.slug}/${licao.slug}`;
-  const pages = getSummaryPages(classeInfo, licao);
+  const pages = getSummaryPages(classeInfo, trimestre, licao);
 
   return (
     <EbdPrintDocumentLayout
@@ -1392,7 +1419,7 @@ export function EbdLessonFullPrintDocument({
   licao,
 }: EbdPrintDocumentProps) {
   const backHref = `/ebd/${classeInfo.slug}/${trimestre.slug}/${licao.slug}`;
-  const pages = getFullPages(classeInfo, licao);
+  const pages = getFullPages(classeInfo, trimestre, licao);
 
   return (
     <EbdPrintDocumentLayout
