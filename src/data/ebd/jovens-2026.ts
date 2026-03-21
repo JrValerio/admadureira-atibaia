@@ -2723,6 +2723,224 @@ function criarLicaoJovensSegundoTrimestre(
   };
 }
 
+function criarObjetivosJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+) {
+  return [
+    `Identificar como a lição "${seed.titulo}" confronta ideias e ensinos que tentam disputar o lugar da verdade bíblica.`,
+    `Relacionar ${seed.enfase} com o texto principal, a leitura semanal e as escolhas concretas da juventude cristã.`,
+    "Responder ao tema da semana com discernimento espiritual, firmeza doutrinária e aplicação prática.",
+  ];
+}
+
+function criarTopicosJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+): LicaoEBD["topicos"] {
+  return [
+    {
+      titulo: "Panorama do tema",
+      conteudo: [
+        seed.resumo,
+        `A lição enfatiza ${seed.enfase} e mostra por que esse assunto precisa ser avaliado à luz das Escrituras.`,
+      ],
+    },
+    {
+      titulo: "A resposta das Escrituras",
+      conteudo: [
+        seed.verdadePratica,
+        `Texto principal para meditação e confronto bíblico: ${seed.textoPrincipal}.`,
+        `A leitura semanal reforça esse discernimento ao longo da semana com passagens que ampliam a compreensão do tema.`,
+      ],
+    },
+    {
+      titulo: "Discernimento e prática cristã",
+      conteudo: [
+        seed.aplicacao,
+        "A juventude precisa permanecer fiel à verdade mesmo quando o ambiente cultural normaliza leituras contrárias ao Evangelho.",
+      ],
+    },
+  ];
+}
+
+function criarEsbocoJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+): NonNullable<LicaoEBD["esboco"]> {
+  return [
+    {
+      titulo: "Abertura",
+      conteudo:
+        `Introduza "${seed.titulo}" mostrando como esse tema aparece no cotidiano da juventude e por que ele precisa ser discernido biblicamente.`,
+    },
+    {
+      titulo: "Desenvolvimento",
+      conteudo:
+        `Conduza a aula a partir de ${seed.textoPrincipal}, da leitura semanal e da verdade prática, destacando a resposta bíblica ao tema.`,
+    },
+    {
+      titulo: "Aplicação",
+      conteudo:
+        `${seed.aplicacao} Encerre levando a classe a assumir uma postura de fidelidade prática diante do tema estudado.`,
+    },
+  ];
+}
+
+function criarApoioProfessorJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+) {
+  return [
+    `Conduza a classe a perceber como "${seed.titulo}" aparece em discursos, hábitos e referências culturais que alcançam a juventude.`,
+    `Mantenha a conversa centrada em ${seed.textoPrincipal} e nas leituras da semana, evitando respostas superficiais ou apenas reativas.`,
+  ];
+}
+
+function criarApoioAlunoJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+) {
+  return [
+    `Releia ${seed.textoPrincipal} e escolha uma passagem da leitura semanal para anotar como ela fortalece seu discernimento sobre o tema da lição.`,
+    "Observe durante a semana onde esse assunto aparece nas conversas, nas mídias e nas escolhas pessoais, e leve sua percepção para a aula.",
+  ];
+}
+
+function criarSubsidioJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre
+): NonNullable<LicaoEBD["subsidioJovens"]> {
+  const objetivos = criarObjetivosJovensSegundoTrimestre(seed);
+
+  return {
+    cabecalho: {
+      numero: seed.numero,
+      titulo: seed.titulo,
+      data: seed.data,
+      trimestre: trimestreJovensSegundoTrimestre,
+      textoPrincipal: seed.textoPrincipal,
+      resumoDaLicao: seed.resumo,
+      leituraSemanal: seed.leituraSemanal,
+    },
+    arranquePedagogico: {
+      objetivos,
+      interacao:
+        `Abra a aula pedindo que a turma cite situações em que "${seed.titulo}" aparece no cotidiano e use as respostas para conduzir a necessidade de discernimento bíblico.`,
+      orientacaoPedagogica:
+        `Mantenha a aula focada no confronto entre ${seed.enfase} e a verdade revelada nas Escrituras, ajudando a juventude a pensar biblicamente e reagir com convicção e graça.`,
+    },
+    desenvolvimento: [
+      {
+        id: `jovens-2t-licao-${seed.numero}-panorama`,
+        titulo: "Panorama do tema",
+        sinopse: seed.resumo,
+        explicacaoBiblica: [
+          `O texto principal ${seed.textoPrincipal} oferece o eixo bíblico para compreender o tema da lição.`,
+          seed.verdadePratica,
+          "A juventude precisa aprender a julgar ideias, discursos e propostas contemporâneas à luz da Palavra de Deus.",
+        ],
+        aplicacaoPratica: [
+          `Ajude a turma a identificar como "${seed.titulo}" se manifesta no ambiente cultural, escolar, digital ou relacional.`,
+          "Mostre que nem toda proposta atraente, moderna ou popular é compatível com a fé cristã.",
+        ],
+        pense:
+          "Onde esse tema pressiona sua forma de pensar, falar ou decidir durante a semana?",
+        pontoImportante:
+          "Discernimento espiritual começa quando a verdade bíblica volta a ocupar o centro da interpretação da realidade.",
+      },
+      {
+        id: `jovens-2t-licao-${seed.numero}-resposta-biblica`,
+        titulo: "A resposta das Escrituras",
+        sinopse:
+          "A resposta cristã não nasce de improviso, mas do confronto fiel entre o ensino bíblico e as ideias do tempo presente.",
+        explicacaoBiblica: [
+          `A leitura semanal reforça ${seed.enfase} e amplia o entendimento do tema ao longo da semana.`,
+          "O texto principal e as demais referências lembram que a verdade não é moldada por pressões culturais, mas pela revelação de Deus.",
+        ],
+        referenciasCruzadas: seed.leituraSemanal.map((item) => ({
+          referencia: item.referencia,
+          descricao: item.foco,
+        })),
+        aplicacaoPratica: [
+          "Revise com a classe as passagens da semana e destaque como cada uma protege a mente do jovem contra o erro.",
+          `Retome a verdade prática e mostre como ela sustenta a resposta cristã ao tema "${seed.titulo}".`,
+        ],
+        pense:
+          "Como o texto principal e as leituras da semana ajudam você a responder esse tema com firmeza e graça?",
+        pontoImportante:
+          "Discernimento bíblico exige mente renovada, leitura consistente das Escrituras e coragem para permanecer na verdade.",
+      },
+      {
+        id: `jovens-2t-licao-${seed.numero}-fidelidade-pratica`,
+        titulo: "Fidelidade e testemunho",
+        sinopse:
+          "A juventude cristã é chamada a responder ao tema da lição com convicção, santidade e testemunho coerente.",
+        explicacaoBiblica: [
+          "A resposta do crente não é apenas intelectual; ela precisa alcançar hábitos, linguagem, escolhas e relacionamentos.",
+          "O Evangelho forma uma postura de fidelidade que rejeita o engano e testemunha a verdade com firmeza e amor.",
+        ],
+        aplicacaoPratica: [
+          seed.aplicacao,
+          "Ore com a turma para que a verdade de Deus governe mente, linguagem e decisões durante a semana.",
+        ],
+        pense:
+          "Que ajuste prático esta lição exige da sua rotina, das suas conversas e do seu testemunho cristão?",
+        pontoImportante:
+          "Não basta identificar o erro; é preciso permanecer fiel à verdade em Cristo.",
+      },
+    ],
+    apoioProfessor: {
+      quebraGelo:
+        `Pergunte onde "${seed.titulo}" aparece no cotidiano da juventude e use as respostas para conduzir a necessidade de discernimento bíblico.`,
+      perguntaChave:
+        `Como a juventude pode responder biblicamente a "${seed.titulo}" sem perder firmeza doutrinária nem sensibilidade pastoral?`,
+      dificuldadeProvavelDaClasse:
+        "Parte da turma pode tratar o tema apenas como debate cultural, sem perceber como ele pressiona identidade, moralidade, fé e testemunho cristão.",
+      conducaoDaConversa: [
+        "Traga a classe de volta às Escrituras sempre que o debate correr para opiniões soltas ou reações puramente ideológicas.",
+        `Mostre que ${seed.enfase} precisa ser discernido com Bíblia aberta, mente renovada e vida submetida ao senhorio de Cristo.`,
+        "Procure transformar a aula em formação espiritual e não apenas em reação cultural.",
+      ],
+      fechamento:
+        "Encerre reforçando que permanecer na verdade exige discernimento, fidelidade às Escrituras e prática cristã coerente ao longo da semana.",
+    },
+    aprofundamentoOpcional: {
+      notaDoutrinariaCurta: [seed.verdadePratica],
+      contextoBiblico: [
+        `Texto principal da lição: ${seed.textoPrincipal}.`,
+        "A leitura semanal amplia o olhar bíblico e ajuda a classe a enxergar o tema com mais maturidade espiritual.",
+      ],
+      conexaoComVidaCrista: [seed.aplicacao],
+    },
+    revisao: {
+      horaDaRevisao: [
+        `Qual o principal alerta da lição "${seed.titulo}"?`,
+        "Como o texto principal ajuda a confrontar esse tema com a verdade bíblica?",
+        "Que passagens da leitura semanal mais fortaleceram seu discernimento nesta semana?",
+        "Que atitude prática a juventude deve assumir diante do tema estudado?",
+      ],
+      conclusao:
+        `Em "${seed.titulo}", a juventude é chamada a permanecer firme na verdade, discernindo o erro e respondendo ao tema da semana com fidelidade a Cristo.`,
+    },
+  };
+}
+
+function criarLicaoJovensSegundoTrimestreEnriquecida(
+  seed: LicaoSeedJovensSegundoTrimestre,
+  options: CriarLicaoJovensOptions = {}
+): LicaoEBD {
+  const base = criarLicaoJovensSegundoTrimestre(seed, options);
+  const objetivos = criarObjetivosJovensSegundoTrimestre(seed);
+  const topicos = criarTopicosJovensSegundoTrimestre(seed);
+
+  return {
+    ...base,
+    objetivos,
+    topicos,
+    apoioProfessor: criarApoioProfessorJovensSegundoTrimestre(seed),
+    apoioAluno: criarApoioAlunoJovensSegundoTrimestre(seed),
+    esboco: criarEsbocoJovensSegundoTrimestre(seed),
+    subsidioJovens: normalizeYoungSubsidy(
+      criarSubsidioJovensSegundoTrimestre(seed)
+    ),
+  };
+}
+
 const sementesJovensPrimeiroTrimestre: LicaoSeed[] = [
   {
     numero: 1,
@@ -3801,7 +4019,7 @@ const jovens2026SegundoTrimestre: TrimestreEBD = {
   licoes: sementesJovensSegundoTrimestre.map((seed) =>
     seed.numero === 1
       ? licaoJovensSegundoTrimestre1
-      : criarLicaoJovensSegundoTrimestre(seed)
+      : criarLicaoJovensSegundoTrimestreEnriquecida(seed)
   ),
 };
 
