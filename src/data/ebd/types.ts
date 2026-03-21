@@ -4,6 +4,18 @@ export type NumeroTrimestreEBD = 1 | 2 | 3 | 4;
 export type StatusEditorialEBD = "draft" | "partial" | "published";
 export type StatusLicaoEBD = "draft" | "published";
 
+export type ItemChecklistProntidaoEditorialEBD = {
+  key: string;
+  label: string;
+  concluido: boolean;
+};
+
+export type DiagnosticoProntidaoEditorialLicaoEBD = {
+  pronta: boolean;
+  checklist: ItemChecklistProntidaoEditorialEBD[];
+  pendencias: string[];
+};
+
 export type ClasseEBDInfo = {
   slug: ClasseEBD;
   label: string;

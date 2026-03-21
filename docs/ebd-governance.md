@@ -28,6 +28,80 @@ The current project behavior uses three layers of editorial eligibility:
    - only lessons with editorial status `published` are considered public
    - unpublished lessons remain accessible by direct route only when already prepared internally, but they must stay outside discovery and under `noindex`
 
+## Editorial Readiness
+
+The codebase now distinguishes **editorial readiness** from **public release**.
+
+A lesson may exist in the dataset and still be considered incomplete from an editorial point of view.
+That distinction is now represented by internal readiness helpers, without changing public discovery by itself.
+
+### Adult readiness checklist
+
+For `Adultos`, a lesson is considered editorially ready when it has, at minimum:
+
+- title
+- date
+- summary
+- `texto áureo` or equivalent
+- `verdade prática`
+- `leitura diária`
+- `leitura bíblica em classe`
+- application
+- at least one useful pedagogical block
+
+Useful pedagogical block for `Adultos` means at least one of:
+
+- objectives
+- teacher support
+- student support
+- outline
+- subsidy/development block
+
+### Youth readiness checklist
+
+For `Jovens`, a lesson is considered editorially ready when it has, at minimum:
+
+- title
+- date
+- summary
+- `texto principal`
+- `leitura semanal`
+- `texto bíblico`
+- at least one useful pedagogical block
+
+Useful pedagogical block for `Jovens` means at least one of:
+
+- objectives
+- interaction
+- pedagogical guidance
+- review block
+- teacher support
+- student support
+- outline/development block
+
+### Important distinction
+
+Editorial readiness does **not** mean that the lesson is already public.
+
+At the current stage of the project:
+
+- readiness is an internal editorial checklist
+- `statusEditorial` still defines whether the lesson is `draft` or `published`
+- the weekly release window still defines when a published lesson becomes publicly discoverable
+
+This means a lesson can be:
+
+- mapped in the dataset
+- editorially incomplete
+- still `draft`
+- and therefore outside public discovery
+
+Or it can be:
+
+- editorially ready
+- still waiting for the correct weekly release window
+- and therefore not yet publicly discoverable
+
 ## Draft Policy
 
 Future quarters may exist in the dataset and routes before launch, but they remain in backstage mode until the release gate is met.

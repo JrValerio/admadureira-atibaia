@@ -3,6 +3,7 @@ import {
   trimestresEBDPorClasse,
   type ClasseEBD,
   type ClasseEBDInfo,
+  type DiagnosticoProntidaoEditorialLicaoEBD,
   type LicaoEBD,
   type LicaoEBDComContexto,
   type StatusEditorialEBD,
@@ -10,6 +11,7 @@ import {
   type TrimestreEBD,
 } from "@/data/ebd";
 import { getSaoPauloDate } from "@/lib/date-utils";
+import { getLessonEditorialReadiness } from "@/lib/ebd-lesson-structure";
 
 export type EstadoProgressaoLicaoEBD =
   | "concluida"
@@ -169,6 +171,22 @@ export function getTrimestreEditorialStatus(
 
 export function getLicaoEditorialStatus(licao: LicaoEBD): StatusLicaoEBD {
   return licao.statusEditorial ?? "published";
+}
+
+export function getDiagnosticoProntidaoEditorialLicao(
+  trimestre: Pick<TrimestreEBD, "classe" | "rotulo">,
+  licao: LicaoEBD
+): DiagnosticoProntidaoEditorialLicaoEBD {
+  const classeInfo = getClasseEbdInfo(trimestre.classe);
+
+  return getLessonEditorialReadiness(classeInfo, trimestre, licao);
+}
+
+export function isLicaoEditorialmentePronta(
+  trimestre: Pick<TrimestreEBD, "classe" | "rotulo">,
+  licao: LicaoEBD
+) {
+  return getDiagnosticoProntidaoEditorialLicao(trimestre, licao).pronta;
 }
 
 export function getEstadoProgressaoLicao(

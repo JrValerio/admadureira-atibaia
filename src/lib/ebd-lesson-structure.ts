@@ -1,5 +1,7 @@
 import type {
   ClasseEBDInfo,
+  DiagnosticoProntidaoEditorialLicaoEBD,
+  ItemChecklistProntidaoEditorialEBD,
   LeituraDiariaItem,
   LeituraSemanalItem,
   LicaoEBD,
@@ -9,6 +11,66 @@ import type {
   ListaItem,
   TrimestreEBD,
 } from "@/data/ebd";
+
+function hasTextContent(value?: string | null) {
+  return Boolean(value?.trim());
+}
+
+function hasValidLessonDate(value?: string | null) {
+  if (typeof value !== "string") {
+    return false;
+  }
+
+  const normalizedValue = value.trim();
+
+  if (!normalizedValue || !/^\d{4}-\d{2}-\d{2}$/.test(normalizedValue)) {
+    return false;
+  }
+
+  return !Number.isNaN(new Date(`${normalizedValue}T12:00:00-03:00`).getTime());
+}
+
+function hasStringListContent(items?: string[] | null) {
+  return Boolean(items?.some((item) => hasTextContent(item)));
+}
+
+function hasListaItemContent(items?: ListaItem[] | null) {
+  return Boolean(
+    items?.some(
+      (item) => hasTextContent(item.titulo) || hasTextContent(item.conteudo)
+    )
+  );
+}
+
+function hasLeituraDiariaContent(items?: LeituraDiariaItem[] | null) {
+  return Boolean(
+    items?.some(
+      (item) => hasTextContent(item.dia) && hasTextContent(item.referencia)
+    )
+  );
+}
+
+function hasLeituraSemanalContent(items?: LeituraSemanalItem[] | null) {
+  return Boolean(
+    items?.some(
+      (item) => hasTextContent(item.dia) && hasTextContent(item.referencia)
+    )
+  );
+}
+
+function buildEditorialReadiness(
+  checklist: ItemChecklistProntidaoEditorialEBD[]
+): DiagnosticoProntidaoEditorialLicaoEBD {
+  const pendencias = checklist
+    .filter((item) => !item.concluido)
+    .map((item) => item.label);
+
+  return {
+    pronta: pendencias.length === 0,
+    checklist,
+    pendencias,
+  };
+}
 
 function topicosToListaItems(licao: LicaoEBD): ListaItem[] {
   return licao.topicos.map((topico) => ({
@@ -155,4 +217,143 @@ export function getLessonObjectives(
   structure: LicaoEstruturaPorClasse | null
 ) {
   return structure?.objetivos ?? [];
+}
+
+export function getAdultLessonEditorialReadiness(
+  classeInfo: ClasseEBDInfo,
+  trimestre: Pick<TrimestreEBD, "rotulo">,
+  licao: LicaoEBD
+): DiagnosticoProntidaoEditorialLicaoEBD {
+  const structure = getAdultLessonStructure(classeInfo, trimestre, licao);
+  const hasPedagogicalBlock =
+    hasStringListContent(structure.objetivos) ||
+    hasStringListContent(structure.apoioProfessor) ||
+    hasStringListContent(structure.apoioAluno) ||
+    hasListaItemContent(structure.esboco) ||
+    Boolean(licao.subsidioAdultos?.desenvolvimento?.length);
+
+  return buildEditorialReadiness([
+    {
+      key: "titulo",
+      label: "Título da lição",
+      concluido: hasTextContent(licao.titulo),
+    },
+    {
+      key: "data",
+      label: "Data da lição",
+      concluido: hasValidLessonDate(licao.data),
+    },
+    {
+      key: "resumo",
+      label: "Resumo da lição",
+      concluido: hasTextContent(structure.resumo),
+    },
+    {
+      key: "texto-aureo",
+      label: "Texto áureo ou equivalente",
+      concluido: hasTextContent(structure.textoAureo),
+    },
+    {
+      key: "verdade-pratica",
+      label: "Verdade prática",
+      concluido: hasTextContent(structure.verdadePratica),
+    },
+    {
+      key: "leitura-diaria",
+      label: "Leitura diária",
+      concluido: hasLeituraDiariaContent(structure.leituraDiaria),
+    },
+    {
+      key: "leitura-biblica-em-classe",
+      label: "Leitura bíblica em classe",
+      concluido: hasStringListContent(structure.leituraBiblicaEmClasse),
+    },
+    {
+      key: "aplicacao",
+      label: "Aplicação da lição",
+      concluido: hasTextContent(structure.aplicacao),
+    },
+    {
+      key: "bloco-pedagogico-util",
+      label: "Bloco pedagógico útil",
+      concluido: hasPedagogicalBlock,
+    },
+  ]);
+}
+
+export function getYoungLessonEditorialReadiness(
+  classeInfo: ClasseEBDInfo,
+  trimestre: Pick<TrimestreEBD, "rotulo">,
+  licao: LicaoEBD
+): DiagnosticoProntidaoEditorialLicaoEBD {
+  const structure = getYoungLessonStructure(classeInfo, trimestre, licao);
+  const hasPedagogicalBlock =
+    hasStringListContent(structure.objetivos) ||
+    hasTextContent(structure.interacao) ||
+    hasTextContent(structure.orientacaoPedagogica) ||
+    hasStringListContent(structure.horaDaRevisao) ||
+    hasStringListContent(structure.apoioProfessor) ||
+    hasStringListContent(structure.apoioAluno) ||
+    hasListaItemContent(structure.esboco) ||
+    Boolean(licao.subsidioJovens?.desenvolvimento?.length);
+
+  return buildEditorialReadiness([
+    {
+      key: "titulo",
+      label: "Título da lição",
+      concluido: hasTextContent(licao.titulo),
+    },
+    {
+      key: "data",
+      label: "Data da lição",
+      concluido: hasValidLessonDate(licao.data),
+    },
+    {
+      key: "resumo",
+      label: "Resumo da lição",
+      concluido: hasTextContent(structure.resumo),
+    },
+    {
+      key: "texto-principal",
+      label: "Texto principal",
+      concluido: hasTextContent(structure.textoPrincipal),
+    },
+    {
+      key: "leitura-semanal",
+      label: "Leitura semanal",
+      concluido: hasLeituraSemanalContent(structure.leituraSemanal),
+    },
+    {
+      key: "texto-biblico",
+      label: "Texto bíblico",
+      concluido: hasStringListContent(structure.textoBiblico),
+    },
+    {
+      key: "bloco-pedagogico-util",
+      label: "Bloco pedagógico útil",
+      concluido: hasPedagogicalBlock,
+    },
+  ]);
+}
+
+export function getLessonEditorialReadiness(
+  classeInfo: ClasseEBDInfo,
+  trimestre: Pick<TrimestreEBD, "rotulo">,
+  licao: LicaoEBD
+): DiagnosticoProntidaoEditorialLicaoEBD {
+  if (classeInfo.slug === "adultos") {
+    return getAdultLessonEditorialReadiness(classeInfo, trimestre, licao);
+  }
+
+  if (classeInfo.slug === "jovens") {
+    return getYoungLessonEditorialReadiness(classeInfo, trimestre, licao);
+  }
+
+  return buildEditorialReadiness([
+    {
+      key: "classe-nao-configurada",
+      label: "Classe sem checklist editorial configurado",
+      concluido: false,
+    },
+  ]);
 }
