@@ -3815,7 +3815,7 @@ function criarLicaoAdultosSegundoTrimestreEnriquecida(
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
-    statusEditorial: "draft",
+    statusEditorial: "published",
     titulo: seed.titulo,
     resumo: seed.resumo,
     imagem: getEbdLessonImagePath("adultos", "2026-2t", seed.numero, extensao),
