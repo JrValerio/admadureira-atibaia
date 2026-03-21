@@ -11,7 +11,7 @@ import {
   getLicao,
   getTrimestresEbdPublicos,
   isClasseEbd,
-  isLicaoPublished,
+  isLicaoPubliclyAvailable,
   isTrimestreDraft,
 } from "@/lib/ebd-utils";
 
@@ -39,7 +39,7 @@ export function getEbdPrintStaticParams() {
   return getClassesEbdPublicadas().flatMap((classe) =>
     getTrimestresEbdPublicos(classe.slug).flatMap((trimestre) =>
       trimestre.licoes
-        .filter((licao) => isLicaoPublished(licao))
+        .filter((licao) => isLicaoPubliclyAvailable(trimestre, licao))
         .map((licao) => ({
           classe: classe.slug,
           edicao: trimestre.slug,
@@ -63,7 +63,7 @@ export function getPublishedEbdPrintLesson(
   if (
     !lessonContext ||
     isTrimestreDraft(lessonContext.trimestre) ||
-    !isLicaoPublished(lessonContext.licao)
+    !isLicaoPubliclyAvailable(lessonContext.trimestre, lessonContext.licao)
   ) {
     return null;
   }

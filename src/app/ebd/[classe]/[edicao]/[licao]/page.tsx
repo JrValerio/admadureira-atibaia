@@ -11,9 +11,11 @@ import {
   getClassesEbd,
   getLicaoAnterior,
   getLicao,
+  getLicaoProximaNoTrimestre,
   getTrimestre,
   getTrimestresPorClasse,
   isLicaoPublished,
+  isLicaoPubliclyAvailable,
   isClasseEbd,
 } from "@/lib/ebd-utils";
 import { getEbdPrintRoute } from "@/lib/ebd-print";
@@ -61,7 +63,10 @@ export async function generateMetadata({
   }
 
   const pageImage = lessonContext.licao.imagem ?? lessonContext.trimestre.imagem;
-  const isDraft = !isLicaoPublished(lessonContext.licao);
+  const isPubliclyAvailable = isLicaoPubliclyAvailable(
+    lessonContext.trimestre,
+    lessonContext.licao
+  );
 
   const metadata = buildPageMetadata({
     title: `Lição ${lessonContext.licao.numero} | ${lessonContext.licao.titulo}`,
@@ -70,7 +75,7 @@ export async function generateMetadata({
     image: pageImage,
   });
 
-  return isDraft
+  return !isPubliclyAvailable
     ? {
         ...metadata,
         robots: {
@@ -144,15 +149,15 @@ export default async function EbdLessonPage({ params }: PageProps) {
   const lessonImage = lessonContext.licao.imagem ?? null;
   const pageImage = lessonContext.licao.imagem ?? trimestre.imagem;
   const isDraft = !isLicaoPublished(lessonContext.licao);
+  const isPubliclyAvailable = isLicaoPubliclyAvailable(
+    lessonContext.trimestre,
+    lessonContext.licao
+  );
   const lessonTopId = "topo-da-licao";
   const summaryPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-resumo");
   const fullPrintHref = getEbdPrintRoute(classe, trimestre.slug, licao, "pdf-completo");
-  const currentIndex = trimestre.licoes.findIndex((item) => item.slug === licao);
   const licaoAnterior = getLicaoAnterior(classe, edicao, licao);
-  const proximaLicao =
-    currentIndex >= 0 && currentIndex < trimestre.licoes.length - 1
-      ? trimestre.licoes[currentIndex + 1]
-      : null;
+  const proximaLicao = getLicaoProximaNoTrimestre(classe, edicao, licao);
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -526,7 +531,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                 </div>
               ) : null}
 
-              {!isDraft ? (
+              {!isDraft && isPubliclyAvailable ? (
                 <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Material para impressão

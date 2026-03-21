@@ -12,7 +12,7 @@ import {
   getLicaoDaSemana,
   getProximaLicao,
   getTrimestreEditorialStatus,
-  getTrimestrePublishedLessonCount,
+  getTrimestrePublicLessonCount,
   getTrimestresEbdPublicos,
   getTrimestreAtual,
   hasClasseEbdPublicada,
@@ -280,7 +280,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                   const statusMeta = getQuarterStatusMeta(
                     getTrimestreEditorialStatus(trimestre)
                   );
-                  const publishedLessons = getTrimestrePublishedLessonCount(trimestre);
+                  const publishedLessons = getTrimestrePublicLessonCount(trimestre);
 
                   return (
                     <Link

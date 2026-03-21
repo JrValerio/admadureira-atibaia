@@ -7,14 +7,14 @@ import {
   formatEbdDate,
   getClasseEbdInfo,
   getClassesEbd,
-  getEbdSundayReferenceKey,
+  getEbdPublicLessonReferenceKey,
   getLicaoDaSemana,
   getProximaLicao,
   getTrimestreEditorialStatus,
-  getTrimestrePublishedLessonCount,
+  getTrimestrePublicLessonCount,
   getTrimestre,
   getTrimestresPorClasse,
-  isLicaoPublished,
+  isLicaoPubliclyAvailable,
   isTrimestreDraft,
   isClasseEbd,
 } from "@/lib/ebd-utils";
@@ -86,6 +86,7 @@ export async function generateMetadata({
 
   const classeInfo = getClasseEbdInfo(classe);
   const isDraft = isTrimestreDraft(trimestre);
+  const hasPublicLessons = getTrimestrePublicLessonCount(trimestre) > 0;
 
   const metadata = buildPageMetadata({
     title: `${trimestre.titulo} | EBD ${classeInfo.label}`,
@@ -94,7 +95,7 @@ export async function generateMetadata({
     image: trimestre.imagem,
   });
 
-  return isDraft
+  return isDraft || !hasPublicLessons
     ? {
         ...metadata,
         robots: {
@@ -154,12 +155,15 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
   const classeInfo = getClasseEbdInfo(classe);
   const statusMeta = getQuarterStatusMeta(getTrimestreEditorialStatus(trimestre));
-  const publishedLessons = getTrimestrePublishedLessonCount(trimestre);
+  const publishedLessons = getTrimestrePublicLessonCount(trimestre);
   const isDraft = isTrimestreDraft(trimestre);
   const licaoDaSemana = getLicaoDaSemana(classe);
   const proximaLicao = getProximaLicao(classe);
-  const primeiraLicaoPublicada =
-    trimestre.licoes.find((licao) => isLicaoPublished(licao)) ?? null;
+  const hasPublicLessons = publishedLessons > 0;
+  const licoesPublicas = trimestre.licoes.filter((licao) =>
+    isLicaoPubliclyAvailable(trimestre, licao)
+  );
+  const primeiraLicaoPublicada = licoesPublicas[0] ?? null;
   const licaoEmDestaque =
     licaoDaSemana?.trimestre.slug === trimestre.slug
       ? licaoDaSemana.licao
@@ -212,7 +216,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
     breadcrumb: {
       "@id": `${canonicalUrl}#breadcrumb`,
     },
-    hasPart: trimestre.licoes.filter((licao) => isLicaoPublished(licao)).map((licao) => ({
+    hasPart: licoesPublicas.map((licao) => ({
       "@type": "Article",
       headline: `Lição ${licao.numero} | ${licao.titulo}`,
       url: resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao.slug}`),
@@ -363,20 +367,24 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                 Lições do trimestre
               </p>
               <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
-                Acompanhe as 13 lições desta edição
+                {hasPublicLessons
+                  ? "Acompanhe as lições já liberadas desta edição"
+                  : "Estrutura editorial desta edição"}
               </h2>
               <p className="leading-relaxed text-[#555]">
               {isDraft
                 ? "As lições deste trimestre já estão mapeadas no site. Os cards em preparação indicam o caminho da edição sem prometer conteúdo ainda não publicado."
-                : "Os badges abaixo indicam a posição de cada lição em relação ao domingo de referência da semana: passada, esta semana ou próxima."}
+                : hasPublicLessons
+                ? "Os badges abaixo indicam a posição das lições liberadas em relação à janela pública da semana: passada ou esta semana."
+                : "Esta edição já existe no calendário da classe, mas ainda não chegou à janela pública de liberação das lições."}
               </p>
             </div>
 
           <EbdLessonsGrid
             classe={classe}
             edicao={trimestre.slug}
-            licoes={trimestre.licoes}
-            initialSundayReferenceKey={getEbdSundayReferenceKey()}
+            licoes={hasPublicLessons ? licoesPublicas : trimestre.licoes}
+            initialSundayReferenceKey={getEbdPublicLessonReferenceKey()}
           />
         </div>
         </section>

@@ -41,30 +41,6 @@ function compareLicoesAsc(a: LicaoEBDComContexto, b: LicaoEBDComContexto) {
   return a.licao.data.localeCompare(b.licao.data);
 }
 
-export function isLicaoPublished(licao: Pick<LicaoEBD, "statusEditorial">) {
-  return (licao.statusEditorial ?? "published") === "published";
-}
-
-export function isTrimestreDraft(
-  trimestre: Pick<TrimestreEBD, "statusEditorial">
-) {
-  return (trimestre.statusEditorial ?? "published") === "draft";
-}
-
-export function getTrimestrePublishedLessonCount(trimestre: TrimestreEBD) {
-  return trimestre.licoes.filter((licao) => isLicaoPublished(licao)).length;
-}
-
-export function getTrimestreEditorialStatus(
-  trimestre: TrimestreEBD
-): StatusEditorialEBD {
-  return trimestre.statusEditorial ?? "published";
-}
-
-export function getLicaoEditorialStatus(licao: LicaoEBD): StatusLicaoEBD {
-  return licao.statusEditorial ?? "published";
-}
-
 function formatDateKey(date: Date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -87,6 +63,23 @@ export function getEbdSundayReferenceKey(date = new Date()) {
   return formatDateKey(sundayDate);
 }
 
+export function getEbdPublicLessonReferenceKey(date = new Date()) {
+  const saoPauloDate = getSaoPauloDate(date);
+  const sundayDate = new Date(saoPauloDate);
+  const weekDay = sundayDate.getDay();
+
+  sundayDate.setHours(0, 0, 0, 0);
+
+  if (weekDay === 0 || weekDay === 5 || weekDay === 6) {
+    const daysUntilSunday = weekDay === 0 ? 0 : 7 - weekDay;
+    sundayDate.setDate(sundayDate.getDate() + daysUntilSunday);
+  } else {
+    sundayDate.setDate(sundayDate.getDate() - weekDay);
+  }
+
+  return formatDateKey(sundayDate);
+}
+
 export function getEbdStudyReferenceKey(date = new Date()) {
   const saoPauloDate = getSaoPauloDate(date);
   const sundayDate = new Date(saoPauloDate);
@@ -97,6 +90,72 @@ export function getEbdStudyReferenceKey(date = new Date()) {
   sundayDate.setDate(sundayDate.getDate() - daysSinceSunday);
 
   return formatDateKey(sundayDate);
+}
+
+export function isLicaoPublished(licao: Pick<LicaoEBD, "statusEditorial">) {
+  return (licao.statusEditorial ?? "published") === "published";
+}
+
+export function getLicaoReleaseWindowKey(licao: Pick<LicaoEBD, "data">) {
+  const releaseDate = new Date(`${licao.data}T12:00:00-03:00`);
+  const weekDay = releaseDate.getDay();
+  const daysSinceFriday = (weekDay - 5 + 7) % 7;
+
+  releaseDate.setHours(0, 0, 0, 0);
+  releaseDate.setDate(releaseDate.getDate() - daysSinceFriday);
+
+  return formatDateKey(releaseDate);
+}
+
+export function isTrimestreDraft(
+  trimestre: Pick<TrimestreEBD, "statusEditorial">
+) {
+  return (trimestre.statusEditorial ?? "published") === "draft";
+}
+
+export function isLicaoInsideReleaseWindow(
+  licao: Pick<LicaoEBD, "data">,
+  date = new Date()
+) {
+  const releaseWindowKey = getLicaoReleaseWindowKey(licao);
+  const currentDateKey = formatDateKey(getSaoPauloDate(date));
+
+  return currentDateKey >= releaseWindowKey;
+}
+
+export function isLicaoPubliclyAvailable(
+  trimestre: Pick<TrimestreEBD, "statusEditorial">,
+  licao: Pick<LicaoEBD, "statusEditorial" | "data">,
+  date = new Date()
+) {
+  return (
+    !isTrimestreDraft(trimestre) &&
+    isLicaoPublished(licao) &&
+    isLicaoInsideReleaseWindow(licao, date)
+  );
+}
+
+export function getTrimestrePublishedLessonCount(trimestre: TrimestreEBD) {
+  return trimestre.licoes.filter((licao) => isLicaoPublished(licao)).length;
+}
+
+export function getTrimestrePublicLessonCount(
+  trimestre: TrimestreEBD,
+  date = new Date()
+) {
+  return trimestre.licoes.filter((licao) =>
+    isLicaoPubliclyAvailable(trimestre, licao, date)
+  ).length;
+}
+
+export function getTrimestreEditorialStatus(
+  trimestre: TrimestreEBD
+): StatusEditorialEBD {
+  return trimestre.statusEditorial ?? "published";
+}
+
+export function getLicaoEditorialStatus(licao: LicaoEBD): StatusLicaoEBD {
+  return licao.statusEditorial ?? "published";
 }
 
 function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
@@ -113,22 +172,28 @@ function getLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
     .sort(compareLicoesAsc);
 }
 
-function getPublishedLicoesComContexto(classe: ClasseEBD): LicaoEBDComContexto[] {
-  return getLicoesComContexto(classe).filter(
-    ({ trimestre, licao }) =>
-      !isTrimestreDraft(trimestre) && isLicaoPublished(licao)
+function getPublishedLicoesComContexto(
+  classe: ClasseEBD,
+  date = new Date()
+): LicaoEBDComContexto[] {
+  return getLicoesComContexto(classe).filter(({ trimestre, licao }) =>
+    isLicaoPubliclyAvailable(trimestre, licao, date)
   );
 }
 
-function getPrimeiraLicaoPublicada(trimestre: TrimestreEBD) {
-  return trimestre.licoes.find((licao) => isLicaoPublished(licao)) ?? null;
+function getPrimeiraLicaoPublica(trimestre: TrimestreEBD, date = new Date()) {
+  return (
+    trimestre.licoes.find((licao) =>
+      isLicaoPubliclyAvailable(trimestre, licao, date)
+    ) ?? null
+  );
 }
 
-function getUltimaLicaoPublicada(trimestre: TrimestreEBD) {
+function getUltimaLicaoPublica(trimestre: TrimestreEBD, date = new Date()) {
   for (let index = trimestre.licoes.length - 1; index >= 0; index -= 1) {
     const licao = trimestre.licoes[index];
 
-    if (isLicaoPublished(licao)) {
+    if (isLicaoPubliclyAvailable(trimestre, licao, date)) {
       return licao;
     }
   }
@@ -136,17 +201,26 @@ function getUltimaLicaoPublicada(trimestre: TrimestreEBD) {
   return null;
 }
 
+function getLicoesPublicasNoTrimestre(
+  trimestre: TrimestreEBD,
+  date = new Date()
+) {
+  return trimestre.licoes.filter((licao) =>
+    isLicaoPubliclyAvailable(trimestre, licao, date)
+  );
+}
+
 export function getClassesEbd() {
   return [...classesEBD].sort((a, b) => a.ordem - b.ordem);
 }
 
-export function hasClasseEbdPublicada(classe: ClasseEBD) {
+export function hasClasseEbdPublicada(classe: ClasseEBD, date = new Date()) {
   if (!isClassePublicadaNoSite(classe)) {
     return false;
   }
 
   return getTrimestresPorClasse(classe).some(
-    (trimestre) => getTrimestrePublishedLessonCount(trimestre) > 0
+    (trimestre) => getTrimestrePublicLessonCount(trimestre, date) > 0
   );
 }
 
@@ -154,40 +228,42 @@ export function isClasseEbdPublicada(value: string): value is ClasseEBD {
   return isClasseEbd(value) && hasClasseEbdPublicada(value);
 }
 
-export function getClassesEbdPublicadas() {
-  return getClassesEbd().filter((classe) => hasClasseEbdPublicada(classe.slug));
+export function getClassesEbdPublicadas(date = new Date()) {
+  return getClassesEbd().filter((classe) =>
+    hasClasseEbdPublicada(classe.slug, date)
+  );
 }
 
-export function getTrimestreMaisRecente(classe: ClasseEBD) {
+export function getTrimestreMaisRecente(classe: ClasseEBD, date = new Date()) {
   const trimestres = getTrimestresPorClasse(classe);
 
   return (
-    trimestres.find((trimestre) => getTrimestrePublishedLessonCount(trimestre) > 0) ??
+    trimestres.find((trimestre) => getTrimestrePublicLessonCount(trimestre, date) > 0) ??
     trimestres[0] ??
     null
   );
 }
 
 export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
-  if (!hasClasseEbdPublicada(classe)) {
+  if (!hasClasseEbdPublicada(classe, date)) {
     return null;
   }
 
-  const sundayReferenceKey = getEbdSundayReferenceKey(date);
+  const referenceKey = getEbdPublicLessonReferenceKey(date);
   const trimestres = getTrimestresPorClasse(classe);
 
   const trimestreAtual =
     trimestres.find((trimestre) => {
-      const primeiraLicao = getPrimeiraLicaoPublicada(trimestre);
-      const ultimaLicao = getUltimaLicaoPublicada(trimestre);
+      const primeiraLicao = getPrimeiraLicaoPublica(trimestre, date);
+      const ultimaLicao = getUltimaLicaoPublica(trimestre, date);
 
       if (!primeiraLicao || !ultimaLicao) {
         return false;
       }
 
       return (
-        sundayReferenceKey >= primeiraLicao.data &&
-        sundayReferenceKey <= ultimaLicao.data
+        referenceKey >= primeiraLicao.data &&
+        referenceKey <= ultimaLicao.data
       );
     }) ?? null;
 
@@ -197,9 +273,9 @@ export function getTrimestreAtual(classe: ClasseEBD, date = new Date()) {
 
   return (
     trimestres.find((trimestre) => {
-      const primeiraLicao = getPrimeiraLicaoPublicada(trimestre);
-      return primeiraLicao ? primeiraLicao.data >= sundayReferenceKey : false;
-    }) ?? getTrimestreMaisRecente(classe)
+      const primeiraLicao = getPrimeiraLicaoPublica(trimestre, date);
+      return primeiraLicao ? primeiraLicao.data >= referenceKey : false;
+    }) ?? getTrimestreMaisRecente(classe, date)
   );
 }
 
@@ -207,13 +283,13 @@ export function getTrimestresPorClasse(classe: ClasseEBD) {
   return [...trimestresEBDPorClasse[classe]].sort(compareTrimestresDesc);
 }
 
-export function getTrimestresEbdPublicos(classe: ClasseEBD) {
+export function getTrimestresEbdPublicos(classe: ClasseEBD, date = new Date()) {
   if (!isClassePublicadaNoSite(classe)) {
     return [];
   }
 
   return getTrimestresPorClasse(classe).filter(
-    (trimestre) => !isTrimestreDraft(trimestre)
+    (trimestre) => getTrimestrePublicLessonCount(trimestre, date) > 0
   );
 }
 
@@ -245,26 +321,26 @@ export function getLicao(classe: ClasseEBD, edicao: string, licaoSlug: string) {
 }
 
 export function getLicaoDaSemana(classe: ClasseEBD, date = new Date()) {
-  if (!hasClasseEbdPublicada(classe)) {
+  if (!hasClasseEbdPublicada(classe, date)) {
     return null;
   }
 
-  const sundayReferenceKey = getEbdSundayReferenceKey(date);
+  const publicReferenceKey = getEbdPublicLessonReferenceKey(date);
 
   return (
-    getPublishedLicoesComContexto(classe).find(
-      ({ licao }) => licao.data >= sundayReferenceKey
+    getPublishedLicoesComContexto(classe, date).find(
+      ({ licao }) => licao.data >= publicReferenceKey
     ) ?? null
   );
 }
 
 export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
-  if (!hasClasseEbdPublicada(classe)) {
+  if (!hasClasseEbdPublicada(classe, date)) {
     return null;
   }
 
   const studyReferenceKey = getEbdStudyReferenceKey(date);
-  const licoes = getPublishedLicoesComContexto(classe);
+  const licoes = getPublishedLicoesComContexto(classe, date);
 
   for (let index = licoes.length - 1; index >= 0; index -= 1) {
     const licao = licoes[index];
@@ -278,7 +354,7 @@ export function getLicaoEmEstudo(classe: ClasseEBD, date = new Date()) {
 }
 
 export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
-  if (!hasClasseEbdPublicada(classe)) {
+  if (!hasClasseEbdPublicada(classe, date)) {
     return null;
   }
 
@@ -289,7 +365,7 @@ export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
   }
 
   return (
-    getPublishedLicoesComContexto(classe).find(
+    getPublishedLicoesComContexto(classe, date).find(
       ({ licao }) => licao.data > licaoDaSemana.licao.data
     ) ?? null
   );
@@ -298,7 +374,8 @@ export function getProximaLicao(classe: ClasseEBD, date = new Date()) {
 export function getLicaoAnterior(
   classe: ClasseEBD,
   edicao: string,
-  licaoSlug: string
+  licaoSlug: string,
+  date = new Date()
 ) {
   const trimestre = getTrimestre(classe, edicao);
 
@@ -306,11 +383,30 @@ export function getLicaoAnterior(
     return null;
   }
 
-  const currentIndex = trimestre.licoes.findIndex(
-    (item) => item.slug === licaoSlug
-  );
+  const licoesPublicas = getLicoesPublicasNoTrimestre(trimestre, date);
+  const currentIndex = licoesPublicas.findIndex((item) => item.slug === licaoSlug);
 
-  return currentIndex > 0 ? trimestre.licoes[currentIndex - 1] : null;
+  return currentIndex > 0 ? licoesPublicas[currentIndex - 1] : null;
+}
+
+export function getLicaoProximaNoTrimestre(
+  classe: ClasseEBD,
+  edicao: string,
+  licaoSlug: string,
+  date = new Date()
+) {
+  const trimestre = getTrimestre(classe, edicao);
+
+  if (!trimestre) {
+    return null;
+  }
+
+  const licoesPublicas = getLicoesPublicasNoTrimestre(trimestre, date);
+  const currentIndex = licoesPublicas.findIndex((item) => item.slug === licaoSlug);
+
+  return currentIndex >= 0 && currentIndex < licoesPublicas.length - 1
+    ? licoesPublicas[currentIndex + 1]
+    : null;
 }
 
 export function formatEbdDate(date: string) {

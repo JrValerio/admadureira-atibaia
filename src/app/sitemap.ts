@@ -8,9 +8,9 @@ import {
 } from "@/data/espiritualidade";
 import {
   getClassesEbdPublicadas,
-  getTrimestrePublishedLessonCount,
+  getTrimestrePublicLessonCount,
   getTrimestresPorClasse,
-  isLicaoPublished,
+  isLicaoPubliclyAvailable,
   isTrimestreDraft,
 } from "@/lib/ebd-utils";
 import { getMensagens } from "@/data/mensagens";
@@ -36,9 +36,10 @@ function getLatestDate(dates: Date[], fallback: Date) {
 // 1.0 = home | 0.9 = páginas principais | 0.7 = páginas secundárias
 export default function sitemap(): MetadataRoute.Sitemap {
   const generatedAt = new Date();
+  const availabilityDate = generatedAt;
   const mensagens = getMensagens();
   const devotionals = getDevotionals();
-  const classesEbd = getClassesEbdPublicadas();
+  const classesEbd = getClassesEbdPublicadas(availabilityDate);
   const readingPlans = getReadingPlans();
   const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();
@@ -61,7 +62,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
         isTrimestreDraft(trimestre)
           ? []
           : trimestre.licoes
-          .filter((licao) => isLicaoPublished(licao))
+          .filter((licao) =>
+            isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
+          )
           .map((licao) => parseContentDate(licao.data))
       )
     ),
@@ -283,12 +286,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const paginasEbdClasse: MetadataRoute.Sitemap = classesEbd.map((classe) => {
     const trimestres = getTrimestresPorClasse(classe.slug).filter(
-      (trimestre) => !isTrimestreDraft(trimestre)
+      (trimestre) => getTrimestrePublicLessonCount(trimestre, availabilityDate) > 0
     );
     const lastModified = getLatestDate(
       trimestres.flatMap((trimestre) =>
         trimestre.licoes
-          .filter((licao) => isLicaoPublished(licao))
+          .filter((licao) =>
+            isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
+          )
           .map((licao) => parseContentDate(licao.data))
       ),
       generatedAt
@@ -304,26 +309,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const paginasEbdTrimestre: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
     getTrimestresPorClasse(classe.slug)
-      .filter((trimestre) => !isTrimestreDraft(trimestre))
+      .filter((trimestre) => getTrimestrePublicLessonCount(trimestre, availabilityDate) > 0)
       .map((trimestre) => ({
         url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}`),
         lastModified: getLatestDate(
           trimestre.licoes
-            .filter((licao) => isLicaoPublished(licao))
+            .filter((licao) =>
+              isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
+            )
             .map((licao) => parseContentDate(licao.data)),
           generatedAt
         ),
         changeFrequency: "weekly",
-        priority: getTrimestrePublishedLessonCount(trimestre) >= 13 ? 0.7 : 0.6,
+        priority: getTrimestrePublicLessonCount(trimestre, availabilityDate) >= 13 ? 0.7 : 0.6,
       }))
   );
 
   const paginasEbdLicao: MetadataRoute.Sitemap = classesEbd.flatMap((classe) =>
     getTrimestresPorClasse(classe.slug)
-      .filter((trimestre) => !isTrimestreDraft(trimestre))
+      .filter((trimestre) => getTrimestrePublicLessonCount(trimestre, availabilityDate) > 0)
       .flatMap((trimestre) =>
       trimestre.licoes
-        .filter((licao) => isLicaoPublished(licao))
+        .filter((licao) =>
+          isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
+        )
         .map((licao) => ({
           url: resolveSiteUrl(`/ebd/${classe.slug}/${trimestre.slug}/${licao.slug}`),
           lastModified: parseContentDate(licao.data),

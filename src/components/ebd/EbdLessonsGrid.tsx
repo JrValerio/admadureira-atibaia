@@ -5,7 +5,7 @@ import { useSyncExternalStore } from "react";
 import type { ClasseEBD, LicaoEBD } from "@/data/ebd";
 import {
   formatEbdDate,
-  getEbdSundayReferenceKey,
+  getEbdPublicLessonReferenceKey,
   getLicaoEditorialStatus,
 } from "@/lib/ebd-utils";
 
@@ -22,7 +22,7 @@ function subscribeReferenceDate(callback: () => void) {
 }
 
 function getSnapshot() {
-  return getEbdSundayReferenceKey();
+  return getEbdPublicLessonReferenceKey();
 }
 
 function getLessonStatus(licao: LicaoEBD, sundayReferenceKey: string) {
