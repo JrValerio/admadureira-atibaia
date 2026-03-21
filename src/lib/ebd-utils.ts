@@ -111,8 +111,21 @@ export function isLicaoPublished(licao: Pick<LicaoEBD, "statusEditorial">) {
   return (licao.statusEditorial ?? "published") === "published";
 }
 
-export function getLicaoReleaseWindowKey(licao: Pick<LicaoEBD, "data">) {
-  const releaseDate = new Date(`${licao.data}T12:00:00-03:00`);
+function getDataLiberacaoBase(
+  licao: Pick<LicaoEBD, "data" | "dataLiberacaoPublica">
+) {
+  return licao.dataLiberacaoPublica &&
+    /^\d{4}-\d{2}-\d{2}$/.test(licao.dataLiberacaoPublica)
+    ? licao.dataLiberacaoPublica
+    : licao.data;
+}
+
+export function getLicaoReleaseWindowKey(
+  licao: Pick<LicaoEBD, "data" | "dataLiberacaoPublica">
+) {
+  const releaseDate = new Date(
+    `${getDataLiberacaoBase(licao)}T12:00:00-03:00`
+  );
   const weekDay = releaseDate.getDay();
   const daysSinceFriday = (weekDay - 5 + 7) % 7;
 
@@ -129,7 +142,7 @@ export function isTrimestreDraft(
 }
 
 export function isLicaoInsideReleaseWindow(
-  licao: Pick<LicaoEBD, "data">,
+  licao: Pick<LicaoEBD, "data" | "dataLiberacaoPublica">,
   date = new Date()
 ) {
   const releaseWindowKey = getLicaoReleaseWindowKey(licao);

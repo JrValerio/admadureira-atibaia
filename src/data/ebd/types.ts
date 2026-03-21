@@ -159,6 +159,7 @@ export type LicaoEBD = {
   slug: string;
   numero: number;
   data: string;
+  dataLiberacaoPublica?: string;
   statusEditorial?: StatusLicaoEBD;
   titulo: string;
   resumo: string;

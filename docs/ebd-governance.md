@@ -6,6 +6,7 @@ Current public scope for the EBD module:
 
 - `Adultos 1T/2026`: published
 - `Jovens 1T/2026`: published
+- `Jovens 2T/2026`: in publication, with `Lição 1` already public and the remaining lessons following gradual weekly release
 
 The `Infantil` class remains preserved in the architecture, but editorial production is intentionally paused.
 In the current codebase, it stays out of public discovery because the class is not marked for public publication on the site.
@@ -142,13 +143,16 @@ Current front behavior is:
 
 ## 2026 Release Gate
 
-For `2026-2t`, the release gate is:
+Current release gate by class:
 
-- finish `Lição 12` of `1T/2026`
-- keep `Adultos + Jovens 1T/2026` polished and consistent
-- wait until the supporting material is available for the next publication cycle
+- `Adultos 2T/2026` still follows the existing gradual publication workflow and remains governed independently
+- `Jovens 2T/2026` is now open as a public quarter because the teacher magazine and the supporting material are available
+- `Jovens 2T/2026` uses `statusEditorial: partial`, which allows the quarter page to be discoverable even while lesson publication continues gradually
+- `Lição 1` of `Jovens 2T/2026` uses an explicit release override to become public immediately
+- `Lições 2` to `13` remain under the weekly release window and only enter public discovery when their own release window opens
 
-Until that gate is met, `2T/2026` should remain prepared internally, but not exposed as a public published quarter.
+This means `Adultos` and `Jovens` no longer share the exact same `2026-2t` gate.
+Each class now follows the editorial material already available for its own quarter.
 
 ## Editorial Priorities
 

@@ -1,4 +1,8 @@
-import type { LicaoEBD, TrimestreEBD } from "./types";
+import type {
+  LeituraSemanalItem,
+  LicaoEBD,
+  TrimestreEBD,
+} from "./types";
 import {
   getEbdLessonImagePath,
   getEbdQuarterCoverPath,
@@ -31,6 +35,24 @@ type PlaceholderQuarterConfig = {
   slug: string;
   trimestre: TrimestreEBD["trimestre"];
   imagem: string;
+};
+
+type CriarLicaoJovensOptions = {
+  edicao?: string;
+  statusEditorial?: LicaoEBD["statusEditorial"];
+  dataLiberacaoPublica?: string;
+};
+
+type LicaoSeedJovensSegundoTrimestre = {
+  numero: number;
+  data: string;
+  titulo: string;
+  resumo: string;
+  textoPrincipal: string;
+  leituraSemanal: LeituraSemanalItem[];
+  verdadePratica: string;
+  aplicacao: string;
+  enfase: string;
 };
 
 const apoioProfessorBase = [
@@ -2511,13 +2533,25 @@ const subsidioJovensLicao11: LicaoEBD["subsidioJovens"] = {
   },
 };
 
-function criarLicao(seed: LicaoSeed): LicaoEBD {
+function criarLicao(
+  seed: LicaoSeed,
+  options: CriarLicaoJovensOptions = {}
+): LicaoEBD {
+  const {
+    edicao = "2026-1t",
+    statusEditorial = "published",
+    dataLiberacaoPublica,
+  } = options;
+
   return {
-    id: `jovens-2026-1t-licao-${seed.numero}`,
+    id: `jovens-${edicao}-licao-${seed.numero}`,
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
-    statusEditorial: "published",
+    ...(dataLiberacaoPublica
+      ? { dataLiberacaoPublica }
+      : {}),
+    statusEditorial,
     titulo: seed.titulo,
     resumo: seed.resumo,
     textoChave: normalizeBibleReferenceNotation(seed.textoChave),
@@ -2550,10 +2584,11 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
 
 function criarLicaoEditorialJovens(
   seed: LicaoSeed,
-  editorial: JovensEditorialConfig
+  editorial: JovensEditorialConfig,
+  options: CriarLicaoJovensOptions = {}
 ): LicaoEBD {
   return {
-    ...criarLicao(seed),
+    ...criarLicao(seed, options),
     imagem: editorial.imagem,
     objetivos: editorial.objetivos,
     topicos: editorial.topicos,
@@ -2637,6 +2672,54 @@ function criarTrimestrePlaceholder({
     licoes: Array.from({ length: 13 }, (_, index) =>
       criarLicaoPlaceholder(slug, index + 1, adicionarSemanas(dataInicial, index))
     ),
+  };
+}
+
+const trimestreJovensSegundoTrimestre =
+  "Entre a Verdade e o Engano — Combatendo Ideologias e Ensinos que se Opõem à Palavra de Deus";
+
+function criarLicaoJovensSegundoTrimestre(
+  seed: LicaoSeedJovensSegundoTrimestre,
+  options: CriarLicaoJovensOptions = {}
+): LicaoEBD {
+  const base = criarLicao(
+    {
+      numero: seed.numero,
+      data: seed.data,
+      titulo: seed.titulo,
+      resumo: seed.resumo,
+      textoChave: seed.textoPrincipal,
+      verdadePratica: seed.verdadePratica,
+      leituraBiblica: [seed.textoPrincipal],
+      aplicacao: seed.aplicacao,
+      enfase: seed.enfase,
+    },
+    {
+      edicao: "2026-2t",
+      statusEditorial: "published",
+      ...options,
+    }
+  );
+
+  return {
+    ...base,
+    imagem: getEbdLessonImagePath("jovens", "2026-2t", seed.numero, "jpg"),
+    subsidioJovens: normalizeYoungSubsidy({
+      cabecalho: {
+        numero: seed.numero,
+        titulo: seed.titulo,
+        data: seed.data,
+        trimestre: trimestreJovensSegundoTrimestre,
+        textoPrincipal: seed.textoPrincipal,
+        resumoDaLicao: seed.resumo,
+        leituraSemanal: seed.leituraSemanal,
+      },
+      arranquePedagogico: {
+        objetivos: base.objetivos,
+      },
+      desenvolvimento: [],
+      apoioProfessor: {},
+    }),
   };
 }
 
@@ -3241,6 +3324,487 @@ const editoriaisJovensPrimeiroTrimestre: Partial<
   },
 };
 
+const sementesJovensSegundoTrimestre: LicaoSeedJovensSegundoTrimestre[] = [
+  {
+    numero: 1,
+    data: "2026-04-05",
+    titulo: "O Que é uma Ideologia",
+    resumo:
+      "Para resistir aos enganos ideológicos e manter-se firme na fé, é necessário ter conhecimento profundo das Escrituras, renovar a mente em Cristo e usar as armas espirituais.",
+    textoPrincipal: "Colossenses 2.2",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Mateus 15.9", foco: "Doutrinas que são preceitos dos homens." },
+      { dia: "Terça", referencia: "Efésios 6.12; Colossenses 2.1", foco: "Na vida cristã a luta espiritual é real." },
+      { dia: "Quarta", referencia: "1 Coríntios 1.18-21", foco: "A loucura da sabedoria humana." },
+      { dia: "Quinta", referencia: "Efésios 4.14", foco: "Contra os ventos de doutrina." },
+      { dia: "Sexta", referencia: "1 Timóteo 6.20", foco: "Cuidado com as falsas ciências." },
+      { dia: "Sábado", referencia: "Romanos 12.2", foco: "Buscando a renovação da mente." },
+    ],
+    verdadePratica:
+      "Ideologias que deslocam Cristo do centro precisam ser confrontadas pela verdade das Escrituras e pelo discernimento espiritual.",
+    aplicacao:
+      "Separe um tempo nesta semana para confrontar ideias e discursos que você consome com a Palavra de Deus, pedindo ao Senhor mente renovada e discernimento espiritual para permanecer firme na verdade.",
+    enfase: "o discernimento cristão diante das ideologias",
+  },
+  {
+    numero: 2,
+    data: "2026-04-12",
+    titulo: "A Falácia do Materialismo Histórico",
+    resumo:
+      "A resposta bíblica está na fidelidade ao Evangelho, que promove transformação genuína pela graça de Deus, não por revolução ideológica.",
+    textoPrincipal: "2 Coríntios 10.5",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Gênesis 1.26-27" },
+      { dia: "Terça", referencia: "Salmos 33.10-11" },
+      { dia: "Quarta", referencia: "Daniel 2.20-21" },
+      { dia: "Quinta", referencia: "João 18.36" },
+      { dia: "Sexta", referencia: "Atos 17.26-27" },
+      { dia: "Sábado", referencia: "1 Coríntios 2.14" },
+    ],
+    verdadePratica:
+      "A fé cristã responde ao materialismo histórico com a soberania de Deus e a transformação operada pelo Evangelho.",
+    aplicacao:
+      "Avalie ideias sociais e históricas que você consome e confronte-as com o Evangelho, lembrando que Deus governa a história e transforma vidas.",
+    enfase: "a soberania de Deus acima do materialismo histórico",
+  },
+  {
+    numero: 3,
+    data: "2026-04-19",
+    titulo: "A Falácia do Relativismo Ético-Moral",
+    resumo:
+      "A fé cristã afirma que Deus é a fonte da moralidade e que seus princípios revelados nas Escrituras são universais, imutáveis e essenciais para uma vida justa.",
+    textoPrincipal: "Isaías 5.20",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Êxodo 20" },
+      { dia: "Terça", referencia: "Salmos 19.7-9" },
+      { dia: "Quarta", referencia: "Provérbios 14.12" },
+      { dia: "Quinta", referencia: "Romanos 1.18-32" },
+      { dia: "Sexta", referencia: "Romanos 12.2" },
+      { dia: "Sábado", referencia: "Hebreus 5.14" },
+    ],
+    verdadePratica:
+      "A moralidade não nasce do consenso humano, mas do caráter santo de Deus revelado nas Escrituras.",
+    aplicacao:
+      "Submeta suas escolhas morais à Palavra de Deus e rejeite a lógica que chama o mal de bem e o bem de mal.",
+    enfase: "a verdade moral revelada por Deus",
+  },
+  {
+    numero: 4,
+    data: "2026-04-26",
+    titulo: "A Falácia da Ideologia de Gênero",
+    resumo:
+      "À luz das Escrituras, aprendemos que homem e mulher foram criados de forma intencional e complementar, e que a verdadeira identidade do ser humano só é plenamente encontrada em Cristo.",
+    textoPrincipal: "Gênesis 1.27",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Salmos 139.14" },
+      { dia: "Terça", referencia: "Romanos 1.26-27" },
+      { dia: "Quarta", referencia: "1 Coríntios 6.9-11" },
+      { dia: "Quinta", referencia: "Efésios 4.14-15" },
+      { dia: "Sexta", referencia: "1 Timóteo 3.15" },
+      { dia: "Sábado", referencia: "João 17.17" },
+    ],
+    verdadePratica:
+      "A identidade humana só é plenamente compreendida à luz da criação divina e da redenção em Cristo.",
+    aplicacao:
+      "Afirme sua identidade em Cristo e trate criação, corpo e sexualidade à luz da verdade bíblica.",
+    enfase: "a identidade humana segundo a criação de Deus",
+  },
+  {
+    numero: 5,
+    data: "2026-05-03",
+    titulo: "A Falácia da Teologia Progressista",
+    resumo:
+      "A Teologia Progressista tenta adaptar a fé cristã às ideias contemporâneas, relativizando verdades fundamentais e buscando enfraquecer a autoridade das Escrituras.",
+    textoPrincipal: "Colossenses 2.8",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "1 Timóteo 3.16" },
+      { dia: "Terça", referencia: "Judas 3" },
+      { dia: "Quarta", referencia: "João 17.17" },
+      { dia: "Quinta", referencia: "1 Tessalonicenses 5.20" },
+      { dia: "Sexta", referencia: "Romanos 3.2" },
+      { dia: "Sábado", referencia: "Mateus 5.18" },
+    ],
+    verdadePratica:
+      "Qualquer releitura progressista que relativize a autoridade bíblica se afasta da fé cristã histórica.",
+    aplicacao:
+      "Examine mensagens que tentam adaptar o Evangelho ao espírito do tempo e permaneça fiel à autoridade das Escrituras.",
+    enfase: "a fidelidade à autoridade das Escrituras",
+  },
+  {
+    numero: 6,
+    data: "2026-05-10",
+    titulo: "A Falácia do Humanismo",
+    resumo:
+      "O Humanismo secular é uma filosofia falha por exaltar a razão humana e rejeitar a dependência de Deus, conduzindo ao relativismo moral e ao vazio existencial.",
+    textoPrincipal: "Provérbios 3.5-6",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Jeremias 17.5" },
+      { dia: "Terça", referencia: "Provérbios 14.12" },
+      { dia: "Quarta", referencia: "1 Coríntios 1.25" },
+      { dia: "Quinta", referencia: "Romanos 1.21" },
+      { dia: "Sexta", referencia: "Romanos 3.23" },
+      { dia: "Sábado", referencia: "Mateus 5.16" },
+    ],
+    verdadePratica:
+      "A razão humana precisa se submeter à sabedoria de Deus para não se perder em autonomia vazia.",
+    aplicacao:
+      "Confie menos na autossuficiência e mais na direção do Senhor, deixando a verdade bíblica guiar suas decisões.",
+    enfase: "a dependência de Deus acima do humanismo",
+  },
+  {
+    numero: 7,
+    data: "2026-05-17",
+    titulo: "A Falácia da Teoria Darwiniana",
+    resumo:
+      "A teoria darwiniana, ao excluir Deus da criação, contradiz a revelação bíblica, que afirma que todas as coisas foram criadas intencionalmente por um Criador soberano.",
+    textoPrincipal: "João 1.3",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Gênesis 1.1" },
+      { dia: "Terça", referencia: "Gênesis 1.24-25" },
+      { dia: "Quarta", referencia: "Êxodo 20.11" },
+      { dia: "Quinta", referencia: "Salmos 33.6" },
+      { dia: "Sexta", referencia: "Isaías 45.18" },
+      { dia: "Sábado", referencia: "Salmos 19.1" },
+    ],
+    verdadePratica:
+      "A criação testemunha um Criador soberano e não pode ser reduzida a acaso sem propósito.",
+    aplicacao:
+      "Reforce sua confiança no Deus Criador e responda com adoração, gratidão e defesa da verdade bíblica.",
+    enfase: "a criação segundo o Deus soberano",
+  },
+  {
+    numero: 8,
+    data: "2026-05-24",
+    titulo: "A Falácia do Pragmatismo",
+    resumo:
+      "A verdade não deve ser medida pela utilidade imediata ou pelos resultados visíveis, mas pela fidelidade à Palavra de Deus e ao Evangelho de Cristo.",
+    textoPrincipal: "2 Coríntios 4.2",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "2 Coríntios 1.18" },
+      { dia: "Terça", referencia: "João 17.17" },
+      { dia: "Quarta", referencia: "Marcos 8.34-35" },
+      { dia: "Quinta", referencia: "Jeremias 6.16" },
+      { dia: "Sexta", referencia: "Gálatas 1.10" },
+      { dia: "Sábado", referencia: "Mateus 7.22-23" },
+    ],
+    verdadePratica:
+      "A fidelidade ao Evangelho vale mais do que resultados imediatos ou utilidade aparente.",
+    aplicacao:
+      "Escolha a fidelidade à Palavra mesmo quando o pragmatismo parecer mais rápido, útil ou popular.",
+    enfase: "a fidelidade ao Evangelho acima do resultado imediato",
+  },
+  {
+    numero: 9,
+    data: "2026-05-31",
+    titulo: "A Falácia do Ateísmo",
+    resumo:
+      "A criação testemunha claramente sobre a existência de Deus, tornando indesculpável a incredulidade.",
+    textoPrincipal: "Salmos 14.1",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Hebreus 11.6" },
+      { dia: "Terça", referencia: "Salmos 19.1" },
+      { dia: "Quarta", referencia: "Atos 17.24-27" },
+      { dia: "Quinta", referencia: "João 16.4" },
+      { dia: "Sexta", referencia: "Salmos 10.4" },
+      { dia: "Sábado", referencia: "Romanos 3.11" },
+    ],
+    verdadePratica:
+      "A existência de Deus é manifesta na criação e sua rejeição revela rebelião do coração humano.",
+    aplicacao:
+      "Observe os sinais da criação e renove sua convicção de que Deus existe, fala e deve ser buscado.",
+    enfase: "o testemunho da criação sobre a existência de Deus",
+  },
+  {
+    numero: 10,
+    data: "2026-06-07",
+    titulo: "A Falácia da Teoria do Deísmo",
+    resumo:
+      "O Deus da Bíblia é pessoal, amoroso, presente e atuante, em total contraste com a ideia de um deus distante propagado pelo Deísmo.",
+    textoPrincipal: "Colossenses 1.16-17",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "Hebreus 1.3" },
+      { dia: "Terça", referencia: "Salmos 121.4" },
+      { dia: "Quarta", referencia: "João 14.13" },
+      { dia: "Quinta", referencia: "Isaías 41.10" },
+      { dia: "Sexta", referencia: "Mateus 10.29-30" },
+      { dia: "Sábado", referencia: "Salmos 139.7-10" },
+    ],
+    verdadePratica:
+      "O Deus bíblico não é distante: Ele sustenta, governa e intervém em sua criação.",
+    aplicacao:
+      "Ore reconhecendo que Deus sustenta sua vida diariamente e rejeite a ideia de um Criador distante.",
+    enfase: "a presença ativa do Deus bíblico",
+  },
+  {
+    numero: 11,
+    data: "2026-06-14",
+    titulo: "A Falácia da Teologia da Prosperidade",
+    resumo:
+      "A Teologia da Prosperidade busca associar as bênçãos divinas à riqueza material, ignorando o chamado bíblico ao contentamento e à verdadeira prosperidade espiritual em Cristo.",
+    textoPrincipal: "Apocalipse 3.17",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "1 Timóteo 6.6-8" },
+      { dia: "Terça", referencia: "1 Timóteo 6.9" },
+      { dia: "Quarta", referencia: "Provérbios 23.4" },
+      { dia: "Quinta", referencia: "Hebreus 13.5" },
+      { dia: "Sexta", referencia: "Mateus 16.24-26" },
+      { dia: "Sábado", referencia: "João 6.26" },
+    ],
+    verdadePratica:
+      "A verdadeira prosperidade cristã está em Cristo, no contentamento e na fidelidade, não no acúmulo material.",
+    aplicacao:
+      "Pratique contentamento, generosidade e foco em Cristo para não medir a bênção de Deus apenas por resultados materiais.",
+    enfase: "o contentamento cristão acima da ganância religiosa",
+  },
+  {
+    numero: 12,
+    data: "2026-06-21",
+    titulo: "A Falácia do Triunfalismo",
+    resumo:
+      "O Triunfalismo distorce o Evangelho ao prometer uma vida cristã sem sofrimentos, enquanto a Bíblia revela que a verdadeira vitória está na perseverança, na cruz e na esperança eterna em Cristo.",
+    textoPrincipal: "Lucas 9.23",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "João 16.33" },
+      { dia: "Terça", referencia: "2 Timóteo 3.12" },
+      { dia: "Quarta", referencia: "Mateus 5.11-12" },
+      { dia: "Quinta", referencia: "Lucas 9.23" },
+      { dia: "Sexta", referencia: "2 Coríntios 12.9" },
+      { dia: "Sábado", referencia: "Hebreus 11.38" },
+    ],
+    verdadePratica:
+      "A vitória cristã passa pela cruz, pela perseverança e pela esperança eterna, não por triunfalismo terreno.",
+    aplicacao:
+      "Aceite o chamado de Cristo à perseverança e rejeite promessas de vitória sem cruz, renúncia ou fidelidade.",
+    enfase: "a perseverança cristã acima do triunfalismo",
+  },
+  {
+    numero: 13,
+    data: "2026-06-28",
+    titulo: "O Discernimento do Cristão",
+    resumo:
+      "O discernimento espiritual é essencial para que o crente permaneça firme na verdade bíblica, rejeitando os enganos dos falsos mestres e sendo guiado pelo Espírito Santo.",
+    textoPrincipal: "Hebreus 5.14",
+    leituraSemanal: [
+      { dia: "Segunda", referencia: "1 João 4.1" },
+      { dia: "Terça", referencia: "Mateus 24.24" },
+      { dia: "Quarta", referencia: "João 7.24" },
+      { dia: "Quinta", referencia: "João 16.13" },
+      { dia: "Sexta", referencia: "Tiago 1.5" },
+      { dia: "Sábado", referencia: "1 Tessalonicenses 5.21" },
+    ],
+    verdadePratica:
+      "Discernimento espiritual nasce da maturidade bíblica e da submissão ao Espírito Santo.",
+    aplicacao:
+      "Peça discernimento ao Espírito Santo e teste ensinos, vozes e ideias pela Palavra de Deus.",
+    enfase: "o discernimento espiritual na juventude cristã",
+  },
+];
+
+const objetivosJovensSegundoTrimestreLicao1 = [
+  "Apontar as características de uma ideologia.",
+  "Identificar os impactos da ideologia sobre a fé cristã.",
+  "Estimular a busca do conhecimento bíblico para a defesa da verdade.",
+];
+
+const topicosJovensSegundoTrimestreLicao1 = [
+  {
+    titulo: "As características de uma ideologia",
+    conteudo: [
+      "Ideologias são sistemas organizados de ideias que tentam explicar e moldar a realidade a partir de referenciais humanos.",
+      "Quando se colocam como alternativa à verdade revelada nas Escrituras, elas deslocam Deus do centro e passam a competir com a autoridade bíblica.",
+      "Por mais coerentes que pareçam, carregam limites da razão humana caída e precisam ser julgadas à luz da Palavra.",
+    ],
+  },
+  {
+    titulo: "Os impactos da ideologia sobre a fé cristã",
+    conteudo: [
+      "Ideologias afetam moralidade, cultura, política, identidade e espiritualidade, oferecendo respostas autossuficientes para questões que exigem revelação divina.",
+      "Sem discernimento, o cristão corre o risco de absorver valores antibíblicos e chamar de verdade aquilo que apenas ecoa a sabedoria humana.",
+      "A igreja precisa reconhecer que muitas propostas aparentemente bonitas e inteligentes têm raízes humanistas, relativistas e antibíblicas.",
+    ],
+  },
+  {
+    titulo: "Conhecimento bíblico para defesa da verdade",
+    conteudo: [
+      "Paulo alerta para filosofias e vãs sutilezas que não são segundo Cristo, mostrando a necessidade de uma mente rendida ao Evangelho.",
+      "A resistência aos enganos ideológicos exige renovação da mente, vida de oração, firmeza em Cristo e uso das armas espirituais.",
+      "A Escola Dominical é espaço estratégico para fortalecer a juventude no conhecimento bíblico-doutrinário e prepará-la para responder com verdade e graça.",
+    ],
+  },
+];
+
+const subsidioJovensSegundoTrimestreLicao1: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 1,
+    titulo: "O Que é uma Ideologia",
+    data: "2026-04-05",
+    trimestre: trimestreJovensSegundoTrimestre,
+    textoPrincipal:
+      "Para que os seus corações sejam consolados, e estejam unidos em amor, e enriquecidos da plenitude da inteligência, para conhecimento do mistério de Deus - Cristo. (Cl 2.2)",
+    resumoDaLicao:
+      "Para resistir aos enganos ideológicos e manter-se firme na fé, é necessário ter conhecimento profundo das Escrituras, renovar a mente em Cristo e usar as armas espirituais.",
+    leituraSemanal: sementesJovensSegundoTrimestre[0].leituraSemanal,
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensSegundoTrimestreLicao1,
+    interacao:
+      "Iniciamos um trimestre voltado a ideologias que influenciam escolas, redes sociais, cultura e até algumas igrejas. A classe precisa compreender o que são essas ideias, de onde vêm e como afetam a fé cristã.",
+    orientacaoPedagogica:
+      "Explique que ideologia é um conjunto organizado de ideias que tenta explicar como o mundo funciona e moldar comportamentos. Mostre que o perigo começa quando essas ideias substituem a verdade bíblica e colocam o ser humano no centro.",
+  },
+  desenvolvimento: [
+    {
+      id: "caracteristicas-da-ideologia",
+      titulo: "As características de uma ideologia",
+      sinopse:
+        "Toda ideologia nasce de construções humanas e procura oferecer explicações totalizantes sobre a realidade.",
+      explicacaoBiblica: [
+        "Colossenses 2.8 alerta contra filosofias e vãs sutilezas fundadas em tradições humanas e não em Cristo.",
+        "A razão humana, sem a luz da revelação divina, tende a produzir sistemas que parecem sofisticados, mas se afastam da verdade.",
+        "Por isso, o cristão precisa aprender a discernir quando uma ideia se apresenta como rival da Palavra de Deus.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a turma a identificar quais ideias do tempo presente prometem explicações totais para a vida sem depender do Senhor.",
+        "Mostre que nem toda proposta intelectualmente atraente é compatível com a fé cristã.",
+      ],
+      pense:
+        "Quais discursos você consome com frequência e que precisam ser avaliados com mais cuidado à luz das Escrituras?",
+      pontoImportante:
+        "Uma ideologia se torna perigosa quando deseja moldar a vida sem submissão à verdade de Cristo.",
+    },
+    {
+      id: "impactos-sobre-a-fe",
+      titulo: "Os impactos da ideologia sobre a fé cristã",
+      sinopse:
+        "Ideologias moldam visão de mundo, hábitos, linguagem e valores, podendo enfraquecer a fé quando não são confrontadas pela verdade.",
+      explicacaoBiblica: [
+        "Efésios 4.14 mostra que o povo de Deus não deve ser levado por ventos de doutrina e enganos de homens.",
+        "1 Coríntios 1.18-21 expõe a insuficiência da sabedoria humana para compreender a salvação sem a cruz de Cristo.",
+        "Ideias antibíblicas podem parecer moralmente aceitáveis, mas terminam por afastar a mente da obediência a Cristo.",
+      ],
+      aplicacaoPratica: [
+        "Converse com a classe sobre ideologias presentes na escola, nas redes sociais e em ambientes culturais frequentados pela juventude.",
+        "Estimule os alunos a reconhecer como essas narrativas tentam redefinir verdade, identidade e moralidade.",
+      ],
+      pense:
+        "Você percebe quando uma ideia sedutora está, na prática, tirando Cristo do centro da sua forma de pensar?",
+      pontoImportante:
+        "A fé cristã precisa ser protegida de sistemas que normalizam engano, orgulho intelectual e autonomia sem Deus.",
+    },
+    {
+      id: "defesa-da-verdade",
+      titulo: "Conhecimento bíblico para defesa da verdade",
+      sinopse:
+        "Discernimento espiritual não nasce de improviso, mas de mente renovada, conhecimento bíblico e vida submetida ao Senhor.",
+      explicacaoBiblica: [
+        "2 Coríntios 10.3-5 ensina que nossas armas são espirituais e que todo entendimento deve ser levado à obediência de Cristo.",
+        "Romanos 12.2 mostra que a mente precisa ser renovada para discernir a vontade de Deus.",
+        "O conhecimento profundo das Escrituras fortalece o crente contra falsos ensinos e o prepara para responder com verdade.",
+      ],
+      aplicacaoPratica: [
+        "Desafie a turma a cultivar leitura bíblica consistente, oração e conversa honesta sobre as pressões ideológicas do presente.",
+        "Mostre que a defesa da verdade começa com um coração firmado em Cristo e uma mente cheia da Palavra.",
+      ],
+      pense:
+        "Seu contato com a Bíblia tem sido suficiente para formar convicções firmes ou apenas para sobreviver espiritualmente?",
+      pontoImportante:
+        "Conhecimento bíblico, mente renovada e armas espirituais são essenciais para resistir ao engano.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Peça que a turma diga o que entende por ideologia e use as respostas para mostrar como ideias moldam visão de mundo e comportamento.",
+    perguntaChave:
+      "Como reconhecer ideologias que competem com a verdade bíblica e como a juventude pode permanecer firme em Cristo diante delas?",
+    dificuldadeProvavelDaClasse:
+      "Alguns jovens podem achar que ideologia é assunto distante da vida cristã, sem perceber como ela aparece em discursos aparentemente neutros, bonitos ou modernos.",
+    conducaoDaConversa: [
+      "Leve a classe a perceber que nem toda ideia organizada é neutra; muitas delas carregam pressupostos espirituais e morais incompatíveis com a Palavra.",
+      "Mostre que Paulo não condena o pensamento sério, mas rejeita filosofias que colocam a humanidade no lugar que pertence a Cristo.",
+      "Mantenha o foco em discernimento bíblico, renovação da mente e obediência de todo pensamento ao Senhor.",
+    ],
+    fechamento:
+      "Encerre reforçando que resistir ao engano ideológico exige firmeza nas Escrituras, mente renovada em Cristo e vida sustentada por armas espirituais.",
+  },
+  revisao: {
+    horaDaRevisao: [
+      "O que caracteriza uma ideologia e por que ela pode se tornar perigosa para a fé cristã?",
+      "Como as ideologias tentam competir com a autoridade das Escrituras?",
+      "Qual a relação entre renovação da mente e discernimento espiritual?",
+      "Que recursos Deus oferece para resistirmos aos enganos ideológicos?",
+    ],
+    conclusao:
+      "A juventude cristã precisa crescer em conhecimento bíblico, discernimento espiritual e firmeza em Cristo para resistir a ideologias que se opõem à Palavra de Deus.",
+  },
+};
+
+const licaoJovensSegundoTrimestre1Base = criarLicaoJovensSegundoTrimestre(
+  sementesJovensSegundoTrimestre[0],
+  {
+    statusEditorial: "published",
+    dataLiberacaoPublica: "2026-03-21",
+  }
+);
+
+const licaoJovensSegundoTrimestre1: LicaoEBD = {
+  ...licaoJovensSegundoTrimestre1Base,
+  leituraBiblica: normalizeReferences([
+    "Colossenses 2.8",
+    "2 Coríntios 10.3-5",
+  ]),
+  objetivos: objetivosJovensSegundoTrimestreLicao1,
+  topicos: topicosJovensSegundoTrimestreLicao1,
+  apoioProfessor: [
+    "Apresente ideologia como sistema organizado de ideias que, quando se opõe à revelação bíblica, disputa o lugar da verdade no coração da juventude.",
+    "Ajude a classe a perceber que nem tudo o que parece moderno, sensato ou libertador nasce da sabedoria de Deus.",
+  ],
+  apoioAluno: [
+    "Leia Colossenses 2.8 e 2 Coríntios 10.3-5 durante a semana e anote quais ideias atuais mais precisam ser confrontadas pela Palavra.",
+    "Escolha uma influência cultural recorrente na sua rotina e avalie se ela aproxima você de Cristo ou enfraquece seu discernimento bíblico.",
+  ],
+  esboco: [
+    {
+      titulo: "Entrada",
+      conteudo:
+        "Comece pedindo que a turma descreva o que entende por ideologia e use as respostas para mostrar como ideias moldam cultura, moralidade e identidade.",
+    },
+    {
+      titulo: "Desenvolvimento",
+      conteudo:
+        "Trabalhe a lição em três movimentos: características da ideologia, impactos sobre a fé cristã e conhecimento bíblico como defesa da verdade.",
+    },
+    {
+      titulo: "Fechamento",
+      conteudo:
+        "Conclua encorajando a juventude a renovar a mente em Cristo, discernir discursos do tempo presente e permanecer firme nas Escrituras.",
+    },
+  ],
+  subsidioJovens: normalizeYoungSubsidy(subsidioJovensSegundoTrimestreLicao1),
+};
+
+const jovens2026SegundoTrimestreBase = criarTrimestrePlaceholder({
+  slug: "2026-2t",
+  trimestre: 2,
+  imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
+});
+
+const jovens2026SegundoTrimestre: TrimestreEBD = {
+  ...jovens2026SegundoTrimestreBase,
+  id: "jovens-2026-2t",
+  statusEditorial: "partial",
+  titulo: "Entre a Verdade e o Engano",
+  subtitulo: "Combatendo Ideologias e Ensinos que se Opõem à Palavra de Deus",
+  descricao:
+    "Treze lições para fortalecer a juventude no discernimento bíblico diante de ideologias e ensinos que tentam substituir a verdade da Palavra de Deus.",
+  comentarista: "Eduardo Leandro Alves",
+  versiculoBase: "Colossenses 2:8",
+  licoes: sementesJovensSegundoTrimestre.map((seed) =>
+    seed.numero === 1
+      ? licaoJovensSegundoTrimestre1
+      : criarLicaoJovensSegundoTrimestre(seed)
+  ),
+};
+
 export const jovens2026Trimestres: TrimestreEBD[] = [
   {
     id: "jovens-2026-1t",
@@ -3261,11 +3825,7 @@ export const jovens2026Trimestres: TrimestreEBD[] = [
       return editorial ? criarLicaoEditorialJovens(seed, editorial) : criarLicao(seed);
     }),
   },
-  criarTrimestrePlaceholder({
-    slug: "2026-2t",
-    trimestre: 2,
-    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  jovens2026SegundoTrimestre,
   criarTrimestrePlaceholder({
     slug: "2026-3t",
     trimestre: 3,
