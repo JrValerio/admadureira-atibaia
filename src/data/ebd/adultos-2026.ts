@@ -1,4 +1,4 @@
-import type { LicaoEBD, TrimestreEBD } from "./types";
+import type { LeituraDiariaItem, LicaoEBD, TrimestreEBD } from "./types";
 import {
   getEbdLessonImagePath,
   getEbdQuarterCoverPath,
@@ -31,6 +31,22 @@ type PlaceholderQuarterConfig = {
   slug: string;
   trimestre: TrimestreEBD["trimestre"];
   imagem: string;
+};
+
+type LicaoSeedAdultosSegundoTrimestre = {
+  numero: number;
+  data: string;
+  titulo: string;
+  resumo: string;
+  textoChave: string;
+  textoAureo: string;
+  verdadePratica: string;
+  leituraBiblica: string[];
+  leituraDiaria: LeituraDiariaItem[];
+  aplicacao: string;
+  enfase: string;
+  palavraChave: string;
+  hinosSugeridos?: string[];
 };
 
 const apoioProfessorBase = [
@@ -2963,6 +2979,861 @@ const extensoesImagensAdultosSegundoTrimestre: Record<number, "jpg" | "png"> =
     13: "png",
   };
 
+const sementesAdultosSegundoTrimestreFuturas: LicaoSeedAdultosSegundoTrimestre[] =
+  [
+    {
+      numero: 2,
+      data: "2026-04-12",
+      titulo: "A Fé de Abrão nas Promessas de Deus",
+      resumo:
+        "A lição destaca como Abrão aprendeu a confiar nas promessas de Deus mesmo quando o cumprimento parecia distante e humanamente improvável.",
+      textoChave: "Gn 15.6",
+      textoAureo:
+        "Gênesis 15.6 mostra que Abrão creu no Senhor, e essa fé foi considerada justiça diante de Deus.",
+      verdadePratica:
+        "A fé amadurece quando o crente aprende a descansar no Deus que promete e cumpre no seu tempo.",
+      leituraBiblica: ["Gn 15.1-6", "Rm 4.18-21"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 15.1",
+          tema: "Deus consola Abrão e afasta o temor com sua própria presença.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 15.5",
+          tema: "O Senhor amplia a visão de Abrão sobre a promessa.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 15.6",
+          tema: "A fé de Abrão é resposta confiante à palavra divina.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Rm 4.18",
+          tema: "A esperança bíblica persevera além das circunstâncias.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Rm 4.20",
+          tema: "A incredulidade enfraquece, mas a fé glorifica a Deus.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Hb 10.23",
+          tema: "A fidelidade de Deus sustenta a perseverança do crente.",
+        },
+      ],
+      aplicacao:
+        "Submeta seus medos e atrasos à promessa de Deus, aprendendo a esperar com fé obediente e coração firme.",
+      enfase: "a confiança de Abrão nas promessas divinas",
+      palavraChave: "Promessa",
+      hinosSugeridos: ["93", "126", "432"],
+    },
+    {
+      numero: 3,
+      data: "2026-04-19",
+      titulo: "A Impaciência na Espera do Cumprimento da Promessa",
+      resumo:
+        "A lição mostra que a impaciência diante do tempo de Deus pode gerar atalhos dolorosos, conflitos e consequências que poderiam ser evitadas pela confiança obediente.",
+      textoChave: "Sl 27.14",
+      textoAureo:
+        "Salmos 27.14 ensina que esperar no Senhor requer coragem, firmeza e confiança renovada.",
+      verdadePratica:
+        "A impaciência produz atalhos perigosos; a fé persevera no tempo de Deus sem negociar a verdade.",
+      leituraBiblica: ["Gn 16.1-6", "Hb 10.36"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 16.1",
+          tema: "A demora da promessa expõe a ansiedade humana.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 16.2",
+          tema: "Atalhos humanos não substituem a direção divina.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 16.5",
+          tema: "Decisões fora do tempo de Deus geram conflito e desgaste.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Hb 10.36",
+          tema: "A perseverança é parte da caminhada da fé.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Sl 40.1",
+          tema: "Esperar em Deus não é passividade, mas confiança ativa.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Gl 6.9",
+          tema: "Quem não desanima colhe no tempo oportuno.",
+        },
+      ],
+      aplicacao:
+        "Resista à tentação de resolver sozinho o que Deus mandou confiar a Ele e aprenda a esperar com fidelidade.",
+      enfase: "a perseverança diante da demora das promessas",
+      palavraChave: "Espera",
+      hinosSugeridos: ["107", "193", "432"],
+    },
+    {
+      numero: 4,
+      data: "2026-04-26",
+      titulo: "A Confirmação de Uma Promessa",
+      resumo:
+        "A lição evidencia que Deus confirma sua aliança, reforça sua palavra e fortalece a fé do seu servo mesmo após períodos de espera e fragilidade.",
+      textoChave: "Gn 17.7",
+      textoAureo:
+        "Gênesis 17.7 declara que Deus estabelece sua aliança para ser Deus de Abraão e da sua descendência.",
+      verdadePratica:
+        "Quando Deus confirma sua promessa, Ele fortalece o coração do servo e o chama à obediência da aliança.",
+      leituraBiblica: ["Gn 17.1-8", "Gn 17.15-19"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 17.1",
+          tema: "Deus chama o patriarca à integridade diante da aliança.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 17.5",
+          tema: "O novo nome aponta para a amplitude da promessa.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 17.7",
+          tema: "A aliança revela a fidelidade contínua do Senhor.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Rm 4.16",
+          tema: "A promessa permanece firmada na graça.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "2 Co 1.20",
+          tema: "Em Deus, toda promessa encontra confirmação segura.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Hb 6.13",
+          tema: "O Senhor confirma sua palavra com base em seu próprio caráter.",
+        },
+      ],
+      aplicacao:
+        "Renove sua confiança nas promessas de Deus e responda à sua fidelidade com integridade, obediência e adoração.",
+      enfase: "a confirmação divina da aliança",
+      palavraChave: "Alianca",
+      hinosSugeridos: ["75", "126", "474"],
+    },
+    {
+      numero: 5,
+      data: "2026-05-03",
+      titulo: "O Juízo contra Sodoma e Gomorra",
+      resumo:
+        "A lição mostra que a justiça de Deus não pode ser banalizada e que sua longanimidade não elimina a realidade do juízo contra o pecado.",
+      textoChave: "Gn 18.25",
+      textoAureo:
+        "Gênesis 18.25 afirma que o Juiz de toda a terra procede com justiça perfeita.",
+      verdadePratica:
+        "A santidade de Deus exige juízo contra o pecado, mas sua misericórdia continua chamando ao arrependimento.",
+      leituraBiblica: ["Gn 18.20-33", "Gn 19.24-26"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 18.20",
+          tema: "O clamor contra o pecado chega diante do Senhor.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 18.25",
+          tema: "O caráter de Deus sustenta a certeza do juízo justo.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 19.24",
+          tema: "O juízo divino mostra a seriedade do pecado.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Lc 17.28",
+          tema: "Jesus usa Sodoma para alertar sobre o desprezo ao chamado divino.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "2 Pe 2.6",
+          tema: "Sodoma se torna exemplo para gerações futuras.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Jd 7",
+          tema: "A memória do juízo reforça a necessidade de santidade.",
+        },
+      ],
+      aplicacao:
+        "Trate o pecado com seriedade, fuja da normalização da impiedade e responda com temor, arrependimento e santidade.",
+      enfase: "a justiça de Deus diante do pecado",
+      palavraChave: "Juizo",
+      hinosSugeridos: ["124", "225", "370"],
+    },
+    {
+      numero: 6,
+      data: "2026-05-10",
+      titulo: "O Nascimento de Isaque",
+      resumo:
+        "A lição revela que Deus cumpre sua promessa no tempo certo e transforma espera longa em testemunho de fidelidade e alegria.",
+      textoChave: "Gn 21.1",
+      textoAureo:
+        "Gênesis 21.1 declara que o Senhor visitou Sara e fez com ela como havia prometido.",
+      verdadePratica:
+        "O cumprimento da promessa mostra que o tempo de Deus é perfeito e sua palavra jamais falha.",
+      leituraBiblica: ["Gn 21.1-8", "Rm 9.9"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 21.1",
+          tema: "O Senhor visita e cumpre sua palavra no tempo certo.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 21.2",
+          tema: "A promessa se cumpre conforme a data determinada por Deus.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 21.6",
+          tema: "A fidelidade divina produz alegria e testemunho.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Rm 9.9",
+          tema: "O filho da promessa nasce pela palavra de Deus.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Hb 11.11",
+          tema: "A fé reconhece a fidelidade do Deus que prometeu.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Nm 23.19",
+          tema: "Deus não volta atrás naquilo que prometeu.",
+        },
+      ],
+      aplicacao:
+        "Celebre a fidelidade do Senhor e continue esperando com confiança quando a promessa ainda não se manifestou.",
+      enfase: "o cumprimento fiel da promessa de Deus",
+      palavraChave: "Cumprimento",
+      hinosSugeridos: ["41", "126", "432"],
+    },
+    {
+      numero: 7,
+      data: "2026-05-17",
+      titulo: "Uma Prova de Fé: A Entrega de Isaque",
+      resumo:
+        "A lição mostra que a fé de Abraão é provada no altar e revela que confiar em Deus vale mais do que reter até mesmo o que recebemos pela promessa.",
+      textoChave: "Hb 11.17",
+      textoAureo:
+        "Hebreus 11.17 mostra que Abraão ofereceu Isaque pela fé, crendo no Deus que cumpre suas promessas.",
+      verdadePratica:
+        "A prova da fé expõe se amamos mais a promessa ou o Deus que prometeu.",
+      leituraBiblica: ["Gn 22.1-14", "Hb 11.17-19"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 22.1",
+          tema: "Deus prova o coração do seu servo.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 22.2",
+          tema: "A obediência é exigida mesmo quando a prova atinge o que mais amamos.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 22.8",
+          tema: "Abraão responde à prova confiando na provisão divina.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Gn 22.14",
+          tema: "O Senhor provê no monte da obediência.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Hb 11.19",
+          tema: "A fé raciocina a partir do poder de Deus.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Tg 2.21",
+          tema: "A fé viva se manifesta em obediência concreta.",
+        },
+      ],
+      aplicacao:
+        "Entregue ao Senhor aquilo que você tenta controlar e aprenda a confiar que Ele continua digno mesmo em meio à prova.",
+      enfase: "a prova da fé no altar da obediência",
+      palavraChave: "Prova",
+      hinosSugeridos: ["15", "126", "432"],
+    },
+    {
+      numero: 8,
+      data: "2026-05-24",
+      titulo: "Isaque: Herdeiro da Promessa",
+      resumo:
+        "A lição evidencia que Isaque não é apenas sucessor biológico de Abraão, mas herdeiro da aliança e participante do mesmo cuidado providencial de Deus.",
+      textoChave: "Gn 26.24",
+      textoAureo:
+        "Gênesis 26.24 mostra o Senhor reafirmando a Isaque a promessa feita a Abraão.",
+      verdadePratica:
+        "O herdeiro da promessa precisa caminhar em dependência do mesmo Deus que sustentou as gerações anteriores.",
+      leituraBiblica: ["Gn 26.1-6", "Gn 26.23-25"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 26.2",
+          tema: "Deus dirige Isaque em tempo de crise.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 26.3",
+          tema: "A promessa permanece sobre a descendência da aliança.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 26.12",
+          tema: "O favor de Deus acompanha quem anda em sua direção.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Gn 26.24",
+          tema: "O Senhor reafirma sua presença e sua promessa.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Hb 11.20",
+          tema: "Isaque participa do legado da fé patriarcal.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Sl 105.8",
+          tema: "A aliança de Deus permanece firme ao longo das gerações.",
+        },
+      ],
+      aplicacao:
+        "Aprenda a valorizar o legado da fé e a responder pessoalmente ao Deus que chama cada geração à confiança e obediência.",
+      enfase: "a continuidade da promessa na vida de Isaque",
+      palavraChave: "Heranca",
+      hinosSugeridos: ["75", "126", "432"],
+    },
+    {
+      numero: 9,
+      data: "2026-05-31",
+      titulo: "Jacó e Esaú: Irmãos em Conflito",
+      resumo:
+        "A lição mostra como rivalidade, escolhas carnais e desprezo por valores espirituais aprofundam conflitos familiares e exigem discernimento diante de Deus.",
+      textoChave: "Gn 25.23",
+      textoAureo:
+        "Gênesis 25.23 revela que Deus conhece o futuro das gerações e governa acima das tensões humanas.",
+      verdadePratica:
+        "Conflitos sem tratamento bíblico produzem feridas profundas, mas o Senhor continua soberano sobre a história da família.",
+      leituraBiblica: ["Gn 25.21-34", "Hb 12.16-17"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 25.22",
+          tema: "Conflitos podem surgir antes mesmo de serem compreendidos.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 25.23",
+          tema: "Deus continua soberano sobre histórias complexas.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 25.29",
+          tema: "Decisões apressadas podem custar valores preciosos.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Gn 25.34",
+          tema: "Esaú despreza o que deveria tratar com honra.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Hb 12.16",
+          tema: "A profanação nasce quando o imediato vale mais que o espiritual.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Pv 15.1",
+          tema: "Conflitos pedem sabedoria, domínio próprio e temor do Senhor.",
+        },
+      ],
+      aplicacao:
+        "Trate conflitos e rivalidades com temor de Deus, sem trocar valores espirituais por alívio imediato ou vantagens passageiras.",
+      enfase: "o tratamento bíblico dos conflitos familiares",
+      palavraChave: "Conflito",
+      hinosSugeridos: ["77", "126", "225"],
+    },
+    {
+      numero: 10,
+      data: "2026-06-07",
+      titulo: "A Experiência Transformadora de Jacó",
+      resumo:
+        "A lição destaca que o encontro de Jacó com Deus reorienta sua visão, marca sua identidade e o chama a caminhar sob a presença do Senhor.",
+      textoChave: "Gn 28.16",
+      textoAureo:
+        "Gênesis 28.16 mostra Jacó despertando para a certeza de que Deus estava naquele lugar e ele não sabia.",
+      verdadePratica:
+        "Experiências verdadeiras com Deus não alimentam espetáculo; elas transformam identidade, temor e direção de vida.",
+      leituraBiblica: ["Gn 28.10-22", "Gn 32.24-30"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 28.12",
+          tema: "Deus se revela no caminho da fragilidade humana.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 28.15",
+          tema: "A presença de Deus acompanha quem Ele chama.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 28.16",
+          tema: "O encontro com Deus desperta reverência e consciência espiritual.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Gn 32.28",
+          tema: "A transformação alcança nome, identidade e direção.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Os 12.4",
+          tema: "Jacó aprende a depender de Deus em lágrimas e súplica.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Rm 12.2",
+          tema: "A transformação verdadeira alcança mente e caminhada.",
+        },
+      ],
+      aplicacao:
+        "Permita que o encontro com Deus transforme suas decisões, sua visão de si mesmo e sua maneira de caminhar.",
+      enfase: "a transformação produzida pelo encontro com Deus",
+      palavraChave: "Transformacao",
+      hinosSugeridos: ["126", "304", "432"],
+    },
+    {
+      numero: 11,
+      data: "2026-06-14",
+      titulo: "Jacó: De Enganador a Homem de Honra",
+      resumo:
+        "A lição mostra que a graça de Deus não apenas confronta o passado de Jacó, mas também o forma em caráter, responsabilidade e honra.",
+      textoChave: "Gn 32.28",
+      textoAureo:
+        "Gênesis 32.28 mostra que Deus marca Jacó com nova identidade e nova história.",
+      verdadePratica:
+        "A graça de Deus corrige o caráter e conduz o crente da velha prática para uma vida marcada por verdade e honra.",
+      leituraBiblica: ["Gn 32.24-32", "Gn 35.1-5"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 32.24",
+          tema: "A transformação começa onde o homem deixa de fugir de Deus.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 32.27",
+          tema: "Reconhecer quem somos faz parte do caminho da restauração.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 32.28",
+          tema: "Deus muda identidade e direção de vida.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Gn 35.2",
+          tema: "A transformação exige limpeza, ordem e santificação.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Ef 4.22-24",
+          tema: "O velho homem precisa ceder lugar a uma nova maneira de viver.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Pv 10.9",
+          tema: "A honra floresce na integridade do caminho.",
+        },
+      ],
+      aplicacao:
+        "Permita que Deus trate padrões antigos do seu caráter e produza em você integridade, verdade e honra.",
+      enfase: "a transformação do caráter pela graça de Deus",
+      palavraChave: "Carater",
+      hinosSugeridos: ["77", "126", "300"],
+    },
+    {
+      numero: 12,
+      data: "2026-06-21",
+      titulo: "A Reconciliação de Jacó com Esaú",
+      resumo:
+        "A lição revela que o Deus que transforma também reconcilia, levando Jacó a enfrentar o passado e a responder com humildade ao reencontro com Esaú.",
+      textoChave: "Gn 33.4",
+      textoAureo:
+        "Gênesis 33.4 mostra que Deus pode transformar encontros temidos em experiências de reconciliação.",
+      verdadePratica:
+        "Reconciliação verdadeira nasce de coração quebrantado, humildade e ação graciosa de Deus sobre os envolvidos.",
+      leituraBiblica: ["Gn 33.1-11", "Rm 12.18"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Gn 32.11",
+          tema: "Jacó leva o medo do reencontro à presença de Deus.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Gn 33.3",
+          tema: "A humildade prepara o caminho para a reconciliação.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Gn 33.4",
+          tema: "Deus age poderosamente em encontros marcados por dor antiga.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Pv 15.1",
+          tema: "Palavras e posturas brandas podem desfazer hostilidade.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Rm 12.18",
+          tema: "A paz precisa ser buscada com responsabilidade e verdade.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Cl 3.13",
+          tema: "Perdão e reconciliação fazem parte da nova vida em Deus.",
+        },
+      ],
+      aplicacao:
+        "Ore por reconciliação onde houver feridas antigas e disponha-se a agir com humildade, verdade e paz.",
+      enfase: "a reconciliação produzida pela graça de Deus",
+      palavraChave: "Reconciliação",
+      hinosSugeridos: ["126", "304", "432"],
+    },
+    {
+      numero: 13,
+      data: "2026-06-28",
+      titulo: "O Legado de Fé de Abraão, Isaque e Jacó",
+      resumo:
+        "A lição conclui o trimestre mostrando que a fé dos patriarcas permanece como herança viva para a Igreja, chamando o povo de Deus à perseverança, obediência e esperança.",
+      textoChave: "Hb 11.13",
+      textoAureo:
+        "Hebreus 11.13 mostra que os patriarcas morreram na fé, mantendo os olhos nas promessas de Deus.",
+      verdadePratica:
+        "O legado dos patriarcas ensina a Igreja a viver pela fé, a perseverar nas promessas e a caminhar como peregrina neste mundo.",
+      leituraBiblica: ["Hb 11.8-22", "Gn 50.24-25"],
+      leituraDiaria: [
+        {
+          dia: "Segunda",
+          referencia: "Hb 11.8",
+          tema: "Abraão nos ensina a obedecer pela fé.",
+        },
+        {
+          dia: "Terça",
+          referencia: "Hb 11.11",
+          tema: "A promessa se sustenta na fidelidade de Deus.",
+        },
+        {
+          dia: "Quarta",
+          referencia: "Hb 11.20",
+          tema: "Isaque participa da herança da fé patriarcal.",
+        },
+        {
+          dia: "Quinta",
+          referencia: "Hb 11.21",
+          tema: "Jacó adora a Deus mesmo ao final da jornada.",
+        },
+        {
+          dia: "Sexta",
+          referencia: "Hb 11.22",
+          tema: "José mantém viva a esperança na promessa futura.",
+        },
+        {
+          dia: "Sábado",
+          referencia: "Hb 11.13",
+          tema: "A Igreja também é chamada a viver como peregrina em fé.",
+        },
+      ],
+      aplicacao:
+        "Receba o legado dos patriarcas como chamado para perseverar em fé, obedecer com constância e viver com os olhos nas promessas de Deus.",
+      enfase: "o legado patriarcal para a fé da Igreja",
+      palavraChave: "Legado",
+      hinosSugeridos: ["126", "225", "432"],
+    },
+  ];
+
+function criarObjetivosAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+) {
+  return [
+    `Compreender como ${seed.enfase.toLowerCase()} aparece na lição "${seed.titulo}".`,
+    "Relacionar o ensino bíblico da semana com perseverança, santidade e obediência prática.",
+    "Transformar a lição em resposta de fé na vida da igreja, da família e do serviço cristão.",
+  ];
+}
+
+function criarTopicosAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+): LicaoEBD["topicos"] {
+  return [
+    {
+      titulo: "Panorama bíblico da lição",
+      conteudo: [
+        seed.resumo,
+        `A lição destaca ${seed.enfase} como eixo principal da semana.`,
+      ],
+    },
+    {
+      titulo: "A verdade da promessa e da caminhada",
+      conteudo: [
+        seed.verdadePratica,
+        `A leitura bíblica principal ajuda a enxergar como ${seed.titulo.toLowerCase()} se conecta ao agir de Deus na história da redenção.`,
+      ],
+    },
+    {
+      titulo: "Aplicação para a vida cristã",
+      conteudo: [
+        seed.aplicacao,
+        "A resposta correta à Palavra envolve fé obediente, perseverança e disposição para viver o ensino no cotidiano.",
+      ],
+    },
+  ];
+}
+
+function criarEsbocoAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+): NonNullable<LicaoEBD["esboco"]> {
+  return [
+    {
+      titulo: "Entrada",
+      conteudo:
+        `Introduza a aula mostrando por que "${seed.titulo}" continua relevante para a caminhada de fé da igreja hoje.`,
+    },
+    {
+      titulo: "Desenvolvimento",
+      conteudo:
+        `Percorra a lição a partir do texto-chave ${seed.textoChave}, da leitura bíblica em classe e da verdade prática, destacando ${seed.enfase}.`,
+    },
+    {
+      titulo: "Fechamento",
+      conteudo:
+        `${seed.aplicacao} Encerre levando a classe a responder em oração e obediência ao ensino da semana.`,
+    },
+  ];
+}
+
+function criarApoioProfessorAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+) {
+  return [
+    `Conduza a aula mostrando como "${seed.titulo}" dialoga com a formação da fé, da perseverança e do testemunho cristão.`,
+    "Mantenha a exposição centrada na leitura bíblica, evitando transformar a lição em mera informação histórica sem aplicação espiritual.",
+  ];
+}
+
+function criarApoioAlunoAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+) {
+  return [
+    `Leia novamente ${seed.textoChave} e as passagens da leitura bíblica em classe, anotando como Deus confronta e consola sua vida por meio desta lição.`,
+    "Escolha uma atitude prática da semana e compartilhe com a classe como pretende viver a lição com fé, constância e obediência.",
+  ];
+}
+
+function criarSubsidioAdultosSegundoTrimestre(
+  seed: LicaoSeedAdultosSegundoTrimestre
+): NonNullable<LicaoEBD["subsidioAdultos"]> {
+  const objetivos = criarObjetivosAdultosSegundoTrimestre(seed);
+
+  return {
+    cabecalho: {
+      numero: seed.numero,
+      titulo: seed.titulo,
+      data: seed.data,
+      trimestre: trimestreAdultosSegundoTrimestre,
+      comentarista: "Elinaldo Renovato",
+      textoAureo: seed.textoAureo,
+      verdadePratica: seed.verdadePratica,
+      leituraBiblicaEmClasse: seed.leituraBiblica,
+      leituraDiaria: seed.leituraDiaria,
+      hinosSugeridos: seed.hinosSugeridos ?? [],
+    },
+    visaoGeral: {
+      resumo: seed.resumo,
+      ideiaCentral:
+        "A jornada dos patriarcas continua ensinando a igreja a confiar, obedecer e perseverar no Deus da promessa.",
+      objetivos,
+      palavraChave: {
+        termo: seed.palavraChave,
+        definicao:
+          `Nesta lição, ${seed.palavraChave.toLowerCase()} aparece como eixo espiritual para interpretar a caminhada dos patriarcas à luz da fidelidade de Deus.`,
+      },
+    },
+    desenvolvimento: [
+      {
+        id: `adultos-2t-licao-${seed.numero}-panorama`,
+        titulo: "Panorama bíblico da lição",
+        sinopse: seed.resumo,
+        explicacaoBiblica: [
+          `O texto-chave ${seed.textoChave} ajuda a compreender a ênfase principal de "${seed.titulo}".`,
+          seed.verdadePratica,
+          "A caminhada dos patriarcas revela que a fé bíblica amadurece sob promessa, prova, correção e perseverança.",
+        ],
+        aplicacaoPratica: [
+          "Ajude a classe a relacionar o tema da lição com dilemas reais de fé, espera, família, reconciliação e perseverança.",
+          "Mostre que o Deus dos patriarcas continua formando seu povo pela Palavra e pela fidelidade à aliança.",
+        ],
+        referenciasCruzadas: seed.leituraDiaria.map((item) => ({
+          referencia: item.referencia,
+          descricao: item.tema,
+        })),
+      },
+      {
+        id: `adultos-2t-licao-${seed.numero}-verdade-da-promessa`,
+        titulo: "A verdade da promessa e da caminhada",
+        sinopse:
+          "O agir de Deus na vida dos patriarcas ilumina o modo como a igreja deve ler promessa, prova, disciplina e esperança.",
+        explicacaoBiblica: [
+          "A leitura bíblica em classe fornece o eixo principal para interpretar o tema sem reduzi-lo a moralismo ou informação histórica.",
+          "O legado patriarcal aponta para um Deus que chama, sustenta, corrige e preserva seu povo ao longo da caminhada.",
+        ],
+        aprofundamentoDoutrinario: [
+          "A fé bíblica não nasce da autoconfiança, mas da confiança no Deus que promete e age soberanamente na história.",
+          "As experiências dos patriarcas continuam relevantes porque revelam princípios espirituais permanentes para a igreja.",
+        ],
+        aplicacaoPratica: [
+          `Retome a verdade prática e mostre como ${seed.enfase} precisa alcançar decisões, afetos e posturas da vida cristã.`,
+          "Leve a classe a perceber que a Palavra não informa apenas; ela corrige, consola e direciona a obediência.",
+        ],
+      },
+      {
+        id: `adultos-2t-licao-${seed.numero}-vida-da-igreja`,
+        titulo: "Aplicação para a vida da igreja",
+        sinopse:
+          "A lição ganha sentido completo quando a igreja responde ao ensino bíblico com fé prática, comunhão e perseverança.",
+        explicacaoBiblica: [
+          "A história dos patriarcas desafia a igreja a caminhar com Deus de forma real, e não apenas admirar exemplos do passado.",
+          "A obediência dos servos do Antigo Testamento aponta para uma vida de confiança, santidade e esperança na promessa.",
+        ],
+        aplicacaoPratica: [
+          seed.aplicacao,
+          "Encerre encorajando a classe a transformar a lição da semana em oração, revisão de vida e prática obediente.",
+        ],
+      },
+    ],
+    apoioProfessor: {
+      perguntaDeAbertura:
+        `Que aspecto de "${seed.titulo}" mais confronta ou fortalece a caminhada de fé da igreja hoje?`,
+      pontoSensivelDaAula:
+        "Evite tratar os patriarcas como heróis idealizados; mostre como Deus trabalha com servos reais, marcados por limites, provas e necessidade de graça.",
+      erroComumDeInterpretacao:
+        "Reduzir a lição a uma narrativa moral sem conexão com a aliança, a fidelidade de Deus e a formação espiritual do seu povo.",
+      perguntasParaDebate: [
+        `Como ${seed.enfase} aparece no texto bíblico e o que isso ensina à igreja hoje?`,
+        "Que riscos surgem quando tentamos resolver no braço o que Deus mandou enfrentar em fé e obediência?",
+        "Que resposta prática esta lição exige da vida cristã pessoal, familiar e comunitária?",
+      ],
+      sugestaoDeFechamento:
+        "Encerre chamando a classe a responder ao Deus da aliança com fé obediente, perseverança e reverência diante da sua Palavra.",
+    },
+    aprofundamento: {
+      conceitoTeologico: [
+        "A história dos patriarcas integra o desenvolvimento do plano da redenção e continua ensinando a igreja a confiar no Deus da promessa.",
+        "Promessa, prova, correção e perseverança não são temas isolados, mas dimensões recorrentes da caminhada do povo de Deus.",
+      ],
+      leituraComplementar: seed.leituraBiblica.map((referencia) => ({
+        titulo: referencia,
+        conteudo:
+          "Releia esta passagem observando como ela ilumina a relação entre promessa divina, fé prática e perseverança do crente.",
+      })),
+    },
+    vidaCrista: {
+      oQueConfronta: [
+        "A tentação de viver pela pressa, pela autossuficiência ou pela leitura imediatista das circunstâncias.",
+        "A tendência de admirar a fé bíblica sem permitir que ela confronte áreas reais da vida.",
+      ],
+      oQueConsola: [
+        "O Deus dos patriarcas continua fiel e presente na caminhada do seu povo.",
+        "A graça divina sustenta servos reais em meio a provas, atrasos, conflitos e correções.",
+      ],
+      oQueExige: [
+        "Fé obediente, perseverança, discernimento e disposição para viver a Palavra com integridade.",
+        "Compromisso em transformar o ensino bíblico em prática concreta na vida diária.",
+      ],
+      oQueRevelaSobreDeus: [
+        "Deus permanece soberano sobre a história e conduz seu povo com fidelidade à aliança.",
+        "O Senhor não abandona quem Ele chama, mas trabalha pacientemente a fé e o caráter dos seus servos.",
+      ],
+    },
+    revisao: {
+      perguntas: [
+        `Qual a principal ênfase de "${seed.titulo}"?`,
+        "Como o texto-chave e a leitura bíblica em classe iluminam o ensino da semana?",
+        "Que perigo espiritual esta lição confronta e que postura cristã ela reforça?",
+        "Que resposta prática a igreja deve assumir depois de estudar esta lição?",
+      ],
+      pontosChave: [
+        seed.verdadePratica,
+        "A história dos patriarcas continua ensinando a igreja a viver pela fé no Deus da promessa.",
+        "A Palavra de Deus precisa alcançar não apenas entendimento, mas também prática e perseverança.",
+      ],
+      fraseDeSintese:
+        `Em "${seed.titulo}", a igreja aprende novamente a confiar no Deus da promessa, a responder com fé obediente e a perseverar em sua caminhada.`,
+    },
+  };
+}
+
+function criarLicaoAdultosSegundoTrimestreEnriquecida(
+  seed: LicaoSeedAdultosSegundoTrimestre
+): LicaoEBD {
+  const extensao =
+    extensoesImagensAdultosSegundoTrimestre[seed.numero] ?? "png";
+
+  return {
+    id: `adultos-2026-2t-licao-${seed.numero}`,
+    slug: `licao-${seed.numero}`,
+    numero: seed.numero,
+    data: seed.data,
+    statusEditorial: "draft",
+    titulo: seed.titulo,
+    resumo: seed.resumo,
+    imagem: getEbdLessonImagePath("adultos", "2026-2t", seed.numero, extensao),
+    textoChave: normalizeBibleReferenceNotation(seed.textoChave),
+    verdadePratica: seed.verdadePratica,
+    leituraBiblica: normalizeReferences(seed.leituraBiblica),
+    objetivos: criarObjetivosAdultosSegundoTrimestre(seed),
+    topicos: criarTopicosAdultosSegundoTrimestre(seed),
+    aplicacao: seed.aplicacao,
+    apoioProfessor: criarApoioProfessorAdultosSegundoTrimestre(seed),
+    apoioAluno: criarApoioAlunoAdultosSegundoTrimestre(seed),
+    esboco: criarEsbocoAdultosSegundoTrimestre(seed),
+    subsidioAdultos: normalizeAdultSubsidy(
+      criarSubsidioAdultosSegundoTrimestre(seed)
+    ),
+  };
+}
+
 const objetivosAdultosSegundoTrimestreLicao1 = [
   "Apresentar como ocorreu o chamado de Abrão.",
   "Enfatizar a obediência de Abrão a Deus diante desse chamado.",
@@ -3294,6 +4165,14 @@ const adultos2026SegundoTrimestre: TrimestreEBD = {
   licoes: adultos2026SegundoTrimestreBase.licoes.map((licao) => {
     if (licao.numero === 1) {
       return licaoAdultosSegundoTrimestre1;
+    }
+
+    const seed = sementesAdultosSegundoTrimestreFuturas.find(
+      (item) => item.numero === licao.numero
+    );
+
+    if (seed) {
+      return criarLicaoAdultosSegundoTrimestreEnriquecida(seed);
     }
 
     const titulo = titulosAdultosSegundoTrimestre[licao.numero] ?? licao.titulo;
