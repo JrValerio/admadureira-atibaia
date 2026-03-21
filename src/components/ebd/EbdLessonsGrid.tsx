@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useSyncExternalStore } from "react";
 import type { ClasseEBD, LicaoEBD, StatusEditorialEBD } from "@/data/ebd";
 import {
   formatEbdDate,
@@ -19,15 +18,6 @@ type EbdLessonsGridProps = {
   initialNowIso: string;
 };
 
-function subscribeReferenceDate(callback: () => void) {
-  const id = window.setInterval(callback, 60 * 60 * 1000);
-  return () => window.clearInterval(id);
-}
-
-function getSnapshot() {
-  return new Date().toISOString();
-}
-
 export default function EbdLessonsGrid({
   classe,
   edicao,
@@ -36,12 +26,7 @@ export default function EbdLessonsGrid({
   trimestreStatusEditorial,
   initialNowIso,
 }: EbdLessonsGridProps) {
-  const currentTimeIso = useSyncExternalStore(
-    subscribeReferenceDate,
-    getSnapshot,
-    () => initialNowIso
-  );
-  const currentDate = new Date(currentTimeIso);
+  const currentDate = new Date(initialNowIso);
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
