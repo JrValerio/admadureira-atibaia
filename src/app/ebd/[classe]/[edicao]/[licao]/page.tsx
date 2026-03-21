@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
+import EbdLessonAuxiliarySections from "@/components/ebd/EbdLessonAuxiliarySections";
 import EbdLessonOverviewBlocks from "@/components/ebd/EbdLessonOverviewBlocks";
+import { EbdSupportList } from "@/components/ebd/EbdLessonSupportUi";
 import EbdTeacherSubsidy from "@/components/ebd/EbdTeacherSubsidy";
 import {
   formatEbdDate,
@@ -296,97 +298,22 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
         <section className="py-16 md:py-20">
           <div id={lessonTopId} className="mx-auto max-w-6xl px-4 scroll-mt-28">
-          <Breadcrumb
-            classe={classe}
-            classeLabel={classeInfo.label}
-            edicao={edicao}
-            edicaoLabel={trimestre.rotulo}
-            licaoLabel={`Lição ${lessonContext.licao.numero}`}
-          />
+            <Breadcrumb
+              classe={classe}
+              classeLabel={classeInfo.label}
+              edicao={edicao}
+              edicaoLabel={trimestre.rotulo}
+              licaoLabel={`Lição ${lessonContext.licao.numero}`}
+            />
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
-            <article className="space-y-6">
-              {isDraft ? (
-                <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                  <div className="mb-6 inline-flex rounded-full border border-black/10 bg-[#fafafa] px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
-                    Conteúdo em preparação
-                  </div>
-                  <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                        Data
-                      </p>
-                      <p className="text-sm text-[#212121]">
-                        {formatEbdDate(lessonContext.licao.data)}
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                        Classe
-                      </p>
-                      <p className="text-sm text-[#212121]">{classeInfo.label}</p>
-                    </div>
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:col-span-2">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                        Trilha do trimestre
-                      </p>
-                      <p className="text-sm text-[#212121]">
-                        Lição {lessonContext.licao.numero} de {trimestre.licoes.length} ·{" "}
-                        {metaEstadoProgressao.label}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Publicação gradual
-                    </p>
-                    <p className="leading-relaxed text-[#555]">
-                      Esta lição já está mapeada na edição para orientar a navegação
-                      anual da EBD, mas o conteúdo completo ainda está em
-                      preparação. Quando a curadoria editorial for concluída,
-                      esta página receberá resumo, leitura bíblica, apoio ao
-                      professor e revisão final.
-                    </p>
-                  </div>
-
-                  {lessonPrimaryReading.length ? (
-                    <div className="mt-8">
-                      <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                        {classeInfo.leituraPrincipalLabel}
-                      </p>
-                      <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {lessonPrimaryReading.map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                            <span>
-                              <BibleReferenceText text={item} />
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-              ) : (
-                <>
-                  {lessonImage ? (
-                    <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
-                      <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
-                        <Image
-                          src={lessonImage}
-                          alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
-                          fill
-                          priority
-                          sizes="(max-width: 768px) 100vw, 420px"
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  ) : null}
-
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
+              <article className="space-y-6">
+                {isDraft ? (
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                    <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+                    <div className="mb-6 inline-flex rounded-full border border-black/10 bg-[#fafafa] px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
+                      Conteúdo em preparação
+                    </div>
+                    <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                           Data
@@ -400,30 +327,96 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           Classe
                         </p>
                         <p className="text-sm text-[#212121]">{classeInfo.label}</p>
-                        <p className="mt-3 text-xs leading-relaxed text-[#555]">
-                          {classeInfo.horarioLabel}
-                        </p>
                       </div>
-                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:col-span-2">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                          Trilha
+                          Trilha do trimestre
                         </p>
                         <p className="text-sm text-[#212121]">
-                          Lição {posicaoDaLicao ?? lessonContext.licao.numero} de{" "}
-                          {trimestre.licoes.length}
-                        </p>
-                        <div
-                          className={`mt-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${metaEstadoProgressao.badgeClassName}`}
-                        >
+                          Lição {lessonContext.licao.numero} de {trimestre.licoes.length} ·{" "}
                           {metaEstadoProgressao.label}
-                        </div>
-                        {licaoDaSemanaAtual ? (
-                          <p className="mt-3 text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
-                            Lição da semana
-                          </p>
-                        ) : null}
+                        </p>
                       </div>
                     </div>
+
+                    <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
+                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Publicação gradual
+                      </p>
+                      <p className="leading-relaxed text-[#555]">
+                        Esta lição já está mapeada na edição para orientar a
+                        navegação anual da EBD, mas o conteúdo completo ainda
+                        está em preparação. Quando a curadoria editorial for
+                        concluída, esta página receberá resumo, leitura
+                        bíblica, apoio ao professor e revisão final.
+                      </p>
+                    </div>
+
+                    {lessonPrimaryReading.length ? (
+                      <div className="mt-8">
+                        <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                          {classeInfo.leituraPrincipalLabel}
+                        </p>
+                        <EbdSupportList items={lessonPrimaryReading} />
+                      </div>
+                    ) : null}
+                  </div>
+                ) : (
+                  <>
+                    {lessonImage ? (
+                      <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
+                        <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
+                          <Image
+                            src={lessonImage}
+                            alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
+                            fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, 420px"
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    ) : null}
+
+                    <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+                      <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            Data
+                          </p>
+                          <p className="text-sm text-[#212121]">
+                            {formatEbdDate(lessonContext.licao.data)}
+                          </p>
+                        </div>
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            Classe
+                          </p>
+                          <p className="text-sm text-[#212121]">{classeInfo.label}</p>
+                          <p className="mt-3 text-xs leading-relaxed text-[#555]">
+                            {classeInfo.horarioLabel}
+                          </p>
+                        </div>
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                            Trilha
+                          </p>
+                          <p className="text-sm text-[#212121]">
+                            Lição {posicaoDaLicao ?? lessonContext.licao.numero} de{" "}
+                            {trimestre.licoes.length}
+                          </p>
+                          <div
+                            className={`mt-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${metaEstadoProgressao.badgeClassName}`}
+                          >
+                            {metaEstadoProgressao.label}
+                          </div>
+                          {licaoDaSemanaAtual ? (
+                            <p className="mt-3 text-xs font-semibold tracking-widest uppercase text-[#ef5350]">
+                              Lição da semana
+                            </p>
+                          ) : null}
+                        </div>
+                      </div>
 
                     {lessonStructure ? (
                       <EbdLessonOverviewBlocks
@@ -484,292 +477,78 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     classe={classe}
                     licao={lessonContext.licao}
                   />
-                </>
-              )}
-            </article>
+                  </>
+                )}
+              </article>
 
-            <aside className="space-y-6">
-              <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                  Contexto da edição
-                </p>
-                <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl">
-                  {trimestre.titulo}
-                </h2>
-                <div className="space-y-3 text-sm leading-relaxed text-[#555]">
-                  <p>{trimestre.rotulo}</p>
-                  <p>{classeInfo.horarioLabel}</p>
-                  <p>
-                    <BibleReferenceText
-                      text={trimestre.versiculoBase ?? "Versículo-base a confirmar"}
-                      linkClassName="font-medium text-[#555] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-                    />
-                  </p>
-                </div>
+              <EbdLessonAuxiliarySections
+                classe={classe}
+                classeInfo={classeInfo}
+                trimestre={trimestre}
+                licao={lessonContext.licao}
+                posicaoDaLicao={posicaoDaLicao}
+                metaEstadoProgressao={metaEstadoProgressao}
+                licaoDaSemanaAtual={licaoDaSemanaAtual}
+                licaoAnterior={licaoAnterior}
+                proximaLicao={proximaLicao}
+                licaoAnteriorNaTrilha={licaoAnteriorNaTrilha}
+                proximaLicaoNaTrilha={proximaLicaoNaTrilha}
+                isDraft={isDraft}
+                isPubliclyAvailable={isPubliclyAvailable}
+                summaryPrintHref={summaryPrintHref}
+                fullPrintHref={fullPrintHref}
+              />
+            </div>
+
+            <div className="mt-10 border-t border-black/5 pt-6">
+              <nav
+                aria-label="Navegação da lição"
+                className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-semibold tracking-[0.04em] text-[#212121] md:justify-start"
+              >
+                {licaoAnterior ? (
+                  <Link
+                    href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
+                    className="transition-colors hover:text-[#8b1e1e]"
+                  >
+                    ← Lição {licaoAnterior.numero}
+                  </Link>
+                ) : null}
+                {proximaLicao ? (
+                  <Link
+                    href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
+                    className="transition-colors hover:text-[#8b1e1e]"
+                  >
+                    Lição {proximaLicao.numero} →
+                  </Link>
+                ) : proximaLicaoNaTrilha ? (
+                  <span className="text-[#555]">
+                    Próxima na trilha: Lição {proximaLicaoNaTrilha.numero} (
+                    {getMetaEstadoProgressaoLicao(
+                      getEstadoProgressaoLicao(trimestre, proximaLicaoNaTrilha)
+                    ).label.toLowerCase()}
+                    )
+                  </span>
+                ) : null}
                 <Link
                   href={`/ebd/${classe}/${trimestre.slug}`}
-                  className="ui-btn-secondary mt-6"
+                  className="transition-colors hover:text-[#8b1e1e]"
                 >
                   Voltar ao trimestre
                 </Link>
-              </div>
-
-              <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
-                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                  Trilha do trimestre
-                </p>
-                <div className="space-y-3 text-sm leading-relaxed text-[#555]">
-                  <p>
-                    <span className="font-semibold text-[#212121]">
-                      Posição:
-                    </span>{" "}
-                    Lição {posicaoDaLicao ?? lessonContext.licao.numero} de{" "}
-                    {trimestre.licoes.length}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-[#212121]">
-                      Estado:
-                    </span>{" "}
-                    {metaEstadoProgressao.label}
-                  </p>
-                  {licaoDaSemanaAtual ? (
-                    <p>
-                      <span className="font-semibold text-[#212121]">
-                        Semana atual:
-                      </span>{" "}
-                      esta é a lição em destaque na janela pública da classe.
-                    </p>
-                  ) : null}
-                  {licaoAnteriorNaTrilha ? (
-                    <div>
-                      <p className="font-semibold text-[#212121]">
-                        Anterior na trilha
-                      </p>
-                      {licaoAnterior ? (
-                        <Link
-                          href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
-                          className="transition-colors hover:text-[#212121]"
-                        >
-                          Lição {licaoAnteriorNaTrilha.numero} ·{" "}
-                          {licaoAnteriorNaTrilha.titulo}
-                        </Link>
-                      ) : (
-                        <p>
-                          Lição {licaoAnteriorNaTrilha.numero} ·{" "}
-                          {licaoAnteriorNaTrilha.titulo}
-                        </p>
-                      )}
-                    </div>
-                  ) : null}
-                  {proximaLicaoNaTrilha ? (
-                    <div>
-                      <p className="font-semibold text-[#212121]">
-                        Próxima na trilha
-                      </p>
-                      {proximaLicao &&
-                      proximaLicao.slug === proximaLicaoNaTrilha.slug ? (
-                        <Link
-                          href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
-                          className="transition-colors hover:text-[#212121]"
-                        >
-                          Lição {proximaLicaoNaTrilha.numero} ·{" "}
-                          {proximaLicaoNaTrilha.titulo}
-                        </Link>
-                      ) : (
-                        <p>
-                          Lição {proximaLicaoNaTrilha.numero} ·{" "}
-                          {proximaLicaoNaTrilha.titulo}
-                        </p>
-                      )}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-
-              {isDraft && lessonContext.licao.apoioProfessor?.length ? (
-                <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Apoio ao professor
-                  </p>
-                  <ul className="space-y-3 text-sm leading-relaxed text-[#555]">
-                    {lessonContext.licao.apoioProfessor.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>
-                          <BibleReferenceText text={item} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {isDraft && lessonContext.licao.apoioAluno?.length ? (
-                <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Apoio ao aluno
-                  </p>
-                  <ul className="space-y-3 text-sm leading-relaxed text-[#555]">
-                    {lessonContext.licao.apoioAluno.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                        <span>
-                          <BibleReferenceText text={item} />
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {isDraft && lessonContext.licao.esboco?.length ? (
-                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Esboço da aula
-                  </p>
-                  <div className="space-y-4">
-                    {lessonContext.licao.esboco.map((item) => (
-                      <div
-                        key={`${item.titulo ?? "esboco"}-${item.conteudo}`}
-                        className="rounded-2xl border border-white/70 bg-white/85 p-4"
-                      >
-                        {item.titulo ? (
-                          <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                            {item.titulo}
-                          </p>
-                        ) : null}
-                        <p className="text-sm leading-relaxed text-[#555]">
-                          <BibleReferenceText text={item.conteudo} />
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {!isDraft && isPubliclyAvailable ? (
-                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                    Material para impressão
-                  </p>
-                  <p className="text-sm leading-relaxed text-[#555]">
-                    Abra uma versão enxuta em até 2 páginas ou o subsídio
-                    completo com identidade visual da igreja para imprimir ou
-                    salvar em PDF.
-                  </p>
-                  <div className="mt-5 flex flex-col gap-3">
-                    <Link
-                      href={summaryPrintHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="ui-btn-primary"
-                    >
-                      Baixar resumo em PDF
-                    </Link>
-                    <Link
-                      href={fullPrintHref}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="ui-btn-secondary"
-                    >
-                      Baixar subsídio completo em PDF
-                    </Link>
-                  </div>
-                </div>
-              ) : null}
-
-              <div className="rounded-3xl bg-[#212121] p-6 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                  Continue estudando
-                </p>
-                <div className="space-y-3 text-sm leading-relaxed text-white/80">
-                  {licaoAnterior ? (
-                    <Link
-                      href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
-                      className="block transition-colors hover:text-white"
-                    >
-                      ← Lição {licaoAnterior.numero} · {licaoAnterior.titulo}
-                    </Link>
-                  ) : null}
-                  {proximaLicao ? (
-                    <Link
-                      href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
-                      className="block transition-colors hover:text-white"
-                    >
-                      Lição {proximaLicao.numero} · {proximaLicao.titulo} →
-                    </Link>
-                  ) : proximaLicaoNaTrilha ? (
-                    <p>
-                      Próxima na trilha: Lição {proximaLicaoNaTrilha.numero} ·{" "}
-                      {proximaLicaoNaTrilha.titulo}
-                    </p>
-                  ) : null}
-                  <Link
-                    href="/programacao"
-                    className="block transition-colors hover:text-white"
-                  >
-                    Ver EBD na programação da igreja
-                  </Link>
-                  <Link
-                    href="/contato"
-                    className="block transition-colors hover:text-white"
-                  >
-                    Falar com a igreja
-                  </Link>
-                </div>
-              </div>
-            </aside>
-          </div>
-
-          <div className="mt-10 border-t border-black/5 pt-6">
-            <nav
-              aria-label="Navegação da lição"
-              className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-sm font-semibold tracking-[0.04em] text-[#212121] md:justify-start"
-            >
-              {licaoAnterior ? (
                 <Link
-                  href={`/ebd/${classe}/${trimestre.slug}/${licaoAnterior.slug}`}
+                  href="/programacao"
                   className="transition-colors hover:text-[#8b1e1e]"
                 >
-                  ← Lição {licaoAnterior.numero}
+                  Ver EBD na programação
                 </Link>
-              ) : null}
-              {proximaLicao ? (
                 <Link
-                  href={`/ebd/${classe}/${trimestre.slug}/${proximaLicao.slug}`}
+                  href={`#${lessonTopId}`}
                   className="transition-colors hover:text-[#8b1e1e]"
                 >
-                  Lição {proximaLicao.numero} →
+                  Voltar ao topo
                 </Link>
-              ) : proximaLicaoNaTrilha ? (
-                <span className="text-[#555]">
-                  Próxima na trilha: Lição {proximaLicaoNaTrilha.numero} (
-                  {getMetaEstadoProgressaoLicao(
-                    getEstadoProgressaoLicao(trimestre, proximaLicaoNaTrilha)
-                  ).label.toLowerCase()}
-                  )
-                </span>
-              ) : null}
-              <Link
-                href={`/ebd/${classe}/${trimestre.slug}`}
-                className="transition-colors hover:text-[#8b1e1e]"
-              >
-                Voltar ao trimestre
-              </Link>
-              <Link
-                href="/programacao"
-                className="transition-colors hover:text-[#8b1e1e]"
-              >
-                Ver EBD na programação
-              </Link>
-              <Link
-                href={`#${lessonTopId}`}
-                className="transition-colors hover:text-[#8b1e1e]"
-              >
-                Voltar ao topo
-              </Link>
-            </nav>
-          </div>
+              </nav>
+            </div>
           </div>
         </section>
       </main>
