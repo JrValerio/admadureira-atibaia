@@ -2731,6 +2731,400 @@ function criarTrimestrePlaceholder({
   };
 }
 
+const tituloAdultosSegundoTrimestre =
+  "Homens dos quais o Mundo não era Digno";
+const subtituloAdultosSegundoTrimestre =
+  "O Legado de Abraão, Isaque e Jacó";
+const trimestreAdultosSegundoTrimestre =
+  `${tituloAdultosSegundoTrimestre} — ${subtituloAdultosSegundoTrimestre}`;
+
+const titulosAdultosSegundoTrimestre: Record<number, string> = {
+  1: "Abraão: Seu Chamado e Sua Jornada de Fé",
+  2: "A Fé de Abrão nas Promessas de Deus",
+  3: "A Impaciência na Espera do Cumprimento da Promessa",
+  4: "A Confirmação de Uma Promessa",
+  5: "O Juízo contra Sodoma e Gomorra",
+  6: "O Nascimento de Isaque",
+  7: "Uma Prova de Fé: A Entrega de Isaque",
+  8: "Isaque: Herdeiro da Promessa",
+  9: "Jacó e Esaú: Irmãos em Conflito",
+  10: "A Experiência Transformadora de Jacó",
+  11: "Jacó: De Enganador a Homem de Honra",
+  12: "A Reconciliação de Jacó com Esaú",
+  13: "O Legado de Fé de Abraão, Isaque e Jacó",
+};
+
+const extensoesImagensAdultosSegundoTrimestre: Record<number, "jpg" | "png"> =
+  {
+    1: "jpg",
+    2: "jpg",
+    3: "jpg",
+    4: "png",
+    5: "png",
+    6: "png",
+    7: "png",
+    8: "png",
+    9: "png",
+    10: "png",
+    11: "png",
+    12: "png",
+    13: "png",
+  };
+
+const objetivosAdultosSegundoTrimestreLicao1 = [
+  "Apresentar como ocorreu o chamado de Abrão.",
+  "Enfatizar a obediência de Abrão a Deus diante desse chamado.",
+  "Mostrar as lutas enfrentadas por Abrão ao chegar a Canaã.",
+];
+
+const topicosAdultosSegundoTrimestreLicao1 = [
+  {
+    titulo: "Deus chama Abrão",
+    conteudo: [
+      "O chamado de Gênesis 12.1 exigiu que Abrão deixasse terra, parentela e casa de seu pai para seguir confiando somente na direção do Senhor.",
+      "A promessa divina não se restringia à vida pessoal de Abrão; alcançava sua descendência e todas as famílias da terra.",
+      "As bênçãos prometidas mostram que Deus chama, sustenta e transforma os que colocam nEle a sua confiança.",
+    ],
+  },
+  {
+    titulo: "A obediência de Abrão a Deus",
+    conteudo: [
+      "Abrão respondeu ao chamado sem conhecer o destino final, demonstrando que a fé bíblica caminha guiada pela voz de Deus.",
+      "Sua trajetória inclui a passagem por Harã e o descuido de levar Ló, lembrando que a obediência precisa ser perseverante e integral.",
+      "Mesmo em sua humanidade, Abrão se torna modelo de quem aprende a obedecer confiando na fidelidade do Senhor.",
+    ],
+  },
+  {
+    titulo: "As lutas de Abrão ao chegar a Canaã",
+    conteudo: [
+      "A fome em Canaã, a ida ao Egito e a crise com Faraó mostram que obedecer ao chamado de Deus não elimina provações.",
+      "As dificuldades expõem limites humanos, mas também revelam o cuidado de Deus com aqueles que Ele chamou.",
+      "A jornada de Abrão ensina que fé e perseverança caminham juntas quando o crente enfrenta pressões éticas, emocionais e materiais.",
+    ],
+  },
+];
+
+const subsidioAdultosSegundoTrimestreLicao1: LicaoEBD["subsidioAdultos"] = {
+  cabecalho: {
+    numero: 1,
+    titulo: "Abraão: Seu Chamado e Sua Jornada de Fé",
+    data: "2026-04-05",
+    trimestre: trimestreAdultosSegundoTrimestre,
+    comentarista: "Elinaldo Renovato",
+    textoAureo:
+      '"Ora, o SENHOR disse a Abrão: Sai-te da tua terra, e da tua parentela, e da casa de teu pai, para a terra que eu te mostrarei." (Gn 12.1)',
+    verdadePratica:
+      "O chamado de Deus na vida de Abrão e na nossa exige obediência irrestrita, fé e perseverança.",
+    leituraBiblicaEmClasse: ["Gênesis 12:1-9"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gn 12.3",
+        tema: "O chamado para todas as famílias da Terra.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Gn 12.1",
+        tema: "O chamado de Abraão e a origem de uma nação.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Hb 11.1",
+        tema: "Abraão não sabia definir a fé, mas a viveu.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Gn 12.10",
+        tema: "Obstáculos no chamado divino.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gn 12.15,16",
+        tema: "Desafios éticos na chamada.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gn 12.17,18",
+        tema: "Deus zela pelos que Ele chama.",
+      },
+    ],
+    hinosSugeridos: ["84", "126", "186"],
+  },
+  visaoGeral: {
+    resumo:
+      "A primeira lição do trimestre mostra que o chamado de Abrão inaugura uma caminhada de fé, ruptura com a idolatria e dependência radical da direção divina. Deus chama o patriarca, faz promessas abrangentes e sustenta seu servo mesmo quando a jornada é marcada por provações e limitações humanas.",
+    ideiaCentral:
+      "O chamado de Deus forma uma jornada de fé em que obediência, perseverança e confiança nas promessas caminham juntas.",
+    objetivos: objetivosAdultosSegundoTrimestreLicao1,
+    palavraChave: {
+      termo: "Fé",
+      definicao:
+        "Confiança obediente no Deus que chama, promete e conduz seu povo mesmo quando o caminho ainda não está totalmente revelado.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "deus-chama-abrao",
+      titulo: "Deus chama Abrão",
+      sinopse:
+        "Gênesis 12.1-3 apresenta um chamado que exige ruptura, confiança e submissão ao Deus que revela o caminho progressivamente.",
+      explicacaoBiblica: [
+        "O imperativo de sair da terra, da parentela e da casa do pai mostra que o chamado de Deus alcança a identidade, a segurança e os vínculos mais profundos de Abrão.",
+        "A promessa feita ao patriarca inclui grande nação, bênção e alcance universal, antecipando a obra redentora que alcançaria todas as famílias da terra.",
+        "Abrão deixa uma terra marcada pela idolatria para seguir a voz do Deus único, aprendendo a confiar sem controlar o trajeto completo.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A fé bíblica nasce da iniciativa soberana de Deus e responde com obediência, mesmo quando o cumprimento ainda está no horizonte.",
+        "As promessas de Gênesis 12 estruturam a história da redenção e encontram seu cumprimento pleno em Cristo, descendente de Abraão.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve perceber que obedecer ao chamado de Deus pode exigir abrir mão de confortos, referências antigas e seguranças humanas.",
+        "A bênção recebida de Deus não termina no indivíduo; ela o transforma em canal de graça, testemunho e serviço para outras pessoas.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Hebreus 11.8",
+          descricao:
+            "Abraão obedeceu pela fé e partiu sem saber para onde ia.",
+        },
+        {
+          referencia: "Gálatas 3.8,9",
+          descricao:
+            "A promessa feita a Abraão já apontava para a bênção das nações pela fé.",
+        },
+      ],
+    },
+    {
+      id: "obediencia-de-abrao",
+      titulo: "A obediência de Abrão a Deus",
+      sinopse:
+        "A resposta de Abrão ao chamado divino mostra que a fé age concretamente, ainda que a caminhada inclua pausas, ajustes e aprendizados.",
+      explicacaoBiblica: [
+        "Abrão parte de Harã aos 75 anos, assumindo uma jornada cujo sentido pleno ainda seria revelado ao longo da caminhada.",
+        "A passagem por Harã mostra que a obediência muitas vezes acontece em processo, enquanto Deus continua conduzindo o chamado rumo a Canaã.",
+        "O fato de Ló seguir com Abrão antecipa tensões e lembra que a obediência parcial tende a produzir dificuldades futuras.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A narrativa bíblica não idealiza seus heróis; ela mostra que a fidelidade de Deus sustenta servos reais, marcados por limites e necessidade de correção.",
+        "A obediência é melhor do que a religiosidade vazia, porque responde ao próprio Deus e não apenas a formas externas.",
+      ],
+      aplicacaoPratica: [
+        "O chamado do Senhor requer prontidão para obedecer mesmo quando o caminho envolve deslocamento, renúncia e dependência.",
+        "É importante examinar se estamos carregando para a jornada elementos que Deus já nos pediu para deixar para trás.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Hebreus 11.1",
+          descricao:
+            "A definição bíblica de fé ajuda a interpretar a atitude obediente de Abrão.",
+        },
+        {
+          referencia: "1 Samuel 15.22",
+          descricao:
+            "A obediência agrada ao Senhor mais do que formalismos religiosos.",
+        },
+      ],
+    },
+    {
+      id: "lutas-em-canaa",
+      titulo: "As lutas que Abrão enfrentou ao chegar a Canaã",
+      sinopse:
+        "A terra da promessa não eliminou as crises de Abrão; ela expôs sua fé às provações da fome, da desorientação e dos dilemas éticos.",
+      explicacaoBiblica: [
+        "A fome em Canaã levou Abrão ao Egito, mostrando que o lugar da promessa também pode incluir escassez e provação.",
+        "A ida ao Egito expôs fragilidades morais e o temor do patriarca, mas o Senhor interveio soberanamente para preservar Sarai e a promessa.",
+        "As crises da jornada revelam que Deus continua fiel mesmo quando seus servos demonstram fraqueza e precisam ser corrigidos.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A fidelidade divina não depende da perfeição moral do patriarca; ela nasce do próprio caráter de Deus e sustenta a aliança.",
+        "As lutas de Abrão ensinam que a promessa não dispensa perseverança, discernimento e dependência contínua do Senhor.",
+      ],
+      aplicacaoPratica: [
+        "A classe deve ser encorajada a enfrentar períodos de escassez e pressão sem abandonar a verdade nem a confiança em Deus.",
+        "Mesmo quando falhamos em algum ponto da caminhada, o Senhor continua chamando seu povo ao arrependimento, à verdade e à perseverança.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Tiago 1.2-4",
+          descricao:
+            "As provações amadurecem a perseverança do crente.",
+        },
+        {
+          referencia: "2 Timóteo 2.13",
+          descricao:
+            "A fidelidade de Deus permanece mesmo diante da fragilidade humana.",
+        },
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que significa fé quando Deus nos chama para obedecer antes de revelar todo o caminho?",
+    pontoSensivelDaAula:
+      "Mostre que a jornada de Abrão inclui grande fé e também fragilidade, evitando idealizações superficiais do patriarca.",
+    erroComumDeInterpretacao:
+      "Tratar a chamada de Abrão apenas como uma mudança geográfica, sem perceber a ruptura espiritual, ética e relacional envolvida no chamado.",
+    perguntasParaDebate: [
+      "Que seguranças Abrão precisou abandonar ao atender ao chamado de Deus?",
+      "O que a fome em Canaã ensina sobre a relação entre promessa divina e provação?",
+      "Como a vida de Abrão corrige a ideia de que fé elimina conflitos e crises?",
+    ],
+    sugestaoDeFechamento:
+      "Conclua levando a classe a entregar em oração as áreas em que Deus pede obediência, confiança e perseverança nesta fase da caminhada cristã.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Ur dos Caldeus era um centro importante do mundo antigo, marcado por idolatria, comércio e forte estrutura cultural.",
+      "Harã funcionava como uma zona de transição na jornada patriarcal, reforçando que o chamado de Deus muitas vezes inclui processos de amadurecimento.",
+    ],
+    conceitoTeologico: [
+      "A promessa abraâmica une eleição, bênção e missão, apontando para o alcance universal da graça divina.",
+      "A fé de Abraão é paradigma da confiança obediente que caminha apoiada na palavra de Deus.",
+    ],
+    leituraComplementar: [
+      {
+        titulo: "Hebreus 11.8-10",
+        conteudo:
+          "Leia o comentário do Novo Testamento sobre a peregrinação de Abraão e sua esperança escatológica.",
+      },
+      {
+        titulo: "Gênesis 15.1-6",
+        conteudo:
+          "Observe como o Senhor reafirma a promessa e fortalece a fé do patriarca ao longo da caminhada.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A tendência de querer obedecer a Deus somente quando o trajeto e o resultado já estão totalmente sob controle.",
+      "A tentação de recorrer a soluções eticamente frágeis quando as circunstâncias se tornam adversas.",
+    ],
+    oQueConsola: [
+      "Deus continua guiando seu povo mesmo em jornadas marcadas por incerteza, provação e limitações humanas.",
+      "A fidelidade do Senhor não abandona aqueles que Ele chamou para caminhar em fé.",
+    ],
+    oQueExige: [
+      "Obediência irrestrita, perseverança e disposição para deixar zonas antigas de segurança espiritual.",
+      "Viver a verdade com integridade mesmo quando a pressão circunstancial tenta empurrar o crente para atalhos.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus chama soberanamente, promete com fidelidade e sustenta seus servos mesmo em meio a crises.",
+      "O Senhor forma o caráter dos seus ao longo da caminhada, não apenas no momento inicial do chamado.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "O que o chamado de Gênesis 12.1 exigiu de Abrão?",
+      "Quais são os eixos principais da promessa feita por Deus ao patriarca?",
+      "Como a passagem por Harã ajuda a interpretar a jornada de obediência?",
+      "Que lições a fome em Canaã e a ida ao Egito deixam para a vida cristã?",
+    ],
+    pontosChave: [
+      "O chamado de Deus a Abrão exigiu fé, ruptura e obediência.",
+      "A promessa abraâmica inclui bênção pessoal, formação de um povo e alcance universal.",
+      "A caminhada de Abrão mostra que a fé obedece antes de conhecer todo o caminho.",
+      "As provações em Canaã e no Egito revelam a necessidade de perseverança e verdade.",
+    ],
+    fraseDeSintese:
+      "O chamado de Deus na vida de Abrão nos ensina que a fé verdadeira obedece, persevera e continua confiando mesmo quando a jornada é desafiadora.",
+  },
+};
+
+const editorialAdultosSegundoTrimestreLicao1: AdultosEditorialConfig = {
+  imagem: getEbdLessonImagePath("adultos", "2026-2t", 1, "jpg"),
+  objetivos: objetivosAdultosSegundoTrimestreLicao1,
+  topicos: topicosAdultosSegundoTrimestreLicao1,
+  apoioProfessor: [
+    "Introduza a aula mostrando que o chamado de Abrão não foi uma decisão emocional momentânea, mas resposta obediente a uma palavra divina que reorganizou toda a sua vida.",
+    "Ajude a classe a perceber que a fé de Abrão não elimina lutas; ela o sustenta enquanto Deus forma seu caráter no caminho da promessa.",
+  ],
+  apoioAluno: [
+    "Leia Gênesis 12.1-9 e Hebreus 11.8-10 durante a semana, observando como o chamado de Deus pede confiança antes de revelar todo o trajeto.",
+    "Ore pedindo ao Senhor coragem para obedecer em áreas nas quais Ele já falou claramente, mesmo que o cenário ainda pareça incerto.",
+  ],
+  esboco: [
+    {
+      titulo: "Entrada",
+      conteudo:
+        "Comece perguntando o que significa obedecer a Deus quando o caminho ainda não está completamente visível, conduzindo a turma à experiência de Abrão em Gênesis 12.",
+    },
+    {
+      titulo: "Desenvolvimento",
+      conteudo:
+        "Percorra a lição em três movimentos: o chamado e a promessa, a obediência de Abrão e as lutas enfrentadas em Canaã e no Egito.",
+    },
+    {
+      titulo: "Fechamento",
+      conteudo:
+        "Finalize reafirmando que o chamado de Deus exige obediência irrestrita, fé perseverante e confiança no cuidado do Senhor em meio às provações.",
+    },
+  ],
+  subsidioAdultos: subsidioAdultosSegundoTrimestreLicao1,
+};
+
+const licaoAdultosSegundoTrimestre1: LicaoEBD = {
+  ...criarLicaoEditorialAdultos(
+    {
+      numero: 1,
+      data: "2026-04-05",
+      titulo: "Abraão: Seu Chamado e Sua Jornada de Fé",
+      resumo:
+        "A primeira lição do trimestre apresenta o chamado de Abrão, a fé necessária para deixar sua terra e as primeiras provações enfrentadas no caminho da promessa.",
+      textoChave: "Gn 12.1",
+      verdadePratica:
+        "O chamado de Deus na vida de Abrão e na nossa exige obediência irrestrita, fé e perseverança.",
+      leituraBiblica: ["Gn 12.1-9"],
+      aplicacao:
+        "Depois de estudar a lição, lembre que o chamado de Deus exige obediência irrestrita, fé e perseverança. Não é possível viver a fé sem perseverar nela.",
+      enfase: "o chamado de Deus na vida do patriarca",
+    },
+    editorialAdultosSegundoTrimestreLicao1
+  ),
+  id: "adultos-2026-2t-licao-1",
+};
+
+const adultos2026SegundoTrimestreBase = criarTrimestrePlaceholder({
+  slug: "2026-2t",
+  trimestre: 2,
+  imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
+});
+
+const adultos2026SegundoTrimestre: TrimestreEBD = {
+  ...adultos2026SegundoTrimestreBase,
+  id: "adultos-2026-2t",
+  statusEditorial: "partial",
+  titulo: tituloAdultosSegundoTrimestre,
+  subtitulo: subtituloAdultosSegundoTrimestre,
+  descricao:
+    "Treze lições para acompanhar a jornada de fé de Abraão, Isaque e Jacó, observando como Deus chama, prova, corrige e preserva os herdeiros da promessa.",
+  comentarista: "Elinaldo Renovato",
+  licoes: adultos2026SegundoTrimestreBase.licoes.map((licao) => {
+    if (licao.numero === 1) {
+      return licaoAdultosSegundoTrimestre1;
+    }
+
+    const titulo = titulosAdultosSegundoTrimestre[licao.numero] ?? licao.titulo;
+    const extensao =
+      extensoesImagensAdultosSegundoTrimestre[licao.numero] ?? "png";
+
+    return {
+      ...licao,
+      titulo,
+      imagem: getEbdLessonImagePath("adultos", "2026-2t", licao.numero, extensao),
+      subsidioAdultos: licao.subsidioAdultos
+        ? {
+            ...licao.subsidioAdultos,
+            cabecalho: {
+              ...licao.subsidioAdultos.cabecalho,
+              titulo,
+              trimestre: trimestreAdultosSegundoTrimestre,
+            },
+          }
+        : licao.subsidioAdultos,
+    };
+  }),
+};
+
 const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditorialConfig>> = {
   1: {
     imagem: getEbdLessonImagePath("adultos", "2026-1t", 1, "jpg"),
@@ -3344,11 +3738,7 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
       return editorial ? criarLicaoEditorialAdultos(seed, editorial) : criarLicao(seed);
     }),
   },
-  criarTrimestrePlaceholder({
-    slug: "2026-2t",
-    trimestre: 2,
-    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  adultos2026SegundoTrimestre,
   criarTrimestrePlaceholder({
     slug: "2026-3t",
     trimestre: 3,
