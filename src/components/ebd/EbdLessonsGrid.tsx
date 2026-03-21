@@ -13,6 +13,7 @@ import {
 type EbdLessonsGridProps = {
   classe: ClasseEBD;
   edicao: string;
+  trimestreRotulo: string;
   licoes: LicaoEBD[];
   trimestreStatusEditorial?: StatusEditorialEBD;
   initialNowIso: string;
@@ -30,6 +31,7 @@ function getSnapshot() {
 export default function EbdLessonsGrid({
   classe,
   edicao,
+  trimestreRotulo,
   licoes,
   trimestreStatusEditorial,
   initialNowIso,
@@ -45,13 +47,21 @@ export default function EbdLessonsGrid({
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       {licoes.map((licao) => {
         const estado = getEstadoProgressaoLicao(
-          { statusEditorial: trimestreStatusEditorial },
+          {
+            statusEditorial: trimestreStatusEditorial,
+            classe,
+            rotulo: trimestreRotulo,
+          },
           licao,
           currentDate
         );
         const status = getMetaEstadoProgressaoLicao(estado);
         const isNavigable = isLicaoPubliclyAvailable(
-          { statusEditorial: trimestreStatusEditorial },
+          {
+            statusEditorial: trimestreStatusEditorial,
+            classe,
+            rotulo: trimestreRotulo,
+          },
           licao,
           currentDate
         );

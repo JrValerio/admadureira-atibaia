@@ -428,6 +428,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
           <EbdLessonsGrid
             classe={classe}
             edicao={trimestre.slug}
+            trimestreRotulo={trimestre.rotulo}
             licoes={trimestre.licoes}
             trimestreStatusEditorial={trimestre.statusEditorial}
             initialNowIso={new Date().toISOString()}

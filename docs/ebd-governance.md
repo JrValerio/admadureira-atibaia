@@ -25,7 +25,8 @@ The current project behavior uses three layers of editorial eligibility:
 
 3. **Lesson visibility**
    - lesson routes can exist before launch
-   - only lessons with editorial status `published` are considered public
+   - a lesson only becomes public when it is `published`, editorially ready and already inside the weekly release window
+   - lessons that are `published` but still incomplete editorially must remain outside discovery and under `noindex`
    - unpublished lessons remain accessible by direct route only when already prepared internally, but they must stay outside discovery and under `noindex`
 
 ## Editorial Readiness
@@ -87,7 +88,7 @@ At the current stage of the project:
 
 - readiness is an internal editorial checklist
 - `statusEditorial` still defines whether the lesson is `draft` or `published`
-- the weekly release window still defines when a published lesson becomes publicly discoverable
+- the weekly release window still defines when a published and editorially ready lesson becomes publicly discoverable
 
 This means a lesson can be:
 
@@ -102,6 +103,12 @@ Or it can be:
 - still waiting for the correct weekly release window
 - and therefore not yet publicly discoverable
 
+And it can also be:
+
+- `published`
+- still editorially incomplete
+- and therefore still outside public discovery until the checklist is complete
+
 ## Draft Policy
 
 Future quarters may exist in the dataset and routes before launch, but they remain in backstage mode until the release gate is met.
@@ -115,6 +122,11 @@ Backstage rules:
 
 This means route existence is not the same thing as public publication.
 The public layer is defined by the combination of editorial helpers, sitemap eligibility and page-level `robots`.
+At this stage, public lesson eligibility depends on all three conditions together:
+
+- `statusEditorial: published`
+- editorial readiness checklist completed
+- weekly release window already open
 
 ## Front Behavior Today
 
@@ -124,6 +136,7 @@ Current front behavior is:
 - class pages surface only the material that is considered public for discovery
 - quarter pages can render an `Em preparação` state when the quarter is still `draft`
 - lesson pages can render a `Conteúdo em preparação` state when the lesson is not published
+- lesson pages outside public eligibility remain `noindex`, even if they already exist in the route tree
 - draft quarters and unpublished lessons remain outside the public sitemap
 - draft quarter pages and unpublished lesson pages remain `noindex`
 

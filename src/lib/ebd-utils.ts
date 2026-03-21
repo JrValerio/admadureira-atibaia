@@ -139,13 +139,14 @@ export function isLicaoInsideReleaseWindow(
 }
 
 export function isLicaoPubliclyAvailable(
-  trimestre: Pick<TrimestreEBD, "statusEditorial">,
-  licao: Pick<LicaoEBD, "statusEditorial" | "data">,
+  trimestre: Pick<TrimestreEBD, "statusEditorial" | "classe" | "rotulo">,
+  licao: LicaoEBD,
   date = new Date()
 ) {
   return (
     !isTrimestreDraft(trimestre) &&
     isLicaoPublished(licao) &&
+    isLicaoEditorialmentePronta(trimestre, licao) &&
     isLicaoInsideReleaseWindow(licao, date)
   );
 }
@@ -190,11 +191,15 @@ export function isLicaoEditorialmentePronta(
 }
 
 export function getEstadoProgressaoLicao(
-  trimestre: Pick<TrimestreEBD, "statusEditorial">,
-  licao: Pick<LicaoEBD, "statusEditorial" | "data">,
+  trimestre: Pick<TrimestreEBD, "statusEditorial" | "classe" | "rotulo">,
+  licao: LicaoEBD,
   date = new Date()
 ): EstadoProgressaoLicaoEBD {
-  if (isTrimestreDraft(trimestre) || !isLicaoPublished(licao)) {
+  if (
+    isTrimestreDraft(trimestre) ||
+    !isLicaoPublished(licao) ||
+    !isLicaoEditorialmentePronta(trimestre, licao)
+  ) {
     return "draft";
   }
 
