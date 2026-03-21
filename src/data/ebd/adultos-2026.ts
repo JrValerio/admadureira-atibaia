@@ -991,6 +991,38 @@ const subsidioAdultosLicao5: LicaoEBD["subsidioAdultos"] = {
       "Lucas 1.31-35 — a anunciação e a concepção do Filho.",
       "Mateus 17.1-8 — a glória do Filho no monte da transfiguração.",
     ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Lucas 1.35",
+        tema: "A concepção virginal revela a origem divina do Filho.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 1.14",
+        tema: "O Filho eterno se fez carne sem deixar de ser Deus.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Mateus 17.5",
+        tema: "O Pai ordena que a igreja ouça o Filho amado.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Colossenses 1.15",
+        tema: "Cristo é a perfeita revelação do Deus invisível.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "1 Timóteo 2.5",
+        tema: "Há um só mediador entre Deus e os homens.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Atos 4.12",
+        tema: "Somente em Cristo há salvação.",
+      },
+    ],
   },
   visaoGeral: {
     resumo:
@@ -1140,6 +1172,38 @@ const subsidioAdultosLicao6: LicaoEBD["subsidioAdultos"] = {
       "Jesus Cristo, o Verbo eterno, é a revelação plena e visível de Deus ao mundo.",
     leituraBiblicaEmClasse: [
       "João 1.1-5,14 — o Verbo eterno, criador, fonte de vida e revelado na encarnação.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "João 1.1",
+        tema: "O Verbo estava com Deus e era Deus.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 1.3",
+        tema: "Todas as coisas foram feitas por meio do Verbo.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "João 1.4",
+        tema: "No Verbo estava a vida, e a vida era a luz dos homens.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "João 1.5",
+        tema: "A luz de Cristo resplandece nas trevas.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "João 1.14",
+        tema: "O Verbo se fez carne e habitou entre nós.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Hebreus 1.1-2",
+        tema: "O Filho é a revelação final de Deus.",
+      },
     ],
   },
   visaoGeral: {
@@ -1292,6 +1356,38 @@ const subsidioAdultosLicao7: LicaoEBD["subsidioAdultos"] = {
       "Filipenses 2.5-11 — a humilhação e a exaltação do Filho.",
       "Hebreus 9.24-28 — a obra redentora única e suficiente de Cristo.",
     ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Filipenses 2.6-7",
+        tema: "O Filho se humilhou voluntariamente.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Filipenses 2.8",
+        tema: "Cristo foi obediente até a morte de cruz.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Isaías 53.5",
+        tema: "O sacrifício do Filho traz paz e cura ao pecador.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Hebreus 9.28",
+        tema: "Cristo ofereceu-se uma vez para tirar os pecados.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 5.8",
+        tema: "Deus prova seu amor na obra redentora de Cristo.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Filipenses 2.9-11",
+        tema: "O Filho exaltado reina soberanamente.",
+      },
+    ],
   },
   visaoGeral: {
     resumo:
@@ -1430,6 +1526,38 @@ const subsidioAdultosLicao8: LicaoEBD["subsidioAdultos"] = {
     leituraBiblicaEmClasse: [
       "João 14.25-31 — o Consolador enviado à igreja.",
     ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "João 14.16-17",
+        tema: "O Espírito é outro Consolador enviado à igreja.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 14.26",
+        tema: "O Consolador ensina e faz lembrar as palavras de Cristo.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Atos 5.3-4",
+        tema: "Mentir ao Espírito é mentir a Deus.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Romanos 8.11",
+        tema: "O Espírito atua com poder de vida e ressurreição.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "2 Coríntios 3.17",
+        tema: "Onde está o Espírito do Senhor, aí há liberdade.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "1 Pedro 1.2",
+        tema: "O Espírito santifica o povo de Deus.",
+      },
+    ],
   },
   visaoGeral: {
     resumo:
@@ -1567,6 +1695,38 @@ const subsidioAdultosLicao9: LicaoEBD["subsidioAdultos"] = {
       "A regeneração é transformação operada pelo Espírito pela qual o pecador se torna nova criatura.",
     leituraBiblicaEmClasse: [
       "João 3.1-8 — a necessidade do novo nascimento e a ação soberana do Espírito.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "João 3.3",
+        tema: "Nascer de novo é indispensável para ver o Reino.",
+      },
+      {
+        dia: "Terça",
+        referencia: "João 3.5",
+        tema: "O novo nascimento vem da água e do Espírito.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Tito 3.5",
+        tema: "A salvação envolve a lavagem da regeneração.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "2 Coríntios 5.17",
+        tema: "Em Cristo, o regenerado é nova criatura.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gálatas 5.22-23",
+        tema: "A nova vida produz o fruto do Espírito.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "1 Pedro 1.23",
+        tema: "A nova vida nasce da Palavra que permanece.",
+      },
     ],
   },
   visaoGeral: {
@@ -1707,6 +1867,38 @@ const subsidioAdultosLicao10: LicaoEBD["subsidioAdultos"] = {
       "Joel 2.28-29 — a promessa do derramamento do Espírito.",
       "Atos 2.1-4 — o cumprimento pentecostal da promessa.",
       "1 Coríntios 12.4-7 — dons espirituais para edificação do corpo.",
+    ],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Joel 2.28",
+        tema: "O derramamento do Espírito é promessa para todos.",
+      },
+      {
+        dia: "Terça",
+        referencia: "Atos 1.8",
+        tema: "O Espírito concede poder para testemunhar.",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Atos 2.4",
+        tema: "O cumprimento da promessa fortalece a igreja.",
+      },
+      {
+        dia: "Quinta",
+        referencia: "1 Coríntios 12.4-7",
+        tema: "Os dons são dados para o bem comum.",
+      },
+      {
+        dia: "Sexta",
+        referencia: "1 Coríntios 12.11",
+        tema: "O Espírito distribui os dons conforme a sua vontade.",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Efésios 5.18",
+        tema: "A vida cheia do Espírito fortalece a adoração e o serviço.",
+      },
     ],
   },
   visaoGeral: {
