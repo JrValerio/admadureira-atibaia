@@ -154,6 +154,13 @@ Current release gate by class:
 This means `Adultos` and `Jovens` no longer share the exact same `2026-2t` gate.
 Each class now follows the editorial material already available for its own quarter.
 
+## Operational Notes
+
+For the current weekly operation of `Jovens 2T/2026`, use:
+
+- [docs/ebd/jovens-2t-2026-operacao.md](./ebd/jovens-2t-2026-operacao.md)
+- [docs/ebd/jovens-2t-2026-checklist.md](./ebd/jovens-2t-2026-checklist.md)
+
 ## Editorial Priorities
 
 When deciding what to ship next, use this order:
