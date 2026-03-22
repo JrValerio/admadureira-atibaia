@@ -50,7 +50,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
   return (
     <Section id="sobre" bg="dark" className="text-white">
       {!showHeader ? (
-        <div className="mb-12 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+        <div className="mb-12 ui-panel-accent ui-panel-pad-lg">
           <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
             Identidade do campo
           </p>
