@@ -95,7 +95,7 @@ export default function MinisteriosPage() {
             </nav>
 
             <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-8 items-start">
-              <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+              <div className="ui-panel ui-panel-pad-lg">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Vida da igreja
                 </p>
@@ -127,7 +127,7 @@ export default function MinisteriosPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+              <div className="ui-panel-accent ui-panel-pad-lg">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Estrutura ministerial
                 </p>
