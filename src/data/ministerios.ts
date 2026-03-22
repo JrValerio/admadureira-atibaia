@@ -11,6 +11,24 @@ export interface Ministerio {
 
 const ministerios: Ministerio[] = [
   {
+    slug: "missoes",
+    nome: "Missões",
+    escopo: "Local e apoio missionário",
+    resumo:
+      "Página institucional para apresentar a visão missionária da igreja, organizar pedidos de oração, contribuição e futuras atualizações sobre frentes apoiadas.",
+    descricao: [
+      "A página de Missões foi preparada para reunir a visão missionária da AD Madureira Atibaia, reforçando o compromisso da igreja com a oração, a proclamação do Evangelho e o apoio à obra missionária.",
+      "Ela também serve como base para receber campanhas, relatórios, pedidos de oração e informações oficiais sobre frentes apoiadas à medida que a liderança disponibilizar esses materiais.",
+    ],
+    lideranca: ["Informações detalhadas serão adicionadas pela liderança da igreja"],
+    atividades: [
+      "Mobilização missionária e intercessão",
+      "Orientação sobre contribuição missionária",
+      "Espaço para relatórios, campanhas e pedidos de oração",
+    ],
+    imagem: "/images/igreja/culto/adoracao.jpg",
+  },
+  {
     slug: "confadat",
     nome: "CONFADAT – Mulheres Campo de Atibaia",
     escopo: "Campo de Atibaia",

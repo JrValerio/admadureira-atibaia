@@ -34,10 +34,16 @@ const menu: MenuItem[] = [
     ],
   },
   {
+    label: "Ensino",
+    children: [
+      { label: "Escola Bíblica Dominical (EBD)", href: "/ebd" },
+      { label: "Curso de Teologia", href: "/programacao/curso-de-teologia" },
+    ],
+  },
+  {
     label: "Conteúdo",
     children: [
       { label: "Mensagens", href: "/mensagens" },
-      { label: "EBD", href: "/ebd" },
       { label: "Vídeos", href: "/videos" },
       { label: "Testemunhos", href: "/testemunhos" },
     ],
@@ -62,6 +68,7 @@ const menu: MenuItem[] = [
       { label: "Pastores", href: "/pastores" },
       { label: "Congregações", href: "/congregacoes" },
       { label: "Ministérios", href: "/ministerios" },
+      { label: "Missões", href: "/ministerios/missoes" },
     ],
   },
   { label: "Contato", href: "/contato" },

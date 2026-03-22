@@ -96,6 +96,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: resolveSiteUrl("/programacao/curso-de-teologia"),
+      lastModified: generatedAt,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: resolveSiteUrl("/eventos"),
       lastModified: generatedAt,
       changeFrequency: "weekly",
