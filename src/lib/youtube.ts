@@ -25,6 +25,7 @@ export const YOUTUBE_LIMITS = {
   messagePlaylist: 24,
   testimonyPlaylist: 24,
   liveProbeCandidates: 4,
+  liveVideosPageCandidates: 24,
 } as const;
 
 type YouTubeDataSource = "api" | "rss" | "html" | "fallback";
@@ -157,6 +158,18 @@ function createFallbackVideo(
   };
 }
 
+function createFallbackLiveVideo(
+  id: string,
+  title: string,
+  publishedAt: string,
+  description: string
+): YouTubeVideo {
+  return {
+    ...createFallbackVideo(id, title, publishedAt, description),
+    actualEndTime: publishedAt,
+  };
+}
+
 const fallbackMessagesPlaylist: YouTubeVideo[] = [
   createFallbackVideo(
     "gn1q7mfAtGw",
@@ -213,6 +226,60 @@ const fallbackRecentVideos: YouTubeVideo[] = [
     "Transmissão recente publicada no canal da AD Madureira Atibaia."
   ),
 ];
+
+const fallbackFeaturedLiveVideos: YouTubeVideo[] = [
+  createFallbackLiveVideo(
+    "iXVuDQRxrlw",
+    "Culto da Família Especial | Missionária Cristina Maranhão | AD Madureira Atibaia",
+    "2026-01-26T12:54:50+00:00",
+    "Transmissão destacada no canal da AD Madureira Atibaia."
+  ),
+  createFallbackLiveVideo(
+    "TThk0ZEd3OU",
+    "AO VIVO/ Culto e Reunião de Obreiros com Cicero Nogueira AD Madureira Atibaia .",
+    "2026-02-22T12:39:57+00:00",
+    "Transmissão destacada no canal da AD Madureira Atibaia."
+  ),
+];
+
+const fallbackRecentLiveVideos: YouTubeVideo[] = [
+  ...fallbackFeaturedLiveVideos,
+  createFallbackLiveVideo(
+    "LWX6A7T-PZI",
+    "Culto e Reunião de Obreiros | Hoje às 19h | Toda a Igreja Está Convidada",
+    "2026-03-21T00:57:18+00:00",
+    "Transmissão recente publicada no canal da AD Madureira Atibaia."
+  ),
+  createFallbackLiveVideo(
+    "HCL1a6rQ8ic",
+    "Assembleia de Deus - Min. Madureira | Atibaia-SP está ao vivo!",
+    "2026-03-21T01:25:45+00:00",
+    "Transmissão recente publicada no canal da AD Madureira Atibaia."
+  ),
+  createFallbackLiveVideo(
+    "1b-_PbSMPJs",
+    "AO VIVO | Campanha Jejum e Oração | Ministração com Pastor Isaías",
+    "2026-03-20T12:18:20+00:00",
+    "Transmissão recente publicada no canal da AD Madureira Atibaia."
+  ),
+  createFallbackLiveVideo(
+    "1uyhDvu53no",
+    "AO VIVO | Culto da Família | Participação Pr. Otton de Paula | AD Madureira Atibaia",
+    "2026-03-16T11:55:13+00:00",
+    "Transmissão recente publicada no canal da AD Madureira Atibaia."
+  ),
+  createFallbackLiveVideo(
+    "cbJQKtdNeFc",
+    "AO VIVO | Culto de Santa Ceia do Senhor | 14 de Março – 19h",
+    "2026-03-15T12:29:53+00:00",
+    "Transmissão recente publicada no canal da AD Madureira Atibaia."
+  ),
+];
+
+const featuredLiveVideoIds = fallbackFeaturedLiveVideos.map((video) => video.id);
+const featuredLiveVideoFallbackMap = new Map(
+  fallbackFeaturedLiveVideos.map((video) => [video.id, video])
+);
 
 function decodeHtmlEntities(value: string) {
   return value
@@ -278,6 +345,26 @@ function dedupeVideos(videos: YouTubeVideo[]) {
     seen.add(video.id);
     return true;
   });
+}
+
+function orderVideosByIds(videoIds: string[], videos: YouTubeVideo[]) {
+  const videoMap = new Map(videos.map((video) => [video.id, video]));
+
+  return dedupeVideos(videoIds.map((videoId) => videoMap.get(videoId)).filter(isDefined));
+}
+
+function isLiveStreamVideo(video: YouTubeVideo) {
+  return Boolean(
+    video.isLive ||
+      video.isUpcoming ||
+      video.scheduledStartTime ||
+      video.actualStartTime ||
+      video.actualEndTime ||
+      (video.source === "fallback" &&
+        /(ao vivo|esta ao vivo|está ao vivo|transmiss[aã]o|culto|reuni[aã]o de obreiros)/i.test(
+          video.title
+        ))
+  );
 }
 
 function isDefined<T>(value: T | null | undefined): value is T {
@@ -421,6 +508,32 @@ async function getVideosByIdsWithApi(videoIds: string[]) {
   );
 }
 
+async function getOrderedVideosByIds(
+  videoIds: string[],
+  fallbackMap?: Map<string, YouTubeVideo>
+) {
+  const uniqueIds = [...new Set(videoIds)];
+  const apiVideos = await getVideosByIdsWithApi(uniqueIds);
+  const missingIds = uniqueIds.filter(
+    (videoId) => !apiVideos.some((video) => video.id === videoId)
+  );
+
+  if (missingIds.length === 0) {
+    return orderVideosByIds(uniqueIds, apiVideos);
+  }
+
+  const hydratedMissingVideos = await Promise.all(
+    missingIds.map((videoId) =>
+      getVideoFromWatchPage(videoId, fallbackMap?.get(videoId))
+    )
+  );
+
+  return orderVideosByIds(
+    uniqueIds,
+    dedupeVideos([...apiVideos, ...hydratedMissingVideos.filter(isDefined)])
+  );
+}
+
 async function getPlaylistVideosWithApi(
   playlistId: string,
   limit: number
@@ -465,6 +578,36 @@ async function getPlaylistVideosWithApi(
       .filter(isDefined) ?? [];
 
   return dedupeVideos(videos).slice(0, limit);
+}
+
+async function getPlaylistVideoIdsWithApi(playlistId: string, limit: number) {
+  if (!YOUTUBE_API_KEY) {
+    return null;
+  }
+
+  const url = new URL(`${YOUTUBE_API_BASE}/playlistItems`);
+  url.searchParams.set("part", "snippet,contentDetails");
+  url.searchParams.set("playlistId", playlistId);
+  url.searchParams.set("maxResults", String(Math.min(limit, 50)));
+  url.searchParams.set("key", YOUTUBE_API_KEY);
+
+  const data = await fetchYouTubeJson<PlaylistItemsResponse>(url);
+  const videoIds =
+    data?.items
+      ?.map((item) => {
+        const id =
+          item.contentDetails?.videoId || item.snippet?.resourceId?.videoId;
+        const title = item.snippet?.title;
+
+        if (!id || title === "Deleted video" || title === "Private video") {
+          return null;
+        }
+
+        return id;
+      })
+      .filter((videoId): videoId is string => Boolean(videoId)) ?? [];
+
+  return [...new Set(videoIds)].slice(0, limit);
 }
 
 function parseRssFeed(xml: string): YouTubeVideo[] {
@@ -885,6 +1028,27 @@ async function getChannelLiveState(channelId: string): Promise<YouTubeLiveState>
   };
 }
 
+async function getFeaturedLiveVideos(): Promise<YouTubeVideoCollection> {
+  const videos = await getOrderedVideosByIds(
+    featuredLiveVideoIds,
+    featuredLiveVideoFallbackMap
+  );
+
+  if (videos.length > 0) {
+    return {
+      videos,
+      source: videos.every((video) => video.source === "api") ? "api" : "html",
+      usingFallback: false,
+    };
+  }
+
+  return {
+    videos: fallbackFeaturedLiveVideos,
+    source: "fallback",
+    usingFallback: true,
+  };
+}
+
 async function getPlaylistVideos(
   playlistId: string,
   limit: number,
@@ -981,6 +1145,65 @@ export async function getYouTubeChannelVideos(
   };
 }
 
+export async function getYouTubeChannelLiveVideos(
+  limit = YOUTUBE_LIMITS.generalFeed
+): Promise<YouTubeVideoCollection> {
+  // /videos = somente transmissões/lives do canal, incluindo lives arquivadas.
+  const channelId = await resolveChannelIdWithApi();
+  const candidateLimit = Math.min(YOUTUBE_LIMITS.liveVideosPageCandidates, 50);
+  const uploadsPlaylistId = await getUploadsPlaylistIdWithApi(channelId);
+
+  if (uploadsPlaylistId) {
+    const uploadVideoIds = await getPlaylistVideoIdsWithApi(
+      uploadsPlaylistId,
+      candidateLimit
+    );
+
+    if (uploadVideoIds?.length) {
+      const hydratedVideos = await getOrderedVideosByIds(uploadVideoIds);
+      const liveVideos = hydratedVideos.filter(isLiveStreamVideo).slice(0, limit);
+
+      if (liveVideos.length) {
+        return {
+          videos: liveVideos,
+          source: liveVideos.every((video) => video.source === "api") ? "api" : "html",
+          usingFallback: false,
+        };
+      }
+    }
+  }
+
+  const rssVideos = await getChannelVideosWithRss(channelId, candidateLimit);
+  if (rssVideos?.length) {
+    const hydratedVideos = await Promise.all(
+      rssVideos.map((video) =>
+        getVideoFromWatchPage(video.id, {
+          title: video.title,
+          description: video.description,
+          thumbnail: video.thumbnail,
+        })
+      )
+    );
+    const liveVideos = dedupeVideos(hydratedVideos.filter(isDefined))
+      .filter(isLiveStreamVideo)
+      .slice(0, limit);
+
+    if (liveVideos.length) {
+      return {
+        videos: liveVideos,
+        source: "html",
+        usingFallback: false,
+      };
+    }
+  }
+
+  return {
+    videos: fallbackRecentLiveVideos.slice(0, limit),
+    source: "fallback",
+    usingFallback: true,
+  };
+}
+
 export async function getYouTubeFeed() {
   const channelId = await resolveChannelIdWithApi();
   const [liveState, channelVideos] = await Promise.all([
@@ -1001,6 +1224,43 @@ export async function getYouTubeFeed() {
     sources: {
       live: liveState.source,
       videos: channelVideos.source,
+    },
+  };
+}
+
+export async function getYouTubeVideosPageFeed() {
+  const channelId = await resolveChannelIdWithApi();
+  const [liveState, featuredVideos, liveVideos] = await Promise.all([
+    getChannelLiveState(channelId),
+    getFeaturedLiveVideos(),
+    getYouTubeChannelLiveVideos(YOUTUBE_LIMITS.generalFeed),
+  ]);
+
+  const hiddenVideoIds = new Set<string>(
+    [
+      liveState.liveNow?.id,
+      liveState.upcomingLive?.id,
+      ...featuredVideos.videos.map((video) => video.id),
+    ].filter((videoId): videoId is string => Boolean(videoId))
+  );
+
+  const recentLiveVideos = dedupeVideos(liveVideos.videos).filter(
+    (video) => !hiddenVideoIds.has(video.id)
+  );
+
+  return {
+    liveNow: liveState.liveNow,
+    upcomingLive: liveState.upcomingLive,
+    featuredVideos: featuredVideos.videos,
+    recentLiveVideos,
+    usingFallback:
+      liveState.usingFallback ||
+      featuredVideos.usingFallback ||
+      liveVideos.usingFallback,
+    sources: {
+      live: liveState.source,
+      featured: featuredVideos.source,
+      videos: liveVideos.source,
     },
   };
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getYouTubeFeed } from "@/lib/youtube";
+import { getYouTubeVideosPageFeed } from "@/lib/youtube";
 import YouTubePreviewCard from "@/components/YouTubePreviewCard";
 import { Section } from "@/components/ui/Section";
 
@@ -10,9 +10,8 @@ type VideosProps = {
 };
 
 export default async function Videos({ showHeader = true }: VideosProps) {
-  const { liveNow, upcomingLive, recentVideos } = await getYouTubeFeed();
-  const featuredVideos = liveNow ? recentVideos.slice(0, 1) : recentVideos.slice(0, 2);
-  const libraryVideos = recentVideos.slice(featuredVideos.length);
+  const { liveNow, upcomingLive, featuredVideos, recentLiveVideos } =
+    await getYouTubeVideosPageFeed();
 
   return (
     <Section id="videos" bg="gray">
@@ -22,12 +21,12 @@ export default async function Videos({ showHeader = true }: VideosProps) {
               Canal no YouTube
             </p>
             <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
-              Cultos e transmissões recentes
+              Lives e transmissões do canal
             </h2>
             <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
             <p className="text-[#757575] text-sm mt-4">
-              Assista ao que está ao vivo e acompanhe os vídeos mais recentes
-              publicados no canal da igreja.
+              Assista ao que está ao vivo e acompanhe apenas as transmissões do
+              canal da igreja nesta página.
             </p>
           </div>
         ) : null}
@@ -75,9 +74,9 @@ export default async function Videos({ showHeader = true }: VideosProps) {
                   href={upcomingLive.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="ui-btn-secondary"
-                >
-                  Abrir transmissão no YouTube
+                className="ui-btn-secondary"
+              >
+                Abrir transmissão no YouTube
                 </a>
               </div>
             </div>
@@ -89,10 +88,10 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Publicados no canal
+                  Destaques da igreja
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Vídeos mais recentes
+                  Transmissões em destaque
                 </h3>
               </div>
             </div>
@@ -110,21 +109,21 @@ export default async function Videos({ showHeader = true }: VideosProps) {
           </div>
         )}
 
-        {libraryVideos.length > 0 && (
+        {recentLiveVideos.length > 0 && (
           <div className="mb-10">
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Biblioteca do canal
+                  Acervo de transmissões
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Mais vídeos para assistir
+                  Mais lives para assistir
                 </h3>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {libraryVideos.map((video) => (
+              {recentLiveVideos.map((video) => (
                 <YouTubePreviewCard key={video.id} video={video} />
               ))}
             </div>
@@ -139,9 +138,10 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             Continue no canal certo para o que você precisa agora
           </h3>
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-            Aqui a regra é simples: /videos mostra o feed geral mais recente do
-            canal. Já /mensagens continua sendo a curadoria da playlist de
-            pregações, com contexto editorial mais organizado.
+            Aqui a regra é simples: a página de vídeos mostra somente lives e
+            transmissões do canal. Já a área de Mensagens continua sendo a
+            curadoria da playlist de pregações, com contexto editorial mais
+            organizado.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a

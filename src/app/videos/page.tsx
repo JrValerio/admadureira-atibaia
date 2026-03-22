@@ -7,7 +7,7 @@ import { buildPageMetadata } from "@/lib/site";
 export const metadata = buildPageMetadata({
   title: "Cultos e Vídeos | AD Madureira Atibaia",
   description:
-    "Assista aos últimos cultos e pregações da AD Madureira Atibaia no YouTube.",
+    "Acompanhe as lives e transmissões do canal da AD Madureira Atibaia no YouTube.",
   path: "/videos",
 });
 
@@ -17,8 +17,8 @@ export default function VideosPage() {
       <HeroPage
         variant="full"
         label="Vídeo e transmissão"
-        title="Cultos, transmissões e vídeos"
-        description="Veja o que está ao vivo, assista aos cultos mais recentes da AD Madureira Atibaia e use esta área como ponto de entrada para acompanhar a igreja em vídeo."
+        title="Cultos e transmissões"
+        description="Veja o que está ao vivo, acompanhe os destaques definidos pela igreja e use esta área para assistir somente às lives e transmissões do canal."
         image={igrejaHeroMedia.videos}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
@@ -31,14 +31,14 @@ export default function VideosPage() {
             <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-3xl">
                 <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                  Use esta área para transmissões e para o feed geral mais recente do canal
+                  Use esta área para o que está ao vivo e para o acervo de transmissões do canal
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  Aqui você encontra o que está ao vivo e os vídeos mais novos já
-                  publicados no canal. Quando quiser mensagens organizadas por
-                  playlist e com espaço para metadados editoriais, siga para a
-                  área de Mensagens. Para ver a rotina presencial da igreja, vá
-                  para Programação.
+                  Aqui você encontra a live atual, dois destaques fixados pela
+                  igreja e somente os vídeos de transmissão do canal. Quando
+                  quiser mensagens organizadas por playlist e com espaço para
+                  metadados editoriais, siga para a área de Mensagens. Para ver
+                  a rotina presencial da igreja, vá para Programação.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -64,7 +64,7 @@ export default function VideosPage() {
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
                   Este hub é o melhor caminho para abrir a transmissão atual ou
-                  escolher rapidamente os últimos cultos em vídeo.
+                  voltar para as lives mais importantes do canal.
                 </p>
               </article>
 
@@ -77,7 +77,7 @@ export default function VideosPage() {
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
                   A área de Mensagens acompanha a playlist curada de pregações
-                  para separar o conteúdo geral do canal da biblioteca editorial
+                  para separar as transmissões do canal da biblioteca editorial
                   de ensinos.
                 </p>
               </article>
