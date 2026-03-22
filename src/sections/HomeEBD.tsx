@@ -8,11 +8,32 @@ import {
 const slideClass =
   "min-w-[84vw] max-w-[21rem] shrink-0 snap-center sm:min-w-0 sm:max-w-none";
 
-export default function HomeEBD() {
+export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
   const classeAdultos = getClasseEbdInfo("adultos");
   const licaoAdultos = getLicaoDaSemana("adultos");
   const classeJovens = getClasseEbdInfo("jovens");
   const licaoJovens = getLicaoDaSemana("jovens");
+
+  if (teaser) {
+    return (
+      <section className="bg-[#f5f5f5] py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:8rem]">
+        <div className="mx-auto max-w-6xl px-4 text-center">
+          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+            Escola Bíblica Dominical
+          </p>
+          <p className="mb-2 font-acme text-2xl md:text-3xl text-[#212121]">
+            Ensino bíblico para toda a família
+          </p>
+          <p className="mb-6 text-[#666]">
+            Todo domingo às 9h &middot; Adultos, Jovens e Infantil
+          </p>
+          <Link href="/ebd" className="ui-btn-secondary">
+            Ver todas as classes da EBD
+          </Link>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16 [content-visibility:auto] [contain-intrinsic-size:48rem]">

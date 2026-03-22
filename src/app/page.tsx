@@ -6,6 +6,7 @@ import Cultos from "@/sections/Cultos";
 import HomeEBD from "@/sections/HomeEBD";
 import DailySpiritual from "@/sections/DailySpiritual";
 import Destaques from "@/sections/Destaques";
+import QuemSomos from "@/sections/QuemSomos";
 
 // Next.js requires route segment config exports to stay statically analyzable.
 export const revalidate = 120;
@@ -19,9 +20,10 @@ export default async function Home() {
       <Hero liveNow={liveNow} />
       <HeroEventos eventos={heroEventos} />
       <Cultos />
-      <HomeEBD />
+      <Destaques liveNow={!!liveNow} />
+      <HomeEBD teaser />
+      <QuemSomos />
       <DailySpiritual />
-      <Destaques />
     </main>
   );
 }

@@ -1,19 +1,35 @@
 import Link from "next/link";
 import { Card, Section } from "@/components/ui";
 
-const destaques = [
-  {
-    titulo: "Culto ao Vivo",
-    descricao: "Assista nossas transmissões no YouTube e acompanhe os cultos da igreja.",
-    href: "https://www.youtube.com/@ADMadureiraAtibaia",
-    label: "Abrir YouTube →",
-    external: true,
-    icone: (
-      <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
-  },
+const cultoAoVivo = {
+  titulo: "Culto ao Vivo",
+  descricao: "Assista nossas transmissões no YouTube e acompanhe os cultos da igreja.",
+  href: "https://www.youtube.com/@ADMadureiraAtibaia",
+  label: "Abrir YouTube →",
+  external: true,
+  icone: (
+    <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  ),
+};
+
+const nossaIgreja = {
+  titulo: "Nossa Igreja",
+  descricao: "Conheça a história, a missão e a liderança pastoral da AD Madureira Atibaia.",
+  href: "/sobre",
+  label: "Conhecer a Igreja →",
+  external: false,
+  icone: (
+    <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M9 21V12h6v9" />
+    </svg>
+  ),
+};
+
+const destaquesBase = [
+  cultoAoVivo,
   {
     titulo: "Pedido de Oração",
     descricao: "Envie seu pedido e nossa equipe de intercessão orará com você.",
@@ -40,7 +56,11 @@ const destaques = [
   },
 ];
 
-export default function Destaques() {
+export default function Destaques({ liveNow = false }: { liveNow?: boolean }) {
+  const destaques = liveNow
+    ? [nossaIgreja, ...destaquesBase.slice(1)]
+    : destaquesBase;
+
   return (
     <Section className="bg-[#151515] [content-visibility:auto] [contain-intrinsic-size:24rem]">
       <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:snap-none">
