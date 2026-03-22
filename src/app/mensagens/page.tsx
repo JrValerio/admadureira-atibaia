@@ -33,10 +33,16 @@ function formatMensagemDate(data: string) {
   }).format(new Date(`${data}T12:00:00-03:00`));
 }
 
-export default function MensagensPage() {
-  const mensagens = getMensagensRecentes();
+export default async function MensagensPage() {
+  const mensagens = await getMensagensRecentes();
   const mensagemMaisRecente = mensagens[0] ?? null;
-  const mensagensComPregador = mensagens.filter((mensagem) => mensagem.pregador);
+  const mensagensComPregador = [
+    ...new Set(
+      mensagens
+        .map((mensagem) => mensagem.pregador?.trim())
+        .filter((pregador): pregador is string => Boolean(pregador))
+    ),
+  ];
   const mensagensListSchema = buildVideoListJsonLd(mensagens);
   const mensagensSeriesSchema = buildVideoSeriesJsonLd(mensagens);
 
@@ -58,7 +64,7 @@ export default function MensagensPage() {
         variant="full"
         label="Pregações e ministrações"
         title="Mensagens da Igreja"
-        description="Biblioteca de pregações curadas da AD Madureira Atibaia — com pregador, versículo-base e resumo editorial para revisitar o ensino bíblico com profundidade."
+        description="Curadoria da playlist oficial de Mensagens da AD Madureira Atibaia, com vídeos reais do canal e espaço preservado para enriquecimento editorial futuro."
         image={igrejaHeroMedia.mensagens}
         imageAlt="Púlpito da AD Madureira Atibaia"
       />
@@ -71,11 +77,13 @@ export default function MensagensPage() {
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
                 <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                  Revise o ensino mais recente e acompanhe o restante do conteúdo
+                  Revise a mensagem mais recente e acompanhe a playlist da igreja
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  Comece pela mensagem mais recente, abra o canal completo da igreja
-                  e, se quiser participar presencialmente, veja também a programação.
+                  Esta página acompanha a playlist oficial de Mensagens do canal.
+                  Comece pela publicação mais recente, abra o YouTube completo da
+                  igreja e, se quiser participar presencialmente, veja também a
+                  programação.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -113,7 +121,7 @@ export default function MensagensPage() {
             </div>
             <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                Pregadores destacados
+                Pregadores identificados
               </p>
               <p className="font-acme text-4xl text-[#212121]">
                 {mensagensComPregador.length}
@@ -132,15 +140,14 @@ export default function MensagensPage() {
               Conteúdo recorrente
             </p>
             <p className="text-[#555] leading-relaxed">
-              Novas mensagens são publicadas semanalmente a partir dos cultos e
-              ministrações da AD Madureira Atibaia. Acompanhe o ensino bíblico
-              compartilhado na igreja e revisite conteúdos que fortalecem a fé.
+              Esta área usa prioritariamente a playlist oficial de Mensagens da
+              igreja para exibir vídeos reais com título, thumbnail, data e link
+              direto para cada pregação publicada no canal.
             </p>
             <p className="text-[#777] text-sm leading-relaxed mt-3">
-              Esta área concentra mensagens e ministrações publicadas no canal da
-              igreja, criando uma biblioteca de ensino bíblico para quem deseja
-              revisitar cultos, compartilhar a Palavra e acompanhar o conteúdo da
-              AD Madureira Atibaia.
+              Quando houver metadado editorial adicional, esta mesma estrutura
+              continua compatível com pregador, resumo expandido e versículo-base
+              sem exigir retrabalho na integração com o YouTube.
             </p>
           </div>
 

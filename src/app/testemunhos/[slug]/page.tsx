@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTestemunhoBySlug, getTestemunhos } from "@/data/testemunhos";
-import { buildPageMetadata, SITE_URL } from "@/lib/site";
+import { buildPageMetadata, resolveSiteUrl, SITE_URL } from "@/lib/site";
 
 type PageProps = {
   params: Promise<{
@@ -20,7 +20,9 @@ function formatDate(data: string) {
 }
 
 export async function generateStaticParams() {
-  return getTestemunhos().map((testemunho) => ({
+  const testemunhos = await getTestemunhos();
+
+  return testemunhos.map((testemunho) => ({
     slug: testemunho.slug,
   }));
 }
@@ -29,7 +31,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const testemunho = getTestemunhoBySlug(slug);
+  const testemunho = await getTestemunhoBySlug(slug);
 
   if (!testemunho) {
     return {
@@ -66,7 +68,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 
 export default async function TestemunhoPage({ params }: PageProps) {
   const { slug } = await params;
-  const testemunho = getTestemunhoBySlug(slug);
+  const testemunho = await getTestemunhoBySlug(slug);
 
   if (!testemunho) {
     notFound();
@@ -79,7 +81,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
     description: testemunho.resumo,
     datePublished: testemunho.data,
     inLanguage: "pt-BR",
-    image: [`${SITE_URL}${testemunho.foto ?? "/pulpito-da-igreja.jpg"}`],
+    image: [resolveSiteUrl(testemunho.foto ?? "/pulpito-da-igreja.jpg")],
     author: {
       "@type": "Person",
       name: testemunho.nome,
@@ -105,7 +107,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
         isFamilyFriendly: true,
         url: `${SITE_URL}/testemunhos/${testemunho.slug}`,
         thumbnailUrl: [
-          `${SITE_URL}${testemunho.foto ?? "/pulpito-da-igreja.jpg"}`,
+          resolveSiteUrl(testemunho.foto ?? "/pulpito-da-igreja.jpg"),
           `https://img.youtube.com/vi/${testemunho.youtubeId}/hqdefault.jpg`,
         ],
         publisher: {
@@ -173,7 +175,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
                   <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
-                    Testemunho de
+                    Participação
                   </p>
                   <p className="text-[#212121] text-sm">{testemunho.nome}</p>
                 </div>

@@ -31,13 +31,14 @@ export default function VideosPage() {
             <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-3xl">
                 <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                  Use esta área para transmissões, cultos recentes e vídeos da igreja
+                  Use esta área para transmissões e para o feed geral mais recente do canal
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  Aqui você encontra o que está ao vivo e os cultos mais recentes
-                  no YouTube. Quando quiser mensagens organizadas com resumo,
-                  pregador e versículo-base, siga para a área de Mensagens. Para
-                  ver a rotina presencial da igreja, vá para Programação.
+                  Aqui você encontra o que está ao vivo e os vídeos mais novos já
+                  publicados no canal. Quando quiser mensagens organizadas por
+                  playlist e com espaço para metadados editoriais, siga para a
+                  área de Mensagens. Para ver a rotina presencial da igreja, vá
+                  para Programação.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -75,8 +76,9 @@ export default function VideosPage() {
                   Quando quiser ensino mais organizado
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                  A área de Mensagens é a melhor opção para revisar ministrações
-                  com contexto editorial, resumo e versículo-base.
+                  A área de Mensagens acompanha a playlist curada de pregações
+                  para separar o conteúdo geral do canal da biblioteca editorial
+                  de ensinos.
                 </p>
               </article>
 

@@ -147,8 +147,10 @@ Acesse `http://localhost:3000`.
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | URL canônica do site em produção |
 | `YOUTUBE_API_KEY` | Chave da YouTube Data API |
-| `YOUTUBE_CHANNEL_ID` | ID do canal no YouTube |
+| `YOUTUBE_CHANNEL_ID` | ID do canal no YouTube (opcional se o canal padrão for usado) |
 | `YOUTUBE_CHANNEL_HANDLE` | Handle do canal (ex: `@ADMadureiraAtibaia`) |
+| `YOUTUBE_MESSAGES_PLAYLIST_ID` | Playlist oficial de Mensagens (opcional; há valor padrão no projeto) |
+| `YOUTUBE_TESTIMONIALS_PLAYLIST_ID` | Playlist oficial de Testemunhos (opcional; há valor padrão no projeto) |
 
 ---
 

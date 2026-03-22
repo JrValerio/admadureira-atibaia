@@ -19,6 +19,7 @@ import { getPastores } from "@/data/pastores";
 import { getReadingPlans } from "@/data/plano-de-leitura";
 import { getTestemunhos } from "@/data/testemunhos";
 import { resolveSiteUrl } from "@/lib/site";
+import { getYouTubeChannelVideos } from "@/lib/youtube";
 
 function parseContentDate(date: string) {
   return new Date(`${date}T12:00:00-03:00`);
@@ -34,14 +35,17 @@ function getLatestDate(dates: Date[], fallback: Date) {
 
 // Prioridade das páginas para o Google
 // 1.0 = home | 0.9 = páginas principais | 0.7 = páginas secundárias
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const generatedAt = new Date();
   const availabilityDate = generatedAt;
-  const mensagens = getMensagens();
+  const [mensagens, testemunhos, channelVideos] = await Promise.all([
+    getMensagens(),
+    getTestemunhos(),
+    getYouTubeChannelVideos(),
+  ]);
   const devotionals = getDevotionals();
   const classesEbd = getClassesEbdPublicadas(availabilityDate);
   const readingPlans = getReadingPlans();
-  const testemunhos = getTestemunhos();
   const eventosFuturos = getEventosFuturos();
 
   const latestMensagemDate = getLatestDate(
@@ -50,6 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
   const latestTestemunhoDate = getLatestDate(
     testemunhos.map((testemunho) => parseContentDate(testemunho.data)),
+    generatedAt
+  );
+  const latestChannelVideoDate = getLatestDate(
+    channelVideos.videos
+      .map((video) => video.publishedAt)
+      .filter((publishedAt): publishedAt is string => Boolean(publishedAt))
+      .map((publishedAt) => new Date(publishedAt)),
     generatedAt
   );
   const latestDevotionalDate = getLatestDate(
@@ -134,7 +145,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: resolveSiteUrl("/videos"),
-      lastModified: generatedAt,
+      lastModified: latestChannelVideoDate,
       changeFrequency: "weekly",
       priority: 0.7,
     },

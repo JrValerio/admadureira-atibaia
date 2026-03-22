@@ -30,7 +30,9 @@ function formatMensagemDate(data: string) {
 }
 
 export async function generateStaticParams() {
-  return getMensagens().map((mensagem) => ({
+  const mensagens = await getMensagens();
+
+  return mensagens.map((mensagem) => ({
     slug: mensagem.slug,
   }));
 }
@@ -39,7 +41,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const mensagem = getMensagemBySlug(slug);
+  const mensagem = await getMensagemBySlug(slug);
 
   if (!mensagem) {
     return {
@@ -108,7 +110,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 
 export default async function MensagemPage({ params }: PageProps) {
   const { slug } = await params;
-  const mensagem = getMensagemBySlug(slug);
+  const mensagem = await getMensagemBySlug(slug);
 
   if (!mensagem) {
     notFound();

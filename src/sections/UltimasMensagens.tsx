@@ -11,8 +11,8 @@ function formatMensagemDate(data: string) {
   }).format(new Date(`${data}T12:00:00-03:00`));
 }
 
-export default function UltimasMensagens() {
-  const mensagens = getMensagensRecentes(3);
+export default async function UltimasMensagens() {
+  const mensagens = await getMensagensRecentes(3);
 
   return (
     <Section id="mensagens" className="bg-white" density="dense">

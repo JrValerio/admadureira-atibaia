@@ -11,8 +11,8 @@ function formatDate(data: string) {
   }).format(new Date(`${data}T12:00:00-03:00`));
 }
 
-export default function HistoriasDeFe() {
-  const testemunhos = getTestemunhosRecentes(2);
+export default async function HistoriasDeFe() {
+  const testemunhos = await getTestemunhosRecentes(2);
 
   return (
     <Section id="testemunhos" bg="cream">

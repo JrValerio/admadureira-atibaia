@@ -1,3 +1,16 @@
+import {
+  buildYouTubeContentSlug,
+  buildYouTubeSummary,
+  getBrazilDateFromIso,
+  getYouTubeVideoIdFromSlug,
+  inferSpeakerFromTitle,
+} from "@/lib/youtube-content";
+import {
+  getYouTubeMessagesPlaylistVideos,
+  getYouTubeThumbnailUrl,
+  type YouTubeVideo,
+} from "@/lib/youtube";
+
 export interface Mensagem {
   slug: string;
   titulo: string;
@@ -13,73 +26,67 @@ export const MENSAGENS_SERIES_NAME = "Mensagens da AD Madureira Atibaia";
 export const MENSAGENS_SERIES_DESCRIPTION =
   "Série de mensagens e pregações bíblicas ministradas nos cultos da Igreja Assembleia de Deus Ministério Madureira em Atibaia.";
 
-const mensagens: Mensagem[] = [
-  {
-    slug: "culto-da-familia-especial-cristina-maranhao",
-    titulo:
-      "Culto da Família Especial | Missionária Cristina Maranhão | AD Madureira Atibaia",
-    pregador: "Missionária Cristina Maranhão",
-    data: "2026-01-25",
-    resumo:
-      "Mensagem ministrada em um culto especial da família, com ênfase na edificação do lar, na comunhão cristã e no fortalecimento da fé.",
-    youtubeId: "iXVuDQRxrlw",
-    capa: "/programacao/culto-de-domingo.png",
-  },
-  {
-    slug: "reuniao-de-obreiros-com-cicero-nogueira",
-    titulo: "Culto e Reunião de Obreiros com Cicero Nogueira",
-    pregador: "Cicero Nogueira",
-    data: "2026-02-21",
-    resumo:
-      "Ministração voltada à liderança e ao serviço cristão, destacando compromisso ministerial, unidade da igreja e fidelidade à Palavra.",
-    youtubeId: "TThk0ZEd3OU",
-    capa: "/programacao/reuniao-ministerial.png",
-  },
-  {
-    slug: "culto-especial-da-familia-mulheres-virtuosas",
-    titulo: "Culto Especial da Família – Mulheres Virtuosas",
-    data: "2026-03-08",
-    resumo:
-      "Culto especial com foco na família e no papel da mulher cristã, reunindo a igreja para um momento de adoração, comunhão e ensino bíblico.",
-    youtubeId: "juq8QkL3urY",
-    capa: "/banners/banner-Culto-de-Mulhere.png",
-  },
-  {
-    slug: "campanha-jejum-e-oracao-com-pr-wantuil",
-    titulo: "Campanha Jejum e Oração | Palavra com Pr. Wantuil",
-    pregador: "Pr. Wantuil",
-    data: "2026-03-05",
-    resumo:
-      "Mensagem ministrada durante a campanha de jejum e oração, chamando a igreja à perseverança espiritual, à consagração e à confiança em Deus.",
-    versiculo: "Joel 3:10",
-    youtubeId: "l87g14Ei6lc",
-    capa: "/banners/banner-campanha-jejum-e-oracao.png",
-  },
-  {
-    slug: "culto-da-familia-palavra-para-fortalecer-lares",
-    titulo: "Culto da Família | Palavra para Fortalecer Lares",
-    data: "2026-03-01",
-    resumo:
-      "Culto dedicado ao fortalecimento das famílias, com exortação bíblica, adoração congregacional e encorajamento para a vida cristã no lar.",
-    youtubeId: "_OJUyJQhoGQ",
-    capa: "/programacao/culto-de-domingo.png",
-  },
-];
+const mensagemEditorialByVideoId: Record<
+  string,
+  Partial<Pick<Mensagem, "titulo" | "pregador" | "resumo" | "versiculo" | "capa">>
+> = {};
 
-export function getMensagens() {
-  return mensagens;
+function toMensagem(video: YouTubeVideo): Mensagem | null {
+  const publishedDate = getBrazilDateFromIso(video.publishedAt);
+
+  if (!publishedDate) {
+    return null;
+  }
+
+  const editorial = mensagemEditorialByVideoId[video.id] ?? {};
+
+  return {
+    slug: buildYouTubeContentSlug(video.title, video.id),
+    titulo: editorial.titulo ?? video.title,
+    pregador: editorial.pregador ?? inferSpeakerFromTitle(video.title),
+    data: publishedDate,
+    resumo:
+      editorial.resumo ??
+      buildYouTubeSummary(
+        video.description,
+        "Mensagem em vídeo publicada no canal da AD Madureira Atibaia."
+      ),
+    versiculo: editorial.versiculo,
+    youtubeId: video.id,
+    capa: editorial.capa ?? video.thumbnail ?? getMensagemThumbnailUrl(video.id),
+  };
 }
 
-export function getMensagemBySlug(slug: string) {
+export async function getMensagens() {
+  const { videos } = await getYouTubeMessagesPlaylistVideos();
+
+  return videos
+    .map(toMensagem)
+    .filter((mensagem): mensagem is Mensagem => mensagem !== null);
+}
+
+export async function getMensagemBySlug(slug: string) {
+  const mensagens = await getMensagens();
+  const videoId = getYouTubeVideoIdFromSlug(slug);
+
+  if (videoId) {
+    return mensagens.find((mensagem) => mensagem.youtubeId === videoId) ?? null;
+  }
+
   return mensagens.find((mensagem) => mensagem.slug === slug) ?? null;
 }
 
-export function getMensagensRecentes(limit = mensagens.length) {
-  return [...mensagens]
-    .sort((a, b) => Date.parse(b.data) - Date.parse(a.data))
-    .slice(0, limit);
+export async function getMensagensRecentes(limit?: number) {
+  const mensagens = await getMensagens();
+  const orderedMensagens = [...mensagens].sort(
+    (a, b) => Date.parse(b.data) - Date.parse(a.data)
+  );
+
+  return typeof limit === "number"
+    ? orderedMensagens.slice(0, limit)
+    : orderedMensagens;
 }
 
 export function getMensagemThumbnailUrl(videoId: string) {
-  return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  return getYouTubeThumbnailUrl(videoId);
 }

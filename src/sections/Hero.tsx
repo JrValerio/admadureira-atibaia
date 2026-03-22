@@ -1,8 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroBackgroundMedia from "@/components/HeroBackgroundMedia";
+import type { YouTubeVideo } from "@/lib/youtube";
 
-export default function Hero() {
+type HeroProps = {
+  liveNow?: YouTubeVideo | null;
+};
+
+export default function Hero({ liveNow = null }: HeroProps) {
+  const hasLiveNow = Boolean(liveNow?.isLive);
+
   return (
     <section
       id="inicio"
@@ -43,21 +50,58 @@ export default function Hero() {
         </div>
 
         <div>
-          <p className="font-script hero-title-glow leading-none text-[1.95rem] text-[#f7dfbb] sm:text-[2.45rem] md:text-[3.45rem] lg:text-[4.45rem] xl:text-[5.15rem]">
-            Assembleia de Deus
-          </p>
-          <p className="mt-2 text-[9px] tracking-[0.2em] text-white/82 uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:mt-2.5 sm:text-[10px] sm:tracking-[0.26em] md:text-[12px] md:tracking-[0.3em] lg:text-sm xl:text-base">
-            Ministério Madureira · Campo de Atibaia
-          </p>
+          {hasLiveNow ? (
+            <>
+              <p className="text-[9px] tracking-[0.2em] text-[#f7dfbb] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:text-[10px] sm:tracking-[0.26em] md:text-[12px] md:tracking-[0.3em] lg:text-sm xl:text-base">
+                Assembleia de Deus · Ministério Madureira · Campo de Atibaia
+              </p>
+              <div className="mt-4 inline-flex items-center rounded-full border border-[#ef5350]/50 bg-[#ef5350]/18 px-4 py-2 text-[10px] font-bold tracking-[0.24em] uppercase text-white shadow-[0_10px_28px_rgba(239,83,80,0.26)] sm:text-[11px]">
+                Transmissão ao vivo agora
+              </div>
+              <h1 className="mt-5 font-acme text-[2rem] tracking-wide text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.4)] sm:text-[2.5rem] md:text-[3.1rem] lg:text-[3.8rem] xl:text-[4.35rem]">
+                Acompanhe a transmissão da igreja
+              </h1>
+              <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/86 sm:text-base md:text-lg">
+                {liveNow?.title}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="font-script hero-title-glow leading-none text-[1.95rem] text-[#f7dfbb] sm:text-[2.45rem] md:text-[3.45rem] lg:text-[4.45rem] xl:text-[5.15rem]">
+                Assembleia de Deus
+              </p>
+              <p className="mt-2 text-[9px] tracking-[0.2em] text-white/82 uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:mt-2.5 sm:text-[10px] sm:tracking-[0.26em] md:text-[12px] md:tracking-[0.3em] lg:text-sm xl:text-base">
+                Ministério Madureira · Campo de Atibaia
+              </p>
+            </>
+          )}
         </div>
 
         <div className="mt-5 flex flex-col items-center gap-2.5 sm:mt-6 sm:flex-row sm:justify-center sm:gap-3">
-          <Link href="/programacao" className="ui-btn-primary">
-            Ver programação
-          </Link>
-          <Link href="/contato" className="ui-btn-ghost-dark">
-            Como chegar
-          </Link>
+          {hasLiveNow && liveNow ? (
+            <>
+              <a
+                href={liveNow.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-primary"
+              >
+                Assistir ao vivo
+              </a>
+              <Link href="/videos" className="ui-btn-ghost-dark">
+                Abrir vídeos
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/programacao" className="ui-btn-primary">
+                Ver programação
+              </Link>
+              <Link href="/contato" className="ui-btn-ghost-dark">
+                Como chegar
+              </Link>
+            </>
+          )}
         </div>
       </div>
 

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getYouTubeFeed } from "@/lib/youtube";
 import YouTubePreviewCard from "@/components/YouTubePreviewCard";
-import { FIXED_FEATURED_VIDEO_IDS } from "@/data/featuredVideos";
 import { Section } from "@/components/ui/Section";
 
 const CANAL_URL = "https://www.youtube.com/@ADMadureiraAtibaia";
@@ -11,27 +10,9 @@ type VideosProps = {
 };
 
 export default async function Videos({ showHeader = true }: VideosProps) {
-  const { liveNow, recentVideos } = await getYouTubeFeed();
-  const fixedFeaturedVideos = FIXED_FEATURED_VIDEO_IDS.map((id) =>
-    recentVideos.find((video) => video.id === id)
-  ).filter((video) => video !== undefined);
-
-  const featuredVideoIdSet = new Set(FIXED_FEATURED_VIDEO_IDS);
-  const otherVideos = recentVideos.filter(
-    (video) => !featuredVideoIdSet.has(video.id)
-  );
-
-  const featuredVideos =
-    fixedFeaturedVideos.length > 0
-      ? fixedFeaturedVideos
-      : liveNow
-        ? otherVideos.slice(0, 1)
-        : otherVideos.slice(0, 2);
-
-  const libraryVideos =
-    fixedFeaturedVideos.length > 0
-      ? otherVideos
-      : otherVideos.slice(featuredVideos.length);
+  const { liveNow, upcomingLive, recentVideos } = await getYouTubeFeed();
+  const featuredVideos = liveNow ? recentVideos.slice(0, 1) : recentVideos.slice(0, 2);
+  const libraryVideos = recentVideos.slice(featuredVideos.length);
 
   return (
     <Section id="videos" bg="gray">
@@ -45,7 +26,8 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             </h2>
             <div className="w-16 h-1 bg-[#ef5350] mx-auto mt-4" />
             <p className="text-[#757575] text-sm mt-4">
-              Assista ao que está ao vivo e abra rapidamente os vídeos mais recentes da igreja.
+              Assista ao que está ao vivo e acompanhe os vídeos mais recentes
+              publicados no canal da igreja.
             </p>
           </div>
         ) : null}
@@ -75,15 +57,42 @@ export default async function Videos({ showHeader = true }: VideosProps) {
           </div>
         )}
 
+        {!liveNow && upcomingLive ? (
+          <div className="mb-14">
+            <div className="ui-panel-accent ui-panel-pad-sm">
+              <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-2">
+                Próxima transmissão
+              </p>
+              <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
+                {upcomingLive.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
+                Quando a live estiver ativa, ela passa a ser priorizada
+                automaticamente na Home e nesta área de vídeos.
+              </p>
+              <div className="mt-5">
+                <a
+                  href={upcomingLive.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ui-btn-secondary"
+                >
+                  Abrir transmissão no YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         {featuredVideos.length > 0 && (
           <div className="mb-14">
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Assista em seguida
+                  Publicados no canal
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
-                  Vídeos em Destaque
+                  Vídeos mais recentes
                 </h3>
               </div>
             </div>
@@ -106,7 +115,7 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             <div className="flex items-end justify-between gap-4 flex-wrap mb-6">
               <div>
                 <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-1">
-                  Cultos recentes
+                  Biblioteca do canal
                 </p>
                 <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
                   Mais vídeos para assistir
@@ -130,9 +139,9 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             Continue no canal certo para o que você precisa agora
           </h3>
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-            Se quiser assistir imediatamente, siga no YouTube. Se preferir revisar
-            o ensino com mais contexto, abra Mensagens. Se o objetivo for saber
-            quando participar presencialmente, consulte a Programação da igreja.
+            Aqui a regra é simples: /videos mostra o feed geral mais recente do
+            canal. Já /mensagens continua sendo a curadoria da playlist de
+            pregações, com contexto editorial mais organizado.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a

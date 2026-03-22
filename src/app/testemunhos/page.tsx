@@ -21,8 +21,8 @@ function formatDate(data: string) {
   }).format(new Date(`${data}T12:00:00-03:00`));
 }
 
-export default function TestemunhosPage() {
-  const testemunhos = getTestemunhosRecentes();
+export default async function TestemunhosPage() {
+  const testemunhos = await getTestemunhosRecentes();
   const testemunhosEmVideo = testemunhos.filter(
     (testemunho) => testemunho.youtubeId
   ).length;
@@ -51,7 +51,7 @@ export default function TestemunhosPage() {
         variant="full"
         label="Histórias de transformação"
         title="Testemunhos de Fé"
-        description="Histórias reais de transformação vividas por pessoas da comunidade da Igreja Assembleia de Deus Ministério Madureira em Atibaia, em relatos escritos e também em vídeo."
+        description="Vídeos reais da playlist oficial de Testemunhos da AD Madureira Atibaia, preservando a página como espaço de edificação e memória da ação de Deus."
         image={igrejaHeroMedia.testemunhos}
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
@@ -84,15 +84,14 @@ export default function TestemunhosPage() {
               Comunidade viva
             </p>
             <p className="text-[#555] leading-relaxed">
-              Esta página reúne testemunhos que mostram como Deus continua
-              agindo por meio da fé, da oração e da comunhão da igreja, seja em
-              relatos escritos ou em vídeos compartilhados pela comunidade.
+              Esta página acompanha prioritariamente a playlist oficial de
+              Testemunhos para substituir conteúdo fictício por vídeos reais do
+              canal, mantendo a mesma vitrine de edificação da igreja.
             </p>
             <p className="text-[#777] text-sm leading-relaxed mt-3">
-              Ao compartilhar histórias de restauração, resposta de oração e
-              fortalecimento espiritual, a igreja registra experiências que
-              edificam outras vidas e reforçam o cuidado pastoral com a
-              comunidade.
+              Quando houver necessidade de curadoria complementar, ainda é
+              possível enriquecer título, resumo ou contexto sem quebrar a
+              origem principal baseada na playlist correta.
             </p>
           </div>
 
@@ -127,7 +126,9 @@ export default function TestemunhosPage() {
                   <p className="text-[#5f5f5f] leading-relaxed line-clamp-3 mb-4">
                     {testemunho.resumo}
                   </p>
-                  <p className="text-[#777] text-sm">Por: {testemunho.nome}</p>
+                  <p className="text-[#777] text-sm">
+                    Participação: {testemunho.nome}
+                  </p>
                   <p className="ui-link-accent mt-5 inline-flex">
                     Ler testemunho →
                   </p>
