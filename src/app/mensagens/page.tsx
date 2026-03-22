@@ -111,7 +111,7 @@ export default async function MensagensPage() {
       <section className="py-16 md:py-20">
         <div className="ui-page-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="ui-panel ui-panel-pad-lg">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Mensagens publicadas
               </p>
@@ -119,7 +119,7 @@ export default async function MensagensPage() {
                 {mensagens.length}
               </p>
             </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="ui-panel ui-panel-pad-lg">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Pregadores identificados
               </p>
@@ -127,7 +127,7 @@ export default async function MensagensPage() {
                 {mensagensComPregador.length}
               </p>
             </div>
-            <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
+            <div className="ui-panel ui-panel-pad-lg">
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                 Conteúdo em vídeo
               </p>
@@ -135,7 +135,7 @@ export default async function MensagensPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
+          <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Conteúdo recorrente
             </p>
