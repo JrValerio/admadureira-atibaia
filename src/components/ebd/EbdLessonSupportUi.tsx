@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import type { ListaItem } from "@/data/ebd";
 
-export type EbdSupportPanelTone = "white" | "accent" | "dark";
+export type EbdSupportPanelTone = "white" | "accent" | "soft" | "dark";
 export type EbdSupportLabelTone = "accent" | "danger" | "earth";
 export type EbdSupportMarkerTone = "accent" | "danger" | "earth";
 
@@ -45,6 +45,8 @@ function getPanelToneClassName(tone: EbdSupportPanelTone) {
   switch (tone) {
     case "accent":
       return "border border-[#ffa726]/20 bg-[#fff8ee]";
+    case "soft":
+      return "border border-black/5 bg-[#fafafa]";
     case "dark":
       return "bg-[#212121] text-white";
     case "white":
@@ -281,12 +283,14 @@ export function EbdSupportSchedulePanel({
   tone = "white",
   labelTone = "danger",
   className,
+  itemsClassName,
 }: {
   title: string;
   items?: EbdSupportScheduleItem[] | null;
   tone?: EbdSupportPanelTone;
   labelTone?: EbdSupportLabelTone;
   className?: string;
+  itemsClassName?: string;
 }) {
   if (!items?.length) {
     return null;
@@ -306,7 +310,7 @@ export function EbdSupportSchedulePanel({
       labelTone={labelTone}
       className={className}
     >
-      <div className="space-y-3">
+      <div className={itemsClassName ?? "space-y-3"}>
         {items.map((item) => (
           <div key={item.key} className={joinClasses("rounded-2xl p-4", itemClassName)}>
             <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">

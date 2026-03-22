@@ -61,6 +61,10 @@ type ListaPanelConfig = {
   className?: string;
 };
 
+const SUPPORT_OVERVIEW_GRID_CLASS_NAME =
+  "grid grid-cols-1 gap-6 xl:grid-cols-[1.05fr_0.95fr]";
+const SUPPORT_TWO_COLUMN_GRID_CLASS = "grid grid-cols-1 gap-4 xl:grid-cols-2";
+
 function renderTextPanels(panels: TextPanelConfig[]) {
   return panels.map((panel) => (
     <EbdSupportTextPanel
@@ -280,7 +284,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
   return (
     <div className="space-y-6">
       <EbdSupportSection eyebrow="Panorama da lição" title="Visão geral da aula">
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.1fr_0.9fr]">
+        <div className={SUPPORT_OVERVIEW_GRID_CLASS_NAME}>
           <div>
             <p className="mb-4 text-[#555] leading-relaxed">
               <BibleReferenceText text={subsidio.visaoGeral.resumo} />
@@ -366,7 +370,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
       </EbdSupportSection>
 
       <EbdSupportSection eyebrow="Condução da aula" title="Apoio ao professor">
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+        <div className={SUPPORT_TWO_COLUMN_GRID_CLASS}>
           <div className="space-y-4">
             {renderTextPanels([
               {
@@ -407,7 +411,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
 
       {subsidio.aprofundamento ? (
         <EbdSupportSection eyebrow="Aprofundamento" title="Doutrina e contexto">
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          <div className={SUPPORT_TWO_COLUMN_GRID_CLASS}>
             {renderListPanels([
               {
                 key: "contexto-historico",
@@ -477,7 +481,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
 
       {subsidio.revisao ? (
         <EbdSupportSection eyebrow="Revisão" title="Fixação da lição">
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_1fr]">
+          <div className={SUPPORT_TWO_COLUMN_GRID_CLASS}>
             {renderListPanels([
               {
                 key: "perguntas",
@@ -512,7 +516,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
   return (
     <div className="space-y-6">
       <EbdSupportSection eyebrow="Panorama da lição" title="Arranque pedagógico">
-        <div className="grid grid-cols-1 gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+        <div className={SUPPORT_OVERVIEW_GRID_CLASS_NAME}>
           <div className="space-y-4">
             {renderTextPanels([
               {
@@ -578,7 +582,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
       </EbdSupportSection>
 
       <EbdSupportSection eyebrow="Condução da aula" title="Apoio ao professor">
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+        <div className={SUPPORT_TWO_COLUMN_GRID_CLASS}>
           <div className="space-y-4">
             {renderTextPanels([
               {
@@ -649,7 +653,7 @@ function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
 
       {subsidio.revisao ? (
         <EbdSupportSection eyebrow="Revisão" title="Fixação da aula">
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_1fr]">
+          <div className={SUPPORT_TWO_COLUMN_GRID_CLASS}>
             {renderListPanels([
               {
                 key: "hora-da-revisao",

@@ -1,5 +1,11 @@
-import type { ReactNode } from "react";
-import BibleReferenceText from "@/components/biblia/BibleReferenceText";
+import {
+  EbdSupportListPanel,
+  EbdSupportOutlinePanel,
+  EbdSupportSchedulePanel,
+  EbdSupportTextPanel,
+  type EbdSupportPanelTone,
+  type EbdSupportScheduleItem,
+} from "@/components/ebd/EbdLessonSupportUi";
 import type {
   ClasseEBDInfo,
   LeituraDiariaItem,
@@ -13,51 +19,40 @@ type EbdLessonOverviewBlocksProps = {
   structure: LicaoEstruturaPorClasse;
 };
 
-type CardTone = "accent" | "neutral" | "white" | "dark";
+type OverviewBlockTone = EbdSupportPanelTone;
 
-type ScheduleEntry = {
-  day: string;
-  reference: string;
-  note?: string;
+type BaseBlock = {
+  key: string;
+  title: string;
+  tone?: OverviewBlockTone;
+  fullWidth?: boolean;
 };
 
-type ListBlock = {
-  key: string;
+type ListBlock = BaseBlock & {
   kind: "list";
-  title: string;
   items: string[];
-  tone?: CardTone;
-  fullWidth?: boolean;
 };
 
-type TextBlock = {
-  key: string;
+type TextBlock = BaseBlock & {
   kind: "text";
-  title: string;
   text: string;
-  tone?: CardTone;
-  fullWidth?: boolean;
+  highlight?: boolean;
 };
 
-type OutlineBlock = {
-  key: string;
+type OutlineBlock = BaseBlock & {
   kind: "outline";
-  title: string;
   items: ListaItem[];
-  tone?: CardTone;
-  fullWidth?: boolean;
 };
 
-type ScheduleBlock = {
-  key: string;
+type ScheduleBlock = BaseBlock & {
   kind: "schedule";
-  title: string;
-  items: ScheduleEntry[];
-  tone?: CardTone;
-  fullWidth?: boolean;
+  items: EbdSupportScheduleItem[];
 };
 
 type RecurringBlock = ListBlock | TextBlock | OutlineBlock | ScheduleBlock;
+
+const OVERVIEW_BLOCK_CLASS_NAME = "rounded-3xl p-5 shadow-sm md:p-6";
+const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 md:grid-cols-2";
 
 function SectionLead({
   eyebrow,
@@ -81,239 +76,73 @@ function SectionLead({
   );
 }
 
-function CardShell({
-  title,
-  tone = "white",
-  fullWidth = false,
-  children,
-}: {
-  title: string;
-  tone?: CardTone;
-  fullWidth?: boolean;
-  children: ReactNode;
-}) {
-  const toneClasses =
-    tone === "accent"
-      ? "border border-[#ffa726]/20 bg-[#fff8ee]"
-      : tone === "neutral"
-        ? "border border-black/5 bg-[#fafafa]"
-        : tone === "dark"
-          ? "bg-[#212121] text-white"
-          : "border border-black/5 bg-white";
-  const titleClasses = "text-[#ffa726]";
-  const bodyClasses = tone === "dark" ? "text-white/85" : "text-[#555]";
-
-  return (
-    <div
-      className={`${fullWidth ? "lg:col-span-2" : ""} rounded-3xl p-5 shadow-sm md:p-6 ${toneClasses}`}
-    >
-      <p className={`mb-3 text-xs font-bold tracking-widest uppercase ${titleClasses}`}>
-        {title}
-      </p>
-      <div className={`space-y-3 leading-relaxed ${bodyClasses}`}>{children}</div>
-    </div>
-  );
-}
-
-function HighlightCard({
-  label,
-  text,
-  tone,
-}: {
-  label: string;
-  text: string;
-  tone: Exclude<CardTone, "white">;
-}) {
-  return (
-    <CardShell title={label} tone={tone}>
-      <p
-        className={`text-lg leading-relaxed md:text-xl ${
-          tone === "dark" ? "text-white" : "text-[#212121]"
-        }`}
-      >
-        <BibleReferenceText
-          text={text}
-          linkClassName={
-            tone === "dark"
-              ? "font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
-              : "font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-          }
-        />
-      </p>
-    </CardShell>
-  );
-}
-
-function BulletList({
-  items,
-  markerClassName = "bg-[#ef5350]",
-  linkClassName = "font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]",
-}: {
-  items: string[];
-  markerClassName?: string;
-  linkClassName?: string;
-}) {
-  return (
-    <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
-          <span className={`mt-[7px] h-1.5 w-1.5 rounded-full ${markerClassName}`} />
-          <span>
-            <BibleReferenceText text={item} linkClassName={linkClassName} />
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function OutlineList({ items }: { items: ListaItem[] }) {
-  return (
-    <div className="space-y-3">
-      {items.map((item) => (
-        <div
-          key={`${item.titulo ?? "esboco"}-${item.conteudo}`}
-          className="rounded-2xl border border-black/5 bg-white/80 p-4"
-        >
-          {item.titulo ? (
-            <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-              {item.titulo}
-            </p>
-          ) : null}
-          <p className="text-sm leading-relaxed text-[#555]">
-            <BibleReferenceText text={item.conteudo} />
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ScheduleList({
-  items,
-  tone = "white",
-}: {
-  items: ScheduleEntry[];
-  tone?: CardTone;
-}) {
-  const itemClasses =
-    tone === "dark"
-      ? "border border-white/10 bg-white/5"
-      : tone === "accent"
-        ? "border border-[#ffa726]/15 bg-white/80"
-        : "border border-black/5 bg-white";
-  const referenceClass =
-    tone === "dark"
-      ? "font-semibold text-white"
-      : "font-semibold text-[#212121]";
-  const noteClass = tone === "dark" ? "text-white/80" : "text-[#555]";
-
-  return (
-    <div className="grid gap-3 md:grid-cols-2">
-      {items.map((item) => (
-        <div
-          key={`${item.day}-${item.reference}`}
-          className={`rounded-2xl p-4 ${itemClasses}`}
-        >
-          <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-            {item.day}
-          </p>
-          <p className={`mt-2 ${referenceClass}`}>
-            <BibleReferenceText
-              text={item.reference}
-              linkClassName={
-                tone === "dark"
-                  ? "font-semibold text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
-                  : "font-semibold text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-              }
-            />
-          </p>
-          {item.note ? (
-            <p className={`mt-2 text-sm leading-relaxed ${noteClass}`}>
-              <BibleReferenceText
-                text={item.note}
-                linkClassName={
-                  tone === "dark"
-                    ? "font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
-                    : "font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-                }
-              />
-            </p>
-          ) : null}
-        </div>
-      ))}
-    </div>
-  );
+function getOverviewBlockClassName(fullWidth = false) {
+  return fullWidth
+    ? `${OVERVIEW_BLOCK_CLASS_NAME} lg:col-span-2`
+    : OVERVIEW_BLOCK_CLASS_NAME;
 }
 
 function renderBlock(block: RecurringBlock) {
   switch (block.kind) {
     case "list":
       return (
-        <CardShell
+        <EbdSupportListPanel
           key={block.key}
           title={block.title}
+          items={block.items}
           tone={block.tone}
-          fullWidth={block.fullWidth}
-        >
-          <BulletList items={block.items} />
-        </CardShell>
+          className={getOverviewBlockClassName(block.fullWidth)}
+        />
       );
     case "text":
       return (
-        <CardShell
+        <EbdSupportTextPanel
           key={block.key}
           title={block.title}
+          text={block.text}
           tone={block.tone}
-          fullWidth={block.fullWidth}
-        >
-          <p>
-            <BibleReferenceText
-              text={block.text}
-              linkClassName={
-                block.tone === "dark"
-                  ? "font-medium text-white underline decoration-[#ffa726]/70 underline-offset-4 transition-colors hover:text-[#ffe0b2]"
-                  : "font-medium text-[#212121] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
-              }
-            />
-          </p>
-        </CardShell>
+          className={getOverviewBlockClassName(block.fullWidth)}
+          textClassName={
+            block.highlight ? "text-lg leading-relaxed md:text-xl" : undefined
+          }
+        />
       );
     case "outline":
       return (
-        <CardShell
+        <EbdSupportOutlinePanel
           key={block.key}
           title={block.title}
+          items={block.items}
           tone={block.tone}
-          fullWidth={block.fullWidth}
-        >
-          <OutlineList items={block.items} />
-        </CardShell>
+          className={getOverviewBlockClassName(block.fullWidth)}
+        />
       );
     case "schedule":
       return (
-        <CardShell
+        <EbdSupportSchedulePanel
           key={block.key}
           title={block.title}
+          items={block.items}
           tone={block.tone}
-          fullWidth={block.fullWidth}
-        >
-          <ScheduleList items={block.items} tone={block.tone} />
-        </CardShell>
+          className={getOverviewBlockClassName(block.fullWidth)}
+          itemsClassName={OVERVIEW_SCHEDULE_GRID_CLASS_NAME}
+        />
       );
   }
 }
 
-function toDailySchedule(items: LeituraDiariaItem[]) {
+function toDailySchedule(items: LeituraDiariaItem[]): EbdSupportScheduleItem[] {
   return items.map((item) => ({
+    key: `${item.dia}-${item.referencia}`,
     day: item.dia,
     reference: item.referencia,
     note: item.tema,
   }));
 }
 
-function toWeeklySchedule(items: LeituraSemanalItem[]) {
+function toWeeklySchedule(items: LeituraSemanalItem[]): EbdSupportScheduleItem[] {
   return items.map((item) => ({
+    key: `${item.dia}-${item.referencia}`,
     day: item.dia,
     reference: item.referencia,
     note: item.foco,
@@ -444,7 +273,7 @@ export default function EbdLessonOverviewBlocks({
                   kind: "list" as const,
                   title: "Hora da revisão",
                   items: structure.horaDaRevisao,
-                  tone: "neutral" as const,
+                  tone: "soft" as const,
                 },
               ]
             : []),
@@ -502,15 +331,19 @@ export default function EbdLessonOverviewBlocks({
         >
           <div className="space-y-4">
             <div className="grid gap-4 md:grid-cols-2">
-              <HighlightCard
-                label={classeInfo.textoBaseLabel}
+              <EbdSupportTextPanel
+                title={classeInfo.textoBaseLabel}
                 text={primaryText}
                 tone="accent"
+                className={OVERVIEW_BLOCK_CLASS_NAME}
+                textClassName="text-lg leading-relaxed md:text-xl"
               />
-              <HighlightCard
-                label={classeInfo.resumoDestaqueLabel}
+              <EbdSupportTextPanel
+                title={classeInfo.resumoDestaqueLabel}
                 text={highlightText}
-                tone="neutral"
+                tone="soft"
+                className={OVERVIEW_BLOCK_CLASS_NAME}
+                textClassName="text-lg leading-relaxed md:text-xl"
               />
             </div>
           </div>
@@ -518,15 +351,19 @@ export default function EbdLessonOverviewBlocks({
           {hasPrimaryColumn ? (
             <div className="grid gap-4">
               {primaryReading.length ? (
-                <CardShell title={classeInfo.leituraPrincipalLabel} tone="white">
-                  <BulletList items={primaryReading} />
-                </CardShell>
+                <EbdSupportListPanel
+                  title={classeInfo.leituraPrincipalLabel}
+                  items={primaryReading}
+                  className={OVERVIEW_BLOCK_CLASS_NAME}
+                />
               ) : null}
 
               {structure.objetivos.length ? (
-                <CardShell title="Objetivos da lição" tone="white">
-                  <BulletList items={structure.objetivos} />
-                </CardShell>
+                <EbdSupportListPanel
+                  title="Objetivos da lição"
+                  items={structure.objetivos}
+                  className={OVERVIEW_BLOCK_CLASS_NAME}
+                />
               ) : null}
             </div>
           ) : null}
@@ -548,9 +385,7 @@ export default function EbdLessonOverviewBlocks({
                 : "A leitura semanal sobe de nível visual para apoiar acompanhamento da juventude ao longo dos dias."
             }
           />
-          <div className="grid gap-4 lg:grid-cols-2">
-            {weeklyBlocks.map(renderBlock)}
-          </div>
+          <div className="grid gap-4 lg:grid-cols-2">{weeklyBlocks.map(renderBlock)}</div>
         </section>
       ) : null}
 
@@ -569,9 +404,7 @@ export default function EbdLessonOverviewBlocks({
                 : "Interação, orientação pedagógica, revisão e apoios ficam organizados no mesmo fluxo para consulta do professor."
             }
           />
-          <div className="grid gap-4 lg:grid-cols-2">
-            {planningBlocks.map(renderBlock)}
-          </div>
+          <div className="grid gap-4 lg:grid-cols-2">{planningBlocks.map(renderBlock)}</div>
         </section>
       ) : null}
     </div>
