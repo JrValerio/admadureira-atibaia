@@ -67,7 +67,7 @@ export default async function TestemunhosPage() {
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm"
+                className="ui-panel ui-panel-pad-lg"
               >
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                   {stat.label}
@@ -79,7 +79,7 @@ export default async function TestemunhosPage() {
             ))}
           </div>
 
-          <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
+          <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
               Comunidade viva
             </p>
