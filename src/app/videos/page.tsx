@@ -20,7 +20,7 @@ export default function VideosPage() {
         title="Cultos e transmissões"
         description="Veja o que está ao vivo, acompanhe os destaques definidos pela igreja e use esta área para assistir somente às lives e transmissões do canal."
         image={igrejaHeroMedia.videos}
-        imageAlt="Púlpito da AD Madureira Atibaia"
+        imageAlt="Púlpito da AD Madureira Atibaia preparado para transmissão"
       />
       <section className="border-b border-black/5 bg-white/90">
         <div className="ui-page-container py-5 md:py-6">

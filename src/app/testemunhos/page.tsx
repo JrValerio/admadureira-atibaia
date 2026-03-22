@@ -53,7 +53,7 @@ export default async function TestemunhosPage() {
         title="Testemunhos de Fé"
         description="Vídeos reais da playlist oficial de Testemunhos da AD Madureira Atibaia, preservando a página como espaço de edificação e memória da ação de Deus."
         image={igrejaHeroMedia.testemunhos}
-        imageAlt="Fachada da AD Madureira Atibaia"
+        imageAlt="Irmãs congregando na AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
       />
       <section className="py-16 md:py-20">

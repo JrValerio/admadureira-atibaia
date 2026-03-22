@@ -74,7 +74,7 @@ export default function ProgramacaoPage() {
           title="Programação da Igreja"
           description="Veja os cultos, reuniões e atividades fixas da AD Madureira Atibaia ao longo da semana."
           image={igrejaHeroMedia.programacao}
-          imageAlt="Fachada da AD Madureira Atibaia"
+          imageAlt="Culto da AD Madureira Atibaia"
         />
         <section className="border-b border-black/5 bg-white/90">
           <div className="ui-page-container py-5 md:py-6">

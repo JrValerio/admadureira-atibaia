@@ -66,7 +66,7 @@ export default async function MensagensPage() {
         title="Mensagens da Igreja"
         description="Curadoria da playlist oficial de Mensagens da AD Madureira Atibaia, com vídeos reais do canal e espaço preservado para enriquecimento editorial futuro."
         image={igrejaHeroMedia.mensagens}
-        imageAlt="Púlpito da AD Madureira Atibaia"
+        imageAlt="Púlpito da AD Madureira Atibaia durante ministração"
       />
       <section className="border-b border-black/5 bg-white/90">
         <div className="ui-page-container py-5 md:py-6">

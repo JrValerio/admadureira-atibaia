@@ -22,10 +22,12 @@ export const cursoTeologiaData = {
   teacher: {
     name: "Pr. Eliel Sobrinho",
     role: "Professor responsável",
+    photo: "/pr-eliel-sobrinho.jpg",
+    photoAlt: "Pr. Eliel Sobrinho",
     summary:
       "O curso será conduzido pelo Pr. Eliel Sobrinho, com foco em ensino bíblico, fortalecimento doutrinário e edificação da igreja por meio da Palavra de Deus.",
     notes: [
-      "A biografia ministerial completa e a foto institucional serão adicionadas nesta página assim que a coordenação do curso enviar o material oficial.",
+      "A foto oficial do professor já integra a página. A biografia ministerial completa e os detalhes finais do curso serão adicionados assim que a coordenação enviar o material complementar.",
       "Enquanto isso, os interessados já podem registrar contato com a igreja para receber informações sobre aulas, inscrições e próximos passos.",
     ],
     socialLinks: {

@@ -22,7 +22,7 @@ export default function SobrePage() {
         title="Nossa Igreja"
         description="Conheça a história, a missão, os valores e a liderança pastoral da Igreja Assembleia de Deus Ministério Madureira no Campo de Atibaia."
         image={igrejaHeroMedia.sobre}
-        imageAlt="Púlpito da AD Madureira Atibaia"
+        imageAlt="Igreja reunida em culto na AD Madureira Atibaia"
       />
       <Sobre showHeader={false} />
       <HistoriasDeFe />

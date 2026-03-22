@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
@@ -229,16 +230,25 @@ export default function CursoTeologiaPage() {
                   Professor
                 </p>
                 <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-[0.72fr_1.28fr]">
-                  <div className="rounded-[2rem] border border-dashed border-[#ffa726]/35 bg-[#fff8ee] p-6 text-center">
-                    <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-[#ef5350]/12 font-acme text-4xl text-[#ef5350]">
-                      PE
+                  <div className="overflow-hidden rounded-[2rem] border border-[#ffa726]/20 bg-[#fff8ee] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                    <div className="relative aspect-[4/4.5] bg-[#111]">
+                      <Image
+                        src={cursoTeologiaData.teacher.photo}
+                        alt={cursoTeologiaData.teacher.photoAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 28vw"
+                        className="object-cover object-top"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/55 to-transparent" />
                     </div>
-                    <p className="mt-4 text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
-                      Foto institucional
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-[#666]">
-                      Em atualização pela coordenação do curso.
-                    </p>
+                    <div className="border-t border-[#ffa726]/15 bg-white/85 px-5 py-4 text-center">
+                      <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
+                        Foto institucional
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-[#666]">
+                        Professor responsável pelo Curso de Teologia.
+                      </p>
+                    </div>
                   </div>
 
                   <div>
