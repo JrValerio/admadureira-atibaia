@@ -37,7 +37,7 @@ export const missoesData = {
   supportedFronts: {
     title: "Frentes apoiadas e relatórios",
     paragraphs: [
-      "Esta página já está preparada para receber nomes, regiões, fotos e relatórios das frentes missionárias apoiadas pela igreja, conforme a liderança disponibilizar essas informações oficialmente.",
+      "Os detalhes das frentes missionárias apoiadas pela AD Madureira Atibaia serão publicados aqui conforme a liderança disponibilizar as informações oficialmente.",
       "Enquanto isso, o contato com a igreja continua sendo o canal mais seguro para conhecer campanhas vigentes, pedidos de oração e formas atuais de cooperação missionária.",
     ],
   },
@@ -75,6 +75,6 @@ export const missoesData = {
   prayerAndReports: {
     title: "Pedidos de oração e testemunhos",
     description:
-      "Esta área também está preparada para receber testemunhos missionários, relatórios de campo e pedidos de oração conforme o material oficial for sendo disponibilizado pela liderança.",
+      "Pedidos de oração podem ser enviados diretamente à equipe pastoral. Relatórios e testemunhos missionários serão publicados conforme forem disponibilizados pela liderança.",
   },
 } as const;

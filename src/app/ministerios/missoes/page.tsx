@@ -104,13 +104,12 @@ export default function MissoesPage() {
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-3xl">
                   <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                    A página de Missões já está pronta para visão, contribuição e atualizações oficiais
+                    Visão, contribuição e participação na obra missionária
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                    Ela nasce como base institucional da obra missionária da
-                    igreja e já está preparada para receber campanhas,
-                    missionários, relatórios e pedidos de oração conforme a
-                    liderança disponibilizar esse material.
+                    Conheça a visão missionária da AD Madureira Atibaia, saiba
+                    como participar com oração e contribuição, e fique atento a
+                    campanhas e pedidos de intercessão.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
