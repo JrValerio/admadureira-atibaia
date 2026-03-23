@@ -15,6 +15,39 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 
 ---
 
+## [1.5.0] — 2026-03-22
+
+### Adicionado
+- Seção `/ministerios/missoes` adicionada ao sitemap com `priority: 0.8`
+- Bloco `QuemSomos` na home (identidade institucional + link para `/sobre`)
+
+### Alterado
+- Home reorganizada: ordem das seções ajustada por hierarquia institucional
+- `Destaques` recebe prop `liveNow` — quando há live ativa, primeiro card redireciona para `/sobre` em vez de `/videos`
+- `HomeEBD` reduzida a teaser compacto com link para `/ebd`
+
+---
+
+## [1.4.0] — 2026-03-22
+
+### Alterado (P1-B — fechamento editorial)
+- `/programacao/curso-de-teologia`: linguagem interna removida do hero, callout e seção de detalhes; CTA duplicado corrigido (segundo botão passou a apontar para `/contato`)
+- `/ministerios/missoes`: copy do callout bar reescrita para visitante; seção "Frentes apoiadas" e "Pedidos de oração" sem referência a estado interno da página
+- `src/data/curso-teologia.ts`: notas do professor, detalhes do curso e FAQ revisados para linguagem limpa sem exposição de estado de desenvolvimento
+- `src/data/missoes.ts`: parágrafos de frentes apoiadas e relatórios reescritos
+
+---
+
+## [1.3.1] — 2026-03-22
+
+### Alterado (P1-A — governança do design system)
+- `/sobre`: painel cream migrado para tokens `ui-panel-accent ui-panel-pad-lg`
+- `/ministerios`: dois painéis (branco e cream) migrados para `ui-panel` / `ui-panel-accent` + `ui-panel-pad-lg`
+- `/testemunhos`: cards de estatísticas e bloco cream migrados para tokens semânticos
+- `/mensagens`: mesmo padrão de `/testemunhos` aplicado
+
+---
+
 ## [1.3.0] — 2026-03-16
 
 ### Adicionado

@@ -4,19 +4,47 @@ Evoluções planejadas ordenadas por impacto e viabilidade.
 
 ---
 
-## Curto prazo
+## Fechado recentemente (março/2026)
 
-### EBD 2T/2026
-- publicação das lições do segundo trimestre (adultos + jovens)
-- gate de lançamento definido em `ebd-governance.md`
+### P0 — Hierarquia da home
+- seções reordenadas por relevância institucional
+- `Destaques` condicional ao estado de live (YouTube)
+- `HomeEBD` reduzida a teaser com link para `/ebd`
+- bloco `QuemSomos` adicionado para identidade institucional
 
-### Melhorias de SEO
-- sitemap dinâmico incluindo slugs de eventos futuros
-- structured data por página de evento
+### P1-A — Governança do design system
+- tokens `ui-panel`, `ui-panel-accent`, `ui-panel-pad-lg` adotados em `/sobre`, `/ministerios`, `/testemunhos`, `/mensagens`
+- painéis hardcoded migrados para tokens semânticos
 
-### Performance
-- revisão de imagens pesadas (conversão para WebP/AVIF)
-- auditoria de LCP por rota
+### P1-B — Fechamento editorial das páginas novas
+- linguagem interna removida de `/programacao/curso-de-teologia` e `/ministerios/missoes`
+- copy orientada ao visitante sem inflacionar conteúdo ainda não disponível
+- CTA duplicado corrigido na página do curso
+
+---
+
+## Em operação / pendente externo
+
+### EBD Jovens 2T/2026
+- Lição 1 publicada; demais lições dependem de entrega editorial da coordenação
+
+### EBD Infantil
+- publicação pausada aguardando material oficial da coordenação
+
+### Curso de Teologia
+- detalhes (duração, formato, certificação, inscrição) aguardam comunicado oficial da coordenação
+
+### Biografia do Pr. Eliel Sobrinho
+- aguarda material oficial da coordenação do curso
+
+---
+
+## Próximo (P2 — refinamento de grid)
+
+### Breakpoints intermediários em cards e listagens
+- `Cultos.tsx`, `Programacao.tsx`, `QuadroSemanal.tsx`, `PastoresGrid.tsx`, `Eventos.tsx`
+- padrão aprovado: `md:grid-cols-2 lg:grid-cols-3` (ou `xl:grid-cols-4` onde aplicável)
+- commit único: `fix(grid): adiciona breakpoints intermediarios em cards e listagens`
 
 ---
 

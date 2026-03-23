@@ -158,12 +158,11 @@ Acesse `http://localhost:3000`.
 
 O projeto mantém estrutura editorial por trimestre e classe, com conteúdo publicado de forma progressiva conforme governança interna.
 
-Situação atual do repositório:
+Estado atual (março/2026):
 
-- **Adultos** — acervo estruturado por trimestre em 2026
-- **Jovens** — acervo estruturado por trimestre em 2026
-- **Infantil** — arquitetura mantida, com foco editorial atual no 1º trimestre de 2026
-- materiais em preparação podem existir internamente sem exposição pública imediata
+- **Adultos** — 1T/2026 publicado; 2T/2026 publicado
+- **Jovens** — 1T/2026 publicado; 2T/2026 com Lição 1 publicada; demais lições em preparação
+- **Infantil** — arquitetura mantida; publicação editorial pausada aguardando material da coordenação
 
 A publicação no front segue critérios de revisão, disponibilidade de material de apoio e decisão editorial do projeto.
 
