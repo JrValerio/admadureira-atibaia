@@ -141,14 +141,9 @@ export default function CursoTeologiaPage() {
                 <a href={whatsappUrl} className="ui-btn-primary">
                   Quero mais informações
                 </a>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ui-btn-ghost-dark"
-                >
-                  Falar no WhatsApp
-                </a>
+                <Link href="/contato" className="ui-btn-ghost-dark">
+                  Ver contato da sede
+                </Link>
               </div>
             </div>
           </div>
@@ -163,13 +158,12 @@ export default function CursoTeologiaPage() {
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-3xl">
                   <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                    Página-base pronta para receber os dados oficiais da coordenação
+                    Acompanhe as atualizações do Curso de Teologia
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                    A estrutura da página já está organizada com o que foi
-                    confirmado pela programação da igreja. Os dados específicos
-                    de biografia, certificação, duração e inscrição entram assim
-                    que forem confirmados oficialmente.
+                    Aulas às segundas-feiras, às 19h30, na sede da AD Madureira
+                    Atibaia. Para informações sobre inscrição e participação,
+                    fale com a equipe da igreja.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
@@ -293,7 +287,7 @@ export default function CursoTeologiaPage() {
                   Estrutura do curso
                 </p>
                 <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
-                  O que já está confirmado e o que entra na atualização oficial
+                  Detalhes do curso
                 </h2>
                 <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   {cursoTeologiaData.courseDetails.map((detail) => (
@@ -328,10 +322,8 @@ export default function CursoTeologiaPage() {
                   Formação pensada para Bíblia aberta, doutrina firme e vida cristã prática
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-[#555] md:text-base md:leading-8">
-                  A página já trabalha com uma base institucional de temas para
-                  o curso. Assim que a grade oficial for confirmada, estes
-                  tópicos poderão ser reorganizados conforme a estrutura real da
-                  turma.
+                  Conteúdos previstos para o Curso de Teologia, abrangendo
+                  formação bíblica, doutrina e vida ministerial.
                 </p>
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {cursoTeologiaData.contentTopics.map((topic) => (

@@ -16,7 +16,6 @@ export const cursoTeologiaData = {
     paragraphs: [
       "O Curso de Teologia é uma frente de ensino voltada ao fortalecimento da fé, ao amadurecimento espiritual e ao preparo de irmãos que desejam servir ao Senhor com mais entendimento, responsabilidade e reverência à Palavra.",
       "Mais do que uma sequência de aulas, o curso busca unir Bíblia aberta, reflexão doutrinária, prática cristã e consciência ministerial. A proposta é oferecer uma base consistente para que cada aluno compreenda melhor as Escrituras e cresça em sua caminhada com Deus.",
-      "A página já está preparada para receber os detalhes oficiais da coordenação do curso. Enquanto isso, ela reúne as informações confirmadas pela programação atual da igreja e organiza os pontos que serão completados com a resposta do professor responsável.",
     ],
   },
   teacher: {
@@ -27,8 +26,8 @@ export const cursoTeologiaData = {
     summary:
       "O curso será conduzido pelo Pr. Eliel Sobrinho, com foco em ensino bíblico, fortalecimento doutrinário e edificação da igreja por meio da Palavra de Deus.",
     notes: [
-      "A foto oficial do professor já integra a página. A biografia ministerial completa e os detalhes finais do curso serão adicionados assim que a coordenação enviar o material complementar.",
-      "Enquanto isso, os interessados já podem registrar contato com a igreja para receber informações sobre aulas, inscrições e próximos passos.",
+      "A biografia ministerial do Pr. Eliel Sobrinho será publicada em breve.",
+      "Para informações sobre inscrições e aulas, entre em contato com a sede da igreja.",
     ],
     socialLinks: {
       facebook: "https://www.facebook.com/eliel.sobrinho.1/",
@@ -56,19 +55,19 @@ export const cursoTeologiaData = {
   courseDetails: [
     {
       label: "Duração",
-      value: "Em atualização pela coordenação",
+      value: "A confirmar",
     },
     {
       label: "Formato",
-      value: "Informação oficial em atualização",
+      value: "A confirmar",
     },
     {
       label: "Requisitos",
-      value: "Serão informados pela coordenação do curso",
+      value: "A confirmar",
     },
     {
       label: "Certificação",
-      value: "Em confirmação com a equipe responsável",
+      value: "A confirmar",
     },
   ],
   contentTopics: [
@@ -84,10 +83,10 @@ export const cursoTeologiaData = {
   contact: {
     title: "Informações e inscrição",
     description:
-      "A página já está pronta para receber os dados finais de inscrição, valor e certificação. Até lá, a igreja pode orientar os interessados sobre o curso, vagas e próximos passos.",
+      "Para informações sobre inscrição, vagas e próximos passos, entre em contato com a sede da igreja.",
     notes: [
-      "WhatsApp e forma oficial de inscrição serão adicionados assim que forem confirmados pela coordenação.",
-      "Se houver lista de interesse ou vagas limitadas, esta seção será atualizada com prioridade.",
+      "O canal oficial de inscrição será comunicado pela coordenação do curso.",
+      "Em caso de vagas limitadas, a coordenação orientará sobre a lista de interesse.",
     ],
   },
   faq: [
@@ -109,7 +108,7 @@ export const cursoTeologiaData = {
     {
       question: "Precisa fazer inscrição?",
       answer:
-        "Sim. A página já está preparada para receber o fluxo oficial de inscrição assim que ele for definido.",
+        "Sim. Entre em contato com a igreja para obter informações sobre as condições de participação e o processo de ingresso.",
     },
     {
       question: "Tem certificado?",
