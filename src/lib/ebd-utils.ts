@@ -85,12 +85,10 @@ export function getEbdPublicLessonReferenceKey(date = new Date()) {
 
   sundayDate.setHours(0, 0, 0, 0);
 
-  if (weekDay === 0 || weekDay === 5 || weekDay === 6) {
-    const daysUntilSunday = weekDay === 0 ? 0 : 7 - weekDay;
-    sundayDate.setDate(sundayDate.getDate() + daysUntilSunday);
-  } else {
-    sundayDate.setDate(sundayDate.getDate() - weekDay);
-  }
+  // Qualquer dia da semana aponta para o próximo domingo (ou o próprio domingo).
+  // A lição vira na segunda-feira após o domingo anterior, não na sexta.
+  const daysUntilSunday = weekDay === 0 ? 0 : 7 - weekDay;
+  sundayDate.setDate(sundayDate.getDate() + daysUntilSunday);
 
   return formatDateKey(sundayDate);
 }
@@ -127,10 +125,12 @@ export function getLicaoReleaseWindowKey(
     `${getDataLiberacaoBase(licao)}T12:00:00-03:00`
   );
   const weekDay = releaseDate.getDay();
-  const daysSinceFriday = (weekDay - 5 + 7) % 7;
+  // Abre na sexta-feira da semana ANTERIOR à da lição.
+  // Ex.: lição 13 (29/03 dom) → abre em 20/03 sex (9 dias antes).
+  const daysSincePreviousWeekFriday = ((weekDay - 5 + 7) % 7) + 7;
 
   releaseDate.setHours(0, 0, 0, 0);
-  releaseDate.setDate(releaseDate.getDate() - daysSinceFriday);
+  releaseDate.setDate(releaseDate.getDate() - daysSincePreviousWeekFriday);
 
   return formatDateKey(releaseDate);
 }
