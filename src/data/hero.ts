@@ -159,17 +159,16 @@ export function getHeroEventos(): HeroEvento[] {
       eventDate: "2026-04-02",
       archivedAfter: "2026-04-02",
     },
-    // banner-batismo: ativar quando o cartaz entrar em circulação
-    // {
-    //   titulo: "Batismo",
-    //   alt: "Banner do Batismo da AD Madureira Atibaia",
-    //   imagem: "/banners/banner-batismo.png",
-    //   href: "/eventos/batismo-05-04-2026",
-    //   ariaLabel: "Abrir página do Batismo",
-    //   type: "event",
-    //   eventDate: "2026-04-05",
-    //   archivedAfter: "2026-04-05",
-    // },
+    {
+      titulo: "Batismo",
+      alt: "Banner do Batismo da AD Madureira Atibaia",
+      imagem: "/banners/banner-batismo.png",
+      href: "/eventos/batismo-05-04-2026",
+      ariaLabel: "Abrir página do Batismo",
+      type: "event",
+      eventDate: "2026-04-05",
+      archivedAfter: "2026-04-05",
+    },
     {
       titulo: "Reunião de Obreiros",
       alt: "Banner da Reunião de Obreiros da AD Madureira Atibaia",
