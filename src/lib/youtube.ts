@@ -7,6 +7,7 @@ const YOUTUBE_DEFAULT_CHANNEL_TITLE =
   "Assembleia de Deus - Min. Madureira | Atibaia-SP";
 
 export const YOUTUBE_REVALIDATE_SECONDS = 120;
+export const YOUTUBE_FETCH_TIMEOUT_MS = 8000;
 export const YOUTUBE_CHANNEL = {
   id: process.env.YOUTUBE_CHANNEL_ID?.trim() || YOUTUBE_DEFAULT_CHANNEL_ID,
   handle:
@@ -388,9 +389,13 @@ function extractInitialDataJson(html: string) {
 }
 
 async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), YOUTUBE_FETCH_TIMEOUT_MS);
+
   try {
     const response = await fetch(url, {
       next: { revalidate: YOUTUBE_REVALIDATE_SECONDS },
+      signal: controller.signal,
     });
 
     if (!response.ok) {
@@ -400,13 +405,19 @@ async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
     return (await response.json()) as T;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
 async function fetchYouTubeText(url: string): Promise<string | null> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), YOUTUBE_FETCH_TIMEOUT_MS);
+
   try {
     const response = await fetch(url, {
       next: { revalidate: YOUTUBE_REVALIDATE_SECONDS },
+      signal: controller.signal,
     });
 
     if (!response.ok) {
@@ -416,6 +427,8 @@ async function fetchYouTubeText(url: string): Promise<string | null> {
     return await response.text();
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
