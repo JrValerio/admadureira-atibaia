@@ -63,9 +63,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira",
     },
     seo: {
-      title: "Pr. Dr. Zacarias Bernardes Félix | AD Madureira Atibaia",
+      title: "Pr. Dr. Zacarias Bernardes Félix | Pastor Presidente – AD Madureira Atibaia",
       description:
-        "Conheça a trajetória pastoral do Pr. Dr. Zacarias Bernardes Félix, presidente do Campo de Atibaia da AD Madureira Atibaia.",
+        "Pastor Presidente do Campo de Atibaia da Assembleia de Deus Madureira desde 2004. Conheça a liderança, a trajetória pastoral e a visão do campo.",
     },
   },
   {
@@ -93,9 +93,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira",
     },
     seo: {
-      title: "Pra. Drª Anna Alzira | AD Madureira Atibaia",
+      title: "Pra. Drª Anna Alzira | Pastora Presidente – AD Madureira Atibaia",
       description:
-        "Conheça a atuação pastoral da Pra. Drª Anna Alzira no cuidado das famílias e no discipulado do Campo de Atibaia.",
+        "Pastora Presidente do Campo de Atibaia da Assembleia de Deus Madureira. Cuidado pastoral, discipulado e apoio às famílias e mulheres da igreja.",
     },
   },
   {
@@ -119,9 +119,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira",
     },
     seo: {
-      title: "Pr. Marcos Spaca | AD Madureira Atibaia",
+      title: "Pr. Marcos Spaca | Vice-Presidente – AD Madureira Atibaia",
       description:
-        "Conheça a atuação ministerial do Pr. Marcos Spaca no apoio pastoral e no fortalecimento das congregações do Campo de Atibaia.",
+        "Vice-Presidente do Campo de Atibaia da Assembleia de Deus Madureira. Apoio pastoral, discipulado e fortalecimento das congregações do campo.",
     },
   },
   {
@@ -145,9 +145,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira",
     },
     seo: {
-      title: "Pr. Raimundo | AD Madureira Atibaia",
+      title: "Pr. Raimundo | Vice-Presidente – AD Madureira Atibaia",
       description:
-        "Conheça a atuação pastoral do Pr. Raimundo no discipulado, na formação de obreiros e no cuidado espiritual do Campo de Atibaia.",
+        "Vice-Presidente do Campo de Atibaia da Assembleia de Deus Madureira. Discipulado, formação de obreiros e cuidado espiritual da igreja.",
     },
   },
   {
@@ -171,9 +171,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
     },
     seo: {
-      title: "Pr. Luis Teixeira | Congregação Jardim Cerejeiras – AD Madureira Atibaia",
+      title: "Pr. Luis Teixeira | Congregação Jardim Cerejeiras",
       description:
-        "Conheça o Pr. Luis Teixeira, pastor responsável pela Congregação Jardim Cerejeiras do Campo de Atibaia da AD Madureira.",
+        "Pastor da Congregação Jardim Cerejeiras, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça a congregação, horários e formas de contato.",
     },
   },
   {
@@ -197,9 +197,9 @@ export const pastores: Pastor[] = [
       igreja: "Assembleia de Deus Ministério Madureira",
     },
     seo: {
-      title: "Pr. Jorge | AD Madureira Atibaia",
+      title: "Pr. Jorge | Vice-Presidente – AD Madureira Atibaia",
       description:
-        "Conheça a atuação do Pr. Jorge no ensino da Palavra e no apoio pastoral às congregações do Campo de Atibaia.",
+        "Vice-Presidente do Campo de Atibaia da Assembleia de Deus Madureira. Ensino da Palavra e apoio pastoral às congregações do ministério.",
     },
   },
 ];

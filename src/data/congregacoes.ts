@@ -75,9 +75,9 @@ export const congregacoes: Congregacao[] = [
       },
     ],
     seo: {
-      title: "AD Madureira – Templo Sede | Congregações do Campo de Atibaia",
+      title: "AD Madureira – Templo Sede | AD Madureira Atibaia",
       description:
-        "Conheça o Templo Sede da AD Madureira Atibaia, com endereço, horários de culto, liderança pastoral e informações de visitação.",
+        "Igreja Sede da Assembleia de Deus Madureira em Atibaia, no Centro. Cultos regulares, ensino bíblico e acolhimento pastoral para a cidade e a região.",
     },
     localizacao: {
       bairro: "Centro",
@@ -116,9 +116,9 @@ export const congregacoes: Congregacao[] = [
       },
     ],
     seo: {
-      title: "Congregação Jardim Cerejeiras | AD Madureira Campo de Atibaia",
+      title: "Congregação Jardim Cerejeiras | AD Madureira Atibaia",
       description:
-        "Conheça a Congregação Jardim Cerejeiras da AD Madureira Atibaia. Horários de culto, endereço e contato.",
+        "Congregação da Assembleia de Deus Madureira em Atibaia, no Jardim Cerejeiras. Cultos regulares, liderança pastoral e informações para visitar.",
     },
     localizacao: {
       bairro: "Jardim Cerejeiras",
