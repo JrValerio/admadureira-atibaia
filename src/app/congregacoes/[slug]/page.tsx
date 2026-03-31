@@ -488,7 +488,14 @@ export default async function CongregacaoPage({ params }: PageProps) {
                       >
                         Conhecer o pastor responsável
                       </Link>
-                    ) : null}
+                    ) : (
+                      <Link
+                        href="/pastores"
+                        className="block transition-colors hover:text-white"
+                      >
+                        Ver liderança do campo
+                      </Link>
+                    )}
                     <Link
                       href="/contato"
                       className="block transition-colors hover:text-white"
