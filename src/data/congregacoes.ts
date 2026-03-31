@@ -27,6 +27,12 @@ export interface Congregacao {
   mapsUrl?: string;
   horarios: string[];
   lideranca: LiderancaCongregacao[];
+  programacoesEspeciais?: string[];
+  ministerios?: string[];
+  historico?: string;
+  observacoes?: string;
+  anoDeFundacao?: number;
+  estimativaMembros?: number;
   seo?: {
     title?: string;
     description?: string;
@@ -80,6 +86,43 @@ export const congregacoes: Congregacao[] = [
       pais: "BR",
       lat: SEDE_COORDINATES.lat,
       lng: SEDE_COORDINATES.lng,
+    },
+  },
+  {
+    slug: "jardim-cerejeiras",
+    igreja: "Congregação Jardim Cerejeiras",
+    cidade: "Atibaia",
+    pastor: "Pr. Luis Teixeira",
+    endereco: "Rua das Flores, 25 – Jardim Cerejeiras – Atibaia/SP",
+    telefone: "(13) 99739-7114",
+    whatsappUrl: "https://wa.me/5513997397114",
+    imagem: "/congregacoes/jardim-cerejeiras.jpg",
+    resumo:
+      "Congregação do Campo de Atibaia localizada no bairro Jardim Cerejeiras, com cultos semanais e ministérios ativos voltados à comunidade local.",
+    horarios: [
+      "Quarta-feira – Culto – 19h30",
+      "Sexta-feira – Culto – 19h30",
+      "Domingo – Culto – 18h30",
+    ],
+    programacoesEspeciais: ["Primeiro sábado – Santa Ceia"],
+    ministerios: ["Círculo de Oração", "Jovens", "Infantil", "Louvor", "Evangelismo"],
+    estimativaMembros: 60,
+    lideranca: [
+      {
+        nome: "Pr. Luis Teixeira",
+        cargo: "Pastor",
+      },
+    ],
+    seo: {
+      title: "Congregação Jardim Cerejeiras | AD Madureira Campo de Atibaia",
+      description:
+        "Conheça a Congregação Jardim Cerejeiras da AD Madureira Atibaia. Horários de culto, endereço e contato.",
+    },
+    localizacao: {
+      bairro: "Jardim Cerejeiras",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
     },
   },
 ];
