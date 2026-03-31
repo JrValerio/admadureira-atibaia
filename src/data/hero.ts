@@ -23,6 +23,11 @@ export interface HeroEvento {
   eventDate?: string;
   /** Data de fim da janela de promoção: "YYYY-MM-DD" (opcional; padrão = eventDate + 1 dia) */
   eventEndDate?: string;
+  /**
+   * Data a partir da qual o slide é completamente removido da rotação: "YYYY-MM-DD".
+   * Após essa data, o slide não aparece nem como fallback.
+   */
+  archivedAfter?: string;
 }
 
 // ─── Motor de ordenação ──────────────────────────────────────────────────────
@@ -62,6 +67,12 @@ function isWeeklyRelevant(slide: HeroEvento, today: Date): boolean {
     todayDay === (d + 1) % 7 ||
     todayDay === (d + 6) % 7
   );
+}
+
+function isArchived(slide: HeroEvento, today: Date): boolean {
+  if (!slide.archivedAfter) return false;
+  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  return t > toMidnight(slide.archivedAfter);
 }
 
 function orderSlides(slides: HeroEvento[]): HeroEvento[] {
@@ -106,6 +117,7 @@ export function getHeroEventos(): HeroEvento[] {
   const hrefSantaCeia = getEventoHref(["santa-ceia"], "/programacao");
   const hrefCongressoKids = getEventoHref(["congresso-criancas"], "/eventos");
 
+  const today = new Date();
   const slides: HeroEvento[] = [
     {
       titulo: "Dízimos e Ofertas",
@@ -143,8 +155,28 @@ export function getHeroEventos(): HeroEvento[] {
       imagem: "/banners/banner-campanha-jejum-e-oracao.png",
       href: "/programacao/quinta-da-vitoria",
       ariaLabel: "Abrir página da Campanha de Jejum e Oração",
+      type: "event",
+      eventDate: "2026-04-02",
+      archivedAfter: "2026-04-02",
+    },
+    {
+      titulo: "Batismo",
+      alt: "Banner do Batismo da AD Madureira Atibaia",
+      imagem: "/banners/banner-batismo.png",
+      href: "/eventos/batismo-05-04-2026",
+      ariaLabel: "Abrir página do Batismo",
+      type: "event",
+      eventDate: "2026-04-05",
+      archivedAfter: "2026-04-05",
+    },
+    {
+      titulo: "Reunião de Obreiros",
+      alt: "Banner da Reunião de Obreiros da AD Madureira Atibaia",
+      imagem: "/banners/banner-reuniao-de-obreiros.png",
+      href: "/programacao",
+      ariaLabel: "Abrir página da Reunião de Obreiros",
       type: "weekly",
-      dayOfWeek: 4, // quinta-feira
+      dayOfWeek: 6, // sábado
     },
     {
       titulo: "Círculo de Oração",
@@ -185,5 +217,5 @@ export function getHeroEventos(): HeroEvento[] {
     },
   ];
 
-  return orderSlides(slides);
+  return orderSlides(slides.filter((s) => !isArchived(s, today)));
 }
