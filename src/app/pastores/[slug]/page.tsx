@@ -165,7 +165,9 @@ export default async function PastorPage({ params }: PageProps) {
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                   {pastor.grupo === "presidencia"
                     ? "Presidência do Campo"
-                    : "Vice-Presidência do Campo"}
+                    : pastor.grupo === "congregacao"
+                      ? "Liderança Congregacional"
+                      : "Vice-Presidência do Campo"}
                 </p>
                 <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-3">
                   {pastor.nome}
@@ -196,7 +198,9 @@ export default async function PastorPage({ params }: PageProps) {
                       value={
                         pastor.grupo === "presidencia"
                           ? "Liderança pastoral e institucional"
-                          : "Apoio pastoral e fortalecimento das congregações"
+                          : pastor.grupo === "congregacao"
+                            ? "Liderança e cuidado pastoral local"
+                            : "Apoio pastoral e fortalecimento das congregações"
                       }
                     />
                   </div>

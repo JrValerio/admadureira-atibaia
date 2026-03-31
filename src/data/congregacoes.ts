@@ -93,6 +93,7 @@ export const congregacoes: Congregacao[] = [
     igreja: "Congregação Jardim Cerejeiras",
     cidade: "Atibaia",
     pastor: "Pr. Luis Teixeira",
+    pastorSlug: "luis-teixeira",
     endereco: "Rua das Flores, 25 – Jardim Cerejeiras – Atibaia/SP",
     telefone: "(13) 99739-7114",
     whatsappUrl: "https://wa.me/5513997397114",
@@ -111,6 +112,7 @@ export const congregacoes: Congregacao[] = [
       {
         nome: "Pr. Luis Teixeira",
         cargo: "Pastor",
+        pastorSlug: "luis-teixeira",
       },
     ],
     seo: {

@@ -1,4 +1,4 @@
-export type PastorGrupo = "presidencia" | "vice-presidencia";
+export type PastorGrupo = "presidencia" | "vice-presidencia" | "congregacao";
 
 export interface PastorVersiculo {
   referencia: string;
@@ -148,6 +148,32 @@ export const pastores: Pastor[] = [
       title: "Pr. Raimundo | AD Madureira Atibaia",
       description:
         "Conheça a atuação pastoral do Pr. Raimundo no discipulado, na formação de obreiros e no cuidado espiritual do Campo de Atibaia.",
+    },
+  },
+  {
+    slug: "luis-teixeira",
+    nome: "Pr. Luis Teixeira",
+    cargo: "Pastor",
+    grupo: "congregacao",
+    foto: "/pastores/pr-luis-teixeira.jpg",
+    resumo:
+      "Pastor responsável pela Congregação Jardim Cerejeiras do Campo de Atibaia, servindo a comunidade local com cuidado pastoral, ensino da Palavra e acolhimento às famílias.",
+    trajetoria: [
+      "Serve como pastor local da Congregação Jardim Cerejeiras, vinculada ao Campo de Atibaia da Assembleia de Deus Ministério Madureira.",
+      "Sua atuação é marcada pela proximidade com a comunidade, o cuidado das famílias e o fortalecimento espiritual da congregação local.",
+    ],
+    ministerio: [
+      "Responsável pela liderança pastoral da Congregação Jardim Cerejeiras, com cultos regulares, oração e cuidado com os membros.",
+      "Seu ministério reflete dedicação à Palavra de Deus, ao discipulado e ao acolhimento de novos visitantes na congregação.",
+    ],
+    ministerioInfo: {
+      funcao: "Pastor da Congregação Jardim Cerejeiras",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Pr. Luis Teixeira | Congregação Jardim Cerejeiras – AD Madureira Atibaia",
+      description:
+        "Conheça o Pr. Luis Teixeira, pastor responsável pela Congregação Jardim Cerejeiras do Campo de Atibaia da AD Madureira.",
     },
   },
   {

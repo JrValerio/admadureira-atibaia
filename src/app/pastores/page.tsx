@@ -82,6 +82,7 @@ function PastorCompactCard({ pastor }: { pastor: Pastor }) {
 export default function PastoresPage() {
   const presidencia = getPastoresByGrupo("presidencia");
   const vicePresidencia = getPastoresByGrupo("vice-presidencia");
+  const pastoresCongregacao = getPastoresByGrupo("congregacao");
   const versiculoInstitucional =
     presidencia.find((pastor) => pastor.versiculo)?.versiculo;
 
@@ -135,6 +136,26 @@ export default function PastoresPage() {
                 ))}
               </div>
             </div>
+
+            {pastoresCongregacao.length > 0 && (
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-8">
+                  <div>
+                    <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
+                      Liderança Local
+                    </p>
+                    <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide">
+                      Pastores das Congregações
+                    </h2>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {pastoresCongregacao.map((pastor) => (
+                    <PastorCompactCard key={pastor.slug} pastor={pastor} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {versiculoInstitucional && (
