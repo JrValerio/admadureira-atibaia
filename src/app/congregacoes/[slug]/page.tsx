@@ -255,37 +255,35 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 <div className="space-y-4 text-[#555] leading-relaxed">
                   <p>{congregacao.resumo}</p>
                   <p>
-                    Localizada em {congregacao.endereco}, esta congregação
-                    integra o Campo de Atibaia e mantém uma rotina local de
-                    oração, ensino bíblico, comunhão e visitação para servir a
-                    igreja e acolher quem deseja conhecer a casa do Senhor.
+                    A congregação recebe visitantes, famílias e todos que
+                    desejam ouvir a Palavra e viver comunhão cristã. Se você
+                    mora na região ou deseja conhecer uma congregação da
+                    Assembleia de Deus Madureira em {locationInfo.cidade}, esta
+                    igreja local está de portas abertas para receber sua visita.
                   </p>
                 </div>
 
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                  {congregacao.mapsUrl ? (
-                    <a
-                      href={congregacao.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ui-btn-primary"
-                    >
-                      Abrir no mapa
-                    </a>
-                  ) : null}
                   {congregacao.whatsappUrl ? (
                     <a
                       href={congregacao.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ui-btn-secondary"
+                      className="ui-btn-primary"
                     >
-                      Falar pelo WhatsApp
+                      Falar com a congregação
                     </a>
                   ) : null}
-                  <Link href="/contato" className="ui-btn-ghost">
-                    Como visitar
-                  </Link>
+                  {congregacao.mapsUrl ? (
+                    <a
+                      href={congregacao.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ui-btn-secondary"
+                    >
+                      Como chegar
+                    </a>
+                  ) : null}
                 </div>
               </div>
 
@@ -312,9 +310,9 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   />
                 </div>
                 <p className="mt-6 text-sm leading-relaxed text-[#555]">
-                  A página reúne liderança, endereço, rotina local e caminhos de
-                  contato para facilitar visitação, acompanhamento pastoral e
-                  navegação institucional dentro do Campo de Atibaia.
+                  Uma congregação comprometida com a Palavra, a oração e o
+                  acolhimento. Um lugar para congregar, buscar a Deus e crescer
+                  em comunhão com a família da fé.
                 </p>
               </div>
             </div>
@@ -333,12 +331,8 @@ export default async function CongregacaoPage({ params }: PageProps) {
                     congregação no mapa e entrar em contato com a igreja local.
                   </p>
 
-                  <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+                  <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                     <InfoCard label="Endereço" value={congregacao.endereco} />
-                    <InfoCard
-                      label="Localização"
-                      value={locationLabel || locationInfo.cidade}
-                    />
                     <InfoCard
                       label="Contato"
                       value={congregacao.telefone ?? "A confirmar"}
@@ -428,10 +422,10 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   </CardMedia>
                   <div className="p-6">
                     <p className="leading-relaxed text-[#555]">
-                      Esta página organiza a presença local da congregação com
-                      o mesmo padrão institucional das demais áreas do site:
-                      informação clara, visitação simples e leitura fácil da
-                      rotina da igreja.
+                      {congregacao.igreja} é uma congregação local comprometida
+                      com a Palavra de Deus, a oração e o acolhimento de
+                      famílias e visitantes. Um lugar para congregar, ouvir o
+                      Evangelho e crescer em comunhão.
                     </p>
                   </div>
                 </div>
@@ -441,7 +435,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                     Liderança local
                   </p>
                   <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
-                    Pessoas que servem nesta frente congregacional
+                    Liderança pastoral da congregação
                   </h2>
                   <div className="space-y-4">
                     {congregacao.lideranca.map((lider) => (
