@@ -411,7 +411,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
       </div>
 
       <div aria-live="polite" aria-atomic="true" className="sr-only">
-        {`Slide ${realIndex + 1} de ${total}: ${eventos[realIndex].titulo}`}
+        {eventos[realIndex] ? `Slide ${realIndex + 1} de ${total}: ${eventos[realIndex].titulo}` : ""}
       </div>
     </section>
   );
