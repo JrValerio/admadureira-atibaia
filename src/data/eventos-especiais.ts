@@ -243,6 +243,16 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       ano: 2026,
       eventos: [
         criarEvento(local, {
+          slug: "batismo-05-04-2026",
+          data: "05/04",
+          titulo: "Batismo",
+          tipo: "batismo",
+          horario: "09h30",
+          descricao: batismoDescricao,
+          convite: batismoConvite,
+          destaque: true,
+        }),
+        criarEvento(local, {
           slug: "reuniao-de-ministerio-06-04-2026",
           data: "06/04",
           titulo: "Reunião de Ministério",
@@ -259,6 +269,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-13-04-2026",
@@ -366,6 +377,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cultoMocidadeDescricao,
           convite: cultoMocidadeConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-25-05-2026",
@@ -474,7 +486,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "09h30",
           descricao: batismoDescricao,
           convite: batismoConvite,
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-29-06-2026",
@@ -509,7 +520,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-13-07-2026",
@@ -527,7 +537,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Primeira noite do congresso da mocidade local, reunindo jovens em adoração, comunhão e palavra.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-18-07-2026",
@@ -536,7 +545,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Segunda noite do congresso da mocidade local no templo sede.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-20-07-2026",
