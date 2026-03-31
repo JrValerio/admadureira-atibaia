@@ -1,8 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { z } from "zod";
 import { Section, SectionTitle } from "@/components/ui";
 import { SEDE_WHATSAPP_URL } from "@/data/site";
+
+const oracaoSchema = z.object({
+  nome: z.string().min(2, "Informe seu nome completo"),
+  email: z.string().email("Informe um e-mail válido"),
+  telefone: z.string().optional(),
+  pedido: z.string().min(10, "Escreva um pedido com pelo menos 10 caracteres"),
+});
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
@@ -18,15 +26,32 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
     pedido: "",
   });
   const [status, setStatus] = useState<FormState>("idle");
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof form, string>>>({});
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name } = e.target;
+    setForm((prev) => ({ ...prev, [name]: e.target.value }));
+    if (errors[name as keyof typeof form]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    const result = oracaoSchema.safeParse(form);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof typeof form, string>> = {};
+      for (const issue of result.error.issues) {
+        const field = issue.path[0] as keyof typeof form;
+        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
     setStatus("sending");
 
     // Abre WhatsApp com o pedido formatado
@@ -96,12 +121,16 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                     id="nome"
                     name="nome"
                     type="text"
-                    required
                     value={form.nome}
                     onChange={handleChange}
                     placeholder="Seu nome completo"
-                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none focus:border-[#ffa726] transition-colors"
+                    aria-invalid={!!errors.nome}
+                    aria-describedby={errors.nome ? "nome-error" : undefined}
+                    className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.nome ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
+                  {errors.nome && (
+                    <p id="nome-error" className="mt-1 text-xs text-red-500">{errors.nome}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -114,12 +143,16 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                     id="email"
                     name="email"
                     type="email"
-                    required
                     value={form.email}
                     onChange={handleChange}
                     placeholder="seu@email.com"
-                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none focus:border-[#ffa726] transition-colors"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
+                  {errors.email && (
+                    <p id="email-error" className="mt-1 text-xs text-red-500">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -151,13 +184,17 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                 <textarea
                   id="pedido"
                   name="pedido"
-                  required
                   rows={5}
                   value={form.pedido}
                   onChange={handleChange}
                   placeholder="Escreva aqui o seu pedido de oração..."
-                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none focus:border-[#ffa726] transition-colors resize-none"
+                  aria-invalid={!!errors.pedido}
+                  aria-describedby={errors.pedido ? "pedido-error" : undefined}
+                  className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors resize-none ${errors.pedido ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                 />
+                {errors.pedido && (
+                  <p id="pedido-error" className="mt-1 text-xs text-red-500">{errors.pedido}</p>
+                )}
               </div>
 
               <button

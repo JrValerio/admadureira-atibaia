@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { z } from "zod";
 import { Card, Section, SectionTitle } from "@/components/ui";
 import {
   OFFICIAL_SOCIAL_LINKS,
@@ -11,6 +12,14 @@ import {
   SEDE_MAPS_URL,
   SEDE_WHATSAPP_URL,
 } from "@/data/site";
+
+const contatoSchema = z.object({
+  nome: z.string().min(2, "Informe seu nome completo"),
+  email: z.string().email("Informe um e-mail válido"),
+  telefone: z.string().optional(),
+  assunto: z.string().min(3, "Informe o assunto"),
+  mensagem: z.string().min(10, "Escreva uma mensagem com pelo menos 10 caracteres"),
+});
 
 type FormState = "idle" | "sending" | "sent";
 
@@ -66,15 +75,32 @@ export default function Contato({ showHeader = true }: ContatoProps) {
     mensagem: "",
   });
   const [status, setStatus] = useState<FormState>("idle");
+  const [errors, setErrors] = useState<Partial<Record<keyof typeof form, string>>>({});
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name } = e.target;
+    setForm((prev) => ({ ...prev, [name]: e.target.value }));
+    if (errors[name as keyof typeof form]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    const result = contatoSchema.safeParse(form);
+    if (!result.success) {
+      const fieldErrors: Partial<Record<keyof typeof form, string>> = {};
+      for (const issue of result.error.issues) {
+        const field = issue.path[0] as keyof typeof form;
+        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
     setStatus("sending");
 
     const mensagem = encodeURIComponent(
@@ -242,12 +268,16 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     id="nome"
                     name="nome"
                     type="text"
-                    required
                     value={form.nome}
                     onChange={handleChange}
                     placeholder="Seu nome completo"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:border-[#ffa726] focus:outline-none"
+                    aria-invalid={!!errors.nome}
+                    aria-describedby={errors.nome ? "cnome-error" : undefined}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.nome ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
+                  {errors.nome && (
+                    <p id="cnome-error" className="mt-1 text-xs text-red-500">{errors.nome}</p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className="mb-1 block text-sm font-semibold text-[#424242]">
@@ -257,12 +287,16 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     id="email"
                     name="email"
                     type="email"
-                    required
                     value={form.email}
                     onChange={handleChange}
                     placeholder="seu@email.com"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:border-[#ffa726] focus:outline-none"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "cemail-error" : undefined}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
+                  {errors.email && (
+                    <p id="cemail-error" className="mt-1 text-xs text-red-500">{errors.email}</p>
+                  )}
                 </div>
               </div>
 
@@ -289,12 +323,16 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     id="assunto"
                     name="assunto"
                     type="text"
-                    required
                     value={form.assunto}
                     onChange={handleChange}
                     placeholder="Sobre o que deseja falar?"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:border-[#ffa726] focus:outline-none"
+                    aria-invalid={!!errors.assunto}
+                    aria-describedby={errors.assunto ? "assunto-error" : undefined}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.assunto ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
+                  {errors.assunto && (
+                    <p id="assunto-error" className="mt-1 text-xs text-red-500">{errors.assunto}</p>
+                  )}
                 </div>
               </div>
 
@@ -305,13 +343,17 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                 <textarea
                   id="mensagem"
                   name="mensagem"
-                  required
                   rows={6}
                   value={form.mensagem}
                   onChange={handleChange}
                   placeholder="Escreva aqui sua mensagem..."
-                  className="w-full resize-none rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:border-[#ffa726] focus:outline-none"
+                  aria-invalid={!!errors.mensagem}
+                  aria-describedby={errors.mensagem ? "mensagem-error" : undefined}
+                  className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.mensagem ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                 />
+                {errors.mensagem && (
+                  <p id="mensagem-error" className="mt-1 text-xs text-red-500">{errors.mensagem}</p>
+                )}
               </div>
 
               <button
