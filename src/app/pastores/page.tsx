@@ -35,7 +35,7 @@ function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
           {pastor.cargo}
         </p>
-        <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide leading-tight mb-4">
+        <h2 className="font-acme text-xl md:text-3xl lg:text-4xl xl:text-3xl text-[#212121] tracking-wide leading-tight mb-4">
           {pastor.nome}
         </h2>
         <p className="text-[#555] leading-relaxed mb-6">{pastor.resumo}</p>
