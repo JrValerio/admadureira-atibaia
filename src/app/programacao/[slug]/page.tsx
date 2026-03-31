@@ -7,6 +7,7 @@ import {
   SEDE_PROGRAMACAO_LOCATION,
 } from "@/data/site";
 import { getCultoBySlug, getCultosSlugs } from "@/lib/agenda-utils";
+import { getBannerSemanal } from "@/lib/banner-semanal";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -37,9 +38,14 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function CultoPage({ params }: Props) {
   const { slug } = await params;
-  const culto = getCultoBySlug(slug);
+  const cultoBase = getCultoBySlug(slug);
 
-  if (!culto) return notFound();
+  if (!cultoBase) return notFound();
+
+  const culto = {
+    ...cultoBase,
+    banner: cultoBase.banner ? getBannerSemanal(cultoBase.banner) : cultoBase.banner,
+  };
 
   const canonicalUrl = resolveSiteUrl(`/programacao/${slug}`);
   const breadcrumbSchema = {
