@@ -80,6 +80,18 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     setDisplayIndex((prev) => prev + 1);
   });
 
+  const toggleManualPause = () => {
+    if (manualPause) {
+      setManualPause(false);
+    } else {
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+        resumeTimeoutRef.current = null;
+      }
+      setManualPause(true);
+    }
+  };
+
   const goBack = () => {
     setAnimated(true);
     setDisplayIndex((prev) => prev - 1);
@@ -304,6 +316,26 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
+          </button>
+        )}
+        {total > 1 && (
+          <button
+            type="button"
+            onClick={toggleManualPause}
+            aria-label={manualPause ? "Retomar rotação de banners" : "Pausar rotação de banners"}
+            aria-pressed={manualPause}
+            aria-controls="hero-eventos-slider"
+            className="absolute bottom-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
+          >
+            {manualPause ? (
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            ) : (
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            )}
           </button>
         )}
         <div
