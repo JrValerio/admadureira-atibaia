@@ -286,7 +286,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             onClick={goBack}
             aria-label="Slide anterior"
             aria-controls="hero-eventos-slider"
-            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-10 sm:w-10"
+            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-11 sm:w-11"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -299,7 +299,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             onClick={goForward}
             aria-label="Próximo slide"
             aria-controls="hero-eventos-slider"
-            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-10 sm:w-10"
+            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-11 sm:w-11"
           >
             <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
