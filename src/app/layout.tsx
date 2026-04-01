@@ -201,8 +201,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`${acme.variable} ${alexBrush.variable} antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:rounded-full focus:bg-[#ffa726] focus:px-5 focus:py-3 focus:text-xs focus:font-bold focus:tracking-widest focus:uppercase focus:text-[#212121] focus:outline-none focus:shadow-lg"
+        >
+          Ir para o conteúdo
+        </a>
         <Navbar />
-        {children}
+        <div id="main-content">{children}</div>
         <Footer />
         <WhatsAppButton />
       </body>
