@@ -1,5 +1,16 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 
+export interface ReferenciaBiblicaLink {
+  referencia: string;
+  href: string;
+}
+
+export interface ConteudoRelacionadoLink {
+  label: string;
+  href: string;
+  descricao?: string;
+}
+
 export interface EventoBase {
   slug: string;
   tipo: EventoTipo;
@@ -8,6 +19,8 @@ export interface EventoBase {
   horario?: string;
   descricao?: string;
   convite?: string;
+  baseBiblica?: ReferenciaBiblicaLink[];
+  recursos?: ConteudoRelacionadoLink[];
   local?: string;
   destaque?: boolean;
 }
@@ -39,4 +52,6 @@ export interface ItemSemanal {
   slug?: string;
   descricao?: string;
   convite?: string;
+  baseBiblica?: ReferenciaBiblicaLink[];
+  recursos?: ConteudoRelacionadoLink[];
 }

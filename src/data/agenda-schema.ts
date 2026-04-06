@@ -1,6 +1,17 @@
 import { z } from "zod";
 import { EVENTO_TIPOS } from "@/data/agenda-visuais";
 
+const ReferenciaBiblicaLinkSchema = z.object({
+  referencia: z.string().min(1),
+  href: z.string().min(1),
+});
+
+const ConteudoRelacionadoLinkSchema = z.object({
+  label: z.string().min(1),
+  href: z.string().min(1),
+  descricao: z.string().optional(),
+});
+
 export const EventoSchema = z.object({
   slug: z.string().min(1),
   tipo: z.enum(EVENTO_TIPOS),
@@ -8,6 +19,9 @@ export const EventoSchema = z.object({
   titulo: z.string().min(1),
   horario: z.string().optional(),
   descricao: z.string().optional(),
+  convite: z.string().optional(),
+  baseBiblica: z.array(ReferenciaBiblicaLinkSchema).optional(),
+  recursos: z.array(ConteudoRelacionadoLinkSchema).optional(),
   local: z.string().optional(),
   destaque: z.boolean().optional(),
 });

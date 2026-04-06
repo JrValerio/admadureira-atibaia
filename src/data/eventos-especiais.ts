@@ -1,5 +1,10 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
-import type { MesAgendaBase } from "@/data/agenda-types";
+import type {
+  ConteudoRelacionadoLink,
+  MesAgendaBase,
+  ReferenciaBiblicaLink,
+} from "@/data/agenda-types";
+import { buildBibleReferenceHref } from "@/lib/bible-reference";
 
 type EventoConfig = {
   slug: string;
@@ -8,6 +13,8 @@ type EventoConfig = {
   tipo: EventoTipo;
   descricao: string;
   convite?: string;
+  baseBiblica?: ReferenciaBiblicaLink[];
+  recursos?: ConteudoRelacionadoLink[];
   horario?: string;
   destaque?: boolean;
 };
@@ -15,41 +22,115 @@ type EventoConfig = {
 function criarEvento(local: string, config: EventoConfig) {
   return {
     ...config,
+    baseBiblica:
+      config.baseBiblica ?? BASE_BIBLICA_PADRAO_POR_TIPO[config.tipo],
     local,
   };
 }
 
+function criarBaseBiblica(
+  ...referencias: string[]
+): ReferenciaBiblicaLink[] {
+  return referencias.map((referencia) => ({
+    referencia,
+    href: buildBibleReferenceHref(referencia) ?? "/espiritualidade/biblia",
+  }));
+}
+
+const BASE_BIBLICA_PADRAO_POR_TIPO: Partial<
+  Record<EventoTipo, ReferenciaBiblicaLink[]>
+> = {
+  "curso-de-teologia": criarBaseBiblica(
+    "2 Timóteo 2:15",
+    "Oséias 6:3"
+  ),
+  "reuniao-de-ministerio": criarBaseBiblica(
+    "Atos 6:4",
+    "1 Pedro 5:2-3"
+  ),
+  "santa-ceia": criarBaseBiblica(
+    "1 Coríntios 11:23-26",
+    "Lucas 22:19-20"
+  ),
+  "reuniao-de-obreiros": criarBaseBiblica(
+    "1 Coríntios 4:2",
+    "2 Timóteo 2:2"
+  ),
+  "culto-com-a-mocidade": criarBaseBiblica(
+    "1 Timóteo 4:12",
+    "Eclesiastes 12:1"
+  ),
+  batismo: criarBaseBiblica("Mateus 28:19", "Romanos 6:4"),
+};
+
 export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
   const cursoTeologiaDescricao =
-    "Aula de formação bíblica e doutrinária para crescimento espiritual, ensino ministerial e fortalecimento da fé da igreja.";
+    [
+      "Uma igreja que deseja permanecer firme precisa cultivar também o estudo sério da Palavra. O Curso de Teologia reúne ensino bíblico, formação doutrinária e preparo ministerial para quem deseja amadurecer na fé e servir com responsabilidade.",
+      "Não se trata de conhecimento por vaidade, mas de entendimento que gera reverência, discernimento e compromisso com o Evangelho.",
+    ].join("\n\n");
   const cursoTeologiaConvite =
-    "Venha aprender mais da Palavra e crescer no conhecimento de Deus. Teologia séria, Bíblia aberta e coração ensinável.";
+    "Venha aprofundar seu conhecimento bíblico, amadurecer espiritualmente e servir ao Senhor com mais clareza, convicção e temor.";
+  const cursoTeologiaBaseBiblica = criarBaseBiblica(
+    "2 Timóteo 2:15",
+    "Oséias 6:3"
+  );
 
   const reuniaoMinisterioDescricao =
-    "Encontro de alinhamento, comunhão e oração com a liderança ministerial da igreja.";
+    [
+      "A reunião de ministério é o lugar onde o serviço deixa de ser improviso e volta a ser responsabilidade espiritual. Antes de escalas, decisões e tarefas, a liderança se reúne para orar, alinhar a visão e cuidar da obra com temor.",
+      "Ministério saudável se constrói com joelhos no chão, Bíblia aberta e consciência de que vidas estão sendo pastoreadas.",
+    ].join("\n\n");
   const reuniaoMinisterioConvite =
-    "Tempo de alinhamento, visão e compromisso com a obra de Deus. Uma reunião importante para quem serve no ministério.";
+    "É um tempo de unidade, direção e fortalecimento para quem serve na obra do Senhor com compromisso e reverência.";
+  const reuniaoMinisterioBaseBiblica = criarBaseBiblica(
+    "Atos 6:4",
+    "1 Pedro 5:2-3"
+  );
 
   const santaCeiaDescricao =
-    "Culto de comunhão, gratidão e memória do sacrifício de Cristo, reunindo a igreja em adoração e reverência.";
+    [
+      "A Santa Ceia é um dos momentos mais solenes da vida da igreja. À mesa do Senhor, a congregação relembra o sacrifício de Cristo, reafirma a comunhão do corpo e renova a esperança na promessa da sua volta.",
+      "Não é rito vazio nem costume repetido no automático. É memória, aliança, reverência, exame sincero e gratidão profunda pela obra da cruz.",
+    ].join("\n\n");
   const santaCeiaConvite =
-    "Com reverência e gratidão, nos reunimos à mesa do Senhor. Participe desse momento santo e especial.";
+    "Participe conosco deste momento santo de comunhão com o Senhor, reverência à cruz e renovação da aliança com Cristo.";
+  const santaCeiaBaseBiblica = criarBaseBiblica(
+    "1 Coríntios 11:23-26",
+    "Lucas 22:19-20"
+  );
 
   const reuniaoObreirosDescricao =
-    "Reunião ministerial com obreiros para comunhão, direção pastoral e fortalecimento da obra.";
+    [
+      "Servir na obra exige mais do que disposição; exige fidelidade, unidade e temor. A reunião de obreiros é um tempo de alinhamento pastoral, fortalecimento espiritual e cuidado com aqueles que ajudam a sustentar o serviço da igreja.",
+      "É o tipo de encontro que reforça a responsabilidade do chamado e lembra que a obra de Deus deve ser conduzida com seriedade e coração ensinável.",
+    ].join("\n\n");
   const reuniaoObreirosConvite =
-    "Servir na obra exige unidade, responsabilidade e temor. Uma reunião importante para os obreiros.";
+    "Se você serve como obreiro, participe deste tempo de comunhão, direção e fortalecimento para continuar servindo ao Senhor com fidelidade.";
+  const reuniaoObreirosBaseBiblica = criarBaseBiblica(
+    "1 Coríntios 4:2",
+    "2 Timóteo 2:2"
+  );
 
   const cultoMocidadeDescricao =
-    "Culto especial com a mocidade, reunindo jovens em louvor, comunhão e ministração da Palavra.";
+    [
+      "Quando a mocidade se reúne para cultuar, a igreja testemunha que juventude não é só energia: é chamado, voz e propósito nas mãos de Deus. Este culto especial reúne jovens em adoração, comunhão e ministração da Palavra.",
+      "É uma noite em que dons são colocados no altar e corações são despertados para viver a fé com coragem, santidade e identidade em Cristo.",
+    ].join("\n\n");
   const cultoMocidadeConvite =
-    "A mocidade tem voz, tem chamado e tem propósito. Venha cultuar conosco nessa noite especial.";
+    "A mocidade tem voz, tem chamado e tem propósito. Venha cultuar conosco e viver uma noite de fé, comunhão e entrega diante de Deus.";
+  const cultoMocidadeBaseBiblica = criarBaseBiblica(
+    "1 Timóteo 4:12",
+    "Eclesiastes 12:1"
+  );
 
   const batismoDescricao =
-    "Celebração do batismo nas águas para novos convertidos e membros da igreja.";
+    [
+      "O batismo nas águas é um dos testemunhos públicos mais marcantes da caminhada cristã. Ele declara diante da igreja e da cidade que uma vida alcançada pela graça decidiu seguir a Cristo em obediência, fé e nova caminhada.",
+      "Mais do que uma cerimônia, o batismo é memória viva do Evangelho: morrer para o velho homem e ressurgir para uma vida firmada em Jesus.",
+    ].join("\n\n");
   const batismoConvite =
-    "O batismo é um passo de obediência e testemunho. Venha celebrar conosco esse momento marcante.";
-
+    "Venha celebrar conosco este momento marcante de obediência, testemunho e alegria na presença de Deus.";
   return [
     {
       mes: "Janeiro",
@@ -64,6 +145,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoMinisterioDescricao,
           convite: reuniaoMinisterioConvite,
+          baseBiblica: reuniaoMinisterioBaseBiblica,
         }),
         criarEvento(local, {
           slug: "santa-ceia-e-reuniao-de-obreiros-10-01-2026",
@@ -72,7 +154,10 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "santa-ceia",
           horario: "19h00",
           descricao:
-            "Culto especial de Santa Ceia com comunhão ministerial e reunião de obreiros no templo sede.",
+            "Culto especial que une a solenidade da mesa do Senhor à comunhão ministerial dos obreiros, em uma noite de reverência, alinhamento espiritual e gratidão pela obra de Cristo.",
+          convite:
+            "Participe conosco deste encontro santo de comunhão com o Senhor e fortalecimento da obra no templo sede.",
+          baseBiblica: santaCeiaBaseBiblica,
           destaque: true,
         }),
       ],
@@ -90,6 +175,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoMinisterioDescricao,
           convite: reuniaoMinisterioConvite,
+          baseBiblica: reuniaoMinisterioBaseBiblica,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-09-02-2026",
@@ -99,6 +185,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cursoTeologiaDescricao,
           convite: cursoTeologiaConvite,
+          baseBiblica: cursoTeologiaBaseBiblica,
         }),
         criarEvento(local, {
           slug: "santa-ceia-14-02-2026",
@@ -108,6 +195,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          baseBiblica: santaCeiaBaseBiblica,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-16-02-2026",
@@ -117,6 +205,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cursoTeologiaDescricao,
           convite: cursoTeologiaConvite,
+          baseBiblica: cursoTeologiaBaseBiblica,
         }),
         criarEvento(local, {
           slug: "reuniao-de-obreiros-21-02-2026",
@@ -126,6 +215,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
+          baseBiblica: reuniaoObreirosBaseBiblica,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-23-02-2026",
@@ -135,6 +225,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cursoTeologiaDescricao,
           convite: cursoTeologiaConvite,
+          baseBiblica: cursoTeologiaBaseBiblica,
         }),
         criarEvento(local, {
           slug: "culto-com-a-mocidade-28-02-2026",
@@ -144,6 +235,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cultoMocidadeDescricao,
           convite: cultoMocidadeConvite,
+          baseBiblica: cultoMocidadeBaseBiblica,
         }),
       ],
     },

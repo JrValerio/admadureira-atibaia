@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
 import { buildEventJsonLd } from "@/lib/event-schema";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
@@ -43,6 +44,14 @@ export async function generateMetadata({
   });
 }
 
+function splitRichText(text?: string) {
+  return text?.split(/\n\s*\n/).filter(Boolean) ?? [];
+}
+
+function getRecursosRelacionados(recursos: ConteudoRelacionadoLink[] = []) {
+  return recursos;
+}
+
 export default async function EventoPage({ params }: PageProps) {
   const { slug } = await params;
   const evento = getEventoBySlug(slug);
@@ -53,6 +62,9 @@ export default async function EventoPage({ params }: PageProps) {
 
   const eventImage =
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+  const descricaoParagrafos = splitRichText(evento.descricao);
+  const conviteParagrafos = splitRichText(evento.convite);
+  const recursosRelacionados = getRecursosRelacionados(evento.recursos);
   const canonicalUrl = resolveSiteUrl(`/eventos/${evento.slug}`);
   const eventSchema = buildEventJsonLd(evento);
   const breadcrumbSchema = {
@@ -166,20 +178,81 @@ export default async function EventoPage({ params }: PageProps) {
                   <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">
                     Sobre o evento
                   </h2>
-                  <p className="text-[#555] leading-relaxed">
-                    {evento.descricao ??
-                      "Participe deste evento especial na AD Madureira Atibaia e acompanhe nossa programação para mais detalhes."}
-                  </p>
+                  <div className="space-y-4 text-[#555] leading-relaxed">
+                    {(descricaoParagrafos.length > 0
+                      ? descricaoParagrafos
+                      : [
+                          "Participe deste evento especial na AD Madureira Atibaia e acompanhe nossa programação para mais detalhes.",
+                        ]
+                    ).map((paragrafo) => (
+                      <p key={paragrafo}>{paragrafo}</p>
+                    ))}
+                  </div>
                 </div>
 
-                {evento.convite && (
+                {conviteParagrafos.length > 0 && (
                   <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5">
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
                       Você é bem-vindo
                     </p>
-                    <blockquote className="text-[#555] leading-relaxed">
-                      {evento.convite}
+                    <blockquote className="space-y-3 text-[#555] leading-relaxed">
+                      {conviteParagrafos.map((paragrafo) => (
+                        <p key={paragrafo}>{paragrafo}</p>
+                      ))}
                     </blockquote>
+                  </div>
+                )}
+
+                {((evento.baseBiblica?.length ?? 0) > 0 ||
+                  recursosRelacionados.length > 0) && (
+                  <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                    {(evento.baseBiblica?.length ?? 0) > 0 && (
+                      <div className="rounded-2xl border border-black/5 bg-white p-5">
+                        <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
+                          Base bíblica
+                        </p>
+                        <p className="mb-4 text-sm leading-relaxed text-[#666]">
+                          Abra cada referência diretamente na Bíblia Online do site.
+                        </p>
+                        <div className="flex flex-wrap gap-3">
+                          {evento.baseBiblica?.map((item) => (
+                            <Link
+                              key={`${item.referencia}-${item.href}`}
+                              href={item.href}
+                              className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-[#8b5b18] transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                            >
+                              {item.referencia}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {recursosRelacionados.length > 0 && (
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
+                        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                          Continue no site
+                        </p>
+                        <div className="space-y-3">
+                          {recursosRelacionados.map((item) => (
+                            <Link
+                              key={`${item.label}-${item.href}`}
+                              href={item.href}
+                              className="block rounded-2xl border border-[#ffa726]/20 bg-white px-4 py-3 transition-colors hover:border-[#ffa726]/35"
+                            >
+                              <p className="font-semibold text-[#212121]">
+                                {item.label}
+                              </p>
+                              {item.descricao ? (
+                                <p className="mt-1 text-sm leading-relaxed text-[#666]">
+                                  {item.descricao}
+                                </p>
+                              ) : null}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -6,8 +6,11 @@ import {
   SEDE_POSTAL_ADDRESS,
   SEDE_PROGRAMACAO_LOCATION,
 } from "@/data/site";
+import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
 import { getCultoBySlug, getCultosSlugs } from "@/lib/agenda-utils";
 import { getBannerSemanal } from "@/lib/banner-semanal";
+import { buildBibleReferenceHref } from "@/lib/bible-reference";
+import { formatEbdDate, getLicaoDaSemana } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -38,6 +41,50 @@ export async function generateMetadata({ params }: Props) {
   });
 }
 
+function splitRichText(text?: string) {
+  return text?.split(/\n\s*\n/).filter(Boolean) ?? [];
+}
+
+function getCultoRecursosRelacionados(
+  slug?: string,
+  recursos: ConteudoRelacionadoLink[] = []
+) {
+  const itens = [...recursos];
+
+  if (slug !== "escola-biblica-dominical") {
+    return itens;
+  }
+
+  const licaoDaSemanaAdultos = getLicaoDaSemana("adultos");
+
+  if (!licaoDaSemanaAdultos) {
+    return itens;
+  }
+
+  itens.unshift({
+    label: "Lição da semana dos adultos",
+    href: `/ebd/adultos/${licaoDaSemanaAdultos.trimestre.slug}/${licaoDaSemanaAdultos.licao.slug}`,
+    descricao: `Lição ${licaoDaSemanaAdultos.licao.numero} · ${licaoDaSemanaAdultos.licao.titulo} · ${formatEbdDate(licaoDaSemanaAdultos.licao.data)}`,
+  });
+
+  const referenciaTextoAureo =
+    licaoDaSemanaAdultos.licao.subsidioAdultos?.cabecalho.textoAureo ??
+    licaoDaSemanaAdultos.licao.textoChave;
+  const textoAureoHref = referenciaTextoAureo
+    ? buildBibleReferenceHref(referenciaTextoAureo)
+    : null;
+
+  if (textoAureoHref) {
+    itens.push({
+      label: "Texto áureo da lição da semana",
+      href: textoAureoHref,
+      descricao: licaoDaSemanaAdultos.licao.textoChave,
+    });
+  }
+
+  return itens;
+}
+
 export default async function CultoPage({ params }: Props) {
   const { slug } = await params;
   const cultoBase = getCultoBySlug(slug);
@@ -48,6 +95,12 @@ export default async function CultoPage({ params }: Props) {
     ...cultoBase,
     banner: cultoBase.banner ? getBannerSemanal(cultoBase.banner) : cultoBase.banner,
   };
+  const descricaoParagrafos = splitRichText(culto.descricao);
+  const conviteParagrafos = splitRichText(culto.convite);
+  const recursosRelacionados = getCultoRecursosRelacionados(
+    culto.slug,
+    culto.recursos
+  );
 
   const canonicalUrl = resolveSiteUrl(`/programacao/${slug}`);
   const breadcrumbSchema = {
@@ -139,26 +192,83 @@ export default async function CultoPage({ params }: Props) {
           <div className="ui-page-container ui-page-container--narrow space-y-6">
 
             {/* Descrição */}
-            {culto.descricao && (
+            {descricaoParagrafos.length > 0 && (
               <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Sobre o culto
                 </p>
-                <p className="text-[#444] leading-relaxed text-base md:text-lg">
-                  {culto.descricao}
-                </p>
+                <div className="space-y-4 text-[#444] leading-relaxed text-base md:text-lg">
+                  {descricaoParagrafos.map((paragrafo) => (
+                    <p key={paragrafo}>{paragrafo}</p>
+                  ))}
+                </div>
               </div>
             )}
 
             {/* Convite */}
-            {culto.convite && (
+            {conviteParagrafos.length > 0 && (
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Você é bem-vindo
                 </p>
-                <blockquote className="text-[#555] leading-relaxed text-base md:text-lg">
-                  {culto.convite}
+                <blockquote className="space-y-3 text-[#555] leading-relaxed text-base md:text-lg">
+                  {conviteParagrafos.map((paragrafo) => (
+                    <p key={paragrafo}>{paragrafo}</p>
+                  ))}
                 </blockquote>
+              </div>
+            )}
+
+            {((culto.baseBiblica?.length ?? 0) > 0 ||
+              recursosRelacionados.length > 0) && (
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                {(culto.baseBiblica?.length ?? 0) > 0 && (
+                  <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+                    <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                      Base bíblica
+                    </p>
+                    <p className="text-sm leading-relaxed text-[#666] mb-5">
+                      Abra cada referência diretamente na Bíblia Online do site.
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {culto.baseBiblica?.map((item) => (
+                        <Link
+                          key={`${item.referencia}-${item.href}`}
+                          href={item.href}
+                          className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-[#8b5b18] transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                        >
+                          {item.referencia}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {recursosRelacionados.length > 0 && (
+                  <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
+                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                      Continue no site
+                    </p>
+                    <div className="space-y-4">
+                      {recursosRelacionados.map((item) => (
+                        <Link
+                          key={`${item.label}-${item.href}`}
+                          href={item.href}
+                          className="block rounded-2xl border border-[#ffa726]/20 bg-white px-5 py-4 transition-colors hover:border-[#ffa726]/35"
+                        >
+                          <p className="font-semibold text-[#212121]">
+                            {item.label}
+                          </p>
+                          {item.descricao ? (
+                            <p className="mt-1 text-sm leading-relaxed text-[#666]">
+                              {item.descricao}
+                            </p>
+                          ) : null}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
