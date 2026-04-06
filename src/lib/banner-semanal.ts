@@ -28,26 +28,27 @@ function getMondayOfCurrentWeek(): string {
 
 /**
  * Mapa do caminho padrão (em /programacao/) para o nome do arquivo
- * na pasta semanal. Permite usar nomes limpos e consistentes nas pastas
- * semanais sem depender dos nomes históricos dos arquivos estáticos.
+ * esperado na pasta semanal. O objetivo é manter a operação simples:
+ * quando entrar uma arte nova da semana, basta substituir o arquivo da
+ * pasta YYYY-MM-DD sem mudar a estrutura do site.
  */
 const WEEKLY_FILENAME_MAP: Record<string, string> = {
   "/programacao/oracao-matinal.png": "oracao-matinal.png",
   "/programacao/oracao-matinal-domingo.png": "oracao-matinal-domingo.png",
-  "/programacao/curso-teologia.png": "curso-de-teologia.png",
+  "/programacao/curso-teologia.png": "curso-teologia.png",
   "/programacao/culto-de-terca.png": "culto-de-ensino.png",
-  "/programacao/consagracao-mulheres.png": "consagracao.png",
+  "/programacao/consagracao-mulheres.png": "consagracao-mulheres.png",
   "/programacao/circulo-de-oracao.png": "circulo-de-oracao.png",
   "/programacao/ensaio-irmas.png": "ensaio-irmas.png",
-  "/programacao/culto-de-quinta.png": "quinta-da-vitoria.png",
-  "/programacao/culto-de-libertacao.png": "libertacao.png",
+  "/programacao/culto-de-quinta.png": "culto-de-quinta.png",
+  "/programacao/culto-de-libertacao.png": "culto-de-libertacao.png",
   "/programacao/EBD.png": "ebd.png",
   "/programacao/ensaio-jovens.png": "ensaio-jovens.png",
   "/programacao/culto-de-domingo.png": "culto-da-familia.png",
-  "/programacao/reuniao-ministerial.png": "reuniao-de-ministerio.png",
+  "/programacao/reuniao-ministerial.png": "reuniao-ministerial.png",
   "/programacao/culto-de-jovens.png": "culto-de-jovens.png",
   "/programacao/culto-de-ceia.png": "santa-ceia.png",
-  "/programacao/reuniao-de-obreiro.png": "reuniao-de-obreiros.png",
+  "/programacao/reuniao-de-obreiro.png": "reuniao-de-obreiro.png",
 };
 
 /**

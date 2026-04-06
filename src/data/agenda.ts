@@ -93,14 +93,14 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Quinta-feira",
-    titulo: "Quinta da Vitória · Jejum e Oração",
+    titulo: "Culto de Quinta",
     horario: SEDE_PROGRAMACAO_HORARIOS.quintaVitoria,
     banner: BANNERS_PROGRAMACAO.quintaVitoria,
     slug: "quinta-da-vitoria",
     descricao:
-      "Campanha de jejum e oração voltada à busca por milagres, fortalecimento espiritual, renovo e intervenção de Deus nas causas impossíveis.",
+      "Culto semanal de adoração, oração e ministração da Palavra, reunindo a igreja para buscar a presença de Deus e fortalecer a fé no meio da semana.",
     convite:
-      "Não importa o tamanho da luta. Venha pela fé e participe da Quinta da Vitória. Deus continua operando milagres.",
+      "Reserve a quinta-feira para estar em comunhão conosco. Venha cultuar, ouvir a Palavra e buscar ao Senhor em mais uma noite de fé.",
   },
   {
     dia: "Sexta-feira",

@@ -26,13 +26,15 @@ export async function generateMetadata({ params }: Props) {
 
   if (!culto) return {};
 
+  const banner = culto.banner ? getBannerSemanal(culto.banner) : culto.banner;
+
   return buildPageMetadata({
     title: `${culto.titulo} | AD Madureira Atibaia`,
     description:
       culto.descricao ??
       `${culto.titulo} — ${culto.dia}${culto.horario ? `, ${culto.horario}` : ""}. AD Madureira Atibaia.`,
     path: `/programacao/${slug}`,
-    ...(culto.banner ? { image: culto.banner } : {}),
+    ...(banner ? { image: banner } : {}),
   });
 }
 

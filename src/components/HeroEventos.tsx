@@ -45,6 +45,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   const [dragging, setDragging] = useState(false);
   const [manualPause, setManualPause] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const manualPauseLockedRef = useRef(false);
   const pointerStartXRef = useRef<number | null>(null);
   const activePointerIdRef = useRef<number | null>(null);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -64,6 +65,11 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     : displayIndex;
 
   const pauseTemporarily = (duration = RESUME_AFTER_INTERACTION_MS) => {
+    if (manualPauseLockedRef.current) {
+      setManualPause(true);
+      return;
+    }
+
     setManualPause(true);
 
     if (resumeTimeoutRef.current) {
@@ -82,12 +88,21 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
 
   const toggleManualPause = () => {
     if (manualPause) {
+      manualPauseLockedRef.current = false;
+
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+        resumeTimeoutRef.current = null;
+      }
+
       setManualPause(false);
     } else {
       if (resumeTimeoutRef.current) {
         clearTimeout(resumeTimeoutRef.current);
         resumeTimeoutRef.current = null;
       }
+
+      manualPauseLockedRef.current = true;
       setManualPause(true);
     }
   };
@@ -174,6 +189,8 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
 
   useEffect(() => {
     return () => {
+      manualPauseLockedRef.current = false;
+
       if (resumeTimeoutRef.current) {
         clearTimeout(resumeTimeoutRef.current);
       }
