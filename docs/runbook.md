@@ -47,8 +47,9 @@ git push origin vX.Y.Z
 ## Checklist Pós-Release
 
 Antes de taguear:
-1. `CI` verde
-2. `Vercel` verde
-3. smoke das rotas críticas concluído
-4. produção validada em `/healthz`, `/` e `/sitemap.xml`
-5. criar e publicar a tag da release
+1. `CI` verde no PR
+2. `Vercel` preview verde
+3. merge na `main`
+4. `Vercel` produção verde
+5. validar `/healthz`, `/` e `/sitemap.xml` no domínio oficial
+6. criar e publicar a tag da release
