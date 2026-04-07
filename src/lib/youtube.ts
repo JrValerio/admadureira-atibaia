@@ -1263,7 +1263,7 @@ export async function getYouTubeChannelVideos(
     videos: fallbackRecentVideos.slice(0, limit),
     source: "fallback",
     usingFallback: true,
-  };
+  } satisfies YouTubeVideoCollection;
 
   logYouTubeFallback("channel-videos", { channelVideos: result.source });
 
@@ -1326,7 +1326,7 @@ export async function getYouTubeChannelLiveVideos(
     videos: fallbackRecentLiveVideos.slice(0, limit),
     source: "fallback",
     usingFallback: true,
-  };
+  } satisfies YouTubeVideoCollection;
 
   logYouTubeFallback("channel-live-videos", { liveVideos: result.source });
 
@@ -1354,7 +1354,7 @@ export async function getYouTubeFeed() {
       live: liveState.source,
       videos: channelVideos.source,
     },
-  };
+  } as const;
 
   if (result.usingFallback) {
     logYouTubeFallback("home-feed", {
