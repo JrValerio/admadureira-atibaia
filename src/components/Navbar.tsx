@@ -45,6 +45,7 @@ const menu: MenuItem[] = [
     children: [
       { label: "Mensagens", href: "/mensagens" },
       { label: "Vídeos", href: "/videos" },
+      { label: "Galeria", href: "/galeria" },
       { label: "Testemunhos", href: "/testemunhos" },
     ],
   },

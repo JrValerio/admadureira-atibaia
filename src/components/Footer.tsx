@@ -15,6 +15,7 @@ const linksPrimeirosPassos = [
   { label: "Programação", href: "/programacao" },
   { label: "Eventos", href: "/eventos" },
   { label: "Mensagens", href: "/mensagens" },
+  { label: "Galeria", href: "/galeria" },
   { label: "Pedido de oração", href: "/oracao" },
   { label: "Contato", href: "/contato" },
   { label: "Dízimos e ofertas", href: "/oferta" },

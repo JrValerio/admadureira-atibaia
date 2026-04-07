@@ -18,6 +18,7 @@ import { getMinisterios } from "@/data/ministerios";
 import { getPastores } from "@/data/pastores";
 import { getReadingPlans } from "@/data/plano-de-leitura";
 import { getTestemunhos } from "@/data/testemunhos";
+import { getGaleriaAlbuns, getGaleriaLatestDate } from "@/data/galeria";
 import { resolveSiteUrl } from "@/lib/site";
 import { getYouTubeChannelVideos } from "@/lib/youtube";
 
@@ -45,6 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
   const devotionals = getDevotionals();
   const classesEbd = getClassesEbdPublicadas(availabilityDate);
+  const galeriaAlbuns = getGaleriaAlbuns();
   const readingPlans = getReadingPlans();
   const eventosFuturos = getEventosFuturos();
 
@@ -81,6 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
     generatedAt
   );
+  const latestGaleriaDate = getGaleriaLatestDate() ?? generatedAt;
 
   const paginasBase: MetadataRoute.Sitemap = [
     {
@@ -148,6 +151,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: latestMensagemDate,
       changeFrequency: "weekly",
       priority: 0.8,
+    },
+    {
+      url: resolveSiteUrl("/galeria"),
+      lastModified: latestGaleriaDate,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     {
       url: resolveSiteUrl("/testemunhos"),
@@ -268,6 +277,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
+  const paginasGaleria: MetadataRoute.Sitemap = galeriaAlbuns.map((album) => ({
+    url: resolveSiteUrl(`/galeria/${album.slug}`),
+    lastModified: parseContentDate(album.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   const paginasDevocionais: MetadataRoute.Sitemap = devotionals.map(
     (devotional) => ({
       url: resolveSiteUrl(`/espiritualidade/devocional/${devotional.slug}`),
@@ -383,6 +399,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...paginasCongregacoes,
     ...paginasMinisterios,
     ...paginasMensagens,
+    ...paginasGaleria,
     ...paginasTestemunhos,
     ...paginasDevocionais,
     ...paginasPlanosLeitura,
