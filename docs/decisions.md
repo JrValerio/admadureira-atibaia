@@ -75,3 +75,15 @@ Registro das decisões de arquitetura e produto com o raciocínio por trás de c
 **Decisão:** mensagens são exibidas via YouTube Data API, não hospedadas no servidor.
 
 **Motivo:** hospedagem de vídeo tem custo de armazenamento, CDN e processamento. A igreja já usa o YouTube como canal principal. Integrar a API mantém o conteúdo em um lugar só e aproveita a infraestrutura de streaming do Google sem custo adicional.
+
+---
+
+## Repositório privado sem Code scanning
+
+**Decisão:** manter o repositório privado e aceitar a indisponibilidade de Code scanning no plano atual.
+
+**Motivo:** o repositório está em plano Free/Pro e, nesse modelo, o GitHub não disponibiliza CodeQL para este repositório privado. A cobertura operacional atual já inclui CI obrigatório, Dependabot alerts, security updates, branch protection, smoke checks e validação centralizada de variáveis de ambiente.
+
+**Risco aceito:** análise estática de segurança em nível de plataforma fica fora do fluxo por limitação de plano, não por omissão operacional.
+
+**Revisão futura:** reavaliar essa decisão se o repositório se tornar público ou se o plano/hospedagem mudar para um nível que habilite Code scanning.
