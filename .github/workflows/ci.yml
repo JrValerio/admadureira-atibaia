@@ -34,3 +34,29 @@ jobs:
 
       - name: Run production build
         run: npm run build
+
+      - name: Start app for smoke checks
+        run: |
+          npm run start -- --hostname 127.0.0.1 --port 3000 > /tmp/next-start.log 2>&1 &
+          echo $! > /tmp/next-start.pid
+
+      - name: Wait for app to be ready
+        run: |
+          node -e "const url='http://127.0.0.1:3000/healthz'; const wait=(ms)=>new Promise((resolve)=>setTimeout(resolve,ms)); (async()=>{ for (let attempt = 1; attempt <= 30; attempt += 1) { try { const res = await fetch(url); if (res.ok) { console.log('[ci] app ready'); return; } } catch {} await wait(1000); } console.error('[ci] app did not become ready in time'); process.exit(1); })();"
+
+      - name: Run smoke checks
+        run: npm run smoke -- http://127.0.0.1:3000
+
+      - name: Print app log on failure
+        if: failure()
+        run: |
+          if [ -f /tmp/next-start.log ]; then
+            tail -n 200 /tmp/next-start.log
+          fi
+
+      - name: Stop app after smoke checks
+        if: always()
+        run: |
+          if [ -f /tmp/next-start.pid ]; then
+            kill "$(cat /tmp/next-start.pid)" || true
+          fi
