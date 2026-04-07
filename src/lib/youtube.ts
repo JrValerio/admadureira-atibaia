@@ -1,6 +1,8 @@
+import { env } from "@/lib/env";
+
 const YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3";
 const YOUTUBE_WEB_BASE = "https://www.youtube.com";
-const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY?.trim();
+const YOUTUBE_API_KEY = env.YOUTUBE_API_KEY;
 const YOUTUBE_DEFAULT_CHANNEL_ID = "UC7o7BFyJojlnaNGpjqwW5bA";
 const YOUTUBE_DEFAULT_CHANNEL_HANDLE = "@ADMadureiraAtibaia";
 const YOUTUBE_DEFAULT_CHANNEL_TITLE =
@@ -9,17 +11,13 @@ const YOUTUBE_DEFAULT_CHANNEL_TITLE =
 export const YOUTUBE_REVALIDATE_SECONDS = 120;
 export const YOUTUBE_FETCH_TIMEOUT_MS = 8000;
 export const YOUTUBE_CHANNEL = {
-  id: process.env.YOUTUBE_CHANNEL_ID?.trim() || YOUTUBE_DEFAULT_CHANNEL_ID,
-  handle:
-    process.env.YOUTUBE_CHANNEL_HANDLE?.trim() || YOUTUBE_DEFAULT_CHANNEL_HANDLE,
+  id: env.YOUTUBE_CHANNEL_ID || YOUTUBE_DEFAULT_CHANNEL_ID,
+  handle: env.YOUTUBE_CHANNEL_HANDLE || YOUTUBE_DEFAULT_CHANNEL_HANDLE,
 } as const;
 export const YOUTUBE_PLAYLIST_IDS = {
-  messages:
-    process.env.YOUTUBE_MESSAGES_PLAYLIST_ID?.trim() ||
-    "PLKt3M45XusTgcIPf06ppWcvTS93Zh4ArV",
+  messages: env.YOUTUBE_MESSAGES_PLAYLIST_ID || "PLKt3M45XusTgcIPf06ppWcvTS93Zh4ArV",
   testimonies:
-    process.env.YOUTUBE_TESTIMONIALS_PLAYLIST_ID?.trim() ||
-    "PLKt3M45XusTi7YQ5vydmMTu7JQV5nj0zd",
+    env.YOUTUBE_TESTIMONIALS_PLAYLIST_ID || "PLKt3M45XusTi7YQ5vydmMTu7JQV5nj0zd",
 } as const;
 export const YOUTUBE_LIMITS = {
   generalFeed: 12,
@@ -529,8 +527,8 @@ async function fetchYouTubeText(url: string): Promise<string | null> {
 }
 
 async function resolveChannelIdWithApi() {
-  if (process.env.YOUTUBE_CHANNEL_ID?.trim()) {
-    return process.env.YOUTUBE_CHANNEL_ID.trim();
+  if (env.YOUTUBE_CHANNEL_ID) {
+    return env.YOUTUBE_CHANNEL_ID;
   }
 
   if (!YOUTUBE_API_KEY) {
