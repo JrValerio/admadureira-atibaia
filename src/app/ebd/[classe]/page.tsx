@@ -200,9 +200,9 @@ export default async function EbdClassPage({ params }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Classe em destaque
               </p>
-              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 {classeInfo.label}
-              </h1>
+              </h2>
               <div className="space-y-4 leading-relaxed text-[#555]">
                 <p>{classeInfo.descricao}</p>
                 <p>

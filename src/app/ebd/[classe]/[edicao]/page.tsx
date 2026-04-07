@@ -270,9 +270,9 @@ export default async function EbdQuarterPage({ params }: PageProps) {
               >
                 {statusMeta.label}
               </div>
-              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
                 {trimestre.titulo}
-              </h1>
+              </h2>
               {trimestre.subtitulo ? (
                 <p className="mb-4 text-sm font-medium text-[#8b5b18]">
                   {trimestre.subtitulo}

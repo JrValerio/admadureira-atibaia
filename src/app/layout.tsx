@@ -128,6 +128,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESC,
+  alternates: {
+    canonical: SITE_URL,
+  },
   keywords:
     "igreja em atibaia, assembleia de deus madureira, igreja evangélica atibaia, culto em atibaia, AD Madureira Atibaia, programação igreja atibaia",
   icons: {

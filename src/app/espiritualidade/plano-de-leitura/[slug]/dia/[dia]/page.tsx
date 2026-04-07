@@ -157,9 +157,9 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Leituras do dia
               </p>
-              <h1 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
                 Dia {day.dia}
-              </h1>
+              </h2>
               <p className="text-[#555] leading-relaxed mb-5">
                 {getReadingPlanDailySummary(day)}
               </p>

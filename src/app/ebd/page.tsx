@@ -165,11 +165,11 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
                 Lição da semana
               </p>
-              <h1 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
+              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
                 {licaoDaSemana
                   ? `${classeInfo.label} · ${licaoDaSemana.licao.titulo}`
                   : `Classe ${classeInfo.label}`}
-              </h1>
+              </h2>
               {licaoDaSemana ? (
                 <>
                   <p className="mb-2 text-sm font-medium text-[#8b5b18]">

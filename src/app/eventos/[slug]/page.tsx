@@ -13,6 +13,21 @@ type PageProps = {
   }>;
 };
 
+function formatEventMetaDate(data: string, ano: number) {
+  const [dia, mes] = data.split("/").map((value) => Number.parseInt(value, 10));
+
+  if (!Number.isFinite(dia) || !Number.isFinite(mes)) {
+    return `${data}/${ano}`;
+  }
+
+  return new Intl.DateTimeFormat("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Sao_Paulo",
+  }).format(new Date(Date.UTC(ano, mes - 1, dia, 12)));
+}
+
 export async function generateStaticParams() {
   return getEventosAgenda().map((evento) => ({
     slug: evento.slug,
@@ -31,10 +46,13 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${evento.titulo} | AD Madureira Atibaia`;
-  const description =
-    evento.descricao ??
-    `${evento.titulo} na AD Madureira Atibaia em ${evento.data}.`;
+  const eventDateLabel = formatEventMetaDate(evento.data, evento.ano);
+  const title = `${evento.titulo} · ${eventDateLabel} | AD Madureira Atibaia`;
+  const baseDescription =
+    evento.descricao ?? `${evento.titulo} na AD Madureira Atibaia.`;
+  const description = `${baseDescription} Programação em ${eventDateLabel}${
+    evento.horario ? `, às ${evento.horario}` : ""
+  }.`;
 
   return buildPageMetadata({
     title,

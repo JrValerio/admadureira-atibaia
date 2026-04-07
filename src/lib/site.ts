@@ -1,13 +1,26 @@
 import type { Metadata } from "next";
 import { CHURCH_SHORT_NAME } from "@/data/site";
 
-const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(
-  /\/+$/,
-  ""
-);
+const OFFICIAL_SITE_URL = "https://www.admadureiraatibaia.com.br";
+
+function normalizeSiteUrl(value?: string) {
+  return value?.trim().replace(/\/+$/, "") ?? "";
+}
+
+function isPreviewHost(value: string) {
+  try {
+    return new URL(value).hostname.endsWith(".vercel.app");
+  } catch {
+    return false;
+  }
+}
+
+const configuredSiteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const SITE_URL =
-  configuredSiteUrl || "https://admadureira-atibaia.vercel.app";
+  configuredSiteUrl && !isPreviewHost(configuredSiteUrl)
+    ? configuredSiteUrl
+    : OFFICIAL_SITE_URL;
 
 export const SITE_NAME = CHURCH_SHORT_NAME;
 export const SITE_DEFAULT_SHARE_IMAGE = "/opengraph-image";

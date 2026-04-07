@@ -85,9 +85,9 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
               <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                 Jornada organizada
               </p>
-              <h1 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
+              <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
                 Descubra planos para leitura diária e progresso espiritual
-              </h1>
+              </h2>
               <div className="space-y-4 text-[#555] leading-relaxed">
                 <p>
                   A proposta desta área é oferecer jornadas claras para quem

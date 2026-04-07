@@ -132,6 +132,9 @@ export default function Hero({ liveNow = null }: HeroProps) {
             />
           </div>
 
+          <h1 className="sr-only">
+            Assembleia de Deus Ministério Madureira em Atibaia
+          </h1>
           <div>
             <p className="font-script hero-title-glow leading-none text-[1.95rem] text-[#f7dfbb] sm:text-[2.45rem] md:text-[3.45rem] lg:text-[4.45rem] xl:text-[5.15rem]">
               Assembleia de Deus
