@@ -8,17 +8,17 @@ import {
   formatEbdDate,
   getClasseEbdInfo,
   getClassesEbd,
+  getEstadoProgressaoLicao,
   getLicaoDaSemana,
   getMetaEstadoProgressaoLicao,
   getProximaLicao,
-  getEstadoProgressaoLicao,
+  getTrimestre,
   getTrimestreEditorialStatus,
   getTrimestrePublicLessonCount,
-  getTrimestre,
   getTrimestresPorClasse,
+  isClasseEbd,
   isLicaoPubliclyAvailable,
   isTrimestreDraft,
-  isClasseEbd,
 } from "@/lib/ebd-utils";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -31,7 +31,9 @@ type PageProps = {
 
 export const revalidate = 3600;
 
-function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialStatus>) {
+function getQuarterStatusMeta(
+  status: ReturnType<typeof getTrimestreEditorialStatus>
+) {
   if (status === "draft") {
     return {
       label: "Em preparação",
@@ -175,6 +177,17 @@ export default async function EbdQuarterPage({ params }: PageProps) {
         getEstadoProgressaoLicao(trimestre, licaoEmDestaque)
       )
     : null;
+  const nowIso = new Date().toISOString();
+  const currentDate = new Date(nowIso);
+  const lessonsWithStatus = trimestre.licoes.map((licao) => {
+    const estado = getEstadoProgressaoLicao(trimestre, licao, currentDate);
+
+    return {
+      licao,
+      status: getMetaEstadoProgressaoLicao(estado),
+      isNavigable: isLicaoPubliclyAvailable(trimestre, licao, currentDate),
+    };
+  });
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -252,188 +265,289 @@ export default async function EbdQuarterPage({ params }: PageProps) {
           imageAlt={trimestre.titulo}
         />
 
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <Breadcrumb
-            classe={classe}
-            classeLabel={classeInfo.label}
-            edicaoLabel={trimestre.rotulo}
-          />
+        <section className="py-16 md:py-20 xl:py-24">
+          <div className="mx-auto max-w-7xl px-4 xl:px-6">
+            <Breadcrumb
+              classe={classe}
+              classeLabel={classeInfo.label}
+              edicaoLabel={trimestre.rotulo}
+            />
 
-          <div className="mb-12 grid grid-cols-1 gap-8 lg:grid-cols-[1.08fr_0.92fr]">
-            <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Visão geral do trimestre
-              </p>
-              <div
-                className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
-              >
-                {statusMeta.label}
-              </div>
-              <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
-                {trimestre.titulo}
-              </h2>
-              {trimestre.subtitulo ? (
-                <p className="mb-4 text-sm font-medium text-[#8b5b18]">
-                  {trimestre.subtitulo}
-                </p>
-              ) : null}
-              <div className="space-y-4 leading-relaxed text-[#555]">
-                <p>{trimestre.descricao}</p>
-                <p>
-                  {statusMeta.description}
-                </p>
-              </div>
-
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                    Classe
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
+              <div className="space-y-12">
+                <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8 lg:p-10">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    Visão geral do trimestre
                   </p>
-                  <p className="font-acme text-xl md:text-3xl text-[#212121]">
-                    {classeInfo.label}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                    Lições publicadas
-                  </p>
-                  <p className="font-acme text-xl md:text-3xl text-[#212121]">
-                    {publishedLessons}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                    Horário
-                  </p>
-                  <p className="text-sm leading-relaxed text-[#212121]">
-                    {classeInfo.horarioLabel}
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-                <Link href={`/ebd/${classe}`} className="ui-btn-secondary">
-                  Voltar para a classe
-                </Link>
-                <Link href="/programacao" className="ui-btn-ghost">
-                  Ver programação da EBD
-                </Link>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                Em destaque
-              </p>
-              {licaoEmDestaque ? (
-                <>
-                  <h2 className="mb-3 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
-                    {licaoEmDestaque.titulo}
-                  </h2>
-                  <p className="mb-2 text-sm font-medium text-[#8b5b18]">
-                    Lição {licaoEmDestaque.numero} •{" "}
-                    {formatEbdDate(licaoEmDestaque.data)}
-                  </p>
-                  {estadoLicaoEmDestaque ? (
-                    <div
-                      className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
-                    >
-                      {estadoLicaoEmDestaque.label}
-                    </div>
-                  ) : null}
-                  <p className="mb-4 text-sm leading-relaxed text-[#555]">
-                    {licaoEmDestaque.resumo}
-                  </p>
-                  <p className="mb-5 text-sm leading-relaxed text-[#555]">
-                    {isDraft
-                      ? "As lições deste trimestre ainda estão sendo preparadas e serão disponibilizadas no tempo certo."
-                      : licaoDaSemana?.trimestre.slug === trimestre.slug
-                      ? "Esta é a lição que acompanha o domingo mais próximo da classe."
-                      : "Esta edição está disponível para consulta e acompanhamento da classe."}
-                  </p>
-                  <Link
-                    href={`/ebd/${classe}/${trimestre.slug}/${licaoEmDestaque.slug}`}
-                    className="ui-btn-primary"
+                  <div
+                    className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
                   >
-                    Abrir lição
-                  </Link>
-                  {proximaLicao && proximaLicao.trimestre.slug === trimestre.slug ? (
-                    <p className="mt-4 text-sm text-[#555]">
-                      Próxima lição:{" "}
-                      <span className="font-semibold text-[#212121]">
-                        {proximaLicao.licao.titulo}
-                      </span>
-                      .
+                    {statusMeta.label}
+                  </div>
+                  <h2 className="mb-4 max-w-4xl font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
+                    {trimestre.titulo}
+                  </h2>
+                  {trimestre.subtitulo ? (
+                    <p className="mb-4 text-sm font-medium text-[#8b5b18]">
+                      {trimestre.subtitulo}
                     </p>
                   ) : null}
-                </>
-              ) : (
-                <p className="leading-relaxed text-[#555]">
-                  Nenhuma lição em destaque foi encontrada para este trimestre.
-                </p>
-              )}
+                  <div className="max-w-4xl space-y-4 text-base leading-relaxed text-[#555] lg:text-lg">
+                    <p>{trimestre.descricao}</p>
+                    <p>{statusMeta.description}</p>
+                  </div>
+
+                  <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Classe
+                      </p>
+                      <p className="font-acme text-xl text-[#212121] md:text-3xl">
+                        {classeInfo.label}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Lições publicadas
+                      </p>
+                      <p className="font-acme text-xl text-[#212121] md:text-3xl">
+                        {publishedLessons}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Horário
+                      </p>
+                      <p className="text-sm leading-relaxed text-[#212121]">
+                        {classeInfo.horarioLabel}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                    <Link href={`/ebd/${classe}`} className="ui-btn-secondary">
+                      Voltar para a classe
+                    </Link>
+                    <Link href="/programacao" className="ui-btn-ghost">
+                      Ver programação da EBD
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8 lg:hidden">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                    Em destaque
+                  </p>
+                  {licaoEmDestaque ? (
+                    <>
+                      <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl">
+                        {licaoEmDestaque.titulo}
+                      </h2>
+                      <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                        Lição {licaoEmDestaque.numero} •{" "}
+                        {formatEbdDate(licaoEmDestaque.data)}
+                      </p>
+                      {estadoLicaoEmDestaque ? (
+                        <div
+                          className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
+                        >
+                          {estadoLicaoEmDestaque.label}
+                        </div>
+                      ) : null}
+                      <p className="mb-4 text-sm leading-relaxed text-[#555]">
+                        {licaoEmDestaque.resumo}
+                      </p>
+                      <p className="mb-5 text-sm leading-relaxed text-[#555]">
+                        {isDraft
+                          ? "As lições deste trimestre ainda estão sendo preparadas e serão disponibilizadas no tempo certo."
+                          : licaoDaSemana?.trimestre.slug === trimestre.slug
+                            ? "Esta é a lição que acompanha o domingo mais próximo da classe."
+                            : "Esta edição está disponível para consulta e acompanhamento da classe."}
+                      </p>
+                      <Link
+                        href={`/ebd/${classe}/${trimestre.slug}/${licaoEmDestaque.slug}`}
+                        className="ui-btn-primary"
+                      >
+                        Abrir lição
+                      </Link>
+                    </>
+                  ) : (
+                    <p className="leading-relaxed text-[#555]">
+                      Nenhuma lição em destaque foi encontrada para este trimestre.
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <div className="mb-6 max-w-4xl">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      Trilha do trimestre
+                    </p>
+                    <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
+                      Acompanhe a continuidade das 13 lições desta edição
+                    </h2>
+                    <p className="leading-relaxed text-[#555]">
+                      {isDraft
+                        ? "As lições deste trimestre serão disponibilizadas aos poucos. Enquanto isso, você já pode ver a sequência completa da edição."
+                        : "Acompanhe o andamento das lições entre as que já passaram, as disponíveis agora, as próximas e as que ainda estão em preparo."}
+                    </p>
+                  </div>
+
+                  <div className="mb-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
+                    <div className="rounded-2xl border border-black/5 bg-white p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Concluídas
+                      </p>
+                      <p className="font-acme text-2xl text-[#212121]">
+                        {contagemProgressao.concluida}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Liberadas
+                      </p>
+                      <p className="font-acme text-2xl text-[#212121]">
+                        {contagemProgressao.liberada}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-[#ffa726]/15 bg-[#fffaf3] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Em breve
+                      </p>
+                      <p className="font-acme text-2xl text-[#212121]">
+                        {contagemProgressao["em-breve"]}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        Em preparo
+                      </p>
+                      <p className="font-acme text-2xl text-[#212121]">
+                        {contagemProgressao.draft}
+                      </p>
+                    </div>
+                  </div>
+
+                  <EbdLessonsGrid
+                    classe={classe}
+                    edicao={trimestre.slug}
+                    trimestreRotulo={trimestre.rotulo}
+                    licoes={trimestre.licoes}
+                    trimestreStatusEditorial={trimestre.statusEditorial}
+                    initialNowIso={nowIso}
+                  />
+                </div>
+              </div>
+
+              <aside className="hidden lg:block">
+                <div className="sticky top-28 space-y-6">
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                      Em destaque
+                    </p>
+                    {licaoEmDestaque ? (
+                      <>
+                        <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
+                          {licaoEmDestaque.titulo}
+                        </h2>
+                        <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                          Lição {licaoEmDestaque.numero} •{" "}
+                          {formatEbdDate(licaoEmDestaque.data)}
+                        </p>
+                        {estadoLicaoEmDestaque ? (
+                          <div
+                            className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
+                          >
+                            {estadoLicaoEmDestaque.label}
+                          </div>
+                        ) : null}
+                        <p className="text-sm leading-relaxed text-[#555]">
+                          {licaoEmDestaque.resumo}
+                        </p>
+                        <div className="mt-5 flex flex-col gap-3">
+                          <Link
+                            href={`/ebd/${classe}/${trimestre.slug}/${licaoEmDestaque.slug}`}
+                            className="ui-btn-primary"
+                          >
+                            Abrir lição
+                          </Link>
+                          {proximaLicao &&
+                          proximaLicao.trimestre.slug === trimestre.slug ? (
+                            <p className="text-sm leading-relaxed text-[#555]">
+                              Próxima lição em{" "}
+                              <span className="font-semibold text-[#212121]">
+                                {formatEbdDate(proximaLicao.licao.data)}
+                              </span>
+                              .
+                            </p>
+                          ) : null}
+                        </div>
+                      </>
+                    ) : (
+                      <p className="leading-relaxed text-[#555]">
+                        Nenhuma lição em destaque foi encontrada para este trimestre.
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      Lições da edição
+                    </p>
+                    <div className="space-y-3">
+                      {lessonsWithStatus.map(({ licao, status, isNavigable }) => {
+                        const itemClassName = `block rounded-2xl border p-4 transition-colors ${
+                          licaoEmDestaque?.id === licao.id
+                            ? "border-[#ffa726]/30 bg-[#fff8ee]"
+                            : "border-black/5 bg-[#fafafa]"
+                        } ${
+                          isNavigable
+                            ? "hover:border-[#ffa726]/20 hover:bg-white"
+                            : ""
+                        }`;
+                        const content = (
+                          <>
+                            <div className="flex items-start justify-between gap-3">
+                              <div>
+                                <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                                  Lição {licao.numero}
+                                </p>
+                                <p className="mt-1 font-semibold text-[#212121]">
+                                  {licao.titulo}
+                                </p>
+                              </div>
+                              <span
+                                className={`inline-flex rounded-full border px-2 py-1 text-[9px] font-bold tracking-[0.14em] uppercase ${status.badgeClassName}`}
+                              >
+                                {status.label}
+                              </span>
+                            </div>
+                            <p className="mt-2 text-sm text-[#666]">
+                              {formatEbdDate(licao.data)}
+                            </p>
+                          </>
+                        );
+
+                        return isNavigable ? (
+                          <Link
+                            key={licao.id}
+                            href={`/ebd/${classe}/${trimestre.slug}/${licao.slug}`}
+                            className={itemClassName}
+                          >
+                            {content}
+                          </Link>
+                        ) : (
+                          <article key={licao.id} className={itemClassName}>
+                            {content}
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
-
-          <div className="mb-6 max-w-3xl">
-            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-              Trilha do trimestre
-            </p>
-            <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
-              Acompanhe a continuidade das 13 lições desta edição
-            </h2>
-            <p className="leading-relaxed text-[#555]">
-              {isDraft
-                ? "As lições deste trimestre serão disponibilizadas aos poucos. Enquanto isso, você já pode ver a sequência completa da edição."
-                : "Acompanhe o andamento das lições entre as que já passaram, as disponíveis agora, as próximas e as que ainda estão em preparo."}
-            </p>
-          </div>
-
-          <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
-            <div className="rounded-2xl border border-black/5 bg-white p-4">
-              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Concluídas
-              </p>
-              <p className="font-acme text-2xl text-[#212121]">
-                {contagemProgressao.concluida}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Liberadas
-              </p>
-              <p className="font-acme text-2xl text-[#212121]">
-                {contagemProgressao.liberada}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#ffa726]/15 bg-[#fffaf3] p-4">
-              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Em breve
-              </p>
-              <p className="font-acme text-2xl text-[#212121]">
-                {contagemProgressao["em-breve"]}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-              <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Em preparo
-              </p>
-              <p className="font-acme text-2xl text-[#212121]">
-                {contagemProgressao.draft}
-              </p>
-            </div>
-          </div>
-
-          <EbdLessonsGrid
-            classe={classe}
-            edicao={trimestre.slug}
-            trimestreRotulo={trimestre.rotulo}
-            licoes={trimestre.licoes}
-            trimestreStatusEditorial={trimestre.statusEditorial}
-            initialNowIso={new Date().toISOString()}
-          />
-        </div>
         </section>
       </main>
     </>
