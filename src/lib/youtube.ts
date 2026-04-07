@@ -31,6 +31,20 @@ export const YOUTUBE_LIMITS = {
 
 type YouTubeDataSource = "api" | "rss" | "html" | "fallback";
 
+type YouTubeDiagnosticsSnapshot = {
+  lastErrorAt: string | null;
+  lastError: {
+    stage: string;
+    target: string;
+    message: string;
+  } | null;
+  lastFallbackAt: string | null;
+  lastFallback: {
+    context: string;
+    sources?: Record<string, string>;
+  } | null;
+};
+
 export interface YouTubeVideo {
   id: string;
   title: string;
@@ -128,6 +142,75 @@ type ThumbnailMap = Partial<
     }
   >
 >;
+
+const youtubeDiagnosticsState: YouTubeDiagnosticsSnapshot = {
+  lastErrorAt: null,
+  lastError: null,
+  lastFallbackAt: null,
+  lastFallback: null,
+};
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return "Erro desconhecido";
+  }
+}
+
+function logYouTubeFetchError(stage: string, target: string, error: unknown) {
+  const payload = {
+    stage,
+    target,
+    message: getErrorMessage(error),
+  };
+
+  youtubeDiagnosticsState.lastErrorAt = new Date().toISOString();
+  youtubeDiagnosticsState.lastError = payload;
+
+  console.error("[youtube] fetch failed", payload);
+}
+
+function logYouTubeFallback(
+  context: string,
+  sources?: Record<string, string>
+) {
+  const payload = {
+    context,
+    ...(sources ? { sources } : {}),
+  };
+
+  youtubeDiagnosticsState.lastFallbackAt = new Date().toISOString();
+  youtubeDiagnosticsState.lastFallback = payload;
+
+  console.warn("[youtube] using fallback content", payload);
+}
+
+export function getYouTubeDiagnosticsSnapshot(): YouTubeDiagnosticsSnapshot {
+  return {
+    lastErrorAt: youtubeDiagnosticsState.lastErrorAt,
+    lastError: youtubeDiagnosticsState.lastError
+      ? { ...youtubeDiagnosticsState.lastError }
+      : null,
+    lastFallbackAt: youtubeDiagnosticsState.lastFallbackAt,
+    lastFallback: youtubeDiagnosticsState.lastFallback
+      ? {
+          context: youtubeDiagnosticsState.lastFallback.context,
+          ...(youtubeDiagnosticsState.lastFallback.sources
+            ? { sources: { ...youtubeDiagnosticsState.lastFallback.sources } }
+            : {}),
+        }
+      : null,
+  };
+}
 
 function getYouTubeWatchUrl(videoId: string) {
   return `${YOUTUBE_WEB_BASE}/watch?v=${videoId}`;
@@ -383,7 +466,8 @@ function extractInitialDataJson(html: string) {
 
   try {
     return JSON.parse(html.slice(start + marker.length, end)) as unknown;
-  } catch {
+  } catch (error) {
+    logYouTubeFetchError("extractInitialDataJson", "ytInitialData", error);
     return null;
   }
 }
@@ -399,11 +483,17 @@ async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
     });
 
     if (!response.ok) {
+      logYouTubeFetchError(
+        "fetchYouTubeJson",
+        url.toString(),
+        `HTTP ${response.status}`
+      );
       return null;
     }
 
     return (await response.json()) as T;
-  } catch {
+  } catch (error) {
+    logYouTubeFetchError("fetchYouTubeJson", url.toString(), error);
     return null;
   } finally {
     clearTimeout(timeoutId);
@@ -421,11 +511,17 @@ async function fetchYouTubeText(url: string): Promise<string | null> {
     });
 
     if (!response.ok) {
+      logYouTubeFetchError(
+        "fetchYouTubeText",
+        url,
+        `HTTP ${response.status}`
+      );
       return null;
     }
 
     return await response.text();
-  } catch {
+  } catch (error) {
+    logYouTubeFetchError("fetchYouTubeText", url, error);
     return null;
   } finally {
     clearTimeout(timeoutId);
@@ -1105,22 +1201,34 @@ export async function getYouTubeMessagesPlaylistVideos(
   limit = YOUTUBE_LIMITS.messagePlaylist
 ) {
   // /mensagens = curadoria da playlist oficial de pregações e ministrações.
-  return getPlaylistVideos(
+  const result = await getPlaylistVideos(
     YOUTUBE_PLAYLIST_IDS.messages,
     limit,
     fallbackMessagesPlaylist
   );
+
+  if (result.usingFallback) {
+    logYouTubeFallback("messages-playlist", { playlist: result.source });
+  }
+
+  return result;
 }
 
 export async function getYouTubeTestimoniesPlaylistVideos(
   limit = YOUTUBE_LIMITS.testimonyPlaylist
 ) {
   // /testemunhos = curadoria da playlist oficial de testemunhos.
-  return getPlaylistVideos(
+  const result = await getPlaylistVideos(
     YOUTUBE_PLAYLIST_IDS.testimonies,
     limit,
     fallbackTestimoniesPlaylist
   );
+
+  if (result.usingFallback) {
+    logYouTubeFallback("testimonies-playlist", { playlist: result.source });
+  }
+
+  return result;
 }
 
 export async function getYouTubeChannelVideos(
@@ -1151,11 +1259,15 @@ export async function getYouTubeChannelVideos(
     };
   }
 
-  return {
+  const result = {
     videos: fallbackRecentVideos.slice(0, limit),
     source: "fallback",
     usingFallback: true,
   };
+
+  logYouTubeFallback("channel-videos", { channelVideos: result.source });
+
+  return result;
 }
 
 export async function getYouTubeChannelLiveVideos(
@@ -1210,11 +1322,15 @@ export async function getYouTubeChannelLiveVideos(
     }
   }
 
-  return {
+  const result = {
     videos: fallbackRecentLiveVideos.slice(0, limit),
     source: "fallback",
     usingFallback: true,
   };
+
+  logYouTubeFallback("channel-live-videos", { liveVideos: result.source });
+
+  return result;
 }
 
 export async function getYouTubeFeed() {
@@ -1229,7 +1345,7 @@ export async function getYouTubeFeed() {
     (video) => video.id !== liveState.liveNow?.id
   );
 
-  return {
+  const result = {
     liveNow: liveState.liveNow,
     upcomingLive: liveState.upcomingLive,
     recentVideos,
@@ -1239,6 +1355,15 @@ export async function getYouTubeFeed() {
       videos: channelVideos.source,
     },
   };
+
+  if (result.usingFallback) {
+    logYouTubeFallback("home-feed", {
+      live: result.sources.live,
+      videos: result.sources.videos,
+    });
+  }
+
+  return result;
 }
 
 export async function getYouTubeVideosPageFeed() {
@@ -1261,7 +1386,7 @@ export async function getYouTubeVideosPageFeed() {
     (video) => !hiddenVideoIds.has(video.id)
   );
 
-  return {
+  const result = {
     liveNow: liveState.liveNow,
     upcomingLive: liveState.upcomingLive,
     featuredVideos: featuredVideos.videos,
@@ -1276,4 +1401,14 @@ export async function getYouTubeVideosPageFeed() {
       videos: liveVideos.source,
     },
   };
+
+  if (result.usingFallback) {
+    logYouTubeFallback("videos-page-feed", {
+      live: result.sources.live,
+      featured: result.sources.featured,
+      videos: result.sources.videos,
+    });
+  }
+
+  return result;
 }
