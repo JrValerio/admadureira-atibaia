@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CHURCH_SHORT_NAME } from "@/data/site";
+import { env } from "@/lib/env";
 
 const OFFICIAL_SITE_URL = "https://www.admadureiraatibaia.com.br";
 
@@ -15,7 +16,7 @@ function isPreviewHost(value: string) {
   }
 }
 
-const configuredSiteUrl = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
+const configuredSiteUrl = normalizeSiteUrl(env.NEXT_PUBLIC_SITE_URL);
 
 export const SITE_URL =
   configuredSiteUrl && !isPreviewHost(configuredSiteUrl)
