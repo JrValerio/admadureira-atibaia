@@ -51,7 +51,7 @@ export default async function TestemunhosPage() {
         variant="full"
         label="Histórias de transformação"
         title="Testemunhos de Fé"
-        description="Vídeos reais da playlist oficial de Testemunhos da AD Madureira Atibaia, preservando a página como espaço de edificação e memória da ação de Deus."
+        description="Leia e assista testemunhos de fé que fortalecem a igreja e recordam a ação de Deus em nossa caminhada."
         image={igrejaHeroMedia.testemunhos}
         imageAlt="Irmãs congregando na AD Madureira Atibaia"
         imageClassName="object-[center_34%]"
@@ -84,14 +84,13 @@ export default async function TestemunhosPage() {
               Comunidade viva
             </p>
             <p className="text-[#555] leading-relaxed">
-              Esta página acompanha prioritariamente a playlist oficial de
-              Testemunhos para substituir conteúdo fictício por vídeos reais do
-              canal, mantendo a mesma vitrine de edificação da igreja.
+              Esta página reúne testemunhos de pessoas da comunidade para
+              lembrar que Deus continua transformando vidas, fortalecendo lares
+              e sustentando a igreja em cada tempo.
             </p>
             <p className="text-[#777] text-sm leading-relaxed mt-3">
-              Quando houver necessidade de curadoria complementar, ainda é
-              possível enriquecer título, resumo ou contexto sem quebrar a
-              origem principal baseada na playlist correta.
+              Leia com calma, compartilhe com quem precisa de esperança e
+              permita que cada história também renove a sua fé.
             </p>
           </div>
 

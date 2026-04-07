@@ -18,7 +18,7 @@ export default function GalleryAlbumCard({
   const descricao =
     album.shortDescription ??
     album.description ??
-    "Veja os registros publicados deste álbum da AD Madureira Atibaia.";
+    "Veja os registros deste álbum da AD Madureira Atibaia.";
 
   return (
     <Link

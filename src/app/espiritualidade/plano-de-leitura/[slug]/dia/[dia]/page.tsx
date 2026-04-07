@@ -228,7 +228,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
                         {title}
                       </h2>
                       <p className="text-sm text-[#777]">
-                        Abra este capítulo isoladamente na Bíblia Online do site.
+                        Abra este capítulo separadamente na Bíblia Online.
                       </p>
                     </div>
 

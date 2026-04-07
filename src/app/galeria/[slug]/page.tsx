@@ -33,8 +33,7 @@ export async function generateMetadata({ params }: Props) {
   if (!album) {
     return buildPageMetadata({
       title: "Galeria | AD Madureira Atibaia",
-      description:
-        "Veja os álbuns públicos publicados pela AD Madureira Atibaia.",
+      description: "Veja os álbuns fotográficos da AD Madureira Atibaia.",
       path: "/galeria",
     });
   }
@@ -44,7 +43,7 @@ export async function generateMetadata({ params }: Props) {
     description:
       album.description ??
       album.shortDescription ??
-      "Veja os registros fotográficos publicados neste álbum da AD Madureira Atibaia.",
+      "Veja os registros fotográficos deste álbum da AD Madureira Atibaia.",
     path: `/galeria/${album.slug}`,
     image: album.coverImage.src,
   });
@@ -91,7 +90,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
     description:
       album.description ??
       album.shortDescription ??
-      "Álbum fotográfico publicado pela AD Madureira Atibaia.",
+      "Álbum fotográfico da AD Madureira Atibaia.",
     url: canonicalUrl,
     datePublished: album.date,
     inLanguage: "pt-BR",
@@ -125,7 +124,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
           description={
             album.description ??
             album.shortDescription ??
-            "Registros fotográficos publicados pela AD Madureira Atibaia."
+            "Registros fotográficos da AD Madureira Atibaia."
           }
           image={album.coverImage.src}
           imageAlt={album.coverImage.alt}
@@ -153,7 +152,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
 
             <div className="ui-panel ui-panel-pad-sm">
               <p className="ui-section-eyebrow ui-section-eyebrow--gold">
-                Álbum publicado
+                Álbum da igreja
               </p>
 
               <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -162,9 +161,8 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                     Reviva este registro com calma
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                    Esta seleção pública reúne {album.images.length} fotos
-                    organizadas em uma navegação simples, pensada para valorizar
-                    o momento registrado sem perder clareza visual.
+                    Este álbum reúne {album.images.length} fotos organizadas
+                    para valorizar com clareza o momento vivido pela igreja.
                   </p>
                 </div>
 
@@ -187,9 +185,8 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                     {getGaleriaCategoryLabel(album.category)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                    Cada álbum é categorizado para facilitar futuras expansões
-                    da galeria sem misturar culto, evento especial e conteúdo de
-                    ensino.
+                    Cada álbum ajuda a identificar o contexto em que aquele
+                    momento foi vivido pela igreja.
                   </p>
                 </article>
 
@@ -201,8 +198,8 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                     {formatGaleriaDate(album.date)}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                    O álbum mantém sua data própria para facilitar organização,
-                    leitura cronológica e futuras atualizações do acervo público.
+                    A data ajuda a lembrar quando esse momento especial foi
+                    vivido na caminhada da igreja.
                   </p>
                 </article>
 
@@ -249,9 +246,8 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                   Este álbum ainda não recebeu fotos suficientes
                 </h3>
                 <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  A estrutura da página já está pronta, mas as imagens ainda não
-                  foram cadastradas neste álbum. Quando o material for
-                  publicado, ele aparecerá aqui automaticamente.
+                  As imagens deste álbum ainda serão adicionadas. Assim que os
+                  registros estiverem disponíveis, eles aparecerão aqui.
                 </p>
               </div>
             )}

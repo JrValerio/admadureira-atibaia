@@ -212,7 +212,7 @@ export default async function EventoPage({ params }: PageProps) {
                           Base bíblica
                         </p>
                         <p className="mb-4 text-sm leading-relaxed text-[#666]">
-                          Abra cada referência diretamente na Bíblia Online do site.
+                          Abra cada referência diretamente na Bíblia Online.
                         </p>
                         <div className="flex flex-wrap gap-3">
                           {evento.baseBiblica?.map((item) => (
@@ -231,7 +231,7 @@ export default async function EventoPage({ params }: PageProps) {
                     {recursosRelacionados.length > 0 && (
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
                         <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                          Continue no site
+                          Continue navegando
                         </p>
                         <div className="space-y-3">
                           {recursosRelacionados.map((item) => (

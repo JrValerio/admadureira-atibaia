@@ -228,7 +228,7 @@ export default async function CultoPage({ params }: Props) {
                       Base bíblica
                     </p>
                     <p className="text-sm leading-relaxed text-[#666] mb-5">
-                      Abra cada referência diretamente na Bíblia Online do site.
+                      Abra cada referência diretamente na Bíblia Online.
                     </p>
                     <div className="flex flex-wrap gap-3">
                       {culto.baseBiblica?.map((item) => (
@@ -247,7 +247,7 @@ export default async function CultoPage({ params }: Props) {
                 {recursosRelacionados.length > 0 && (
                   <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
                     <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-                      Continue no site
+                      Continue navegando
                     </p>
                     <div className="space-y-4">
                       {recursosRelacionados.map((item) => (

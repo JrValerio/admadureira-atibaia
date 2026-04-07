@@ -85,8 +85,8 @@ export const cursoTeologiaData = {
     description:
       "Para informações sobre inscrição, vagas e próximos passos, entre em contato com a sede da igreja.",
     notes: [
-      "O canal oficial de inscrição será comunicado pela coordenação do curso.",
-      "Em caso de vagas limitadas, a coordenação orientará sobre a lista de interesse.",
+      "A equipe da igreja orientará sobre inscrições, vagas e próximos passos.",
+      "Se houver vagas limitadas, você receberá a orientação necessária ao entrar em contato.",
     ],
   },
   faq: [
@@ -98,12 +98,12 @@ export const cursoTeologiaData = {
     {
       question: "Precisa ser obreiro?",
       answer:
-        "Não necessariamente. A participação seguirá as orientações oficiais da coordenação, mas a proposta do curso é acolher pessoas interessadas em aprender mais das Escrituras.",
+        "Não necessariamente. O curso busca acolher pessoas interessadas em aprender mais das Escrituras e crescer no conhecimento bíblico.",
     },
     {
       question: "Tem mensalidade?",
       answer:
-        "As informações sobre investimento, se houver, serão confirmadas pela coordenação do curso e atualizadas nesta página.",
+        "Se houver investimento, a igreja informará no momento da inscrição.",
     },
     {
       question: "Precisa fazer inscrição?",
@@ -113,7 +113,7 @@ export const cursoTeologiaData = {
     {
       question: "Tem certificado?",
       answer:
-        "A política de certificação ainda será confirmada pela coordenação e será publicada aqui quando estiver alinhada oficialmente.",
+        "A igreja orientará sobre certificado e critérios de participação no momento oportuno.",
     },
   ],
 } as const;

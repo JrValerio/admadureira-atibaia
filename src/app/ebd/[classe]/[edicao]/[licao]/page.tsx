@@ -341,14 +341,12 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
                     <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
                       <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                        Publicação gradual
+                        Em breve
                       </p>
                       <p className="leading-relaxed text-[#555]">
-                        Esta lição já está mapeada na edição para orientar a
-                        navegação anual da EBD, mas o conteúdo completo ainda
-                        está em preparação. Quando a curadoria editorial for
-                        concluída, esta página receberá resumo, leitura
-                        bíblica, apoio ao professor e revisão final.
+                        Esta lição ainda está em preparação. Em breve, esta
+                        página receberá o conteúdo completo para estudo,
+                        leitura bíblica e apoio à classe.
                       </p>
                     </div>
 
@@ -434,8 +432,8 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           Tópicos da lição
                         </h2>
                         <p className="leading-relaxed text-[#555]">
-                          A sequência editorial dos tópicos foi preservada para
-                          manter o fluxo pedagógico da lição.
+                          A lição foi organizada em tópicos para facilitar o
+                          estudo e a compreensão do conteúdo.
                         </p>
                       </div>
 

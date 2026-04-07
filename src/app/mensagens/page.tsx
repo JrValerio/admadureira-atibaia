@@ -64,7 +64,7 @@ export default async function MensagensPage() {
         variant="full"
         label="Pregações e ministrações"
         title="Mensagens da Igreja"
-        description="Curadoria da playlist oficial de Mensagens da AD Madureira Atibaia, com vídeos reais do canal e espaço preservado para enriquecimento editorial futuro."
+        description="Assista às mensagens da igreja e acompanhe pregações recentes para ouvir, meditar e compartilhar ao longo da semana."
         image={igrejaHeroMedia.mensagens}
         imageAlt="Púlpito da AD Madureira Atibaia durante ministração"
       />
@@ -80,10 +80,9 @@ export default async function MensagensPage() {
                   Revise a mensagem mais recente e acompanhe a playlist da igreja
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  Esta página acompanha a playlist oficial de Mensagens do canal.
-                  Comece pela publicação mais recente, abra o YouTube completo da
-                  igreja e, se quiser participar presencialmente, veja também a
-                  programação.
+                  Comece pela mensagem mais recente, acompanhe outras
+                  pregações da igreja e, se quiser participar presencialmente,
+                  veja também a programação da semana.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -137,17 +136,17 @@ export default async function MensagensPage() {
 
           <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
             <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-              Conteúdo recorrente
+              Palavra para a semana
             </p>
             <p className="text-[#555] leading-relaxed">
-              Esta área usa prioritariamente a playlist oficial de Mensagens da
-              igreja para exibir vídeos reais com título, thumbnail, data e link
-              direto para cada pregação publicada no canal.
+              Aqui você encontra mensagens recentes da igreja com acesso rápido
+              às pregações, aos pregadores identificados e aos textos bíblicos
+              que acompanham cada ministração.
             </p>
             <p className="text-[#777] text-sm leading-relaxed mt-3">
-              Quando houver metadado editorial adicional, esta mesma estrutura
-              continua compatível com pregador, resumo expandido e versículo-base
-              sem exigir retrabalho na integração com o YouTube.
+              Use esta página para ouvir com calma, compartilhar com outras
+              pessoas e revisitar aquilo que Deus ministrou ao coração da
+              igreja.
             </p>
           </div>
 

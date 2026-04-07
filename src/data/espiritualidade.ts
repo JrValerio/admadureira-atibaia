@@ -63,10 +63,10 @@ export const spiritualFeatures: SpiritualFeature[] = [
     href: "/espiritualidade/radio",
     titulo: "Rádio",
     descricao:
-      "Área preparada para reunir transmissões da igreja, louvores, mensagens em áudio e blocos de programação ao longo da semana.",
-    destaque: "Canal em implantação",
+      "Em breve, acompanhe transmissões da igreja, louvores e mensagens em áudio para ouvir ao longo da semana.",
+    destaque: "Em breve",
     uso: "Quando quiser seguir com louvor, oração e Palavra enquanto cuida da rotina.",
-    ctaLabel: "Ouvir proposta da rádio",
+    ctaLabel: "Conhecer a rádio",
     supportLabel: "Explorar podcast",
     supportHref: "/espiritualidade/podcast",
     category: "complementary",
@@ -75,8 +75,8 @@ export const spiritualFeatures: SpiritualFeature[] = [
     href: "/espiritualidade/podcast",
     titulo: "Podcast",
     descricao:
-      "Área preparada para episódios em áudio com mensagens, conversas, séries temáticas e conteúdos pastorais para ouvir durante a semana.",
-    destaque: "Conteúdo em preparação",
+      "Em breve, acompanhe episódios em áudio com mensagens, conversas e reflexões para ouvir durante a semana.",
+    destaque: "Em breve",
     uso: "Quando quiser acompanhar episódios e séries em áudio com mais calma ao longo da semana.",
     ctaLabel: "Explorar podcast",
     supportLabel: "Ver rádio",
@@ -95,8 +95,8 @@ export const complementarySpiritualFeatures = spiritualFeatures.filter(
 
 export const radioConfig = {
   streamUrl: "",
-  streamHostLabel: "Link de streaming ainda não configurado",
-  statusLabel: "Canal em implantação",
+  streamHostLabel: "Novidades sobre a transmissão serão compartilhadas em breve.",
+  statusLabel: "Em breve",
   resumo:
     "A rádio da igreja foi pensada para concentrar momentos de oração, louvor, ministrações e conteúdos de edificação em uma única experiência de áudio.",
   horarios: [
@@ -129,9 +129,9 @@ export const podcastConfig = {
   spotifyEmbedUrl: "",
   youtubePlaylistUrl: "https://www.youtube.com/@ADMadureiraAtibaia",
   youtubeChannelLabel: "Acompanhar no YouTube",
-  statusLabel: "Conteúdo em preparação",
+  statusLabel: "Em breve",
   resumo:
-    "O podcast da igreja foi pensado para reunir episódios em áudio com mensagens, conversas pastorais, séries temáticas e reflexões para acompanhar a rotina ao longo da semana.",
+    "O podcast da igreja reunirá episódios em áudio com mensagens, conversas pastorais, séries temáticas e reflexões para acompanhar a rotina ao longo da semana.",
   plataformas: ["Spotify", "YouTube", "Amazon Music"],
   linhasEditoriais: [
     "Mensagens em áudio para ouvir durante a semana",

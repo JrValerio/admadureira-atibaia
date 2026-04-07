@@ -196,7 +196,7 @@ export const programacaoSemanal: ItemSemanal[] = [
     slug: "escola-biblica-dominical",
     descricao: [
       "A Escola Bíblica Dominical carrega uma herança preciosa do ensino cristão no Brasil. Uma das referências históricas mais lembradas remete a Petrópolis, em 1855, com o trabalho do casal Robert e Sarah Kalley, mostrando que a formação bíblica sempre foi tratada como investimento real na vida da igreja e das famílias.",
-      "Na AD Madureira Atibaia, essa herança continua viva todos os domingos. A Palavra é estudada com seriedade, as classes acompanham o trimestre com clareza e o próprio site mantém a área da EBD com a lição da semana para quem deseja continuar aprendendo ao longo dos dias.",
+      "Na AD Madureira Atibaia, essa herança continua viva todos os domingos. A Palavra é estudada com seriedade, as classes acompanham o trimestre com clareza e a igreja segue aprendendo junta ao longo da semana.",
     ].join("\n\n"),
     convite:
       "Traga sua família para aprender a Palavra com profundidade, comunhão e propósito. A EBD é lugar de crescimento, convicção e transformação pela verdade bíblica.",

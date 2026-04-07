@@ -18,7 +18,7 @@ export default function VideosPage() {
         variant="full"
         label="Vídeo e transmissão"
         title="Cultos e transmissões"
-        description="Veja o que está ao vivo, acompanhe os destaques definidos pela igreja e use esta área para assistir somente às lives e transmissões do canal."
+        description="Acompanhe o que está ao vivo e reveja transmissões recentes da AD Madureira Atibaia em um só lugar."
         image={igrejaHeroMedia.videos}
         imageAlt="Púlpito da AD Madureira Atibaia preparado para transmissão"
       />
@@ -31,14 +31,13 @@ export default function VideosPage() {
             <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-3xl">
                 <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                  Use esta área para o que está ao vivo e para o acervo de transmissões do canal
+                  Encontre as transmissões da igreja em um só lugar
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                  Aqui você encontra a live atual, dois destaques fixados pela
-                  igreja e somente os vídeos de transmissão do canal. Quando
-                  quiser mensagens organizadas por playlist e com espaço para
-                  metadados editoriais, siga para a área de Mensagens. Para ver
-                  a rotina presencial da igreja, vá para Programação.
+                  Aqui você encontra a live atual, os principais destaques e as
+                  transmissões recentes da igreja. Se quiser ouvir pregações com
+                  mais calma, siga para Mensagens. Se quiser participar
+                  presencialmente, veja a Programação.
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
@@ -63,8 +62,8 @@ export default function VideosPage() {
                   Quando quiser assistir agora
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                  Este hub é o melhor caminho para abrir a transmissão atual ou
-                  voltar para as lives mais importantes do canal.
+                  Abra a transmissão atual ou reveja as lives mais recentes da
+                  igreja com rapidez.
                 </p>
               </article>
 
@@ -76,9 +75,8 @@ export default function VideosPage() {
                   Quando quiser ensino mais organizado
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                  A área de Mensagens acompanha a playlist curada de pregações
-                  para separar as transmissões do canal da biblioteca editorial
-                  de ensinos.
+                  A página de Mensagens reúne pregações e ministrações para quem
+                  deseja ouvir com mais calma ao longo da semana.
                 </p>
               </article>
 
@@ -90,8 +88,8 @@ export default function VideosPage() {
                   Quando quiser participar presencialmente
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                  Se o objetivo for saber dia, horário e ritmo da vida da
-                  igreja, a rota certa é Programação.
+                  Para saber dias, horários e a rotina da igreja, siga para a
+                  Programação.
                 </p>
               </article>
             </div>

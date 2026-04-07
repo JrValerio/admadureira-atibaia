@@ -116,7 +116,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ef5350]" />
-                  <span>Abra cada capítulo diretamente na Bíblia Online do site.</span>
+                  <span>Abra cada capítulo diretamente na Bíblia Online.</span>
                 </li>
               </ul>
             </div>

@@ -40,7 +40,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em preparação",
       badgeClassName: "border-black/10 bg-white text-[#666]",
       description:
-        "Estrutura anual já aberta no site, com publicação gradual das lições conforme a curadoria editorial for concluída.",
+        "Este trimestre está sendo preparado e as lições serão disponibilizadas no tempo certo.",
     };
   }
 
@@ -49,7 +49,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em publicação",
       badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
       description:
-        "Este trimestre já começou a ser publicado e receberá novas lições e subsídios ao longo do período.",
+        "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
     };
   }
 
@@ -276,12 +276,11 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 Classes disponíveis
               </p>
               <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">
-                Classes publicadas com caminho claro de estudo
+                Classes disponíveis para estudo
               </h2>
               <p className="leading-relaxed text-[#555]">
-                As classes com conteúdo já publicado reúnem trimestres, lições
-                e material de apoio para facilitar a continuidade da Escola
-                Bíblica Dominical ao longo da semana.
+                Aqui você acompanha as classes da EBD com trimestres, lições e
+                material de apoio para continuar estudando durante a semana.
               </p>
             </div>
 
@@ -349,9 +348,8 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 Edições publicadas da classe {classeInfo.label.toLowerCase()}
               </h2>
               <p className="leading-relaxed text-[#555]">
-                Acompanhe o trimestre atual e as edições já publicadas da
-                classe, enquanto os próximos ciclos editoriais seguem em
-                preparação interna.
+                Acompanhe o trimestre atual e as edições já disponíveis da
+                classe para seguir estudando com continuidade.
               </p>
             </div>
 

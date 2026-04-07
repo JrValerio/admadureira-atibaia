@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   ...buildPageMetadata({
     title: "Podcast | AD Madureira Atibaia",
     description:
-      "Página preparada para episódios em áudio, séries temáticas e distribuição do podcast da AD Madureira Atibaia.",
+      "Acompanhe novidades do podcast da AD Madureira Atibaia e veja o espaço reservado para futuros episódios em áudio.",
     path: "/espiritualidade/podcast",
     image: igrejaHeroMedia.podcast,
   }),
@@ -44,7 +44,7 @@ export default function PodcastPage() {
         variant="full"
         label="Conteúdo em áudio"
         title="Podcast"
-        description="Uma página preparada para reunir episódios em áudio, séries temáticas e conversas que fortaleçam a fé ao longo da semana."
+        description="Um espaço para acompanhar episódios em áudio, séries temáticas e conversas que fortaleçam a fé ao longo da semana."
         image={igrejaHeroMedia.podcast}
         imageAlt="Púlpito da AD Madureira Atibaia preparado para conteúdos em áudio"
         imageClassName="object-[center_36%]"
@@ -77,9 +77,9 @@ export default function PodcastPage() {
                 {podcastConfig.resumo}
               </p>
               <p className="text-[#777] text-sm leading-relaxed mb-6">
-                A proposta é transformar esta página no ponto de entrada para
-                ouvir mensagens, reflexões e séries em áudio com identidade
-                própria da igreja, em uma experiência simples e recorrente.
+                Este espaço foi separado para reunir mensagens, reflexões e
+                séries em áudio que possam acompanhar a igreja ao longo da
+                semana.
               </p>
 
               {hasEmbed ? (
@@ -100,17 +100,15 @@ export default function PodcastPage() {
               ) : (
                 <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
                   <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-[#8b5b18]">
-                    Feed em implantação
+                    Em breve
                   </p>
                   <p className="text-[#555] leading-relaxed">
-                    O feed do podcast ainda não foi configurado. Assim que os
-                    primeiros episódios forem publicados, o player ficará
-                    disponível nesta página.
+                    Os episódios ainda não estão disponíveis nesta página. Assim
+                    que forem publicados, o player aparecerá aqui.
                   </p>
                   <p className="mt-4 text-sm text-[#777] leading-relaxed">
-                    Enquanto isso, esta página já apresenta a proposta
-                    editorial do canal e os formatos pensados para a
-                    distribuição em plataformas digitais.
+                    Enquanto isso, acompanhe o canal da igreja e volte em breve
+                    para ouvir os episódios em áudio.
                   </p>
                 </div>
               )}
@@ -133,7 +131,7 @@ export default function PodcastPage() {
             <div className="space-y-6">
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                  Linhas editoriais
+                  O que você encontrará aqui
                 </p>
                 <ul className="space-y-3 text-sm text-[#555] leading-relaxed">
                   {podcastConfig.linhasEditoriais.map((item) => (
@@ -147,7 +145,7 @@ export default function PodcastPage() {
 
               <div className="rounded-3xl bg-white border border-black/5 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
-                  Séries previstas
+                  Temas para ouvir
                 </p>
                 <div className="space-y-4">
                   {podcastConfig.seriesPrevistas.map((serie) => (
@@ -168,9 +166,9 @@ export default function PodcastPage() {
                   Disponível hoje
                 </p>
                 <p className="text-sm text-[#555] leading-relaxed mb-5">
-                  Enquanto o feed oficial não entra no ar, o canal da igreja no
-                  YouTube continua sendo o destino mais direto para acompanhar
-                  mensagens e novos conteúdos em áudio.
+                  Enquanto os episódios chegam por aqui, o canal da igreja no
+                  YouTube segue reunindo mensagens e outros conteúdos em áudio
+                  para acompanhar durante a semana.
                 </p>
                 <div className="flex flex-wrap gap-3 mb-5">
                   {podcastConfig.plataformas.map((platform) => (

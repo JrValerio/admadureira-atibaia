@@ -117,9 +117,7 @@ export default function GaleriaPage() {
             </nav>
 
             <div className="ui-panel ui-panel-pad-sm">
-              <p className="ui-section-eyebrow ui-section-eyebrow--gold">
-                Acervo público
-              </p>
+              <p className="ui-section-eyebrow ui-section-eyebrow--gold">Galeria</p>
 
               <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-3xl">
@@ -152,11 +150,11 @@ export default function GaleriaPage() {
                     Álbuns
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
-                    {totalAlbuns} publicados
+                    {totalAlbuns}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                    A galeria foi estruturada para receber álbuns organizados por
-                    culto, evento ou EBD, sempre com curadoria pública.
+                    Cada álbum reúne momentos especiais da vida da igreja em uma
+                    navegação simples e agradável.
                   </p>
                 </article>
 
@@ -165,25 +163,24 @@ export default function GaleriaPage() {
                     Fotos
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
-                    {totalFotos} imagens no acervo
+                    {totalFotos} imagens
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                    O objetivo é publicar seleções menores, limpas e fáceis de
-                    navegar, em vez de despejar grandes blocos de mídia sem
-                    contexto.
+                    A proposta é reunir seleções menores e mais organizadas para
+                    que cada registro seja visto com calma.
                   </p>
                 </article>
 
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
                   <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
-                    Curadoria
+                    Memória
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
-                    Conteúdo institucional
+                    Momentos da igreja
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                    Cada álbum nasce para contar a caminhada da igreja com ordem,
-                    reverência e cuidado com a exposição pública das pessoas.
+                    Cada álbum procura guardar com reverência os momentos
+                    especiais vividos pela igreja.
                   </p>
                 </article>
               </div>
@@ -195,14 +192,14 @@ export default function GaleriaPage() {
           <div className="ui-page-container py-10 md:py-14">
             <div className="mb-7 max-w-3xl md:mb-10">
               <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-[#ef5350] uppercase">
-                Galeria pública
+                Fotografias da igreja
               </p>
               <h2 className="font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
-                Álbuns publicados
+                Álbuns da igreja
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                Explore os registros já publicados e acompanhe os novos álbuns
-                conforme forem sendo organizados e liberados pela igreja.
+                Explore os registros disponíveis e acompanhe os novos álbuns que
+                forem sendo adicionados.
               </p>
             </div>
 

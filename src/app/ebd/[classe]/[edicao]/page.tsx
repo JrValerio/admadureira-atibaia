@@ -37,7 +37,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em preparação",
       badgeClassName: "border-black/10 bg-white text-[#666]",
       description:
-        "Esta edição já está aberta no site e receberá as lições gradualmente conforme a curadoria e a revisão editorial forem concluídas.",
+        "Esta edição está sendo preparada e as lições serão disponibilizadas no tempo certo.",
     };
   }
 
@@ -46,7 +46,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em publicação",
       badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
       description:
-        "Este trimestre já começou a ser publicado e receberá novas lições e subsídios ao longo do período.",
+        "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
     };
   }
 
@@ -347,7 +347,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   </p>
                   <p className="mb-5 text-sm leading-relaxed text-[#555]">
                     {isDraft
-                      ? "Este trimestre está visível no site para orientar a navegação anual da classe, mas o conteúdo das lições ainda está em preparação."
+                      ? "As lições deste trimestre ainda estão sendo preparadas e serão disponibilizadas no tempo certo."
                       : licaoDaSemana?.trimestre.slug === trimestre.slug
                       ? "Esta é a lição que acompanha o domingo mais próximo da classe."
                       : "Esta edição está disponível para consulta e acompanhamento da classe."}
@@ -385,8 +385,8 @@ export default async function EbdQuarterPage({ params }: PageProps) {
             </h2>
             <p className="leading-relaxed text-[#555]">
               {isDraft
-                ? "As lições deste trimestre já estão mapeadas no site. Os cards mostram a trilha da edição sem prometer publicação antecipada."
-                : "Os badges abaixo mostram o avanço da edição entre lições concluídas, liberadas, em breve e ainda em draft, sempre respeitando a governança da semana."}
+                ? "As lições deste trimestre serão disponibilizadas aos poucos. Enquanto isso, você já pode ver a sequência completa da edição."
+                : "Acompanhe o andamento das lições entre as que já passaram, as disponíveis agora, as próximas e as que ainda estão em preparo."}
             </p>
           </div>
 
@@ -417,7 +417,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
             </div>
             <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
               <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                Draft
+                Em preparo
               </p>
               <p className="font-acme text-2xl text-[#212121]">
                 {contagemProgressao.draft}

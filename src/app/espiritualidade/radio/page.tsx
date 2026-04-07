@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   ...buildPageMetadata({
     title: "Rádio | AD Madureira Atibaia",
     description:
-      "Acompanhe a estrutura da futura rádio da AD Madureira Atibaia com transmissão cristã, louvores e mensagens em áudio.",
+      "Acompanhe novidades da rádio da AD Madureira Atibaia e veja o espaço reservado para futuras transmissões em áudio.",
     path: "/espiritualidade/radio",
     image: igrejaHeroMedia.radio,
   }),
@@ -41,7 +41,7 @@ export default function RadioPage() {
         variant="full"
         label="Áudio da igreja"
         title="Rádio"
-        description="Uma página preparada para reunir transmissões da igreja, períodos de louvor, mensagens em áudio e programação espiritual ao longo da semana."
+        description="Um espaço para acompanhar transmissões da igreja, períodos de louvor e mensagens em áudio ao longo da semana."
         image={igrejaHeroMedia.radio}
         imageAlt="Interior da AD Madureira Atibaia preparado para transmissões em áudio"
         imageClassName="object-[center_38%]"
@@ -74,10 +74,9 @@ export default function RadioPage() {
                 {radioConfig.resumo}
               </p>
               <p className="text-[#777] text-sm leading-relaxed mb-6">
-                Esta página apresenta a proposta editorial da rádio e será o
-                ponto oficial para ouvir a transmissão da igreja, acompanhar
-                blocos de programação e encontrar rapidamente conteúdos de
-                áudio ligados à rotina espiritual da comunidade.
+                Este espaço foi separado para reunir transmissões da igreja e
+                conteúdos em áudio que acompanhem a rotina espiritual da
+                comunidade.
               </p>
 
               {hasStream ? (
@@ -92,11 +91,12 @@ export default function RadioPage() {
               ) : (
                 <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
                   <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-[#8b5b18]">
-                    Player em implantação
+                    Em breve
                   </p>
                   <p className="text-[#555] leading-relaxed">
-                    O streaming ainda não foi configurado. Assim que a rádio for
-                    ativada, o player ao vivo ficará disponível nesta página.
+                    A transmissão em áudio ainda não está disponível nesta
+                    página. Assim que a rádio começar, o player ao vivo ficará
+                    disponível aqui.
                   </p>
                   <p className="mt-4 text-sm text-[#777] leading-relaxed">
                     {radioConfig.streamHostLabel}

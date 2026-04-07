@@ -114,7 +114,7 @@ export default function EbdLessonAuxiliarySections({
           {licaoDaSemanaAtual ? (
             <p>
               <span className="font-semibold text-[#212121]">Semana atual:</span>{" "}
-              esta é a lição em destaque na janela pública da classe.
+              esta é a lição em destaque desta semana.
             </p>
           ) : null}
           {licaoAnteriorNaTrilha ? (

@@ -34,7 +34,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em preparação",
       badgeClassName: "border-black/10 bg-white text-[#666]",
       description:
-        "Estrutura do trimestre já aberta no site, com publicação gradual das lições conforme a curadoria editorial for concluída.",
+        "Este trimestre está sendo preparado e as lições serão disponibilizadas no tempo certo.",
     };
   }
 
@@ -43,7 +43,7 @@ function getQuarterStatusMeta(status: ReturnType<typeof getTrimestreEditorialSta
       label: "Em publicação",
       badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
       description:
-        "Este trimestre já começou a ser publicado e receberá novas lições e subsídios ao longo do período.",
+        "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
     };
   }
 
@@ -206,13 +206,13 @@ export default async function EbdClassPage({ params }: PageProps) {
               <div className="space-y-4 leading-relaxed text-[#555]">
                 <p>{classeInfo.descricao}</p>
                 <p>
-                  Esta página reúne o mapa anual da classe, a lição da semana e
-                  os caminhos para acompanhar o conteúdo da EBD ao longo do ano.
+                  Aqui você acompanha a lição da semana, os trimestres já
+                  disponíveis e o caminho de estudo da classe ao longo do ano.
                 </p>
               </div>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <Link href="/ebd" className="ui-btn-secondary">
-                  Voltar ao hub da EBD
+                  Voltar para a EBD
                 </Link>
                 <Link href="/programacao" className="ui-btn-ghost">
                   Ver horário da EBD
@@ -269,8 +269,8 @@ export default async function EbdClassPage({ params }: PageProps) {
                 Edições publicadas da classe
               </h2>
               <p className="leading-relaxed text-[#555]">
-                Cada trimestre publicado reúne lições, apoio ao professor e
-                material de acompanhamento já revisado para a classe.
+                Cada trimestre reúne lições e material de apoio para ajudar a
+                classe a seguir estudando com clareza e constância.
               </p>
             </div>
 
@@ -353,10 +353,9 @@ export default async function EbdClassPage({ params }: PageProps) {
                   Publicação pausada
                 </p>
                 <p className="leading-relaxed text-[#555]">
-                  Esta classe continua prevista na arquitetura da EBD, mas sua
-                  produção editorial não está ativa no momento. Quando houver
-                  conteúdo publicado, os trimestres aparecerão aqui com a mesma
-                  estrutura usada nas classes ativas.
+                  Esta classe ainda não tem conteúdo disponível nesta página.
+                  Assim que novos materiais forem publicados, eles aparecerão
+                  aqui.
                 </p>
               </div>
             )}

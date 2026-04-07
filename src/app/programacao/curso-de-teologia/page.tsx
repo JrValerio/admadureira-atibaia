@@ -306,9 +306,9 @@ export default function CursoTeologiaPage() {
                 </div>
                 <p className="mt-6 text-sm leading-relaxed text-[#666]">
                   A programação atual já confirma o curso como parte da rotina da
-                  igreja às segundas-feiras. Os detalhes finais de duração,
-                  investimento, certificação e inscrição serão incorporados aqui
-                  assim que a coordenação concluir o alinhamento oficial.
+                  igreja às segundas-feiras. Para saber sobre duração,
+                  investimento, certificação e inscrição, fale com a igreja e
+                  acompanhe as próximas orientações.
                 </p>
               </article>
             </div>

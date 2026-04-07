@@ -231,7 +231,7 @@ export function getMetaEstadoProgressaoLicao(
   switch (estado) {
     case "draft":
       return {
-        label: "Draft",
+        label: "Em preparo",
         cardClassName: "border-black/5 bg-[#fafafa] shadow-sm",
         badgeClassName: "border-black/10 bg-white text-[#666]",
         actionLabel: "Conteúdo em preparação",
@@ -241,7 +241,7 @@ export function getMetaEstadoProgressaoLicao(
         label: "Em breve",
         cardClassName: "border-[#ffa726]/15 bg-[#fffaf3] shadow-sm",
         badgeClassName: "border-[#ffa726]/25 bg-white text-[#8b5b18]",
-        actionLabel: "Liberação na janela da semana",
+        actionLabel: "Disponível em breve",
       };
     case "liberada":
       return {

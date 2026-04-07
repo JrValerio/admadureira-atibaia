@@ -15,10 +15,10 @@ const ministerios: Ministerio[] = [
     nome: "Missões",
     escopo: "Local e apoio missionário",
     resumo:
-      "Página institucional para apresentar a visão missionária da igreja, organizar pedidos de oração, contribuição e futuras atualizações sobre frentes apoiadas.",
+      "Ministério voltado à oração, ao apoio missionário e ao fortalecimento da visão evangelística da igreja.",
     descricao: [
-      "A página de Missões foi preparada para reunir a visão missionária da AD Madureira Atibaia, reforçando o compromisso da igreja com a oração, a proclamação do Evangelho e o apoio à obra missionária.",
-      "Ela também serve como base para receber campanhas, relatórios, pedidos de oração e informações oficiais sobre frentes apoiadas à medida que a liderança disponibilizar esses materiais.",
+      "Missões reforça o compromisso da AD Madureira Atibaia com a oração, a proclamação do Evangelho e o apoio à obra missionária.",
+      "Por meio desse ministério, a igreja é incentivada a interceder, contribuir e participar da expansão do Reino de Deus com fé e responsabilidade.",
     ],
     lideranca: ["Informações detalhadas serão adicionadas pela liderança da igreja"],
     atividades: [

@@ -3,7 +3,7 @@ export const missoesData = {
     label: "Compromisso missionário",
     title: "Missões",
     description:
-      "A igreja existe para anunciar Cristo, servir pessoas e cooperar com a expansão do Evangelho. Esta página organiza a visão missionária da AD Madureira Atibaia e prepara espaço para campanhas, contribuições e atualizações oficiais.",
+      "A igreja existe para anunciar Cristo, servir pessoas e cooperar com a expansão do Evangelho. Aqui você encontra a visão missionária da AD Madureira Atibaia e caminhos para orar e cooperar com a obra.",
   },
   vision: {
     verse: "“Ide por todo o mundo e pregai o evangelho a toda criatura.” — Marcos 16:15",
@@ -37,8 +37,8 @@ export const missoesData = {
   supportedFronts: {
     title: "Frentes apoiadas e relatórios",
     paragraphs: [
-      "Os detalhes das frentes missionárias apoiadas pela AD Madureira Atibaia serão publicados aqui conforme a liderança disponibilizar as informações oficialmente.",
-      "Enquanto isso, o contato com a igreja continua sendo o canal mais seguro para conhecer campanhas vigentes, pedidos de oração e formas atuais de cooperação missionária.",
+      "Nesta área você poderá acompanhar frentes missionárias, pedidos de oração e formas de cooperação ligadas à obra missionária da igreja.",
+      "Se você deseja conhecer campanhas vigentes ou saber como participar, fale com a igreja e caminhe conosco em oração e serviço.",
     ],
   },
   participationWays: [
@@ -66,7 +66,7 @@ export const missoesData = {
   contribution: {
     title: "Como contribuir com missões",
     description:
-      "Se você deseja cooperar com ofertas missionárias, a página oficial de dízimos e ofertas da igreja continua sendo o caminho institucional mais seguro. Em caso de dúvida, fale com a igreja antes de contribuir.",
+      "Se você deseja cooperar com ofertas missionárias, utilize a página de dízimos e ofertas da igreja. Em caso de dúvida, fale conosco antes de contribuir.",
     notes: [
       "Use os canais oficiais da igreja para confirmar orientações, campanhas e destinação das contribuições.",
       "A equipe pode orientar sobre ofertas missionárias, contatos e atualizações da obra.",
@@ -75,6 +75,6 @@ export const missoesData = {
   prayerAndReports: {
     title: "Pedidos de oração e testemunhos",
     description:
-      "Pedidos de oração podem ser enviados diretamente à equipe pastoral. Relatórios e testemunhos missionários serão publicados conforme forem disponibilizados pela liderança.",
+      "Envie seus pedidos de oração à equipe pastoral e acompanhe os testemunhos missionários compartilhados pela igreja.",
   },
 } as const;

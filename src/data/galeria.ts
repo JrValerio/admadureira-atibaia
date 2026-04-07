@@ -28,12 +28,12 @@ export const GALERIA_PAGE_COPY = {
   heroTitle: "Registros que contam a caminhada da igreja",
   heroDescription:
     "Registros fotográficos dos cultos e eventos da Igreja Assembleia de Deus - Ministério Madureira em Atibaia.",
-  introTitle: "Uma galeria pública, institucional e curada",
+  introTitle: "Momentos que ajudam a lembrar a caminhada da igreja",
   introDescription:
-    "Esta área reúne registros selecionados da vida da igreja, com foco em cultos, eventos e momentos que ajudam a contar a nossa caminhada com reverência, ordem e cuidado editorial.",
-  emptyTitle: "A galeria pública está em preparação",
+    "Aqui você encontra registros de cultos, eventos e momentos especiais da AD Madureira Atibaia, reunidos com cuidado e reverência.",
+  emptyTitle: "Os primeiros álbuns chegarão em breve",
   emptyDescription:
-    "Os primeiros álbuns serão publicados aqui com curadoria institucional, em seleções menores e mais organizadas. Enquanto isso, acompanhe a programação presencial e as transmissões da igreja.",
+    "Em breve esta área receberá os primeiros registros fotográficos da igreja. Enquanto isso, acompanhe a programação presencial e as transmissões.",
 } as const;
 
 export const GALERIA_ALBUNS: GaleriaAlbum[] = [];

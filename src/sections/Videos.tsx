@@ -66,8 +66,8 @@ export default async function Videos({ showHeader = true }: VideosProps) {
                 {upcomingLive.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f]">
-                Quando a live estiver ativa, ela passa a ser priorizada
-                automaticamente na Home e nesta área de vídeos.
+                Quando a transmissão começar, ela aparecerá aqui para facilitar
+                o acesso da igreja.
               </p>
               <div className="mt-5">
                 <a
@@ -138,10 +138,9 @@ export default async function Videos({ showHeader = true }: VideosProps) {
             Continue no canal certo para o que você precisa agora
           </h3>
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-            Aqui a regra é simples: a página de vídeos mostra somente lives e
-            transmissões do canal. Já a área de Mensagens continua sendo a
-            curadoria da playlist de pregações, com contexto editorial mais
-            organizado.
+            Aqui você encontra lives e transmissões da igreja. Para ouvir
+            pregações e ministrações com mais calma, siga também para a área de
+            Mensagens.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <a

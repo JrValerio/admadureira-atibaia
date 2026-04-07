@@ -105,9 +105,8 @@ export default function CongregacoesPage() {
                     famílias em diferentes frentes da caminhada cristã.
                   </p>
                   <p>
-                    Esta página apresenta a base congregacional já estruturada e
-                    prepara o site para registrar, com clareza institucional, o
-                    crescimento do campo ao longo do tempo.
+                    Cada congregação faz parte dessa história de cuidado,
+                    serviço e crescimento do campo ao longo do tempo.
                   </p>
                 </div>
 
