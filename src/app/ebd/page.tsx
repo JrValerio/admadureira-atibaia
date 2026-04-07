@@ -1,6 +1,7 @@
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
+import EbdBreadcrumb from "@/components/ebd/EbdBreadcrumb";
 import CardMedia from "@/components/media/CardMedia";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
@@ -15,6 +16,7 @@ import {
   getTrimestresEbdPublicos,
   isClasseEbdPublicada,
 } from "@/lib/ebd-utils";
+import { getQuarterStatusMeta } from "@/lib/ebd-ui";
 import {
   getLessonHighlightText,
   getLessonStructure,
@@ -36,50 +38,6 @@ export const metadata = buildPageMetadata({
 });
 
 export const revalidate = 3600;
-
-function getQuarterStatusMeta(
-  status: ReturnType<typeof getTrimestreEditorialStatus>
-) {
-  if (status === "draft") {
-    return {
-      label: "Em preparação",
-      badgeClassName: "border-black/10 bg-white text-[#666]",
-      description:
-        "Este trimestre está sendo preparado e as lições serão disponibilizadas no tempo certo.",
-    };
-  }
-
-  if (status === "partial") {
-    return {
-      label: "Em publicação",
-      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
-      description:
-        "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
-    };
-  }
-
-  return {
-    label: "Publicado",
-    badgeClassName: "border-[#ef5350]/12 bg-[#fff3f2] text-[#b0453f]",
-    description:
-      "Este trimestre já está disponível para acompanhamento contínuo da classe e consulta das lições publicadas.",
-  };
-}
-
-function Breadcrumb() {
-  return (
-    <nav
-      aria-label="Breadcrumb"
-      className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#777]"
-    >
-      <Link href="/" className="transition-colors hover:text-[#212121]">
-        Início
-      </Link>
-      <span>›</span>
-      <span className="font-medium text-[#212121]">EBD</span>
-    </nav>
-  );
-}
 
 export default async function EbdHubPage({ searchParams }: PageProps) {
   const params = await searchParams;
@@ -168,7 +126,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
 
         <section className="py-16 md:py-20 xl:py-24">
           <div className="mx-auto max-w-7xl px-4 xl:px-6">
-            <Breadcrumb />
+            <EbdBreadcrumb items={[{ label: "EBD" }]} />
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
               <div className="space-y-12">
