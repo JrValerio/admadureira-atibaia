@@ -18,8 +18,8 @@ export default function EbdBreadcrumb({ items }: EbdBreadcrumbProps) {
       <Link href="/" className="transition-colors hover:text-[#212121]">
         Início
       </Link>
-      {items.map((item) => (
-        <span key={`${item.label}-${item.href ?? "current"}`} className="contents">
+      {items.map((item, index) => (
+        <span key={item.href ?? `item-${index}`} className="contents">
           <span>›</span>
           {item.href ? (
             <Link
