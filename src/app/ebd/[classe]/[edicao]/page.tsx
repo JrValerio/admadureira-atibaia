@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
+import EbdBreadcrumb from "@/components/ebd/EbdBreadcrumb";
 import EbdLessonsGrid from "@/components/ebd/EbdLessonsGrid";
 import {
   getContagemProgressaoDoTrimestre,
@@ -20,6 +21,7 @@ import {
   isLicaoPubliclyAvailable,
   isTrimestreDraft,
 } from "@/lib/ebd-utils";
+import { getQuarterStatusMeta } from "@/lib/ebd-ui";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 type PageProps = {
@@ -30,35 +32,6 @@ type PageProps = {
 };
 
 export const revalidate = 3600;
-
-function getQuarterStatusMeta(
-  status: ReturnType<typeof getTrimestreEditorialStatus>
-) {
-  if (status === "draft") {
-    return {
-      label: "Em preparação",
-      badgeClassName: "border-black/10 bg-white text-[#666]",
-      description:
-        "Esta edição está sendo preparada e as lições serão disponibilizadas no tempo certo.",
-    };
-  }
-
-  if (status === "partial") {
-    return {
-      label: "Em publicação",
-      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
-      description:
-        "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
-    };
-  }
-
-  return {
-    label: "Publicado",
-    badgeClassName: "border-[#ef5350]/12 bg-[#fff3f2] text-[#b0453f]",
-    description:
-      "Este trimestre já está disponível para acompanhamento contínuo da classe e consulta das lições publicadas.",
-  };
-}
 
 export async function generateStaticParams() {
   return getClassesEbd().flatMap((classe) =>
@@ -110,40 +83,6 @@ export async function generateMetadata({
     : metadata;
 }
 
-function Breadcrumb({
-  classe,
-  classeLabel,
-  edicaoLabel,
-}: {
-  classe: string;
-  classeLabel: string;
-  edicaoLabel: string;
-}) {
-  return (
-    <nav
-      aria-label="Breadcrumb"
-      className="mb-8 flex flex-wrap items-center gap-2 text-sm text-[#777]"
-    >
-      <Link href="/" className="transition-colors hover:text-[#212121]">
-        Início
-      </Link>
-      <span>›</span>
-      <Link href="/ebd" className="transition-colors hover:text-[#212121]">
-        EBD
-      </Link>
-      <span>›</span>
-      <Link
-        href={`/ebd/${classe}`}
-        className="transition-colors hover:text-[#212121]"
-      >
-        {classeLabel}
-      </Link>
-      <span>›</span>
-      <span className="font-medium text-[#212121]">{edicaoLabel}</span>
-    </nav>
-  );
-}
-
 export default async function EbdQuarterPage({ params }: PageProps) {
   const { classe, edicao } = await params;
 
@@ -158,7 +97,10 @@ export default async function EbdQuarterPage({ params }: PageProps) {
   }
 
   const classeInfo = getClasseEbdInfo(classe);
-  const statusMeta = getQuarterStatusMeta(getTrimestreEditorialStatus(trimestre));
+  const statusMeta = getQuarterStatusMeta(
+    getTrimestreEditorialStatus(trimestre),
+    { draftSubject: "edição" }
+  );
   const publishedLessons = getTrimestrePublicLessonCount(trimestre);
   const isDraft = isTrimestreDraft(trimestre);
   const licaoDaSemana = getLicaoDaSemana(classe);
@@ -267,10 +209,12 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
         <section className="py-16 md:py-20 xl:py-24">
           <div className="mx-auto max-w-7xl px-4 xl:px-6">
-            <Breadcrumb
-              classe={classe}
-              classeLabel={classeInfo.label}
-              edicaoLabel={trimestre.rotulo}
+            <EbdBreadcrumb
+              items={[
+                { label: "EBD", href: "/ebd" },
+                { label: classeInfo.label, href: `/ebd/${classe}` },
+                { label: trimestre.rotulo },
+              ]}
             />
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
