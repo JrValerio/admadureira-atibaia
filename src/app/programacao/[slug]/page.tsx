@@ -101,6 +101,10 @@ export default async function CultoPage({ params }: Props) {
     culto.slug,
     culto.recursos
   );
+  const hasActiveBanner = Boolean(culto.banner);
+  const mobileHeroSummary = culto.horario
+    ? `${culto.dia} · ${culto.horario}`
+    : culto.dia;
 
   const canonicalUrl = resolveSiteUrl(`/programacao/${slug}`);
   const breadcrumbSchema = {
@@ -147,7 +151,7 @@ export default async function CultoPage({ params }: Props) {
 
       <main className="min-h-screen bg-[#f5f5f5]">
         {/* Hero banner */}
-        <div className="relative w-full min-h-80 overflow-hidden bg-[#111]">
+        <div className="relative w-full min-h-52 overflow-hidden bg-[#111] md:min-h-80">
           {culto.banner && (
             <>
               <Image
@@ -161,10 +165,10 @@ export default async function CultoPage({ params }: Props) {
               <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/40 to-black/80" />
             </>
           )}
-          <div className="relative z-10 ui-page-container ui-page-container--narrow flex min-h-80 flex-col justify-end py-10 md:py-14">
+          <div className="relative z-10 ui-page-container ui-page-container--narrow flex min-h-52 flex-col justify-end py-5 md:min-h-80 md:py-14">
             <nav
               aria-label="Breadcrumb"
-              className="mb-6 flex flex-wrap items-center gap-2 text-sm text-white/55"
+              className="mb-4 flex flex-wrap items-center gap-2 text-xs text-white/60 md:mb-6 md:text-sm"
             >
               <Link href="/" className="transition-colors hover:text-white/80">
                 Início
@@ -177,23 +181,34 @@ export default async function CultoPage({ params }: Props) {
               <span className="text-white/80">{culto.titulo}</span>
             </nav>
 
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
-              {culto.dia}
-              {culto.horario ? ` · ${culto.horario}` : ""}
-            </p>
-            <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-white tracking-wide leading-tight">
-              {culto.titulo}
-            </h1>
+            <div className={hasActiveBanner ? "hidden md:block" : "block"}>
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                {culto.dia}
+                {culto.horario ? ` · ${culto.horario}` : ""}
+              </p>
+              <h1 className="font-acme text-2xl leading-tight tracking-wide text-white md:text-4xl lg:text-5xl">
+                {culto.titulo}
+              </h1>
+            </div>
           </div>
         </div>
 
         {/* Conteúdo */}
         <section className="py-12 md:py-16">
-          <div className="ui-page-container ui-page-container--narrow space-y-6">
+          <div className="ui-page-container ui-page-container--narrow">
+            <div className="mb-6 rounded-3xl border border-black/5 bg-white px-5 py-5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:hidden">
+              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                {mobileHeroSummary}
+              </p>
+              <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121]">
+                {culto.titulo}
+              </h1>
+            </div>
 
+            <div className="flex flex-col gap-6">
             {/* Descrição */}
             {descricaoParagrafos.length > 0 && (
-              <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+              <div className="order-3 rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:order-1 md:p-8">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Sobre o culto
                 </p>
@@ -207,7 +222,7 @@ export default async function CultoPage({ params }: Props) {
 
             {/* Convite */}
             {conviteParagrafos.length > 0 && (
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
+              <div className="order-4 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:order-2 md:p-8">
                 <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
                   Você é bem-vindo
                 </p>
@@ -221,7 +236,7 @@ export default async function CultoPage({ params }: Props) {
 
             {((culto.baseBiblica?.length ?? 0) > 0 ||
               recursosRelacionados.length > 0) && (
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+              <div className="order-5 grid grid-cols-1 gap-6 md:order-3 lg:grid-cols-2">
                 {(culto.baseBiblica?.length ?? 0) > 0 && (
                   <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
                     <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
@@ -273,7 +288,7 @@ export default async function CultoPage({ params }: Props) {
             )}
 
             {/* Local e horário */}
-            <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+            <div className="order-1 rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:order-4 md:p-8">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-4">
                 Quando e onde
               </p>
@@ -304,7 +319,7 @@ export default async function CultoPage({ params }: Props) {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+            <div className="order-2 flex flex-col gap-3 pt-2 md:order-5 sm:flex-row">
               <Link href="/contato" className="ui-btn-primary">
                 Como chegar
               </Link>
@@ -312,7 +327,7 @@ export default async function CultoPage({ params }: Props) {
                 Ver programação completa
               </Link>
             </div>
-
+            </div>
           </div>
         </section>
       </main>
