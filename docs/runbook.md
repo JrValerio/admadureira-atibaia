@@ -44,6 +44,17 @@ git tag -a vX.Y.Z -m "release vX.Y.Z"
 git push origin vX.Y.Z
 ```
 
+## Banners semanais de programação
+
+Procedimento recorrente — executar toda segunda-feira antes das 8h.
+
+1. Criar pasta `public/programacao/semanas/YYYY-MM-DD/` onde a data é a segunda-feira da semana
+2. Adicionar os PNGs com nomes conforme `WEEKLY_FILENAME_MAP` em `src/lib/banner-semanal.ts`
+3. Renomear qualquer arquivo fora do padrão antes do commit
+4. Abrir branch `feat/programacao-banners-YYYY-MM-DD`, PR e merge
+
+Verificação pós-merge: acessar qualquer rota `/programacao/[slug]` e confirmar que o banner novo está sendo servido.
+
 ## Checklist Pós-Release
 
 Antes de taguear:
