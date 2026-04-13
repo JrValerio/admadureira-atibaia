@@ -264,22 +264,10 @@ export default async function PastorPage({ params }: PageProps) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Link
-                href="/pastores"
-                className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
-              >
-                Ver outros pastores
-              </Link>
-              <Link
-                href="/contato"
-                className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
-              >
-                Fale com a igreja
-              </Link>
               {pastor.congregacaoSlug ? (
                 <Link
                   href={`/congregacoes/${pastor.congregacaoSlug}`}
-                  className="inline-flex items-center justify-center border border-[#ef5350] text-[#ef5350] hover:bg-[#ef5350] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                  className="inline-flex items-center justify-center bg-[#ffa726] hover:bg-[#ffb74d] text-[#212121] font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
                 >
                   Ver a congregação
                 </Link>
@@ -291,6 +279,18 @@ export default async function PastorPage({ params }: PageProps) {
                   Ver história da igreja
                 </Link>
               )}
+              <Link
+                href="/contato"
+                className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              >
+                Falar com a igreja
+              </Link>
+              <Link
+                href="/pastores"
+                className="inline-flex items-center justify-center border border-[#212121] text-[#212121] hover:bg-[#212121] hover:text-white font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+              >
+                Ver outros pastores
+              </Link>
             </div>
           </div>
         </div>
