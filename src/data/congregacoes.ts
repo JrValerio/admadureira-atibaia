@@ -127,6 +127,51 @@ export const congregacoes: Congregacao[] = [
       pais: "BR",
     },
   },
+  {
+    slug: "chacaras-brasil",
+    igreja: "Assembleia de Deus Madureira Atibaia Chácaras Brasil",
+    cidade: "Atibaia",
+    pastor: "Ev. Levi Ribeiro Gonçalves",
+    pastorSlug: "levi-ribeiro-goncalves",
+    endereco: "Estrada do Ramalho, 765 – Jardim Estância Brasil – Atibaia/SP",
+    telefone: "(11) 97245-1625",
+    whatsappUrl: "https://wa.me/5511972451625",
+    imagem: "/congregacoes/chacaras-brasil.jpg",
+    resumo:
+      "Congregação do Campo de Atibaia com mais de duas décadas de história, localizada no Jardim Estância Brasil. Seu ministério é marcado pela constância na sã doutrina, pelo cuidado às famílias e pela dedicação ao crescimento espiritual da comunidade local.",
+    mapsUrl: "https://maps.app.goo.gl/RxfweskEKas989cs9",
+    horarios: [
+      "Segunda-feira – Culto – 19h30",
+      "Terça-feira – Círculo de Oração e Ensaio das Irmãs – 19h30",
+      "Quarta-feira – Culto – 19h30",
+      "Quinta-feira – Culto – 19h30",
+      "Sexta-feira – Culto – 19h30",
+      "Sábado – Culto – 19h30",
+    ],
+    ministerios: ["Círculo de Oração", "Ensaio das Irmãs"],
+    historico:
+      "Há mais de duas décadas esta igreja mantém o compromisso inabalável com a preservação da sã doutrina e o ensino das Sagradas Escrituras. Nossa trajetória é marcada pela constância, sem abrir mão dos princípios bíblicos que nos nortearam desde o início. Nosso ministério visa o crescimento espiritual e se dedica com amor a ajudar ao próximo. Permanecemos firmes na fé, pois a vida aqui é o preparo diário para a eternidade.",
+    observacoes:
+      "Possui rampa de acesso, banheiro acessível, espaço infantil e estacionamento próximo. Contato por e-mail: igrejachacarasbrasil@gmail.com",
+    lideranca: [
+      {
+        nome: "Ev. Levi Ribeiro Gonçalves",
+        cargo: "Pastor Evangelista",
+        pastorSlug: "levi-ribeiro-goncalves",
+      },
+    ],
+    seo: {
+      title: "Congregação Chácaras Brasil | AD Madureira Atibaia",
+      description:
+        "Congregação da Assembleia de Deus Madureira no Jardim Estância Brasil, Atibaia. Cultos regulares, liderança pastoral e informações para visitar.",
+    },
+    localizacao: {
+      bairro: "Jardim Estância Brasil",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
+    },
+  },
 ];
 
 export function getCongregacoes() {
