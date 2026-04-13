@@ -319,7 +319,7 @@ export default async function CultoPage({ params }: Props) {
             </div>
 
             {/* CTAs */}
-            <div className="order-2 flex flex-col gap-3 pt-2 md:order-5 sm:flex-row">
+            <div className="order-6 flex flex-col gap-3 pt-2 md:order-5 sm:flex-row">
               <Link href="/contato" className="ui-btn-primary">
                 Como chegar
               </Link>
