@@ -177,6 +177,33 @@ export const pastores: Pastor[] = [
     },
   },
   {
+    slug: "levi-ribeiro-goncalves",
+    nome: "Ev. Levi Ribeiro Gonçalves",
+    cargo: "Pastor Evangelista",
+    grupo: "congregacao",
+    foto: "/pastores/ev-levi-ribeiro.jpg",
+    resumo:
+      "Presente desde a fundação da Congregação Chácaras Brasil, o Evangelista Levi entregou sua vida a Cristo nesta casa e ascendeu ao pastoreio após servir como membro, tesoureiro, diácono e presbítero. Seu ministério é marcado pelo ensino da sã doutrina e pela visão da igreja como uma família caminhando rumo à eternidade.",
+    trajetoria: [
+      "Presente desde a fundação da congregação, entregou sua vida a Cristo nesta mesma casa onde serviu como membro, tesoureiro, diácono e presbítero.",
+      "Atuou como braço direito de pastores anteriores até ser consagrado evangelista e assumir a direção da Congregação Chácaras Brasil.",
+    ],
+    ministerio: [
+      "Há mais de 14 anos no pastoreio, foca no ensino da sã doutrina e na formação espiritual da congregação.",
+      "Conduz a igreja com a visão de uma família unida, preparando seus membros para a caminhada cristã e para a eternidade.",
+    ],
+    ministerioInfo: {
+      inicio: "2012",
+      funcao: "Pastor Evangelista da Congregação Chácaras Brasil",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Ev. Levi Ribeiro Gonçalves | Congregação Chácaras Brasil",
+      description:
+        "Pastor Evangelista da Congregação Chácaras Brasil, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça o ministério, a história e os horários de culto.",
+    },
+  },
+  {
     slug: "jorge",
     nome: "Pr. Jorge",
     cargo: "Pastor Vice-Presidente",
