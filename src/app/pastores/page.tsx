@@ -71,9 +71,12 @@ function PastorCompactCard({ pastor }: { pastor: Pastor }) {
         <h3 className="font-acme text-xl text-[#212121] tracking-wide leading-tight mb-2">
           {pastor.nome}
         </h3>
-        <p className="text-[#5f5f5f] text-sm leading-relaxed line-clamp-3">
+        <p className="text-[#5f5f5f] text-sm leading-relaxed line-clamp-3 mb-4">
           {pastor.resumo}
         </p>
+        <span className="inline-flex items-center text-[#ef5350] font-semibold text-sm tracking-wide uppercase group-hover:underline">
+          Ver perfil →
+        </span>
       </div>
     </Link>
   );
