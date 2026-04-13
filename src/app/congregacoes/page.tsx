@@ -165,7 +165,7 @@ export default function CongregacoesPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 [&>*:last-child:nth-child(odd)]:lg:col-span-2 [&>*:last-child:nth-child(odd)]:lg:max-w-[calc(50%-16px)] [&>*:last-child:nth-child(odd)]:lg:mx-auto">
               {congregacoes.map((congregacao) => (
                 <Link
                   key={congregacao.slug}
