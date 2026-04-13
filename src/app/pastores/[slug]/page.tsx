@@ -148,8 +148,32 @@ export default async function PastorPage({ params }: PageProps) {
 
           <Breadcrumb nome={pastor.nome} />
 
+          <div className="mb-10">
+            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              {pastor.grupo === "presidencia"
+                ? "Presidência do Campo"
+                : pastor.grupo === "congregacao"
+                  ? "Liderança Congregacional"
+                  : "Vice-Presidência do Campo"}
+            </p>
+            <h1 className="font-acme text-3xl md:text-5xl text-[#212121] tracking-wide leading-tight mb-3">
+              {pastor.nome}
+            </h1>
+            <p className="text-[#ef5350] font-semibold tracking-wide uppercase text-sm mb-3">
+              {pastor.cargo}
+            </p>
+            {pastor.congregacaoSlug ? (
+              <Link
+                href={`/congregacoes/${pastor.congregacaoSlug}`}
+                className="inline-flex items-center gap-1 text-sm text-[#555] hover:text-[#212121] transition-colors"
+              >
+                Ver a congregação →
+              </Link>
+            ) : null}
+          </div>
+
           <div className="rounded-3xl overflow-hidden bg-white shadow-lg border border-black/5 p-6 md:p-10">
-            <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-8 items-start">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-[#111]">
                 <Image
                   src={pastor.foto}
@@ -162,19 +186,6 @@ export default async function PastorPage({ params }: PageProps) {
               </div>
 
               <div>
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                  {pastor.grupo === "presidencia"
-                    ? "Presidência do Campo"
-                    : pastor.grupo === "congregacao"
-                      ? "Liderança Congregacional"
-                      : "Vice-Presidência do Campo"}
-                </p>
-                <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-3">
-                  {pastor.nome}
-                </h1>
-                <p className="text-[#ef5350] font-semibold tracking-wide uppercase text-sm mb-5">
-                  {pastor.cargo}
-                </p>
                 <p className="text-[#555] text-lg leading-relaxed max-w-2xl mb-8">
                   {pastor.resumo}
                 </p>
