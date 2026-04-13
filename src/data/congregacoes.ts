@@ -101,9 +101,9 @@ export const congregacoes: Congregacao[] = [
     resumo:
       "Congregação do Campo de Atibaia localizada no bairro Jardim Cerejeiras, com cultos semanais e ministérios ativos voltados à comunidade local.",
     horarios: [
-      "Quarta-feira – Culto – 19h30",
-      "Sexta-feira – Culto – 19h30",
-      "Domingo – Culto – 18h30",
+      "Quarta · 19h30 · Culto",
+      "Sexta · 19h30 · Culto",
+      "Domingo · 18h30 · Culto",
     ],
     programacoesEspeciais: ["Primeiro sábado – Santa Ceia"],
     ministerios: ["Círculo de Oração", "Jovens", "Infantil", "Louvor", "Evangelismo"],
@@ -141,12 +141,12 @@ export const congregacoes: Congregacao[] = [
       "Congregação do Campo de Atibaia com mais de duas décadas de história, localizada no Jardim Estância Brasil. Seu ministério é marcado pela constância na sã doutrina, pelo cuidado às famílias e pela dedicação ao crescimento espiritual da comunidade local.",
     mapsUrl: "https://maps.app.goo.gl/RxfweskEKas989cs9",
     horarios: [
-      "Segunda-feira – Culto – 19h30",
-      "Terça-feira – Círculo de Oração e Ensaio das Irmãs – 19h30",
-      "Quarta-feira – Culto – 19h30",
-      "Quinta-feira – Culto – 19h30",
-      "Sexta-feira – Culto – 19h30",
-      "Sábado – Culto – 19h30",
+      "Segunda · 19h30 · Culto",
+      "Terça · 19h30 · Círculo de Oração e Ensaio das Irmãs",
+      "Quarta · 19h30 · Culto",
+      "Quinta · 19h30 · Culto",
+      "Sexta · 19h30 · Culto",
+      "Sábado · 19h30 · Culto",
     ],
     ministerios: ["Círculo de Oração", "Ensaio das Irmãs"],
     historico:
