@@ -23,8 +23,10 @@ export interface Congregacao {
   telefone?: string;
   whatsappUrl?: string;
   imagem: string;
+  imagemInterior?: string;
   resumo: string;
   mapsUrl?: string;
+  // Formato esperado: "Dia · Horário · Título" — ex: "Quarta · 19h30 · Culto de Ensino"
   horarios: string[];
   lideranca: LiderancaCongregacao[];
   programacoesEspeciais?: string[];
@@ -137,6 +139,7 @@ export const congregacoes: Congregacao[] = [
     telefone: "(11) 97245-1625",
     whatsappUrl: "https://wa.me/5511972451625",
     imagem: "/congregacoes/chacaras-brasil.jpg",
+    imagemInterior: "/congregacoes/chacaras-brasil-interior.jpg",
     resumo:
       "Congregação do Campo de Atibaia com mais de duas décadas de história, localizada no Jardim Estância Brasil. Seu ministério é marcado pela constância na sã doutrina, pelo cuidado às famílias e pela dedicação ao crescimento espiritual da comunidade local.",
     mapsUrl: "https://maps.app.goo.gl/RxfweskEKas989cs9",

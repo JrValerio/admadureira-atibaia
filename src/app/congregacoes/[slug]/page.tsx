@@ -301,12 +301,12 @@ export default async function CongregacaoPage({ params }: PageProps) {
                     value={locationInfo.bairro ?? "A confirmar"}
                   />
                   <StatCard
-                    label="Liderança"
-                    value={String(congregacao.lideranca.length)}
+                    label="Pastor local"
+                    value={congregacao.lideranca[0]?.nome ?? "A confirmar"}
                   />
                   <StatCard
-                    label="Programações"
-                    value={String(congregacao.horarios.length)}
+                    label="Encontros semanais"
+                    value={`${congregacao.horarios.length} cultos e reuniões`}
                   />
                 </div>
                 <p className="mt-6 text-sm leading-relaxed text-[#555]">
@@ -404,8 +404,8 @@ export default async function CongregacaoPage({ params }: PageProps) {
               <div className="space-y-6">
                 <div className="overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm">
                   <CardMedia
-                    src={congregacao.imagem}
-                    alt={congregacao.igreja}
+                    src={congregacao.imagemInterior ?? congregacao.imagem}
+                    alt={`Interior da ${congregacao.igreja}`}
                     variant="institutional"
                     sizes="(max-width: 1280px) 100vw, 520px"
                     priority
