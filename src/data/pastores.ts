@@ -21,6 +21,7 @@ export interface Pastor {
     funcao?: string;
     igreja?: string;
   };
+  congregacaoSlug?: string;
   redes?: {
     instagram?: string;
     youtube?: string;
@@ -155,6 +156,7 @@ export const pastores: Pastor[] = [
     nome: "Pr. Luis Teixeira",
     cargo: "Pastor",
     grupo: "congregacao",
+    congregacaoSlug: "jardim-cerejeiras",
     foto: "/pastores/pr-luis-teixeira.jpg",
     resumo:
       "Pastor responsável pela Congregação Jardim Cerejeiras do Campo de Atibaia, servindo a comunidade local com cuidado pastoral, ensino da Palavra e acolhimento às famílias.",
@@ -181,6 +183,7 @@ export const pastores: Pastor[] = [
     nome: "Ev. Levi Ribeiro Gonçalves",
     cargo: "Pastor Evangelista",
     grupo: "congregacao",
+    congregacaoSlug: "chacaras-brasil",
     foto: "/pastores/ev-levi-ribeiro.jpg",
     resumo:
       "Presente desde a fundação da Congregação Chácaras Brasil, o Evangelista Levi entregou sua vida a Cristo nesta casa e ascendeu ao pastoreio após servir como membro, tesoureiro, diácono e presbítero. Seu ministério é marcado pelo ensino da sã doutrina e pela visão da igreja como uma família caminhando rumo à eternidade.",
