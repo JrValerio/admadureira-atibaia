@@ -170,7 +170,7 @@ export const pastores: Pastor[] = [
       "Seu ministério é marcado pelo foco no serviço ao Senhor e no cuidado espiritual da comunidade local.",
     ],
     ministerioInfo: {
-      inicio: "2025",
+      inicio: "2005",
       funcao: "Presbítero da Congregação Jardim São Felipe",
       igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
     },
