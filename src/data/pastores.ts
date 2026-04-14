@@ -152,6 +152,35 @@ export const pastores: Pastor[] = [
     },
   },
   {
+    slug: "edilson-jose-dos-santos",
+    nome: "Pb. Edilson José dos Santos",
+    cargo: "Presbítero",
+    grupo: "congregacao",
+    congregacaoSlug: "jardim-sao-felipe",
+    foto: "/pastores/pb-edilson-jose-dos-santos.jpg",
+    resumo:
+      "Presbítero responsável pela Congregação Jardim São Felipe do Campo de Atibaia, com trajetória de serviço desde 2005 — diácono, presbítero e dirigente de congregações.",
+    trajetoria: [
+      "Entrou no ministério em 2005 e veio congregar na Igreja do Jardim São Felipe como diácono.",
+      "Em 2015 foi consagrado presbítero e dirigiu a Igreja do Parque Hortência de 2018 a 2023.",
+      "Após dois anos na sede, assumiu a direção da Congregação Jardim São Felipe em janeiro de 2025.",
+    ],
+    ministerio: [
+      "Responsável pela liderança da Congregação Jardim São Felipe, com cultos regulares, EBD e ministérios de oração.",
+      "Seu ministério é marcado pelo foco no serviço ao Senhor e no cuidado espiritual da comunidade local.",
+    ],
+    ministerioInfo: {
+      inicio: "2025",
+      funcao: "Presbítero da Congregação Jardim São Felipe",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Pb. Edilson José dos Santos | Congregação Jardim São Felipe",
+      description:
+        "Presbítero da Congregação Jardim São Felipe, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça o ministério, a história e os horários de culto.",
+    },
+  },
+  {
     slug: "luis-teixeira",
     nome: "Pr. Luis Teixeira",
     cargo: "Pastor",
