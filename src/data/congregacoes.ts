@@ -130,6 +130,49 @@ export const congregacoes: Congregacao[] = [
     },
   },
   {
+    slug: "jardim-sao-felipe",
+    igreja: "AD Madureira – Congregação Jardim São Felipe",
+    cidade: "Atibaia",
+    pastor: "Pb. Edilson José dos Santos",
+    pastorSlug: "edilson-jose-dos-santos",
+    endereco: "Rua São Felipe, 121 – Jardim São Felipe – Atibaia/SP",
+    telefone: "(11) 99549-3857",
+    whatsappUrl: "https://wa.me/5511995493857",
+    imagem: "/congregacoes/sao-felipe.jpg",
+    resumo:
+      "Congregação do Campo de Atibaia localizada no Jardim São Felipe, com cultos semanais, Escola Bíblica Dominical e ministérios ativos voltados à comunidade local.",
+    mapsUrl: "https://maps.app.goo.gl/PKfaSDPW1QQ6a9u48",
+    horarios: [
+      "Domingo · 9h · Escola Bíblica Dominical (EBD)",
+      "Domingo · 18h30 · Culto",
+      "Segunda · 19h30 · Círculo de Oração (quinzenal)",
+      "Terça · 19h30 · Ensaio das Irmãs (quinzenal)",
+      "Quarta · 19h30 · Culto",
+      "Quinta · 19h30 · Culto",
+    ],
+    ministerios: ["Círculo de Oração", "Ensaio das Irmãs", "EBD"],
+    historico:
+      "Começou o trabalho com alguns irmãos na casa do Pastor Wilson. Com o tempo alugaram um salão e depois compraram um terreno próprio onde estão até hoje.",
+    lideranca: [
+      {
+        nome: "Pb. Edilson José dos Santos",
+        cargo: "Presbítero",
+        pastorSlug: "edilson-jose-dos-santos",
+      },
+    ],
+    seo: {
+      title: "Congregação Jardim São Felipe | AD Madureira Atibaia",
+      description:
+        "Congregação da Assembleia de Deus Madureira no Jardim São Felipe, Atibaia. Cultos regulares, EBD, liderança pastoral e informações para visitar.",
+    },
+    localizacao: {
+      bairro: "Jardim São Felipe",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
+    },
+  },
+  {
     slug: "chacaras-brasil",
     igreja: "Assembleia de Deus Madureira Atibaia Chácaras Brasil",
     cidade: "Atibaia",
