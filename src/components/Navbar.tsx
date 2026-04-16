@@ -57,8 +57,6 @@ const menu: MenuItem[] = [
       { label: "Bíblia Online", href: "/espiritualidade/biblia" },
       { label: "Plano de Leitura", href: "/espiritualidade/plano-de-leitura" },
       { label: "Devocional", href: "/espiritualidade/devocional" },
-      { label: "Rádio", href: "/espiritualidade/radio" },
-      { label: "Podcast", href: "/espiritualidade/podcast" },
     ],
   },
   {
