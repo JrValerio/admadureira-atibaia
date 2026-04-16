@@ -360,6 +360,47 @@ export default function CursoTeologiaPage() {
                 ))}
               </div>
             </article>
+
+            <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+              <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                Blog do professor
+              </p>
+              <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
+                Artigos teológicos do Pr. Eliel Sobrinho
+              </h2>
+              <p className="mt-4 text-sm leading-7 text-[#555] md:text-base md:leading-8">
+                Textos publicados pelo professor com reflexões bíblicas, estudos doutrinários e ensinos para a vida cristã.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {cursoTeologiaData.articles.map((article) => (
+                  <a
+                    key={article.url}
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-[#fff8ee]"
+                  >
+                    <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
+                      {article.date}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-[#8b5b18]">
+                      {article.title}
+                    </p>
+                    <p className="mt-2 text-xs text-[#ffa726]">Ler no blog →</p>
+                  </a>
+                ))}
+              </div>
+              <div className="mt-6">
+                <a
+                  href="https://prelielsobrinho.blogspot.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ui-btn-secondary"
+                >
+                  Ver todos os artigos no blog →
+                </a>
+              </div>
+            </article>
           </div>
         </section>
       </main>
