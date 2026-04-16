@@ -218,7 +218,7 @@ export default function CursoTeologiaPage() {
               </aside>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+            <div className="grid grid-cols-1 gap-8">
               <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
                 <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                   Professor
@@ -282,35 +282,6 @@ export default function CursoTeologiaPage() {
                 </div>
               </article>
 
-              <article className="rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                  Estrutura do curso
-                </p>
-                <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
-                  Detalhes do curso
-                </h2>
-                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {cursoTeologiaData.courseDetails.map((detail) => (
-                    <div
-                      key={detail.label}
-                      className="rounded-2xl border border-black/5 bg-[#f9f9f9] p-4"
-                    >
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-[#777]">
-                        {detail.label}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#444]">
-                        {detail.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-6 text-sm leading-relaxed text-[#666]">
-                  A programação atual já confirma o curso como parte da rotina da
-                  igreja às segundas-feiras. Para saber sobre duração,
-                  investimento, certificação e inscrição, fale com a igreja e
-                  acompanhe as próximas orientações.
-                </p>
-              </article>
             </div>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.02fr_0.98fr]">
