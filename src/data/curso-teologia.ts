@@ -36,64 +36,64 @@ export const cursoTeologiaData = {
   },
   articles: [
     {
+      slug: "soteriologia-doutrina-da-salvacao",
       title: "Soteriologia — Doutrina da Salvação",
       date: "Setembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/09/sotereologia-doutrina-da-salvacao.html",
     },
     {
+      slug: "biblia-revelacao-de-deus",
       title: "Bíblia Revelação de Deus",
       date: "Setembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/09/biblia-misterio-de-deus-parte-1.html",
     },
     {
+      slug: "quando-um-espinho-agrada-a-deus-parte-1",
       title: "Quando um Espinho Agrada a Deus — Parte 1",
       date: "Novembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/11/quando-um-espinho-agrada-deus-parte-1.html",
     },
     {
+      slug: "quando-um-espinho-agrada-a-deus-parte-2",
       title: "Quando um Espinho Agrada a Deus — Parte 2",
       date: "Novembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/11/quatro-razoes-que-deus-pos-um-espinho.html",
     },
     {
+      slug: "as-mulheres-que-revolucionaram-uma-epoca",
       title: "As Mulheres que Revolucionaram uma Época",
       date: "Dezembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/12/as-mulheres-que-revolucionaram-uma.html",
     },
     {
+      slug: "lucifer-em-isaias-14-12-17",
       title: "Lúcifer em Isaías 14:12-17",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/lucifer-em-isaias-1412-17.html",
     },
     {
+      slug: "koinonia-x-pleonexia",
       title: "Koinõnia x Pleonexia",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/koinonia-x-pleonexia_21.html",
     },
     {
+      slug: "agape-o-amor-incondicional",
       title: "Ágape — O Amor Incondicional",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/agape-o-amor-incondicional_22.html",
     },
     {
+      slug: "a-mulher-virtuosa",
       title: "A Mulher Virtuosa",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/mulher-virtuosa.html",
     },
     {
+      slug: "pregadores-ou-clones",
       title: "Pregadores ou Clones?",
       date: "Junho 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/06/pregadores-ou-clones.html",
     },
     {
+      slug: "o-servo-da-orelha-furada",
       title: "O Servo da Orelha Furada",
       date: "Junho 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/06/o-servo-das-orelhas-furadas.html",
     },
     {
+      slug: "decisoes-decidem-destino",
       title: "Decisões Decidem Destino",
       date: "Dezembro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/12/decisoes-decidem-destino.html",
     },
   ],
   quickFacts: [
