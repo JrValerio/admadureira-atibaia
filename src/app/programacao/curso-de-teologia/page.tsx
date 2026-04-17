@@ -373,11 +373,9 @@ export default function CursoTeologiaPage() {
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {cursoTeologiaData.articles.map((article) => (
-                  <a
-                    key={article.url}
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    key={article.slug}
+                    href={`/programacao/curso-de-teologia/artigos/${article.slug}`}
                     className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-[#fff8ee]"
                   >
                     <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
@@ -386,8 +384,8 @@ export default function CursoTeologiaPage() {
                     <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-[#8b5b18]">
                       {article.title}
                     </p>
-                    <p className="mt-2 text-xs text-[#ffa726]">Ler no blog →</p>
-                  </a>
+                    <p className="mt-2 text-xs text-[#ffa726]">Ler artigo →</p>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6">
