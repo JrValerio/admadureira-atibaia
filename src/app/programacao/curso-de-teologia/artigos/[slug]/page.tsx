@@ -3,8 +3,8 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { getArtigo, artigosTeologicos, type Bloco } from "@/data/curso-teologia-artigos"
 
-interface Props {
-  params: { slug: string }
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
@@ -12,7 +12,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const artigo = getArtigo(params.slug)
+  const { slug } = await params
+  const artigo = getArtigo(slug)
   if (!artigo) return {}
   return {
     title: `${artigo.titulo} | Pr. Eliel Sobrinho — Curso de Teologia`,
@@ -103,8 +104,9 @@ function RenderBloco({ bloco }: { bloco: Bloco }) {
   }
 }
 
-export default function ArtigoPage({ params }: Props) {
-  const artigo = getArtigo(params.slug)
+export default async function ArtigoPage({ params }: Props) {
+  const { slug } = await params
+  const artigo = getArtigo(slug)
   if (!artigo) notFound()
 
   const jsonLd = {
