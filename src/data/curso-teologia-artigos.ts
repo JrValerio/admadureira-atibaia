@@ -10,7 +10,7 @@ export type Bloco =
   | { tipo: "lista"; itens: string[] }
   | { tipo: "destaque"; texto: string }
   | { tipo: "versiculo"; texto: string; referencia: string }
-  | { tipo: "bibliografia"; itens: string[] }
+  | { tipo: "bibliography"; itens: string[] }
 
 export interface ArtigoTeologico {
   slug: string

@@ -36,50 +36,62 @@ export const cursoTeologiaData = {
   },
   articles: [
     {
+      slug: "soteriologia-doutrina-da-salvacao",
       title: "Soteriologia — Doutrina da Salvação",
       date: "Setembro 2010",
     },
     {
+      slug: "biblia-revelacao-de-deus",
       title: "Bíblia Revelação de Deus",
       date: "Setembro 2010",
     },
     {
+      slug: "quando-um-espinho-agrada-a-deus-parte-1",
       title: "Quando um Espinho Agrada a Deus — Parte 1",
       date: "Novembro 2010",
     },
     {
+      slug: "quando-um-espinho-agrada-a-deus-parte-2",
       title: "Quando um Espinho Agrada a Deus — Parte 2",
       date: "Novembro 2010",
     },
     {
+      slug: "as-mulheres-que-revolucionaram-uma-epoca",
       title: "As Mulheres que Revolucionaram uma Época",
       date: "Dezembro 2010",
     },
     {
+      slug: "lucifer-em-isaias-14-12-17",
       title: "Lúcifer em Isaías 14:12-17",
       date: "Janeiro 2011",
     },
     {
+      slug: "koinonia-x-pleonexia",
       title: "Koinõnia x Pleonexia",
       date: "Janeiro 2011",
     },
     {
+      slug: "agape-o-amor-incondicional",
       title: "Ágape — O Amor Incondicional",
       date: "Janeiro 2011",
     },
     {
+      slug: "a-mulher-virtuosa",
       title: "A Mulher Virtuosa",
       date: "Janeiro 2011",
     },
     {
+      slug: "pregadores-ou-clones",
       title: "Pregadores ou Clones?",
       date: "Junho 2011",
     },
     {
+      slug: "o-servo-da-orelha-furada",
       title: "O Servo da Orelha Furada",
       date: "Junho 2011",
     },
     {
+      slug: "decisoes-decidem-destino",
       title: "Decisões Decidem Destino",
       date: "Dezembro 2011",
     },
