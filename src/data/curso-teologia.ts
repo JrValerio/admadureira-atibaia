@@ -38,62 +38,50 @@ export const cursoTeologiaData = {
     {
       title: "Soteriologia — Doutrina da Salvação",
       date: "Setembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/09/sotereologia-doutrina-da-salvacao.html",
     },
     {
       title: "Bíblia Revelação de Deus",
       date: "Setembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/09/biblia-misterio-de-deus-parte-1.html",
     },
     {
       title: "Quando um Espinho Agrada a Deus — Parte 1",
       date: "Novembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/11/quando-um-espinho-agrada-deus-parte-1.html",
     },
     {
       title: "Quando um Espinho Agrada a Deus — Parte 2",
       date: "Novembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/11/quatro-razoes-que-deus-pos-um-espinho.html",
     },
     {
       title: "As Mulheres que Revolucionaram uma Época",
       date: "Dezembro 2010",
-      url: "https://prelielsobrinho.blogspot.com/2010/12/as-mulheres-que-revolucionaram-uma.html",
     },
     {
       title: "Lúcifer em Isaías 14:12-17",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/lucifer-em-isaias-1412-17.html",
     },
     {
       title: "Koinõnia x Pleonexia",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/koinonia-x-pleonexia_21.html",
     },
     {
       title: "Ágape — O Amor Incondicional",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/agape-o-amor-incondicional_22.html",
     },
     {
       title: "A Mulher Virtuosa",
       date: "Janeiro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/01/mulher-virtuosa.html",
     },
     {
       title: "Pregadores ou Clones?",
       date: "Junho 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/06/pregadores-ou-clones.html",
     },
     {
       title: "O Servo da Orelha Furada",
       date: "Junho 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/06/o-servo-das-orelhas-furadas.html",
     },
     {
       title: "Decisões Decidem Destino",
       date: "Dezembro 2011",
-      url: "https://prelielsobrinho.blogspot.com/2011/12/decisoes-decidem-destino.html",
     },
   ],
   quickFacts: [
