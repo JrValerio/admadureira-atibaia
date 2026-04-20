@@ -254,8 +254,8 @@ export const pastores: Pastor[] = [
       "Seu ministério é marcado pela visão de que o verdadeiro Evangelho transforma vidas pelo amor a Deus e ao próximo.",
     ],
     ministerioInfo: {
-      inicio: "2021",
-      funcao: "Pastor da Congregação Bela Vista – Bom Jesus dos Perdões",
+      inicio: "2006",
+      funcao: "Pastor da Congregação Bela Vista – Bom Jesus dos Perdões (desde 2021)",
       igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
     },
     seo: {
