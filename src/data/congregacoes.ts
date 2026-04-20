@@ -218,6 +218,52 @@ export const congregacoes: Congregacao[] = [
       pais: "BR",
     },
   },
+  {
+    slug: "bela-vista-bom-jesus",
+    igreja: "AD Madureira – Congregação Bela Vista",
+    cidade: "Bom Jesus dos Perdões",
+    pastor: "Pr. Eliton Patrick Campos",
+    pastorSlug: "eliton-campos",
+    endereco: "Rua Padre Manoel da Nóbrega, 90 – Jardim Bela Vista – Bom Jesus dos Perdões/SP",
+    telefone: "(11) 93421-3661",
+    whatsappUrl: "https://wa.me/5511934213661",
+    imagem: "/congregacoes/bela-vista.jpg",
+    imagemInterior: "/congregacoes/bela-vista-interior.jpg",
+    resumo:
+      "Uma das primeiras Assembleias de Deus de Bom Jesus dos Perdões, a Congregação Bela Vista é marcada pela perseverança, pelo ensino da Palavra e pelo trabalho com a juventude. Uma igreja que nunca desistiu da promessa de Deus sobre ela.",
+    mapsUrl: "https://maps.app.goo.gl/c4uZdJCYSxQLZyrRA",
+    horarios: [
+      "Domingo · 9h · Escola Bíblica Dominical (EBD)",
+      "Domingo · 18h30 · Culto da Família",
+      "Quarta · 19h30 · Culto de Ensino",
+    ],
+    programacoesEspeciais: [
+      "Primeiro sábado de cada mês – Culto de Santa Ceia",
+      "Segunda quinta-feira de cada mês – Círculo de Oração",
+    ],
+    ministerios: ["EBD", "Trabalho com a Juventude", "Retiros Espirituais"],
+    historico:
+      "Uma das primeiras Assembleias de Deus da cidade de Bom Jesus dos Perdões, esta congregação é uma desbravadora na região. Sua história é marcada pela perseverança diante das dificuldades e pela fé inabalável na promessa de Deus sobre ela. Igreja batalhadora que mesmo nos momentos difíceis nunca deixou de acreditar e avançar.",
+    observacoes: "Possui rampa de acesso e espaço/sala infantil. Instagram: @admadureira_bjp",
+    lideranca: [
+      {
+        nome: "Pr. Eliton Patrick Campos",
+        cargo: "Pastor",
+        pastorSlug: "eliton-campos",
+      },
+    ],
+    seo: {
+      title: "Congregação Bela Vista – Bom Jesus dos Perdões | AD Madureira Atibaia",
+      description:
+        "Congregação da Assembleia de Deus Madureira em Bom Jesus dos Perdões. Uma das primeiras ADs da cidade, com cultos regulares, EBD e ministério para a juventude.",
+    },
+    localizacao: {
+      bairro: "Jardim Bela Vista",
+      cidade: "Bom Jesus dos Perdões",
+      estado: "SP",
+      pais: "BR",
+    },
+  },
 ];
 
 export function getCongregacoes() {

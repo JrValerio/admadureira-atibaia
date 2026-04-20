@@ -236,6 +236,35 @@ export const pastores: Pastor[] = [
     },
   },
   {
+    slug: "eliton-campos",
+    nome: "Pr. Eliton Patrick Campos",
+    cargo: "Pastor",
+    grupo: "congregacao",
+    congregacaoSlug: "bela-vista-bom-jesus",
+    foto: "/pastores/eliton-campos.jpg",
+    resumo:
+      "Com 20 anos no ministério e 15 como pastor, Eliton Campos está à frente da Congregação Bela Vista em Bom Jesus dos Perdões desde 2021. Sua visão pastoral é fazer com que as pessoas compreendam o verdadeiro valor do Evangelho: amar a Deus e ao próximo.",
+    trajetoria: [
+      "Iniciou o ministério trabalhando com cultos nos lares e em seguida dirigiu um ponto de pregação na região rural de Nazaré Paulista por dois anos.",
+      "Atuou como copastor na Igreja de Nazaré Paulista por dois anos e depois abriu a Congregação do Vicente Nunes, onde serviu por sete anos.",
+      "Pastoreou a Congregação de Nazaré Paulista por três anos e, desde maio de 2021, está à frente da Congregação Bela Vista em Bom Jesus dos Perdões.",
+    ],
+    ministerio: [
+      "Responsável pela liderança da Congregação Bela Vista, com cultos regulares, EBD e ministério ativo com a juventude.",
+      "Seu ministério é marcado pela visão de que o verdadeiro Evangelho transforma vidas pelo amor a Deus e ao próximo.",
+    ],
+    ministerioInfo: {
+      inicio: "2021",
+      funcao: "Pastor da Congregação Bela Vista – Bom Jesus dos Perdões",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Pr. Eliton Patrick Campos | Congregação Bela Vista – Bom Jesus dos Perdões",
+      description:
+        "Pastor da Congregação Bela Vista em Bom Jesus dos Perdões, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça o ministério, a história e os horários de culto.",
+    },
+  },
+  {
     slug: "jorge",
     nome: "Pr. Jorge",
     cargo: "Pastor Vice-Presidente",
