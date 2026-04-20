@@ -189,6 +189,17 @@ export function getHeroEventos(): HeroEvento[] {
       dayOfWeek: 3, // quarta-feira
     },
     {
+      titulo: "Campanha Mulheres em Ação",
+      alt: "Banner da Campanha Mulheres em Ação da AD Madureira Atibaia",
+      imagem: "/banners/banner-campanha-mulher-em-acao.png",
+      href: "/programacao/consagracao",
+      ariaLabel: "Abrir página da Consagração de Mulheres",
+      type: "event",
+      eventDate: "2026-04-23",
+      eventEndDate: "2026-05-07",
+      archivedAfter: "2026-05-07",
+    },
+    {
       titulo: "Congresso com as Crianças",
       alt: "Banner do Congresso com as Crianças da AD Madureira Atibaia",
       imagem: "/banners/banner-congresso-kids.png",
