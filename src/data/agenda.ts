@@ -141,13 +141,13 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Quinta-feira",
-    titulo: "Quinta da Vitória · Jejum e Oração",
+    titulo: "Culto da Vitória",
     horario: SEDE_PROGRAMACAO_HORARIOS.quintaVitoria,
     banner: BANNERS_PROGRAMACAO.quintaVitoria,
     slug: "quinta-da-vitoria",
     descricao: [
-      "A Quinta da Vitória é uma noite marcada por perseverança, jejum e clamor. É quando a igreja se reúne para lembrar que existem batalhas que não se vencem apenas com esforço humano, mas diante de Deus, em oração, quebrantamento e confiança na sua fidelidade.",
-      "Quando a caminhada passa por campanhas e propósitos especiais, essa reunião também se torna memorial de gratidão pelas respostas, livramentos e renovo que o Senhor derrama sobre o seu povo ao longo do caminho.",
+      "O Culto da Vitória é uma noite marcada por perseverança, jejum e clamor. É quando a igreja se reúne para lembrar que existem batalhas que não se vencem apenas com esforço humano, mas diante de Deus, em oração, quebrantamento e confiança na sua fidelidade.",
+      "Ao longo do ano, este culto também abriga campanhas especiais — momentos em que a igreja se une em torno de um propósito, uma Palavra e uma crença de que Deus responde ao clamor coletivo do seu povo.",
     ].join("\n\n"),
     convite:
       "Se você tem uma causa diante de Deus, venha clamar conosco. Traga seu coração, sua casa e sua esperança para uma noite de fé, jejum e oração.",
@@ -156,6 +156,21 @@ export const programacaoSemanal: ItemSemanal[] = [
       "Filipenses 4:6",
       "1 Tessalonicenses 5:18"
     ),
+    campanha: {
+      titulo: "Campanha Mulheres em Ação",
+      versiculo: {
+        texto: "Eu e minha casa serviremos ao Senhor.",
+        referencia: "Josué 24:15",
+      },
+      datas: [
+        { data: "23/04", preletora: "Pastora Anna Alzira Felix" },
+        { data: "30/04", preletora: "Diaconisa Andreia Spaca" },
+        { data: "07/05", preletora: "Missionária Eunice Motta" },
+      ],
+      cantoras: ["Elizama", "Jaine", "Edna", "Valéria e Filhas", "Erlândia"],
+      local: "Igreja Sede — Campo de Atibaia",
+      horario: "19h30",
+    },
   },
   {
     dia: "Sexta-feira",
