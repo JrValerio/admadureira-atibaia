@@ -171,6 +171,15 @@ export function getHeroEventos(): HeroEvento[] {
     //   archivedAfter: "2026-04-05",
     // },
     {
+      titulo: "Reunião de Ministério",
+      alt: "Banner da Reunião de Ministério da AD Madureira Atibaia",
+      imagem: "/banners/banner-reuniao-de-ministerio.png",
+      href: "/programacao",
+      ariaLabel: "Abrir página da Reunião de Ministério",
+      type: "weekly",
+      dayOfWeek: 1, // segunda-feira (1ª do mês)
+    },
+    {
       titulo: "Reunião de Obreiros",
       alt: "Banner da Reunião de Obreiros da AD Madureira Atibaia",
       imagem: "/banners/banner-reuniao-de-obreiros.png",
