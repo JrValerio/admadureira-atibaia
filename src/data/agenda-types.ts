@@ -44,6 +44,15 @@ export interface MesAgenda {
   eventos: Evento[];
 }
 
+export interface CampanhaData {
+  titulo: string;
+  versiculo?: { texto: string; referencia: string };
+  datas: Array<{ data: string; preletora?: string }>;
+  cantoras?: string[];
+  local?: string;
+  horario?: string;
+}
+
 export interface ItemSemanal {
   dia: string;
   titulo: string;
@@ -54,4 +63,5 @@ export interface ItemSemanal {
   convite?: string;
   baseBiblica?: ReferenciaBiblicaLink[];
   recursos?: ConteudoRelacionadoLink[];
+  campanha?: CampanhaData;
 }

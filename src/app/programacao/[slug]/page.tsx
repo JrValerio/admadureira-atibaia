@@ -6,7 +6,7 @@ import {
   SEDE_POSTAL_ADDRESS,
   SEDE_PROGRAMACAO_LOCATION,
 } from "@/data/site";
-import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
+import type { ConteudoRelacionadoLink, CampanhaData } from "@/data/agenda-types";
 import { getCultoBySlug, getCultosSlugs } from "@/lib/agenda-utils";
 import { getBannerSemanal } from "@/lib/banner-semanal";
 import { buildBibleReferenceHref } from "@/lib/bible-reference";
@@ -43,6 +43,48 @@ export async function generateMetadata({ params }: Props) {
 
 function splitRichText(text?: string) {
   return text?.split(/\n\s*\n/).filter(Boolean) ?? [];
+}
+
+function CampanhaBlock({ campanha }: { campanha: CampanhaData }) {
+  return (
+    <div className="order-2 rounded-3xl border border-[#ef5350]/20 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+      <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+        Campanha em andamento
+      </p>
+      <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-2">
+        {campanha.titulo}
+      </h2>
+      {campanha.versiculo && (
+        <p className="text-sm text-[#777] italic mb-5">
+          &ldquo;{campanha.versiculo.texto}&rdquo; — {campanha.versiculo.referencia}
+        </p>
+      )}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+        {campanha.datas.map(({ data, preletora }) => (
+          <div
+            key={data}
+            className="rounded-2xl border border-[#ef5350]/15 bg-[#fff5f5] px-4 py-3"
+          >
+            <p className="font-acme text-xl text-[#ef5350]">{data}</p>
+            {preletora && (
+              <p className="text-xs text-[#555] mt-1 leading-snug">{preletora}</p>
+            )}
+          </div>
+        ))}
+      </div>
+      {campanha.cantoras && campanha.cantoras.length > 0 && (
+        <p className="text-sm text-[#666]">
+          <span className="font-semibold text-[#444]">Cantoras: </span>
+          {campanha.cantoras.join(", ")}
+        </p>
+      )}
+      {(campanha.local || campanha.horario) && (
+        <p className="text-sm text-[#666] mt-1">
+          {[campanha.local, campanha.horario].filter(Boolean).join(" · ")}
+        </p>
+      )}
+    </div>
+  );
 }
 
 function getCultoRecursosRelacionados(
@@ -219,6 +261,9 @@ export default async function CultoPage({ params }: Props) {
                 </div>
               </div>
             )}
+
+            {/* Campanha atual */}
+            {culto.campanha && <CampanhaBlock campanha={culto.campanha} />}
 
             {/* Convite */}
             {conviteParagrafos.length > 0 && (

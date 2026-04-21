@@ -66,7 +66,7 @@ export const SEDE_GEO_COORDINATES = {
 
 export const SEDE_PROGRAMACAO_HORARIOS = {
   oracaoMatinalSemana: "06h00 – 07h00",
-  cursoTeologia: "19h30",
+  cursoTeologia: "19h",
   cultoEnsino: "19h30",
   consagracao: "09h00",
   circuloOracao: "15h00",
