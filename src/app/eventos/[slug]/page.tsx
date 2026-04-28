@@ -80,6 +80,10 @@ export default async function EventoPage({ params }: PageProps) {
 
   const eventImage =
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+  const eventImageClassName =
+    eventImage === "/programacao/semanas/2026-04-27/santa-ceia.png"
+      ? "object-cover object-top"
+      : "object-cover";
   const descricaoParagrafos = splitRichText(evento.descricao);
   const conviteParagrafos = splitRichText(evento.convite);
   const recursosRelacionados = getRecursosRelacionados(evento.recursos);
@@ -152,7 +156,7 @@ export default async function EventoPage({ params }: PageProps) {
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 1200px"
-                className="object-cover"
+                className={eventImageClassName}
               />
             </div>
 
