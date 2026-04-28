@@ -309,7 +309,7 @@ const agendaBase2026 = validateAgenda(
 export const agenda2026: MesAgenda[] = agendaBase2026.map((mes) => ({
   ...mes,
   eventos: mes.eventos.map((evento: EventoBase): Evento => ({
-    ...evento,
     ...getVisualEvento(evento.tipo),
+    ...evento,
   })),
 }));

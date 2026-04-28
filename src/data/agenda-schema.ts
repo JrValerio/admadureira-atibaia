@@ -24,6 +24,8 @@ export const EventoSchema = z.object({
   recursos: z.array(ConteudoRelacionadoLinkSchema).optional(),
   local: z.string().optional(),
   destaque: z.boolean().optional(),
+  imagem: z.string().optional(),
+  banner: z.string().optional(),
 });
 
 export const MesAgendaSchema = z.object({

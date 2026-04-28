@@ -17,6 +17,8 @@ type EventoConfig = {
   recursos?: ConteudoRelacionadoLink[];
   horario?: string;
   destaque?: boolean;
+  imagem?: string;
+  banner?: string;
 };
 
 function criarEvento(local: string, config: EventoConfig) {
@@ -434,6 +436,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
           destaque: true,
+          imagem: "/programacao/semanas/2026-04-27/santa-ceia.png",
+          banner: "/programacao/semanas/2026-04-27/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-11-05-2026",
