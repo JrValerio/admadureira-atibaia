@@ -433,6 +433,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-11-05-2026",
@@ -460,16 +461,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cursoTeologiaDescricao,
           convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
-          slug: "culto-com-a-mocidade-23-05-2026",
-          data: "23/05",
-          titulo: "Culto com a Mocidade",
-          tipo: "culto-com-a-mocidade",
-          horario: "19h00",
-          descricao: cultoMocidadeDescricao,
-          convite: cultoMocidadeConvite,
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-25-05-2026",
