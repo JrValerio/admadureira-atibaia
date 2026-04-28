@@ -23,12 +23,11 @@ export interface EventoBase {
   recursos?: ConteudoRelacionadoLink[];
   local?: string;
   destaque?: boolean;
-}
-
-export interface Evento extends EventoBase {
   imagem?: string;
   banner?: string;
 }
+
+export type Evento = EventoBase;
 
 export interface MesAgendaBase {
   mes: string;
