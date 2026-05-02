@@ -82,7 +82,7 @@ export default async function EventoPage({ params }: PageProps) {
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
   const eventImageClassName =
     eventImage === "/programacao/eventos/congresso-circulo-de-oracao.png"
-      ? "object-contain"
+      ? "object-cover object-[center_38%]"
       : eventImage === "/programacao/semanas/2026-04-27/santa-ceia.png"
       ? "object-cover object-top"
       : "object-cover";
