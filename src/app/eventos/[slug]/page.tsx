@@ -81,7 +81,9 @@ export default async function EventoPage({ params }: PageProps) {
   const eventImage =
     evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
   const eventImageClassName =
-    eventImage === "/programacao/semanas/2026-04-27/santa-ceia.png"
+    eventImage === "/programacao/eventos/congresso-circulo-de-oracao.png"
+      ? "object-contain"
+      : eventImage === "/programacao/semanas/2026-04-27/santa-ceia.png"
       ? "object-cover object-top"
       : "object-cover";
   const descricaoParagrafos = splitRichText(evento.descricao);

@@ -51,8 +51,8 @@ export const VISUAIS_EVENTO: Record<EventoTipo, EventoVisual> = {
     banner: "/programacao/culto-de-jovens.png",
   },
   "congresso-circulo-de-oracao": {
-    imagem: "/programacao/circulo-de-oracao.png",
-    banner: "/programacao/circulo-de-oracao.png",
+    imagem: "/programacao/eventos/congresso-circulo-de-oracao.png",
+    banner: "/programacao/eventos/congresso-circulo-de-oracao.png",
   },
   "congresso-criancas": {
     imagem: "/programacao/congresso-kids.png",

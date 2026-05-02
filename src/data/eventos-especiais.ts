@@ -133,6 +133,13 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
     ].join("\n\n");
   const batismoConvite =
     "Venha celebrar conosco este momento marcante de obediência, testemunho e alegria na presença de Deus.";
+
+  const congressoCirculoOracaoDescricao =
+    "O Congresso do Círculo de Oração — Baluarte da Fé é um encontro preparado para mulheres, famílias e toda a igreja viverem dias de renovação espiritual, comunhão e fortalecimento na presença de Deus. Com o tema “Em tempos de dor, as prioridades mudam”, baseado em II Samuel 21:10, o congresso propõe uma reflexão profunda sobre fé, perseverança, oração e posicionamento espiritual em tempos difíceis. Serão duas noites de louvor, ministração da Palavra e celebração ao Senhor, reunindo servas de Deus com trajetórias marcadas por dedicação, compromisso ministerial e amor pela obra.";
+  const congressoCirculoOracaoConvite =
+    "A Igreja Assembleia de Deus — Ministério Madureira Campo de Atibaia convida você e sua família para participarem deste congresso especial. Venha com o coração aberto para adorar, ouvir a Palavra e ser fortalecido pela presença de Deus. Será um tempo precioso de fé, comunhão e edificação espiritual. Esperamos por você nos dias 29 e 30 de maio, às 19h30, na Praça Pio XII, 122 — Centro — Atibaia/SP.";
+  const congressoCirculoOracaoBaseBiblica = criarBaseBiblica("II Samuel 21:10");
+
   return [
     {
       mes: "Janeiro",
@@ -478,22 +485,36 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
         criarEvento(local, {
           slug: "congresso-circulo-de-oracao-29-05-2026",
           data: "29/05",
-          titulo: "Congresso - Círculo de Oração (Sede)",
+          titulo: "Congresso do Círculo de Oração — Baluarte da Fé",
           tipo: "congresso-circulo-de-oracao",
-          horario: "19h00",
+          horario: "19h30",
           descricao:
-            "Primeiro dia do congresso do Círculo de Oração no templo sede, com oração, louvor e ministração especial.",
+            [
+              congressoCirculoOracaoDescricao,
+              "A primeira noite do Congresso do Círculo de Oração — Baluarte da Fé será marcada por um tempo especial de adoração, comunhão e ministração da Palavra. Com a participação da Missionária Paula Ribeiro na pregação e da Cantora Guiomar Victor no louvor, será uma noite preparada para fortalecer a fé, renovar a esperança e conduzir a igreja a uma reflexão profunda sobre o tema “Em tempos de dor, as prioridades mudam”, baseado em II Samuel 21:10.",
+            ].join("\n\n"),
+          convite: congressoCirculoOracaoConvite,
+          baseBiblica: congressoCirculoOracaoBaseBiblica,
           destaque: true,
+          imagem: "/programacao/eventos/congresso-circulo-de-oracao.png",
+          banner: "/programacao/eventos/congresso-circulo-de-oracao.png",
         }),
         criarEvento(local, {
           slug: "congresso-circulo-de-oracao-30-05-2026",
           data: "30/05",
-          titulo: "Congresso - Círculo de Oração (Sede)",
+          titulo: "Congresso do Círculo de Oração — Baluarte da Fé",
           tipo: "congresso-circulo-de-oracao",
-          horario: "19h00",
+          horario: "19h30",
           descricao:
-            "Segundo dia do congresso do Círculo de Oração no templo sede, reunindo a igreja em consagração e comunhão.",
+            [
+              congressoCirculoOracaoDescricao,
+              "A segunda noite do Congresso do Círculo de Oração — Baluarte da Fé dará continuidade a esse propósito de edificação espiritual, oração e fortalecimento na presença de Deus. A ministração da Palavra ficará com a Pastora Geane Silva, e o louvor contará novamente com a participação da Cantora Guiomar Victor. Será uma noite de celebração, entrega e renovação, encerrando o congresso com uma mensagem de fé, perseverança e posicionamento diante de Deus.",
+            ].join("\n\n"),
+          convite: congressoCirculoOracaoConvite,
+          baseBiblica: congressoCirculoOracaoBaseBiblica,
           destaque: true,
+          imagem: "/programacao/eventos/congresso-circulo-de-oracao.png",
+          banner: "/programacao/eventos/congresso-circulo-de-oracao.png",
         }),
       ],
     },

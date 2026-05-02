@@ -115,7 +115,10 @@ function getEventoHref(
 // com as artes dos cards da programação.
 export function getHeroEventos(): HeroEvento[] {
   const hrefSantaCeia = getEventoHref(["santa-ceia"], "/programacao");
-  const hrefCongressoKids = getEventoHref(["congresso-criancas"], "/eventos");
+  const hrefCongressoCirculoOracao = getEventoHref(
+    ["congresso-circulo-de-oracao"],
+    "/eventos"
+  );
 
   const today = new Date();
   const slides: HeroEvento[] = [
@@ -209,13 +212,16 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAfter: "2026-05-07",
     },
     {
-      titulo: "Congresso com as Crianças",
-      alt: "Banner do Congresso com as Crianças da AD Madureira Atibaia",
-      imagem: "/banners/banner-congresso-kids.png",
-      href: hrefCongressoKids,
-      ariaLabel: "Abrir página do Congresso com as Crianças",
+      titulo: "Congresso do Círculo de Oração",
+      alt: "Banner do Congresso do Círculo de Oração Baluarte da Fé da AD Madureira Atibaia",
+      imagem: "/banners/banner-congresso-circulo-de-oracao.png",
+      href: hrefCongressoCirculoOracao,
+      ariaLabel: "Abrir página do Congresso do Círculo de Oração",
+      priority: "high",
       type: "event",
-      eventDate: "2026-04-25",
+      eventDate: "2026-05-29",
+      eventEndDate: "2026-05-30",
+      archivedAfter: "2026-05-30",
     },
     {
       titulo: "Culto de Santa Ceia",
