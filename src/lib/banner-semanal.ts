@@ -1,5 +1,4 @@
-import { existsSync } from "fs";
-import path from "path";
+import { BANNERS_SEMANAIS_DISPONIVEIS } from "@/data/banner-semanal-manifest";
 
 /**
  * Retorna a segunda-feira da semana atual no formato "YYYY-MM-DD".
@@ -66,8 +65,8 @@ export function getBannerSemanal(defaultPath: string): string {
   if (!weeklyFilename) return defaultPath;
 
   const monday = getMondayOfCurrentWeek();
+  const arquivosDaSemana = BANNERS_SEMANAIS_DISPONIVEIS[monday] ?? [];
   const weeklyPath = `/programacao/semanas/${monday}/${weeklyFilename}`;
-  const absolutePath = path.join(process.cwd(), "public", weeklyPath);
 
-  return existsSync(absolutePath) ? weeklyPath : defaultPath;
+  return arquivosDaSemana.includes(weeklyFilename) ? weeklyPath : defaultPath;
 }
