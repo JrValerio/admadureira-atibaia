@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-banner-semanal-manifest.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/generate-banner-semanal-manifest.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "pretest": "node scripts/generate-banner-semanal-manifest.mjs",
     "test": "vitest",
+    "pretest:run": "node scripts/generate-banner-semanal-manifest.mjs",
     "test:run": "vitest run",
     "smoke": "node scripts/smoke.mjs"
   },

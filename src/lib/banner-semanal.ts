@@ -1,5 +1,4 @@
-import { existsSync } from "fs";
-import path from "path";
+import { BANNERS_SEMANAIS_DISPONIVEIS } from "@/data/banner-semanal-manifest";
 
 /**
  * Retorna a segunda-feira da semana atual no formato "YYYY-MM-DD".
@@ -36,13 +35,13 @@ const WEEKLY_FILENAME_MAP: Record<string, readonly string[]> = {
   "/programacao/oracao-matinal.png": ["oracao-matinal.png"],
   "/programacao/oracao-matinal-domingo.png": ["oracao-matinal-domingo.png"],
   "/programacao/curso-teologia.png": ["curso-teologia.png"],
-  "/programacao/culto-de-terca.png": ["culto-de-ensino.png"],
+  "/programacao/culto-de-terca.png": ["culto-de-ensino.png", "culto-de-terca.png"],
   "/programacao/consagracao-mulheres.png": ["consagracao-mulheres.png"],
   "/programacao/circulo-de-oracao.png": ["circulo-de-oracao.png"],
   "/programacao/ensaio-irmas.png": ["ensaio-irmas.png"],
   "/programacao/culto-de-quinta.png": ["culto-de-quinta.png"],
   "/programacao/culto-de-libertacao.png": ["culto-de-libertacao.png"],
-  "/programacao/EBD.png": ["ebd.png"],
+  "/programacao/EBD.png": ["ebd.png", "EBD.png"],
   "/programacao/ensaio-jovens.png": ["ensaio-jovens.png"],
   "/programacao/culto-de-domingo.png": [
     "culto-de-domingo.png",
@@ -50,9 +49,27 @@ const WEEKLY_FILENAME_MAP: Record<string, readonly string[]> = {
   ],
   "/programacao/reuniao-ministerial.png": ["reuniao-ministerial.png"],
   "/programacao/culto-de-jovens.png": ["culto-de-jovens.png"],
-  "/programacao/culto-de-ceia.png": ["santa-ceia.png"],
+  "/programacao/culto-de-ceia.png": ["santa-ceia.png", "culto-de-ceia.png"],
   "/programacao/reuniao-de-obreiro.png": ["reuniao-de-obreiro.png"],
 };
+
+function findWeeklyPath(monday: string, weeklyFilenames: readonly string[]) {
+  const availableWeeks = Object.keys(BANNERS_SEMANAIS_DISPONIVEIS)
+    .filter((week) => week <= monday)
+    .sort()
+    .reverse();
+
+  for (const week of availableWeeks) {
+    const files = BANNERS_SEMANAIS_DISPONIVEIS[week] ?? [];
+    const filename = weeklyFilenames.find((candidate) => files.includes(candidate));
+
+    if (filename) {
+      return `/programacao/semanas/${week}/${filename}`;
+    }
+  }
+
+  return null;
+}
 
 /**
  * Dado o caminho padrão de um banner de programação, verifica se existe
@@ -69,13 +86,5 @@ export function getBannerSemanal(defaultPath: string): string {
   if (!weeklyFilenames) return defaultPath;
 
   const monday = getMondayOfCurrentWeek();
-
-  for (const weeklyFilename of weeklyFilenames) {
-    const weeklyPath = `/programacao/semanas/${monday}/${weeklyFilename}`;
-    const absolutePath = path.join(process.cwd(), "public", weeklyPath);
-
-    if (existsSync(absolutePath)) return weeklyPath;
-  }
-
-  return defaultPath;
+  return findWeeklyPath(monday, weeklyFilenames) ?? defaultPath;
 }

@@ -24,39 +24,39 @@ export const VISUAL_PADRAO: EventoVisual = {
 
 export const VISUAIS_EVENTO: Record<EventoTipo, EventoVisual> = {
   "reuniao-de-ministerio": {
-    imagem: "/programacao/reuniao-ministerial.png",
-    banner: "/programacao/reuniao-ministerial.png",
+    imagem: "/programacao/semanas/2026-03-30/reuniao-ministerial.png",
+    banner: "/programacao/semanas/2026-03-30/reuniao-ministerial.png",
   },
   "curso-de-teologia": {
-    imagem: "/programacao/curso-teologia.png",
+    imagem: "/programacao/semanas/2026-03-30/curso-teologia.png",
   },
   "santa-ceia": {
-    imagem: "/programacao/culto-de-ceia.png",
-    banner: "/programacao/culto-de-ceia.png",
+    imagem: "/programacao/semanas/2026-03-30/culto-de-ceia.png",
+    banner: "/programacao/semanas/2026-03-30/culto-de-ceia.png",
   },
   "reuniao-de-obreiros": {
-    imagem: "/programacao/reuniao-de-obreiro.png",
-    banner: "/programacao/reuniao-de-obreiro.png",
+    imagem: "/programacao/semanas/2026-03-30/reuniao-de-obreiro.png",
+    banner: "/programacao/semanas/2026-03-30/reuniao-de-obreiro.png",
   },
   "dia-das-mulheres": {
-    imagem: "/programacao/culto-para-mulheres.png",
-    banner: "/programacao/culto-para-mulheres.png",
+    imagem: "/programacao/semanas/2026-03-30/consagracao-mulheres.png",
+    banner: "/programacao/semanas/2026-03-30/consagracao-mulheres.png",
   },
   batismo: {
-    imagem: "/programacao/batismo.png",
-    banner: "/programacao/batismo.png",
+    imagem: "/programacao/semanas/2026-03-30/batismo.png",
+    banner: "/programacao/semanas/2026-03-30/batismo.png",
   },
   "culto-com-a-mocidade": {
-    imagem: "/programacao/culto-de-jovens.png",
-    banner: "/programacao/culto-de-jovens.png",
+    imagem: "/programacao/semanas/2026-03-30/culto-de-jovens.png",
+    banner: "/programacao/semanas/2026-03-30/culto-de-jovens.png",
   },
   "congresso-circulo-de-oracao": {
     imagem: "/programacao/eventos/congresso-circulo-de-oracao.png",
     banner: "/programacao/eventos/congresso-circulo-de-oracao.png",
   },
   "congresso-criancas": {
-    imagem: "/programacao/congresso-kids.png",
-    banner: "/programacao/congresso-kids.png",
+    imagem: "/programacao/semanas/2026-03-30/congresso-kids.png",
+    banner: "/programacao/semanas/2026-03-30/congresso-kids.png",
   },
   "evento-especial": {
     imagem: "/fachada-da-igreja.jpg",
