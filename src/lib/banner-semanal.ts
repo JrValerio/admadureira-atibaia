@@ -1,4 +1,5 @@
-import { BANNERS_SEMANAIS_DISPONIVEIS } from "@/data/banner-semanal-manifest";
+import { existsSync } from "fs";
+import path from "path";
 
 /**
  * Retorna a segunda-feira da semana atual no formato "YYYY-MM-DD".
@@ -31,23 +32,26 @@ function getMondayOfCurrentWeek(): string {
  * quando entrar uma arte nova da semana, basta substituir o arquivo da
  * pasta YYYY-MM-DD sem mudar a estrutura do site.
  */
-const WEEKLY_FILENAME_MAP: Record<string, string> = {
-  "/programacao/oracao-matinal.png": "oracao-matinal.png",
-  "/programacao/oracao-matinal-domingo.png": "oracao-matinal-domingo.png",
-  "/programacao/curso-teologia.png": "curso-teologia.png",
-  "/programacao/culto-de-terca.png": "culto-de-ensino.png",
-  "/programacao/consagracao-mulheres.png": "consagracao-mulheres.png",
-  "/programacao/circulo-de-oracao.png": "circulo-de-oracao.png",
-  "/programacao/ensaio-irmas.png": "ensaio-irmas.png",
-  "/programacao/culto-de-quinta.png": "culto-de-quinta.png",
-  "/programacao/culto-de-libertacao.png": "culto-de-libertacao.png",
-  "/programacao/EBD.png": "ebd.png",
-  "/programacao/ensaio-jovens.png": "ensaio-jovens.png",
-  "/programacao/culto-de-domingo.png": "culto-da-familia.png",
-  "/programacao/reuniao-ministerial.png": "reuniao-ministerial.png",
-  "/programacao/culto-de-jovens.png": "culto-de-jovens.png",
-  "/programacao/culto-de-ceia.png": "santa-ceia.png",
-  "/programacao/reuniao-de-obreiro.png": "reuniao-de-obreiro.png",
+const WEEKLY_FILENAME_MAP: Record<string, readonly string[]> = {
+  "/programacao/oracao-matinal.png": ["oracao-matinal.png"],
+  "/programacao/oracao-matinal-domingo.png": ["oracao-matinal-domingo.png"],
+  "/programacao/curso-teologia.png": ["curso-teologia.png"],
+  "/programacao/culto-de-terca.png": ["culto-de-ensino.png"],
+  "/programacao/consagracao-mulheres.png": ["consagracao-mulheres.png"],
+  "/programacao/circulo-de-oracao.png": ["circulo-de-oracao.png"],
+  "/programacao/ensaio-irmas.png": ["ensaio-irmas.png"],
+  "/programacao/culto-de-quinta.png": ["culto-de-quinta.png"],
+  "/programacao/culto-de-libertacao.png": ["culto-de-libertacao.png"],
+  "/programacao/EBD.png": ["ebd.png"],
+  "/programacao/ensaio-jovens.png": ["ensaio-jovens.png"],
+  "/programacao/culto-de-domingo.png": [
+    "culto-de-domingo.png",
+    "culto-da-familia.png",
+  ],
+  "/programacao/reuniao-ministerial.png": ["reuniao-ministerial.png"],
+  "/programacao/culto-de-jovens.png": ["culto-de-jovens.png"],
+  "/programacao/culto-de-ceia.png": ["santa-ceia.png"],
+  "/programacao/reuniao-de-obreiro.png": ["reuniao-de-obreiro.png"],
 };
 
 /**
@@ -61,12 +65,17 @@ const WEEKLY_FILENAME_MAP: Record<string, string> = {
  * Seguro para uso em Server Components — nunca chamado no cliente.
  */
 export function getBannerSemanal(defaultPath: string): string {
-  const weeklyFilename = WEEKLY_FILENAME_MAP[defaultPath];
-  if (!weeklyFilename) return defaultPath;
+  const weeklyFilenames = WEEKLY_FILENAME_MAP[defaultPath];
+  if (!weeklyFilenames) return defaultPath;
 
   const monday = getMondayOfCurrentWeek();
-  const arquivosDaSemana = BANNERS_SEMANAIS_DISPONIVEIS[monday] ?? [];
-  const weeklyPath = `/programacao/semanas/${monday}/${weeklyFilename}`;
 
-  return arquivosDaSemana.includes(weeklyFilename) ? weeklyPath : defaultPath;
+  for (const weeklyFilename of weeklyFilenames) {
+    const weeklyPath = `/programacao/semanas/${monday}/${weeklyFilename}`;
+    const absolutePath = path.join(process.cwd(), "public", weeklyPath);
+
+    if (existsSync(absolutePath)) return weeklyPath;
+  }
+
+  return defaultPath;
 }
