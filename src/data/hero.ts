@@ -1,5 +1,10 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
+import {
+  isFirstMondayWeek,
+  isThirdSaturdayWeek,
+  isWeekBeforeFirstMonday,
+} from "@/lib/programacao-recorrencia";
 
 export interface HeroEvento {
   titulo: string;
@@ -14,9 +19,10 @@ export interface HeroEvento {
   /**
    * fixed   — permanece independente do dia
    * weekly  — ganha relevância na janela do seu dia da semana
+   * recurring-event — aparece somente na janela mensal configurada
    * event   — promovido durante a janela de datas do evento
    */
-  type?: "fixed" | "weekly" | "event";
+  type?: "fixed" | "weekly" | "event" | "recurring-event";
   /** 0 = domingo … 6 = sábado */
   dayOfWeek?: number;
   /** Data de início da janela de promoção: "YYYY-MM-DD" */
@@ -28,6 +34,8 @@ export interface HeroEvento {
    * Após essa data, o slide não aparece nem como fallback.
    */
   archivedAfter?: string;
+  recurrence?: "first-monday-previous-week" | "third-saturday-week";
+  hiddenWhen?: "first-monday-week";
 }
 
 // ─── Motor de ordenação ──────────────────────────────────────────────────────
@@ -69,6 +77,28 @@ function isWeeklyRelevant(slide: HeroEvento, today: Date): boolean {
   );
 }
 
+function isRecurringEventActive(slide: HeroEvento, today: Date): boolean {
+  if (slide.type !== "recurring-event") return false;
+
+  if (slide.recurrence === "first-monday-previous-week") {
+    return isWeekBeforeFirstMonday(today);
+  }
+
+  if (slide.recurrence === "third-saturday-week") {
+    return isThirdSaturdayWeek(today);
+  }
+
+  return false;
+}
+
+function isHiddenByCalendar(slide: HeroEvento, today: Date): boolean {
+  if (slide.hiddenWhen === "first-monday-week" && isFirstMondayWeek(today)) {
+    return true;
+  }
+
+  return slide.type === "recurring-event" && !isRecurringEventActive(slide, today);
+}
+
 function isArchived(slide: HeroEvento, today: Date): boolean {
   if (!slide.archivedAfter) return false;
   const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());
@@ -86,7 +116,7 @@ function orderSlides(slides: HeroEvento[]): HeroEvento[] {
   for (const slide of slides) {
     if (slide.priority === "high") {
       high.push(slide);
-    } else if (isEventActive(slide, today)) {
+    } else if (isEventActive(slide, today) || isRecurringEventActive(slide, today)) {
       events.push(slide);
     } else if (isWeeklyRelevant(slide, today)) {
       weekly.push(slide);
@@ -179,8 +209,8 @@ export function getHeroEventos(): HeroEvento[] {
       imagem: "/banners/banner-reuniao-de-ministerio.png",
       href: "/programacao",
       ariaLabel: "Abrir página da Reunião de Ministério",
-      type: "weekly",
-      dayOfWeek: 1, // segunda-feira (1ª do mês)
+      type: "recurring-event",
+      recurrence: "first-monday-previous-week",
     },
     {
       titulo: "Reunião de Obreiros",
@@ -188,8 +218,8 @@ export function getHeroEventos(): HeroEvento[] {
       imagem: "/banners/banner-reuniao-de-obreiros.png",
       href: "/programacao",
       ariaLabel: "Abrir página da Reunião de Obreiros",
-      type: "weekly",
-      dayOfWeek: 6, // sábado
+      type: "recurring-event",
+      recurrence: "third-saturday-week",
     },
     {
       titulo: "Círculo de Oração",
@@ -241,8 +271,13 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir página do Curso de Teologia",
       type: "weekly",
       dayOfWeek: 1, // segunda-feira
+      hiddenWhen: "first-monday-week",
     },
   ];
 
-  return orderSlides(slides.filter((s) => !isArchived(s, today)));
+  return orderSlides(
+    slides.filter(
+      (slide) => !isArchived(slide, today) && !isHiddenByCalendar(slide, today)
+    )
+  );
 }

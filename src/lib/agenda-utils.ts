@@ -6,6 +6,7 @@ import {
 } from "@/data/agenda";
 import { getSaoPauloDate } from "@/lib/date-utils";
 import { getProgramacaoHref } from "@/lib/programacao-anchor";
+import { getProgramacaoSemanalAtual } from "@/lib/programacao-semanal";
 
 const mesesOrdenados = [
   "Janeiro",
@@ -301,7 +302,7 @@ function encontrarProximaOcorrenciaSemanal(
 }
 
 function getProximaProgramacaoSemanal(referencia: Date) {
-  const proximosCompromissos = programacaoSemanal
+  const proximosCompromissos = getProgramacaoSemanalAtual(referencia)
     .map((item, indice) =>
       encontrarProximaOcorrenciaSemanal(item, referencia, indice)
     )
@@ -360,7 +361,7 @@ function getOcorrenciasEspeciaisDoDia(referencia: Date) {
 function getOcorrenciasSemanaisDoDia(referencia: Date) {
   const diaSemana = referencia.getDay();
 
-  return programacaoSemanal
+  return getProgramacaoSemanalAtual(referencia)
     .filter((item) => (diasProgramacao[item.dia] ?? []).includes(diaSemana))
     .map((item, indice) => {
       const { hora, minuto } = extrairHorario(item.horario);
