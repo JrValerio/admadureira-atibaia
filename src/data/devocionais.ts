@@ -64,7 +64,7 @@ const devotionals: Devotional[] = [
     ],
     oracao:
       "Senhor, visita nossa casa com tua presença. Dá-nos unidade, sabedoria e alegria para servir ao teu nome com fidelidade.",
-    imagem: "/programacao/culto-de-domingo.png",
+    imagem: "/programacao/semanas/2026-03-30/culto-de-domingo.png",
   },
   {
     slug: "permaneca-firme-nas-pequenas-disciplinas",
