@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { programacaoSemanal } from "@/data/agenda";
+import { getProgramacaoSemanalAtual } from "@/lib/programacao-semanal";
 
 type DiaQuadro = {
   id: number;
@@ -46,7 +46,7 @@ function extrairOrdemHorario(horario: string) {
 function montarQuadroSemanal() {
   const quadro = new Map<number, ItemQuadro[]>();
 
-  programacaoSemanal.forEach((item, index) => {
+  getProgramacaoSemanalAtual().forEach((item, index) => {
     const dias = mapaDias[item.dia] ?? [];
 
     dias.forEach((dia) => {

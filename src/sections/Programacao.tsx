@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { programacaoSemanal } from "@/data/agenda";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
 import { getBannerSemanal } from "@/lib/banner-semanal";
+import { getProgramacaoSemanalAtual } from "@/lib/programacao-semanal";
 import { Section, SectionTitle } from "@/components/ui";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 import CardMedia from "@/components/media/CardMedia";
@@ -108,7 +108,7 @@ function CardSemanal({
 export default function Programacao({
   showHeader = true,
 }: ProgramacaoProps = {}) {
-  const programacaoDetalhada = [...programacaoSemanal].sort(
+  const programacaoDetalhada = [...getProgramacaoSemanalAtual()].sort(
     (a, b) =>
       extrairOrdemDia(a.dia) - extrairOrdemDia(b.dia) ||
       extrairOrdemHorario(a.horario) - extrairOrdemHorario(b.horario)
