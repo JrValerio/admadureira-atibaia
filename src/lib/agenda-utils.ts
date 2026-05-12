@@ -91,6 +91,7 @@ const TIPOS_EVENTO_PUBLICO = new Set<Evento["tipo"]>([
   "congresso-circulo-de-oracao",
   "congresso-criancas",
   "evento-especial",
+  "reuniao-de-obreiros",
 ]);
 
 const TIPOS_EVENTO_COM_PAGINA = new Set<Evento["tipo"]>([
