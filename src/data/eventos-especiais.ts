@@ -463,6 +463,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-05-11/reuniao-de-obreiro.png",
+          banner: "/programacao/semanas/2026-05-11/reuniao-de-obreiro.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-18-05-2026",
@@ -908,7 +911,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Primeira noite do Congresso Geral UMADAT Jovem, reunindo a juventude em adoração e ministração da Palavra.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-24-10-2026",
@@ -917,7 +919,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Segunda noite do Congresso Geral UMADAT Jovem no templo sede.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-26-10-2026",
@@ -981,7 +982,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             "Celebração especial em honra ao aniversário da Pastora Anna Alzira.",
           convite:
             "Vamos celebrar com carinho e gratidão a vida da nossa pastora. Um momento especial de honra.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-27-11-2026",
@@ -993,7 +993,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             "Congresso especial das irmãs, voltado à edificação, comunhão, adoração e fortalecimento espiritual das mulheres na presença de Deus.",
           convite:
             "Serão dias especiais de renovo, comunhão e glória de Deus. Convide outras irmãs e venha participar do CONFADAT.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-28-11-2026",
@@ -1005,7 +1004,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             "Segundo dia do CONFADAT, Congresso das Irmãs, com adoração, palavra e comunhão no templo sede.",
           convite:
             "Serão dias especiais de renovo, comunhão e glória de Deus. Convide outras irmãs e venha participar do CONFADAT.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-23-11-2026",
@@ -1049,7 +1047,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de encerramento do ano com Santa Ceia e reunião de obreiros.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "batismo-13-12-2026",
@@ -1059,7 +1056,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "09h30",
           descricao: batismoDescricao,
           convite: batismoConvite,
-          destaque: true,
         }),
       ],
     },
