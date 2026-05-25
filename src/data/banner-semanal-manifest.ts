@@ -96,5 +96,49 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "oracao-matinal.png",
     "reuniao-ministerial.png",
     "santa-ceia.png"
+  ],
+  "2026-05-11": [
+    "circulo-de-oracao.png",
+    "consagracao-mulheres.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "curso-teologia.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png",
+    "reuniao-de-obreiro.png"
+  ],
+  "2026-05-18": [
+    "circulo-de-oracao.png",
+    "consagracao-mulheres.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "curso-teologia.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png"
+  ],
+  "2026-05-25": [
+    "circulo-de-oracao.png",
+    "congresso-circulo-de-oracao.png",
+    "consagracao-mulheres.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "curso-teologia.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png"
   ]
 };
