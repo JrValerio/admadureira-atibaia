@@ -64,6 +64,27 @@ export const programacaoSemanal: ItemSemanal[] = [
     baseBiblica: criarBaseBiblica("Salmos 5:3", "Marcos 1:35"),
   },
   {
+    dia: "Segunda, Quarta e Sexta",
+    titulo: "Jejum e Oração",
+    banner: BANNERS_PROGRAMACAO.jejumOracao,
+    slug: "jejum-e-oracao",
+    descricao: [
+      "O Pastor Presidente Zacarias B. Félix convocou o Campo de Atibaia para um tempo de jejum e oração nas segundas, quartas e sextas-feiras. Quando a liderança chama o povo a buscar a Deus de forma extraordinária, é porque existe uma convicção profunda de que a oração e o jejum unidos fazem a diferença no espiritual — e o que muda no espiritual transforma o natural.",
+      "Jejum não é punição nem autoflagelação. É uma decisão voluntária de abrir mão do alimento por um período para concentrar toda a atenção e o desejo em Deus. Essa prática atravessa toda a Bíblia: Moisés jejuou 40 dias antes de receber a Lei (Êxodo 34:28); Ester convocou o povo judeu a três dias de jejum absoluto antes de uma crise que ameaçava a vida de toda uma nação (Ester 4:16); Davi jejuou e orou pela vida do seu filho (2 Samuel 12:16); e o próprio Jesus, antes de iniciar o seu ministério, foi para o deserto e jejuou 40 dias e 40 noites (Mateus 4:2).",
+      "O jejum e a oração não se separam. Durante o tempo de abstinência, o espírito fica mais sensível, a oração ganha profundidade e o coração aprende a depender de Deus de uma forma que a rotina comum não ensina. A igreja primitiva jejuava antes de tomar decisões importantes — foi durante um tempo de jejum e ministério ao Senhor que o Espírito Santo falou sobre o chamado de Paulo e Barnabé para a obra missionária (Atos 13:2-3). Esse é o padrão: o jejum prepara o terreno para que Deus aja com clareza.",
+      "A convocação do pastor presidente é um chamado para que o campo inteiro se una em um propósito espiritual comum. Não é obrigação religiosa — é oportunidade. Quando a igreja jejua e ora junta, ela experimenta a comunhão mais profunda que existe: coração a coração com Deus e com o irmão, buscando o mesmo Senhor.",
+    ].join("\n\n"),
+    convite:
+      "Atenda ao chamado do pastor presidente e separe as segundas, quartas e sextas para jejuar e orar. Abra mão de uma refeição, de um hábito, de um prazer — e coloque Deus no lugar. A oração feita com o coração humilhado e o corpo consagrado chega longe. O campo de Atibaia está buscando ao Senhor. Venha junto.",
+    baseBiblica: criarBaseBiblica(
+      "Ester 4:16",
+      "Mateus 4:2",
+      "Isaías 58:6",
+      "Joel 2:12",
+      "Atos 13:2-3"
+    ),
+  },
+  {
     dia: "Segunda-feira",
     titulo: "Curso de Teologia",
     horario: SEDE_PROGRAMACAO_HORARIOS.cursoTeologia,

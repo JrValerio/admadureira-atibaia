@@ -51,6 +51,7 @@ const WEEKLY_FILENAME_MAP: Record<string, readonly string[]> = {
   "/programacao/culto-de-jovens.png": ["culto-de-jovens.png"],
   "/programacao/culto-de-ceia.png": ["santa-ceia.png", "culto-de-ceia.png"],
   "/programacao/reuniao-de-obreiro.png": ["reuniao-de-obreiro.png"],
+  "/programacao/jejum-e-oracao.png": ["jejum-e-oração.png"],
 };
 
 function findWeeklyPath(monday: string, weeklyFilenames: readonly string[]) {
