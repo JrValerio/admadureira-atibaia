@@ -20,6 +20,7 @@ type CardSemanalProps = {
 
 const ordemProgramacaoDetalhada: Record<string, number> = {
   "Segunda a Sexta": 0,
+  "Segunda, Quarta e Sexta": 1,
   "Segunda-feira": 1,
   "Terça-feira": 2,
   "Quarta-feira": 3,

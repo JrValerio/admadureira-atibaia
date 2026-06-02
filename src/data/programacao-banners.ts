@@ -15,4 +15,5 @@ export const BANNERS_PROGRAMACAO = {
   cultoJovens: "/programacao/culto-de-jovens.png",
   santaCeia: "/programacao/culto-de-ceia.png",
   reuniaoObreiros: "/programacao/reuniao-de-obreiro.png",
+  jejumOracao: "/programacao/jejum-e-oracao.png",
 } as const;
