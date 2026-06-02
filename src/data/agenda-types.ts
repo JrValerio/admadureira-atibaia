@@ -63,4 +63,5 @@ export interface ItemSemanal {
   baseBiblica?: ReferenciaBiblicaLink[];
   recursos?: ConteudoRelacionadoLink[];
   campanha?: CampanhaData;
+  local?: string;
 }

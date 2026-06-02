@@ -168,11 +168,9 @@ export default async function CultoPage({ params }: Props) {
       byDay: culto.dia,
       ...(culto.horario ? { startTime: culto.horario } : {}),
     },
-    location: {
-      "@type": "Place",
-      name: SEDE_PLACE_NAME,
-      address: SEDE_POSTAL_ADDRESS,
-    },
+    location: culto.local
+      ? { "@type": "Place", name: culto.local }
+      : { "@type": "Place", name: SEDE_PLACE_NAME, address: SEDE_POSTAL_ADDRESS },
     organizer: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -357,7 +355,7 @@ export default async function CultoPage({ params }: Props) {
                     Local
                   </p>
                   <p className="text-[#212121] font-semibold">
-                    {SEDE_PROGRAMACAO_LOCATION}
+                    {culto.local ?? SEDE_PROGRAMACAO_LOCATION}
                   </p>
                 </div>
               </div>

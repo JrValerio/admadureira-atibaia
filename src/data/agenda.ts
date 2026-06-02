@@ -76,6 +76,7 @@ export const programacaoSemanal: ItemSemanal[] = [
     ].join("\n\n"),
     convite:
       "Atenda ao chamado do pastor presidente e separe as segundas, quartas e sextas para jejuar e orar. Abra mão de uma refeição, de um hábito, de um prazer — e coloque Deus no lugar. A oração feita com o coração humilhado e o corpo consagrado chega longe. O campo de Atibaia está buscando ao Senhor. Venha junto.",
+    local: "Em qualquer lugar — em casa, no trabalho, na escola, na faculdade. Onde você estiver, faça o jejum.",
     baseBiblica: criarBaseBiblica(
       "Ester 4:16",
       "Mateus 4:2",
