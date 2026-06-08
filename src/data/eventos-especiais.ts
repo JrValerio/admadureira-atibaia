@@ -553,6 +553,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
           destaque: true,
+          imagem: "/programacao/semanas/2026-06-08/santa-ceia.png",
+          banner: "/programacao/semanas/2026-06-08/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-15-06-2026",
