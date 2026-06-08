@@ -552,6 +552,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-15-06-2026",
@@ -570,6 +571,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-22-06-2026",
@@ -597,6 +599,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "09h30",
           descricao: batismoDescricao,
           convite: batismoConvite,
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-29-06-2026",
@@ -631,6 +634,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-13-07-2026",
@@ -648,6 +652,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Primeira noite do congresso da mocidade local, reunindo jovens em adoração, comunhão e palavra.",
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-18-07-2026",
@@ -656,6 +661,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Segunda noite do congresso da mocidade local no templo sede.",
+          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-20-07-2026",
