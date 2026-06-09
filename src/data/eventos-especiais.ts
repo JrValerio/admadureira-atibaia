@@ -574,6 +574,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
           destaque: true,
+          imagem: "/programacao/semanas/2026-06-15/reuniao-de-obreiro.png",
+          banner: "/programacao/semanas/2026-06-15/reuniao-de-obreiro.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-22-06-2026",
@@ -602,6 +604,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: batismoDescricao,
           convite: batismoConvite,
           destaque: true,
+          imagem: "/programacao/semanas/2026-06-22/batismo.png",
+          banner: "/programacao/semanas/2026-06-22/batismo.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-29-06-2026",
@@ -637,6 +641,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
           destaque: true,
+          imagem: "/programacao/semanas/2026-07-06/santa-ceia.png",
+          banner: "/programacao/semanas/2026-07-06/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-13-07-2026",
