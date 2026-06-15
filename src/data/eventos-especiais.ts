@@ -557,6 +557,57 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-06-08/santa-ceia.png",
         }),
         criarEvento(local, {
+          slug: "dia-do-pastor-14-06-2026",
+          data: "14/06",
+          titulo: "Dia do Pastor",
+          tipo: "evento-especial",
+          descricao: [
+            "Neste segundo domingo de junho, celebramos com gratidão a vida dos nossos queridos pastores, Pr. Zacarias B. Félix e Pra. Anna Alzira, que há mais de 20 anos têm dedicado suas vidas ao cuidado da obra de Deus e ao pastoreio da Assembleia de Deus Ministério Madureira – Campo de Atibaia.",
+            "Ao longo dessa caminhada, foram incontáveis vidas alcançadas, famílias restauradas, aconselhamentos, orações, ensinamentos e demonstrações de amor ao Reino de Deus. Com zelo, dedicação e fidelidade, nossos pastores têm sido instrumentos nas mãos do Senhor para conduzir esta igreja pelos caminhos da fé.",
+            "Hoje rendemos graças a Deus por suas vidas e por todo o legado construído ao longo desses anos de ministério. Que o Senhor continue fortalecendo, renovando e recompensando cada esforço, cada lágrima e cada semente plantada na obra de Deus.",
+          ].join("\n\n"),
+          convite: [
+            "Parabéns pelo Dia do Pastor! Que Deus continue abençoando abundantemente suas vidas, família e ministério.",
+            "Com carinho e gratidão, Família AD Madureira Campo de Atibaia.",
+          ].join("\n\n"),
+          baseBiblica: criarBaseBiblica("Hebreus 13:17"),
+          recursos: [
+            {
+              label: "Assistir à entrevista — Pr. Zacarias B. Félix",
+              href: "https://youtu.be/nD8ww-uzRgg?si=vFtAAFGa-7jU_YD_",
+              descricao:
+                "Conheça a história, o chamado e a trajetória de fé do nosso pastor.",
+            },
+          ],
+          destaque: true,
+          imagem: "/programacao/eventos/dia-do-pastor.png",
+          banner: "/programacao/eventos/dia-do-pastor.png",
+        }),
+        criarEvento(local, {
+          slug: "entrevista-pastor-zacarias-felix-2026",
+          data: "14/06",
+          titulo: "Entrevista — Pr. Zacarias B. Félix",
+          tipo: "evento-especial",
+          descricao: [
+            "Em uma conversa especial, o Pr. Zacarias B. Félix compartilhou um pouco da sua história, da sua caminhada ministerial, do seu chamado e da sua trajetória de fé à frente da Assembleia de Deus Ministério Madureira – Campo de Atibaia.",
+            "Há mais de 20 anos dedicados ao pastoreio desta obra, o Pastor Zacarias tem sido um instrumento fiel nas mãos de Deus. Sua trajetória é marcada por fé, perseverança e amor pela igreja e pelas pessoas que Deus colocou sob seus cuidados.",
+            "Esta entrevista é uma oportunidade de conhecer mais sobre essa linda história de dedicação ao Reino de Deus.",
+          ].join("\n\n"),
+          convite:
+            "Assista à entrevista e conheça mais sobre a história e o chamado do nosso pastor.",
+          recursos: [
+            {
+              label: "Assistir à entrevista no YouTube",
+              href: "https://youtu.be/nD8ww-uzRgg?si=vFtAAFGa-7jU_YD_",
+              descricao:
+                "Pr. Zacarias B. Félix conta sua história, chamado e trajetória de fé.",
+            },
+          ],
+          destaque: true,
+          imagem: "/programacao/eventos/entrevista.png",
+          banner: "/programacao/eventos/entrevista.png",
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-15-06-2026",
           data: "15/06",
           titulo: "Curso de Teologia",
