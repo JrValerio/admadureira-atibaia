@@ -580,7 +580,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             },
           ],
           destaque: true,
-          imagem: "/programacao/eventos/dia-do-pastor.png",
+          imagem: "/programacao/eventos/dia-do-pastor-hero.png",
           banner: "/programacao/eventos/dia-do-pastor.png",
         }),
         criarEvento(local, {
@@ -604,7 +604,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             },
           ],
           destaque: true,
-          imagem: "/programacao/eventos/entrevista.png",
+          imagem: "/programacao/eventos/entrevista-hero.png",
           banner: "/programacao/eventos/entrevista.png",
         }),
         criarEvento(local, {
