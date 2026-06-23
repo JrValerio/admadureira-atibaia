@@ -712,6 +712,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao:
             "Primeira noite do congresso da mocidade local, reunindo jovens em adoração, comunhão e palavra.",
           destaque: true,
+          imagem: "/programacao/eventos/congresso-jovens-sede.png",
+          banner: "/programacao/eventos/congresso-jovens-sede.png",
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-18-07-2026",
@@ -721,6 +723,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao:
             "Segunda noite do congresso da mocidade local no templo sede.",
           destaque: true,
+          imagem: "/programacao/eventos/congresso-jovens-sede.png",
+          banner: "/programacao/eventos/congresso-jovens-sede.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-20-07-2026",
