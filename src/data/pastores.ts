@@ -265,6 +265,62 @@ export const pastores: Pastor[] = [
     },
   },
   {
+    slug: "willian-correa",
+    nome: "Pb. Willian Corrêa de M. Silva",
+    cargo: "Presbítero",
+    grupo: "congregacao",
+    congregacaoSlug: "mascate",
+    foto: "/pastores/pr-willian-correa.jpeg",
+    resumo:
+      "Presbítero à frente da Congregação Mascate no Jardim Monte Verde, Atibaia, desde maio de 2025. Junto com sua esposa Jeane Moreira Cortes, serve a comunidade local com dedicação ao ensino da Palavra, à adoração e ao cuidado pastoral das famílias.",
+    trajetoria: [
+      "Assumiu a liderança da Congregação Mascate em maio de 2025, no bairro Jardim Monte Verde, em Atibaia.",
+      "Sua atuação pastoral é marcada pelo compromisso com o ensino das Escrituras e pelo cuidado com as famílias da congregação.",
+    ],
+    ministerio: [
+      "Responsável pela liderança da Congregação Mascate, com cultos regulares de domingo, quarta e sexta, além da Escola Bíblica Dominical.",
+      "Conduz o ministério com foco na edificação espiritual da congregação e no alcance da comunidade local ao Evangelho.",
+    ],
+    ministerioInfo: {
+      inicio: "2025",
+      funcao: "Presbítero da Congregação Mascate",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Pb. Willian Corrêa | Congregação Mascate – AD Madureira Atibaia",
+      description:
+        "Presbítero da Congregação Mascate, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça o ministério, a congregação e os horários de culto.",
+    },
+  },
+  {
+    slug: "ricardo-costa",
+    nome: "Pb. Ricardo Tabajara Gomes da Costa",
+    cargo: "Presbítero",
+    grupo: "congregacao",
+    congregacaoSlug: "vila-sao-jose",
+    foto: "/pastores/pb-ricardo-costa.jpg",
+    resumo:
+      "Presbítero à frente da Congregação Vila São José no bairro Caetetuba, Atibaia, desde abril de 2025. Ao lado de sua esposa Tatiane Frias Gomes da Costa, serve a comunidade com dedicação ao ensino da Palavra e ao cuidado pastoral.",
+    trajetoria: [
+      "Assumiu a liderança da Congregação Vila São José em abril de 2025, no bairro Caetetuba, em Atibaia.",
+      "Sua atuação pastoral prioriza o crescimento espiritual da congregação e o acolhimento das famílias da comunidade local.",
+    ],
+    ministerio: [
+      "Responsável pela liderança da Congregação Vila São José, com cultos semanais e programações especiais ao longo do mês.",
+      "Conduz o ministério com ênfase na adoração, no ensino das Escrituras e no cuidado com os membros.",
+    ],
+    ministerioInfo: {
+      inicio: "2025",
+      funcao: "Presbítero da Congregação Vila São José",
+      igreja: "Assembleia de Deus Ministério Madureira – Campo de Atibaia",
+    },
+    seo: {
+      title: "Pb. Ricardo Costa | Congregação Vila São José – AD Madureira Atibaia",
+      description:
+        "Presbítero da Congregação Vila São José, no Campo de Atibaia da Assembleia de Deus Madureira. Conheça o ministério, a congregação e os horários de culto.",
+    },
+  },
+  {
     slug: "jorge",
     nome: "Pr. Jorge",
     cargo: "Pastor Vice-Presidente",

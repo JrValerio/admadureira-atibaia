@@ -219,6 +219,88 @@ export const congregacoes: Congregacao[] = [
     },
   },
   {
+    slug: "mascate",
+    igreja: "AD Madureira – Congregação Mascate",
+    cidade: "Atibaia",
+    pastor: "Pb. Willian Corrêa de M. Silva",
+    pastorSlug: "willian-correa",
+    endereco: "Rua São Paulo, 390 – Jardim Monte Verde – Atibaia/SP",
+    imagem: "/congregacoes/mascate.jpg",
+    imagemInterior: "/congregacoes/mascate-interior.jpg",
+    resumo:
+      "Congregação do Campo de Atibaia localizada no Jardim Monte Verde, reunindo famílias em cultos semanais de adoração, ensino e comunhão. Sob a liderança do Pb. Willian Corrêa, a igreja celebra cultos na quarta, sexta e domingo, com Santa Ceia no primeiro sábado de cada mês.",
+    mapsUrl: "https://maps.app.goo.gl/qioTe57WhohBXQnB8",
+    horarios: [
+      "Domingo · 18h30 · Culto da Família",
+      "Quarta · 19h30 · Culto ao Público",
+      "Sexta · 19h30 · Culto de Ensino",
+    ],
+    programacoesEspeciais: [
+      "Primeiro sábado de cada mês – Culto de Santa Ceia",
+    ],
+    ministerios: ["EBD", "Círculo de Oração"],
+    lideranca: [
+      {
+        nome: "Pb. Willian Corrêa de M. Silva",
+        cargo: "Presbítero",
+        pastorSlug: "willian-correa",
+      },
+    ],
+    seo: {
+      title: "Congregação Mascate | AD Madureira Atibaia",
+      description:
+        "Congregação da Assembleia de Deus Madureira no Jardim Monte Verde, Atibaia. Cultos semanais de domingo, quarta e sexta. Informações de localização e contato.",
+    },
+    localizacao: {
+      bairro: "Jardim Monte Verde",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
+    },
+  },
+  {
+    slug: "vila-sao-jose",
+    igreja: "AD Madureira – Congregação Vila São José",
+    cidade: "Atibaia",
+    pastor: "Pb. Ricardo Tabajara Gomes da Costa",
+    pastorSlug: "ricardo-costa",
+    endereco: "Rua Seis, 23 – Caetetuba – Atibaia/SP",
+    telefone: "(11) 97763-8782",
+    whatsappUrl: "https://wa.me/5511977638782",
+    imagem: "/congregacoes/vila-sao-jose.jpg",
+    resumo:
+      "Congregação do Campo de Atibaia no bairro Caetetuba, reunindo famílias em cultos semanais de adoração, ensino e comunhão. Sob a liderança do Pb. Ricardo Costa, a igreja celebra cultos nas quartas, sextas e domingos, com programações especiais ao longo do mês.",
+    mapsUrl: "https://maps.app.goo.gl/MNPSNdsnkC2LCwie9",
+    horarios: [
+      "Domingo · 18h30 · Culto",
+      "Quarta · 19h30 · Culto",
+      "Sexta · 19h30 · Culto",
+    ],
+    programacoesEspeciais: [
+      "Primeiro sábado – Santa Ceia (19h30)",
+      "Quarta sexta do mês – Culto com as Irmãs",
+    ],
+    observacoes: "Instagram: @Ad_vilasaojose",
+    lideranca: [
+      {
+        nome: "Pb. Ricardo Tabajara Gomes da Costa",
+        cargo: "Presbítero",
+        pastorSlug: "ricardo-costa",
+      },
+    ],
+    seo: {
+      title: "Congregação Vila São José | AD Madureira Atibaia",
+      description:
+        "Congregação da Assembleia de Deus Madureira no bairro Caetetuba, Atibaia. Cultos semanais de domingo, quarta e sexta. Informações de contato e localização.",
+    },
+    localizacao: {
+      bairro: "Caetetuba",
+      cidade: "Atibaia",
+      estado: "SP",
+      pais: "BR",
+    },
+  },
+  {
     slug: "bela-vista-bom-jesus",
     igreja: "AD Madureira – Congregação Bela Vista",
     cidade: "Bom Jesus dos Perdões",
