@@ -4790,6 +4790,236 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
   },
 ];
 
+// ─── 3º Trimestre: A Igreja dos Gentios ─────────────────────────────────────
+
+const subsidioAdultosTerceiroTrimestreLicao1 = {
+  cabecalho: {
+    numero: 1,
+    titulo: "O Espírito Santo Envia a Igreja",
+    data: "2026-07-05",
+    trimestre: "3º Trimestre de 2026",
+    textoAureo: "Atos 13.2",
+    verdadePratica:
+      "A missão cristã entre os gentios não nasce de estratégia humana, mas da ação soberana do Espírito Santo que chama, separa e envia a Igreja como instrumento da salvação universal.",
+    leituraBiblicaEmClasse: ["Atos 13.1-12"],
+    leituraDiaria: [
+      { dia: "Segunda", referencia: "Atos 1.8", tema: "A promessa do Espírito e o programa da missão" },
+      { dia: "Terça", referencia: "Atos 11.19-26", tema: "A Igreja de Antioquia: base da missão gentílica" },
+      { dia: "Quarta", referencia: "Atos 13.1-5", tema: "O Espírito chama e envia Barnabé e Saulo" },
+      { dia: "Quinta", referencia: "Atos 13.6-12", tema: "O confronto com Bárjesus e a conversão do procônsul" },
+      { dia: "Sexta", referencia: "Romanos 10.14-15", tema: "A lógica do envio missionário" },
+      { dia: "Sábado", referencia: "Isaías 49.6", tema: "A vocação universal da Igreja" },
+      { dia: "Domingo", referencia: "Atos 13.1-12", tema: "Revisão: o padrão bíblico do envio" },
+    ] as LeituraDiariaItem[],
+    hinosSugeridos: ["Eis-me Aqui", "Manda-me", "Vai, Dize ao Mundo"],
+  },
+  visaoGeral: {
+    resumo:
+      "A primeira lição do 3º trimestre abre o estudo da missão gentílica apresentando o envio de Barnabé e Saulo a partir de Antioquia. O Espírito Santo toma a iniciativa, chama, separa e envia — enquanto a comunidade jejua, ora e confirma o chamado com imposição de mãos.",
+    ideiaCentral: "A missão da Igreja nasce da ação soberana do Espírito Santo, não da estratégia humana.",
+    objetivos: [
+      "Apresentar Antioquia como modelo de comunidade missionária.",
+      "Destacar o papel central do Espírito Santo no chamado e no envio.",
+      "Aplicar o padrão bíblico da missão à vida da igreja local.",
+    ],
+    palavraChave: {
+      termo: "Envio missionário",
+      definicao:
+        "Ato pelo qual o Espírito Santo chama e designa servos para uma obra específica, confirmado pela comunidade em oração e imposição de mãos.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "antioquia-e-o-espirito",
+      titulo: "A Igreja de Antioquia e o chamado do Espírito",
+      sinopse:
+        "A comunidade em Antioquia vivia em adoração e jejum quando o Espírito Santo falou e separou Barnabé e Saulo para a missão gentílica.",
+      explicacaoBiblica: [
+        "Antioquia da Síria era a terceira maior cidade do Império Romano e o centro do Evangelho entre os gentios. Sua liderança plural incluía profetas e mestres de origens diversas (At 13.1).",
+        "Enquanto a comunidade 'ministrava ao Senhor e jejuava', o Espírito Santo falou e separou Barnabé e Saulo para a obra que Ele mesmo havia preparado (At 13.2). A missão nasce da adoração, não do ativismo.",
+        "A resposta da Igreja foi de obediência: ainda jejuaram, oraram, impuseram as mãos e os enviaram (At 13.3). O envio missionário é sempre um ato comunitário, não individual.",
+      ],
+      aprofundamentoDoutrinario: [
+        "O Espírito Santo é o Senhor soberano da missão (At 1.8; 13.2; 16.6-10). Não é o planejamento humano que define onde o Evangelho avança, mas a diretriz do Espírito.",
+        "A missão é trinitária: o Pai envia o Filho (Jo 20.21); o Filho envia a Igreja (Mt 28.18-20); o Espírito capacita e dirige (At 1.8; 13.2).",
+      ],
+      aplicacaoPratica: [
+        "Sua vida espiritual está posicionada para ouvir o Espírito falar sobre missão? Adoração e jejum são os ambientes em que o chamado é revelado.",
+        "Como sua classe ou grupo pode se envolver com a missão da igreja local?",
+      ],
+    },
+    {
+      id: "chipre-e-o-confronto",
+      titulo: "Chipre: o confronto com o engano espiritual",
+      sinopse:
+        "Em Chipre, o falso profeta Bárjesus tentou barrar o avanço do Evangelho. Paulo, cheio do Espírito, confrontou o engano com autoridade apostólica.",
+      explicacaoBiblica: [
+        "Em Chipre, Barnabé e Saulo pregaram nas sinagogas e chegaram a Paphos, onde encontraram o procônsul Sérgio Paulo — homem inteligente que desejava ouvir a Palavra de Deus (At 13.6-7).",
+        "Bárjesus (Elimás), o mágico e falso profeta a serviço do procônsul, tentou 'desviar o procônsul da fé' (At 13.8). A resistência ao Evangelho assume formas espirituais, intelectuais e políticas.",
+        "Paulo, 'cheio do Espírito Santo', confrontou Elimás com autoridade: cegueira temporária como sinal do julgamento divino. O procônsul creu, 'admirado do ensino do Senhor' (At 13.12).",
+      ],
+      aprofundamentoDoutrinario: [
+        "A missão encontra resistência espiritual, não apenas cultural. A Igreja precisa enfrentar o engano espiritual com o poder do Espírito, não apenas com argumentação humana.",
+        "A conversão de Sérgio Paulo mostra que o Evangelho vence a oposição e transforma vidas em todas as esferas sociais.",
+      ],
+      aplicacaoPratica: [
+        "A missão que você realiza — no bairro, no trabalho, na família — também enfrenta resistência. Você tem respondido no poder do Espírito ou na força própria?",
+        "Ore por uma pessoa que ainda resiste ao Evangelho e peça ao Senhor que abra seus olhos espirituais.",
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "O que você acha que levou a Igreja de Antioquia a se tornar a maior base missionária do primeiro século?",
+    pontoSensivelDaAula:
+      "A missão como vocação de toda a Igreja — não apenas de pastores e missionários profissionais. O Espírito chama qualquer crente disponível.",
+    erroComumDeInterpretacao:
+      "Ler a missão em Atos como exclusiva dos apóstolos, quando na verdade o Espírito mobiliza toda a comunidade que vive em adoração e obediência.",
+    perguntasParaDebate: [
+      "Por que o Espírito Santo falou durante o jejum e a adoração, e não durante uma reunião estratégica?",
+      "O que a resposta da Igreja de Antioquia revela sobre o papel da comunidade no envio missionário?",
+      "Como o episódio de Bárjesus prepara a classe para entender os obstáculos espirituais da missão hoje?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre com oração pelo avanço do Evangelho em Atibaia e região, e convide os alunos a perguntar ao Espírito qual papel cada um pode exercer na expansão da missão.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Antioquia da Síria tinha cerca de 500 mil habitantes e era o terceiro maior polo urbano do Império Romano. Foi nela que os discípulos foram chamados de 'cristãos' pela primeira vez (At 11.26).",
+      "Chipre era a ilha natal de Barnabé (At 4.36), o que explica o início da missão por lá. Paphos era a capital administrativa romana da ilha, sede do procônsul — tornando a conversão de Sérgio Paulo um evento de impacto político e social.",
+    ],
+    conceitoTeologico: [
+      "Missio Spiritus: a missão não é um programa humano com suporte divino, mas uma ação divina que envolve seres humanos. O Espírito dirige, capacita e garante o avanço do Evangelho.",
+      "Padrão lucano da missão: o Evangelho sempre encontra resistência — e o Espírito sempre garante o avanço a despeito dos obstáculos.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Bárjesus / Elimás",
+        conteudo:
+          "Bárjesus significa 'filho de Jesus' em aramaico — nome que Paulo confronta ironicamente chamando-o de 'filho do diabo' (At 13.10). Elimás pode derivar de termo árabe para 'sábio' ou 'mágico'.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A tendência de planejar a missão sem buscar a direção do Espírito em oração e jejum.",
+      "A visão de que missão é responsabilidade apenas de pastores e missionários profissionais.",
+    ],
+    oQueConsola: [
+      "O Espírito Santo que enviou Barnabé e Saulo ainda dirige a missão da Igreja hoje.",
+      "O Evangelho tem poder para abrir os olhos de qualquer pessoa, independente da resistência inicial.",
+    ],
+    oQueExige: [
+      "Disponibilidade para ser chamado e enviado pelo Espírito Santo.",
+      "Uma vida de adoração e oração como ambiente onde o chamado é revelado.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus é missionário por natureza: o Pai enviou o Filho, o Filho enviou a Igreja, o Espírito capacita e dirige.",
+      "O Senhor é soberano sobre toda resistência à missão; nenhum poder pode barrar o que o Espírito determinou.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Qual foi o contexto espiritual em que o Espírito Santo chamou Barnabé e Saulo para a missão?",
+      "Como a Igreja de Antioquia respondeu ao chamado do Espírito?",
+      "O que o episódio de Bárjesus revela sobre os obstáculos ao Evangelho?",
+      "Que aplicação a missão em Atos 13 traz para a Igreja local hoje?",
+    ],
+    pontosChave: [
+      "A missão nasce da adoração e do jejum — o Espírito fala enquanto a comunidade busca a Deus.",
+      "O Espírito Santo é o Senhor soberano da missão: Ele chama, separa e envia.",
+      "O Evangelho avança apesar das resistências porque o poder do Espírito supera toda oposição.",
+    ],
+    fraseDeSintese:
+      "Em 'O Espírito Santo Envia a Igreja', a classe aprende que toda missão cristã autêntica nasce de uma comunidade em adoração, sob a direção soberana do Espírito Santo.",
+  },
+};
+
+const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
+  id: "adultos-2026-3t-licao-1",
+  slug: "licao-1",
+  numero: 1,
+  data: "2026-07-05",
+  statusEditorial: "published",
+  titulo: "O Espírito Santo Envia a Igreja",
+  resumo:
+    "A primeira lição do 3º trimestre apresenta o envio missionário de Barnabé e Saulo a partir de Antioquia, revelando o padrão divino da missão: o Espírito Santo chama, separa e envia a Igreja aos gentios.",
+  textoChave: normalizeBibleReferenceNotation("Atos 13.2"),
+  verdadePratica:
+    "A missão cristã entre os gentios não nasce de estratégia humana, mas da ação soberana do Espírito Santo que chama, separa e envia a Igreja como instrumento da salvação universal.",
+  leituraBiblica: normalizeReferences(["Atos 13.1-12"]),
+  objetivos: [
+    "Apresentar Antioquia como modelo de comunidade missionária.",
+    "Destacar o papel central do Espírito Santo no chamado e no envio.",
+    "Aplicar o padrão bíblico da missão à vida da igreja local.",
+  ],
+  topicos: [
+    {
+      titulo: "A Igreja de Antioquia e o chamado do Espírito",
+      conteudo: [
+        "A comunidade em Antioquia vivia em adoração e jejum quando o Espírito Santo separou Barnabé e Saulo para a obra missionária (At 13.1-3). A missão nasce da adoração, não do ativismo.",
+        "O envio foi comunitário: a Igreja jejuou, orou, impôs as mãos e os enviou — a missão não é responsabilidade individual, mas da comunidade inteira.",
+      ],
+    },
+    {
+      titulo: "Chipre e o confronto com o engano espiritual",
+      conteudo: [
+        "Em Chipre, o mágico Bárjesus tentou impedir o procônsul Sérgio Paulo de crer. Paulo, cheio do Espírito, confrontou o engano com autoridade apostólica (At 13.6-12).",
+        "A cegueira temporária de Bárjesus e a conversão do procônsul demonstram que o Evangelho avança apesar e por meio do confronto com as trevas.",
+      ],
+    },
+  ],
+  aplicacao:
+    "Ore pedindo que o Espírito Santo revele o seu chamado para a missão — local, regional ou além-fronteiras. A missão não começa com estratégia; começa com adoração e disposição.",
+  apoioProfessor: [
+    "Conecte a lição à missão da igreja local: o mesmo Espírito que enviou Barnabé e Saulo ainda opera hoje na AD Madureira Atibaia.",
+    "Encerre convidando a classe a orar pela missão e a perguntar ao Senhor qual papel cada um pode exercer.",
+  ],
+  apoioAluno: [
+    "Leia Atos 13.1-12 antes da aula e observe quem toma a iniciativa em cada etapa da missão.",
+    "Reflita: há alguma obra a que você sente que Deus pode estar chamando você a iniciar ou apoiar?",
+  ],
+  esboco: [
+    {
+      titulo: "A adoração que precede a missão",
+      conteudo:
+        "O contexto: jejum, oração e adoração em Antioquia como ambiente do chamado missionário do Espírito Santo.",
+    },
+    {
+      titulo: "O padrão bíblico do envio",
+      conteudo:
+        "O Espírito chama, a Igreja ora e confirma com imposição de mãos. A missão é comunitária e soberanamente dirigida.",
+    },
+    {
+      titulo: "O confronto com o engano em Chipre",
+      conteudo:
+        "Bárjesus como exemplo de resistência espiritual à missão — e a vitória do Espírito que garante o avanço do Evangelho.",
+    },
+  ],
+  subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao1),
+};
+
+const adultos2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
+  slug: "2026-3t",
+  trimestre: 3,
+  imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
+});
+
+const adultos2026TerceiroTrimestre: TrimestreEBD = {
+  ...adultos2026TerceiroTrimestreBase,
+  id: "adultos-2026-3t",
+  statusEditorial: "partial",
+  titulo: "A Igreja dos Gentios",
+  subtitulo: "Da Chamada Missionária à Consolidação do Evangelho entre os Povos",
+  descricao:
+    "Treze lições para acompanhar a expansão do Evangelho entre os gentios, da chamada de Barnabé e Saulo em Antioquia até a consolidação das comunidades gentílicas nas cartas paulinas.",
+  versiculoBase: "Atos 1.8",
+  licoes: adultos2026TerceiroTrimestreBase.licoes.map((licao) => {
+    if (licao.numero === 1) return licaoAdultosTerceiroTrimestre1;
+    return licao;
+  }),
+};
+
 export const adultos2026Trimestres: TrimestreEBD[] = [
   {
     id: "adultos-2026-1t",
@@ -4811,11 +5041,7 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
     }),
   },
   adultos2026SegundoTrimestre,
-  criarTrimestrePlaceholder({
-    slug: "2026-3t",
-    trimestre: 3,
-    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  adultos2026TerceiroTrimestre,
   criarTrimestrePlaceholder({
     slug: "2026-4t",
     trimestre: 4,
