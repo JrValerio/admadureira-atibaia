@@ -4161,6 +4161,7 @@ const licaoJovensTerceiroTrimestre1: LicaoEBD = {
   data: "2026-07-05",
   statusEditorial: "published",
   titulo: "Quando Israel Esquece — A Raiz da Apostasia em Juízes",
+  imagem: getEbdLessonImagePath("jovens", "2026-3t", 1, "jpg"),
   resumo:
     "A primeira lição do 3º trimestre abre o estudo do livro de Juízes apresentando o ciclo da apostasia em Israel: uma geração que não conheceu o Senhor abandonou a Palavra e sofreu as consequências do afastamento de Deus.",
   textoChave: normalizeBibleReferenceNotation("Juízes 2.11-12"),
@@ -4221,7 +4222,7 @@ const licaoJovensTerceiroTrimestre1: LicaoEBD = {
 const jovens2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
   slug: "2026-3t",
   trimestre: 3,
-  imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
+  imagem: getEbdQuarterCoverPath("jovens", "2026-3t", "ebd-3t-capa.jpg"),
 });
 
 const jovens2026TerceiroTrimestre: TrimestreEBD = {
