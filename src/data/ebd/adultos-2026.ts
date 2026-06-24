@@ -4792,15 +4792,20 @@ const sementesAdultosPrimeiroTrimestre: LicaoSeed[] = [
 
 // ─── 3º Trimestre: A Igreja dos Gentios ─────────────────────────────────────
 
+const trimestreAdultosTerceiroTrimestre =
+  "A Igreja dos Gentios — Da Chamada Missionária à Consolidação do Evangelho Entre os Povos";
+
 const subsidioAdultosTerceiroTrimestreLicao1 = {
   cabecalho: {
     numero: 1,
-    titulo: "O Espírito Santo Envia a Igreja",
+    titulo: "O Chamado para os Gentios",
     data: "2026-07-05",
-    trimestre: "3º Trimestre de 2026",
-    textoAureo: "Atos 13.2",
+    trimestre: trimestreAdultosTerceiroTrimestre,
+    comentarista: "Wagner Gaby",
+    textoAureo:
+      '"E, servindo eles ao Senhor e jejuando, disse o Espírito Santo: Apartai-me a Barnabé e a Saulo para a obra a que os tenho chamado." (At 13.2)',
     verdadePratica:
-      "A missão cristã entre os gentios não nasce de estratégia humana, mas da ação soberana do Espírito Santo que chama, separa e envia a Igreja como instrumento da salvação universal.",
+      "Quando a igreja ouve o Espírito, o Evangelho avança e vidas são alcançadas para a glória de Deus.",
     leituraBiblicaEmClasse: ["Atos 13.1-12"],
     leituraDiaria: [
       { dia: "Segunda", referencia: "Atos 1.8", tema: "A promessa do Espírito e o programa da missão" },
@@ -4931,7 +4936,7 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
       "O Evangelho avança apesar das resistências porque o poder do Espírito supera toda oposição.",
     ],
     fraseDeSintese:
-      "Em 'O Espírito Santo Envia a Igreja', a classe aprende que toda missão cristã autêntica nasce de uma comunidade em adoração, sob a direção soberana do Espírito Santo.",
+      "Em 'O Chamado para os Gentios', a classe aprende que toda missão cristã autêntica nasce de uma comunidade em adoração, sob a direção soberana do Espírito Santo.",
   },
 };
 
@@ -4941,12 +4946,12 @@ const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
   numero: 1,
   data: "2026-07-05",
   statusEditorial: "published",
-  titulo: "O Espírito Santo Envia a Igreja",
+  titulo: "O Chamado para os Gentios",
   resumo:
     "A primeira lição do 3º trimestre apresenta o envio missionário de Barnabé e Saulo a partir de Antioquia, revelando o padrão divino da missão: o Espírito Santo chama, separa e envia a Igreja aos gentios.",
   textoChave: normalizeBibleReferenceNotation("Atos 13.2"),
   verdadePratica:
-    "A missão cristã entre os gentios não nasce de estratégia humana, mas da ação soberana do Espírito Santo que chama, separa e envia a Igreja como instrumento da salvação universal.",
+    "Quando a igreja ouve o Espírito, o Evangelho avança e vidas são alcançadas para a glória de Deus.",
   leituraBiblica: normalizeReferences(["Atos 13.1-12"]),
   objetivos: [
     "Apresentar Antioquia como modelo de comunidade missionária.",
@@ -4999,6 +5004,173 @@ const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
   subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao1),
 };
 
+type SementeAdultosTerceiroTrimestre = {
+  numero: number;
+  data: string;
+  titulo: string;
+  textoChave: string;
+  textoAureo: string;
+  leituraBiblica: string[];
+};
+
+function criarLicaoAdultosTerceiroTrimestreSkeleton(
+  seed: SementeAdultosTerceiroTrimestre
+): LicaoEBD {
+  return {
+    id: `adultos-2026-3t-licao-${seed.numero}`,
+    slug: `licao-${seed.numero}`,
+    numero: seed.numero,
+    data: seed.data,
+    statusEditorial: "draft",
+    titulo: seed.titulo,
+    resumo:
+      "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.",
+    textoChave: normalizeBibleReferenceNotation(seed.textoChave),
+    leituraBiblica: normalizeReferences(seed.leituraBiblica),
+    objetivos: [],
+    topicos: [],
+    aplicacao:
+      "Acompanhe esta edição da EBD e volte em breve para acessar a lição completa.",
+    apoioProfessor: apoioProfessorBase,
+    apoioAluno: apoioAlunoBase,
+    subsidioAdultos: normalizeAdultSubsidy({
+      cabecalho: {
+        numero: seed.numero,
+        titulo: seed.titulo,
+        data: seed.data,
+        trimestre: trimestreAdultosTerceiroTrimestre,
+        comentarista: "Wagner Gaby",
+        textoAureo: seed.textoAureo,
+        leituraBiblicaEmClasse: normalizeReferences(seed.leituraBiblica),
+        leituraDiaria: [],
+        hinosSugeridos: [],
+      },
+      visaoGeral: {
+        resumo:
+          "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.",
+        objetivos: [],
+      },
+      desenvolvimento: [],
+      apoioProfessor: {},
+    }),
+  };
+}
+
+const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
+  {
+    numero: 2,
+    data: "2026-07-12",
+    titulo: "A Porta da Fé se Abre entre os Gentios",
+    textoChave: "At 13.47",
+    textoAureo:
+      '"Porque o Senhor assim no-lo mandou: Eu te pus para luz dos gentios, para que sejas de salvação até aos confins da terra." (At 13.47)',
+    leituraBiblica: ["At 13.44-52"],
+  },
+  {
+    numero: 3,
+    data: "2026-07-19",
+    titulo: "A Graça que Alcança todas as Nações",
+    textoChave: "Ef 2.8",
+    textoAureo:
+      '"Porque pela graça sois salvos, por meio da fé; e isso não vem de vós; é dom de Deus." (Ef 2.8)',
+    leituraBiblica: ["At 15.1-5,28,29,36-39"],
+  },
+  {
+    numero: 4,
+    data: "2026-07-26",
+    titulo: "O Espírito que nos Guia para além das Fronteiras",
+    textoChave: "At 16.5",
+    textoAureo:
+      '"De sorte que as igrejas eram confirmadas na fé e cada dia cresciam em número." (At 16.5)',
+    leituraBiblica: ["At 16.11-18,25-31"],
+  },
+  {
+    numero: 5,
+    data: "2026-08-02",
+    titulo: "Cristo entre os Filósofos: o Deus desconhecido se Revela",
+    textoChave: "At 17.30",
+    textoAureo:
+      '"Mas Deus, não tendo em conta os tempos da ignorância, anuncia agora a todos os homens, em todo lugar, que se arrependam." (At 17.30)',
+    leituraBiblica: ["At 17.15-20,30-32"],
+  },
+  {
+    numero: 6,
+    data: "2026-08-09",
+    titulo: "A Suficiência da Graça na Cidade de Corinto",
+    textoChave: "At 18.10",
+    textoAureo:
+      '"Porque eu sou contigo, e ninguém lançará mão de ti para te fazer mal, pois tenho muito povo nesta cidade." (At 18.10)',
+    leituraBiblica: ["At 18.1-11"],
+  },
+  {
+    numero: 7,
+    data: "2026-08-16",
+    titulo: "Quando o Espírito Sopra em Éfeso",
+    textoChave: "At 19.20",
+    textoAureo:
+      '"Assim, a palavra do Senhor crescia poderosamente e prevalecia." (At 19.20)',
+    leituraBiblica: ["At 19.1-12"],
+  },
+  {
+    numero: 8,
+    data: "2026-08-23",
+    titulo: "Despedida em Éfeso: entre Lágrimas e Alertas",
+    textoChave: "At 20.28",
+    textoAureo:
+      '"Olhai, pois, por vós e por todo o rebanho sobre que o Espírito Santo vos constituiu bispos, para apascentardes a igreja de Deus, que ele resgatou com o seu próprio sangue." (At 20.28)',
+    leituraBiblica: ["At 20.17-25,36-38"],
+  },
+  {
+    numero: 9,
+    data: "2026-08-30",
+    titulo: "Coragem para Testemunhar: Paulo diante da Multidão",
+    textoChave: "At 22.15",
+    textoAureo:
+      '"Porque hás de ser sua testemunha para com todos os homens do que tens visto e ouvido." (At 22.15)',
+    leituraBiblica: ["At 21.27,28,30,31,33,39,40", "At 22.1-7"],
+  },
+  {
+    numero: 10,
+    data: "2026-09-06",
+    titulo: "Uma Esperança Inabalável perante os Poderosos",
+    textoChave: "At 24.16",
+    textoAureo:
+      '"E, por isso, procuro sempre ter uma consciência sem ofensa, tanto para com Deus como para com os homens." (At 24.16)',
+    leituraBiblica: ["At 24.1-6,10-16"],
+  },
+  {
+    numero: 11,
+    data: "2026-09-13",
+    titulo: "Entre Tempestades e Promessas",
+    textoChave: "At 27.22",
+    textoAureo:
+      '"Mas, agora, vos admoesto a que tenhais bom ânimo, porque não se perderá a vida de nenhum de vós, mas somente o navio." (At 27.22)',
+    leituraBiblica: ["At 27.9-15,21-26"],
+  },
+  {
+    numero: 12,
+    data: "2026-09-20",
+    titulo: "O Evangelho Chega ao Coração do Império",
+    textoChave: "At 28.31",
+    textoAureo:
+      '"Pregando o Reino de Deus e ensinando com toda a liberdade as coisas pertencentes ao Senhor Jesus Cristo, sem impedimento algum." (At 28.31)',
+    leituraBiblica: ["At 28.16-24,28-31"],
+  },
+  {
+    numero: 13,
+    data: "2026-09-27",
+    titulo: "A Missão Continua em Nós",
+    textoChave: "Mc 13.10",
+    textoAureo:
+      '"Mas importa que o evangelho seja primeiramente pregado entre todas as nações." (Mc 13.10)',
+    leituraBiblica: ["Mt 28.18,20", "At 1.8", "Ef 2.13-18"],
+  },
+];
+
+const licoesSkeleton3T = sementesAdultosTerceiroTrimestre.map(
+  criarLicaoAdultosTerceiroTrimestreSkeleton
+);
+
 const adultos2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
   slug: "2026-3t",
   trimestre: 3,
@@ -5016,7 +5188,8 @@ const adultos2026TerceiroTrimestre: TrimestreEBD = {
   versiculoBase: "Atos 1.8",
   licoes: adultos2026TerceiroTrimestreBase.licoes.map((licao) => {
     if (licao.numero === 1) return licaoAdultosTerceiroTrimestre1;
-    return licao;
+    const skeleton = licoesSkeleton3T.find((l) => l.numero === licao.numero);
+    return skeleton ?? licao;
   }),
 };
 
