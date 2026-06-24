@@ -4023,6 +4023,222 @@ const jovens2026SegundoTrimestre: TrimestreEBD = {
   ),
 };
 
+// ─── 3º Trimestre: Fidelidade às Escrituras em Oposição à Apostasia ──────────
+
+const subsidioJovensTerceiroTrimestreLicao1 = {
+  cabecalho: {
+    numero: 1,
+    titulo: "Quando Israel Esquece — A Raiz da Apostasia em Juízes",
+    data: "2026-07-05",
+    trimestre: "3º Trimestre de 2026",
+    textoPrincipal: "Juízes 2.11-12",
+    resumoDaLicao:
+      "A apostasia de Israel começa com o esquecimento das obras de Deus. O livro de Juízes revela que abandonar a Palavra leva ao ciclo destruidor da desobediência, opressão, clamor e livramento.",
+    leituraSemanal: [
+      {
+        dia: "Segunda",
+        referencia: "Josué 24.14-15",
+        foco: "A escolha de servir ao Senhor — o legado de Josué",
+      },
+      {
+        dia: "Terça",
+        referencia: "Juízes 2.1-5",
+        foco: "O anjo do Senhor anuncia as consequências da desobediência",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Juízes 2.6-10",
+        foco: "A geração que não conheceu o Senhor nem as obras que Ele tinha feito",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Juízes 2.11-19",
+        foco: "O ciclo da apostasia: pecado, opressão, clamor, livramento",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Deuteronômio 6.4-9",
+        foco: "A memória ativa como proteção contra a apostasia",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Salmo 78.1-8",
+        foco: "Ensinar as obras de Deus à próxima geração",
+      },
+      {
+        dia: "Domingo",
+        referencia: "Juízes 2.6-19",
+        foco: "Revisão: a raiz e o ciclo da apostasia em Israel",
+      },
+    ] as LeituraSemanalItem[],
+  },
+  arranquePedagogico: {
+    objetivos: [
+      "Apresentar o contexto histórico-espiritual do livro de Juízes.",
+      "Identificar o ciclo da apostasia em Israel e suas causas.",
+      "Aplicar o princípio da memória espiritual ativa na vida da juventude.",
+    ],
+    interacao:
+      "Pergunte: 'Vocês já esqueceram algo importante que parecia impossível esquecer? Como isso aconteceu?' Use as respostas para introduzir como Israel esqueceu as obras de Deus de uma geração para outra.",
+    orientacaoPedagogica:
+      "Trabalhe o texto em dois movimentos: (1) o contexto — Josué morreu, a nova geração não conheceu o Senhor; (2) as consequências — o ciclo de apostasia, opressão, clamor e livramento. Evite julgamento moralizante; convide a turma a se identificar com Israel e a examinar a própria trajetória espiritual.",
+  },
+  desenvolvimento: [
+    {
+      id: "a-geracao-que-nao-conheceu",
+      titulo: "A Geração que Não Conheceu o Senhor",
+      sinopse:
+        "Com a morte de Josué, uma nova geração cresceu sem memória ativa das obras de Deus — e sem memória, a fé murcha.",
+      pense:
+        "Como a fé de uma geração pode se perder em apenas um ciclo de vida? O que falta quando a memória espiritual não é transmitida?",
+      explicacaoBiblica: [
+        "Juízes 2.6-10 registra a transição mais perigosa da história de Israel: 'E depois deles, surgiu outra geração que não conhecia o Senhor, nem as obras que Ele tinha feito a favor de Israel' (v. 10).",
+        "Isso não aconteceu porque Deus falhou em agir, mas porque a geração anterior não transmitiu a memória da fé. Sem testemunho, sem ensino — a fé se perde.",
+        "A apostasia começa antes do pecado visível: começa com o esquecimento. Israel não começou adorando ídolos de repente; começou não conhecendo o Senhor que os havia livrado.",
+      ],
+      pontoImportante:
+        "Memória espiritual não é automática — ela precisa ser cultivada, ensinada e celebrada de geração em geração.",
+      aprofundamentoOpcional: {
+        contextoBiblico: [
+          "O livro de Juízes registra o período entre a conquista de Canaã e o estabelecimento da monarquia (aprox. 1200–1050 a.C.). É um período marcado por instabilidade espiritual e liderança provisória.",
+        ],
+        conexaoComVidaCrista: [
+          "A Escola Bíblica Dominical existe exatamente para combater o esquecimento. Cada lição, cada trimestre, cada geração que aprende a Palavra está respondendo ao padrão de Juízes com fidelidade.",
+        ],
+      },
+    },
+    {
+      id: "o-ciclo-da-apostasia",
+      titulo: "O Ciclo da Apostasia em Juízes",
+      sinopse:
+        "Pecado → opressão → clamor → livramento: Juízes 2.11-19 revela um padrão repetitivo que Israel não aprendeu a romper.",
+      pense:
+        "Você consegue identificar esse ciclo em alguma área da sua vida — situações em que você se afastou de Deus e só voltou por causa da pressão?",
+      explicacaoBiblica: [
+        "Juízes 2.11-19 apresenta o ciclo que domina todo o livro: Israel abandona o Senhor e serve os baais (v. 11-13) → o Senhor os entrega em mãos de inimigos (v. 14-15) → Israel clama (v. 16) → Deus suscita um juiz para livrá-los (v. 16-18) → após a morte do juiz, o povo volta ao pecado (v. 19).",
+        "O ciclo revela a misericórdia insistente de Deus: Ele poderia ter abandonado o povo, mas continuou respondendo ao clamor.",
+        "A pergunta do livro de Juízes não é 'Deus vai livrar Israel?' — Ele sempre liberta. A pergunta é 'Israel vai aprender a não precisar ser liberto?'",
+      ],
+      pontoImportante:
+        "A misericórdia de Deus não elimina as consequências do pecado, mas abre a possibilidade de restauração para quem clama a Ele.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Desenhe no quadro um ciclo com quatro palavras: PECADO → OPRESSÃO → CLAMOR → LIVRAMENTO. Antes de abrir o texto, pergunte: 'Alguém consegue adivinhar sobre o que é essa lição?'",
+    perguntaChave:
+      "O que acontece quando uma geração cresce sem memória das obras de Deus? Como evitar que isso aconteça com a nossa geração?",
+    dificuldadeProvavelDaClasse:
+      "A turma pode sentir que o problema de Juízes é histórico e distante. Ajude-os a ver o padrão do ciclo na vida pessoal e cultural atual.",
+    conducaoDaConversa: [
+      "Primeira parte: contexto histórico — quem eram os juízes, qual o período, o que aconteceu após Josué.",
+      "Segunda parte: o texto — leia Juízes 2.11-19 em voz alta e identifique as quatro etapas do ciclo.",
+      "Terceira parte: aplicação — onde esse ciclo aparece na vida de um jovem cristão hoje?",
+    ],
+    fechamento:
+      "Encerre com Deuteronômio 6.4-9: a memória ativa da fé é a resposta bíblica ao ciclo de Juízes. Ore pedindo que cada jovem da turma se torne transmissor da fé para a próxima geração.",
+  },
+  revisao: {
+    horaDaRevisao: [
+      "Qual o ciclo que se repete em Juízes? Quais são as quatro etapas?",
+      "Como a nova geração de Israel perdeu o conhecimento do Senhor?",
+      "O que a misericórdia de Deus revela sobre o Seu caráter diante da apostasia do povo?",
+      "Qual é a resposta bíblica (Dt 6.4-9) para evitar o padrão de Juízes?",
+    ],
+    quizCurto: [
+      "Verdadeiro ou falso: O ciclo de Juízes começa com a opressão de inimigos.",
+      "Completa a frase: 'E surgiu outra geração que não conhecia o Senhor, nem as obras que Ele tinha feito a favor de ___.'",
+    ],
+    conclusao:
+      "Fidelidade às Escrituras começa com memória: conhecer as obras de Deus, ensinar à próxima geração e escolher servir ao Senhor em vez dos ídolos do tempo presente.",
+  },
+};
+
+const licaoJovensTerceiroTrimestre1: LicaoEBD = {
+  id: "jovens-2026-3t-licao-1",
+  slug: "licao-1",
+  numero: 1,
+  data: "2026-07-05",
+  statusEditorial: "published",
+  titulo: "Quando Israel Esquece — A Raiz da Apostasia em Juízes",
+  resumo:
+    "A primeira lição do 3º trimestre abre o estudo do livro de Juízes apresentando o ciclo da apostasia em Israel: uma geração que não conheceu o Senhor abandonou a Palavra e sofreu as consequências do afastamento de Deus.",
+  textoChave: normalizeBibleReferenceNotation("Juízes 2.11-12"),
+  verdadePratica:
+    "A apostasia começa com o esquecimento das obras de Deus. A fidelidade às Escrituras exige memória ativa da graça divina, transmitida de geração em geração.",
+  leituraBiblica: normalizeReferences(["Juízes 2.6-19"]),
+  objetivos: [
+    "Apresentar o contexto histórico-espiritual do livro de Juízes.",
+    "Identificar o ciclo da apostasia em Israel e suas causas.",
+    "Aplicar o princípio da memória espiritual ativa na vida da juventude.",
+  ],
+  topicos: [
+    {
+      titulo: "A Geração que Não Conheceu o Senhor",
+      conteudo: [
+        "Com a morte de Josué, surgiu uma geração que não conhecia o Senhor nem as obras que Ele havia feito (Jz 2.10). Sem memória espiritual, a fé se perde.",
+        "A apostasia começa com o esquecimento — Israel não passou a adorar ídolos de repente; passou a não conhecer o Deus vivo.",
+      ],
+    },
+    {
+      titulo: "O Ciclo da Apostasia",
+      conteudo: [
+        "Juízes 2.11-19 apresenta o ciclo que domina o livro: pecado → opressão → clamor → livramento. E após cada livramento, o povo volta ao pecado.",
+        "A misericórdia de Deus responde ao clamor, mas o ciclo revela que Israel precisava de transformação profunda, não apenas de resgate temporário.",
+      ],
+    },
+  ],
+  aplicacao:
+    "Examine sua vida: há áreas em que você repete o padrão de Israel — se afastando de Deus, sofrendo consequências, clamando apenas na pressão? Decida cultivar a memória das obras de Deus e transmitir a fé para quem está à sua volta.",
+  apoioProfessor: [
+    "Use o ciclo de Juízes como diagnóstico espiritual: mostre como ele aparece na vida dos jovens e na cultura atual.",
+    "Encerre com Deuteronômio 6.4-9: a memória ativa da fé é a resposta bíblica para evitar o ciclo da apostasia.",
+  ],
+  apoioAluno: [
+    "Leia Juízes 2.6-19 antes da aula e tente identificar as quatro etapas do ciclo: pecado, opressão, clamor, livramento.",
+    "Reflita: em alguma área da sua vida você tem repetido esse ciclo? O que seria necessário para rompê-lo?",
+  ],
+  esboco: [
+    {
+      titulo: "Contexto de Juízes: entre a conquista e a monarquia",
+      conteudo:
+        "O período dos juízes (aprox. 1200–1050 a.C.): instabilidade espiritual, liderança provisória e o ciclo que define o livro.",
+    },
+    {
+      titulo: "A geração que não conheceu o Senhor",
+      conteudo:
+        "Juízes 2.6-10: Josué morreu e uma nova geração cresceu sem memória das obras de Deus — raiz de toda apostasia.",
+    },
+    {
+      titulo: "O ciclo da apostasia e a misericórdia de Deus",
+      conteudo:
+        "Juízes 2.11-19: pecado → opressão → clamor → livramento. A misericórdia de Deus responde, mas o ciclo revela a necessidade de transformação profunda.",
+    },
+  ],
+  subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao1),
+};
+
+const jovens2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
+  slug: "2026-3t",
+  trimestre: 3,
+  imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
+});
+
+const jovens2026TerceiroTrimestre: TrimestreEBD = {
+  ...jovens2026TerceiroTrimestreBase,
+  id: "jovens-2026-3t",
+  statusEditorial: "partial",
+  titulo: "Fidelidade às Escrituras em Oposição à Apostasia",
+  subtitulo: "Lições Espirituais no Livro de Juízes",
+  descricao:
+    "Treze lições para fortalecer a juventude cristã na fidelidade às Escrituras, usando o livro de Juízes como espelho espiritual que revela os perigos da apostasia e o valor da memória ativa da fé.",
+  versiculoBase: "Juízes 2.11",
+  licoes: jovens2026TerceiroTrimestreBase.licoes.map((licao) => {
+    if (licao.numero === 1) return licaoJovensTerceiroTrimestre1;
+    return licao;
+  }),
+};
+
 export const jovens2026Trimestres: TrimestreEBD[] = [
   {
     id: "jovens-2026-1t",
@@ -4044,11 +4260,7 @@ export const jovens2026Trimestres: TrimestreEBD[] = [
     }),
   },
   jovens2026SegundoTrimestre,
-  criarTrimestrePlaceholder({
-    slug: "2026-3t",
-    trimestre: 3,
-    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  jovens2026TerceiroTrimestre,
   criarTrimestrePlaceholder({
     slug: "2026-4t",
     trimestre: 4,

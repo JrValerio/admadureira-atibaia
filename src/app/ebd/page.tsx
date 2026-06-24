@@ -32,7 +32,7 @@ type PageProps = {
 export const metadata = buildPageMetadata({
   title: "EBD | AD Madureira Atibaia",
   description:
-    "Acompanhe a Escola Bíblica Dominical da AD Madureira Atibaia com classes, trimestres, lições e acesso rápido ao estudo da semana.",
+    "Central gratuita de apoio à Escola Bíblica Dominical da AD Madureira Atibaia — lição da semana, trimestres, classes e material de apoio para professores e alunos.",
   path: "/ebd",
   image: igrejaHeroMedia.ebd,
 });
@@ -118,11 +118,70 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
         <HeroPage
           variant="full"
           label="Escola Bíblica Dominical"
-          title="EBD da Igreja"
-          description="Uma área dedicada ao ensino bíblico contínuo da AD Madureira Atibaia, com classes, trimestres, lições e acesso rápido ao estudo da semana."
+          title="Ensino, preparo e crescimento na Palavra"
+          description={`"Se é ensinar, haja dedicação ao ensino." — Rm 12.7 · Uma central gratuita de apoio à EBD da AD Madureira Atibaia para professores, alunos e toda a igreja.`}
           image={igrejaHeroMedia.ebd}
           imageAlt="Capa da Escola Bíblica Dominical da AD Madureira Atibaia"
         />
+
+        <section className="border-b border-black/5 bg-white py-12 md:py-16">
+          <div className="mx-auto max-w-7xl px-4 xl:px-6">
+            <div className="mb-10 max-w-3xl">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                Para toda a igreja
+              </p>
+              <h2 className="mb-4 font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
+                Uma central gratuita de apoio à EBD
+              </h2>
+              <p className="leading-relaxed text-[#555]">
+                Material de apoio para professores, alunos e irmãos que querem
+                estudar a Palavra com mais profundidade — todo domingo, às 09h.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-3xl border border-black/5 bg-[#fafafa] p-6">
+                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  Para professores
+                </p>
+                <h3 className="mb-3 font-acme text-xl tracking-wide text-[#212121]">
+                  Prepare sua aula com mais clareza
+                </h3>
+                <p className="text-sm leading-relaxed text-[#555]">
+                  Acesse a lição da semana, os pontos principais, a verdade
+                  prática e materiais de apoio para ensinar com fidelidade
+                  bíblica e aplicação real.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-black/5 bg-[#fafafa] p-6">
+                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  Para alunos
+                </p>
+                <h3 className="mb-3 font-acme text-xl tracking-wide text-[#212121]">
+                  Acompanhe a lição durante a semana
+                </h3>
+                <p className="text-sm leading-relaxed text-[#555]">
+                  Leia os textos bíblicos, revise os pontos da lição e chegue
+                  ao domingo preparado para aprender e participar com mais
+                  entendimento.
+                </p>
+              </div>
+              <div className="rounded-3xl border border-[#ffa726]/15 bg-[#fff8ee] p-6">
+                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                  Para a igreja
+                </p>
+                <h3 className="mb-3 font-acme text-xl tracking-wide text-[#212121]">
+                  Uma igreja que estuda cresce
+                </h3>
+                <p className="text-sm leading-relaxed text-[#555]">
+                  A EBD é uma das maiores ferramentas de formação cristã.
+                  Convide alguém para estudar a Palavra todo domingo, às 09h,
+                  na AD Madureira Atibaia.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="py-16 md:py-20 xl:py-24">
           <div className="mx-auto max-w-7xl px-4 xl:px-6">
@@ -239,13 +298,13 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 <div>
                   <div className="mb-6 max-w-4xl">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Classes disponíveis
+                      Classes da EBD
                     </p>
                     <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
-                      Classes disponíveis para estudo
+                      Escolha sua classe e comece a estudar
                     </h2>
                     <p className="leading-relaxed text-[#555]">
-                      Aqui você acompanha as classes da EBD com trimestres, lições e
+                      Acompanhe as classes da EBD com trimestres, lições e
                       material de apoio para continuar estudando durante a semana.
                     </p>
                   </div>
@@ -305,7 +364,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 <div>
                   <div className="mb-6 max-w-4xl">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                      Trimestres de 2026
+                      Trimestres de {new Date().getFullYear()}
                     </p>
                     <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
                       Edições publicadas da classe {classeInfo.label.toLowerCase()}
@@ -453,7 +512,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                           <span className="font-semibold text-[#212121]">
                             Trimestre atual:
                           </span>{" "}
-                          {trimestreAtual.rotulo}
+                          {trimestreAtual.rotulo} · {trimestreAtual.titulo}
                         </p>
                       ) : null}
                       {proximaLicao ? (
