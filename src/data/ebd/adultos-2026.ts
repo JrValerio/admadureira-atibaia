@@ -4947,6 +4947,7 @@ const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
   data: "2026-07-05",
   statusEditorial: "published",
   titulo: "O Chamado para os Gentios",
+  imagem: getEbdLessonImagePath("adultos", "2026-3t", 1, "jpg"),
   resumo:
     "A primeira lição do 3º trimestre apresenta o envio missionário de Barnabé e Saulo a partir de Antioquia, revelando o padrão divino da missão: o Espírito Santo chama, separa e envia a Igreja aos gentios.",
   textoChave: normalizeBibleReferenceNotation("Atos 13.2"),
@@ -5023,6 +5024,7 @@ function criarLicaoAdultosTerceiroTrimestreSkeleton(
     data: seed.data,
     statusEditorial: "draft",
     titulo: seed.titulo,
+    imagem: getEbdLessonImagePath("adultos", "2026-3t", seed.numero, "jpg"),
     resumo:
       "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.",
     textoChave: normalizeBibleReferenceNotation(seed.textoChave),
@@ -5174,7 +5176,7 @@ const licoesSkeleton3T = sementesAdultosTerceiroTrimestre.map(
 const adultos2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
   slug: "2026-3t",
   trimestre: 3,
-  imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
+  imagem: getEbdQuarterCoverPath("adultos", "2026-3t", "ebd-3t-capa.jpg"),
 });
 
 const adultos2026TerceiroTrimestre: TrimestreEBD = {
