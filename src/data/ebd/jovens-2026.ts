@@ -4740,6 +4740,288 @@ const licaoJovensTerceiroTrimestre2: LicaoEBD = {
   subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao2),
 };
 
+const objetivosJovensTerceiroTrimestreLicao3 = [
+  "Explicar o ciclo de pecado, opressão, clamor e libertação em Juízes 3.5-11.",
+  "Apresentar Otniel como instrumento levantado por Deus para julgar, liderar e libertar Israel.",
+  "Aplicar à juventude o chamado para uma liderança servidora, corajosa e dependente do Espírito.",
+];
+
+const topicosJovensTerceiroTrimestreLicao3 = [
+  {
+    titulo: "Quando a convivência vira assimilação espiritual",
+    conteudo: [
+      "Juízes 3.5-7 mostra Israel habitando entre povos que deveriam ser enfrentados com fidelidade à aliança. O problema não era apenas geográfico, mas espiritual: o povo se acomodou, misturou lealdades e serviu a falsos deuses.",
+      "A apostasia nem sempre começa com uma decisão escandalosa. Muitas vezes começa quando o coração se acostuma com ambientes, alianças e valores que afastam da Palavra.",
+      "Para a juventude, a lição confronta qualquer convivência que deixa de ser testemunho e passa a ser adaptação ao pecado.",
+    ],
+  },
+  {
+    titulo: "O clamor que reconhece a necessidade de Deus",
+    conteudo: [
+      "A opressão sofrida por Israel revelou o peso da infidelidade. Quando o povo clamou ao Senhor, reconheceu que não possuía força para se libertar sozinho.",
+      "Clamar não é apenas sentir dificuldade; é voltar-se ao Senhor em dependência, arrependimento e esperança.",
+      "O Deus que disciplina também ouve o clamor e age com misericórdia, levantando libertação quando o povo reconhece sua necessidade.",
+    ],
+  },
+  {
+    titulo: "Otniel: liderança servidora e capacitada pelo Espírito",
+    conteudo: [
+      "Otniel aparece como o primeiro juiz levantado por Deus nesse ciclo. Ele julga Israel, vai à guerra e conduz o povo à libertação.",
+      "A liderança de Otniel não nasce de autopromoção, mas da ação de Deus. O Espírito do Senhor veio sobre ele, capacitando-o para servir em um tempo de crise.",
+      "A liderança cristã verdadeira serve, assume responsabilidade, depende do Espírito e busca descanso para o povo de Deus, não palco para si mesma.",
+    ],
+  },
+];
+
+const subsidioJovensTerceiroTrimestreLicao3: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 3,
+    titulo: sementesJovensTerceiroTrimestre[2].titulo,
+    data: sementesJovensTerceiroTrimestre[2].data,
+    trimestre: trimestreJovensTerceiroTrimestre,
+    textoPrincipal:
+      "E os filhos de Israel clamaram ao Senhor; e o Senhor levantou um libertador aos filhos de Israel, e os libertou: Otniel. (Juízes 3.9)",
+    resumoDaLicao: sementesJovensTerceiroTrimestre[2].resumo,
+    leituraSemanal: sementesJovensTerceiroTrimestre[2].leituraSemanal,
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensTerceiroTrimestreLicao3,
+    interacao:
+      "Abra com a pergunta: 'Quando uma geração percebe que não consegue se libertar sozinha?' Use as respostas para introduzir o ciclo de Juízes 3.5-11: acomodação, pecado, opressão, clamor e libertação.",
+    orientacaoPedagogica:
+      "Conduza a aula em três movimentos: primeiro, mostre a assimilação espiritual de Israel; depois, explique o clamor como retorno ao Senhor; por fim, apresente Otniel como liderança levantada e capacitada por Deus para servir.",
+  },
+  desenvolvimento: [
+    {
+      id: "assimilacao-espiritual-de-israel",
+      titulo: "A acomodação que enfraquece a fidelidade",
+      sinopse:
+        "Israel habitou entre os povos da terra, formou alianças e passou a servir falsos deuses, revelando que a convivência sem vigilância pode virar assimilação espiritual.",
+      explicacaoBiblica: [
+        "Juízes 3.5-7 descreve Israel vivendo entre povos cananeus, casando-se com eles e servindo a seus deuses. O texto mostra uma descida progressiva: convivência sem discernimento, alianças comprometedoras e culto idólatra.",
+        "O pecado de Israel não aparece como simples influência externa. O povo tomou decisões que revelaram esquecimento do Senhor e desprezo prático pela aliança.",
+        "O livro de Juízes ensina que a apostasia cresce quando o povo de Deus deixa de distinguir entre presença missionária no mundo e adaptação espiritual ao mundo.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "2 Coríntios 6.14",
+          descricao:
+            "O povo de Deus deve discernir vínculos que comprometem sua fidelidade.",
+        },
+        {
+          referencia: "Romanos 12.2",
+          descricao:
+            "A mente renovada resiste à forma espiritual do presente século.",
+        },
+        {
+          referencia: "Salmos 1.1-3",
+          descricao:
+            "A vida frutífera nasce de prazer na Palavra e separação do caminho do pecado.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Ajude os jovens a diferenciar amizade evangelística de alianças que normalizam desobediência, idolatria e perda de identidade cristã.",
+        "Pergunte quais ambientes, hábitos ou relacionamentos têm moldado mais a consciência da turma do que a Palavra de Deus.",
+        "Mostre que fidelidade não exige isolamento orgulhoso, mas presença santa, discernimento e compromisso com a verdade.",
+      ],
+      pense:
+        "Em quais áreas você deixou de influenciar e passou a ser moldado por valores que afastam de Deus?",
+      pontoImportante:
+        "A convivência com o mundo precisa ser governada pela Palavra; sem vigilância, presença vira assimilação.",
+    },
+    {
+      id: "clamor-e-misericordia-de-deus",
+      titulo: "O clamor que abre caminho para a misericórdia",
+      sinopse:
+        "A opressão levou Israel a clamar ao Senhor, e Deus respondeu levantando libertação, mostrando que disciplina e misericórdia caminham no governo divino.",
+      explicacaoBiblica: [
+        "A servidão de Israel foi consequência de sua infidelidade. O texto não trata opressão como acaso histórico, mas como parte da correção divina sobre um povo que abandonou o Senhor.",
+        "O clamor de Juízes 3.9 revela uma virada espiritual. Israel reconhece sua necessidade e se volta ao único que poderia livrá-lo.",
+        "Deus responde ao clamor levantando um libertador. A graça divina não ignora o pecado, mas também não abandona o povo quando ele se volta ao Senhor.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Romanos 5.3,4",
+          descricao:
+            "A tribulação pode produzir perseverança, experiência e esperança quando é vivida diante de Deus.",
+        },
+        {
+          referencia: "Salmos 34.17",
+          descricao:
+            "O Senhor ouve o clamor dos justos e os livra de suas angústias.",
+        },
+        {
+          referencia: "Hebreus 12.6",
+          descricao:
+            "A correção do Senhor revela cuidado paternal e chamado ao retorno.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Explique que clamor bíblico não é apenas pedir alívio, mas reconhecer pecado, dependência e necessidade da intervenção de Deus.",
+        "Conduza a classe a pensar em situações em que tenta resolver crises sem voltar ao Senhor em oração, arrependimento e obediência.",
+        "Mostre que Deus usa momentos de aperto para quebrar autossuficiência e formar uma fé mais madura.",
+      ],
+      pense:
+        "Seu clamor busca apenas sair da dor ou também voltar ao Senhor com arrependimento e obediência?",
+      pontoImportante:
+        "O Deus que corrige é o mesmo que ouve; o clamor sincero reconhece dependência e abre espaço para a graça restauradora.",
+    },
+    {
+      id: "otniel-lideranca-servidora",
+      titulo: "Otniel e a liderança servidora",
+      sinopse:
+        "Otniel foi levantado por Deus como libertador, juiz e líder em Israel, mostrando que liderança bíblica nasce da capacitação divina e se expressa em serviço abnegado.",
+      explicacaoBiblica: [
+        "Otniel já aparece em Juízes como homem de coragem, mas em Juízes 3.10 o ponto central é que o Espírito do Senhor veio sobre ele. A libertação não depende apenas de habilidade humana.",
+        "Ele julgou Israel e saiu à guerra. Sua liderança uniu discernimento, responsabilidade pública e ação corajosa em favor do povo.",
+        "O resultado foi descanso para a terra por quarenta anos. Liderança servidora não busca apenas vencer discussões, mas promover restauração, direção e paz para o povo de Deus.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Marcos 10.42-45",
+          descricao:
+            "Jesus ensina que liderança no Reino é serviço, não domínio vaidoso.",
+        },
+        {
+          referencia: "Atos 1.8",
+          descricao:
+            "O Espírito capacita testemunhas para cumprir a missão de Deus.",
+        },
+        {
+          referencia: "Efésios 6.10-17",
+          descricao:
+            "A batalha espiritual exige fortalecimento no Senhor e uso das armas de Deus.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Mostre aos jovens que Deus ainda levanta pessoas para servir em tempos de crise: na família, igreja, escola, trabalho e amizades.",
+        "Confronte a ideia de liderança como visibilidade. Otniel ensina coragem, serviço, dependência do Espírito e responsabilidade pelo bem do povo.",
+        "Convide cada aluno a identificar uma área em que pode assumir postura de servo: interceder, proteger, ensinar, encorajar, reconciliar ou liderar pelo exemplo.",
+      ],
+      pense:
+        "Você deseja liderar para servir e restaurar pessoas ou apenas para ser visto e reconhecido?",
+      pontoImportante:
+        "Liderança cristã é serviço capacitado pelo Espírito: Deus levanta pessoas para libertar, orientar e cuidar.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Desenhe no quadro uma sequência simples: acomodação, pecado, opressão, clamor, libertação. Peça que a classe identifique onde essa sequência aparece em Juízes 3.5-11 e onde ela pode aparecer hoje.",
+    perguntaChave:
+      "Como Deus transforma o clamor de um povo oprimido em oportunidade para levantar liderança servidora e restauradora?",
+    dificuldadeProvavelDaClasse:
+      "A turma pode ver Otniel apenas como herói militar. Mostre que o foco bíblico é Deus levantando e capacitando um servo para libertar seu povo, não a exaltação de força humana.",
+    conducaoDaConversa: [
+      "Abertura: apresente o ciclo espiritual da passagem, mostrando que o pecado de Israel começa com assimilação e termina em opressão.",
+      "Desenvolvimento 1: explique Juízes 3.5-7 como alerta sobre convivência sem discernimento e alianças que enfraquecem a fidelidade.",
+      "Desenvolvimento 2: trabalhe Juízes 3.8-9 para mostrar que o clamor nasce da percepção da necessidade de Deus.",
+      "Desenvolvimento 3: apresente Otniel como libertador levantado pelo Senhor e capacitado pelo Espírito para servir.",
+      "Aplicação: conduza a classe a identificar onde precisa clamar, romper com assimilação espiritual e servir com coragem.",
+    ],
+    fechamento:
+      "Ore pedindo discernimento contra a assimilação espiritual, arrependimento sincero, clamor verdadeiro e jovens cheios do Espírito para servir com coragem e humildade.",
+  },
+  aprofundamentoOpcional: {
+    contextoBiblico: [
+      "Juízes 3.5-11 apresenta o primeiro ciclo completo do livro depois do prólogo: Israel peca, sofre opressão, clama ao Senhor, Deus levanta um libertador e concede descanso.",
+      "Otniel, ligado à família de Calebe, aparece como figura de coragem e fidelidade em contraste com a acomodação espiritual do povo.",
+      "A menção ao Espírito do Senhor sobre Otniel mostra que a liderança libertadora em Juízes não é mero desempenho político ou militar, mas capacitação divina para uma tarefa necessária.",
+    ],
+    notaDoutrinariaCurta: [
+      "A disciplina de Deus revela que pecado tem consequências reais, mas também que o Senhor chama seu povo ao retorno.",
+      "O clamor bíblico não substitui arrependimento e obediência; ele nasce de um coração que reconhece sua dependência de Deus.",
+      "Liderança servidora é vocação para cuidar, libertar e conduzir, não instrumento de domínio, vaidade ou autopromoção.",
+    ],
+    conexaoComVidaCrista: [
+      "A juventude cristã precisa discernir onde a cultura, as amizades e os desejos têm enfraquecido sua identidade espiritual.",
+      "Crises podem se tornar lugar de retorno ao Senhor quando geram clamor, quebrantamento e nova obediência.",
+      "Deus continua levantando jovens cheios do Espírito para servir sua igreja com coragem, humildade e compromisso com a Palavra.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "Qual ciclo espiritual aparece em Juízes 3.5-11?",
+      "Como a convivência de Israel com outros povos se tornou assimilação espiritual?",
+      "O que o clamor de Israel revela sobre sua necessidade de Deus?",
+      "Por que Otniel deve ser visto como instrumento levantado por Deus, e não apenas como herói humano?",
+      "Como Marcos 10.42-45 ajuda a entender liderança servidora?",
+      "Em quais áreas a juventude precisa clamar, romper com o pecado e servir com coragem?",
+    ],
+    quizCurto: [
+      "Qual é o texto principal da Lição 3? Resposta esperada: Juízes 3.9.",
+      "Quem Deus levantou como libertador em Juízes 3? Resposta esperada: Otniel.",
+      "O que veio sobre Otniel para capacitá-lo? Resposta esperada: o Espírito do Senhor.",
+      "O clamor bíblico é apenas reclamação? Resposta esperada: não; envolve dependência, retorno ao Senhor e busca por libertação.",
+      "Segundo Jesus, liderança no Reino é domínio ou serviço? Resposta esperada: serviço.",
+    ],
+    conclusao:
+      "A Lição 3 mostra que Deus ouve o clamor do seu povo e levanta servos capacitados pelo Espírito para libertar e conduzir. Otniel aponta para uma liderança que não busca prestígio, mas serviço fiel, coragem e dependência de Deus em tempos de crise.",
+  },
+};
+
+const licaoJovensTerceiroTrimestre3Base = criarLicaoJovensTerceiroTrimestre(
+  sementesJovensTerceiroTrimestre[2],
+  {
+    statusEditorial: "published",
+  }
+);
+
+const licaoJovensTerceiroTrimestre3: LicaoEBD = {
+  ...licaoJovensTerceiroTrimestre3Base,
+  objetivos: objetivosJovensTerceiroTrimestreLicao3,
+  topicos: topicosJovensTerceiroTrimestreLicao3,
+  aplicacao:
+    "Identifique uma área em que você se acomodou espiritualmente, clame ao Senhor com sinceridade e escolha uma atitude de liderança servidora nesta semana. Deus não chama jovens para assistir à crise de longe, mas para servir com coragem, humildade e dependência do Espírito.",
+  apoioProfessor: [
+    "Objetivo da aula: mostrar o ciclo de Juízes 3.5-11 e apresentar Otniel como liderança servidora levantada por Deus em resposta ao clamor do povo.",
+    "Abertura sugerida: desenhe o ciclo acomodação, pecado, opressão, clamor e libertação, pedindo que a turma localize cada etapa no texto bíblico.",
+    "Desenvolvimento: explique a assimilação espiritual de Israel, o peso da opressão, o clamor ao Senhor e a capacitação de Otniel pelo Espírito.",
+    "Discussão: conduza a classe a pensar em ambientes e vínculos que podem enfraquecer a fidelidade de um jovem cristão.",
+    "Cuidado pastoral: evite reduzir a aula a heroísmo humano. O texto destaca a misericórdia de Deus e a capacitação do Espírito.",
+    "Fechamento: ore por jovens que clamem ao Senhor e assumam serviço fiel na igreja, família e sociedade.",
+  ],
+  apoioAluno: [
+    "O que preciso entender: Israel se acomodou espiritualmente, sofreu opressão, clamou ao Senhor e Deus levantou Otniel para libertar o povo.",
+    "O que isso confronta em mim: toda área em que eu convivo com o pecado sem vigilância e começo a tratar afastamento de Deus como normal.",
+    "Como me preparar: leia Juízes 3.5-11 e marque as etapas do ciclo: pecado, opressão, clamor, libertação e descanso.",
+    "Como aplicar: escolha uma área em que precisa clamar a Deus e uma forma prática de servir alguém durante a semana.",
+    "Desafio da semana: medite em Marcos 10.42-45 e pratique uma liderança silenciosa, ajudando alguém sem buscar reconhecimento.",
+  ],
+  esboco: [
+    {
+      titulo: "Abertura: quando a crise revela necessidade",
+      conteudo:
+        "Comece perguntando quando uma geração percebe que não consegue se libertar sozinha. Apresente Juízes 3.9 como resposta ao clamor de Israel.",
+    },
+    {
+      titulo: "Movimento 1: acomodação e pecado",
+      conteudo:
+        "Explique Juízes 3.5-7, mostrando como convivência sem discernimento levou Israel a alianças comprometedoras e idolatria.",
+    },
+    {
+      titulo: "Movimento 2: opressão e clamor",
+      conteudo:
+        "Trabalhe Juízes 3.8-9 para mostrar que a disciplina revelou a gravidade do pecado e levou o povo a clamar ao Senhor.",
+    },
+    {
+      titulo: "Movimento 3: Otniel e a liderança servidora",
+      conteudo:
+        "Mostre que Deus levantou Otniel, e que o Espírito do Senhor o capacitou para julgar, lutar e conduzir o povo à libertação.",
+    },
+    {
+      titulo: "Fechamento: servir em tempos de crise",
+      conteudo:
+        "Convide cada aluno a identificar onde precisa clamar e onde pode servir com coragem, humildade e dependência do Espírito.",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Juízes 3.5-11 apresenta o ciclo de pecado, opressão, clamor e libertação. Deus ouve o clamor de Israel e levanta Otniel, capacitado pelo Espírito, como líder servidor. A juventude é chamada a rejeitar assimilação espiritual, clamar ao Senhor e servir com coragem.",
+    },
+  ],
+  subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao3),
+};
+
 const jovens2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
   slug: "2026-3t",
   trimestre: 3,
@@ -4761,6 +5043,8 @@ const jovens2026TerceiroTrimestre: TrimestreEBD = {
       ? licaoJovensTerceiroTrimestre1
       : seed.numero === 2
         ? licaoJovensTerceiroTrimestre2
+        : seed.numero === 3
+          ? licaoJovensTerceiroTrimestre3
       : criarLicaoJovensTerceiroTrimestre(seed)
   ),
 };
