@@ -4464,6 +4464,282 @@ const licaoJovensTerceiroTrimestre1: LicaoEBD = {
   subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao1),
 };
 
+const objetivosJovensTerceiroTrimestreLicao2 = [
+  "Explicar que a fidelidade a Deus exige escolha consciente, exclusiva e perseverante.",
+  "Identificar em Juízes 2.1-6 e 2.10-13 o contraste entre a fidelidade do Senhor e a infidelidade de Israel.",
+  "Conduzir a juventude a avaliar quais lealdades, hábitos e influências têm disputado o lugar de Deus no coração.",
+];
+
+const topicosJovensTerceiroTrimestreLicao2 = [
+  {
+    titulo: "Deus lembra a aliança antes de confrontar o pecado",
+    conteudo: [
+      "Juízes 2.1-6 mostra que a infidelidade de Israel não aconteceu por falta de revelação. O Senhor havia libertado, conduzido, prometido e advertido o seu povo.",
+      "A repreensão divina expõe uma verdade pastoral importante: Deus confronta porque ama e porque sua aliança não é tratada como detalhe secundário.",
+      "A fidelidade começa quando a juventude aprende a lembrar quem Deus é, o que Ele já fez e o que sua Palavra exige.",
+    ],
+  },
+  {
+    titulo: "A geração que esquece escolhe outros senhores",
+    conteudo: [
+      "Juízes 2.10-11 descreve uma ruptura espiritual entre gerações. Depois da geração que viu as obras do Senhor, levantou-se outra que não conhecia o Senhor de modo vivo e obediente.",
+      "O problema não era ausência de informação religiosa, mas perda de memória espiritual, compromisso e temor. Quando Deus deixa de ser conhecido na prática, outros valores ocupam o coração.",
+      "Servir aos baalins revela que infidelidade não é neutralidade; é troca de lealdade. O coração que abandona o Senhor sempre se curva diante de alguma alternativa.",
+    ],
+  },
+  {
+    titulo: "Fidelidade tem custo, mas também recompensa",
+    conteudo: [
+      "A fidelidade a Deus custa renúncia, exclusividade e disposição para ser corrigido pela Palavra. Ela confronta desejos, pressões sociais e escolhas que parecem vantajosas no momento.",
+      "Ao mesmo tempo, permanecer fiel é caminhar debaixo da verdade, do cuidado e da recompensa do Senhor. A Bíblia apresenta fidelidade não como perda de vida, mas como caminho de vida diante de Deus.",
+      "Para os jovens, a pergunta central não é apenas o que parece mais fácil, mas quem merece a confiança, a adoração e a obediência do coração.",
+    ],
+  },
+];
+
+const subsidioJovensTerceiroTrimestreLicao2: LicaoEBD["subsidioJovens"] = {
+  cabecalho: {
+    numero: 2,
+    titulo: sementesJovensTerceiroTrimestre[1].titulo,
+    data: sementesJovensTerceiroTrimestre[1].data,
+    trimestre: trimestreJovensTerceiroTrimestre,
+    textoPrincipal:
+      "E fizeram os filhos de Israel o que parecia mal aos olhos do Senhor; e serviram aos baalins. (Juízes 2.11)",
+    resumoDaLicao: sementesJovensTerceiroTrimestre[1].resumo,
+    leituraSemanal: sementesJovensTerceiroTrimestre[1].leituraSemanal,
+  },
+  arranquePedagogico: {
+    objetivos: objetivosJovensTerceiroTrimestreLicao2,
+    interacao:
+      "Abra perguntando: 'Toda escolha revela uma fidelidade. A quem nossas escolhas têm mostrado que pertencemos?' Depois conduza a classe para Juízes 2.11, mostrando que Israel não apenas errou; ele trocou o Senhor por outros senhores.",
+    orientacaoPedagogica:
+      "Conduza a aula em três movimentos: a fidelidade de Deus à aliança, a perda da memória espiritual em uma nova geração e a idolatria como escolha de lealdade. Evite moralismo raso; leve a turma a examinar o coração diante do texto bíblico.",
+  },
+  desenvolvimento: [
+    {
+      id: "deus-fiel-a-alianca",
+      titulo: "Deus permanece fiel à sua aliança",
+      sinopse:
+        "Antes de expor a infidelidade de Israel, Juízes mostra que Deus havia sido fiel, libertando e sustentando o povo segundo a promessa.",
+      explicacaoBiblica: [
+        "Em Juízes 2.1-6, o Senhor recorda que tirou Israel do Egito e o conduziu à terra prometida. A base da cobrança divina é a graça recebida e a aliança estabelecida.",
+        "O povo deveria rejeitar alianças espirituais com os povos idólatras e derrubar seus altares. A obediência exigia decisões concretas, não apenas emoção religiosa.",
+        "Deuteronômio 7.9 reforça que Deus é fiel e guarda a aliança. A infidelidade humana, portanto, não nasce de falha no caráter de Deus, mas de um coração que deixa de obedecer.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Deuteronômio 7.9",
+          descricao: "Deus é fiel e guarda a aliança com os que o amam.",
+        },
+        {
+          referencia: "2 Timóteo 2.13",
+          descricao: "A fidelidade de Deus não depende da instabilidade humana.",
+        },
+        {
+          referencia: "Hebreus 12.6",
+          descricao: "A correção do Senhor é expressão de amor, não abandono.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Mostre aos jovens que Deus não pede fidelidade sem antes revelar seu caráter, sua graça e sua Palavra.",
+        "Ajude a turma a diferenciar emoção momentânea de obediência perseverante. Chorar em Boquim não substituía derrubar altares.",
+        "Convide cada aluno a lembrar uma área em que Deus já foi fiel e perguntar qual resposta de fidelidade essa memória exige hoje.",
+      ],
+      pense:
+        "Você tem respondido à fidelidade de Deus com obediência concreta ou apenas com emoção passageira?",
+      pontoImportante:
+        "A fidelidade cristã nasce da graça de Deus, mas precisa aparecer em decisões práticas de obediência.",
+    },
+    {
+      id: "geracao-sem-memoria-espiritual",
+      titulo: "Uma geração sem memória espiritual escolhe mal",
+      sinopse:
+        "Juízes 2.10-11 revela o perigo de uma geração que recebe uma herança espiritual, mas deixa de conhecer o Senhor de forma viva e obediente.",
+      explicacaoBiblica: [
+        "A nova geração não conhecia o Senhor nem as obras que Ele fizera por Israel. Isso aponta para uma crise de transmissão, memória e compromisso.",
+        "Conhecer a Deus, no sentido bíblico, envolve relacionamento de aliança, reverência, confiança e obediência. Não é apenas saber informações sobre religião.",
+        "Quando a memória das obras de Deus enfraquece, o coração passa a normalizar práticas que antes seriam reconhecidas como rebeldia.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Juízes 2.10",
+          descricao:
+            "A nova geração não conhecia o Senhor nem as obras realizadas em favor de Israel.",
+        },
+        {
+          referencia: "Salmos 78.4-7",
+          descricao:
+            "A fé deve ser contada à geração seguinte para que ela ponha em Deus a sua esperança.",
+        },
+        {
+          referencia: "Romanos 12.2",
+          descricao:
+            "A mente renovada discerne a vontade de Deus em vez de apenas se conformar ao século.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Aplique com cuidado: jovens criados na igreja também precisam decidir servir ao Senhor pessoalmente, e não apenas viver da fé do ambiente.",
+        "Conduza a turma a valorizar culto, EBD, oração e leitura bíblica como práticas que mantêm viva a memória espiritual.",
+        "Pergunte quais hábitos digitais, amizades, desejos ou discursos têm enfraquecido a lembrança das obras e mandamentos do Senhor.",
+      ],
+      pense:
+        "Sua rotina tem fortalecido ou apagado a memória do que Deus fez e ensinou?",
+      pontoImportante:
+        "Herança espiritual recebida precisa se tornar convicção pessoal, ou será substituída por outras lealdades.",
+    },
+    {
+      id: "idolatria-como-troca-de-lealdade",
+      titulo: "Idolatria é uma troca de lealdade",
+      sinopse:
+        "Servir aos baalins não foi apenas um erro religioso; foi a escolha de entregar culto, confiança e obediência a falsos senhores.",
+      explicacaoBiblica: [
+        "Juízes 2.11-13 descreve Israel fazendo o que era mau aos olhos do Senhor, servindo aos baalins e deixando o Deus que os havia tirado do Egito.",
+        "A idolatria bíblica é mais profunda do que imagem ou rito antigo. Ela acontece sempre que algo ocupa o lugar de Deus como fonte de identidade, segurança, prazer, direção ou esperança.",
+        "Mateus 6.24 ensina que ninguém pode servir a dois senhores. A fidelidade a Deus exige exclusividade, porque o coração dividido termina obedecendo ao senhor errado.",
+      ],
+      referenciasCruzadas: [
+        {
+          referencia: "Êxodo 20.3-6",
+          descricao: "O Senhor exige adoração exclusiva e rejeita ídolos.",
+        },
+        {
+          referencia: "Mateus 6.24",
+          descricao: "Não é possível servir a dois senhores.",
+        },
+        {
+          referencia: "Apocalipse 2.10",
+          descricao: "A fidelidade perseverante recebe promessa de recompensa.",
+        },
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a nomear ídolos contemporâneos sem transformar a aula em lista superficial: aprovação, prazer, status, relacionamentos, imagem, dinheiro, autonomia e sucesso podem disputar o coração.",
+        "Mostre que fidelidade a Deus não é apenas evitar pecados visíveis, mas entregar a Ele a lealdade mais profunda da vida.",
+        "Finalize convidando cada jovem a identificar um altar rival e escolher uma prática concreta de fidelidade durante a semana.",
+      ],
+      pense:
+        "O que tem recebido sua confiança, tempo, obediência e desejo como se fosse senhor da sua vida?",
+      pontoImportante:
+        "Fidelidade a Deus é escolha diária de exclusividade: o Senhor não divide o trono do coração com ídolos.",
+    },
+  ],
+  apoioProfessor: {
+    quebraGelo:
+      "Escreva duas frases no quadro: 'Deus foi fiel' e 'Israel escolheu outros senhores'. Peça que a classe observe como Juízes 2 coloca essas duas realidades lado a lado.",
+    perguntaChave:
+      "Por que a fidelidade a Deus precisa ser uma escolha consciente em uma geração cercada por tantas lealdades concorrentes?",
+    dificuldadeProvavelDaClasse:
+      "A turma pode reduzir idolatria a imagens antigas ou tratar fidelidade como simples comportamento externo. Mostre que o texto fala de lealdade, memória, culto, confiança e obediência.",
+    conducaoDaConversa: [
+      "Abertura: apresente Juízes 2.11 como diagnóstico da troca de lealdade de Israel.",
+      "Desenvolvimento 1: trabalhe Juízes 2.1-6 para mostrar que Deus havia sido fiel e que sua cobrança se baseava na aliança.",
+      "Desenvolvimento 2: explique Juízes 2.10 como alerta sobre a perda da memória espiritual entre gerações.",
+      "Desenvolvimento 3: trate Juízes 2.11-13 como idolatria prática, conectando com Êxodo 20.3-6 e Mateus 6.24.",
+      "Aplicação: convide os alunos a identificar um 'altar rival' e uma atitude concreta de fidelidade para a semana.",
+    ],
+    fechamento:
+      "Ore com a classe pedindo coração inteiro, memória viva das obras de Deus e coragem para escolher o Senhor acima de pressões, desejos e ídolos modernos.",
+  },
+  aprofundamentoOpcional: {
+    contextoBiblico: [
+      "Juízes 2 funciona como um prólogo teológico do livro: ele resume a dinâmica que se repetirá nas narrativas seguintes, com infidelidade, correção, clamor e misericórdia divina.",
+      "Boquim, lugar de choro no relato, mostra que emoção espiritual pode acompanhar o confronto da Palavra, mas precisa amadurecer em arrependimento e obediência.",
+      "A referência aos baalins situa Israel diante da religião cananeia, marcada por falsos deuses associados à fertilidade, prosperidade e controle da vida. O problema central era trocar a confiança no Senhor por poderes falsos.",
+    ],
+    notaDoutrinariaCurta: [
+      "A fidelidade de Deus é fundamento da fidelidade cristã: obedecemos porque Ele primeiro se revelou fiel, santo e digno de confiança.",
+      "Idolatria é desordem de culto e de amor. Ela ocorre quando criatura, desejo, imagem, poder ou aprovação recebe o lugar que pertence somente ao Senhor.",
+      "A disciplina divina não contradiz o amor de Deus; ela chama o povo de volta à aliança e impede que o pecado seja tratado como normal.",
+    ],
+    conexaoComVidaCrista: [
+      "A juventude cristã enfrenta ídolos que nem sempre parecem religiosos: imagem pessoal, aceitação social, prazer imediato, performance, relacionamentos e autonomia absoluta.",
+      "A escolha pela fidelidade aparece em práticas simples: dizer não ao pecado, manter vida devocional, escolher amizades com sabedoria, honrar a igreja, confessar falhas e obedecer mesmo quando custa.",
+      "O professor deve conduzir a aula com firmeza e esperança: o texto denuncia a infidelidade, mas também revela um Deus que continua chamando seu povo de volta.",
+    ],
+  },
+  revisao: {
+    horaDaRevisao: [
+      "Como Juízes 2.1-6 demonstra a fidelidade de Deus antes de confrontar a infidelidade de Israel?",
+      "Por que a nova geração de Juízes 2.10 representa um alerta para jovens criados em ambiente cristão?",
+      "O que Juízes 2.11 ensina sobre a relação entre escolhas e fidelidade espiritual?",
+      "Por que idolatria não deve ser entendida apenas como imagem ou prática antiga?",
+      "Quais ídolos contemporâneos podem disputar o coração da juventude cristã?",
+      "Como a fidelidade a Deus pode ser vivida de forma prática durante esta semana?",
+    ],
+    quizCurto: [
+      "Qual é o texto principal da Lição 2? Resposta esperada: Juízes 2.11.",
+      "O que Israel fez segundo Juízes 2.11? Resposta esperada: fez o que era mau aos olhos do Senhor e serviu aos baalins.",
+      "A fidelidade de Deus é anulada pela infidelidade humana? Resposta esperada: não.",
+      "Segundo Mateus 6.24, é possível servir a dois senhores? Resposta esperada: não.",
+      "Fidelidade bíblica envolve apenas emoção religiosa? Resposta esperada: não; envolve obediência concreta e lealdade ao Senhor.",
+    ],
+    conclusao:
+      "A Lição 2 chama a juventude a enxergar fidelidade como escolha de lealdade. Deus foi fiel à sua aliança, mas Israel escolheu falsos senhores. Hoje, a juventude precisa rejeitar ídolos visíveis e invisíveis, preservar a memória das obras de Deus e responder à Palavra com obediência concreta.",
+  },
+};
+
+const licaoJovensTerceiroTrimestre2Base = criarLicaoJovensTerceiroTrimestre(
+  sementesJovensTerceiroTrimestre[1],
+  {
+    statusEditorial: "published",
+  }
+);
+
+const licaoJovensTerceiroTrimestre2: LicaoEBD = {
+  ...licaoJovensTerceiroTrimestre2Base,
+  objetivos: objetivosJovensTerceiroTrimestreLicao2,
+  topicos: topicosJovensTerceiroTrimestreLicao2,
+  aplicacao:
+    "Examine quais escolhas têm revelado sua lealdade mais profunda. Identifique um hábito, desejo ou influência que tem disputado o lugar de Deus e responda com uma atitude concreta de fidelidade: oração, renúncia, confissão, leitura bíblica ou obediência prática nesta semana.",
+  apoioProfessor: [
+    "Objetivo da aula: mostrar que fidelidade a Deus não é sentimento ocasional, mas escolha consciente de lealdade, exclusividade e obediência.",
+    "Abertura sugerida: pergunte 'a quem nossas escolhas mostram que pertencemos?' e conecte a conversa com Juízes 2.11.",
+    "Desenvolvimento: apresente a fidelidade de Deus à aliança, a crise da geração que perdeu a memória espiritual e a idolatria como troca de lealdade.",
+    "Discussão: conduza a turma a nomear ídolos contemporâneos sem superficialidade, mostrando que qualquer coisa pode disputar o trono do coração.",
+    "Cuidado pastoral: não transforme a aula em acusação genérica aos jovens. O texto chama todos a arrependimento, memória espiritual e retorno ao Senhor.",
+    "Fechamento: ore por fidelidade prática, coração inteiro e coragem para escolher o Senhor mesmo quando isso custar aprovação, conforto ou prazer imediato.",
+  ],
+  apoioAluno: [
+    "O que preciso entender: Deus permaneceu fiel à sua aliança, mas Israel escolheu servir a outros senhores.",
+    "O que isso confronta em mim: toda área em que eu digo amar a Deus, mas entrego minha confiança, obediência ou desejo principal a outra coisa.",
+    "Como me preparar: leia Juízes 2.1-6 e 2.10-13, anotando onde aparecem a fidelidade de Deus, a perda da memória espiritual e a idolatria do povo.",
+    "Como aplicar: escolha um 'altar rival' para confrontar nesta semana com uma atitude prática de obediência à Palavra.",
+    "Desafio da semana: memorize ou medite em Deuteronômio 7.9 e ore agradecendo pela fidelidade de Deus antes de pedir força para ser fiel.",
+  ],
+  esboco: [
+    {
+      titulo: "Abertura: toda escolha revela uma fidelidade",
+      conteudo:
+        "Comece perguntando a quem nossas escolhas demonstram que pertencemos. Use a resposta para introduzir Juízes 2.11 como diagnóstico da troca de lealdade de Israel.",
+    },
+    {
+      titulo: "Movimento 1: Deus foi fiel à aliança",
+      conteudo:
+        "Explique Juízes 2.1-6, destacando que o Senhor libertou, conduziu, prometeu e advertiu Israel. A fidelidade divina torna a infidelidade humana ainda mais grave.",
+    },
+    {
+      titulo: "Movimento 2: uma geração perdeu a memória espiritual",
+      conteudo:
+        "Trabalhe Juízes 2.10 para mostrar que herança espiritual precisa ser recebida como convicção pessoal, ou será substituída por outras referências.",
+    },
+    {
+      titulo: "Movimento 3: idolatria é troca de senhor",
+      conteudo:
+        "Mostre em Juízes 2.11-13 que Israel não ficou neutro; abandonou o Senhor e serviu aos baalins. Aplique aos ídolos modernos que disputam confiança, desejo e obediência.",
+    },
+    {
+      titulo: "Fechamento: escolha fidelidade prática",
+      conteudo:
+        "Convide cada aluno a identificar uma lealdade concorrente e escolher uma resposta prática de fidelidade a Deus durante a semana.",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Fidelidade a Deus é uma escolha de lealdade. Juízes 2 mostra que Deus foi fiel, mas Israel perdeu a memória espiritual e serviu a outros senhores. A juventude cristã é chamada a rejeitar ídolos modernos, lembrar das obras do Senhor e obedecer à Palavra de forma concreta.",
+    },
+  ],
+  subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao2),
+};
+
 const jovens2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
   slug: "2026-3t",
   trimestre: 3,
@@ -4483,6 +4759,8 @@ const jovens2026TerceiroTrimestre: TrimestreEBD = {
   licoes: sementesJovensTerceiroTrimestre.map((seed) =>
     seed.numero === 1
       ? licaoJovensTerceiroTrimestre1
+      : seed.numero === 2
+        ? licaoJovensTerceiroTrimestre2
       : criarLicaoJovensTerceiroTrimestre(seed)
   ),
 };
