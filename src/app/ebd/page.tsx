@@ -139,6 +139,55 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
               </p>
             </div>
 
+            <div className="mb-10 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+              <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+                <div>
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                    Novo trimestre da EBD
+                  </p>
+                  <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
+                    3º Trimestre de 2026
+                  </h2>
+                  <p className="text-sm leading-relaxed text-[#555] md:text-base">
+                    Começa em 05 de julho. Prepare-se para uma nova jornada de
+                    estudo bíblico nas classes Adultos e Jovens.
+                  </p>
+                </div>
+
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="border-l-4 border-[#ffa726]/40 pl-4">
+                    <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      Adultos
+                    </p>
+                    <h3 className="mb-2 font-acme text-xl tracking-wide text-[#212121]">
+                      A Igreja dos Gentios
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#555]">
+                      Da chamada missionária à consolidação do Evangelho entre
+                      os povos.
+                    </p>
+                  </div>
+
+                  <div className="border-l-4 border-[#ffa726]/40 pl-4">
+                    <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      Jovens
+                    </p>
+                    <h3 className="mb-2 font-acme text-xl tracking-wide text-[#212121]">
+                      Fidelidade às Escrituras
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#555]">
+                      Lições espirituais no livro de Juízes contra a apostasia.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="mt-5 border-t border-[#ffa726]/20 pt-4 text-sm leading-relaxed text-[#555]">
+                Os materiais de apoio serão liberados conforme a programação da
+                EBD, sem alterar a lição da semana.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="rounded-3xl border border-black/5 bg-[#fafafa] p-6">
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
