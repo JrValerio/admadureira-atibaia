@@ -5255,6 +5255,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
 
 const sementeAdultosTerceiroTrimestreLicao2 =
   sementesAdultosTerceiroTrimestre[0];
+const sementeAdultosTerceiroTrimestreLicao3 =
+  sementesAdultosTerceiroTrimestre[1];
 
 const subsidioAdultosTerceiroTrimestreLicao2 = {
   cabecalho: {
@@ -5562,6 +5564,313 @@ const licaoAdultosTerceiroTrimestre2: LicaoEBD = {
   subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao2),
 };
 
+const subsidioAdultosTerceiroTrimestreLicao3 = {
+  cabecalho: {
+    numero: sementeAdultosTerceiroTrimestreLicao3.numero,
+    titulo: sementeAdultosTerceiroTrimestreLicao3.titulo,
+    data: sementeAdultosTerceiroTrimestreLicao3.data,
+    trimestre: trimestreAdultosTerceiroTrimestre,
+    comentarista: "Wagner Gaby",
+    textoAureo: sementeAdultosTerceiroTrimestreLicao3.textoAureo,
+    verdadePratica:
+      "A salvação é dom da graça de Deus, recebida pela fé em Cristo, e essa graça une a Igreja e sustenta a missão entre todos os povos.",
+    leituraBiblicaEmClasse: normalizeReferences(
+      sementeAdultosTerceiroTrimestreLicao3.leituraBiblica
+    ),
+    leituraDiaria: [
+      { dia: "Segunda", referencia: "Efésios 2.8-9", tema: "A salvação é dom da graça, não mérito humano" },
+      { dia: "Terça", referencia: "Atos 15.1-5", tema: "A controvérsia que ameaçava a liberdade do Evangelho" },
+      { dia: "Quarta", referencia: "Atos 15.7-11", tema: "Judeus e gentios são salvos pela graça do Senhor Jesus" },
+      { dia: "Quinta", referencia: "Atos 15.28-29", tema: "A decisão que preserva comunhão, santidade e testemunho" },
+      { dia: "Sexta", referencia: "Gálatas 5.1", tema: "Cristo nos chamou para permanecer firmes na liberdade" },
+      { dia: "Sábado", referencia: "Efésios 2.13-18", tema: "Cristo derruba barreiras e faz de muitos povos um só povo" },
+      { dia: "Domingo", referencia: "Atos 15.36-39", tema: "Conflitos não precisam interromper a continuidade da missão" },
+    ] as LeituraDiariaItem[],
+    hinosSugeridos: ["Maravilhosa Graça", "Graça Excelsa", "Cristo Salva o Pecador"],
+  },
+  visaoGeral: {
+    resumo:
+      "A terceira lição conduz a classe ao centro doutrinário da missão entre os gentios: a salvação é pela graça de Deus, mediante a fé em Cristo, e não pela imposição de marcas culturais ou exigências humanas como fundamento de aceitação diante do Senhor. Atos 15 mostra a Igreja tratando uma crise real com escuta, discernimento espiritual, fidelidade ao Evangelho e cuidado pastoral para preservar a comunhão entre judeus e gentios.",
+    ideiaCentral:
+      "A graça de Deus alcança todas as nações porque Cristo é suficiente para salvar, unir e conduzir o seu povo em missão.",
+    objetivos: [
+      "Explicar a controvérsia de Atos 15 e seu impacto na missão entre os gentios.",
+      "Reafirmar que a salvação é pela graça, mediante a fé em Cristo, sem acréscimos humanos como base de justificação.",
+      "Mostrar como a decisão apostólica preservou a verdade do Evangelho, a comunhão da Igreja e o avanço missionário.",
+      "Aplicar a doutrina da graça à vida cristã, à unidade da igreja local e ao tratamento bíblico de conflitos.",
+    ],
+    palavraChave: {
+      termo: "Graça",
+      definicao:
+        "Favor imerecido de Deus pelo qual pecadores são salvos em Cristo, recebidos pela fé e incorporados ao povo de Deus sem depender de mérito humano.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "controversia-que-ameacava-a-graca",
+      titulo: "A controvérsia que ameaçava a liberdade do Evangelho",
+      sinopse:
+        "Alguns queriam impor aos gentios exigências da lei como condição de salvação, colocando em risco a suficiência da graça em Cristo.",
+      explicacaoBiblica: [
+        "Atos 15.1-5 apresenta uma tensão decisiva: alguns ensinavam que os gentios precisavam ser circuncidados para serem salvos. A questão não era apenas costume religioso, mas o fundamento da salvação.",
+        "Paulo e Barnabé resistem à imposição porque o Evangelho não pode ser misturado com méritos humanos. Acrescentar condições à obra de Cristo enfraquece a mensagem que havia aberto a porta da fé aos gentios.",
+        "A Igreja em Jerusalém se reúne para tratar a crise. O texto mostra que conflitos doutrinários precisam ser enfrentados com seriedade, escuta, Escritura, testemunho missionário e submissão ao Espírito.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A graça não elimina a santidade, mas rejeita qualquer tentativa de transformar práticas humanas em base de salvação.",
+        "A inclusão dos gentios não exigia que eles se tornassem culturalmente judeus; exigia fé no Senhor Jesus e uma vida transformada pela graça.",
+        "A Igreja protege a missão quando protege a pureza do Evangelho.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a identificar formas atuais de acrescentar exigências humanas como se fossem condição para Deus aceitar alguém.",
+        "Mostre que tradição pode servir à fé, mas nunca pode ocupar o lugar de Cristo como fundamento da salvação.",
+        "Conduza a turma a diferenciar zelo bíblico de barreiras religiosas que dificultam a chegada de pessoas ao Evangelho.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Gálatas 5.1", descricao: "Cristo libertou seu povo para que permaneça firme na liberdade da graça." },
+        { referencia: "Romanos 3.24", descricao: "Somos justificados gratuitamente pela graça, mediante a redenção em Cristo." },
+        { referencia: "Atos 14.27", descricao: "Deus abriu aos gentios a porta da fé, não a porta do mérito religioso." },
+      ],
+    },
+    {
+      id: "salvacao-pela-graca-em-cristo",
+      titulo: "A graça que salva judeus e gentios",
+      sinopse:
+        "A resposta apostólica reafirma que todos são salvos pela graça do Senhor Jesus, sem distinção de origem, cultura ou condição religiosa anterior.",
+      explicacaoBiblica: [
+        "Efésios 2.8 declara que a salvação é pela graça, mediante a fé, e que isso não vem de nós: é dom de Deus. Essa verdade ilumina a crise de Atos 15 e protege a igreja contra orgulho espiritual.",
+        "Pedro testemunha que Deus havia dado o Espírito Santo aos gentios e purificado seus corações pela fé (At 15.7-9). O argumento é simples e profundo: Deus já havia recebido os gentios, portanto a Igreja não deveria impor um jugo que Deus não impôs como condição de salvação.",
+        "A graça nivela todos diante da cruz. Judeus e gentios não entram no Reino por linhagem, rito ou desempenho, mas pela misericórdia revelada em Cristo.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Sola gratia não significa fé sem obediência; significa que a obediência é fruto da salvação, não preço para comprá-la.",
+        "A fé recebe Cristo; ela não cria mérito paralelo à obra de Cristo.",
+        "A salvação pela graça impede tanto o legalismo, que tenta merecer Deus, quanto a soberba, que se sente superior aos alcançados por Deus.",
+      ],
+      aplicacaoPratica: [
+        "Pergunte à classe onde ainda aparece a tentação de medir pessoas por aparência, histórico, origem ou costumes antes de reconhecê-las como alvos da graça.",
+        "Mostre que uma igreja centrada na graça acolhe pecadores sem relativizar o pecado e discipula novos convertidos sem esmagá-los com fardos humanos.",
+        "Convide a classe a agradecer pela graça recebida e a tratar novos irmãos com a mesma misericórdia com que foi tratada por Deus.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Efésios 2.8-10", descricao: "A graça salva e recria o salvo para boas obras." },
+        { referencia: "Tito 2.11-14", descricao: "A graça que salva também educa para uma vida piedosa." },
+        { referencia: "Efésios 2.13-18", descricao: "Cristo aproxima os que estavam longe e faz de ambos um só povo." },
+      ],
+    },
+    {
+      id: "decisao-pastoral-e-continuidade-da-missao",
+      titulo: "Discernimento, comunhão e continuidade da missão",
+      sinopse:
+        "A decisão de Atos 15 preserva a verdade da salvação pela graça, orienta a convivência entre povos diferentes e mantém a Igreja em movimento missionário.",
+      explicacaoBiblica: [
+        "A frase 'pareceu bem ao Espírito Santo e a nós' revela discernimento espiritual comunitário. A Igreja não decide por conveniência política, mas busca uma resposta fiel ao agir do Espírito e ao testemunho do Evangelho.",
+        "As orientações aos gentios não são um novo caminho de salvação. Elas protegem comunhão, santidade e testemunho em uma igreja formada por pessoas de origens diferentes.",
+        "Atos 15.36-39 mostra que até missionários maduros enfrentam desacordos. A separação entre Paulo e Barnabé foi dolorosa, mas Deus continuou conduzindo a missão. A graça também ensina a lidar com conflitos sem abandonar a obra.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Unidade cristã não nasce de uniformidade cultural, mas da comunhão em Cristo e da submissão conjunta à verdade do Evangelho.",
+        "A liberdade cristã precisa caminhar com amor pastoral. Nem tudo que é permitido edifica a comunhão em contextos sensíveis.",
+        "Conflitos ministeriais devem ser tratados com maturidade, evitando personalismo e mantendo o foco na continuidade da missão.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a pensar em decisões da igreja local que exigem equilíbrio entre verdade bíblica, amor pastoral e sensibilidade cultural.",
+        "Mostre que a graça deve moldar tanto a doutrina quanto o modo de tratar divergências entre irmãos.",
+        "Ore por unidade missionária: uma igreja firme na graça, cuidadosa na comunhão e perseverante apesar de tensões.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Atos 15.28-29", descricao: "A decisão preserva comunhão e testemunho entre judeus e gentios." },
+        { referencia: "Romanos 14.13-19", descricao: "A liberdade cristã deve buscar edificação e paz." },
+        { referencia: "Colossenses 4.10", descricao: "A história de Marcos mostra que conflitos podem ser restaurados pela graça." },
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Que diferença existe entre ensinar santidade como fruto da graça e impor costumes humanos como condição para alguém ser aceito por Deus?",
+    pontoSensivelDaAula:
+      "A aula toca em legalismo, tradição, liberdade cristã e conflitos na igreja. O professor deve proteger a suficiência de Cristo sem desprezar a importância da santidade, da comunhão e da responsabilidade pastoral.",
+    erroComumDeInterpretacao:
+      "Ler Atos 15 como se a decisão apostólica autorizasse vida sem compromisso. O texto não rebaixa a santidade; ele remove exigências humanas como fundamento de salvação e orienta a convivência santa entre povos diferentes.",
+    perguntasParaDebate: [
+      "Por que a exigência de circuncisão em Atos 15 ameaçava o Evangelho da graça?",
+      "Como Efésios 2.8 ajuda a interpretar a controvérsia sobre os gentios?",
+      "Quais fardos humanos podem ser confundidos hoje com requisitos de salvação?",
+      "Como uma igreja pode acolher novos convertidos sem relativizar santidade?",
+      "O que a discordância entre Paulo e Barnabé ensina sobre conflitos e continuidade da missão?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre reafirmando que Cristo é suficiente para salvar, a graça é suficiente para acolher e o Espírito é suficiente para conduzir a Igreja em santidade, comunhão e missão.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "A expansão entre os gentios trouxe uma pergunta inevitável para a Igreja primitiva: pessoas de outras nações precisariam assumir marcas culturais judaicas para pertencer plenamente ao povo de Deus?",
+      "O encontro de Jerusalém em Atos 15 foi decisivo para a missão cristã. A resposta apostólica preservou a salvação pela graça e abriu caminho para a consolidação das igrejas gentílicas.",
+      "A presença de Paulo, Barnabé, Pedro, Tiago e a igreja reunida mostra que decisões doutrinárias relevantes exigiam testemunho missionário, discernimento comunitário e fidelidade ao agir de Deus.",
+    ],
+    conceitoTeologico: [
+      "Salvação pela graça: Deus salva pecadores por iniciativa amorosa, mediante a obra de Cristo, recebida pela fé e não por obras humanas.",
+      "Justificação e comunhão: a mesma graça que declara o pecador justo em Cristo também o insere em uma comunidade reconciliada.",
+      "Liberdade cristã: Cristo liberta do jugo como caminho de salvação, mas chama o salvo a usar sua liberdade com amor, santidade e responsabilidade.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Circuncisão",
+        conteudo:
+          "Sinal da aliança dado a Israel. Em Atos 15, o problema foi transformá-la em requisito de salvação para os gentios, deslocando o centro da fé da graça de Cristo para uma marca ritual.",
+      },
+      {
+        titulo: "Jugo",
+        conteudo:
+          "Imagem de peso ou domínio. Pedro usa a ideia para rejeitar a imposição de exigências que nem os pais suportaram como condição para Deus aceitar os gentios.",
+      },
+      {
+        titulo: "Pareceu bem ao Espírito Santo e a nós",
+        conteudo:
+          "Expressão de Atos 15.28 que une direção do Espírito e responsabilidade da Igreja. A decisão pastoral não foi mero acordo humano, mas discernimento comunitário diante de Deus.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "A tentativa de medir salvação por aparência, costumes, histórico familiar ou tradição religiosa.",
+      "A facilidade de impor fardos a novos convertidos sem antes conduzi-los ao fundamento da graça em Cristo.",
+      "A dificuldade de lidar com conflitos sem perder o foco da missão.",
+    ],
+    oQueConsola: [
+      "Cristo é suficiente para salvar completamente todo aquele que crê.",
+      "A graça alcança pessoas de todas as nações e não fica presa aos limites culturais de um grupo.",
+      "Mesmo em crises doutrinárias e relacionais, Deus continua guiando sua Igreja pelo Espírito.",
+    ],
+    oQueExige: [
+      "Humildade para reconhecer que ninguém é salvo por mérito próprio.",
+      "Firmeza para rejeitar qualquer acréscimo humano como fundamento de salvação.",
+      "Maturidade para usar a liberdade cristã com amor, santidade e compromisso com a comunhão.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus salva por graça e não se deixa limitar por fronteiras étnicas, culturais ou religiosas.",
+      "O Senhor guia sua Igreja em momentos de crise por meio do Espírito, da Palavra e do discernimento comunitário.",
+      "A graça de Deus não apenas alcança indivíduos; ela forma um povo reconciliado em Cristo.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "Qual controvérsia aparece em Atos 15.1-5?",
+      "Por que impor a circuncisão como condição de salvação ameaçava o Evangelho?",
+      "Como Efésios 2.8 resume o fundamento da salvação cristã?",
+      "Qual o sentido pastoral das orientações de Atos 15.28-29?",
+      "Como a graça deve moldar a maneira de lidar com conflitos na igreja?",
+      "O que esta lição ensina sobre a missão entre pessoas de culturas diferentes?",
+    ],
+    pontosChave: [
+      "A salvação é dom da graça de Deus, recebida pela fé em Cristo.",
+      "Nenhuma marca cultural, rito ou costume pode substituir a suficiência da obra de Jesus.",
+      "A decisão de Atos 15 preservou a verdade do Evangelho e a comunhão entre judeus e gentios.",
+      "A graça sustenta a missão mesmo quando a Igreja enfrenta crises doutrinárias e conflitos relacionais.",
+    ],
+    fraseDeSintese:
+      "Em 'A Graça que Alcança todas as Nações', a classe aprende que Cristo é suficiente para salvar, a graça é suficiente para unir e o Espírito conduz a Igreja a preservar a verdade enquanto avança em missão.",
+  },
+};
+
+const licaoAdultosTerceiroTrimestre3: LicaoEBD = {
+  id: "adultos-2026-3t-licao-3",
+  slug: "licao-3",
+  numero: sementeAdultosTerceiroTrimestreLicao3.numero,
+  data: sementeAdultosTerceiroTrimestreLicao3.data,
+  statusEditorial: "published",
+  titulo: sementeAdultosTerceiroTrimestreLicao3.titulo,
+  imagem: getEbdLessonImagePath("adultos", "2026-3t", 3, "jpg"),
+  resumo:
+    "A terceira lição examina Atos 15 e Efésios 2.8 para mostrar que a salvação dos gentios não depende de mérito humano, marca cultural ou rito religioso, mas da graça de Deus recebida pela fé em Cristo.",
+  textoChave: normalizeBibleReferenceNotation(
+    sementeAdultosTerceiroTrimestreLicao3.textoChave
+  ),
+  verdadePratica:
+    "A salvação é dom da graça de Deus, recebida pela fé em Cristo, e essa graça une a Igreja e sustenta a missão entre todos os povos.",
+  leituraBiblica: normalizeReferences(
+    sementeAdultosTerceiroTrimestreLicao3.leituraBiblica
+  ),
+  objetivos: [
+    "Explicar a controvérsia de Atos 15 e sua relação com a missão aos gentios.",
+    "Reafirmar a salvação pela graça mediante a fé em Cristo.",
+    "Aplicar a doutrina da graça à comunhão, à santidade e à missão da igreja local.",
+  ],
+  topicos: [
+    {
+      titulo: "A crise que ameaçava a liberdade do Evangelho",
+      conteudo: [
+        "Em Atos 15.1-5, alguns ensinam que os gentios precisariam ser circuncidados para serem salvos. A questão ameaça o fundamento do Evangelho, pois coloca uma exigência humana ao lado da obra de Cristo.",
+        "Paulo e Barnabé resistem porque a salvação pela graça não pode ser confundida com mérito religioso, tradição cultural ou desempenho humano.",
+      ],
+    },
+    {
+      titulo: "A graça que salva sem distinção",
+      conteudo: [
+        "Efésios 2.8 declara que a salvação é pela graça, mediante a fé, e que isso é dom de Deus. Judeus e gentios chegam a Deus pelo mesmo caminho: Cristo.",
+        "A graça derruba orgulho, remove barreiras e impede que a igreja trate pessoas alcançadas por Deus como crentes de segunda categoria.",
+      ],
+    },
+    {
+      titulo: "Comunhão, santidade e missão depois da decisão",
+      conteudo: [
+        "Atos 15.28-29 mostra uma orientação pastoral que preserva a comunhão entre povos diferentes sem transformar costumes em fundamento de salvação.",
+        "Mesmo quando surgem conflitos, como a discordância entre Paulo e Barnabé, a missão continua. A graça ensina a igreja a permanecer fiel ao Evangelho e madura nos relacionamentos.",
+      ],
+    },
+  ],
+  aplicacao:
+    "Receba e anuncie a graça de Deus sem acrescentar fardos humanos ao Evangelho. Examine se você mede pessoas por costumes, aparência ou história, e escolha tratar novos irmãos com a mesma graça que alcançou você em Cristo.",
+  apoioProfessor: [
+    "Objetivo da aula: mostrar que Atos 15 preserva a salvação pela graça e orienta a comunhão missionária entre judeus e gentios.",
+    "Abertura sugerida: pergunte que fardos humanos podem ser confundidos hoje com requisitos para Deus aceitar alguém.",
+    "Desenvolvimento: explique a controvérsia da circuncisão, relacione Efésios 2.8 com Atos 15 e mostre a decisão pastoral guiada pelo Espírito.",
+    "Discussão pastoral: ajude a classe a diferenciar santidade bíblica de legalismo e liberdade cristã de permissividade.",
+    "Cuidado na condução: não trate tradição como inimiga automática; mostre que qualquer tradição se torna problema quando ocupa o lugar de Cristo.",
+    "Fechamento: ore por uma igreja firme na graça, santa na conduta, madura nos conflitos e aberta para alcançar pessoas de todas as nações.",
+  ],
+  apoioAluno: [
+    "O que observar no texto: qual exigência foi feita aos gentios, como Paulo e Barnabé reagiram e como a Igreja discerniu uma resposta.",
+    "O que isso confronta: a tendência de achar que Deus me aceita por mérito, costume, histórico religioso ou aparência de piedade.",
+    "Como se preparar: leia Atos 15.1-5,28,29,36-39 e Efésios 2.8-10, anotando onde aparece graça, fé, comunhão e missão.",
+    "Como aplicar: trate alguém novo na fé com paciência e graça, sem reduzir discipulado a cobrança de costumes.",
+    "Desafio da semana: agradeça a Deus pela graça recebida e compartilhe com alguém que a salvação em Cristo é dom, não compra nem conquista.",
+  ],
+  esboco: [
+    {
+      titulo: "Abertura: o que pode ser acrescentado à graça?",
+      conteudo:
+        "Comece perguntando se existem costumes ou exigências que às vezes são tratados como se fossem base de salvação. Apresente Efésios 2.8 como eixo da aula.",
+    },
+    {
+      titulo: "Movimento 1: a controvérsia de Atos 15",
+      conteudo:
+        "Explique o problema da circuncisão imposta aos gentios e mostre por que isso ameaçava a suficiência de Cristo.",
+    },
+    {
+      titulo: "Movimento 2: todos são salvos pela graça",
+      conteudo:
+        "Trabalhe Efésios 2.8 e o testemunho apostólico para mostrar que judeus e gentios entram no povo de Deus pela mesma graça.",
+    },
+    {
+      titulo: "Movimento 3: liberdade com amor pastoral",
+      conteudo:
+        "Mostre que Atos 15.28-29 não cria outro caminho de salvação, mas orienta uma convivência santa, amorosa e missionária.",
+    },
+    {
+      titulo: "Fechamento: graça que une e envia",
+      conteudo:
+        "Conduza a classe a responder com gratidão, rejeição ao legalismo, compromisso com santidade e disposição para acolher todos os que Deus alcançar.",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Atos 15 e Efésios 2.8 mostram que a salvação é pela graça, mediante a fé em Cristo. A Igreja deve preservar esse fundamento, acolher os gentios alcançados por Deus, viver santidade sem legalismo e continuar a missão mesmo diante de conflitos.",
+    },
+  ],
+  subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao3),
+};
+
 const licoesSkeleton3T = sementesAdultosTerceiroTrimestre.map(
   criarLicaoAdultosTerceiroTrimestreSkeleton
 );
@@ -5584,6 +5893,7 @@ const adultos2026TerceiroTrimestre: TrimestreEBD = {
   licoes: adultos2026TerceiroTrimestreBase.licoes.map((licao) => {
     if (licao.numero === 1) return licaoAdultosTerceiroTrimestre1;
     if (licao.numero === 2) return licaoAdultosTerceiroTrimestre2;
+    if (licao.numero === 3) return licaoAdultosTerceiroTrimestre3;
     const skeleton = licoesSkeleton3T.find((l) => l.numero === licao.numero);
     return skeleton ?? licao;
   }),
