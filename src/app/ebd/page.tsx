@@ -39,6 +39,24 @@ export const metadata = buildPageMetadata({
 
 export const revalidate = 3600;
 
+const terceiroTrimestrePreview = [
+  {
+    classe: "Adultos",
+    titulo: "A Igreja dos Gentios",
+    descricao:
+      "Da chamada missionária à consolidação do Evangelho entre os povos.",
+    capa: "/images/EBD/adultos/2026-3t/ebd-3t-capa.jpg",
+    alt: "Capa da revista Adultos do 3º Trimestre de 2026",
+  },
+  {
+    classe: "Jovens",
+    titulo: "Fidelidade às Escrituras",
+    descricao: "Lições espirituais no livro de Juízes contra a apostasia.",
+    capa: "/images/EBD/jovens/2026-3t/ebd-3t-capa.jpg",
+    alt: "Capa da revista Jovens do 3º Trimestre de 2026",
+  },
+] as const;
+
 export default async function EbdHubPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const classes = getClassesEbdPublicadas();
@@ -155,30 +173,35 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
-                  <div className="border-l-4 border-[#ffa726]/40 pl-4">
-                    <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Adultos
-                    </p>
-                    <h3 className="mb-2 font-acme text-xl tracking-wide text-[#212121]">
-                      A Igreja dos Gentios
-                    </h3>
-                    <p className="text-sm leading-relaxed text-[#555]">
-                      Da chamada missionária à consolidação do Evangelho entre
-                      os povos.
-                    </p>
-                  </div>
+                  {terceiroTrimestrePreview.map((item) => (
+                    <div
+                      key={item.classe}
+                      className="grid grid-cols-[5.5rem_1fr] gap-4 border-l-4 border-[#ffa726]/40 pl-4 sm:grid-cols-[6.5rem_1fr]"
+                    >
+                      <CardMedia
+                        src={item.capa}
+                        alt={item.alt}
+                        variant="poster"
+                        sizes="(max-width: 768px) 88px, 104px"
+                        className="h-32 w-[5.5rem] rounded-lg border border-black/10 bg-white shadow-sm sm:h-36 sm:w-[6.5rem]"
+                        imageClassName="p-1"
+                        overlayClassName={false}
+                        zoomOnHover={false}
+                      />
 
-                  <div className="border-l-4 border-[#ffa726]/40 pl-4">
-                    <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                      Jovens
-                    </p>
-                    <h3 className="mb-2 font-acme text-xl tracking-wide text-[#212121]">
-                      Fidelidade às Escrituras
-                    </h3>
-                    <p className="text-sm leading-relaxed text-[#555]">
-                      Lições espirituais no livro de Juízes contra a apostasia.
-                    </p>
-                  </div>
+                      <div className="min-w-0 py-1">
+                        <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          {item.classe}
+                        </p>
+                        <h3 className="mb-2 font-acme text-xl tracking-wide text-[#212121]">
+                          {item.titulo}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-[#555]">
+                          {item.descricao}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
