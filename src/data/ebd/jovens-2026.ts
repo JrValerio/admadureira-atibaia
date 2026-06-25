@@ -4240,25 +4240,25 @@ const topicosJovensTerceiroTrimestreLicao1 = [
   {
     titulo: "Um livro entre a conquista e a crise",
     conteudo: [
-      "Juízes começa depois da liderança de Josué e mostra uma geração chamada a viver pela aliança em meio a pressões espirituais e culturais.",
-      "A passagem de Josué para Juízes revela que cada geração precisa assumir pessoalmente a fidelidade ao Senhor; herança espiritual não funciona no piloto automático.",
-      "O livro não esconde a fraqueza humana, mas também não esconde a soberania de Deus conduzindo a história do seu povo.",
+      "Juízes registra um período de transição: Josué morre, Israel já está na terra prometida, mas agora precisa demonstrar fidelidade à aliança sem depender de um líder nacional como Moisés ou Josué.",
+      "As tribos deveriam viver como povo de Deus, guardando a Palavra, rejeitando a idolatria e transmitindo a memória das obras do Senhor à nova geração.",
+      "O livro mostra que uma geração pode receber uma herança espiritual preciosa e, ainda assim, perdê-la na prática quando deixa de obedecer à voz de Deus no cotidiano.",
     ],
   },
   {
     titulo: "Quando cada um faz o que parece certo",
     conteudo: [
-      "Juízes 17.6 resume uma sociedade sem referência espiritual sólida: cada pessoa decide por si mesma o que considera correto.",
-      "A ausência de direção fiel à Palavra abre espaço para confusão moral, idolatria e falsa religiosidade.",
-      "O problema central não é apenas falta de organização política, mas abandono da autoridade de Deus no coração do povo.",
+      "Juízes 17.6 resume a doença espiritual de uma sociedade que perdeu referência: cada pessoa decide por si mesma o que é certo, sem submeter desejos, culto e escolhas à Palavra de Deus.",
+      "Essa frase não descreve liberdade saudável, mas autonomia moral sem temor do Senhor. Quando Deus deixa de ser a autoridade, o coração humano transforma opinião em lei.",
+      "O resultado é confusão espiritual: falsa religiosidade, relativismo prático, fragmentação da comunidade e perda da memória da aliança.",
     ],
   },
   {
     titulo: "Deus usa instrumentos humanos",
     conteudo: [
-      "Os juízes não são apresentados como heróis sem falhas, mas como instrumentos levantados por Deus em momentos de crise.",
-      "A fraqueza dos líderes evidencia que o livramento vem do Senhor, e não da superioridade humana.",
-      "Para a juventude, a lição aponta para dependência: Deus chama, capacita e usa pessoas reais, mas exige fidelidade à sua Palavra.",
+      "Os juízes não aparecem como heróis impecáveis. Eles são instrumentos levantados por Deus em tempos de crise, marcados por limites humanos e dependência da graça.",
+      "A fraqueza desses líderes revela que o livramento não nasce da superioridade humana, mas da misericórdia de Deus, que continua agindo mesmo quando o povo falha.",
+      "Para a juventude, a lição ensina duas verdades juntas: Deus chama pessoas reais e frágeis, mas não normaliza uma vida sem obediência, direção bíblica e dependência do Espírito.",
     ],
   },
 ];
@@ -4277,108 +4277,127 @@ const subsidioJovensTerceiroTrimestreLicao1: LicaoEBD["subsidioJovens"] = {
   arranquePedagogico: {
     objetivos: objetivosJovensTerceiroTrimestreLicao1,
     interacao:
-      "Pergunte à classe como uma pessoa decide o que é certo quando rejeita qualquer autoridade acima da própria vontade. Use as respostas para apresentar Juízes como um alerta sobre autonomia sem submissão a Deus.",
+      "Abra com uma pergunta direta: 'Quem define o que é certo quando a Palavra de Deus deixa de ser ouvida?' Deixe a classe responder e, em seguida, mostre que Juízes 17.6 descreve exatamente esse perigo: uma geração governada pelo próprio parecer.",
     orientacaoPedagogica:
-      "Conduza a aula em três movimentos: contexto do livro, diagnóstico espiritual da frase de Juízes 17.6 e esperança no agir de Deus por meio de instrumentos humanos.",
+      "Conduza a aula em três movimentos: primeiro, situe Juízes como período de transição após Josué; depois, explique Juízes 17.6 como diagnóstico da autonomia moral sem Deus; por fim, aplique a lição à fidelidade às Escrituras como resposta contra apostasia, relativismo e perda da memória espiritual.",
   },
   desenvolvimento: [
     {
       id: "contexto-do-livro-de-juizes",
       titulo: "O contexto do livro de Juízes",
       sinopse:
-        "Juízes registra uma fase de transição em que Israel precisava permanecer fiel ao Senhor depois da liderança de Josué.",
+        "Juízes registra uma fase de transição em que Israel precisava permanecer fiel ao Senhor depois da liderança de Josué, mas começou a se fragmentar espiritualmente.",
       explicacaoBiblica: [
-        "Josué 24.26-30 encerra uma etapa importante da história de Israel e prepara a pergunta central: a próxima geração permaneceria fiel ao Deus da aliança?",
-        "Juízes 1.1 mostra o povo diante de novos desafios após a morte de Josué, agora chamado a obedecer sem depender da presença daquele líder.",
-        "O livro expõe a tensão entre a promessa de Deus, a responsabilidade do povo e as consequências de uma fé que deixa de orientar as decisões.",
+        "Josué 24.26-30 encerra uma etapa decisiva: Josué havia renovado a aliança, registrado as palavras do Senhor e chamado o povo a servir a Deus com fidelidade.",
+        "Juízes 1.1 começa com a pergunta que marca a nova fase: depois da morte de Josué, quem subiria primeiro contra os cananeus? A questão revela ausência de um sucessor nacional equivalente a Moisés ou Josué.",
+        "A falta de um líder nacional não deveria significar falta de direção espiritual. Israel possuía a aliança, a Lei, a memória dos livramentos e a responsabilidade de obedecer ao Senhor.",
+        "O drama do livro nasce quando o povo deixa de viver pela Palavra recebida e passa a se adaptar aos padrões espirituais e morais ao redor.",
       ],
       aplicacaoPratica: [
-        "Mostre à turma que cada geração precisa conhecer o Senhor por si mesma, sem viver apenas da memória espiritual dos pais ou líderes.",
-        "A EBD ajuda a juventude a transformar herança recebida em convicção pessoal, bíblica e prática.",
+        "Mostre à turma que cada geração precisa transformar herança espiritual em convicção pessoal. Não basta ter pais, líderes ou uma igreja que conhecem a Deus.",
+        "Use a EBD como exemplo positivo: estudar a Palavra semana após semana é uma forma de combater o esquecimento espiritual e formar jovens com referência bíblica.",
+        "Ajude os alunos a perceberem que a fé enfraquece quando deixa de ser ensinada, lembrada e praticada no cotidiano.",
       ],
       pense:
-        "Sua fé está apoiada apenas na tradição familiar ou em convicção pessoal formada pela Palavra?",
+        "Sua fé está apoiada apenas no ambiente da igreja ou em convicção pessoal formada pela Palavra?",
       pontoImportante:
-        "A transição entre gerações exige ensino, memória espiritual e compromisso renovado com Deus.",
+        "A transição entre gerações exige ensino bíblico, memória espiritual e compromisso renovado com Deus.",
     },
     {
       id: "cada-um-fazia-o-que-parecia-certo",
       titulo: "A crise da autonomia espiritual",
       sinopse:
-        "A frase de Juízes 17.6 revela o perigo de transformar a própria opinião em medida final do certo e do errado.",
+        "A frase de Juízes 17.6 revela o perigo de transformar a própria opinião em medida final do certo, do errado e até do culto a Deus.",
       explicacaoBiblica: [
-        "Quando a Palavra de Deus deixa de governar a consciência, o coração humano passa a justificar escolhas que parecem boas, mas conduzem ao afastamento espiritual.",
-        "A repetição da ideia de que não havia rei em Israel aponta para desordem profunda, visível na vida religiosa, moral e comunitária.",
-        "O livro de Juízes alerta que autonomia sem Deus não produz liberdade verdadeira; produz confusão, idolatria e enfraquecimento espiritual.",
+        "A expressão 'cada qual fazia o que parecia direito aos seus olhos' não elogia liberdade de consciência; ela denuncia uma vida sem submissão ao governo de Deus.",
+        "Em Juízes, o problema aparece no culto, na moralidade, nos relacionamentos e na vida comunitária. A apostasia começa quando a Palavra deixa de corrigir o coração.",
+        "A ausência de rei em Israel aponta para uma desordem social, mas o diagnóstico é mais profundo: faltava submissão ao Senhor, o verdadeiro Rei do povo.",
+        "Quando a vontade pessoal vira autoridade suprema, o pecado ganha aparência de normalidade e a idolatria passa a ser justificada como escolha particular.",
       ],
       aplicacaoPratica: [
-        "Ajude os jovens a identificar frases atuais que ecoam Juízes 17.6, como 'siga seu coração' ou 'cada um tem sua verdade'.",
-        "Conduza a classe a comparar essas ideias com a autoridade bíblica e com o senhorio de Cristo.",
+        "Ajude os jovens a identificar frases atuais que ecoam Juízes 17.6, como 'siga seu coração', 'cada um tem sua verdade' ou 'ninguém pode dizer o que é certo para mim'.",
+        "Conduza a classe a comparar essas ideias com a autoridade bíblica, mostrando que Cristo não salva o jovem para que ele continue governado apenas por impulsos e preferências.",
+        "Aplique com cuidado pastoral: a pergunta não é apenas 'o mundo está perdido?', mas 'em quais áreas eu tenho vivido pelo meu parecer e não pela Palavra?'.",
       ],
       pense:
         "Em quais decisões você tem seguido mais o que parece certo aos seus olhos do que aquilo que Deus revelou?",
       pontoImportante:
-        "Fidelidade às Escrituras começa quando a Palavra volta a ser autoridade acima da vontade pessoal.",
+        "Fidelidade às Escrituras começa quando a Palavra volta a ser autoridade acima da vontade pessoal, da pressão cultural e do gosto do momento.",
     },
     {
       id: "deus-usa-instrumentos-humanos",
       titulo: "Deus age por meio de pessoas frágeis",
       sinopse:
-        "Mesmo em meio à fraqueza humana, Deus levanta instrumentos, conduz sua obra e preserva seus propósitos.",
+        "Mesmo em meio à fraqueza humana e à instabilidade espiritual, Deus levanta instrumentos, conduz sua obra e preserva seus propósitos.",
       explicacaoBiblica: [
-        "Hebreus 11.32 lembra alguns juízes entre os exemplos de fé, mostrando que Deus trabalha com pessoas reais e imperfeitas.",
-        "O livro de Juízes não glorifica a fraqueza humana; ele revela a graça de Deus que chama, capacita e corrige.",
-        "A liderança levantada por Deus precisa depender do Espírito, servir com humildade e conduzir o povo de volta à fidelidade.",
+        "Hebreus 11.32 recorda alguns juízes entre os exemplos de fé, mostrando que Deus pode agir por meio de pessoas reais, limitadas e situadas em tempos difíceis.",
+        "Ao mesmo tempo, Juízes não romantiza a fraqueza humana. O livro mostra que líderes também precisam de temor, caráter, direção e dependência do Senhor.",
+        "A ação de Deus por meio de instrumentos humanos revela graça, não licença para negligência espiritual. O Senhor levanta pessoas para conduzir seu povo de volta à fidelidade.",
+        "A juventude precisa aprender que ser usado por Deus não é palco para vaidade, mas chamado para serviço, obediência e dependência do Espírito.",
       ],
       aplicacaoPratica: [
-        "Incentive a turma a abandonar desculpas baseadas em insegurança, passado ou limitações pessoais.",
-        "Mostre que ser usado por Deus não elimina a necessidade de caráter, obediência e dependência do Espírito Santo.",
+        "Incentive a turma a abandonar desculpas baseadas em insegurança, passado ou limitações pessoais, sem transformar fragilidade em identidade permanente.",
+        "Mostre que Deus usa pessoas comuns, mas as chama para crescerem em fidelidade, coragem, santidade e serviço.",
+        "Convide cada aluno a perguntar: onde Deus quer que eu seja instrumento de fidelidade numa geração confusa?",
       ],
       pense:
         "Você tem usado suas limitações como desculpa para não obedecer ao chamado de Deus?",
       pontoImportante:
-        "Deus usa pessoas frágeis, mas não as chama para permanecerem sem direção; Ele as capacita para obedecer.",
+        "Deus usa pessoas frágeis, mas não as chama para permanecerem sem direção; Ele as capacita para obedecer e servir.",
     },
   ],
   apoioProfessor: {
     quebraGelo:
-      "Escreva no quadro: 'cada um fazia o que parecia certo'. Pergunte onde essa mentalidade aparece hoje e deixe a turma responder antes de abrir o texto bíblico.",
+      "Escreva no quadro: 'parece certo para mim'. Pergunte: em quais decisões essa frase costuma aparecer hoje? Depois conecte as respostas com Juízes 17.6.",
     perguntaChave:
-      "O que acontece com uma geração quando a Palavra de Deus deixa de ser a referência para decidir o que é certo?",
+      "O que acontece com uma geração quando a Palavra de Deus deixa de ser a referência para decidir o que é certo, verdadeiro e aceitável?",
     dificuldadeProvavelDaClasse:
-      "A turma pode enxergar Juízes como um livro distante. Traga a aplicação para autonomia, relativismo prático, escolhas digitais, relacionamentos e formação de caráter.",
+      "A turma pode enxergar Juízes como narrativa distante ou apenas como história de líderes antigos. Traga a aplicação para autonomia, relativismo prático, escolhas digitais, relacionamentos, culto, vocação e formação de caráter.",
     conducaoDaConversa: [
-      "Comece com Josué 24.26-30 para mostrar a transição de geração.",
-      "Leia Juízes 17.6 como diagnóstico espiritual, não apenas como dado político.",
-      "Feche mostrando que Deus continua chamando e capacitando pessoas frágeis para cumprir seus propósitos.",
+      "Abertura: apresente o contraste entre uma geração que recebeu testemunho das obras de Deus e uma geração que precisa decidir se continuará fiel à aliança.",
+      "Desenvolvimento 1: trabalhe Josué 24.26-30 e Juízes 1.1 para mostrar a transição depois de Josué e a responsabilidade espiritual das tribos.",
+      "Desenvolvimento 2: leia Juízes 17.6 como diagnóstico espiritual. Mostre que fazer o que parece certo aos próprios olhos é viver sem a Palavra como referência final.",
+      "Desenvolvimento 3: explique que Deus levanta instrumentos humanos, mas a graça que usa pessoas frágeis não elimina a necessidade de obediência e dependência do Espírito.",
+      "Aplicação: peça que cada aluno identifique uma área em que precisa trocar autonomia por submissão bíblica.",
     ],
     fechamento:
-      "Ore para que cada jovem troque a autonomia sem Deus pela obediência bíblica e se disponha a ser instrumento fiel nas mãos do Senhor.",
+      "Feche com uma oração breve e específica: peça que a classe rejeite a lógica de viver pelo próprio parecer, recupere amor pela Palavra e se disponha a ser uma geração fiel em meio à confusão espiritual.",
   },
   aprofundamentoOpcional: {
     contextoBiblico: [
-      "Juízes se localiza entre a conquista da terra e a monarquia, revelando um período de instabilidade espiritual e liderança fragmentada.",
-      "A frase de Juízes 17.6 antecipa a necessidade de governo justo, mas aponta de modo mais profundo para a necessidade de submissão ao Senhor.",
+      "Juízes se localiza entre a conquista da terra e a monarquia. É um período de liderança fragmentada, responsabilidade tribal e repetidas crises espirituais.",
+      "Depois de Josué, Israel não recebe um sucessor nacional semelhante a Moisés ou ao próprio Josué. Isso não anula a direção divina, pois o povo continuava tendo a Lei, a aliança e a memória dos atos de Deus.",
+      "A frase de Juízes 17.6 antecipa a necessidade de governo justo, mas aponta de modo mais profundo para a necessidade de submissão ao Senhor, que deveria reinar sobre consciência, culto e decisões.",
+    ],
+    notaDoutrinariaCurta: [
+      "A apostasia não começa apenas quando alguém abandona publicamente a fé; muitas vezes começa quando a Palavra perde autoridade prática sobre decisões comuns.",
+      "Fidelidade às Escrituras envolve crer, lembrar, obedecer e transmitir a verdade de Deus à próxima geração.",
     ],
     conexaoComVidaCrista: [
-      "A lição ajuda o jovem a perceber que o coração humano continua tentando substituir a vontade de Deus pelo próprio critério.",
-      "A resposta cristã é voltar à Palavra, depender do Espírito e viver fidelidade concreta em cada decisão.",
+      "A lição confronta o jovem que deseja seguir Cristo, mas preserva áreas intocáveis governadas por opinião própria, pressão dos amigos ou lógica das redes.",
+      "A resposta cristã é voltar à Palavra, depender do Espírito e viver fidelidade concreta em decisões sobre corpo, relacionamentos, vocação, entretenimento, culto e serviço.",
+      "O professor deve evitar apenas denunciar o erro da cultura; a aula precisa levar a classe a examinar o próprio coração diante do texto bíblico.",
     ],
   },
   revisao: {
     horaDaRevisao: [
-      "Qual é o contexto histórico e espiritual do livro de Juízes?",
-      "O que Juízes 17.6 revela sobre uma geração sem direção espiritual?",
-      "Por que Deus usar pessoas frágeis não diminui a responsabilidade humana?",
-      "Como a juventude pode evitar a lógica de fazer apenas o que parece certo aos próprios olhos?",
+      "O que muda em Israel depois da morte de Josué?",
+      "Por que a ausência de um sucessor nacional não desculpava a infidelidade do povo?",
+      "O que Juízes 17.6 revela sobre uma geração sem referência espiritual?",
+      "Por que 'cada um fazia o que parecia direito aos seus olhos' não deve ser confundido com liberdade saudável?",
+      "Em quais áreas a juventude atual é tentada a viver pelo próprio parecer?",
+      "Como a fidelidade às Escrituras combate apostasia, relativismo e perda da memória espiritual?",
+      "Por que Deus usar pessoas frágeis não diminui a responsabilidade por caráter e obediência?",
     ],
     quizCurto: [
       "Qual texto principal resume o diagnóstico da Lição 1? Resposta esperada: Juízes 17.6.",
-      "Juízes ensina autonomia sem Deus ou fidelidade à Palavra? Resposta esperada: fidelidade à Palavra.",
+      "Juízes se passa antes ou depois da liderança de Josué? Resposta esperada: depois.",
+      "A frase 'cada um fazia o que parecia direito aos seus olhos' descreve maturidade espiritual? Resposta esperada: não; descreve autonomia sem submissão a Deus.",
+      "Qual é a resposta bíblica contra a apostasia? Resposta esperada: fidelidade às Escrituras, memória espiritual e obediência ao Senhor.",
       "Deus usa instrumentos humanos perfeitos ou pessoas frágeis capacitadas por Ele? Resposta esperada: pessoas frágeis capacitadas por Ele.",
     ],
     conclusao:
-      "O livro de Juízes começa como alerta e espelho: quando a Palavra perde autoridade, cada um tenta governar a si mesmo; quando Deus chama, pessoas frágeis podem ser instrumentos dos seus propósitos.",
+      "A Lição 1 abre o trimestre como alerta e espelho: quando a Palavra perde autoridade, cada um tenta governar a si mesmo; quando Deus chama, pessoas frágeis podem ser instrumentos dos seus propósitos. A juventude fiel não vive pelo próprio parecer, mas aprende a submeter escolhas, desejos e futuro ao Senhor.",
   },
 };
 
@@ -4394,30 +4413,52 @@ const licaoJovensTerceiroTrimestre1: LicaoEBD = {
   objetivos: objetivosJovensTerceiroTrimestreLicao1,
   topicos: topicosJovensTerceiroTrimestreLicao1,
   aplicacao:
-    "Examine decisões em que você tem usado apenas o próprio senso de certo e errado. Volte à Palavra, ore por direção do Espírito e escolha uma atitude concreta de obediência nesta semana.",
+    "Examine decisões em que você tem usado apenas o próprio senso de certo e errado. Volte à Palavra, ore por direção do Espírito e escolha uma atitude concreta de obediência nesta semana. Fidelidade não é só concordar com a Bíblia; é permitir que ela governe escolhas, desejos, relacionamentos e futuro.",
   apoioProfessor: [
-    "Apresente Juízes como um espelho espiritual para a juventude: sem submissão ao Senhor, a autonomia humana vira confusão moral e religiosa.",
-    "Mostre que Deus usa instrumentos humanos frágeis, mas chamados a depender do Espírito e a permanecer fiéis à Palavra.",
+    "Objetivo da aula: ajudar a classe a enxergar Juízes como alerta bíblico sobre uma geração que perdeu a referência da Palavra e passou a viver pelo próprio parecer.",
+    "Abertura sugerida: pergunte 'quem define o que é certo quando a Bíblia é deixada de lado?' e use as respostas para introduzir Juízes 17.6.",
+    "Desenvolvimento: explique a transição depois de Josué, a responsabilidade das tribos diante da aliança e o diagnóstico espiritual de Juízes 17.6.",
+    "Discussão: conduza a turma a identificar áreas em que jovens cristãos são pressionados a trocar a Palavra por opinião, desejo, tendência ou aprovação social.",
+    "Cuidado pastoral: evite transformar a aula em ataque genérico à cultura. O texto precisa confrontar primeiro o coração da própria classe.",
+    "Fechamento: ore para que a juventude rejeite a autonomia sem Deus e se torne instrumento fiel numa geração confusa.",
   ],
   apoioAluno: [
-    "Leia Josué 24.26-30, Juízes 1.1 e Juízes 17.6 antes da aula e anote o que esses textos revelam sobre transição, direção e fidelidade.",
-    "Durante a semana, identifique uma decisão em que você precisa trocar 'parece certo para mim' por 'o que Deus revelou na Palavra'.",
+    "O que preciso entender: Juízes mostra o perigo de uma geração que conhece a história de Deus, mas deixa de viver debaixo da sua Palavra.",
+    "O que isso confronta em mim: toda área em que eu digo 'parece certo para mim' sem perguntar o que Deus revelou nas Escrituras.",
+    "Como me preparar: leia Josué 24.26-30, Juízes 1.1 e Juízes 17.6, anotando uma pergunta e uma decisão prática para levar à aula.",
+    "Como aplicar: escolha uma decisão da semana e avalie se ela está sendo guiada pela Palavra, pela pressão dos outros ou apenas pela sua vontade.",
+    "Desafio da semana: transforme uma leitura semanal em oração e peça a Deus firmeza para viver como jovem fiel em uma cultura confusa.",
   ],
   esboco: [
     {
-      titulo: "Contexto",
+      titulo: "Abertura: uma pergunta para acordar a classe",
       conteudo:
-        "Apresente o livro de Juízes como período entre Josué e a monarquia, marcado por transição, fragilidade espiritual e necessidade de fidelidade.",
+        "Comece perguntando quem define o certo e o errado quando a Palavra de Deus é ignorada. Mostre que Juízes 17.6 não é uma frase neutra, mas um diagnóstico espiritual.",
     },
     {
-      titulo: "Diagnóstico",
+      titulo: "Movimento 1: depois de Josué",
       conteudo:
-        "Trabalhe Juízes 17.6 como resumo de uma geração sem referência bíblica firme: cada um fazendo o que parecia certo aos seus próprios olhos.",
+        "Explique Josué 24.26-30 e Juízes 1.1. Israel entra em uma fase sem sucessor nacional como Moisés ou Josué, mas continua responsável por obedecer à aliança.",
     },
     {
-      titulo: "Aplicação",
+      titulo: "Movimento 2: o diagnóstico de Juízes 17.6",
       conteudo:
-        "Mostre que Deus continua chamando pessoas frágeis, mas exige dependência do Espírito, obediência e fidelidade à Palavra.",
+        "Mostre que 'cada um fazia o que parecia direito aos seus olhos' descreve autonomia moral sem submissão ao Senhor, e não liberdade madura.",
+    },
+    {
+      titulo: "Movimento 3: graça e responsabilidade",
+      conteudo:
+        "Explique que Deus levanta instrumentos humanos frágeis, mas a graça que capacita não elimina obediência, caráter e dependência do Espírito.",
+    },
+    {
+      titulo: "Fechamento: fidelidade como resposta",
+      conteudo:
+        "Conduza a classe a responder com uma decisão concreta: em qual área cada aluno precisa trocar o próprio parecer pela direção da Palavra?",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Juízes alerta que uma geração sem referência bíblica passa a chamar de certo aquilo que apenas parece bom aos próprios olhos. A resposta é lembrar as obras de Deus, submeter decisões às Escrituras e viver fidelidade prática em meio à confusão espiritual.",
     },
   ],
   subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao1),
