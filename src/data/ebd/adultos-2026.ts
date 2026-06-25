@@ -5253,6 +5253,315 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
   },
 ];
 
+const sementeAdultosTerceiroTrimestreLicao2 =
+  sementesAdultosTerceiroTrimestre[0];
+
+const subsidioAdultosTerceiroTrimestreLicao2 = {
+  cabecalho: {
+    numero: sementeAdultosTerceiroTrimestreLicao2.numero,
+    titulo: sementeAdultosTerceiroTrimestreLicao2.titulo,
+    data: sementeAdultosTerceiroTrimestreLicao2.data,
+    trimestre: trimestreAdultosTerceiroTrimestre,
+    comentarista: "Wagner Gaby",
+    textoAureo: sementeAdultosTerceiroTrimestreLicao2.textoAureo,
+    verdadePratica:
+      "Quando a Palavra de Deus é anunciada com fidelidade, o Senhor abre portas para que pessoas de todos os povos recebam o Evangelho pela fé.",
+    leituraBiblicaEmClasse: normalizeReferences(
+      sementeAdultosTerceiroTrimestreLicao2.leituraBiblica
+    ),
+    leituraDiaria: [
+      { dia: "Segunda", referencia: "Isaías 49.6", tema: "Luz para os gentios e salvação até os confins da terra" },
+      { dia: "Terça", referencia: "Lucas 2.30-32", tema: "Cristo como luz para iluminar as nações" },
+      { dia: "Quarta", referencia: "Atos 13.44-47", tema: "A Palavra rejeitada por uns e anunciada aos gentios" },
+      { dia: "Quinta", referencia: "Atos 13.48-49", tema: "Os gentios se alegram e a Palavra se espalha" },
+      { dia: "Sexta", referencia: "Atos 14.27", tema: "Deus abre a porta da fé aos gentios" },
+      { dia: "Sábado", referencia: "Romanos 15.8-12", tema: "As promessas alcançam judeus e gentios em Cristo" },
+      { dia: "Domingo", referencia: "Atos 13.44-52", tema: "Revisão: a porta da fé aberta entre os povos" },
+    ] as LeituraDiariaItem[],
+    hinosSugeridos: ["Grandioso És Tu", "Cristo para Todos", "Já Refulge a Glória Eterna"],
+  },
+  visaoGeral: {
+    resumo:
+      "A segunda lição acompanha o momento em que, em Antioquia da Pisídia, a pregação de Paulo e Barnabé desperta fome pela Palavra, oposição religiosa e alegria entre os gentios. Atos 13.44-52 mostra que a rejeição de alguns não bloqueia o plano de Deus: o Evangelho avança, cumpre a Escritura e abre a porta da fé aos povos.",
+    ideiaCentral:
+      "A porta da fé se abre quando a Palavra é anunciada com fidelidade e Deus conduz o Evangelho para além de barreiras religiosas, culturais e étnicas.",
+    objetivos: [
+      "Explicar o contexto de Atos 13.44-52 e a transição missionária para os gentios.",
+      "Mostrar que o anúncio aos gentios cumpre o propósito bíblico revelado nas Escrituras.",
+      "Aplicar à igreja local a responsabilidade de anunciar Cristo sem favoritismo, medo ou barreiras humanas.",
+      "Fortalecer a confiança da classe no poder da Palavra mesmo diante de rejeição e oposição.",
+    ],
+    palavraChave: {
+      termo: "Porta da fé",
+      definicao:
+        "Expressão que resume a ação de Deus ao conceder aos gentios acesso ao Evangelho, chamando-os a crer em Cristo e integrar o povo da nova aliança.",
+    },
+  },
+  desenvolvimento: [
+    {
+      id: "antioquia-da-pisidia-e-a-fome-pela-palavra",
+      titulo: "Antioquia da Pisídia e a fome pela Palavra",
+      sinopse:
+        "A multidão que se reúne para ouvir Paulo e Barnabé revela que o Evangelho despertava interesse real entre pessoas que precisavam conhecer a salvação em Cristo.",
+      explicacaoBiblica: [
+        "Atos 13.44 apresenta uma cena marcante: quase toda a cidade se ajunta para ouvir a Palavra de Deus. A mensagem pregada na sinagoga alcança o espaço público e desperta atenção além dos limites tradicionais.",
+        "O interesse dos gentios não é tratado como acidente, mas como parte do movimento do Espírito no livro de Atos. A Palavra que começou em Jerusalém segue avançando para povos e cidades.",
+        "A igreja precisa perceber que portas missionárias muitas vezes se abrem onde há sede pela Palavra, mesmo que também surjam resistências no mesmo ambiente.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A fé vem pelo ouvir a Palavra de Cristo (Rm 10.17). Por isso, a missão bíblica não se apoia em espetáculo, mas na proclamação fiel do Evangelho.",
+        "A expansão aos gentios não é improviso apostólico. Ela cumpre a promessa de que a salvação alcançaria os confins da terra.",
+      ],
+      aplicacaoPratica: [
+        "Pergunte à classe onde hoje existem pessoas abertas para ouvir a Palavra, mas ainda pouco alcançadas pela igreja local.",
+        "Mostre que a oportunidade missionária deve produzir prontidão, ensino bíblico e acolhimento, não apenas entusiasmo momentâneo.",
+        "Incentive os alunos a orar por uma porta concreta de evangelização durante a semana: família, vizinhança, trabalho, escola ou visita.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Romanos 10.17", descricao: "A fé é despertada pela pregação da Palavra de Cristo." },
+        { referencia: "Atos 1.8", descricao: "O testemunho avança de Jerusalém até os confins da terra." },
+        { referencia: "Lucas 2.30-32", descricao: "Cristo é luz para revelação aos gentios." },
+      ],
+    },
+    {
+      id: "rejeicao-judaica-e-cumprimento-das-escrituras",
+      titulo: "Rejeição, oposição e cumprimento das Escrituras",
+      sinopse:
+        "A resistência de alguns judeus não impede a missão; pelo contrário, evidencia que o Evangelho aos gentios estava dentro do plano revelado por Deus.",
+      explicacaoBiblica: [
+        "Atos 13.45 mostra que a reação negativa nasce de inveja e oposição. A rejeição não é apenas discordância intelectual; ela se expressa em contradição e blasfêmia contra a mensagem.",
+        "Paulo e Barnabé respondem com coragem: a Palavra deveria ser anunciada primeiramente aos judeus, mas a rejeição deles abre caminho para uma proclamação mais ampla aos gentios.",
+        "A citação de Isaías 49.6 em Atos 13.47 demonstra que a missão gentílica está enraizada nas Escrituras. Deus havia anunciado que sua salvação alcançaria os confins da terra.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A prioridade histórica de Israel não anula o alcance universal da salvação. Em Cristo, judeus e gentios são chamados a participar das promessas de Deus.",
+        "A rejeição humana não frustra a soberania divina. Deus continua abrindo portas para sua Palavra mesmo quando alguns fecham o coração.",
+        "Fidelidade missionária exige coragem para continuar pregando quando a mensagem encontra resistência.",
+      ],
+      aplicacaoPratica: [
+        "Ajude a classe a lidar com rejeição evangelística sem amargura, triunfalismo ou desistência.",
+        "Mostre que a igreja não deve medir a fidelidade da missão apenas pela aceitação imediata, mas pela obediência à Palavra.",
+        "Aplique à realidade local: quando uma porta se fecha, Deus pode estar abrindo outra diante de pessoas que jamais imaginávamos alcançar.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Isaías 49.6", descricao: "O Servo do Senhor é posto como luz para os gentios." },
+        { referencia: "Romanos 15.8-12", descricao: "Os gentios glorificam a Deus por sua misericórdia." },
+        { referencia: "João 1.11-12", descricao: "Alguns rejeitam, mas os que recebem Cristo tornam-se filhos de Deus." },
+      ],
+    },
+    {
+      id: "alegria-dos-gentios-e-avanco-da-palavra",
+      titulo: "A alegria dos gentios e o avanço da Palavra",
+      sinopse:
+        "Os gentios se alegram, glorificam a Palavra do Senhor e a mensagem se espalha por toda a região, mesmo em meio à perseguição.",
+      explicacaoBiblica: [
+        "Atos 13.48 descreve alegria, glorificação da Palavra e fé. A abertura aos gentios não é apenas mudança geográfica; é inclusão real de pessoas que recebem a vida em Cristo.",
+        "A Palavra do Senhor se espalha por toda a província (At 13.49). O texto destaca que a missão é maior que a presença física dos missionários: a Palavra corre, frutifica e forma testemunhas.",
+        "A oposição se intensifica, mas os discípulos permanecem cheios de alegria e do Espírito Santo (At 13.52). A alegria cristã não depende da ausência de conflito, mas da presença de Deus e da certeza do Evangelho.",
+      ],
+      aprofundamentoDoutrinario: [
+        "A conversão dos gentios evidencia que a salvação é pela graça, recebida pela fé, e não por pertencimento étnico ou privilégio religioso.",
+        "A alegria missionária nasce quando a igreja vê pessoas antes distantes sendo alcançadas pela Palavra.",
+        "O enchimento do Espírito sustenta a igreja diante de perseguição, frustração e oposição.",
+      ],
+      aplicacaoPratica: [
+        "Convide a classe a celebrar quando pessoas de fora do círculo habitual da igreja são alcançadas pelo Evangelho.",
+        "Mostre que acolher novos convertidos exige discipulado, paciência, ensino e comunhão.",
+        "Ore para que a Palavra do Senhor se espalhe em Atibaia e na região por meio de famílias, classes, congregações, cultos e testemunhos pessoais.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Atos 14.27", descricao: "Deus abriu aos gentios a porta da fé." },
+        { referencia: "Efésios 2.13-18", descricao: "Cristo aproxima os que estavam longe e faz um só povo." },
+        { referencia: "1 Tessalonicenses 1.6-8", descricao: "A Palavra recebida com alegria torna a igreja testemunha." },
+      ],
+    },
+  ],
+  apoioProfessor: {
+    perguntaDeAbertura:
+      "Como a igreja deve reagir quando algumas pessoas rejeitam o Evangelho, mas outras demonstram fome real pela Palavra de Deus?",
+    pontoSensivelDaAula:
+      "A transição para os gentios precisa ser apresentada como cumprimento do plano de Deus, não como desprezo aos judeus. O professor deve conduzir a classe a enxergar graça, soberania e responsabilidade missionária.",
+    erroComumDeInterpretacao:
+      "Tratar Atos 13.44-52 como simples substituição de um povo por outro. O texto mostra prioridade histórica, rejeição específica, cumprimento das Escrituras e expansão da salvação aos povos.",
+    perguntasParaDebate: [
+      "O que a multidão reunida em Atos 13.44 ensina sobre portas abertas para a Palavra?",
+      "Por que Paulo e Barnabé citam Isaías 49.6 ao se voltarem aos gentios?",
+      "Como lidar biblicamente com a rejeição ao Evangelho sem perder amor pelas pessoas?",
+      "Que barreiras culturais, sociais ou religiosas ainda podem limitar nossa visão missionária?",
+      "O que significa, na prática, celebrar a chegada de pessoas novas e diferentes à família da fé?",
+    ],
+    sugestaoDeFechamento:
+      "Encerre orando por três pedidos: portas abertas para a Palavra, coragem diante da oposição e alegria para acolher todos os que Deus alcançar pela fé.",
+  },
+  aprofundamento: {
+    contextoHistorico: [
+      "Antioquia da Pisídia era uma cidade importante da região da Galácia. A pregação na sinagoga ofereceu ponto de contato inicial com judeus e gentios tementes a Deus.",
+      "A presença de gentios interessados na sinagoga ajuda a compreender por que a mensagem de Paulo alcança rapidamente pessoas fora do povo judeu.",
+      "A reação das autoridades e pessoas influentes mostra que a missão cristã não avançava sem tensões sociais, religiosas e políticas.",
+    ],
+    conceitoTeologico: [
+      "Universalidade do Evangelho: a salvação em Cristo alcança todos os povos, sem reduzir a graça a uma identidade étnica, cultural ou social.",
+      "Cumprimento missionário das Escrituras: a missão aos gentios não nasce contra o Antigo Testamento, mas a partir dele.",
+      "Porta da fé: Deus é quem abre acesso ao Evangelho e chama pessoas antes distantes a crerem em Cristo.",
+    ],
+    notaDeVocabulario: [
+      {
+        titulo: "Gentios",
+        conteudo:
+          "Termo usado para designar os povos que não pertenciam a Israel. Em Atos, a inclusão dos gentios evidencia o alcance universal do Evangelho em Cristo.",
+      },
+      {
+        titulo: "Confins da terra",
+        conteudo:
+          "Expressão que indica a extensão mundial da salvação prometida por Deus. Em Atos, ela conecta a missão da Igreja à promessa de Isaías 49.6 e ao programa de Atos 1.8.",
+      },
+      {
+        titulo: "Sacudir o pó dos pés",
+        conteudo:
+          "Gesto simbólico de testemunho diante da rejeição. Não expressa desprezo pelas pessoas, mas responsabilidade diante de quem rejeita a mensagem anunciada.",
+      },
+    ],
+  },
+  vidaCrista: {
+    oQueConfronta: [
+      "O fechamento de coração diante da Palavra quando ela contraria interesses, tradições ou orgulho religioso.",
+      "A tendência de limitar a missão às pessoas parecidas conosco ou aos ambientes onde nos sentimos confortáveis.",
+      "O desânimo diante da rejeição ao Evangelho, como se a oposição significasse fracasso da missão.",
+    ],
+    oQueConsola: [
+      "Deus continua abrindo portas para a fé mesmo quando algumas portas humanas se fecham.",
+      "A Palavra do Senhor se espalha por sua própria força, sustentada pelo Espírito Santo.",
+      "Pessoas antes consideradas distantes podem receber o Evangelho com alegria e glorificar a Deus.",
+    ],
+    oQueExige: [
+      "Fidelidade para anunciar a Palavra com clareza, mesmo diante de oposição.",
+      "Disposição para acolher quem Deus alcança, sem barreiras de origem, cultura, condição social ou história pessoal.",
+      "Alegria missionária para celebrar a salvação de novos irmãos e participar do discipulado deles.",
+    ],
+    oQueRevelaSobreDeus: [
+      "Deus é fiel ao seu plano de salvar pessoas de todos os povos.",
+      "O Senhor governa portas abertas e portas fechadas, conduzindo a missão segundo sua soberania.",
+      "O Espírito Santo sustenta alegria e perseverança mesmo em ambientes de perseguição.",
+    ],
+  },
+  revisao: {
+    perguntas: [
+      "O que acontece em Atos 13.44 e por que isso é significativo para a missão aos gentios?",
+      "Qual foi a reação de alguns judeus diante da multidão interessada na Palavra?",
+      "Por que Paulo e Barnabé afirmam que se voltariam aos gentios?",
+      "Como Atos 13.47 conecta a missão da Igreja à promessa de Isaías 49.6?",
+      "O que a alegria dos gentios ensina sobre a recepção do Evangelho?",
+      "Como a igreja local pode viver hoje a realidade da porta da fé aberta aos povos?",
+    ],
+    pontosChave: [
+      "A Palavra desperta fome espiritual e abre oportunidades missionárias.",
+      "A rejeição humana não impede o cumprimento do plano de Deus.",
+      "A missão aos gentios está enraizada nas Escrituras e alcança os confins da terra.",
+      "A igreja deve anunciar, acolher, discipular e celebrar todos os que Deus alcança pela fé.",
+    ],
+    fraseDeSintese:
+      "Em 'A Porta da Fé se Abre entre os Gentios', a classe aprende que Deus abre caminho para sua Palavra entre os povos, transforma rejeição em expansão missionária e chama a igreja a anunciar Cristo com fidelidade, coragem e alegria.",
+  },
+};
+
+const licaoAdultosTerceiroTrimestre2: LicaoEBD = {
+  id: "adultos-2026-3t-licao-2",
+  slug: "licao-2",
+  numero: sementeAdultosTerceiroTrimestreLicao2.numero,
+  data: sementeAdultosTerceiroTrimestreLicao2.data,
+  statusEditorial: "published",
+  titulo: sementeAdultosTerceiroTrimestreLicao2.titulo,
+  imagem: getEbdLessonImagePath("adultos", "2026-3t", 2, "jpg"),
+  resumo:
+    "A segunda lição mostra a Palavra do Senhor avançando em Antioquia da Pisídia. Mesmo diante da rejeição de alguns, Paulo e Barnabé anunciam que Deus os colocou como luz para os gentios, abrindo a porta da fé aos povos.",
+  textoChave: normalizeBibleReferenceNotation(
+    sementeAdultosTerceiroTrimestreLicao2.textoChave
+  ),
+  verdadePratica:
+    "Quando a Palavra de Deus é anunciada com fidelidade, o Senhor abre portas para que pessoas de todos os povos recebam o Evangelho pela fé.",
+  leituraBiblica: normalizeReferences(
+    sementeAdultosTerceiroTrimestreLicao2.leituraBiblica
+  ),
+  objetivos: [
+    "Explicar o contexto de Atos 13.44-52 e a abertura missionária aos gentios.",
+    "Mostrar que o anúncio aos gentios cumpre o propósito de Deus revelado nas Escrituras.",
+    "Aplicar a lição à missão da igreja local, chamada a anunciar Cristo sem barreiras humanas.",
+  ],
+  topicos: [
+    {
+      titulo: "A cidade se reúne para ouvir a Palavra",
+      conteudo: [
+        "Atos 13.44 mostra quase toda a cidade reunida para ouvir a Palavra de Deus. A mensagem pregada por Paulo e Barnabé ultrapassa os limites da sinagoga e desperta fome espiritual entre os gentios.",
+        "A igreja precisa reconhecer portas abertas para a Palavra e responder com prontidão, ensino fiel e acolhimento pastoral.",
+      ],
+    },
+    {
+      titulo: "A rejeição não bloqueia o plano de Deus",
+      conteudo: [
+        "A oposição de alguns judeus surge de inveja e resistência à mensagem. Mesmo assim, Paulo e Barnabé permanecem firmes e interpretam o momento à luz das Escrituras.",
+        "Ao citar Isaías 49.6, os missionários mostram que a salvação aos gentios não era improviso, mas cumprimento do propósito de Deus.",
+      ],
+    },
+    {
+      titulo: "Os gentios se alegram e a Palavra se espalha",
+      conteudo: [
+        "Os gentios glorificam a Palavra do Senhor e muitos creem. A rejeição de alguns se transforma em avanço missionário para muitos.",
+        "A missão segue em meio à perseguição, mas os discípulos permanecem cheios de alegria e do Espírito Santo.",
+      ],
+    },
+  ],
+  aplicacao:
+    "Ore para que Deus abra portas para a Palavra em sua família, trabalho, vizinhança e cidade. Não desanime diante de rejeições; permaneça fiel ao Evangelho e acolha com alegria todos os que o Senhor alcançar pela fé.",
+  apoioProfessor: [
+    "Objetivo da aula: mostrar que Atos 13.44-52 apresenta a abertura da porta da fé aos gentios como cumprimento das Escrituras e avanço soberano do Evangelho.",
+    "Abertura sugerida: pergunte como a igreja deve reagir quando alguns rejeitam a Palavra, mas outros demonstram sede real pelo Evangelho.",
+    "Desenvolvimento: explique a reunião da cidade, a oposição dos judeus, a citação de Isaías 49.6 e a alegria dos gentios ao receberem a Palavra.",
+    "Discussão pastoral: ajude a classe a enxergar portas missionárias locais sem limitar a missão a pessoas parecidas com a igreja.",
+    "Cuidado na condução: evite linguagem de desprezo aos judeus. O foco bíblico é a expansão da graça aos povos e a responsabilidade diante da Palavra.",
+    "Fechamento: ore por portas abertas, coragem diante da oposição e acolhimento dos novos convertidos.",
+  ],
+  apoioAluno: [
+    "O que observar no texto: quem deseja ouvir a Palavra, quem resiste, como Paulo e Barnabé respondem e como os gentios recebem o Evangelho.",
+    "O que isso confronta: a tendência de desistir quando alguém rejeita a mensagem ou de limitar a missão a grupos familiares e confortáveis.",
+    "Como se preparar: leia Atos 13.44-52 e marque as expressões ligadas à Palavra, aos gentios, à fé, à alegria e à oposição.",
+    "Como aplicar: ore por uma pessoa ou grupo que parece distante da igreja, mas que Deus pode alcançar pela Palavra.",
+    "Desafio da semana: convide alguém para ouvir a Palavra, participar de um culto ou receber uma visita de oração.",
+  ],
+  esboco: [
+    {
+      titulo: "Abertura: quando a cidade quer ouvir",
+      conteudo:
+        "Comece com Atos 13.44 e destaque a fome pela Palavra. Pergunte quais grupos ao nosso redor precisam ser alcançados com a mesma mensagem.",
+    },
+    {
+      titulo: "Movimento 1: a Palavra desperta fome",
+      conteudo:
+        "Explique como a pregação de Paulo e Barnabé atraiu quase toda a cidade e abriu oportunidade para o anúncio aos gentios.",
+    },
+    {
+      titulo: "Movimento 2: a oposição não fecha a missão",
+      conteudo:
+        "Trabalhe a reação de inveja e contradição, mostrando que a rejeição humana não impede o cumprimento do plano de Deus.",
+    },
+    {
+      titulo: "Movimento 3: luz para os gentios",
+      conteudo:
+        "Explique Atos 13.47 como cumprimento de Isaías 49.6 e como base bíblica para a salvação alcançar os confins da terra.",
+    },
+    {
+      titulo: "Fechamento: alegria e responsabilidade",
+      conteudo:
+        "Conduza a classe a celebrar os que Deus alcança e a assumir uma resposta prática de oração, evangelização e acolhimento.",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Atos 13.44-52 mostra que a porta da fé se abre entre os gentios quando a Palavra é anunciada com fidelidade. Alguns rejeitam, outros recebem com alegria, e Deus continua espalhando o Evangelho entre os povos.",
+    },
+  ],
+  subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao2),
+};
+
 const licoesSkeleton3T = sementesAdultosTerceiroTrimestre.map(
   criarLicaoAdultosTerceiroTrimestreSkeleton
 );
@@ -5274,6 +5583,7 @@ const adultos2026TerceiroTrimestre: TrimestreEBD = {
   versiculoBase: "Atos 1.8",
   licoes: adultos2026TerceiroTrimestreBase.licoes.map((licao) => {
     if (licao.numero === 1) return licaoAdultosTerceiroTrimestre1;
+    if (licao.numero === 2) return licaoAdultosTerceiroTrimestre2;
     const skeleton = licoesSkeleton3T.find((l) => l.numero === licao.numero);
     return skeleton ?? licao;
   }),
