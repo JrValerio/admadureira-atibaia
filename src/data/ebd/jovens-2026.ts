@@ -7,6 +7,10 @@ import {
   getEbdLessonImagePath,
   getEbdQuarterCoverPath,
 } from "./assets";
+import {
+  sementesJovensTerceiroTrimestre,
+  type SementeJovensTerceiroTrimestre,
+} from "./jovens-2026-3t";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
@@ -4025,195 +4029,395 @@ const jovens2026SegundoTrimestre: TrimestreEBD = {
 
 // ─── 3º Trimestre: Fidelidade às Escrituras em Oposição à Apostasia ──────────
 
-const subsidioJovensTerceiroTrimestreLicao1 = {
+const trimestreJovensTerceiroTrimestre =
+  "Fidelidade às Escrituras em Oposição à Apostasia - Lições Espirituais no Livro de Juízes";
+
+function criarObjetivosJovensTerceiroTrimestre(
+  seed: SementeJovensTerceiroTrimestre
+) {
+  return [
+    `Identificar o alerta bíblico central da lição "${seed.titulo}".`,
+    `Relacionar ${seed.textoPrincipal} com a leitura bíblica indicada e com os desafios espirituais da juventude.`,
+    "Responder ao estudo com fidelidade às Escrituras, discernimento e prática cristã.",
+  ];
+}
+
+function criarTopicosJovensTerceiroTrimestre(
+  seed: SementeJovensTerceiroTrimestre
+): LicaoEBD["topicos"] {
+  return [
+    {
+      titulo: "Panorama bíblico",
+      conteudo: [
+        seed.resumo,
+        `O texto principal da lição é ${seed.textoPrincipal}, e a leitura bíblica indicada ajuda a situar o tema dentro do livro de Juízes.`,
+      ],
+    },
+    {
+      titulo: "Alerta espiritual",
+      conteudo: [
+        "Juízes mostra como a falta de fidelidade ao Senhor produz desordem espiritual, moral e comunitária.",
+        "A juventude precisa aprender a discernir quando escolhas pessoais começam a substituir a autoridade da Palavra de Deus.",
+      ],
+    },
+    {
+      titulo: "Aplicação para a juventude",
+      conteudo: [
+        "A lição chama cada aluno a examinar suas escolhas, referências e prioridades diante das Escrituras.",
+        "Fidelidade bíblica não é apenas conhecer o tema da aula, mas permitir que a Palavra corrija direção, afetos e decisões.",
+      ],
+    },
+  ];
+}
+
+function criarEsbocoJovensTerceiroTrimestre(
+  seed: SementeJovensTerceiroTrimestre
+): NonNullable<LicaoEBD["esboco"]> {
+  return [
+    {
+      titulo: "Abertura",
+      conteudo:
+        `Apresente o tema "${seed.titulo}" e pergunte como a ideia central aparece nas escolhas reais da juventude hoje.`,
+    },
+    {
+      titulo: "Desenvolvimento",
+      conteudo:
+        `Leia ${seed.textoPrincipal} e conecte a passagem com os textos bíblicos da lição: ${seed.textoBiblico.join(", ")}.`,
+    },
+    {
+      titulo: "Aplicação",
+      conteudo:
+        "Conduza a classe a identificar uma resposta prática de obediência, vigilância e fidelidade à Palavra durante a semana.",
+    },
+  ];
+}
+
+function criarSubsidioJovensTerceiroTrimestre(
+  seed: SementeJovensTerceiroTrimestre
+): NonNullable<LicaoEBD["subsidioJovens"]> {
+  const objetivos = criarObjetivosJovensTerceiroTrimestre(seed);
+
+  return {
+    cabecalho: {
+      numero: seed.numero,
+      titulo: seed.titulo,
+      data: seed.data,
+      trimestre: trimestreJovensTerceiroTrimestre,
+      textoPrincipal: seed.textoPrincipal,
+      resumoDaLicao: seed.resumo,
+      leituraSemanal: seed.leituraSemanal,
+    },
+    arranquePedagogico: {
+      objetivos,
+      interacao:
+        `Abra a aula perguntando que escolhas, discursos ou influências atuais podem afastar um jovem da fidelidade bíblica apresentada em "${seed.titulo}".`,
+      orientacaoPedagogica:
+        "Use o livro de Juízes como espelho espiritual: primeiro observe o texto, depois identifique o alerta doutrinário e por fim conduza a aplicação pastoral.",
+    },
+    desenvolvimento: [
+      {
+        id: `jovens-3t-licao-${seed.numero}-panorama`,
+        titulo: "Panorama da lição",
+        sinopse: seed.resumo,
+        explicacaoBiblica: [
+          `O eixo bíblico da lição é ${seed.textoPrincipal}.`,
+          `A leitura bíblica em classe passa por ${seed.textoBiblico.join(", ")}.`,
+          "O livro de Juízes expõe ciclos de afastamento, crise e misericórdia divina, mostrando a necessidade de fidelidade constante ao Senhor.",
+        ],
+        aplicacaoPratica: [
+          "Ajude a turma a perceber que apostasia raramente começa de modo ruidoso; muitas vezes começa quando a Palavra perde autoridade no cotidiano.",
+          "Leve os alunos a responderem ao texto com arrependimento, vigilância e escolhas coerentes com a fé.",
+        ],
+        pense:
+          "Que área da sua vida precisa voltar a ser governada pela Palavra de Deus?",
+        pontoImportante:
+          "Fidelidade às Escrituras exige memória espiritual, obediência concreta e discernimento diante das influências do tempo presente.",
+      },
+      {
+        id: `jovens-3t-licao-${seed.numero}-leitura-semanal`,
+        titulo: "Leitura semanal como preparação",
+        sinopse:
+          "As leituras da semana ajudam o aluno a chegar à aula com o tema amadurecido pela Bíblia.",
+        explicacaoBiblica: [
+          "Cada leitura amplia um aspecto da lição e ajuda a conectar o estudo principal com o restante das Escrituras.",
+          "A preparação semanal fortalece a participação da classe e reduz a dependência de improviso no domingo.",
+        ],
+        referenciasCruzadas: seed.leituraSemanal.map((item) => ({
+          referencia: item.referencia,
+          descricao: item.foco,
+        })),
+        aplicacaoPratica: [
+          "Incentive a turma a anotar uma pergunta, uma convicção e uma decisão prática a partir das leituras da semana.",
+          "Retome uma ou duas leituras no início da aula para integrar aluno, professor e texto bíblico.",
+        ],
+        pense:
+          "Qual leitura da semana mais confronta suas escolhas atuais?",
+        pontoImportante:
+          "A EBD fica mais viva quando o aluno chega com a Bíblia aberta antes mesmo da aula começar.",
+      },
+    ],
+    apoioProfessor: {
+      quebraGelo:
+        `Pergunte à classe qual palavra do título "${seed.titulo}" mais chama atenção e por quê.`,
+      perguntaChave:
+        `Como esta lição ajuda a juventude a permanecer fiel às Escrituras diante da apostasia?`,
+      dificuldadeProvavelDaClasse:
+        "Alguns alunos podem tratar Juízes apenas como narrativa antiga. Conduza a conversa para o padrão espiritual revelado pelo texto e sua aplicação atual.",
+      conducaoDaConversa: [
+        "Comece pelo texto bíblico e evite transformar a aula em opinião sobre cultura antes de firmar o fundamento bíblico.",
+        "Mostre que o livro de Juízes combina alerta, misericórdia e responsabilidade espiritual.",
+        "Encerre com uma aplicação concreta para a semana, preferencialmente ligada à leitura bíblica indicada.",
+      ],
+      fechamento:
+        "Ore com a classe pedindo amor às Escrituras, humildade para obedecer e firmeza para resistir aos ciclos de afastamento espiritual.",
+    },
+    aprofundamentoOpcional: {
+      contextoBiblico: [
+        "Juízes retrata o período entre a geração de Josué e a consolidação da monarquia, marcado por liderança local, instabilidade espiritual e repetidos livramentos divinos.",
+      ],
+      conexaoComVidaCrista: [
+        "O trimestre ajuda a juventude a reconhecer que fidelidade bíblica precisa ser escolhida e praticada em meio a pressões reais.",
+      ],
+    },
+    revisao: {
+      horaDaRevisao: [
+        `Qual é o alerta central da lição "${seed.titulo}"?`,
+        `Como ${seed.textoPrincipal} ilumina o tema estudado?`,
+        "Que leitura semanal mais ajudou você a compreender a lição?",
+        "Que decisão prática esta aula exige para permanecer fiel às Escrituras?",
+      ],
+      conclusao:
+        `A lição "${seed.titulo}" chama a juventude a ouvir a Palavra, discernir os perigos da apostasia e responder com fidelidade prática ao Senhor.`,
+    },
+  };
+}
+
+function criarLicaoJovensTerceiroTrimestre(
+  seed: SementeJovensTerceiroTrimestre,
+  options: CriarLicaoJovensOptions = {}
+): LicaoEBD {
+  const { statusEditorial = "draft", dataLiberacaoPublica } = options;
+
+  return {
+    id: `jovens-2026-3t-licao-${seed.numero}`,
+    slug: `licao-${seed.numero}`,
+    numero: seed.numero,
+    data: seed.data,
+    ...(dataLiberacaoPublica ? { dataLiberacaoPublica } : {}),
+    statusEditorial,
+    titulo: seed.titulo,
+    imagem: getEbdLessonImagePath("jovens", "2026-3t", seed.numero, "jpg"),
+    resumo: seed.resumo,
+    textoChave: normalizeBibleReferenceNotation(seed.textoPrincipal),
+    verdadePratica: seed.resumo,
+    leituraBiblica: normalizeReferences(seed.textoBiblico),
+    objetivos: criarObjetivosJovensTerceiroTrimestre(seed),
+    topicos: criarTopicosJovensTerceiroTrimestre(seed),
+    aplicacao:
+      "Use a leitura semanal para examinar sua vida diante da Palavra e escolha uma atitude concreta de fidelidade a Deus antes da próxima aula.",
+    apoioProfessor: [
+      "Use as referências oficiais como mapa da aula e desenvolva a explicação com base bíblica, sem reproduzir comentários da revista.",
+      "Conduza a classe para uma aplicação pastoral simples: permanecer fiel às Escrituras em escolhas, afetos e influências.",
+    ],
+    apoioAluno: [
+      "Leia o texto bíblico da lição antes da aula e anote uma pergunta para compartilhar com a classe.",
+      "Escolha uma leitura semanal para memorizar, resumir ou transformar em oração durante a semana.",
+    ],
+    esboco: criarEsbocoJovensTerceiroTrimestre(seed),
+    subsidioJovens: normalizeYoungSubsidy(
+      criarSubsidioJovensTerceiroTrimestre(seed)
+    ),
+  };
+}
+
+const objetivosJovensTerceiroTrimestreLicao1 = [
+  "Apresentar o contexto espiritual e histórico do livro de Juízes.",
+  "Explicar o significado bíblico da frase: cada um fazia o que parecia certo aos seus olhos.",
+  "Reconhecer que Deus cumpre seus propósitos usando instrumentos humanos frágeis, escolhidos e capacitados por Ele.",
+];
+
+const topicosJovensTerceiroTrimestreLicao1 = [
+  {
+    titulo: "Um livro entre a conquista e a crise",
+    conteudo: [
+      "Juízes começa depois da liderança de Josué e mostra uma geração chamada a viver pela aliança em meio a pressões espirituais e culturais.",
+      "A passagem de Josué para Juízes revela que cada geração precisa assumir pessoalmente a fidelidade ao Senhor; herança espiritual não funciona no piloto automático.",
+      "O livro não esconde a fraqueza humana, mas também não esconde a soberania de Deus conduzindo a história do seu povo.",
+    ],
+  },
+  {
+    titulo: "Quando cada um faz o que parece certo",
+    conteudo: [
+      "Juízes 17.6 resume uma sociedade sem referência espiritual sólida: cada pessoa decide por si mesma o que considera correto.",
+      "A ausência de direção fiel à Palavra abre espaço para confusão moral, idolatria e falsa religiosidade.",
+      "O problema central não é apenas falta de organização política, mas abandono da autoridade de Deus no coração do povo.",
+    ],
+  },
+  {
+    titulo: "Deus usa instrumentos humanos",
+    conteudo: [
+      "Os juízes não são apresentados como heróis sem falhas, mas como instrumentos levantados por Deus em momentos de crise.",
+      "A fraqueza dos líderes evidencia que o livramento vem do Senhor, e não da superioridade humana.",
+      "Para a juventude, a lição aponta para dependência: Deus chama, capacita e usa pessoas reais, mas exige fidelidade à sua Palavra.",
+    ],
+  },
+];
+
+const subsidioJovensTerceiroTrimestreLicao1: LicaoEBD["subsidioJovens"] = {
   cabecalho: {
     numero: 1,
-    titulo: "Quando Israel Esquece — A Raiz da Apostasia em Juízes",
-    data: "2026-07-05",
-    trimestre: "3º Trimestre de 2026",
-    textoPrincipal: "Juízes 2.11-12",
-    resumoDaLicao:
-      "A apostasia de Israel começa com o esquecimento das obras de Deus. O livro de Juízes revela que abandonar a Palavra leva ao ciclo destruidor da desobediência, opressão, clamor e livramento.",
-    leituraSemanal: [
-      {
-        dia: "Segunda",
-        referencia: "Josué 24.14-15",
-        foco: "A escolha de servir ao Senhor — o legado de Josué",
-      },
-      {
-        dia: "Terça",
-        referencia: "Juízes 2.1-5",
-        foco: "O anjo do Senhor anuncia as consequências da desobediência",
-      },
-      {
-        dia: "Quarta",
-        referencia: "Juízes 2.6-10",
-        foco: "A geração que não conheceu o Senhor nem as obras que Ele tinha feito",
-      },
-      {
-        dia: "Quinta",
-        referencia: "Juízes 2.11-19",
-        foco: "O ciclo da apostasia: pecado, opressão, clamor, livramento",
-      },
-      {
-        dia: "Sexta",
-        referencia: "Deuteronômio 6.4-9",
-        foco: "A memória ativa como proteção contra a apostasia",
-      },
-      {
-        dia: "Sábado",
-        referencia: "Salmo 78.1-8",
-        foco: "Ensinar as obras de Deus à próxima geração",
-      },
-      {
-        dia: "Domingo",
-        referencia: "Juízes 2.6-19",
-        foco: "Revisão: a raiz e o ciclo da apostasia em Israel",
-      },
-    ] as LeituraSemanalItem[],
+    titulo: sementesJovensTerceiroTrimestre[0].titulo,
+    data: sementesJovensTerceiroTrimestre[0].data,
+    trimestre: trimestreJovensTerceiroTrimestre,
+    textoPrincipal:
+      "Naqueles dias, não havia rei em Israel; cada qual fazia o que parecia direito aos seus olhos. (Juízes 17.6)",
+    resumoDaLicao: sementesJovensTerceiroTrimestre[0].resumo,
+    leituraSemanal: sementesJovensTerceiroTrimestre[0].leituraSemanal,
   },
   arranquePedagogico: {
-    objetivos: [
-      "Apresentar o contexto histórico-espiritual do livro de Juízes.",
-      "Identificar o ciclo da apostasia em Israel e suas causas.",
-      "Aplicar o princípio da memória espiritual ativa na vida da juventude.",
-    ],
+    objetivos: objetivosJovensTerceiroTrimestreLicao1,
     interacao:
-      "Pergunte: 'Vocês já esqueceram algo importante que parecia impossível esquecer? Como isso aconteceu?' Use as respostas para introduzir como Israel esqueceu as obras de Deus de uma geração para outra.",
+      "Pergunte à classe como uma pessoa decide o que é certo quando rejeita qualquer autoridade acima da própria vontade. Use as respostas para apresentar Juízes como um alerta sobre autonomia sem submissão a Deus.",
     orientacaoPedagogica:
-      "Trabalhe o texto em dois movimentos: (1) o contexto — Josué morreu, a nova geração não conheceu o Senhor; (2) as consequências — o ciclo de apostasia, opressão, clamor e livramento. Evite julgamento moralizante; convide a turma a se identificar com Israel e a examinar a própria trajetória espiritual.",
+      "Conduza a aula em três movimentos: contexto do livro, diagnóstico espiritual da frase de Juízes 17.6 e esperança no agir de Deus por meio de instrumentos humanos.",
   },
   desenvolvimento: [
     {
-      id: "a-geracao-que-nao-conheceu",
-      titulo: "A Geração que Não Conheceu o Senhor",
+      id: "contexto-do-livro-de-juizes",
+      titulo: "O contexto do livro de Juízes",
       sinopse:
-        "Com a morte de Josué, uma nova geração cresceu sem memória ativa das obras de Deus — e sem memória, a fé murcha.",
-      pense:
-        "Como a fé de uma geração pode se perder em apenas um ciclo de vida? O que falta quando a memória espiritual não é transmitida?",
+        "Juízes registra uma fase de transição em que Israel precisava permanecer fiel ao Senhor depois da liderança de Josué.",
       explicacaoBiblica: [
-        "Juízes 2.6-10 registra a transição mais perigosa da história de Israel: 'E depois deles, surgiu outra geração que não conhecia o Senhor, nem as obras que Ele tinha feito a favor de Israel' (v. 10).",
-        "Isso não aconteceu porque Deus falhou em agir, mas porque a geração anterior não transmitiu a memória da fé. Sem testemunho, sem ensino — a fé se perde.",
-        "A apostasia começa antes do pecado visível: começa com o esquecimento. Israel não começou adorando ídolos de repente; começou não conhecendo o Senhor que os havia livrado.",
+        "Josué 24.26-30 encerra uma etapa importante da história de Israel e prepara a pergunta central: a próxima geração permaneceria fiel ao Deus da aliança?",
+        "Juízes 1.1 mostra o povo diante de novos desafios após a morte de Josué, agora chamado a obedecer sem depender da presença daquele líder.",
+        "O livro expõe a tensão entre a promessa de Deus, a responsabilidade do povo e as consequências de uma fé que deixa de orientar as decisões.",
       ],
+      aplicacaoPratica: [
+        "Mostre à turma que cada geração precisa conhecer o Senhor por si mesma, sem viver apenas da memória espiritual dos pais ou líderes.",
+        "A EBD ajuda a juventude a transformar herança recebida em convicção pessoal, bíblica e prática.",
+      ],
+      pense:
+        "Sua fé está apoiada apenas na tradição familiar ou em convicção pessoal formada pela Palavra?",
       pontoImportante:
-        "Memória espiritual não é automática — ela precisa ser cultivada, ensinada e celebrada de geração em geração.",
-      aprofundamentoOpcional: {
-        contextoBiblico: [
-          "O livro de Juízes registra o período entre a conquista de Canaã e o estabelecimento da monarquia (aprox. 1200–1050 a.C.). É um período marcado por instabilidade espiritual e liderança provisória.",
-        ],
-        conexaoComVidaCrista: [
-          "A Escola Bíblica Dominical existe exatamente para combater o esquecimento. Cada lição, cada trimestre, cada geração que aprende a Palavra está respondendo ao padrão de Juízes com fidelidade.",
-        ],
-      },
+        "A transição entre gerações exige ensino, memória espiritual e compromisso renovado com Deus.",
     },
     {
-      id: "o-ciclo-da-apostasia",
-      titulo: "O Ciclo da Apostasia em Juízes",
+      id: "cada-um-fazia-o-que-parecia-certo",
+      titulo: "A crise da autonomia espiritual",
       sinopse:
-        "Pecado → opressão → clamor → livramento: Juízes 2.11-19 revela um padrão repetitivo que Israel não aprendeu a romper.",
-      pense:
-        "Você consegue identificar esse ciclo em alguma área da sua vida — situações em que você se afastou de Deus e só voltou por causa da pressão?",
+        "A frase de Juízes 17.6 revela o perigo de transformar a própria opinião em medida final do certo e do errado.",
       explicacaoBiblica: [
-        "Juízes 2.11-19 apresenta o ciclo que domina todo o livro: Israel abandona o Senhor e serve os baais (v. 11-13) → o Senhor os entrega em mãos de inimigos (v. 14-15) → Israel clama (v. 16) → Deus suscita um juiz para livrá-los (v. 16-18) → após a morte do juiz, o povo volta ao pecado (v. 19).",
-        "O ciclo revela a misericórdia insistente de Deus: Ele poderia ter abandonado o povo, mas continuou respondendo ao clamor.",
-        "A pergunta do livro de Juízes não é 'Deus vai livrar Israel?' — Ele sempre liberta. A pergunta é 'Israel vai aprender a não precisar ser liberto?'",
+        "Quando a Palavra de Deus deixa de governar a consciência, o coração humano passa a justificar escolhas que parecem boas, mas conduzem ao afastamento espiritual.",
+        "A repetição da ideia de que não havia rei em Israel aponta para desordem profunda, visível na vida religiosa, moral e comunitária.",
+        "O livro de Juízes alerta que autonomia sem Deus não produz liberdade verdadeira; produz confusão, idolatria e enfraquecimento espiritual.",
       ],
+      aplicacaoPratica: [
+        "Ajude os jovens a identificar frases atuais que ecoam Juízes 17.6, como 'siga seu coração' ou 'cada um tem sua verdade'.",
+        "Conduza a classe a comparar essas ideias com a autoridade bíblica e com o senhorio de Cristo.",
+      ],
+      pense:
+        "Em quais decisões você tem seguido mais o que parece certo aos seus olhos do que aquilo que Deus revelou?",
       pontoImportante:
-        "A misericórdia de Deus não elimina as consequências do pecado, mas abre a possibilidade de restauração para quem clama a Ele.",
+        "Fidelidade às Escrituras começa quando a Palavra volta a ser autoridade acima da vontade pessoal.",
+    },
+    {
+      id: "deus-usa-instrumentos-humanos",
+      titulo: "Deus age por meio de pessoas frágeis",
+      sinopse:
+        "Mesmo em meio à fraqueza humana, Deus levanta instrumentos, conduz sua obra e preserva seus propósitos.",
+      explicacaoBiblica: [
+        "Hebreus 11.32 lembra alguns juízes entre os exemplos de fé, mostrando que Deus trabalha com pessoas reais e imperfeitas.",
+        "O livro de Juízes não glorifica a fraqueza humana; ele revela a graça de Deus que chama, capacita e corrige.",
+        "A liderança levantada por Deus precisa depender do Espírito, servir com humildade e conduzir o povo de volta à fidelidade.",
+      ],
+      aplicacaoPratica: [
+        "Incentive a turma a abandonar desculpas baseadas em insegurança, passado ou limitações pessoais.",
+        "Mostre que ser usado por Deus não elimina a necessidade de caráter, obediência e dependência do Espírito Santo.",
+      ],
+      pense:
+        "Você tem usado suas limitações como desculpa para não obedecer ao chamado de Deus?",
+      pontoImportante:
+        "Deus usa pessoas frágeis, mas não as chama para permanecerem sem direção; Ele as capacita para obedecer.",
     },
   ],
   apoioProfessor: {
     quebraGelo:
-      "Desenhe no quadro um ciclo com quatro palavras: PECADO → OPRESSÃO → CLAMOR → LIVRAMENTO. Antes de abrir o texto, pergunte: 'Alguém consegue adivinhar sobre o que é essa lição?'",
+      "Escreva no quadro: 'cada um fazia o que parecia certo'. Pergunte onde essa mentalidade aparece hoje e deixe a turma responder antes de abrir o texto bíblico.",
     perguntaChave:
-      "O que acontece quando uma geração cresce sem memória das obras de Deus? Como evitar que isso aconteça com a nossa geração?",
+      "O que acontece com uma geração quando a Palavra de Deus deixa de ser a referência para decidir o que é certo?",
     dificuldadeProvavelDaClasse:
-      "A turma pode sentir que o problema de Juízes é histórico e distante. Ajude-os a ver o padrão do ciclo na vida pessoal e cultural atual.",
+      "A turma pode enxergar Juízes como um livro distante. Traga a aplicação para autonomia, relativismo prático, escolhas digitais, relacionamentos e formação de caráter.",
     conducaoDaConversa: [
-      "Primeira parte: contexto histórico — quem eram os juízes, qual o período, o que aconteceu após Josué.",
-      "Segunda parte: o texto — leia Juízes 2.11-19 em voz alta e identifique as quatro etapas do ciclo.",
-      "Terceira parte: aplicação — onde esse ciclo aparece na vida de um jovem cristão hoje?",
+      "Comece com Josué 24.26-30 para mostrar a transição de geração.",
+      "Leia Juízes 17.6 como diagnóstico espiritual, não apenas como dado político.",
+      "Feche mostrando que Deus continua chamando e capacitando pessoas frágeis para cumprir seus propósitos.",
     ],
     fechamento:
-      "Encerre com Deuteronômio 6.4-9: a memória ativa da fé é a resposta bíblica ao ciclo de Juízes. Ore pedindo que cada jovem da turma se torne transmissor da fé para a próxima geração.",
+      "Ore para que cada jovem troque a autonomia sem Deus pela obediência bíblica e se disponha a ser instrumento fiel nas mãos do Senhor.",
+  },
+  aprofundamentoOpcional: {
+    contextoBiblico: [
+      "Juízes se localiza entre a conquista da terra e a monarquia, revelando um período de instabilidade espiritual e liderança fragmentada.",
+      "A frase de Juízes 17.6 antecipa a necessidade de governo justo, mas aponta de modo mais profundo para a necessidade de submissão ao Senhor.",
+    ],
+    conexaoComVidaCrista: [
+      "A lição ajuda o jovem a perceber que o coração humano continua tentando substituir a vontade de Deus pelo próprio critério.",
+      "A resposta cristã é voltar à Palavra, depender do Espírito e viver fidelidade concreta em cada decisão.",
+    ],
   },
   revisao: {
     horaDaRevisao: [
-      "Qual o ciclo que se repete em Juízes? Quais são as quatro etapas?",
-      "Como a nova geração de Israel perdeu o conhecimento do Senhor?",
-      "O que a misericórdia de Deus revela sobre o Seu caráter diante da apostasia do povo?",
-      "Qual é a resposta bíblica (Dt 6.4-9) para evitar o padrão de Juízes?",
+      "Qual é o contexto histórico e espiritual do livro de Juízes?",
+      "O que Juízes 17.6 revela sobre uma geração sem direção espiritual?",
+      "Por que Deus usar pessoas frágeis não diminui a responsabilidade humana?",
+      "Como a juventude pode evitar a lógica de fazer apenas o que parece certo aos próprios olhos?",
     ],
     quizCurto: [
-      "Verdadeiro ou falso: O ciclo de Juízes começa com a opressão de inimigos.",
-      "Completa a frase: 'E surgiu outra geração que não conhecia o Senhor, nem as obras que Ele tinha feito a favor de ___.'",
+      "Qual texto principal resume o diagnóstico da Lição 1? Resposta esperada: Juízes 17.6.",
+      "Juízes ensina autonomia sem Deus ou fidelidade à Palavra? Resposta esperada: fidelidade à Palavra.",
+      "Deus usa instrumentos humanos perfeitos ou pessoas frágeis capacitadas por Ele? Resposta esperada: pessoas frágeis capacitadas por Ele.",
     ],
     conclusao:
-      "Fidelidade às Escrituras começa com memória: conhecer as obras de Deus, ensinar à próxima geração e escolher servir ao Senhor em vez dos ídolos do tempo presente.",
+      "O livro de Juízes começa como alerta e espelho: quando a Palavra perde autoridade, cada um tenta governar a si mesmo; quando Deus chama, pessoas frágeis podem ser instrumentos dos seus propósitos.",
   },
 };
 
+const licaoJovensTerceiroTrimestre1Base = criarLicaoJovensTerceiroTrimestre(
+  sementesJovensTerceiroTrimestre[0],
+  {
+    statusEditorial: "published",
+  }
+);
+
 const licaoJovensTerceiroTrimestre1: LicaoEBD = {
-  id: "jovens-2026-3t-licao-1",
-  slug: "licao-1",
-  numero: 1,
-  data: "2026-07-05",
-  statusEditorial: "published",
-  titulo: "Quando Israel Esquece — A Raiz da Apostasia em Juízes",
-  imagem: getEbdLessonImagePath("jovens", "2026-3t", 1, "jpg"),
-  resumo:
-    "A primeira lição do 3º trimestre abre o estudo do livro de Juízes apresentando o ciclo da apostasia em Israel: uma geração que não conheceu o Senhor abandonou a Palavra e sofreu as consequências do afastamento de Deus.",
-  textoChave: normalizeBibleReferenceNotation("Juízes 2.11-12"),
-  verdadePratica:
-    "A apostasia começa com o esquecimento das obras de Deus. A fidelidade às Escrituras exige memória ativa da graça divina, transmitida de geração em geração.",
-  leituraBiblica: normalizeReferences(["Juízes 2.6-19"]),
-  objetivos: [
-    "Apresentar o contexto histórico-espiritual do livro de Juízes.",
-    "Identificar o ciclo da apostasia em Israel e suas causas.",
-    "Aplicar o princípio da memória espiritual ativa na vida da juventude.",
-  ],
-  topicos: [
-    {
-      titulo: "A Geração que Não Conheceu o Senhor",
-      conteudo: [
-        "Com a morte de Josué, surgiu uma geração que não conhecia o Senhor nem as obras que Ele havia feito (Jz 2.10). Sem memória espiritual, a fé se perde.",
-        "A apostasia começa com o esquecimento — Israel não passou a adorar ídolos de repente; passou a não conhecer o Deus vivo.",
-      ],
-    },
-    {
-      titulo: "O Ciclo da Apostasia",
-      conteudo: [
-        "Juízes 2.11-19 apresenta o ciclo que domina o livro: pecado → opressão → clamor → livramento. E após cada livramento, o povo volta ao pecado.",
-        "A misericórdia de Deus responde ao clamor, mas o ciclo revela que Israel precisava de transformação profunda, não apenas de resgate temporário.",
-      ],
-    },
-  ],
+  ...licaoJovensTerceiroTrimestre1Base,
+  objetivos: objetivosJovensTerceiroTrimestreLicao1,
+  topicos: topicosJovensTerceiroTrimestreLicao1,
   aplicacao:
-    "Examine sua vida: há áreas em que você repete o padrão de Israel — se afastando de Deus, sofrendo consequências, clamando apenas na pressão? Decida cultivar a memória das obras de Deus e transmitir a fé para quem está à sua volta.",
+    "Examine decisões em que você tem usado apenas o próprio senso de certo e errado. Volte à Palavra, ore por direção do Espírito e escolha uma atitude concreta de obediência nesta semana.",
   apoioProfessor: [
-    "Use o ciclo de Juízes como diagnóstico espiritual: mostre como ele aparece na vida dos jovens e na cultura atual.",
-    "Encerre com Deuteronômio 6.4-9: a memória ativa da fé é a resposta bíblica para evitar o ciclo da apostasia.",
+    "Apresente Juízes como um espelho espiritual para a juventude: sem submissão ao Senhor, a autonomia humana vira confusão moral e religiosa.",
+    "Mostre que Deus usa instrumentos humanos frágeis, mas chamados a depender do Espírito e a permanecer fiéis à Palavra.",
   ],
   apoioAluno: [
-    "Leia Juízes 2.6-19 antes da aula e tente identificar as quatro etapas do ciclo: pecado, opressão, clamor, livramento.",
-    "Reflita: em alguma área da sua vida você tem repetido esse ciclo? O que seria necessário para rompê-lo?",
+    "Leia Josué 24.26-30, Juízes 1.1 e Juízes 17.6 antes da aula e anote o que esses textos revelam sobre transição, direção e fidelidade.",
+    "Durante a semana, identifique uma decisão em que você precisa trocar 'parece certo para mim' por 'o que Deus revelou na Palavra'.",
   ],
   esboco: [
     {
-      titulo: "Contexto de Juízes: entre a conquista e a monarquia",
+      titulo: "Contexto",
       conteudo:
-        "O período dos juízes (aprox. 1200–1050 a.C.): instabilidade espiritual, liderança provisória e o ciclo que define o livro.",
+        "Apresente o livro de Juízes como período entre Josué e a monarquia, marcado por transição, fragilidade espiritual e necessidade de fidelidade.",
     },
     {
-      titulo: "A geração que não conheceu o Senhor",
+      titulo: "Diagnóstico",
       conteudo:
-        "Juízes 2.6-10: Josué morreu e uma nova geração cresceu sem memória das obras de Deus — raiz de toda apostasia.",
+        "Trabalhe Juízes 17.6 como resumo de uma geração sem referência bíblica firme: cada um fazendo o que parecia certo aos seus próprios olhos.",
     },
     {
-      titulo: "O ciclo da apostasia e a misericórdia de Deus",
+      titulo: "Aplicação",
       conteudo:
-        "Juízes 2.11-19: pecado → opressão → clamor → livramento. A misericórdia de Deus responde, mas o ciclo revela a necessidade de transformação profunda.",
+        "Mostre que Deus continua chamando pessoas frágeis, mas exige dependência do Espírito, obediência e fidelidade à Palavra.",
     },
   ],
   subsidioJovens: normalizeYoungSubsidy(subsidioJovensTerceiroTrimestreLicao1),
@@ -4233,11 +4437,13 @@ const jovens2026TerceiroTrimestre: TrimestreEBD = {
   subtitulo: "Lições Espirituais no Livro de Juízes",
   descricao:
     "Treze lições para fortalecer a juventude cristã na fidelidade às Escrituras, usando o livro de Juízes como espelho espiritual que revela os perigos da apostasia e o valor da memória ativa da fé.",
-  versiculoBase: "Juízes 2.11",
-  licoes: jovens2026TerceiroTrimestreBase.licoes.map((licao) => {
-    if (licao.numero === 1) return licaoJovensTerceiroTrimestre1;
-    return licao;
-  }),
+  comentarista: "Valmir Nascimento",
+  versiculoBase: "Juízes 17:6",
+  licoes: sementesJovensTerceiroTrimestre.map((seed) =>
+    seed.numero === 1
+      ? licaoJovensTerceiroTrimestre1
+      : criarLicaoJovensTerceiroTrimestre(seed)
+  ),
 };
 
 export const jovens2026Trimestres: TrimestreEBD[] = [
