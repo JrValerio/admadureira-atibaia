@@ -4820,17 +4820,19 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
   },
   visaoGeral: {
     resumo:
-      "A primeira lição do 3º trimestre abre o estudo da missão gentílica apresentando o envio de Barnabé e Saulo a partir de Antioquia. O Espírito Santo toma a iniciativa, chama, separa e envia — enquanto a comunidade jejua, ora e confirma o chamado com imposição de mãos.",
-    ideiaCentral: "A missão da Igreja nasce da ação soberana do Espírito Santo, não da estratégia humana.",
+      "A primeira lição do 3º trimestre abre o estudo da missão gentílica mostrando Antioquia como uma igreja que adorava, jejuava, ouvia o Espírito e obedecia ao chamado. Atos 13.1-12 apresenta o envio de Barnabé e Saulo como marco da expansão do Evangelho entre os povos: a missão nasce no altar, é confirmada pela comunidade e avança mesmo diante de resistência espiritual.",
+    ideiaCentral:
+      "A missão entre os povos nasce da iniciativa soberana do Espírito Santo e encontra resposta em uma igreja que ora, discerne, separa e envia.",
     objetivos: [
-      "Apresentar Antioquia como modelo de comunidade missionária.",
-      "Destacar o papel central do Espírito Santo no chamado e no envio.",
-      "Aplicar o padrão bíblico da missão à vida da igreja local.",
+      "Apresentar Antioquia como modelo de igreja adoradora, discipuladora e missionária.",
+      "Destacar o papel central do Espírito Santo no chamado, na separação e no envio dos obreiros.",
+      "Mostrar que a missão cristã enfrenta resistência, mas avança pelo poder de Deus.",
+      "Aplicar o padrão bíblico de Atos 13 à vida, aos dons e à responsabilidade da igreja local.",
     ],
     palavraChave: {
       termo: "Envio missionário",
       definicao:
-        "Ato pelo qual o Espírito Santo chama e designa servos para uma obra específica, confirmado pela comunidade em oração e imposição de mãos.",
+        "Ato pelo qual o Espírito Santo chama e designa servos para uma obra específica, enquanto a igreja reconhece, ora, separa e participa responsavelmente da missão.",
     },
   },
   desenvolvimento: [
@@ -4840,17 +4842,25 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
       sinopse:
         "A comunidade em Antioquia vivia em adoração e jejum quando o Espírito Santo falou e separou Barnabé e Saulo para a missão gentílica.",
       explicacaoBiblica: [
-        "Antioquia da Síria era a terceira maior cidade do Império Romano e o centro do Evangelho entre os gentios. Sua liderança plural incluía profetas e mestres de origens diversas (At 13.1).",
-        "Enquanto a comunidade 'ministrava ao Senhor e jejuava', o Espírito Santo falou e separou Barnabé e Saulo para a obra que Ele mesmo havia preparado (At 13.2). A missão nasce da adoração, não do ativismo.",
-        "A resposta da Igreja foi de obediência: ainda jejuaram, oraram, impuseram as mãos e os enviaram (At 13.3). O envio missionário é sempre um ato comunitário, não individual.",
+        "Antioquia da Síria tornou-se um centro decisivo do Evangelho entre os gentios. Ali havia uma liderança plural, formada por profetas e mestres de origens diversas (At 13.1), sinal de uma igreja amadurecida pela Palavra e aberta à direção divina.",
+        "O chamado missionário acontece enquanto a comunidade ministra ao Senhor e jejua. A missão não nasce de pressa, vaidade institucional ou simples oportunidade estratégica; nasce de uma igreja que cultua, busca a Deus e aprende a ouvir o Espírito.",
+        "O Espírito Santo não apenas inspira genericamente a obra missionária; Ele fala, separa e chama Barnabé e Saulo para uma obra específica. A iniciativa da missão pertence a Deus.",
+        "A resposta da Igreja foi obediente e comunitária: jejuaram, oraram, impuseram as mãos e os enviaram (At 13.3). O envio missionário bíblico envolve reconhecimento espiritual, comunhão da igreja e compromisso com quem é enviado.",
       ],
       aprofundamentoDoutrinario: [
-        "O Espírito Santo é o Senhor soberano da missão (At 1.8; 13.2; 16.6-10). Não é o planejamento humano que define onde o Evangelho avança, mas a diretriz do Espírito.",
-        "A missão é trinitária: o Pai envia o Filho (Jo 20.21); o Filho envia a Igreja (Mt 28.18-20); o Espírito capacita e dirige (At 1.8; 13.2).",
+        "O Espírito Santo é o Senhor soberano da missão (At 1.8; 13.2; 16.6-10). Planejamento é útil, mas só é saudável quando permanece submisso à direção do Espírito.",
+        "A missão é trinitária: o Pai envia o Filho (Jo 20.21); o Filho envia a Igreja (Mt 28.18-20); o Espírito capacita, dirige e sustenta o testemunho (At 1.8; 13.2).",
+        "A igreja local não é plateia da missão. Ela ora, discerne, envia, sustenta e participa do avanço do Evangelho.",
       ],
       aplicacaoPratica: [
-        "Sua vida espiritual está posicionada para ouvir o Espírito falar sobre missão? Adoração e jejum são os ambientes em que o chamado é revelado.",
-        "Como sua classe ou grupo pode se envolver com a missão da igreja local?",
+        "Pergunte à classe se a agenda da igreja nasce primeiro da busca espiritual ou apenas da necessidade de preencher atividades.",
+        "Mostre que toda vocação missionária precisa ser discernida em comunhão com a igreja, não apenas no impulso individual.",
+        "Convide a turma a identificar maneiras concretas de participar da missão local: oração, evangelização, acolhimento, discipulado, contribuição e serviço.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "Atos 1.8", descricao: "O Espírito capacita a Igreja para testemunhar até os confins da terra." },
+        { referencia: "Mateus 28.18-20", descricao: "A missão se fundamenta na autoridade de Cristo." },
+        { referencia: "Romanos 10.14-15", descricao: "A pregação exige envio e obediência." },
       ],
     },
     {
@@ -4859,43 +4869,73 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
       sinopse:
         "Em Chipre, o falso profeta Bárjesus tentou barrar o avanço do Evangelho. Paulo, cheio do Espírito, confrontou o engano com autoridade apostólica.",
       explicacaoBiblica: [
-        "Em Chipre, Barnabé e Saulo pregaram nas sinagogas e chegaram a Paphos, onde encontraram o procônsul Sérgio Paulo — homem inteligente que desejava ouvir a Palavra de Deus (At 13.6-7).",
-        "Bárjesus (Elimás), o mágico e falso profeta a serviço do procônsul, tentou 'desviar o procônsul da fé' (At 13.8). A resistência ao Evangelho assume formas espirituais, intelectuais e políticas.",
-        "Paulo, 'cheio do Espírito Santo', confrontou Elimás com autoridade: cegueira temporária como sinal do julgamento divino. O procônsul creu, 'admirado do ensino do Senhor' (At 13.12).",
+        "Em Chipre, Barnabé e Saulo pregam nas sinagogas e chegam a Paphos, centro administrativo da ilha. Ali encontram Sérgio Paulo, autoridade romana interessada em ouvir a Palavra de Deus (At 13.6-7).",
+        "Bárjesus, também chamado Elimás, tenta desviar o procônsul da fé. O texto revela que a missão não enfrenta apenas distância geográfica; enfrenta oposição espiritual, manipulação religiosa e interesses que querem impedir pessoas de ouvir o Evangelho.",
+        "Paulo, cheio do Espírito Santo, discerne a natureza da oposição e confronta o engano com firmeza. A cegueira temporária de Elimás funciona como sinal de juízo e como confirmação de que a Palavra de Deus não está sujeita às trevas.",
+        "Sérgio Paulo crê admirado da doutrina do Senhor (At 13.12). O foco final não é o poder de Paulo, mas a autoridade do ensino do Senhor que vence a resistência e alcança um gentio em posição de influência.",
       ],
       aprofundamentoDoutrinario: [
-        "A missão encontra resistência espiritual, não apenas cultural. A Igreja precisa enfrentar o engano espiritual com o poder do Espírito, não apenas com argumentação humana.",
-        "A conversão de Sérgio Paulo mostra que o Evangelho vence a oposição e transforma vidas em todas as esferas sociais.",
+        "A missão encontra resistência espiritual, não apenas cultural. A Igreja precisa enfrentar o engano com discernimento bíblico, vida cheia do Espírito e fidelidade ao Evangelho.",
+        "A conversão de Sérgio Paulo mostra que o Evangelho alcança pessoas em todas as esferas sociais, inclusive ambientes de governo, influência e prestígio.",
+        "Atos 13 ensina que autoridade espiritual não é agressividade carnal; é coragem santa para defender a verdade quando alguém tenta bloquear o acesso à Palavra.",
       ],
       aplicacaoPratica: [
-        "A missão que você realiza — no bairro, no trabalho, na família — também enfrenta resistência. Você tem respondido no poder do Espírito ou na força própria?",
-        "Ore por uma pessoa que ainda resiste ao Evangelho e peça ao Senhor que abra seus olhos espirituais.",
+        "Ajude a classe a reconhecer formas atuais de resistência ao Evangelho: relativismo, sincretismo, medo de compromisso, interesses pessoais e falsas espiritualidades.",
+        "Pergunte como o crente pode unir firmeza doutrinária e amor pelas pessoas que ainda resistem à fé.",
+        "Ore por uma pessoa específica que ainda resiste ao Evangelho e peça ao Senhor que abra seus olhos espirituais.",
+      ],
+      referenciasCruzadas: [
+        { referencia: "2 Coríntios 4.3-6", descricao: "Deus ilumina corações cegados para que vejam a glória de Cristo." },
+        { referencia: "Efésios 6.10-18", descricao: "A missão também exige discernimento da batalha espiritual." },
+      ],
+    },
+    {
+      id: "igreja-local-e-missao",
+      titulo: "A igreja local como base de envio",
+      sinopse:
+        "Atos 13 mostra que a missão aos gentios não começa isolada de uma comunidade, mas nasce de uma igreja local madura, adoradora e obediente.",
+      explicacaoBiblica: [
+        "Barnabé e Saulo não saem como aventureiros espirituais. Eles são separados pelo Espírito e enviados por uma igreja que reconhece o chamado de Deus.",
+        "A imposição de mãos comunica comunhão, identificação e responsabilidade. Antioquia participa da missão mesmo ficando para trás geograficamente.",
+        "A expansão entre os gentios ensina que uma igreja saudável não vive apenas para conservar sua própria rotina; ela se abre para o propósito de Deus entre povos, cidades e culturas.",
+      ],
+      aprofundamentoDoutrinario: [
+        "Missão é fruto de adoração e discipulado. Uma igreja que não forma discípulos dificilmente sustentará vocações missionárias maduras.",
+        "O chamado pessoal e a confirmação comunitária caminham juntos. A igreja não substitui o Espírito, mas deve discernir e cooperar com aquilo que Ele está fazendo.",
+      ],
+      aplicacaoPratica: [
+        "Conecte a lição à realidade local: quais frentes da igreja precisam de pessoas disponíveis para servir?",
+        "Mostre que nem todos serão enviados para outro território, mas todos são chamados a participar do envio com oração, serviço, generosidade e testemunho.",
       ],
     },
   ],
   apoioProfessor: {
     perguntaDeAbertura:
-      "O que você acha que levou a Igreja de Antioquia a se tornar a maior base missionária do primeiro século?",
+      "Se o Espírito Santo chamasse hoje alguém da nossa classe para uma obra específica, nossa igreja estaria espiritualmente pronta para ouvir, confirmar, apoiar e enviar?",
     pontoSensivelDaAula:
-      "A missão como vocação de toda a Igreja — não apenas de pastores e missionários profissionais. O Espírito chama qualquer crente disponível.",
+      "A missão como vocação de toda a Igreja, não apenas de pastores ou missionários profissionais. O professor deve evitar reduzir missão a viagem distante; Atos 13 começa com uma igreja local obediente.",
     erroComumDeInterpretacao:
-      "Ler a missão em Atos como exclusiva dos apóstolos, quando na verdade o Espírito mobiliza toda a comunidade que vive em adoração e obediência.",
+      "Ler a missão em Atos como exclusividade apostólica ou como mero planejamento humano. O texto mostra o Espírito dirigindo uma comunidade em adoração, e a comunidade respondendo com obediência concreta.",
     perguntasParaDebate: [
-      "Por que o Espírito Santo falou durante o jejum e a adoração, e não durante uma reunião estratégica?",
-      "O que a resposta da Igreja de Antioquia revela sobre o papel da comunidade no envio missionário?",
-      "Como o episódio de Bárjesus prepara a classe para entender os obstáculos espirituais da missão hoje?",
+      "O que a diversidade da liderança de Antioquia ensina sobre maturidade espiritual e cooperação no Reino?",
+      "Por que é significativo o Espírito falar enquanto a igreja ministra ao Senhor e jejua?",
+      "Como equilibrar chamado pessoal e confirmação comunitária sem sufocar a ação do Espírito?",
+      "Quais resistências atuais tentam desviar pessoas da fé, como Elimás tentou fazer com Sérgio Paulo?",
+      "Que passos práticos nossa igreja pode dar para participar melhor da missão em Atibaia, região e além?",
     ],
     sugestaoDeFechamento:
-      "Encerre com oração pelo avanço do Evangelho em Atibaia e região, e convide os alunos a perguntar ao Espírito qual papel cada um pode exercer na expansão da missão.",
+      "Encerre com uma oração em três direções: consagração da igreja ao Espírito, intercessão por pessoas que resistem ao Evangelho e disponibilidade da classe para servir no avanço da missão.",
   },
   aprofundamento: {
     contextoHistorico: [
-      "Antioquia da Síria tinha cerca de 500 mil habitantes e era o terceiro maior polo urbano do Império Romano. Foi nela que os discípulos foram chamados de 'cristãos' pela primeira vez (At 11.26).",
-      "Chipre era a ilha natal de Barnabé (At 4.36), o que explica o início da missão por lá. Paphos era a capital administrativa romana da ilha, sede do procônsul — tornando a conversão de Sérgio Paulo um evento de impacto político e social.",
+      "Antioquia da Síria era um dos grandes centros urbanos do Império Romano e tornou-se referência para a missão gentílica. Foi ali que os discípulos foram chamados de cristãos pela primeira vez (At 11.26).",
+      "A liderança mencionada em Atos 13.1 reúne perfis diferentes, indicando uma igreja marcada por ensino, profecia, cooperação e amplitude cultural.",
+      "Chipre era a ilha natal de Barnabé (At 4.36), o que ajuda a explicar o início da rota missionária por aquele território. Paphos, capital administrativa romana da ilha, coloca o Evangelho diante de uma autoridade gentílica.",
     ],
     conceitoTeologico: [
       "Missio Spiritus: a missão não é um programa humano com suporte divino, mas uma ação divina que envolve seres humanos. O Espírito dirige, capacita e garante o avanço do Evangelho.",
-      "Padrão lucano da missão: o Evangelho sempre encontra resistência — e o Espírito sempre garante o avanço a despeito dos obstáculos.",
+      "Padrão lucano da missão: em Atos, o Evangelho avança por meio da Palavra, no poder do Espírito, em meio a oposição e com frutos que alcançam novos povos.",
+      "Igreja missionária: uma comunidade bíblica não existe apenas para reunir os salvos, mas para adorar a Deus, formar discípulos e participar do envio aos que ainda não ouviram.",
     ],
     notaDeVocabulario: [
       {
@@ -4903,40 +4943,52 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
         conteudo:
           "Bárjesus significa 'filho de Jesus' em aramaico — nome que Paulo confronta ironicamente chamando-o de 'filho do diabo' (At 13.10). Elimás pode derivar de termo árabe para 'sábio' ou 'mágico'.",
       },
+      {
+        titulo: "Apartai-me",
+        conteudo:
+          "A ordem de Atos 13.2 indica separação para uma obra definida por Deus. Não é isolamento elitista, mas consagração para serviço e envio.",
+      },
     ],
   },
   vidaCrista: {
     oQueConfronta: [
-      "A tendência de planejar a missão sem buscar a direção do Espírito em oração e jejum.",
-      "A visão de que missão é responsabilidade apenas de pastores e missionários profissionais.",
+      "A tendência de planejar a missão sem buscar a direção do Espírito em oração, jejum e adoração.",
+      "A visão de que missão é responsabilidade apenas de pastores, obreiros ou missionários profissionais.",
+      "A passividade de quem admira histórias missionárias, mas não se dispõe a participar do envio.",
     ],
     oQueConsola: [
       "O Espírito Santo que enviou Barnabé e Saulo ainda dirige a missão da Igreja hoje.",
       "O Evangelho tem poder para abrir os olhos de qualquer pessoa, independente da resistência inicial.",
+      "Deus usa igrejas locais reais, com pessoas reais, para cumprir propósitos maiores que sua própria rotina.",
     ],
     oQueExige: [
       "Disponibilidade para ser chamado e enviado pelo Espírito Santo.",
       "Uma vida de adoração e oração como ambiente onde o chamado é revelado.",
+      "Compromisso comunitário para reconhecer, apoiar e sustentar aqueles que Deus separa para a obra.",
     ],
     oQueRevelaSobreDeus: [
       "Deus é missionário por natureza: o Pai enviou o Filho, o Filho enviou a Igreja, o Espírito capacita e dirige.",
       "O Senhor é soberano sobre toda resistência à missão; nenhum poder pode barrar o que o Espírito determinou.",
+      "Deus se importa com os povos e também com pessoas concretas, como Sérgio Paulo, que precisam ouvir a Palavra.",
     ],
   },
   revisao: {
     perguntas: [
       "Qual foi o contexto espiritual em que o Espírito Santo chamou Barnabé e Saulo para a missão?",
       "Como a Igreja de Antioquia respondeu ao chamado do Espírito?",
+      "Por que a missão não deve ser separada da adoração, da oração e do jejum?",
       "O que o episódio de Bárjesus revela sobre os obstáculos ao Evangelho?",
+      "O que a conversão de Sérgio Paulo revela sobre o alcance do Evangelho entre os gentios?",
       "Que aplicação a missão em Atos 13 traz para a Igreja local hoje?",
     ],
     pontosChave: [
       "A missão nasce da adoração e do jejum — o Espírito fala enquanto a comunidade busca a Deus.",
       "O Espírito Santo é o Senhor soberano da missão: Ele chama, separa e envia.",
+      "A igreja local participa do envio por meio de oração, discernimento, imposição de mãos e compromisso prático.",
       "O Evangelho avança apesar das resistências porque o poder do Espírito supera toda oposição.",
     ],
     fraseDeSintese:
-      "Em 'O Chamado para os Gentios', a classe aprende que toda missão cristã autêntica nasce de uma comunidade em adoração, sob a direção soberana do Espírito Santo.",
+      "Em 'O Chamado para os Gentios', a classe aprende que toda missão cristã autêntica nasce de uma igreja em adoração, caminha sob a direção soberana do Espírito e enfrenta resistências com fidelidade à Palavra.",
   },
 };
 
@@ -4963,43 +5015,75 @@ const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
     {
       titulo: "A Igreja de Antioquia e o chamado do Espírito",
       conteudo: [
-        "A comunidade em Antioquia vivia em adoração e jejum quando o Espírito Santo separou Barnabé e Saulo para a obra missionária (At 13.1-3). A missão nasce da adoração, não do ativismo.",
-        "O envio foi comunitário: a Igreja jejuou, orou, impôs as mãos e os enviou — a missão não é responsabilidade individual, mas da comunidade inteira.",
+        "Antioquia era uma igreja marcada por ensino, adoração, jejum e liderança plural. Nesse ambiente de busca espiritual, o Espírito Santo separou Barnabé e Saulo para a obra missionária (At 13.1-3).",
+        "A missão nasce da adoração, não do ativismo. Antes de enviar obreiros, a igreja estava ministrando ao Senhor; antes de alcançar os povos, estava rendida à voz do Espírito.",
+        "O envio foi comunitário: a igreja jejuou, orou, impôs as mãos e os enviou. A missão envolve chamados pessoais, mas também discernimento, cobertura e participação da comunidade local.",
       ],
     },
     {
       titulo: "Chipre e o confronto com o engano espiritual",
       conteudo: [
-        "Em Chipre, o mágico Bárjesus tentou impedir o procônsul Sérgio Paulo de crer. Paulo, cheio do Espírito, confrontou o engano com autoridade apostólica (At 13.6-12).",
-        "A cegueira temporária de Bárjesus e a conversão do procônsul demonstram que o Evangelho avança apesar e por meio do confronto com as trevas.",
+        "Em Chipre, o mágico Bárjesus tentou impedir o procônsul Sérgio Paulo de crer. Paulo, cheio do Espírito, confrontou o engano com autoridade espiritual e fidelidade à verdade (At 13.6-12).",
+        "A oposição de Elimás mostra que a missão enfrenta resistência espiritual, cultural e intelectual. Nem toda porta aberta significa ausência de combate.",
+        "A cegueira temporária de Bárjesus e a conversão do procônsul demonstram que o Evangelho avança apesar das trevas, porque a Palavra do Senhor é maior que os poderes que tentam bloqueá-la.",
+      ],
+    },
+    {
+      titulo: "A missão continua na igreja local",
+      conteudo: [
+        "Atos 13 não apresenta missão como tarefa isolada de poucos especialistas, mas como expressão de uma igreja que ora, discerne, separa, envia e participa.",
+        "Nem todos atravessarão fronteiras geográficas, mas todos podem participar da missão com intercessão, testemunho, discipulado, generosidade, acolhimento e serviço.",
+        "Uma igreja cheia do Espírito não vive apenas para preservar sua própria agenda; ela se pergunta continuamente quem ainda precisa ouvir o Evangelho.",
       ],
     },
   ],
   aplicacao:
-    "Ore pedindo que o Espírito Santo revele o seu chamado para a missão — local, regional ou além-fronteiras. A missão não começa com estratégia; começa com adoração e disposição.",
+    "Ore pedindo que o Espírito Santo alinhe sua vida à missão de Deus. Pergunte qual papel você deve exercer: interceder, testemunhar, discipular, contribuir, acolher, servir ou ser enviado. A missão não começa com estratégia; começa com adoração, obediência e disponibilidade.",
   apoioProfessor: [
-    "Conecte a lição à missão da igreja local: o mesmo Espírito que enviou Barnabé e Saulo ainda opera hoje na AD Madureira Atibaia.",
-    "Encerre convidando a classe a orar pela missão e a perguntar ao Senhor qual papel cada um pode exercer.",
+    "Objetivo da aula: mostrar que Atos 13.1-12 apresenta a missão aos gentios como iniciativa do Espírito Santo acolhida por uma igreja local em adoração e obediência.",
+    "Abertura sugerida: pergunte se a igreja atual está mais acostumada a planejar atividades ou a ouvir o Espírito antes de agir.",
+    "Desenvolvimento: explique Antioquia como base missionária, o chamado do Espírito, a confirmação comunitária e o confronto espiritual em Chipre.",
+    "Discussão pastoral: ajude a classe a perceber que missão não é apenas viagem distante, mas participação concreta no avanço do Evangelho onde Deus coloca a igreja.",
+    "Cuidado na condução: evite transformar a aula em culpa missionária. O objetivo é conduzir a classe à consagração, não ao peso sem direção.",
+    "Fechamento: ore por Atibaia, pelos missionários, pelas frentes evangelísticas da igreja e por alunos que precisam discernir seu lugar na missão.",
   ],
   apoioAluno: [
-    "Leia Atos 13.1-12 antes da aula e observe quem toma a iniciativa em cada etapa da missão.",
-    "Reflita: há alguma obra a que você sente que Deus pode estar chamando você a iniciar ou apoiar?",
+    "O que observar no texto: quem fala, quem separa, quem ora, quem envia e quem resiste ao Evangelho em Atos 13.1-12.",
+    "O que isso confronta: a tendência de tratar missão como assunto de outros, enquanto eu permaneço apenas assistindo.",
+    "Como se preparar: leia Atos 11.19-26 e Atos 13.1-12, anotando o que Antioquia ensina sobre igreja saudável e missionária.",
+    "Como aplicar: escolha uma pessoa por quem orar durante a semana e procure uma forma concreta de participar da missão da igreja local.",
+    "Desafio da semana: transforme uma das leituras diárias em intercessão por alguém que ainda precisa ouvir o Evangelho.",
   ],
   esboco: [
     {
-      titulo: "A adoração que precede a missão",
+      titulo: "Abertura: quem dirige a missão?",
       conteudo:
-        "O contexto: jejum, oração e adoração em Antioquia como ambiente do chamado missionário do Espírito Santo.",
+        "Comece perguntando se a missão da igreja nasce mais da agenda humana ou da voz do Espírito. Use Atos 13.2 para apresentar o eixo da aula.",
     },
     {
-      titulo: "O padrão bíblico do envio",
+      titulo: "Movimento 1: Antioquia, uma igreja que ouve",
       conteudo:
-        "O Espírito chama, a Igreja ora e confirma com imposição de mãos. A missão é comunitária e soberanamente dirigida.",
+        "Apresente Antioquia como comunidade de ensino, adoração, jejum e liderança plural. Mostre que a missão nasce em um ambiente espiritual saudável.",
     },
     {
-      titulo: "O confronto com o engano em Chipre",
+      titulo: "Movimento 2: o Espírito chama e a igreja envia",
       conteudo:
-        "Bárjesus como exemplo de resistência espiritual à missão — e a vitória do Espírito que garante o avanço do Evangelho.",
+        "Explique o padrão de Atos 13.2-3: o Espírito separa, a igreja ora, impõe as mãos e participa do envio missionário.",
+    },
+    {
+      titulo: "Movimento 3: o Evangelho enfrenta resistência",
+      conteudo:
+        "Trabalhe o episódio de Bárjesus e Sérgio Paulo, destacando discernimento espiritual, autoridade da Palavra e avanço do Evangelho entre os gentios.",
+    },
+    {
+      titulo: "Fechamento: cada crente diante da missão",
+      conteudo:
+        "Conduza a classe a responder com oração e disponibilidade: que papel cada aluno pode exercer na missão da igreja local nesta semana?",
+    },
+    {
+      titulo: "Resumo para impressão",
+      conteudo:
+        "Atos 13.1-12 mostra que a missão nasce de uma igreja em adoração, é dirigida pelo Espírito, confirmada pela comunidade e sustentada pela Palavra diante das resistências. O chamado para os gentios continua confrontando a igreja a orar, enviar e testemunhar.",
     },
   ],
   subsidioAdultos: normalizeAdultSubsidy(subsidioAdultosTerceiroTrimestreLicao1),
