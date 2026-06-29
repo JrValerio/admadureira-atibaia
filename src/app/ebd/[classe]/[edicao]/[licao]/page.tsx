@@ -26,7 +26,7 @@ import {
   isLicaoPubliclyAvailable,
   isClasseEbd,
 } from "@/lib/ebd-utils";
-import { getLessonStructure } from "@/lib/ebd-lesson-structure";
+import { getLessonStructure, getLicaoTocItems } from "@/lib/ebd-lesson-structure";
 import { getEbdPrintRoute } from "@/lib/ebd-print";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
@@ -194,6 +194,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
     trimestre,
     lessonContext.licao
   );
+  const tocItems = getLicaoTocItems(lessonStructure, lessonContext.licao, classe);
   const lessonPrimaryReading = lessonStructure
     ? lessonStructure.tipo === "adultos"
       ? lessonStructure.leituraBiblicaEmClasse
@@ -481,6 +482,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
               <EbdLessonAuxiliarySections
                 classe={classe}
+                tocItems={tocItems}
                 classeInfo={classeInfo}
                 trimestre={trimestre}
                 licao={lessonContext.licao}
