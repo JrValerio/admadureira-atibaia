@@ -336,6 +336,65 @@ export function getYoungLessonEditorialReadiness(
   ]);
 }
 
+export function hasRitmoSemana(structure: LicaoEstruturaPorClasse): boolean {
+  return structure.tipo === "adultos"
+    ? structure.leituraDiaria.length > 0 || structure.hinosSugeridos.length > 0
+    : structure.leituraSemanal.length > 0;
+}
+
+export function hasPlanejamento(structure: LicaoEstruturaPorClasse): boolean {
+  return structure.tipo === "adultos"
+    ? structure.apoioProfessor.length > 0 ||
+        structure.apoioAluno.length > 0 ||
+        structure.esboco.length > 0
+    : !!(structure.interacao) ||
+        !!(structure.orientacaoPedagogica) ||
+        structure.horaDaRevisao.length > 0 ||
+        structure.apoioProfessor.length > 0 ||
+        structure.apoioAluno.length > 0 ||
+        structure.esboco.length > 0;
+}
+
+export type LicaoTocItem = {
+  id: string;
+  label: string;
+};
+
+export function getLicaoTocItems(
+  structure: LicaoEstruturaPorClasse | null,
+  licao: LicaoEBD,
+  classe: string
+): LicaoTocItem[] {
+  if (!structure) return [];
+
+  const items: LicaoTocItem[] = [{ id: "base-licao", label: "Base da lição" }];
+
+  if (hasRitmoSemana(structure)) {
+    items.push({ id: "ritmo-semana", label: "Ritmo da semana" });
+  }
+
+  if (hasPlanejamento(structure)) {
+    items.push({ id: "planejamento-aula", label: "Planejamento da aula" });
+  }
+
+  const subsidio =
+    classe === "adultos"
+      ? licao.subsidioAdultos
+      : classe === "jovens"
+        ? licao.subsidioJovens
+        : null;
+
+  if (subsidio) {
+    items.push({
+      id: "subsidio-do-professor",
+      label:
+        classe === "adultos" ? "Subsídio do professor" : "Roteiro do professor",
+    });
+  }
+
+  return items;
+}
+
 export function getLessonEditorialReadiness(
   classeInfo: ClasseEBDInfo,
   trimestre: Pick<TrimestreEBD, "rotulo">,
