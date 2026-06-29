@@ -675,6 +675,23 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       ano: 2026,
       eventos: [
         criarEvento(local, {
+          slug: "trimestre-ebd-adultos-3t-2026",
+          data: "05/07 a 27/09",
+          titulo: "3º Trimestre EBD 2026 — A Igreja dos Gentios",
+          tipo: "evento-especial",
+          descricao: [
+            "Neste 3º trimestre de 2026, a Escola Bíblica Dominical da AD Madureira Atibaia inicia um novo ciclo de estudos. Treze lições acompanham a expansão do Evangelho entre os gentios, da chamada de Barnabé e Saulo em Antioquia até a chegada de Paulo a Roma.",
+            "A abordagem sobre a proclamação do Evangelho entre os gentios considera, inicialmente, o propósito divino desde o Antigo Testamento. Deus havia prometido, por intermédio dos profetas da Antiga Aliança, que a mensagem de salvação alcançaria outras nações para além de Israel. Nesse sentido, o grande avivamento experimentado pelos cristãos em Antioquia, a partir da pregação aos gentios, é o cumprimento dessa promessa.",
+            "O comentarista deste trimestre é o pastor Wagner Gaby, líder da Assembleia de Deus em Curitiba. As aulas acontecem todo domingo às 09h, na sede da AD Madureira Atibaia.",
+          ].join("\n\n"),
+          convite:
+            "Participe das aulas da Escola Bíblica Dominical todo domingo às 09h e aprofunde seu conhecimento sobre a expansão do Evangelho entre os povos.",
+          baseBiblica: criarBaseBiblica("Atos 1.8"),
+          destaque: true,
+          imagem: "/programacao/eventos/trimestre.png",
+          banner: "/programacao/eventos/trimestre.png",
+        }),
+        criarEvento(local, {
           slug: "reuniao-de-ministerio-06-07-2026",
           data: "06/07",
           titulo: "Reunião de Ministério",
