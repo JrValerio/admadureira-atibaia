@@ -13,6 +13,7 @@ import type {
   LicaoEstruturaPorClasse,
   ListaItem,
 } from "@/data/ebd";
+import { hasRitmoSemana, hasPlanejamento } from "@/lib/ebd-lesson-structure";
 
 type EbdLessonOverviewBlocksProps = {
   classeInfo: ClasseEBDInfo;
@@ -317,7 +318,7 @@ export default function EbdLessonOverviewBlocks({
 
   return (
     <div className="space-y-10">
-      <section className="space-y-6">
+      <section id="base-licao" className="space-y-6">
         <SectionLead
           eyebrow="Base da lição"
           title="Blocos principais em destaque"
@@ -370,8 +371,8 @@ export default function EbdLessonOverviewBlocks({
         </div>
       </section>
 
-      {weeklyBlocks.length ? (
-        <section className="space-y-4">
+      {hasRitmoSemana(structure) ? (
+        <section id="ritmo-semana" className="space-y-4">
           <SectionLead
             eyebrow="Ritmo da semana"
             title={
@@ -389,8 +390,8 @@ export default function EbdLessonOverviewBlocks({
         </section>
       ) : null}
 
-      {planningBlocks.length ? (
-        <section className="space-y-4">
+      {hasPlanejamento(structure) ? (
+        <section id="planejamento-aula" className="space-y-4">
           <SectionLead
             eyebrow="Planejamento da aula"
             title={
