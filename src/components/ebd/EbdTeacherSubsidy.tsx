@@ -712,7 +712,7 @@ export default function EbdTeacherSubsidy({
   return (
     <section
       id="subsidio-do-professor"
-      className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8"
+      className="scroll-mt-28 rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8"
     >
       <details className="group">
         <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">

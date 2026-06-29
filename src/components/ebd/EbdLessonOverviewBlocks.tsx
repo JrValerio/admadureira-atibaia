@@ -318,7 +318,7 @@ export default function EbdLessonOverviewBlocks({
 
   return (
     <div className="space-y-10">
-      <section id="base-licao" className="space-y-6">
+      <section id="base-licao" className="scroll-mt-28 space-y-6">
         <SectionLead
           eyebrow="Base da lição"
           title="Blocos principais em destaque"
@@ -372,7 +372,7 @@ export default function EbdLessonOverviewBlocks({
       </section>
 
       {hasRitmoSemana(structure) ? (
-        <section id="ritmo-semana" className="space-y-4">
+        <section id="ritmo-semana" className="scroll-mt-28 space-y-4">
           <SectionLead
             eyebrow="Ritmo da semana"
             title={
@@ -391,7 +391,7 @@ export default function EbdLessonOverviewBlocks({
       ) : null}
 
       {hasPlanejamento(structure) ? (
-        <section id="planejamento-aula" className="space-y-4">
+        <section id="planejamento-aula" className="scroll-mt-28 space-y-4">
           <SectionLead
             eyebrow="Planejamento da aula"
             title={
