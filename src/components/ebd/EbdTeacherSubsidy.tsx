@@ -710,24 +710,48 @@ export default function EbdTeacherSubsidy({
   }
 
   return (
-    <section className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-      <div className="mb-8">
-        <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-          {tituloDaSecao}
-        </p>
-        <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
-          {licao.titulo}
-        </h2>
-        <p className="max-w-3xl text-[#555] leading-relaxed">
-          {subtitulo} Lição {licao.numero} • {formatEbdDate(licao.data)}.
-        </p>
-      </div>
-
-      {classe === "adultos" ? (
-        <AdultSubsidy subsidio={subsidio as SubsidioAdultos} />
-      ) : (
-        <YoungSubsidy subsidio={subsidio as SubsidioJovens} />
-      )}
+    <section
+      id="subsidio-do-professor"
+      className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8"
+    >
+      <details className="group">
+        <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                {tituloDaSecao}
+              </p>
+              <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl lg:text-4xl">
+                {licao.titulo}
+              </h2>
+              <p className="max-w-3xl text-[#555] leading-relaxed">
+                {subtitulo} Lição {licao.numero} • {formatEbdDate(licao.data)}.
+              </p>
+            </div>
+            <span
+              aria-hidden="true"
+              className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-black/10 text-[#555] transition-transform duration-200 group-open:rotate-180"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 5.5L8 10.5L13 5.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </div>
+        </summary>
+        <div className="mt-8">
+          {classe === "adultos" ? (
+            <AdultSubsidy subsidio={subsidio as SubsidioAdultos} />
+          ) : (
+            <YoungSubsidy subsidio={subsidio as SubsidioJovens} />
+          )}
+        </div>
+      </details>
     </section>
   );
 }
