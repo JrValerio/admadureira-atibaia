@@ -52,7 +52,7 @@ type ScheduleBlock = BaseBlock & {
 type RecurringBlock = ListBlock | TextBlock | OutlineBlock | ScheduleBlock;
 
 const OVERVIEW_BLOCK_CLASS_NAME = "rounded-3xl p-5 shadow-sm md:p-6";
-const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 md:grid-cols-2";
+const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 sm:grid-cols-2 xl:grid-cols-4";
 
 function SectionLead({
   eyebrow,
