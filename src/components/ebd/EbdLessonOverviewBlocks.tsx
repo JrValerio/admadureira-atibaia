@@ -13,6 +13,7 @@ import type {
   LicaoEstruturaPorClasse,
   ListaItem,
 } from "@/data/ebd";
+import { hasRitmoSemana, hasPlanejamento } from "@/lib/ebd-lesson-structure";
 
 type EbdLessonOverviewBlocksProps = {
   classeInfo: ClasseEBDInfo;
@@ -52,7 +53,7 @@ type ScheduleBlock = BaseBlock & {
 type RecurringBlock = ListBlock | TextBlock | OutlineBlock | ScheduleBlock;
 
 const OVERVIEW_BLOCK_CLASS_NAME = "rounded-3xl p-5 shadow-sm md:p-6";
-const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 md:grid-cols-2";
+const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 sm:grid-cols-2 xl:grid-cols-4";
 
 function SectionLead({
   eyebrow,
@@ -317,7 +318,7 @@ export default function EbdLessonOverviewBlocks({
 
   return (
     <div className="space-y-10">
-      <section className="space-y-6">
+      <section id="base-licao" className="scroll-mt-28 space-y-6">
         <SectionLead
           eyebrow="Base da lição"
           title="Blocos principais em destaque"
@@ -370,8 +371,8 @@ export default function EbdLessonOverviewBlocks({
         </div>
       </section>
 
-      {weeklyBlocks.length ? (
-        <section className="space-y-4">
+      {hasRitmoSemana(structure) ? (
+        <section id="ritmo-semana" className="scroll-mt-28 space-y-4">
           <SectionLead
             eyebrow="Ritmo da semana"
             title={
@@ -389,8 +390,8 @@ export default function EbdLessonOverviewBlocks({
         </section>
       ) : null}
 
-      {planningBlocks.length ? (
-        <section className="space-y-4">
+      {hasPlanejamento(structure) ? (
+        <section id="planejamento-aula" className="scroll-mt-28 space-y-4">
           <SectionLead
             eyebrow="Planejamento da aula"
             title={

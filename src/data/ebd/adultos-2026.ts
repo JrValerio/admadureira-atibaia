@@ -5095,6 +5095,7 @@ type SementeAdultosTerceiroTrimestre = {
   titulo: string;
   textoChave: string;
   textoAureo: string;
+  verdadePratica?: string;
   leituraBiblica: string[];
 };
 
@@ -5127,6 +5128,7 @@ function criarLicaoAdultosTerceiroTrimestreSkeleton(
         trimestre: trimestreAdultosTerceiroTrimestre,
         comentarista: "Wagner Gaby",
         textoAureo: seed.textoAureo,
+        verdadePratica: seed.verdadePratica,
         leituraBiblicaEmClasse: normalizeReferences(seed.leituraBiblica),
         leituraDiaria: [],
         hinosSugeridos: [],
@@ -5150,6 +5152,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 13.47",
     textoAureo:
       '"Porque o Senhor assim no-lo mandou: Eu te pus para luz dos gentios, para que sejas de salvação até aos confins da terra." (At 13.47)',
+    verdadePratica:
+      "O propósito de Deus é que o Evangelho alcance todas as nações, revelando seu eterno desejo de salvar a todos.",
     leituraBiblica: ["At 13.44-52"],
   },
   {
@@ -5159,6 +5163,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "Ef 2.8",
     textoAureo:
       '"Porque pela graça sois salvos, por meio da fé; e isso não vem de vós; é dom de Deus." (Ef 2.8)',
+    verdadePratica:
+      "É pela graça que somos alcançados, perdoados e reconciliados com Deus.",
     leituraBiblica: ["At 15.1-5,28,29,36-39"],
   },
   {
@@ -5168,6 +5174,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 16.5",
     textoAureo:
       '"De sorte que as igrejas eram confirmadas na fé e cada dia cresciam em número." (At 16.5)',
+    verdadePratica:
+      "O Espírito Santo não apenas guia o cristão em seus passos, mas também o impede de avançar quando isso não está em acordo com a vontade de Deus.",
     leituraBiblica: ["At 16.11-18,25-31"],
   },
   {
@@ -5177,6 +5185,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 17.30",
     textoAureo:
       '"Mas Deus, não tendo em conta os tempos da ignorância, anuncia agora a todos os homens, em todo lugar, que se arrependam." (At 17.30)',
+    verdadePratica:
+      "A obra evangelística floresce quando o coração, sensível ao Espírito, discerne os tempos e proclama com ousadia a graça salvadora de Cristo.",
     leituraBiblica: ["At 17.15-20,30-32"],
   },
   {
@@ -5186,6 +5196,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 18.10",
     textoAureo:
       '"Porque eu sou contigo, e ninguém lançará mão de ti para te fazer mal, pois tenho muito povo nesta cidade." (At 18.10)',
+    verdadePratica:
+      "A graça de Deus é suficiente para sustentar o crente em meio às adversidades.",
     leituraBiblica: ["At 18.1-11"],
   },
   {
@@ -5195,6 +5207,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 19.20",
     textoAureo:
       '"Assim, a palavra do Senhor crescia poderosamente e prevalecia." (At 19.20)',
+    verdadePratica:
+      "Onde o Espírito Santo é derramado, a Palavra é confirmada com poder, o pecado é confrontado, e vidas, famílias e cidades são transformadas.",
     leituraBiblica: ["At 19.1-12"],
   },
   {
@@ -5204,6 +5218,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 20.28",
     textoAureo:
       '"Olhai, pois, por vós e por todo o rebanho sobre que o Espírito Santo vos constituiu bispos, para apascentardes a igreja de Deus, que ele resgatou com o seu próprio sangue." (At 20.28)',
+    verdadePratica:
+      "A Igreja é preservada quando líderes vigilantes cuidam do rebanho com fidelidade à Palavra e submissão ao Espírito Santo.",
     leituraBiblica: ["At 20.17-25,36-38"],
   },
   {
@@ -5213,6 +5229,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 22.15",
     textoAureo:
       '"Porque hás de ser sua testemunha para com todos os homens do que tens visto e ouvido." (At 22.15)',
+    verdadePratica:
+      "Todo aquele que teve um encontro real com Cristo é chamado a testemunhar dEle com fidelidade, mesmo em meio à oposição e ao sofrimento.",
     leituraBiblica: ["At 21.27,28,30,31,33,39,40", "At 22.1-7"],
   },
   {
@@ -5222,6 +5240,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 24.16",
     textoAureo:
       '"E, por isso, procuro sempre ter uma consciência sem ofensa, tanto para com Deus como para com os homens." (At 24.16)',
+    verdadePratica:
+      "A fidelidade ao Evangelho se expressa em uma consciência irrepreensível diante de Deus e dos homens.",
     leituraBiblica: ["At 24.1-6,10-16"],
   },
   {
@@ -5231,6 +5251,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 27.22",
     textoAureo:
       '"Mas, agora, vos admoesto a que tenhais bom ânimo, porque não se perderá a vida de nenhum de vós, mas somente o navio." (At 27.22)',
+    verdadePratica:
+      "Mesmo quando perdas materiais são inevitáveis, Deus preserva a vida e cumpre suas promessas àqueles que confiam nEle.",
     leituraBiblica: ["At 27.9-15,21-26"],
   },
   {
@@ -5240,6 +5262,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "At 28.31",
     textoAureo:
       '"Pregando o Reino de Deus e ensinando com toda a liberdade as coisas pertencentes ao Senhor Jesus Cristo, sem impedimento algum." (At 28.31)',
+    verdadePratica:
+      "Nada pode impedir o avanço do Reino de Deus quando o Evangelho é anunciado com fidelidade, coragem e esperança.",
     leituraBiblica: ["At 28.16-24,28-31"],
   },
   {
@@ -5249,6 +5273,8 @@ const sementesAdultosTerceiroTrimestre: SementeAdultosTerceiroTrimestre[] = [
     textoChave: "Mc 13.10",
     textoAureo:
       '"Mas importa que o evangelho seja primeiramente pregado entre todas as nações." (Mc 13.10)',
+    verdadePratica:
+      "Importa que a Igreja pregue o Evangelho a todas as nações, pois essa missão deve avançar até os confins da terra.",
     leituraBiblica: ["Mt 28.18,20", "At 1.8", "Ef 2.13-18"],
   },
 ];
@@ -5267,7 +5293,7 @@ const subsidioAdultosTerceiroTrimestreLicao2 = {
     comentarista: "Wagner Gaby",
     textoAureo: sementeAdultosTerceiroTrimestreLicao2.textoAureo,
     verdadePratica:
-      "Quando a Palavra de Deus é anunciada com fidelidade, o Senhor abre portas para que pessoas de todos os povos recebam o Evangelho pela fé.",
+      "O propósito de Deus é que o Evangelho alcance todas as nações, revelando seu eterno desejo de salvar a todos.",
     leituraBiblicaEmClasse: normalizeReferences(
       sementeAdultosTerceiroTrimestreLicao2.leituraBiblica
     ),
@@ -5573,7 +5599,7 @@ const subsidioAdultosTerceiroTrimestreLicao3 = {
     comentarista: "Wagner Gaby",
     textoAureo: sementeAdultosTerceiroTrimestreLicao3.textoAureo,
     verdadePratica:
-      "A salvação é dom da graça de Deus, recebida pela fé em Cristo, e essa graça une a Igreja e sustenta a missão entre todos os povos.",
+      "É pela graça que somos alcançados, perdoados e reconciliados com Deus.",
     leituraBiblicaEmClasse: normalizeReferences(
       sementeAdultosTerceiroTrimestreLicao3.leituraBiblica
     ),

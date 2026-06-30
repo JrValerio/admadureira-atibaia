@@ -6,10 +6,12 @@ import {
   EbdSupportPanel,
 } from "@/components/ebd/EbdLessonSupportUi";
 import type { ClasseEBDInfo, LicaoEBD, TrimestreEBD } from "@/data/ebd";
+import { type LicaoTocItem } from "@/lib/ebd-lesson-structure";
 import type { MetaEstadoProgressaoLicaoEBD } from "@/lib/ebd-utils";
 
 type EbdLessonAuxiliarySectionsProps = {
   classe: string;
+  tocItems: LicaoTocItem[];
   classeInfo: ClasseEBDInfo;
   trimestre: TrimestreEBD;
   licao: LicaoEBD;
@@ -53,6 +55,7 @@ function TrailLesson({
 
 export default function EbdLessonAuxiliarySections({
   classe,
+  tocItems,
   classeInfo,
   trimestre,
   licao,
@@ -70,6 +73,30 @@ export default function EbdLessonAuxiliarySections({
 }: EbdLessonAuxiliarySectionsProps) {
   return (
     <aside className="space-y-6">
+      {/* TOC só agrega valor com 2+ destinos; "Base da lição" sozinha não navega nada */}
+      {tocItems.length > 1 && (
+        <nav
+          aria-label="Nesta página"
+          className="hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm lg:sticky lg:top-24 lg:block"
+        >
+          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+            Nesta página
+          </p>
+          <ul className="space-y-2 text-sm">
+            {tocItems.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className="text-[#555] transition-colors hover:text-[#212121]"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
       <EbdSupportPanel
         title="Contexto da edição"
         labelTone="danger"
