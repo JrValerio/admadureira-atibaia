@@ -150,7 +150,7 @@ export default function TrimestreEbdAdultos3t2026Page() {
                 Comentarista · 3º Trimestre 2026
               </p>
               <p className="mt-4 leading-relaxed text-[#555]">
-                Para discorrer sobre o tema "A Igreja dos Gentios", o comentarista deste
+                Para discorrer sobre o tema &quot;A Igreja dos Gentios&quot;, o comentarista deste
                 trimestre é o pastor Wagner Gaby. A abordagem percorre a expansão
                 missionária de Atos, desde o envio de Barnabé e Saulo em Antioquia até a
                 chegada do Evangelho ao coração do Império Romano.
