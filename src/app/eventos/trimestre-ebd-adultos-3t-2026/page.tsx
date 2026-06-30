@@ -12,6 +12,7 @@ import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 const trimestre = adultos2026Trimestres.find((t) => t.slug === "2026-3t")!;
 
 const SLUG = "trimestre-ebd-adultos-3t-2026";
+const DATA_INICIO = "2026-07-05";
 const DATA_FIM = "2026-09-27";
 const CANONICAL_PATH = `/eventos/${SLUG}`;
 
@@ -112,7 +113,7 @@ export default function TrimestreEbdAdultos3t2026Page() {
               <span className="rounded-full bg-[#ef5350]/10 px-3 py-1 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                 EBD · 3º Trimestre 2026
               </span>
-              <TrimestreCountdownBadge dataFim={DATA_FIM} />
+              <TrimestreCountdownBadge dataInicio={DATA_INICIO} dataFim={DATA_FIM} />
             </div>
 
             <h1 className="font-acme text-3xl tracking-wide text-[#212121] md:text-5xl">
