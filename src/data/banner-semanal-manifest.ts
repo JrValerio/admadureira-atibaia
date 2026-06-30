@@ -188,7 +188,33 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "reuniao-de-obreiro.png"
   ],
   "2026-06-22": [
-    "batismo.png"
+    "batismo.png",
+    "circulo-de-oracao.png",
+    "consagracao-mulheres.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "jejum-e-oração.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png"
+  ],
+  "2026-06-29": [
+    "circulo-de-oracao.png",
+    "consagracao-mulheres.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "jejum-e-oração.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png"
   ],
   "2026-07-06": [
     "santa-ceia.png"
