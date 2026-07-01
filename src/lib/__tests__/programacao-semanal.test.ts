@@ -19,6 +19,7 @@ describe("getProgramacaoSemanalAtual", () => {
     const segundaNoite = programacao.find((item) => item.dia === "Segunda-feira");
 
     expect(segundaNoite?.titulo).toBe("Curso de Teologia");
+    expect(segundaNoite?.horario).toBe("19h");
     expect(segundaNoite?.banner).toBe("/programacao/curso-teologia.png");
   });
 });

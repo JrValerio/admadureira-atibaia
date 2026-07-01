@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   CHURCH_DISPLAY_NAME,
+  SEDE_PROGRAMACAO_HORARIOS,
   SEDE_PROGRAMACAO_LOCATION,
   SEDE_WHATSAPP_URL,
 } from "@/data/site";
@@ -161,9 +162,10 @@ export default function CursoTeologiaPage() {
                     Acompanhe as atualizações do Curso de Teologia
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                    Aulas às segundas-feiras, às 19h30, na sede da AD Madureira
-                    Atibaia. Para informações sobre inscrição e participação,
-                    fale com a equipe da igreja.
+                    Aulas às segundas-feiras, às{" "}
+                    {SEDE_PROGRAMACAO_HORARIOS.cursoTeologia}, na sede da AD
+                    Madureira Atibaia. Para informações sobre inscrição e
+                    participação, fale com a equipe da igreja.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
