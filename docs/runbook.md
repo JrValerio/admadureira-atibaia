@@ -64,3 +64,17 @@ Antes de taguear:
 4. `Vercel` produção verde
 5. validar `/healthz`, `/` e `/sitemap.xml` no domínio oficial
 6. criar e publicar a tag da release
+
+## Gate local antes de push
+
+Antes de considerar um branch pronto para PR ou merge, rodar os três checks:
+
+```bash
+npx tsc --noEmit
+npm run lint
+npm run build
+```
+
+`tsc` cobre tipos, `lint` cobre regras do CI que não aparecem no TypeScript e
+`build` cobre fronteiras RSC, geração estática e smoke de produção local quando
+aplicável.
