@@ -1,4 +1,4 @@
-import type { LicaoEBD, TrimestreEBD } from "./types";
+import type { LicaoEBDInfantil, TrimestreEBD } from "./types";
 import { EBD_DEFAULT_COVER_IMAGE } from "./assets";
 
 type LicaoSeed = {
@@ -23,9 +23,10 @@ const apoioAlunoBase = [
   "Escolha uma atitude simples para praticar durante a semana com alegria e obediência a Jesus.",
 ];
 
-function criarLicao(seed: LicaoSeed): LicaoEBD {
+function criarLicao(seed: LicaoSeed): LicaoEBDInfantil {
   return {
     id: `infantil-2026-1t-licao-${seed.numero}`,
+    publico: "infantil",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,

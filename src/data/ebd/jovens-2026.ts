@@ -1,6 +1,7 @@
 import type {
   LeituraSemanalItem,
   LicaoEBD,
+  LicaoEBDJovens,
   TrimestreEBD,
 } from "./types";
 import {
@@ -2540,7 +2541,7 @@ const subsidioJovensLicao11: LicaoEBD["subsidioJovens"] = {
 function criarLicao(
   seed: LicaoSeed,
   options: CriarLicaoJovensOptions = {}
-): LicaoEBD {
+): LicaoEBDJovens {
   const {
     edicao = "2026-1t",
     statusEditorial = "published",
@@ -2549,6 +2550,7 @@ function criarLicao(
 
   return {
     id: `jovens-${edicao}-licao-${seed.numero}`,
+    publico: "jovens",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
@@ -2590,7 +2592,7 @@ function criarLicaoEditorialJovens(
   seed: LicaoSeed,
   editorial: JovensEditorialConfig,
   options: CriarLicaoJovensOptions = {}
-): LicaoEBD {
+): LicaoEBDJovens {
   return {
     ...criarLicao(seed, options),
     imagem: editorial.imagem,
@@ -2613,13 +2615,14 @@ function criarLicaoPlaceholder(
   edicao: string,
   numero: number,
   data: string
-): LicaoEBD {
+): LicaoEBDJovens {
   const trimestre = `${edicao.slice(5, 6)}º Trimestre de ${edicao.slice(0, 4)}`;
   const resumoPlaceholder =
     "Conteúdo em preparação para a classe de Jovens. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.";
 
   return {
     id: `jovens-${edicao}-licao-${numero}`,
+    publico: "jovens",
     slug: `licao-${numero}`,
     numero,
     data,
@@ -2685,7 +2688,7 @@ const trimestreJovensSegundoTrimestre =
 function criarLicaoJovensSegundoTrimestre(
   seed: LicaoSeedJovensSegundoTrimestre,
   options: CriarLicaoJovensOptions = {}
-): LicaoEBD {
+): LicaoEBDJovens {
   const base = criarLicao(
     {
       numero: seed.numero,
@@ -2927,7 +2930,7 @@ function criarSubsidioJovensSegundoTrimestre(
 function criarLicaoJovensSegundoTrimestreEnriquecida(
   seed: LicaoSeedJovensSegundoTrimestre,
   options: CriarLicaoJovensOptions = {}
-): LicaoEBD {
+): LicaoEBDJovens {
   const base = criarLicaoJovensSegundoTrimestre(seed, options);
   const objetivos = criarObjetivosJovensSegundoTrimestre(seed);
   const topicos = criarTopicosJovensSegundoTrimestre(seed);
@@ -4195,11 +4198,12 @@ function criarSubsidioJovensTerceiroTrimestre(
 function criarLicaoJovensTerceiroTrimestre(
   seed: SementeJovensTerceiroTrimestre,
   options: CriarLicaoJovensOptions = {}
-): LicaoEBD {
+): LicaoEBDJovens {
   const { statusEditorial = "draft", dataLiberacaoPublica } = options;
 
   return {
     id: `jovens-2026-3t-licao-${seed.numero}`,
+    publico: "jovens",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
