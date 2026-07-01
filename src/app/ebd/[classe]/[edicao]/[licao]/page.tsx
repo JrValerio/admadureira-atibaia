@@ -370,6 +370,8 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
                             fill
                             priority
+                            fetchPriority="high"
+                            decoding="sync"
                             sizes="(max-width: 768px) 100vw, 420px"
                             className="object-contain"
                           />
