@@ -46,6 +46,11 @@ Evoluções planejadas ordenadas por impacto e viabilidade.
 - padrão aprovado: `md:grid-cols-2 lg:grid-cols-3` (ou `xl:grid-cols-4` onde aplicável)
 - commit único: `fix(grid): adiciona breakpoints intermediarios em cards e listagens`
 
+### Medição de performance com EBD sentinela
+- usar [performance-sentinels.md](performance-sentinels.md) nas próximas passadas Lighthouse
+- incluir `/ebd/adultos/2026-3t/licao-3` como rota densa de lição até existir uma lição publicada mais pesada
+- comparar mobile e desktop antes de novas mudanças grandes na experiência EBD
+
 ---
 
 ## Médio prazo

@@ -246,3 +246,7 @@ If a follow-up sprint opens, the next explicit target should be:
 If another route must be named directly after that:
 
 - `/oferta` mobile remains poor and should be treated as a route-level performance follow-up rather than another generic shared-hero pass
+
+Future performance passes should use the living sentinel list in
+[performance-sentinels.md](performance-sentinels.md), which adds the dense EBD
+lesson page to the original Sprint 7 route set.

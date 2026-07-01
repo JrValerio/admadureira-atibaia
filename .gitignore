@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 .claude/
+.playwright-mcp/
 *.pem
 
 # debug
