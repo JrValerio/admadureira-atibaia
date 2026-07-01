@@ -1,4 +1,7 @@
-export type ClasseEBD = "adultos" | "jovens" | "infantil";
+export const EBD_PUBLICOS = ["adultos", "jovens", "infantil"] as const;
+
+export type ClasseEBD = (typeof EBD_PUBLICOS)[number];
+export type EbdPublico = ClasseEBD;
 
 export type NumeroTrimestreEBD = 1 | 2 | 3 | 4;
 export type StatusEditorialEBD = "draft" | "partial" | "published";
@@ -154,8 +157,9 @@ export type SubsidioJovens = {
   };
 };
 
-export type LicaoEBD = {
+type LicaoEBDBase = {
   id: string;
+  publico: EbdPublico;
   slug: string;
   numero: number;
   data: string;
@@ -176,6 +180,47 @@ export type LicaoEBD = {
   subsidioAdultos?: SubsidioAdultos;
   subsidioJovens?: SubsidioJovens;
 };
+
+export type LicaoEBDAdultos = LicaoEBDBase & {
+  publico: "adultos";
+  subsidioAdultos?: SubsidioAdultos;
+  subsidioJovens?: never;
+};
+
+export type LicaoEBDJovens = LicaoEBDBase & {
+  publico: "jovens";
+  subsidioAdultos?: never;
+  subsidioJovens?: SubsidioJovens;
+};
+
+export type LicaoEBDInfantil = LicaoEBDBase & {
+  publico: "infantil";
+  subsidioAdultos?: never;
+  subsidioJovens?: never;
+};
+
+export type LicaoEBD =
+  | LicaoEBDAdultos
+  | LicaoEBDJovens
+  | LicaoEBDInfantil;
+
+export function isLicaoEBDAdultos(
+  licao: LicaoEBD
+): licao is LicaoEBDAdultos {
+  return licao.publico === "adultos";
+}
+
+export function isLicaoEBDJovens(
+  licao: LicaoEBD
+): licao is LicaoEBDJovens {
+  return licao.publico === "jovens";
+}
+
+export function isLicaoEBDInfantil(
+  licao: LicaoEBD
+): licao is LicaoEBDInfantil {
+  return licao.publico === "infantil";
+}
 
 export type TrimestreEBD = {
   id: string;

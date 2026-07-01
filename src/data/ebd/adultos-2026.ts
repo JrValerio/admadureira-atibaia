@@ -1,4 +1,9 @@
-import type { LeituraDiariaItem, LicaoEBD, TrimestreEBD } from "./types";
+import type {
+  LeituraDiariaItem,
+  LicaoEBD,
+  LicaoEBDAdultos,
+  TrimestreEBD,
+} from "./types";
 import {
   getEbdLessonImagePath,
   getEbdQuarterCoverPath,
@@ -2807,9 +2812,10 @@ const subsidioAdultosLicao13: LicaoEBD["subsidioAdultos"] = {
   },
 };
 
-function criarLicao(seed: LicaoSeed): LicaoEBD {
+function criarLicao(seed: LicaoSeed): LicaoEBDAdultos {
   return {
     id: `adultos-2026-1t-licao-${seed.numero}`,
+    publico: "adultos",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
@@ -2847,7 +2853,7 @@ function criarLicao(seed: LicaoSeed): LicaoEBD {
 function criarLicaoEditorialAdultos(
   seed: LicaoSeed,
   editorial: AdultosEditorialConfig
-): LicaoEBD {
+): LicaoEBDAdultos {
   return {
     ...criarLicao(seed),
     imagem: editorial.imagem,
@@ -2870,13 +2876,14 @@ function criarLicaoPlaceholder(
   edicao: string,
   numero: number,
   data: string
-): LicaoEBD {
+): LicaoEBDAdultos {
   const trimestre = `${edicao.slice(5, 6)}º Trimestre de ${edicao.slice(0, 4)}`;
   const resumoPlaceholder =
     "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.";
 
   return {
     id: `adultos-${edicao}-licao-${numero}`,
+    publico: "adultos",
     slug: `licao-${numero}`,
     numero,
     data,
@@ -3806,12 +3813,13 @@ function criarSubsidioAdultosSegundoTrimestre(
 
 function criarLicaoAdultosSegundoTrimestreEnriquecida(
   seed: LicaoSeedAdultosSegundoTrimestre
-): LicaoEBD {
+): LicaoEBDAdultos {
   const extensao =
     extensoesImagensAdultosSegundoTrimestre[seed.numero] ?? "png";
 
   return {
     id: `adultos-2026-2t-licao-${seed.numero}`,
+    publico: "adultos",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
@@ -4162,7 +4170,8 @@ const adultos2026SegundoTrimestre: TrimestreEBD = {
   descricao:
     "Treze lições para acompanhar a jornada de fé de Abraão, Isaque e Jacó, observando como Deus chama, prova, corrige e preserva os herdeiros da promessa.",
   comentarista: "Elinaldo Renovato",
-  licoes: adultos2026SegundoTrimestreBase.licoes.map((licao) => {
+  licoes: (adultos2026SegundoTrimestreBase.licoes as LicaoEBDAdultos[]).map(
+    (licao): LicaoEBDAdultos => {
     if (licao.numero === 1) {
       return licaoAdultosSegundoTrimestre1;
     }
@@ -4194,7 +4203,8 @@ const adultos2026SegundoTrimestre: TrimestreEBD = {
           }
         : licao.subsidioAdultos,
     };
-  }),
+    }
+  ),
 };
 
 const editoriaisAdultosPrimeiroTrimestre: Partial<Record<number, AdultosEditorialConfig>> = {
@@ -4994,6 +5004,7 @@ const subsidioAdultosTerceiroTrimestreLicao1 = {
 
 const licaoAdultosTerceiroTrimestre1: LicaoEBD = {
   id: "adultos-2026-3t-licao-1",
+  publico: "adultos",
   slug: "licao-1",
   numero: 1,
   data: "2026-07-05",
@@ -5101,9 +5112,10 @@ type SementeAdultosTerceiroTrimestre = {
 
 function criarLicaoAdultosTerceiroTrimestreSkeleton(
   seed: SementeAdultosTerceiroTrimestre
-): LicaoEBD {
+): LicaoEBDAdultos {
   return {
     id: `adultos-2026-3t-licao-${seed.numero}`,
+    publico: "adultos",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
@@ -5494,6 +5506,7 @@ const subsidioAdultosTerceiroTrimestreLicao2 = {
 
 const licaoAdultosTerceiroTrimestre2: LicaoEBD = {
   id: "adultos-2026-3t-licao-2",
+  publico: "adultos",
   slug: "licao-2",
   numero: sementeAdultosTerceiroTrimestreLicao2.numero,
   data: sementeAdultosTerceiroTrimestreLicao2.data,
@@ -5801,6 +5814,7 @@ const subsidioAdultosTerceiroTrimestreLicao3 = {
 
 const licaoAdultosTerceiroTrimestre3: LicaoEBD = {
   id: "adultos-2026-3t-licao-3",
+  publico: "adultos",
   slug: "licao-3",
   numero: sementeAdultosTerceiroTrimestreLicao3.numero,
   data: sementeAdultosTerceiroTrimestreLicao3.data,
