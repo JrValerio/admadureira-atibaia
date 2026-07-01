@@ -17,12 +17,14 @@ const ordemCultos = [
   "Domingo",
 ] as const;
 
-const DIAS_DESTAQUE = ["Segunda a Sexta", "Terça-feira", "Quinta-feira", "Domingo"];
-
 function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
   const grupos = new Map<string, GrupoCulto["horarios"]>();
 
   itens.forEach((item) => {
+    if (!item.horario) {
+      return;
+    }
+
     if (
       process.env.NODE_ENV === "development" &&
       !ordemCultos.includes(item.dia as (typeof ordemCultos)[number])
@@ -32,7 +34,7 @@ function agruparCultosPorDia(itens: ReadonlyArray<ItemSemanal>): GrupoCulto[] {
 
     const atuais = grupos.get(item.dia) ?? [];
     atuais.push({
-      hora: item.horario ?? "Horário a confirmar",
+      hora: item.horario,
       nome: item.titulo,
       slug: item.slug,
     });
@@ -57,7 +59,6 @@ const eventosEspeciais = [
 
 export default function Cultos() {
   const cultos = agruparCultosPorDia(programacaoSemanal);
-  const cultosDestaque = cultos.filter((c) => DIAS_DESTAQUE.includes(c.dia));
 
   return (
     <Section id="cultos" bg="cream" density="dense">
@@ -68,11 +69,11 @@ export default function Cultos() {
         density="dense"
         descriptionWidth="narrow"
         divider
-        description="Programação semanal dos cultos realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
+        description="Programação semanal completa dos cultos e encontros realizados na sede da igreja. Consulte os dias e horários e participe conosco dos momentos de oração, ensino e adoração."
       />
 
       <div className="mb-7 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:mb-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-5">
-        {cultosDestaque.map((culto) => (
+        {cultos.map((culto) => (
           <Card
             key={culto.dia}
             className="h-full border border-black/5 bg-white p-4"
@@ -82,7 +83,10 @@ export default function Cultos() {
             </h3>
             <ul className="space-y-2.5">
               {culto.horarios.map((horario) => (
-                <li key={`${culto.dia}-${horario.hora}`} className="border-t border-black/5 pt-2 first:border-t-0 first:pt-0">
+                <li
+                  key={`${culto.dia}-${horario.hora}-${horario.nome}`}
+                  className="border-t border-black/5 pt-2 first:border-t-0 first:pt-0"
+                >
                   {horario.slug ? (
                     <Link
                       href={`/programacao/${horario.slug}`}
