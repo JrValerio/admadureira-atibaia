@@ -1,4 +1,8 @@
+import { z } from "zod";
+
 export const EBD_PUBLICOS = ["adultos", "jovens", "infantil"] as const;
+
+export const ebdPublicoSchema = z.enum(EBD_PUBLICOS);
 
 export type ClasseEBD = (typeof EBD_PUBLICOS)[number];
 export type EbdPublico = ClasseEBD;
@@ -52,6 +56,108 @@ export type LeituraSemanalItem = {
   referencia: string;
   foco?: string;
 };
+
+export const VERSOES_BIBLICAS = ["ARC", "ACF", "ARA", "NAA", "NTLH"] as const;
+
+export const referenciaBiblicaSchema = z.object({
+  referencia: z.string().min(1),
+  texto: z.string().min(1),
+  versao: z.enum(VERSOES_BIBLICAS).optional(),
+});
+
+export type ReferenciaBiblica = z.infer<typeof referenciaBiblicaSchema>;
+
+const arrayTextoObrigatorio = z.array(z.string().min(1)).min(1);
+
+export const notaExegeticaSchema = z.object({
+  referencia: z.string().min(1),
+  observacao: z.string().min(1),
+  termoOriginal: z
+    .object({
+      termo: z.string().min(1),
+      idioma: z.enum(["hebraico", "grego"]),
+      transliteracao: z.string().min(1).optional(),
+      significado: z.string().min(1),
+    })
+    .optional(),
+});
+
+export type NotaExegetica = z.infer<typeof notaExegeticaSchema>;
+
+export const personagemBiblicoSchema = z.object({
+  nome: z.string().min(1),
+  descricao: z.string().min(1),
+  papelNaLicao: z.string().min(1),
+});
+
+export type PersonagemBiblico = z.infer<typeof personagemBiblicoSchema>;
+
+export const conexaoBiblicaSchema = z.object({
+  referencia: z.string().min(1),
+  conexao: z.string().min(1),
+});
+
+export type ConexaoBiblica = z.infer<typeof conexaoBiblicaSchema>;
+
+export const dificuldadeInterpretativaSchema = z.object({
+  questao: z.string().min(1),
+  orientacao: z.string().min(1),
+});
+
+export type DificuldadeInterpretativa = z.infer<
+  typeof dificuldadeInterpretativaSchema
+>;
+
+export const fonteSubsidioSchema = z.object({
+  tipo: z.enum(["revista", "livro-apoio", "biblia-estudo", "biblia", "outro"]),
+  titulo: z.string().min(1),
+  autor: z.string().min(1).optional(),
+  pagina: z.string().min(1).optional(),
+  observacao: z.string().min(1).optional(),
+});
+
+export type FonteSubsidio = z.infer<typeof fonteSubsidioSchema>;
+
+export const aplicacoesPorEsferaSchema = z.object({
+  pessoal: arrayTextoObrigatorio.optional(),
+  familia: arrayTextoObrigatorio.optional(),
+  igreja: arrayTextoObrigatorio.optional(),
+  sociedade: arrayTextoObrigatorio.optional(),
+});
+
+export type AplicacoesPorEsfera = z.infer<
+  typeof aplicacoesPorEsferaSchema
+>;
+
+export const recursosProfessorSchema = z.object({
+  perguntasAprofundamento: arrayTextoObrigatorio.optional(),
+  ilustracoes: arrayTextoObrigatorio.optional(),
+  dinamicas: arrayTextoObrigatorio.optional(),
+  alertasPastorais: arrayTextoObrigatorio.optional(),
+});
+
+export type RecursosProfessor = z.infer<typeof recursosProfessorSchema>;
+
+export const subsidioExpandidoSchema = z.object({
+  titulo: z.string().min(1).optional(),
+  chaveDaLicao: z.string().min(1).optional(),
+  contextoHistorico: arrayTextoObrigatorio.optional(),
+  contextoLiterario: arrayTextoObrigatorio.optional(),
+  contextoTeologico: arrayTextoObrigatorio.optional(),
+  notasExegeticas: z.array(notaExegeticaSchema).min(1).optional(),
+  personagens: z.array(personagemBiblicoSchema).min(1).optional(),
+  conexoesBiblicas: z.array(conexaoBiblicaSchema).min(1).optional(),
+  dificuldadesInterpretativas: z
+    .array(dificuldadeInterpretativaSchema)
+    .min(1)
+    .optional(),
+  eixoCristocentrico: arrayTextoObrigatorio.optional(),
+  aplicacoesPorEsfera: aplicacoesPorEsferaSchema.optional(),
+  recursosProfessor: recursosProfessorSchema.optional(),
+  referencias: z.array(fonteSubsidioSchema).min(1).optional(),
+});
+
+export type SubsidioExpandido = z.infer<typeof subsidioExpandidoSchema>;
 
 export type TopicoEBD = {
   titulo: string;
@@ -177,6 +283,7 @@ type LicaoEBDBase = {
   apoioProfessor?: string[];
   apoioAluno?: string[];
   esboco?: ListaItem[];
+  subsidioExpandido?: SubsidioExpandido;
   subsidioAdultos?: SubsidioAdultos;
   subsidioJovens?: SubsidioJovens;
 };
@@ -220,6 +327,23 @@ export function isLicaoEBDInfantil(
   licao: LicaoEBD
 ): licao is LicaoEBDInfantil {
   return licao.publico === "infantil";
+}
+
+export function validateSubsidioExpandido(
+  licaoId: string,
+  subsidio: unknown
+): SubsidioExpandido {
+  const result = subsidioExpandidoSchema.safeParse(subsidio);
+
+  if (!result.success) {
+    const issues = result.error.issues
+      .map((issue) => `  ${issue.path.join(".")}: ${issue.message}`)
+      .join("\n");
+
+    throw new Error(`subsidioExpandido inválido em "${licaoId}":\n${issues}`);
+  }
+
+  return result.data;
 }
 
 export type TrimestreEBD = {
