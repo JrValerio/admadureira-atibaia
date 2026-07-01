@@ -21,7 +21,7 @@ editorial surfaces do not fall out of measurement.
 | `/` | Home composition and desktop hero video LCP. |
 | `/programacao` | Core visitor journey with shared hero and card/list density. |
 | `/videos` | Healthy media/control route used to catch regressions. |
-| `/oferta` | Weakest mobile route after Sprint 7; needs route-level follow-up. |
+| `/oferta` | Former weak mobile route; keep as a sentinel after PR #85 brought it back near 3s LCP. |
 | `/espiritualidade` | Shared hero route that improved strongly after Sprint 7. |
 | `/ebd/adultos/2026-3t/licao-3` | Dense EBD lesson page with TOC, reading grids and populated teacher subsidy. |
 
@@ -53,6 +53,28 @@ set.
 | `/ebd/adultos/2026-3t/licao-3` | warm, before image hint | 71 | 8.4s | Lesson art image | Slow LCP was the lesson art, not the teacher subsidy/details DOM. |
 | `/ebd/adultos/2026-3t/licao-3` | warm, after image hint | 89 | 3.3s | Lesson art image | Explicit `fetchPriority="high"` + `decoding="sync"` on the lesson art. |
 | `/ebd/adultos/2026-3t/licao-3` | warm, current combined state | 90 | 3.3s | Lesson art image | Re-measured after `deviceSizes` cap and subsidy deduplication. First local pass was still cache-sensitive at 8.3s. |
+
+## Production Check - 2026-07-01
+
+Environment: production domain after PR #85 was merged and Vercel completed the
+production deployment for `9b9e5dc`. Measured with Lighthouse CLI 12.8.2 mobile
+emulation against `https://www.admadureiraatibaia.com.br`.
+
+| Route | Pass | Score | LCP | FCP | TBT | CLS | LCP element | Note |
+|---|---:|---:|---:|---:|---:|---:|---|---|
+| `/oferta` | cold | 91 | 3.0s | 2.3s | 62ms | 0.001 | Shared offer hero image | Did not reproduce the old 7.7s mobile LCP in production. |
+| `/oferta` | warm | 89 | 3.1s | 2.1s | 113ms | 0.001 | Shared offer hero image | No `w=3840` image request; mobile selected `nave-8.jpg&w=750`. |
+| `/ebd/adultos/2026-3t/licao-3` | cold | 91 | 3.1s | 2.0s | 134ms | 0.001 | Lesson art image | Production cold-hit did not reproduce the 8.3s local first pass. |
+| `/ebd/adultos/2026-3t/licao-3` | warm | 85 | 3.4s | 1.9s | 255ms | 0.001 | Lesson art image | No `w=3840` image request; mobile selected lesson/capa variants at `w=750`. |
+
+The invalid preview Lighthouse attempt for PR #85 redirected to Vercel login
+because the preview deployment was protected and no
+`VERCEL_AUTOMATION_BYPASS_SECRET` was configured. Those login-page scores were
+discarded and are not performance data for the site.
+
+The production traces still show `logo.jpg` as a large image request
+(approximately 1.09 MB) on both sentinel routes. It was not the LCP element in
+these runs, but it remains a separate optimization candidate.
 
 Follow-up: the shared Next Image configuration now caps generated device
 variants at `2048px`, preventing full-bleed route heroes such as `/oferta` from
