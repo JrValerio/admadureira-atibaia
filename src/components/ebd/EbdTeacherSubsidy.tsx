@@ -5,7 +5,6 @@ import {
   EbdSupportListPanel,
   EbdSupportListaPanel,
   EbdSupportPanel,
-  EbdSupportSchedulePanel,
   EbdSupportSection,
   EbdSupportTextPanel,
   type EbdSupportLabelTone,
@@ -15,8 +14,6 @@ import {
 import { formatEbdDate } from "@/lib/ebd-utils";
 import type {
   ClasseEBD,
-  LeituraDiariaItem,
-  LeituraSemanalItem,
   LicaoEBD,
   ListaItem,
   ReferenciaCruzada,
@@ -105,28 +102,6 @@ function renderListaPanels(panels: ListaPanelConfig[]) {
       className={panel.className}
     />
   ));
-}
-
-function toDailyScheduleItems(items?: LeituraDiariaItem[]) {
-  return (
-    items?.map((item) => ({
-      key: `${item.dia}-${item.referencia}`,
-      day: item.dia,
-      reference: item.referencia,
-      note: item.tema,
-    })) ?? []
-  );
-}
-
-function toWeeklyScheduleItems(items?: LeituraSemanalItem[]) {
-  return (
-    items?.map((item) => ({
-      key: `${item.dia}-${item.referencia}`,
-      day: item.dia,
-      reference: item.referencia,
-      note: item.foco,
-    })) ?? []
-  );
 }
 
 function ReferenciaList({ items }: { items?: ReferenciaCruzada[] }) {
@@ -279,8 +254,6 @@ function YoungTopicoCard({ topico }: { topico: TopicoJovens }) {
 }
 
 function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
-  const dailySchedule = toDailyScheduleItems(subsidio.cabecalho.leituraDiaria);
-
   return (
     <div className="space-y-6">
       <EbdSupportSection eyebrow="Panorama da lição" title="Visão geral da aula">
@@ -297,11 +270,6 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
           </div>
 
           <div className="space-y-4">
-            <EbdSupportListPanel
-              title="Objetivos"
-              items={subsidio.visaoGeral.objetivos}
-              markerTone="accent"
-            />
             {subsidio.visaoGeral.palavraChave ? (
               <EbdSupportPanel title="Palavra-chave" labelTone="danger">
                 <p className="font-semibold text-[#212121]">
@@ -316,48 +284,21 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
                 ) : null}
               </EbdSupportPanel>
             ) : null}
+            {renderTextPanels([
+              {
+                key: "trimestre",
+                title: "Trimestre",
+                text: subsidio.cabecalho.trimestre,
+                textClassName: "text-sm",
+              },
+              {
+                key: "comentarista",
+                title: "Comentarista",
+                text: subsidio.cabecalho.comentarista ?? "A confirmar",
+                textClassName: "text-sm",
+              },
+            ])}
           </div>
-        </div>
-
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {renderTextPanels([
-            {
-              key: "texto-aureo",
-              title: "Texto áureo",
-              text: subsidio.cabecalho.textoAureo ?? "A confirmar",
-              textClassName: "text-sm",
-            },
-            {
-              key: "trimestre",
-              title: "Trimestre",
-              text: subsidio.cabecalho.trimestre,
-              textClassName: "text-sm",
-            },
-            {
-              key: "comentarista",
-              title: "Comentarista",
-              text: subsidio.cabecalho.comentarista ?? "A confirmar",
-              textClassName: "text-sm",
-            },
-          ])}
-        </div>
-
-        <div className="mt-6 space-y-6">
-          <EbdSupportListPanel
-            title="Leitura bíblica em classe"
-            items={subsidio.cabecalho.leituraBiblicaEmClasse}
-            labelTone="danger"
-          />
-          <EbdSupportSchedulePanel
-            title="Leitura diária"
-            items={dailySchedule}
-            labelTone="danger"
-          />
-          <EbdSupportListPanel
-            title="Hinos sugeridos"
-            items={subsidio.cabecalho.hinosSugeridos}
-            labelTone="danger"
-          />
         </div>
       </EbdSupportSection>
 
@@ -511,68 +452,8 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
 }
 
 function YoungSubsidy({ subsidio }: { subsidio: SubsidioJovens }) {
-  const weeklySchedule = toWeeklyScheduleItems(subsidio.cabecalho.leituraSemanal);
-
   return (
     <div className="space-y-6">
-      <EbdSupportSection eyebrow="Panorama da lição" title="Arranque pedagógico">
-        <div className={SUPPORT_OVERVIEW_GRID_CLASS_NAME}>
-          <div className="space-y-4">
-            {renderTextPanels([
-              {
-                key: "texto-principal",
-                title: "Texto principal",
-                text: subsidio.cabecalho.textoPrincipal ?? "A confirmar",
-                textClassName: "text-sm",
-              },
-              {
-                key: "resumo-da-licao",
-                title: "Resumo da lição",
-                text: subsidio.cabecalho.resumoDaLicao,
-                textClassName: "text-sm",
-              },
-              {
-                key: "trimestre",
-                title: "Trimestre",
-                text: subsidio.cabecalho.trimestre,
-                textClassName: "text-sm",
-              },
-            ])}
-          </div>
-
-          <div className="space-y-4">
-            {renderListPanels([
-              {
-                key: "objetivos",
-                title: "Objetivos",
-                items: subsidio.arranquePedagogico.objetivos,
-                labelTone: "danger",
-                markerTone: "danger",
-              },
-            ])}
-            <EbdSupportTextPanel
-              title="Interação"
-              text={subsidio.arranquePedagogico.interacao}
-              labelTone="danger"
-              textClassName="text-sm"
-            />
-          </div>
-        </div>
-
-        <div className="mt-6 space-y-6">
-          <EbdSupportTextPanel
-            title="Orientação pedagógica"
-            text={subsidio.arranquePedagogico.orientacaoPedagogica}
-            tone="dark"
-          />
-          <EbdSupportSchedulePanel
-            title="Leitura semanal"
-            items={weeklySchedule}
-            labelTone="danger"
-          />
-        </div>
-      </EbdSupportSection>
-
       <EbdSupportSection eyebrow="Desenvolvimento" title="Tópicos da lição">
         <div className="space-y-4">
           {subsidio.desenvolvimento.map((topico) => (
