@@ -14,6 +14,7 @@ import type {
   ListaItem,
 } from "@/data/ebd";
 import { hasRitmoSemana, hasPlanejamento } from "@/lib/ebd-lesson-structure";
+import { getEbdScheduleDateForLessonDay } from "@/lib/ebd-schedule";
 
 type EbdLessonOverviewBlocksProps = {
   classeInfo: ClasseEBDInfo;
@@ -132,19 +133,27 @@ function renderBlock(block: RecurringBlock) {
   }
 }
 
-function toDailySchedule(items: LeituraDiariaItem[]): EbdSupportScheduleItem[] {
+function toDailySchedule(
+  items: LeituraDiariaItem[],
+  lessonDate: string
+): EbdSupportScheduleItem[] {
   return items.map((item) => ({
     key: `${item.dia}-${item.referencia}`,
     day: item.dia,
+    date: getEbdScheduleDateForLessonDay(lessonDate, item.dia),
     reference: item.referencia,
     note: item.tema,
   }));
 }
 
-function toWeeklySchedule(items: LeituraSemanalItem[]): EbdSupportScheduleItem[] {
+function toWeeklySchedule(
+  items: LeituraSemanalItem[],
+  lessonDate: string
+): EbdSupportScheduleItem[] {
   return items.map((item) => ({
     key: `${item.dia}-${item.referencia}`,
     day: item.dia,
+    date: getEbdScheduleDateForLessonDay(lessonDate, item.dia),
     reference: item.referencia,
     note: item.foco,
   }));
@@ -175,7 +184,10 @@ export default function EbdLessonOverviewBlocks({
                   key: "leitura-diaria",
                   kind: "schedule" as const,
                   title: "Leitura diária",
-                  items: toDailySchedule(structure.leituraDiaria),
+                  items: toDailySchedule(
+                    structure.leituraDiaria,
+                    structure.topo.data
+                  ),
                   tone: "accent" as const,
                   fullWidth: true,
                 },
@@ -199,7 +211,10 @@ export default function EbdLessonOverviewBlocks({
               key: "leitura-semanal",
               kind: "schedule" as const,
               title: "Leitura semanal",
-              items: toWeeklySchedule(structure.leituraSemanal),
+              items: toWeeklySchedule(
+                structure.leituraSemanal,
+                structure.topo.data
+              ),
               tone: "accent" as const,
               fullWidth: true,
             },

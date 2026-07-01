@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
+import EbdTodayScheduleCard from "@/components/ebd/EbdTodayScheduleCard";
 import type { ListaItem } from "@/data/ebd";
 
 export type EbdSupportPanelTone = "white" | "accent" | "soft" | "dark";
@@ -9,6 +10,7 @@ export type EbdSupportMarkerTone = "accent" | "danger" | "earth";
 export type EbdSupportScheduleItem = {
   key: string;
   day: string;
+  date?: string | null;
   reference: string;
   note?: string;
 };
@@ -302,6 +304,10 @@ export function EbdSupportSchedulePanel({
       : tone === "accent"
         ? "border border-[#ffa726]/15 bg-white/80"
         : "border border-black/5 bg-white";
+  const todayItemClassName =
+    tone === "dark"
+      ? "!border-[#ffa726]/70 !bg-[#ffa726]/12 shadow-[0_0_0_3px_rgba(255,167,38,0.12)]"
+      : "!border-[#ef5350]/40 !bg-[#fff7f7] shadow-[0_0_0_3px_rgba(239,83,80,0.08)]";
 
   return (
     <EbdSupportPanel
@@ -312,9 +318,17 @@ export function EbdSupportSchedulePanel({
     >
       <div className={itemsClassName ?? "space-y-3"}>
         {items.map((item) => (
-          <div key={item.key} className={joinClasses("rounded-2xl p-4", itemClassName)}>
+          <EbdTodayScheduleCard
+            key={item.key}
+            className={joinClasses(
+              "relative rounded-2xl p-4 pr-16 transition-colors",
+              itemClassName
+            )}
+            date={item.date}
+            todayClassName={todayItemClassName}
+          >
             <p className="text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-              {item.day}
+              {item.date ? <time dateTime={item.date}>{item.day}</time> : item.day}
             </p>
             <p
               className={joinClasses(
@@ -335,7 +349,7 @@ export function EbdSupportSchedulePanel({
                 />
               </p>
             ) : null}
-          </div>
+          </EbdTodayScheduleCard>
         ))}
       </div>
     </EbdSupportPanel>
