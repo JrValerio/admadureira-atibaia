@@ -35,232 +35,161 @@ export type ClasseEBDInfo = {
   ordem: number;
 };
 
-export type ListaItem = {
-  titulo?: string;
-  conteudo: string;
-};
+const textoObrigatorio = z.string().min(1);
+const arrayTexto = z.array(textoObrigatorio);
 
-export type ReferenciaCruzada = {
-  referencia: string;
-  descricao?: string;
-};
-
-export type LeituraDiariaItem = {
-  dia: string;
-  referencia: string;
-  tema?: string;
-};
-
-export type LeituraSemanalItem = {
-  dia: string;
-  referencia: string;
-  foco?: string;
-};
-
-export const VERSOES_BIBLICAS = ["ARC", "ACF", "ARA", "NAA", "NTLH"] as const;
-
-export const referenciaBiblicaSchema = z.object({
-  referencia: z.string().min(1),
-  texto: z.string().min(1),
-  versao: z.enum(VERSOES_BIBLICAS).optional(),
+export const listaItemSchema = z.object({
+  titulo: textoObrigatorio.optional(),
+  conteudo: textoObrigatorio,
 });
 
-export type ReferenciaBiblica = z.infer<typeof referenciaBiblicaSchema>;
+export type ListaItem = z.infer<typeof listaItemSchema>;
 
-const arrayTextoObrigatorio = z.array(z.string().min(1)).min(1);
+export const referenciaCruzadaSchema = z.object({
+  referencia: textoObrigatorio,
+  descricao: textoObrigatorio.optional(),
+});
 
-export const notaExegeticaSchema = z.object({
-  referencia: z.string().min(1),
-  observacao: z.string().min(1),
-  termoOriginal: z
+export type ReferenciaCruzada = z.infer<typeof referenciaCruzadaSchema>;
+
+export const leituraDiariaItemSchema = z.object({
+  dia: textoObrigatorio,
+  referencia: textoObrigatorio,
+  tema: textoObrigatorio.optional(),
+});
+
+export type LeituraDiariaItem = z.infer<typeof leituraDiariaItemSchema>;
+
+export const leituraSemanalItemSchema = z.object({
+  dia: textoObrigatorio,
+  referencia: textoObrigatorio,
+  foco: textoObrigatorio.optional(),
+});
+
+export type LeituraSemanalItem = z.infer<typeof leituraSemanalItemSchema>;
+
+export const topicoConteudoSchema = z.object({
+  id: textoObrigatorio,
+  titulo: textoObrigatorio,
+  sinopse: textoObrigatorio.optional(),
+  explicacaoBiblica: arrayTexto.optional(),
+  aprofundamentoDoutrinario: arrayTexto.optional(),
+  aplicacaoPratica: arrayTexto.optional(),
+  referenciasCruzadas: z.array(referenciaCruzadaSchema).optional(),
+});
+
+export type TopicoConteudo = z.infer<typeof topicoConteudoSchema>;
+
+export const subsidioAdultosSchema = z.object({
+  cabecalho: z.object({
+    numero: z.number().int().positive(),
+    titulo: textoObrigatorio,
+    data: textoObrigatorio,
+    trimestre: textoObrigatorio,
+    comentarista: textoObrigatorio.optional(),
+    textoAureo: textoObrigatorio.optional(),
+    verdadePratica: textoObrigatorio.optional(),
+    leituraBiblicaEmClasse: arrayTexto.optional(),
+    leituraDiaria: z.array(leituraDiariaItemSchema).optional(),
+    hinosSugeridos: arrayTexto.optional(),
+  }),
+  visaoGeral: z.object({
+    resumo: textoObrigatorio,
+    ideiaCentral: textoObrigatorio.optional(),
+    objetivos: arrayTexto.optional(),
+    palavraChave: z
+      .object({
+        termo: textoObrigatorio,
+        definicao: textoObrigatorio.optional(),
+      })
+      .optional(),
+  }),
+  desenvolvimento: z.array(topicoConteudoSchema),
+  apoioProfessor: z.object({
+    perguntaDeAbertura: textoObrigatorio.optional(),
+    pontoSensivelDaAula: textoObrigatorio.optional(),
+    erroComumDeInterpretacao: textoObrigatorio.optional(),
+    perguntasParaDebate: arrayTexto.optional(),
+    sugestaoDeFechamento: textoObrigatorio.optional(),
+  }),
+  aprofundamento: z
     .object({
-      termo: z.string().min(1),
-      idioma: z.enum(["hebraico", "grego"]),
-      transliteracao: z.string().min(1).optional(),
-      significado: z.string().min(1),
+      contextoHistorico: arrayTexto.optional(),
+      conceitoTeologico: arrayTexto.optional(),
+      notaDeVocabulario: z.array(listaItemSchema).optional(),
+      leituraComplementar: z.array(listaItemSchema).optional(),
+    })
+    .optional(),
+  vidaCrista: z
+    .object({
+      oQueConfronta: arrayTexto.optional(),
+      oQueConsola: arrayTexto.optional(),
+      oQueExige: arrayTexto.optional(),
+      oQueRevelaSobreDeus: arrayTexto.optional(),
+    })
+    .optional(),
+  revisao: z
+    .object({
+      perguntas: arrayTexto.optional(),
+      pontosChave: arrayTexto.optional(),
+      fraseDeSintese: textoObrigatorio.optional(),
     })
     .optional(),
 });
 
-export type NotaExegetica = z.infer<typeof notaExegeticaSchema>;
+export type SubsidioAdultos = z.infer<typeof subsidioAdultosSchema>;
 
-export const personagemBiblicoSchema = z.object({
-  nome: z.string().min(1),
-  descricao: z.string().min(1),
-  papelNaLicao: z.string().min(1),
+export const topicoJovensSchema = topicoConteudoSchema.extend({
+  pense: textoObrigatorio.optional(),
+  pontoImportante: textoObrigatorio.optional(),
 });
 
-export type PersonagemBiblico = z.infer<typeof personagemBiblicoSchema>;
+export type TopicoJovens = z.infer<typeof topicoJovensSchema>;
 
-export const conexaoBiblicaSchema = z.object({
-  referencia: z.string().min(1),
-  conexao: z.string().min(1),
-});
-
-export type ConexaoBiblica = z.infer<typeof conexaoBiblicaSchema>;
-
-export const dificuldadeInterpretativaSchema = z.object({
-  questao: z.string().min(1),
-  orientacao: z.string().min(1),
-});
-
-export type DificuldadeInterpretativa = z.infer<
-  typeof dificuldadeInterpretativaSchema
->;
-
-export const fonteSubsidioSchema = z.object({
-  tipo: z.enum(["revista", "livro-apoio", "biblia-estudo", "biblia", "outro"]),
-  titulo: z.string().min(1),
-  autor: z.string().min(1).optional(),
-  pagina: z.string().min(1).optional(),
-  observacao: z.string().min(1).optional(),
-});
-
-export type FonteSubsidio = z.infer<typeof fonteSubsidioSchema>;
-
-export const aplicacoesPorEsferaSchema = z.object({
-  pessoal: arrayTextoObrigatorio.optional(),
-  familia: arrayTextoObrigatorio.optional(),
-  igreja: arrayTextoObrigatorio.optional(),
-  sociedade: arrayTextoObrigatorio.optional(),
-});
-
-export type AplicacoesPorEsfera = z.infer<
-  typeof aplicacoesPorEsferaSchema
->;
-
-export const recursosProfessorSchema = z.object({
-  perguntasAprofundamento: arrayTextoObrigatorio.optional(),
-  ilustracoes: arrayTextoObrigatorio.optional(),
-  dinamicas: arrayTextoObrigatorio.optional(),
-  alertasPastorais: arrayTextoObrigatorio.optional(),
-});
-
-export type RecursosProfessor = z.infer<typeof recursosProfessorSchema>;
-
-export const subsidioExpandidoSchema = z.object({
-  titulo: z.string().min(1).optional(),
-  chaveDaLicao: z.string().min(1).optional(),
-  contextoHistorico: arrayTextoObrigatorio.optional(),
-  contextoLiterario: arrayTextoObrigatorio.optional(),
-  contextoTeologico: arrayTextoObrigatorio.optional(),
-  notasExegeticas: z.array(notaExegeticaSchema).min(1).optional(),
-  personagens: z.array(personagemBiblicoSchema).min(1).optional(),
-  conexoesBiblicas: z.array(conexaoBiblicaSchema).min(1).optional(),
-  dificuldadesInterpretativas: z
-    .array(dificuldadeInterpretativaSchema)
-    .min(1)
+export const subsidioJovensSchema = z.object({
+  cabecalho: z.object({
+    numero: z.number().int().positive(),
+    titulo: textoObrigatorio,
+    data: textoObrigatorio,
+    trimestre: textoObrigatorio,
+    textoPrincipal: textoObrigatorio.optional(),
+    resumoDaLicao: textoObrigatorio.optional(),
+    leituraSemanal: z.array(leituraSemanalItemSchema).optional(),
+  }),
+  arranquePedagogico: z.object({
+    objetivos: arrayTexto.optional(),
+    interacao: textoObrigatorio.optional(),
+    orientacaoPedagogica: textoObrigatorio.optional(),
+  }),
+  desenvolvimento: z.array(topicoJovensSchema),
+  apoioProfessor: z.object({
+    quebraGelo: textoObrigatorio.optional(),
+    perguntaChave: textoObrigatorio.optional(),
+    dificuldadeProvavelDaClasse: textoObrigatorio.optional(),
+    conducaoDaConversa: arrayTexto.optional(),
+    fechamento: textoObrigatorio.optional(),
+  }),
+  aprofundamentoOpcional: z
+    .object({
+      notaDoutrinariaCurta: arrayTexto.optional(),
+      contextoBiblico: arrayTexto.optional(),
+      conexaoComVidaCrista: arrayTexto.optional(),
+    })
     .optional(),
-  eixoCristocentrico: arrayTextoObrigatorio.optional(),
-  aplicacoesPorEsfera: aplicacoesPorEsferaSchema.optional(),
-  recursosProfessor: recursosProfessorSchema.optional(),
-  referencias: z.array(fonteSubsidioSchema).min(1).optional(),
+  revisao: z
+    .object({
+      horaDaRevisao: arrayTexto.optional(),
+      quizCurto: arrayTexto.optional(),
+      conclusao: textoObrigatorio.optional(),
+    })
+    .optional(),
 });
 
-export type SubsidioExpandido = z.infer<typeof subsidioExpandidoSchema>;
+export type SubsidioJovens = z.infer<typeof subsidioJovensSchema>;
 
 export type TopicoEBD = {
   titulo: string;
   conteudo: string[];
-};
-
-export type TopicoConteudo = {
-  id: string;
-  titulo: string;
-  sinopse?: string;
-  explicacaoBiblica?: string[];
-  aprofundamentoDoutrinario?: string[];
-  aplicacaoPratica?: string[];
-  referenciasCruzadas?: ReferenciaCruzada[];
-};
-
-export type SubsidioAdultos = {
-  cabecalho: {
-    numero: number;
-    titulo: string;
-    data: string;
-    trimestre: string;
-    comentarista?: string;
-    textoAureo?: string;
-    verdadePratica?: string;
-    leituraBiblicaEmClasse?: string[];
-    leituraDiaria?: LeituraDiariaItem[];
-    hinosSugeridos?: string[];
-  };
-  visaoGeral: {
-    resumo: string;
-    ideiaCentral?: string;
-    objetivos?: string[];
-    palavraChave?: {
-      termo: string;
-      definicao?: string;
-    };
-  };
-  desenvolvimento: TopicoConteudo[];
-  apoioProfessor: {
-    perguntaDeAbertura?: string;
-    pontoSensivelDaAula?: string;
-    erroComumDeInterpretacao?: string;
-    perguntasParaDebate?: string[];
-    sugestaoDeFechamento?: string;
-  };
-  aprofundamento?: {
-    contextoHistorico?: string[];
-    conceitoTeologico?: string[];
-    notaDeVocabulario?: ListaItem[];
-    leituraComplementar?: ListaItem[];
-  };
-  vidaCrista?: {
-    oQueConfronta?: string[];
-    oQueConsola?: string[];
-    oQueExige?: string[];
-    oQueRevelaSobreDeus?: string[];
-  };
-  revisao?: {
-    perguntas?: string[];
-    pontosChave?: string[];
-    fraseDeSintese?: string;
-  };
-};
-
-export type TopicoJovens = TopicoConteudo & {
-  pense?: string;
-  pontoImportante?: string;
-};
-
-export type SubsidioJovens = {
-  cabecalho: {
-    numero: number;
-    titulo: string;
-    data: string;
-    trimestre: string;
-    textoPrincipal?: string;
-    resumoDaLicao?: string;
-    leituraSemanal?: LeituraSemanalItem[];
-  };
-  arranquePedagogico: {
-    objetivos?: string[];
-    interacao?: string;
-    orientacaoPedagogica?: string;
-  };
-  desenvolvimento: TopicoJovens[];
-  apoioProfessor: {
-    quebraGelo?: string;
-    perguntaChave?: string;
-    dificuldadeProvavelDaClasse?: string;
-    conducaoDaConversa?: string[];
-    fechamento?: string;
-  };
-  aprofundamentoOpcional?: {
-    notaDoutrinariaCurta?: string[];
-    contextoBiblico?: string[];
-    conexaoComVidaCrista?: string[];
-  };
-  revisao?: {
-    horaDaRevisao?: string[];
-    quizCurto?: string[];
-    conclusao?: string;
-  };
 };
 
 type LicaoEBDBase = {
@@ -283,7 +212,6 @@ type LicaoEBDBase = {
   apoioProfessor?: string[];
   apoioAluno?: string[];
   esboco?: ListaItem[];
-  subsidioExpandido?: SubsidioExpandido;
   subsidioAdultos?: SubsidioAdultos;
   subsidioJovens?: SubsidioJovens;
 };
@@ -329,18 +257,41 @@ export function isLicaoEBDInfantil(
   return licao.publico === "infantil";
 }
 
-export function validateSubsidioExpandido(
+function formatZodIssues(error: z.ZodError) {
+  return error.issues
+    .map((issue) => `  ${issue.path.join(".")}: ${issue.message}`)
+    .join("\n");
+}
+
+export function validateSubsidioAdultos(
   licaoId: string,
   subsidio: unknown
-): SubsidioExpandido {
-  const result = subsidioExpandidoSchema.safeParse(subsidio);
+): SubsidioAdultos {
+  const result = subsidioAdultosSchema.safeParse(subsidio);
 
   if (!result.success) {
-    const issues = result.error.issues
-      .map((issue) => `  ${issue.path.join(".")}: ${issue.message}`)
-      .join("\n");
+    throw new Error(
+      `subsidioAdultos inválido em "${licaoId}":\n${formatZodIssues(
+        result.error
+      )}`
+    );
+  }
 
-    throw new Error(`subsidioExpandido inválido em "${licaoId}":\n${issues}`);
+  return result.data;
+}
+
+export function validateSubsidioJovens(
+  licaoId: string,
+  subsidio: unknown
+): SubsidioJovens {
+  const result = subsidioJovensSchema.safeParse(subsidio);
+
+  if (!result.success) {
+    throw new Error(
+      `subsidioJovens inválido em "${licaoId}":\n${formatZodIssues(
+        result.error
+      )}`
+    );
   }
 
   return result.data;
