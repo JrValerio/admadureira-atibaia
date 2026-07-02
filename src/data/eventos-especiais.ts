@@ -730,7 +730,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: congressoRiosDeUncao.horarioAgenda,
           descricao: [
             "Primeira noite do Congresso da Mocidade — Rios de Unção 2026, com o tema “Vinho novo em odre novo”, baseado em Lucas 5:38.",
-            "A programação terá a ministração do PB Rafael Garcia, participação da cantora Talita Morais e presença das igrejas convidadas AD Ministério Ipiranga, AD Ministério Curados para Curar e AD Ministério Belém — Setor 38, todas de Atibaia.",
+            "A programação terá a ministração do PB Rafael Garcia, participação da cantora Talita Morais e presença das igrejas convidadas AD Ministério Ipiranga, AD Ministério Curados para Curar e AD Ministério Madureira — Congregações.",
           ].join("\n\n"),
           convite:
             "Participe desta primeira noite e acompanhe a página oficial do congresso para ver a programação completa dos dois dias.",
