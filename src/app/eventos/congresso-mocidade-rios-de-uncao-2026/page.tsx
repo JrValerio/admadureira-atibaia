@@ -9,7 +9,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: congresso.tituloSeo,
   description: congresso.descricaoSeo,
   path: congresso.path,
-  image: congresso.imagem,
+  image: congresso.hero,
   keywords: [...congresso.keywords],
 });
 
@@ -43,7 +43,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
     name: congresso.titulo,
     description: congresso.descricaoSeo,
     url: canonicalUrl,
-    image: [resolveSiteUrl(congresso.imagem)],
+    image: [resolveSiteUrl(congresso.hero)],
     startDate: "2026-07-17T19:00:00-03:00",
     inLanguage: "pt-BR",
     eventStatus: "https://schema.org/EventScheduled",
