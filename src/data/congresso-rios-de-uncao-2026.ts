@@ -13,6 +13,8 @@ export const CONGRESSO_RIOS_DE_UNCAO_2026 = {
   endereco: "Praça Pio XII, 122 — Centro — Atibaia/SP",
   ministerio: "Mocidade Rios de Unção",
   imagem: "/programacao/eventos/congresso-rios-de-uncao.png",
+  banner: "/banners/congresso-jovens-sede.png",
+  hero: "/programacao/eventos/hero-congresso-rios-de-uncao.jpg",
   descricaoSeo:
     "Participe do Congresso da Mocidade — Rios de Unção 2026, nos dias 17 e 18 de julho, às 19h, na AD Ministério Madureira Campo de Atibaia — Sede. Tema: Vinho novo em odre novo — Lucas 5:38.",
   descricaoTopo:
