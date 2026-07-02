@@ -41,7 +41,7 @@ export const CONGRESSO_RIOS_DE_UNCAO_2026 = {
       convidados: [
         "AD Ministério Ipiranga — Atibaia",
         "AD Ministério Curados para Curar — Atibaia",
-        "AD Ministério Belém — Setor 38 — Atibaia",
+        "AD Ministério Madureira — Congregações",
       ],
     },
     {
@@ -59,20 +59,29 @@ export const CONGRESSO_RIOS_DE_UNCAO_2026 = {
   ],
   lideranca: [
     {
-      titulo: "Direção geral",
-      nomes: ["Pr. Zacarias Bernardes Félix", "Pra. Anna Alzira"],
+      titulo: "Liderança espiritual",
+      nomes: [
+        "Pr. Zacarias Bernardes Félix — Presidente do Campo de Atibaia",
+        "Pra. Anna Alzira — Presidente do Campo de Atibaia",
+      ],
     },
     {
-      titulo: "Liderança da Mocidade Rios de Unção",
-      nomes: ["Valéria Monsão", "Wilson Wallace"],
+      titulo: "Direção local do congresso",
+      nomes: [
+        "Valéria Monsão — Líder de Jovens",
+        "Wilson Wallace — Líder de Jovens",
+      ],
     },
     {
       titulo: "Coordenação UMADAT",
-      nomes: ["Pr. Mathias Nascimento"],
+      nomes: ["Pr. Mathias Nascimento — Coordenador da UMADAT"],
     },
     {
-      titulo: "Regente",
-      nomes: ["Rebeca Monsão"],
+      titulo: "Regência",
+      nomes: [
+        "Rebeca Monsão — Regente",
+        "Wilson Wallace — Regente / apoio musical da mocidade",
+      ],
     },
   ],
   keywords: [

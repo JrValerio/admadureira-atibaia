@@ -88,9 +88,9 @@ const ministerios: Ministerio[] = [
       "Mais do que um grupo de jovens, o Rios de Unção é um espaço de crescimento espiritual, amizade, serviço e despertamento para uma geração que deseja viver o propósito de Deus.",
     ],
     lideranca: [
-      "Líderes de jovens: Valéria Monsão e Wilson Wallace",
-      "Regente: Rebeca Monsão",
-      "Apoio e direção espiritual: Pr. Zacarias Bernardes Félix e Pra. Anna Alzira",
+      "Liderança espiritual: Pr. Zacarias Bernardes Félix e Pra. Anna Alzira — Presidentes do Campo de Atibaia",
+      "Direção local do congresso e liderança de jovens: Valéria Monsão e Wilson Wallace",
+      "Regência: Rebeca Monsão e Wilson Wallace — apoio musical da mocidade",
     ],
     atividades: [
       "Ensaios da mocidade",
