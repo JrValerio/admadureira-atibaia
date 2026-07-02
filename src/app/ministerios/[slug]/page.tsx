@@ -159,6 +159,40 @@ export default async function MinisterioPage({ params }: PageProps) {
                 </div>
               </div>
 
+              {ministerio.destaque ? (
+                <div className="mt-8 rounded-3xl border border-[#ffa726]/25 bg-[#fff8ee] p-6 md:p-8">
+                  <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
+                    <div>
+                      <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
+                        {ministerio.destaque.etiqueta}
+                      </p>
+                      <h2 className="font-acme text-2xl text-[#212121] tracking-wide md:text-3xl">
+                        {ministerio.destaque.titulo}
+                      </h2>
+                      <p className="mt-3 max-w-3xl text-[#555] leading-relaxed">
+                        {ministerio.destaque.descricao}
+                      </p>
+                      {ministerio.destaque.detalhes ? (
+                        <ul className="mt-5 grid gap-2 text-sm text-[#555] sm:grid-cols-2">
+                          {ministerio.destaque.detalhes.map((detalhe) => (
+                            <li key={detalhe} className="flex gap-3">
+                              <span className="text-[#ffa726]">•</span>
+                              <span>{detalhe}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                    <Link
+                      href={ministerio.destaque.href}
+                      className="ui-btn-primary lg:mt-8"
+                    >
+                      {ministerio.destaque.ctaLabel}
+                    </Link>
+                  </div>
+                </div>
+              ) : null}
+
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link
                   href="/contato"
