@@ -139,7 +139,8 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
           title="Ensino, preparo e crescimento na Palavra"
           description={`"Se é ensinar, haja dedicação ao ensino." — Rm 12.7 · Uma central gratuita de apoio à EBD da AD Madureira Atibaia para professores, alunos e toda a igreja.`}
           image={igrejaHeroMedia.ebd}
-          imageAlt="Capa da Escola Bíblica Dominical da AD Madureira Atibaia"
+          imageAlt="Arte da Escola Bíblica Dominical da AD Madureira Atibaia"
+          objectPosition="64% center"
         />
 
         <section className="border-b border-black/5 bg-white py-12 md:py-16">
