@@ -30,6 +30,20 @@ Registro das decisões de arquitetura e produto com o raciocínio por trás de c
 
 ---
 
+## Eventos de vários dias com página canônica
+
+**Decisão:** congressos e eventos especiais com várias datas usam uma página canônica dedicada em `/eventos/[slug-do-evento]`, mantendo cada data como entrada própria em `eventos-especiais.ts`.
+
+**Motivo:** as entradas da agenda preservam a função de calendário, enquanto a página canônica concentra SEO, arte oficial, programação completa, convidados, liderança e CTA compartilhável. O padrão usado no Congresso da Mocidade — Rios de Unção 2026 também deve orientar eventos como o Congresso Geral UMADAT Jovem.
+
+**Regra de implementação:** criar um arquivo de dados compartilhado em `src/data/`, apontar as entradas antigas da agenda para a página canônica via `recursos`, incluir a canônica no sitemap e, se houver slide na home, linkar o hero para a canônica.
+
+**Regra visual:** artes verticais informativas usam `object-contain` de forma escopada ao asset do evento; não mudar o crop padrão dos demais eventos. Evitar overlay de texto sobre pôsteres que já carregam data, tema e nomes.
+
+**Regra editorial:** nomes, cargos, convidados, preletores e atribuições institucionais exigem material oficial ou confirmação da liderança antes do merge. A fonte da confirmação deve ser registrada no corpo do PR.
+
+---
+
 ## Expansão de datas em runtime (não datas fixas no banco)
 
 **Decisão:** a agenda recorrente é definida como regras de recorrência e expandida para datas concretas em `agenda-utils.ts`.
