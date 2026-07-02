@@ -22,6 +22,16 @@ Registro das decisões de arquitetura e produto com o raciocínio por trás de c
 
 ---
 
+## Gate de merge para conteúdo e documentação
+
+**Decisão:** documentação de processo com escopo pré-aprovado em conversa pode ser mergeada pelo agente após CI verde. Conteúdo editorial ou institucional publicado no site exige gate humano antes do merge, mesmo com CI verde.
+
+**Motivo:** CI valida compilação, lint e testes; não valida verdade de mundo real, grafia de nomes, cargos, horários, fontes bíblicas ou atribuições institucionais. A fonte da confirmação deve ficar registrada no corpo do PR quando a mudança envolver dado editorial ou institucional.
+
+**Regra de handoff:** se a mudança altera conteúdo visível para igreja, visitantes ou alunos, manter o PR aberto ou em draft até aprovação humana/fonte oficial. Se a mudança apenas registra processo já aprovado, CI verde basta.
+
+---
+
 ## Separação entre programação semanal e eventos especiais
 
 **Decisão:** `agenda.ts` para rotina fixa; `eventos-especiais.ts` para eventos pontuais.
@@ -101,3 +111,33 @@ Registro das decisões de arquitetura e produto com o raciocínio por trás de c
 **Risco aceito:** análise estática de segurança em nível de plataforma fica fora do fluxo por limitação de plano, não por omissão operacional.
 
 **Revisão futura:** reavaliar essa decisão se o repositório se tornar público ou se o plano/hospedagem mudar para um nível que habilite Code scanning.
+
+---
+
+## EBD: discriminated union por `publico`
+
+**Decisão:** `LicaoEBD = LicaoEBDAdultos | LicaoEBDJovens | LicaoEBDInfantil`, discriminadas por `publico`.
+
+**Motivo:** Adultos e Jovens têm nomenclaturas editoriais distintas (`textoAureo`/`verdadePratica` vs `textoPrincipal`/`resumoDaLicao`). A union garante type safety por classe sem forçar nomenclatura unificada, e narrowing por `publico` resolve o render sem fallbacks runtime.
+
+**Custo aceito:** cada nova variante de classe exige uma linha na union e um type guard.
+
+---
+
+## EBD: subsídio valida shapes reais, não estrutura paralela
+
+**Decisão:** `SubsidioAdultos` e `SubsidioJovens` são os schemas canônicos, validados com Zod e tipados via `z.infer`. Campo `subsidioExpandido` paralelo (PR #87) foi removido no PR #88.
+
+**Motivo:** uma camada paralela com shape diferente do que renderiza em produção cria três fontes de verdade por lição (subsídio da classe, aprofundamento da classe, expandido cross-class) e dois lugares para o mesmo contexto histórico. Para adicionar granularidade ao aprofundamento, o caminho correto é estender os schemas existentes com sub-tipos compartilhados opcionais (`aprofundamentoEstruturadoSchema`), não criar um terceiro campo.
+
+**Regra de handoff:** qualquer proposta de novo campo top-level em `LicaoEBDBase` deve checar primeiro se `SubsidioAdultos.aprofundamento` ou `SubsidioJovens.aprofundamentoOpcional` já cobre o shape — se cobrir, estender de dentro, não adicionar campo paralelo.
+
+---
+
+## EBD: leitura diária é fiel à revista (6 dias, sem domingo)
+
+**Decisão:** `leituraDiaria` de Adultos e `leituraSemanal` de Jovens seguem o padrão CPAD: 6 entradas (seg–sáb), sem domingo autoral. Conteúdo (quais versículos, quais temas) é verbatim da revista, incluindo pontuação dos temas. Formato das referências segue a convenção do site: nome completo + dois-pontos (`Atos 1:8`, não `At 1.8`).
+
+**Motivo:** a Lição 1 de Adultos 3T2026 foi publicada com 7 dias e referências divergentes de qua–sáb em relação à revista física. A Lição 2 do mesmo trimestre (PR #89) teve referências gravadas em dot notation verbatim da revista (`Efésios 2.8,9`) em vez da convenção do site (`Efésios 2:8,9`). O site renderiza a string como armazenada — formato inconsistente vira inconsistência visual no bloco mais consultado da página. A normalização em runtime (`normalizeBibleReferenceNotation` via `normalizeAdultSubsidy`) converte ponto → dois-pontos entre dígitos, mas a fonte deve já usar colon notation para que a leitura do dado seja imediata sem depender do conhecimento do normalizador.
+
+**Regra de handoff:** copiar conteúdo e temas da CPAD sem alteração; formatar referências com nome por extenso + dois-pontos. O array é livre no schema (sem `.length` fixo) para acomodar variações eventuais sem alterar o tipo.
