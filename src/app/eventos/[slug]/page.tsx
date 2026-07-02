@@ -59,7 +59,8 @@ export async function generateMetadata({
     title,
     description,
     path: `/eventos/${evento.slug}`,
-    image: evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg",
+    image:
+      evento.hero ?? evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg",
   });
 }
 
@@ -80,7 +81,7 @@ export default async function EventoPage({ params }: PageProps) {
   }
 
   const eventImage =
-    evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+    evento.hero ?? evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
   const eventImageClassName =
     eventImage === congressoRiosDeUncao.imagem
       ? "object-contain"

@@ -20,6 +20,7 @@ type EventoConfig = {
   destaque?: boolean;
   imagem?: string;
   banner?: string;
+  hero?: string;
 };
 
 function criarEvento(local: string, config: EventoConfig) {
@@ -689,8 +690,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             "Participe das aulas da Escola Bíblica Dominical todo domingo às 09h e aprofunde seu conhecimento sobre a expansão do Evangelho entre os povos.",
           baseBiblica: criarBaseBiblica("Atos 1.8"),
           destaque: true,
-          imagem: "/programacao/eventos/banner-terceiro-trimestre-ebd.png",
-          banner: "/programacao/eventos/banner-terceiro-trimestre-ebd.png",
+          imagem: "/programacao/eventos/trimestre.png",
+          banner: "/programacao/eventos/trimestre.png",
         }),
         criarEvento(local, {
           slug: "reuniao-de-ministerio-06-07-2026",
@@ -744,8 +745,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             },
           ],
           destaque: true,
-          imagem: congressoRiosDeUncao.hero,
-          banner: congressoRiosDeUncao.banner,
+          imagem: congressoRiosDeUncao.imagem,
+          banner: congressoRiosDeUncao.imagem,
+          hero: congressoRiosDeUncao.hero,
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-18-07-2026",
@@ -769,8 +771,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             },
           ],
           destaque: true,
-          imagem: congressoRiosDeUncao.hero,
-          banner: congressoRiosDeUncao.banner,
+          imagem: congressoRiosDeUncao.imagem,
+          banner: congressoRiosDeUncao.imagem,
+          hero: congressoRiosDeUncao.hero,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-20-07-2026",
