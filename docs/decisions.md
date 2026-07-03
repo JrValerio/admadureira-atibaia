@@ -54,6 +54,16 @@ Registro das decisões de arquitetura e produto com o raciocínio por trás de c
 
 ---
 
+## Mapeamento de assets exige contrato explícito
+
+**Contexto:** No PR #96, múltiplos assets entregues de uma vez foram mapeados por inferência a partir dos nomes de arquivo (`hero-*`, `banner-*`), resultando em artes no slot errado (card vs hero vs banner de home). O PR #97 corrigiu com a separação estrutural `imagem` (card/listagem) / `hero` (página de detalhe) no tipo, config e schema Zod.
+
+**Regra:** Ao receber mais de um asset sem destino explícito, apresentar antes de codificar uma tabela `arquivo → página → slot (card | hero | banner | OG)` e obter confirmação do Amaro. Nome de arquivo não é contrato.
+
+**Regra estrutural:** Campos de imagem em eventos têm semântica fixa: `imagem` = arte de card/listagem; `hero` = topo da página de detalhe (+ OG/JSON-LD); `banner` = slides da home em `public/banners/`. Campos novos devem entrar no tipo, no `EventoConfig` e no schema Zod — o Zod stripa campos desconhecidos silenciosamente (bug pego no browser gate do #97).
+
+---
+
 ## Expansão de datas em runtime (não datas fixas no banco)
 
 **Decisão:** a agenda recorrente é definida como regras de recorrência e expandida para datas concretas em `agenda-utils.ts`.
