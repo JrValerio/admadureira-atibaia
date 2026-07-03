@@ -45,6 +45,28 @@ describe("subsidios EBD", () => {
       referencia: "Gênesis 12:1-3",
       tema: "O legado da obediência de Abraão",
     });
+
+    const hinosEsperadosPorLicao = new Map<number, string[]>([
+      [2, ["194", "232", "609"]],
+      [3, ["8", "188", "302"]],
+      [4, ["86", "127", "135"]],
+      [5, ["5", "75", "557"]],
+      [6, ["3", "259", "526"]],
+      [7, ["89", "375", "610"]],
+      [8, ["185", "305", "330"]],
+      [9, ["3", "71", "308"]],
+      [10, ["42", "292", "470"]],
+      [11, ["75", "77", "184"]],
+      [12, ["83", "578", "593"]],
+      [13, ["378", "610", "535"]],
+    ]);
+
+    for (const [numero, hinosSugeridos] of hinosEsperadosPorLicao) {
+      expect(
+        trimestre?.licoes.find((licao) => licao.numero === numero)
+          ?.subsidioAdultos?.cabecalho.hinosSugeridos
+      ).toEqual(hinosSugeridos);
+    }
   });
 
   it("valida os subsidios reais renderizados no catalogo", () => {
