@@ -208,7 +208,7 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Congresso da Mocidade — Rios de Unção",
       alt: "Arte oficial do Congresso da Mocidade Rios de Unção 2026",
       imagem: congressoRiosDeUncao.banner,
-      imageClassName: "object-contain object-center md:object-cover md:object-left",
+      imageClassName: "object-cover object-center",
       href: congressoRiosDeUncao.path,
       ariaLabel: "Abrir página do Congresso da Mocidade Rios de Unção 2026",
       priority: "high",
