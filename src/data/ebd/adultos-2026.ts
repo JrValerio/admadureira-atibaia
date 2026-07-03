@@ -3764,7 +3764,7 @@ const camposCanonicosAdultosSegundoTrimestre: Partial<
         tema: "Jesus, nosso intercessor",
       },
     ],
-    hinosSugeridos: ["5", "75", "357"],
+    hinosSugeridos: ["5", "75", "557"],
   },
   6: {
     textoChave: "Gênesis 18:14",
