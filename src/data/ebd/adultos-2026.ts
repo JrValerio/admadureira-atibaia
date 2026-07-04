@@ -3590,6 +3590,512 @@ const sementesAdultosSegundoTrimestreFuturas: LicaoSeedAdultosSegundoTrimestre[]
     },
   ];
 
+type CamposCanonicosAdultosSegundoTrimestre = Pick<
+  LicaoSeedAdultosSegundoTrimestre,
+  | "textoChave"
+  | "textoAureo"
+  | "verdadePratica"
+  | "leituraBiblica"
+  | "leituraDiaria"
+  | "hinosSugeridos"
+>;
+
+const camposCanonicosAdultosSegundoTrimestre: Partial<
+  Record<number, CamposCanonicosAdultosSegundoTrimestre>
+> = {
+  2: {
+    textoChave: "Gênesis 12:7",
+    textoAureo:
+      '"E apareceu o SENHOR a Abrão e disse: À tua semente darei esta terra. E edificou ali um altar ao SENHOR, que lhe aparecera." (Gn 12.7)',
+    verdadePratica:
+      "Quando Deus faz uma promessa incondicional, Ele a cumpre plenamente.",
+    leituraBiblica: ["Gênesis 13:7-18"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Hebreus 11:8",
+        tema: "A grande fé de Abraão",
+      },
+      {
+        dia: "Terça",
+        referencia: "Hebreus 11:17-19",
+        tema: "A fé de Abraão é provada",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Tiago 2:23",
+        tema: "Abraão, o amigo de Deus",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Gênesis 17:5",
+        tema: "Abraão, pai de multidão de nações",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gênesis 15:18-21",
+        tema: "O concerto de Deus com Abrão",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gálatas 3:7",
+        tema: "Abraão, pai dos filhos da fé",
+      },
+    ],
+    hinosSugeridos: ["194", "232", "609"],
+  },
+  3: {
+    textoChave: "Gênesis 16:2",
+    textoAureo:
+      '"E disse Sarai a Abrão: Eis que o Senhor me tem impedido de gerar; entra, pois, à minha serva; porventura, terei filhos dela. E ouviu Abrão a voz de Sarai." (Gn 16.2)',
+    verdadePratica:
+      "A impaciência é antagônica à fé, por isso não devemos ser dominados por ela. Deus é fiel e cumpre com suas promessas no tempo certo.",
+    leituraBiblica: ["Gênesis 16:1-16"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 16:2",
+        tema: "Sarai dá lugar à impaciência",
+      },
+      {
+        dia: "Terça",
+        referencia: "1 Pedro 5:7",
+        tema: "Lançar a ansiedade sobre Deus",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Salmos 40:1",
+        tema: "Esperar com paciência no Senhor",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Romanos 12:12",
+        tema: "Pacientes na tribulação",
+      },
+      {
+        dia: "Sexta",
+        referencia: "2 Pedro 3:9",
+        tema: "Deus é longânimo",
+      },
+      {
+        dia: "Sábado",
+        referencia: "1 Tessalonicenses 5:14",
+        tema: "Devemos ser pacientes para com todos",
+      },
+    ],
+    hinosSugeridos: ["8", "188", "302"],
+  },
+  4: {
+    textoChave: "Gênesis 17:7",
+    textoAureo:
+      '"E estabelecerei o meu concerto entre mim e ti e a tua semente depois de ti em suas gerações, por concerto perpétuo, para te ser a ti por Deus e à tua semente depois de ti." (Gn 17.7)',
+    verdadePratica: "Deus é fiel para cumprir tudo aquilo que nos prometeu.",
+    leituraBiblica: ["Gênesis 17:1-9"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 17:4",
+        tema: "O concerto é renovado",
+      },
+      {
+        dia: "Terça",
+        referencia: "Jeremias 1:12",
+        tema: "Deus vela pela sua palavra para a cumprir",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Gênesis 17:5",
+        tema: "Deus muda o nome de Abrão",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Gênesis 17:15",
+        tema: "Deus muda o nome de Sarai",
+      },
+      {
+        dia: "Sexta",
+        referencia: "2 Coríntios 5:17",
+        tema: "Mudança total para quem está em Cristo",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Colossenses 3:10",
+        tema: "Vestindo-nos com o novo",
+      },
+    ],
+    hinosSugeridos: ["86", "127", "135"],
+  },
+  5: {
+    textoChave: "Gênesis 18:32",
+    textoAureo:
+      '"Disse mais: Ora, não se ire o Senhor que ainda só mais esta vez falo: se, porventura, se acharem ali dez? E disse: Não a destruirei, por amor dos dez." (Gn 18.32)',
+    verdadePratica:
+      "Deus é misericordioso e dá tempo para o arrependimento, mas, quando o homem não quer, seu juízo é sem misericórdia.",
+    leituraBiblica: ["Gênesis 18:23-32"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Salmos 25:14",
+        tema: "Deus revela seus segredos para os que o temem",
+      },
+      {
+        dia: "Terça",
+        referencia: "Gênesis 18:32",
+        tema: "Abraão intercede por Sodoma e Gomorra",
+      },
+      {
+        dia: "Quarta",
+        referencia: "1 Timóteo 2:1",
+        tema: "Devemos interceder por todos",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Ezequiel 22:30",
+        tema: "Deus busca por intercessores perseverantes",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 8:26",
+        tema: "O Espírito Santo intercede por nós",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Romanos 8:34",
+        tema: "Jesus, nosso intercessor",
+      },
+    ],
+    hinosSugeridos: ["5", "75", "557"],
+  },
+  6: {
+    textoChave: "Gênesis 18:14",
+    textoAureo:
+      '"Haveria coisa alguma difícil ao SENHOR? Ao tempo determinado, tornarei a ti por este tempo da vida, e Sara terá um filho." (Gn 18.14)',
+    verdadePratica:
+      "Deus é Onipotente e não há nada que Ele não possa realizar segundo a sua vontade.",
+    leituraBiblica: ["Gênesis 21:1-7"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 18:14",
+        tema: "A promessa de Deus a Abraão é reiterada",
+      },
+      {
+        dia: "Terça",
+        referencia: "Gênesis 21:2",
+        tema: "No tempo determinado por Deus a promessa se cumpre",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Lucas 1:37",
+        tema: "Para Deus não há nada absolutamente impossível",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Atos 3:25",
+        tema: "O destaque da promessa abraâmica",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Deuteronômio 7:9",
+        tema: "Deus é fiel e guarda o concerto",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gênesis 21:33",
+        tema: "Deus cumpre os propósitos através das gerações",
+      },
+    ],
+    hinosSugeridos: ["3", "259", "526"],
+  },
+  7: {
+    textoChave: "Gênesis 22:2",
+    textoAureo:
+      '"E disse: Toma agora o teu filho, o teu único filho, Isaque, a quem amas, e vai-te à terra de Moriá; e oferece-o ali em holocausto sobre uma das montanhas, que eu te direi." (Gn 22.2)',
+    verdadePratica:
+      'Abraão confiava no Senhor a ponto de dizer ao seu filho: "Deus proverá para si o cordeiro".',
+    leituraBiblica: ["Gênesis 22:1-11"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 22:7",
+        tema: "Perguntas e respostas difíceis em meio à prova",
+      },
+      {
+        dia: "Terça",
+        referencia: "Hebreus 11:6",
+        tema: "Para agradar a Deus, é preciso ter fé",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Hebreus 11:1",
+        tema: "Fé, o firme fundamento das coisas que se esperam",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Hebreus 11:17,18",
+        tema: "Pela fé, Abraão ofereceu Isaque quando foi provado",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Romanos 1:17",
+        tema: "A fé como princípio que sustenta o justo",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Tiago 2:17",
+        tema: "A verdadeira fé manifesta-se em atitudes",
+      },
+    ],
+    hinosSugeridos: ["89", "375", "610"],
+  },
+  8: {
+    textoChave: "Gênesis 26:12",
+    textoAureo:
+      '"E semeou Isaque naquela mesma terra e colheu, naquele mesmo ano, cem medidas, porque o Senhor o abençoava." (Gn 26.12)',
+    verdadePratica:
+      "Deus abençoou Abraão em tudo, e Isaque, o filho da promessa, também seria abençoado. Quando Deus age, ninguém pode impedi-lo.",
+    leituraBiblica: ["Gênesis 26:1-5", "Gênesis 26:12-16", "Gênesis 26:24,25"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 26:14",
+        tema: "A inveja dos filisteus diante das bênçãos de Isaque",
+      },
+      {
+        dia: "Terça",
+        referencia: "Gênesis 26:3",
+        tema: "A bênção sobre a descendência",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Josué 23:14",
+        tema: "Nenhuma palavra vinda de Deus pode falhar",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Salmos 119:89",
+        tema: "A Palavra de Deus está firmada no Céu",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Jeremias 1:12",
+        tema: "Deus tem compromisso com a sua Palavra",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Números 23:19",
+        tema: "O atributo imutável de Deus",
+      },
+    ],
+    hinosSugeridos: ["185", "305", "330"],
+  },
+  9: {
+    textoChave: "Gênesis 25:23",
+    textoAureo:
+      '"[...] Duas nações estão no teu ventre, e dois povos se dividirão das suas entranhas: um povo será mais forte do que o outro povo, e o maior servirá ao menor." (Gn 25.23)',
+    verdadePratica:
+      "Os pais não devem ter preferência entre seus filhos e deve tratá-los da mesma forma.",
+    leituraBiblica: ["Gênesis 27:1-5", "Gênesis 27:41-44"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Salmos 133:1",
+        tema: "Os irmãos devem viver em união",
+      },
+      {
+        dia: "Terça",
+        referencia: "1 Coríntios 1:10",
+        tema: "Evite as dissensões",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Gênesis 27:10-13",
+        tema: "A mãe induziu o filho a mentir",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Deuteronômio 6:6-9",
+        tema: "Os pais devem ser exemplos",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Efésios 6:4",
+        tema: "Princípios do Senhor para os pais",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Romanos 12:10",
+        tema: "O valor do amor fraternal",
+      },
+    ],
+    hinosSugeridos: ["3", "71", "308"],
+  },
+  10: {
+    textoChave: "Gênesis 28:15",
+    textoAureo:
+      '"E eis que estou contigo, e te guardarei por onde quer que fores, e te farei tornar a esta terra, porque te não deixarei, até que te haja feito o que te tenho dito." (Gn 28.15)',
+    verdadePratica:
+      "Após um encontro com Deus, Jacó é transformado. Ninguém sai da presença do Senhor da mesma maneira.",
+    leituraBiblica: ["Gênesis 28:10-17"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 17:5",
+        tema: "Deus transformou Abrão em Abraão",
+      },
+      {
+        dia: "Terça",
+        referencia: "Gênesis 17:15",
+        tema: "Deus transformou Sarai em Sara",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Gênesis 32:28",
+        tema: "Deus transformou Jacó em Israel",
+      },
+      {
+        dia: "Quinta",
+        referencia: "João 1:42",
+        tema: "Deus transformou completamente a vida de Pedro",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Atos 13:9",
+        tema: "Deus transformou a vida de Saulo",
+      },
+      {
+        dia: "Sábado",
+        referencia: "João 20:16; Marcos 5:19",
+        tema: "Jesus transforma vidas",
+      },
+    ],
+    hinosSugeridos: ["42", "292", "470"],
+  },
+  11: {
+    textoChave: "Gênesis 32:28",
+    textoAureo:
+      '"Então, disse: Não se chamará mais o teu nome Jacó, mas Israel, pois, como príncipe, lutaste com Deus e com os homens e prevaleceste." (Gn 32.28)',
+    verdadePratica:
+      "Somente Deus pode transformar o caráter e a vida do ser humano.",
+    leituraBiblica: ["Gênesis 32:22-31"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "2 Coríntios 3:18",
+        tema: "Transformados de glória em glória",
+      },
+      {
+        dia: "Terça",
+        referencia: "Atos 3:19",
+        tema: "Arrependimento e conversão",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Colossenses 3:9,10",
+        tema: "Vestidos do novo homem",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Romanos 12:2",
+        tema: "A renovação do entendimento",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gálatas 5:22",
+        tema: "Quem é de Cristo tem o fruto do Espírito",
+      },
+      {
+        dia: "Sábado",
+        referencia: "2 Coríntios 5:17",
+        tema: "Sendo nova criatura em Cristo",
+      },
+    ],
+    hinosSugeridos: ["75", "77", "184"],
+  },
+  12: {
+    textoChave: "Gênesis 33:4",
+    textoAureo:
+      '"Então, Esaú correu-lhe ao encontro e abraçou-o; e lançou-se sobre o seu pescoço e beijou-o; e choraram." (Gn 33.4)',
+    verdadePratica:
+      "Em Deus, sempre há possibilidade de perdão e reconciliação.",
+    leituraBiblica: ["Gênesis 33:1-10"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "João 13:34,35",
+        tema: "Amar uns aos outros",
+      },
+      {
+        dia: "Terça",
+        referencia: "Mateus 6:12",
+        tema: "Perdoando como somos perdoados",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Colossenses 3:13",
+        tema: "Perdoando uns aos outros",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Mateus 6:15",
+        tema: "Quem não perdoa não será perdoado",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Hebreus 10:17",
+        tema: "Deus perdoa e esquece a ofensa",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Mateus 18:21,22",
+        tema: "Até setenta vezes sete",
+      },
+    ],
+    hinosSugeridos: ["83", "578", "593"],
+  },
+  13: {
+    textoChave: "Hebreus 11:8",
+    textoAureo:
+      '"Pela fé, Abraão, sendo chamado, obedeceu, indo para um lugar que havia de receber por herança; e saiu, sem saber para onde ia." (Hb 11.8)',
+    verdadePratica:
+      "Abraão, Isaque e Jacó deixaram um legado de fé em Deus para as futuras gerações.",
+    leituraBiblica: ["Hebreus 11:8-12", "Hebreus 11:17-21"],
+    leituraDiaria: [
+      {
+        dia: "Segunda",
+        referencia: "Gênesis 12:1-3",
+        tema: "O legado da obediência de Abraão",
+      },
+      {
+        dia: "Terça",
+        referencia: "Hebreus 11:8",
+        tema: "O legado da confiança nas promessas",
+      },
+      {
+        dia: "Quarta",
+        referencia: "Gênesis 22:9-12",
+        tema: "O legado da entrega total",
+      },
+      {
+        dia: "Quinta",
+        referencia: "Gênesis 24:12-14",
+        tema: "O legado espiritual de Isaque",
+      },
+      {
+        dia: "Sexta",
+        referencia: "Gênesis 26:24,25",
+        tema: "O legado da perseverança nas promessas",
+      },
+      {
+        dia: "Sábado",
+        referencia: "Gênesis 32:24-28",
+        tema: "O legado da transformação de Jacó",
+      },
+    ],
+    hinosSugeridos: ["378", "610", "535"],
+  },
+};
+
 function criarObjetivosAdultosSegundoTrimestre(
   seed: LicaoSeedAdultosSegundoTrimestre
 ) {
@@ -3814,30 +4320,34 @@ function criarSubsidioAdultosSegundoTrimestre(
 function criarLicaoAdultosSegundoTrimestreEnriquecida(
   seed: LicaoSeedAdultosSegundoTrimestre
 ): LicaoEBDAdultos {
+  const dados: LicaoSeedAdultosSegundoTrimestre = {
+    ...seed,
+    ...camposCanonicosAdultosSegundoTrimestre[seed.numero],
+  };
   const extensao =
-    extensoesImagensAdultosSegundoTrimestre[seed.numero] ?? "png";
+    extensoesImagensAdultosSegundoTrimestre[dados.numero] ?? "png";
 
   return {
-    id: `adultos-2026-2t-licao-${seed.numero}`,
+    id: `adultos-2026-2t-licao-${dados.numero}`,
     publico: "adultos",
-    slug: `licao-${seed.numero}`,
-    numero: seed.numero,
-    data: seed.data,
+    slug: `licao-${dados.numero}`,
+    numero: dados.numero,
+    data: dados.data,
     statusEditorial: "published",
-    titulo: seed.titulo,
-    resumo: seed.resumo,
-    imagem: getEbdLessonImagePath("adultos", "2026-2t", seed.numero, extensao),
-    textoChave: normalizeBibleReferenceNotation(seed.textoChave),
-    verdadePratica: seed.verdadePratica,
-    leituraBiblica: normalizeReferences(seed.leituraBiblica),
-    objetivos: criarObjetivosAdultosSegundoTrimestre(seed),
-    topicos: criarTopicosAdultosSegundoTrimestre(seed),
-    aplicacao: seed.aplicacao,
-    apoioProfessor: criarApoioProfessorAdultosSegundoTrimestre(seed),
-    apoioAluno: criarApoioAlunoAdultosSegundoTrimestre(seed),
-    esboco: criarEsbocoAdultosSegundoTrimestre(seed),
+    titulo: dados.titulo,
+    resumo: dados.resumo,
+    imagem: getEbdLessonImagePath("adultos", "2026-2t", dados.numero, extensao),
+    textoChave: normalizeBibleReferenceNotation(dados.textoChave),
+    verdadePratica: dados.verdadePratica,
+    leituraBiblica: normalizeReferences(dados.leituraBiblica),
+    objetivos: criarObjetivosAdultosSegundoTrimestre(dados),
+    topicos: criarTopicosAdultosSegundoTrimestre(dados),
+    aplicacao: dados.aplicacao,
+    apoioProfessor: criarApoioProfessorAdultosSegundoTrimestre(dados),
+    apoioAluno: criarApoioAlunoAdultosSegundoTrimestre(dados),
+    esboco: criarEsbocoAdultosSegundoTrimestre(dados),
     subsidioAdultos: normalizeAdultSubsidy(
-      criarSubsidioAdultosSegundoTrimestre(seed)
+      criarSubsidioAdultosSegundoTrimestre(dados)
     ),
   };
 }

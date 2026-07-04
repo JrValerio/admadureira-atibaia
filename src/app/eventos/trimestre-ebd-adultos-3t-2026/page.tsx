@@ -15,13 +15,14 @@ const SLUG = "trimestre-ebd-adultos-3t-2026";
 const DATA_INICIO = "2026-07-05";
 const DATA_FIM = "2026-09-27";
 const CANONICAL_PATH = `/eventos/${SLUG}`;
+const HERO_IMAGE = "/programacao/eventos/banner-terceiro-trimestre-ebd.png";
 
 export const metadata: Metadata = {
   ...buildPageMetadata({
     title: `3º Trimestre EBD 2026 — ${trimestre.titulo} | AD Madureira Atibaia`,
     description: trimestre.descricao,
     path: CANONICAL_PATH,
-    image: "/programacao/eventos/trimestre.png",
+    image: HERO_IMAGE,
   }),
   alternates: {
     canonical: resolveSiteUrl(CANONICAL_PATH),
@@ -82,7 +83,7 @@ export default function TrimestreEbdAdultos3t2026Page() {
       {/* Hero */}
       <div className="relative aspect-[21/9] w-full overflow-hidden bg-[#111] md:aspect-[21/7]">
         <Image
-          src="/programacao/eventos/trimestre.png"
+          src={HERO_IMAGE}
           alt={`3º Trimestre EBD 2026 — ${trimestre.titulo}`}
           fill
           priority

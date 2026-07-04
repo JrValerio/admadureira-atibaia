@@ -9,6 +9,7 @@ const YOUTUBE_DEFAULT_CHANNEL_TITLE =
   "Assembleia de Deus - Min. Madureira | Atibaia-SP";
 
 export const YOUTUBE_REVALIDATE_SECONDS = 120;
+export const YOUTUBE_LIVE_REVALIDATE_SECONDS = 60;
 export const YOUTUBE_FETCH_TIMEOUT_MS = 8000;
 export const YOUTUBE_CHANNEL = {
   id: env.YOUTUBE_CHANNEL_ID || YOUTUBE_DEFAULT_CHANNEL_ID,
@@ -23,7 +24,7 @@ export const YOUTUBE_LIMITS = {
   generalFeed: 12,
   messagePlaylist: 24,
   testimonyPlaylist: 24,
-  liveProbeCandidates: 4,
+  liveProbeCandidates: 12,
   liveVideosPageCandidates: 24,
 } as const;
 
@@ -470,13 +471,16 @@ function extractInitialDataJson(html: string) {
   }
 }
 
-async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
+async function fetchYouTubeJson<T>(
+  url: URL,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
+): Promise<T | null> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), YOUTUBE_FETCH_TIMEOUT_MS);
 
   try {
     const response = await fetch(url, {
-      next: { revalidate: YOUTUBE_REVALIDATE_SECONDS },
+      next: { revalidate: revalidateSeconds },
       signal: controller.signal,
     });
 
@@ -498,13 +502,16 @@ async function fetchYouTubeJson<T>(url: URL): Promise<T | null> {
   }
 }
 
-async function fetchYouTubeText(url: string): Promise<string | null> {
+async function fetchYouTubeText(
+  url: string,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
+): Promise<string | null> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), YOUTUBE_FETCH_TIMEOUT_MS);
 
   try {
     const response = await fetch(url, {
-      next: { revalidate: YOUTUBE_REVALIDATE_SECONDS },
+      next: { revalidate: revalidateSeconds },
       signal: controller.signal,
     });
 
@@ -544,7 +551,10 @@ async function resolveChannelIdWithApi() {
   return data?.items?.[0]?.id ?? YOUTUBE_CHANNEL.id;
 }
 
-async function getUploadsPlaylistIdWithApi(channelId: string) {
+async function getUploadsPlaylistIdWithApi(
+  channelId: string,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
+) {
   if (!YOUTUBE_API_KEY) {
     return null;
   }
@@ -554,11 +564,17 @@ async function getUploadsPlaylistIdWithApi(channelId: string) {
   url.searchParams.set("id", channelId);
   url.searchParams.set("key", YOUTUBE_API_KEY);
 
-  const data = await fetchYouTubeJson<ChannelListResponse>(url);
+  const data = await fetchYouTubeJson<ChannelListResponse>(
+    url,
+    revalidateSeconds
+  );
   return data?.items?.[0]?.contentDetails?.relatedPlaylists?.uploads ?? null;
 }
 
-async function getVideosByIdsWithApi(videoIds: string[]) {
+async function getVideosByIdsWithApi(
+  videoIds: string[],
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
+) {
   if (!YOUTUBE_API_KEY || videoIds.length === 0) {
     return [] as YouTubeVideo[];
   }
@@ -568,7 +584,10 @@ async function getVideosByIdsWithApi(videoIds: string[]) {
   url.searchParams.set("id", videoIds.join(","));
   url.searchParams.set("key", YOUTUBE_API_KEY);
 
-  const data = await fetchYouTubeJson<VideosListResponse>(url);
+  const data = await fetchYouTubeJson<VideosListResponse>(
+    url,
+    revalidateSeconds
+  );
 
   return (
     data?.items
@@ -687,7 +706,11 @@ async function getPlaylistVideosWithApi(
   return dedupeVideos(videos).slice(0, limit);
 }
 
-async function getPlaylistVideoIdsWithApi(playlistId: string, limit: number) {
+async function getPlaylistVideoIdsWithApi(
+  playlistId: string,
+  limit: number,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
+) {
   if (!YOUTUBE_API_KEY) {
     return null;
   }
@@ -698,7 +721,10 @@ async function getPlaylistVideoIdsWithApi(playlistId: string, limit: number) {
   url.searchParams.set("maxResults", String(Math.min(limit, 50)));
   url.searchParams.set("key", YOUTUBE_API_KEY);
 
-  const data = await fetchYouTubeJson<PlaylistItemsResponse>(url);
+  const data = await fetchYouTubeJson<PlaylistItemsResponse>(
+    url,
+    revalidateSeconds
+  );
   const videoIds =
     data?.items
       ?.map((item) => {
@@ -775,10 +801,12 @@ async function getPlaylistVideosWithRss(
 
 async function getChannelVideosWithRss(
   channelId: string,
-  limit: number
+  limit: number,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
 ): Promise<YouTubeVideo[] | null> {
   const xml = await fetchYouTubeText(
-    `${YOUTUBE_WEB_BASE}/feeds/videos.xml?channel_id=${channelId}`
+    `${YOUTUBE_WEB_BASE}/feeds/videos.xml?channel_id=${channelId}`,
+    revalidateSeconds
   );
 
   if (!xml) {
@@ -805,13 +833,39 @@ async function searchLiveVideosWithApi(
   url.searchParams.set("order", "date");
   url.searchParams.set("key", YOUTUBE_API_KEY);
 
-  const data = await fetchYouTubeJson<SearchListResponse>(url);
+  const data = await fetchYouTubeJson<SearchListResponse>(
+    url,
+    YOUTUBE_LIVE_REVALIDATE_SECONDS
+  );
   const ids =
     data?.items
       ?.map((item) => item.id?.videoId)
       .filter((videoId): videoId is string => Boolean(videoId)) ?? [];
 
-  return getVideosByIdsWithApi(ids);
+  return getVideosByIdsWithApi(ids, YOUTUBE_LIVE_REVALIDATE_SECONDS);
+}
+
+function getLiveStateFromVideos(
+  videos: YouTubeVideo[],
+  source: YouTubeDataSource
+): YouTubeLiveState | null {
+  const liveNow =
+    videos.find((video) => video.isLive && !video.actualEndTime) ?? null;
+  const upcomingLive =
+    videos.find(
+      (video) => video.isUpcoming && !video.actualStartTime && !video.actualEndTime
+    ) ?? null;
+
+  if (!liveNow && !upcomingLive) {
+    return null;
+  }
+
+  return {
+    liveNow,
+    upcomingLive,
+    source,
+    usingFallback: false,
+  };
 }
 
 function readSimpleText(value: unknown): string | undefined {
@@ -913,21 +967,27 @@ function getVideoFromStreamRenderer(
   const viewCountText = readSimpleText(renderer.viewCountText);
   const badges = Array.isArray(renderer.badges)
     ? (renderer.badges as Array<Record<string, unknown>>)
-        .map((badge) =>
-          readSimpleText(
-            (badge.metadataBadgeRenderer as { label?: string; accessibilityLabel?: string })
-              ?.label
-              ? { simpleText: (badge.metadataBadgeRenderer as { label?: string }).label }
-              : undefined
-          )
-        )
-        .filter((badge): badge is string => Boolean(badge))
+        .flatMap((badge) => {
+          const metadataBadge = badge.metadataBadgeRenderer as
+            | {
+                label?: string;
+                accessibilityLabel?: string;
+                accessibilityData?: { label?: string };
+              }
+            | undefined;
+
+          return [
+            metadataBadge?.label,
+            metadataBadge?.accessibilityLabel,
+            metadataBadge?.accessibilityData?.label,
+          ].filter((value): value is string => Boolean(value));
+        })
     : [];
   const isLive =
-    overlayStyle === "LIVE" ||
-    /assistindo/i.test(viewCountText ?? "") ||
-    badges.some((badge) => /ao vivo/i.test(badge));
-  const isUpcoming = Boolean(upcomingStartTime);
+    Boolean(overlayStyle?.includes("LIVE")) ||
+    /(assistindo|watching)/i.test(viewCountText ?? "") ||
+    badges.some((badge) => /(ao vivo|live)/i.test(badge));
+  const isUpcoming = Boolean(upcomingStartTime) && !isLive;
 
   return {
     id,
@@ -952,9 +1012,13 @@ function getVideoFromStreamRenderer(
 
 async function getVideoFromWatchPage(
   videoId: string,
-  fallback?: Partial<Pick<YouTubeVideo, "title" | "description" | "thumbnail">>
+  fallback?: Partial<Pick<YouTubeVideo, "title" | "description" | "thumbnail">>,
+  revalidateSeconds = YOUTUBE_REVALIDATE_SECONDS
 ): Promise<YouTubeVideo | null> {
-  const html = await fetchYouTubeText(getYouTubeWatchUrl(videoId));
+  const html = await fetchYouTubeText(
+    getYouTubeWatchUrl(videoId),
+    revalidateSeconds
+  );
 
   if (!html) {
     return fallback?.title
@@ -986,12 +1050,18 @@ async function getVideoFromWatchPage(
       null
   );
   const actualStartTime = parseIsoDate(
-    html.match(/"startTimestamp":"([^"]+)"/)?.[1] ?? null
+    html.match(/"startTimestamp":"([^"]+)"/)?.[1] ??
+      html.match(/"actualStartTime":"([^"]+)"/)?.[1] ??
+      null
   );
   const actualEndTime = parseIsoDate(
-    html.match(/"endTimestamp":"([^"]+)"/)?.[1] ?? null
+    html.match(/"endTimestamp":"([^"]+)"/)?.[1] ??
+      html.match(/"actualEndTime":"([^"]+)"/)?.[1] ??
+      null
   );
-  const isLive = /"isLive":true/.test(html) && !actualEndTime;
+  const isLive =
+    (/"isLive":true/.test(html) || /"isLiveNow":true/.test(html)) &&
+    !actualEndTime;
   const isUpcoming =
     /"isUpcoming":true/.test(html) && !actualStartTime && !actualEndTime;
 
@@ -1022,7 +1092,8 @@ async function getVideoFromWatchPage(
 
 async function getLiveStateFromHtml(): Promise<YouTubeLiveState | null> {
   const html = await fetchYouTubeText(
-    `${YOUTUBE_WEB_BASE}/${YOUTUBE_CHANNEL.handle}/streams`
+    `${YOUTUBE_WEB_BASE}/${YOUTUBE_CHANNEL.handle}/streams`,
+    YOUTUBE_LIVE_REVALIDATE_SECONDS
   );
 
   if (!html) {
@@ -1046,6 +1117,68 @@ async function getLiveStateFromHtml(): Promise<YouTubeLiveState | null> {
     source: "html",
     usingFallback: false,
   };
+}
+
+async function getLiveStateFromRecentChannelActivity(
+  channelId: string
+): Promise<YouTubeLiveState | null> {
+  const candidateLimit = Math.min(YOUTUBE_LIMITS.liveProbeCandidates, 50);
+  const uploadsPlaylistId = await getUploadsPlaylistIdWithApi(
+    channelId,
+    YOUTUBE_LIVE_REVALIDATE_SECONDS
+  );
+
+  if (uploadsPlaylistId) {
+    const uploadVideoIds = await getPlaylistVideoIdsWithApi(
+      uploadsPlaylistId,
+      candidateLimit,
+      YOUTUBE_LIVE_REVALIDATE_SECONDS
+    );
+
+    if (uploadVideoIds?.length) {
+      const videos = await getVideosByIdsWithApi(
+        uploadVideoIds,
+        YOUTUBE_LIVE_REVALIDATE_SECONDS
+      );
+      const state = getLiveStateFromVideos(videos, "api");
+
+      if (state) {
+        return state;
+      }
+    }
+  }
+
+  const rssVideos = await getChannelVideosWithRss(
+    channelId,
+    candidateLimit,
+    YOUTUBE_LIVE_REVALIDATE_SECONDS
+  );
+
+  if (rssVideos?.length) {
+    const hydratedVideos = await Promise.all(
+      rssVideos.map((video) =>
+        getVideoFromWatchPage(
+          video.id,
+          {
+            title: video.title,
+            description: video.description,
+            thumbnail: video.thumbnail,
+          },
+          YOUTUBE_LIVE_REVALIDATE_SECONDS
+        )
+      )
+    );
+    const state = getLiveStateFromVideos(
+      dedupeVideos(hydratedVideos.filter(isDefined)),
+      "html"
+    );
+
+    if (state) {
+      return state;
+    }
+  }
+
+  return null;
 }
 
 async function getPlaylistVideosWithHtml(
@@ -1120,6 +1253,11 @@ async function getChannelLiveState(channelId: string): Promise<YouTubeLiveState>
 
   if (apiLiveState?.liveNow || apiLiveState?.upcomingLive) {
     return apiLiveState;
+  }
+
+  const recentActivityState = await getLiveStateFromRecentChannelActivity(channelId);
+  if (recentActivityState) {
+    return recentActivityState;
   }
 
   const htmlState = await getLiveStateFromHtml();

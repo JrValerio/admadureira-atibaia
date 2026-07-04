@@ -1,4 +1,5 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
+import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import type {
   ConteudoRelacionadoLink,
   MesAgendaBase,
@@ -19,6 +20,7 @@ type EventoConfig = {
   destaque?: boolean;
   imagem?: string;
   banner?: string;
+  hero?: string;
 };
 
 function criarEvento(local: string, config: EventoConfig) {
@@ -724,24 +726,54 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-17-07-2026",
           data: "17/07",
-          titulo: "Congresso da Mocidade Local (Sede)",
+          titulo: "Congresso da Mocidade — Rios de Unção (1ª noite)",
           tipo: "culto-com-a-mocidade",
-          descricao:
-            "Primeira noite do congresso da mocidade local, reunindo jovens em adoração, comunhão e palavra.",
+          horario: congressoRiosDeUncao.horarioAgenda,
+          descricao: [
+            "Primeira noite do Congresso da Mocidade — Rios de Unção 2026, com o tema “Vinho novo em odre novo”, baseado em Lucas 5:38.",
+            "A programação terá a ministração do PB Rafael Garcia, participação da cantora Talita Morais e presença das igrejas convidadas AD Ministério Ipiranga, AD Ministério Curados para Curar e AD Ministério Madureira — Congregações.",
+          ].join("\n\n"),
+          convite:
+            "Participe desta primeira noite e acompanhe a página oficial do congresso para ver a programação completa dos dois dias.",
+          baseBiblica: criarBaseBiblica(congressoRiosDeUncao.baseBiblica),
+          recursos: [
+            {
+              label: "Ver programação completa do Congresso",
+              href: congressoRiosDeUncao.path,
+              descricao:
+                "Acesse a página oficial com tema, liderança, convidados e programação dos dias 17 e 18 de julho.",
+            },
+          ],
           destaque: true,
-          imagem: "/programacao/eventos/congresso-jovens-sede.png",
-          banner: "/programacao/eventos/congresso-jovens-sede.png",
+          imagem: congressoRiosDeUncao.imagem,
+          banner: congressoRiosDeUncao.imagem,
+          hero: congressoRiosDeUncao.hero,
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-18-07-2026",
           data: "18/07",
-          titulo: "Congresso da Mocidade Local (Sede)",
+          titulo: "Congresso da Mocidade — Rios de Unção (2ª noite)",
           tipo: "culto-com-a-mocidade",
-          descricao:
-            "Segunda noite do congresso da mocidade local no templo sede.",
+          horario: congressoRiosDeUncao.horarioAgenda,
+          descricao: [
+            "Segunda noite do Congresso da Mocidade — Rios de Unção 2026, no templo sede, com o tema “Vinho novo em odre novo”, baseado em Lucas 5:38.",
+            "A programação terá a ministração e participação musical do Pr. Fábio Ricardo, participação da cantora Talita Morais, presença das congregações do Campo de Atibaia e da UMADAT.",
+          ].join("\n\n"),
+          convite:
+            "Participe desta segunda noite e acompanhe a página oficial do congresso para ver a programação completa dos dois dias.",
+          baseBiblica: criarBaseBiblica(congressoRiosDeUncao.baseBiblica),
+          recursos: [
+            {
+              label: "Ver programação completa do Congresso",
+              href: congressoRiosDeUncao.path,
+              descricao:
+                "Acesse a página oficial com tema, liderança, convidados e programação dos dias 17 e 18 de julho.",
+            },
+          ],
           destaque: true,
-          imagem: "/programacao/eventos/congresso-jovens-sede.png",
-          banner: "/programacao/eventos/congresso-jovens-sede.png",
+          imagem: congressoRiosDeUncao.imagem,
+          banner: congressoRiosDeUncao.imagem,
+          hero: congressoRiosDeUncao.hero,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-20-07-2026",

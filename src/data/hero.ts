@@ -1,4 +1,5 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
+import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
 import {
   isFirstMondayWeek,
@@ -12,6 +13,7 @@ export interface HeroEvento {
   ctaLabel?: string;
   alt: string;
   imagem: string;
+  imageClassName?: string;
   href: string;
   ariaLabel: string;
   /** Slides "high" sempre ficam nas primeiras posições. */
@@ -203,11 +205,12 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAfter: "2026-06-28",
     },
     {
-      titulo: "Congresso da Mocidade Local",
-      alt: "Banner do Congresso da Mocidade Local da AD Madureira Atibaia",
-      imagem: "/banners/congresso-jovens-sede.png",
-      href: "/eventos/congresso-da-mocidade-local-17-07-2026",
-      ariaLabel: "Abrir página do Congresso da Mocidade Local",
+      titulo: "Congresso da Mocidade — Rios de Unção",
+      alt: "Arte oficial do Congresso da Mocidade Rios de Unção 2026",
+      imagem: congressoRiosDeUncao.banner,
+      imageClassName: "object-cover object-center",
+      href: congressoRiosDeUncao.path,
+      ariaLabel: "Abrir página do Congresso da Mocidade Rios de Unção 2026",
       priority: "high",
       type: "event",
       eventDate: "2026-07-17",

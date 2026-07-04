@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
 import { buildEventJsonLd } from "@/lib/event-schema";
@@ -58,7 +59,8 @@ export async function generateMetadata({
     title,
     description,
     path: `/eventos/${evento.slug}`,
-    image: evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg",
+    image:
+      evento.hero ?? evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg",
   });
 }
 
@@ -79,9 +81,11 @@ export default async function EventoPage({ params }: PageProps) {
   }
 
   const eventImage =
-    evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
+    evento.hero ?? evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg";
   const eventImageClassName =
-    eventImage === "/programacao/eventos/congresso-circulo-de-oracao.png"
+    eventImage === congressoRiosDeUncao.imagem
+      ? "object-contain"
+      : eventImage === "/programacao/eventos/congresso-circulo-de-oracao.png"
       ? "object-cover object-[center_38%]"
       : eventImage === "/programacao/semanas/2026-04-27/santa-ceia.png"
       ? "object-cover object-top"

@@ -229,7 +229,7 @@ export const programacaoSemanal: ItemSemanal[] = [
     dia: "Domingo",
     titulo: "Escola Bíblica Dominical (EBD)",
     horario: SEDE_PROGRAMACAO_HORARIOS.ebdDomingo,
-    banner: BANNERS_PROGRAMACAO.ebd,
+    banner: "/programacao/eventos/banner-terceiro-trimestre-ebd.png",
     slug: "escola-biblica-dominical",
     descricao: [
       "A Escola Bíblica Dominical carrega uma herança preciosa do ensino cristão no Brasil. Uma das referências históricas mais lembradas remete a Petrópolis, em 1855, com o trabalho do casal Robert e Sarah Kalley, mostrando que a formação bíblica sempre foi tratada como investimento real na vida da igreja e das famílias.",

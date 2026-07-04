@@ -16,7 +16,7 @@ function getEventDescription(evento: EventoFuturo) {
 function buildEventEntity(evento: EventoFuturo) {
   const schedule = buildEventSchedule(evento.data, evento.horario, evento.ano);
   const image = resolveSiteUrl(
-    evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"
+    evento.hero ?? evento.imagem ?? evento.banner ?? "/fachada-da-igreja.jpg"
   );
   const url = resolveSiteUrl(`/eventos/${evento.slug}`);
   const locationName = evento.local ?? DEFAULT_EVENT_LOCATION_NAME;
