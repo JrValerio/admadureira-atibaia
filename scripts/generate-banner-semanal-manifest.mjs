@@ -38,4 +38,4 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = $
 )};
 `;
 
-writeFileSync(outputFile, source);
+writeFileSync(outputFile, source.replace(/\r\n/g, "\n"));
