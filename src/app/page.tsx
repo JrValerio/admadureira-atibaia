@@ -9,7 +9,7 @@ import Destaques from "@/sections/Destaques";
 import QuemSomos from "@/sections/QuemSomos";
 
 // Next.js requires route segment config exports to stay statically analyzable.
-export const revalidate = 120;
+export const revalidate = 60;
 
 export default async function Home() {
   const heroEventos = getHeroEventos();

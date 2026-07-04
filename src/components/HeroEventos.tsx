@@ -411,7 +411,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                 tabIndex={slideIndex === realIndex + 1 ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
-                <div className="relative h-[16.5rem] w-full sm:h-[20rem] md:h-[22rem] lg:h-auto lg:aspect-[2400/800]">
+                <div className="relative aspect-[2172/724] w-full">
                   {evento.imagem ? (
                     <>
                       <Image
@@ -421,7 +421,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                         loading="lazy"
                         sizes="100vw"
                         quality={78}
-                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+                        className={`${evento.imageClassName ?? "object-cover object-center"} transition-transform duration-700 ease-out group-hover:scale-[1.01]`}
                       />
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
                     </>

@@ -25,6 +25,7 @@ export interface EventoBase {
   destaque?: boolean;
   imagem?: string;
   banner?: string;
+  hero?: string;
 }
 
 export type Evento = EventoBase;

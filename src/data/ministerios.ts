@@ -1,3 +1,14 @@
+import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
+
+export interface MinisterioDestaque {
+  etiqueta: string;
+  titulo: string;
+  descricao: string;
+  href: string;
+  ctaLabel: string;
+  detalhes?: string[];
+}
+
 export interface Ministerio {
   slug: string;
   nome: string;
@@ -6,6 +17,7 @@ export interface Ministerio {
   descricao: string[];
   lideranca?: string[];
   atividades?: string[];
+  destaque?: MinisterioDestaque;
   imagem?: string;
 }
 
@@ -66,20 +78,42 @@ const ministerios: Ministerio[] = [
   },
   {
     slug: "rios-de-uncao",
-    nome: "Rios de Unção – Jovens",
+    nome: "Rios de Unção — Mocidade",
     escopo: "Local",
     resumo:
-      "Grupo local da juventude da igreja, voltado à comunhão, ao louvor e ao crescimento espiritual dos jovens.",
+      "Ministério de jovens da AD Madureira Atibaia, dedicado à comunhão, adoração, ensino da Palavra, serviço cristão e crescimento espiritual da juventude.",
     descricao: [
-      "Rios de Unção é o ministério local de jovens da igreja, reunindo adolescentes e jovens em uma caminhada de fé, comunhão e serviço cristão.",
-      "Por meio de ensaios, cultos e atividades próprias, os jovens são incentivados a desenvolver sua vocação, amadurecer espiritualmente e participar da vida da igreja.",
+      "A Mocidade Rios de Unção reúne adolescentes e jovens em uma caminhada de fé, comunhão e compromisso com Deus.",
+      "Por meio de ensaios, cultos, congressos, participações nos trabalhos da igreja e momentos de ensino e comunhão, o ministério busca fortalecer a juventude na Palavra, incentivar o desenvolvimento dos dons e formar jovens comprometidos com Cristo e com a obra do Senhor.",
+      "Mais do que um grupo de jovens, o Rios de Unção é um espaço de crescimento espiritual, amizade, serviço e despertamento para uma geração que deseja viver o propósito de Deus.",
     ],
-    lideranca: ["Liderança local da juventude"],
+    lideranca: [
+      "Liderança espiritual: Pr. Zacarias Bernardes Félix e Pra. Anna Alzira — Presidentes do Campo de Atibaia",
+      "Direção local do congresso e liderança de jovens: Valéria Monsão e Wilson Wallace",
+      "Regência: Rebeca Monsão e Wilson Wallace — apoio musical da mocidade",
+    ],
     atividades: [
-      "Ensaios de jovens e preparação ministerial",
-      "Participação nos cultos e eventos da igreja",
-      "Momentos de comunhão, ensino bíblico e discipulado",
+      "Ensaios da mocidade",
+      "Participação nos cultos da igreja",
+      "Congressos e eventos especiais",
+      "Momentos de comunhão e integração",
+      "Louvor, adoração e serviço cristão",
+      "Apoio às programações da igreja",
+      "Crescimento bíblico e espiritual dos jovens",
     ],
+    destaque: {
+      etiqueta: "Evento especial",
+      titulo: congressoRiosDeUncao.titulo,
+      descricao: `Nos dias ${congressoRiosDeUncao.data}, às ${congressoRiosDeUncao.horario}, a Mocidade Rios de Unção realizará o Congresso da Mocidade com o tema “${congressoRiosDeUncao.tema}” — ${congressoRiosDeUncao.baseBiblica}.`,
+      href: congressoRiosDeUncao.path,
+      ctaLabel: "Ver informações do Congresso",
+      detalhes: [
+        `Data: ${congressoRiosDeUncao.data}`,
+        `Horário: ${congressoRiosDeUncao.horario}`,
+        `Local: ${congressoRiosDeUncao.local}`,
+        `Endereço: ${congressoRiosDeUncao.endereco}`,
+      ],
+    },
     imagem: "/ministerios/rios-de-uncao.webp",
   },
   {
