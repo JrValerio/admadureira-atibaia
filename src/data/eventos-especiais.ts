@@ -883,8 +883,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             },
           ],
           destaque: true,
-          imagem: "/banners/banner-vigilia.png",
-          banner: "/banners/banner-vigilia.png",
+          imagem: "/programacao/eventos/vigilia.png",
+          banner: "/programacao/eventos/vigilia.png",
+          hero: "/programacao/eventos/hero-vigilia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-31-08-2026",

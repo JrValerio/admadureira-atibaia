@@ -217,7 +217,9 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "oracao-matinal.png"
   ],
   "2026-07-06": [
+    "circulo-de-oracao.png",
     "congresso-rios-de-uncao.png",
+    "consagracao-mulheres.png",
     "culto-de-domingo.png",
     "culto-de-ensino.png",
     "culto-de-libertacao.png",
