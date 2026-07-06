@@ -14,6 +14,12 @@ type MediaPreset = {
   imageClass: string;
   overlayClass: string;
   fallback: string;
+  /**
+   * Quando true, um fundo desfocado (crop da própria imagem) preenche as
+   * bordas do card quando a arte não tem exatamente a proporção do preset,
+   * evitando as barras pretas do object-contain.
+   */
+  blurredBackdrop?: boolean;
 };
 
 export const mediaPresets: Record<MediaVariant, MediaPreset> = {
@@ -58,5 +64,6 @@ export const mediaPresets: Record<MediaVariant, MediaPreset> = {
     imageClass: "object-contain",
     overlayClass: "",
     fallback: igrejaHeroMedia.eventos,
+    blurredBackdrop: true,
   },
 };

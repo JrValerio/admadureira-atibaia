@@ -19,9 +19,9 @@ export const VIGILIA_29_08_2026 = {
     { nome: "Gildo Borges", papel: "Cantor" },
     { nome: "Cíntia Pérez", papel: "Cantora" },
   ],
-  imagem: "/banners/banner-vigilia.png",
-  banner: "/banners/banner-vigilia.png",
-  hero: "/banners/banner-vigilia.png",
+  imagem: "/programacao/eventos/vigilia.png",
+  banner: "/programacao/eventos/vigilia.png",
+  hero: "/programacao/eventos/hero-vigilia.png",
   descricaoSeo:
     "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de adoração, clamor e Palavra com o Pr. Wanderley Abraão e participação de Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
   descricaoTopo:

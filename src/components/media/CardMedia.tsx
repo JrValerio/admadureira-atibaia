@@ -49,6 +49,16 @@ export default function CardMedia({
 
   return (
     <div className={wrapperClassName}>
+      {preset.blurredBackdrop ? (
+        <Image
+          src={resolvedSrc}
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes={sizes}
+          className="scale-110 object-cover object-center opacity-70 blur-2xl"
+        />
+      ) : null}
       <Image
         src={resolvedSrc}
         alt={alt}

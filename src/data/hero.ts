@@ -292,6 +292,20 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAfter: "2026-06-30",
     },
     {
+      titulo: "Vigília",
+      subtitulo:
+        "Uma noite de adoração, clamor e Palavra com o Pr. Wanderley Abraão e participação de Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+      ctaLabel: "Ver detalhes da Vigília",
+      alt: "Banner da Vigília 29 de agosto — AD Madureira Atibaia",
+      imagem: "/banners/banner-vigilia.png",
+      href: "/eventos/vigilia-29-08-2026",
+      ariaLabel: "Abrir página da Vigília 29 de agosto",
+      priority: "high",
+      type: "event",
+      eventDate: "2026-08-29",
+      archivedAfter: "2026-08-29",
+    },
+    {
       titulo: "Culto de Santa Ceia",
       alt: "Banner do Culto de Santa Ceia da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-santa-ceia.png",
