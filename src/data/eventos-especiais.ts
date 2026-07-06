@@ -868,9 +868,23 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           data: "29/08",
           titulo: "Vigília",
           tipo: "evento-especial",
+          horario: "22h00",
           descricao:
-            "Noite especial de oração, consagração e busca pela presença de Deus.",
+            "Uma noite de adoração, clamor e Palavra, com ministração do Pr. Wanderley Abraão e participação especial dos cantores Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+          convite:
+            "Separe a noite de sábado para buscar a presença de Deus conosco. Traga sua família e convide alguém para essa vigília.",
+          baseBiblica: criarBaseBiblica("Mateus 26:41"),
+          recursos: [
+            {
+              label: "Ver página completa da Vigília",
+              href: "/eventos/vigilia-29-08-2026",
+              descricao:
+                "Participantes, preletor, data, horário e local da Vigília 29/08.",
+            },
+          ],
           destaque: true,
+          imagem: "/banners/banner-vigilia.png",
+          banner: "/banners/banner-vigilia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-31-08-2026",
