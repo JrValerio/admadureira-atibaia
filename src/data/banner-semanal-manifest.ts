@@ -217,6 +217,19 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "oracao-matinal.png"
   ],
   "2026-07-06": [
-    "santa-ceia.png"
+    "congresso-rios-de-uncao.png",
+    "culto-de-domingo.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "ebd.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "jejum-e-oração.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png",
+    "reuniao-ministerial.png",
+    "santa-ceia.png",
+    "vigilia.png"
   ]
 };
