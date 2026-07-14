@@ -284,6 +284,8 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     resetPointerState();
   };
 
+  const activeEvento = eventos[realIndex];
+
   return (
     <section
       id="eventos-destaque"
@@ -308,53 +310,17 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
         </div>
       </div>
 
-      <div className="relative w-full">
-        {total > 1 && (
-          <button
-            type="button"
-            onClick={goBack}
-            aria-label="Slide anterior"
-            aria-controls="hero-eventos-slider"
-            className="absolute left-2 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-11 sm:w-11"
-          >
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-        )}
-        {total > 1 && (
-          <button
-            type="button"
-            onClick={goForward}
-            aria-label="Próximo slide"
-            aria-controls="hero-eventos-slider"
-            className="absolute right-2 top-1/2 z-30 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1 sm:h-11 sm:w-11"
-          >
-            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
-        )}
-        {total > 1 && (
-          <button
-            type="button"
-            onClick={toggleManualPause}
-            aria-label={manualPause ? "Retomar rotação de banners" : "Pausar rotação de banners"}
-            aria-pressed={manualPause}
-            aria-controls="hero-eventos-slider"
-            className="absolute bottom-3 right-3 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
-          >
-            {manualPause ? (
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            ) : (
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-              </svg>
-            )}
-          </button>
-        )}
+      <div
+        className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-[22px] border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onFocusCapture={() => setFocusWithin(true)}
+        onBlurCapture={(event) => {
+          if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+            setFocusWithin(false);
+          }
+        }}
+      >
         <div
           id="hero-eventos-slider"
           className="relative overflow-hidden bg-[#090909] touch-pan-y focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726]"
@@ -362,16 +328,6 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           aria-roledescription="carousel"
           aria-label="Banners de destaque da igreja"
           tabIndex={0}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onFocusCapture={() => setFocusWithin(true)}
-          onBlurCapture={(event) => {
-            if (
-              !event.currentTarget.contains(event.relatedTarget as Node | null)
-            ) {
-              setFocusWithin(false);
-            }
-          }}
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft") {
               event.preventDefault();
@@ -393,7 +349,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           <div className="absolute left-0 right-0 top-0 z-20 h-[3px] bg-white/8">
             <div
               ref={progressBarRef}
-              className="h-full bg-[#ffa726] transition-[width] duration-500 ease-out"
+              className="h-full bg-[#ffa726] transition-[width] duration-500 ease-out motion-reduce:transition-none"
             />
           </div>
 
@@ -406,12 +362,12 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
               <Link
                 key={`${evento.href}-${slideIndex}`}
                 href={evento.href}
-                aria-hidden={slideIndex !== realIndex + 1}
+                aria-hidden={slideIndex !== displayIndex}
                 aria-label={evento.ariaLabel}
-                tabIndex={slideIndex === realIndex + 1 ? 0 : -1}
+                tabIndex={slideIndex === displayIndex ? 0 : -1}
                 className="group relative block min-w-full cursor-pointer"
               >
-                <div className="relative aspect-[2172/724] w-full">
+                <div className="relative h-[clamp(184px,51vw,216px)] w-full overflow-hidden bg-[#090909] md:aspect-[2172/724] md:h-auto">
                   {evento.imagem ? (
                     <>
                       <Image
@@ -421,29 +377,31 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                         loading="lazy"
                         sizes="100vw"
                         quality={78}
-                        className={`${evento.imageClassName ?? "object-cover object-center"} transition-transform duration-700 ease-out group-hover:scale-[1.01]`}
+                        className={`${evento.imageClassName ?? "object-cover object-center"} transition-transform duration-700 ease-out group-hover:scale-[1.01] motion-reduce:transform-none motion-reduce:transition-none`}
                       />
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))]" />
+                      <div className="absolute inset-0 hidden bg-[linear-gradient(180deg,rgba(5,5,5,0.12),rgba(5,5,5,0.3))] md:block" />
                     </>
                   ) : (
                     <div className="absolute inset-0 bg-linear-to-br from-[#1a1200] via-[#211800] to-[#0f0a00]" />
                   )}
 
                   {(evento.subtitulo || evento.ctaLabel) && (
-                    <div className="absolute inset-0 flex flex-col justify-end p-5 md:p-8 bg-[linear-gradient(0deg,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.18)_60%,transparent_100%)]">
-                      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
-                        {evento.titulo}
-                      </p>
-                      {evento.subtitulo && (
-                        <p className="text-white/90 text-sm md:text-base leading-relaxed max-w-lg mb-3">
-                          {evento.subtitulo}
+                    <div className="absolute inset-0 hidden flex-col justify-end bg-[linear-gradient(0deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.28)_58%,transparent_100%)] p-8 md:flex">
+                      <div className="max-w-lg">
+                        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#ffa726]">
+                          {evento.titulo}
                         </p>
-                      )}
-                      {evento.ctaLabel && (
-                        <span className="inline-flex self-start rounded-full bg-[#ffa726] px-4 py-1.5 text-xs font-bold tracking-widest uppercase text-[#111] transition-opacity group-hover:opacity-90">
-                          {evento.ctaLabel}
-                        </span>
-                      )}
+                        {evento.subtitulo && (
+                          <p className="mb-3 max-w-lg text-sm leading-relaxed text-white/90 lg:text-base">
+                            {evento.subtitulo}
+                          </p>
+                        )}
+                        {evento.ctaLabel && (
+                          <span className="inline-flex self-start rounded-full bg-[#ffa726] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#111] transition-opacity group-hover:opacity-90">
+                            {evento.ctaLabel}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -451,6 +409,80 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
             ))}
           </div>
         </div>
+
+        {total > 1 && (
+          <div className="flex h-[52px] items-center gap-1 border-t border-white/10 bg-[#111] px-2 text-white md:contents">
+            <button
+              type="button"
+              onClick={goBack}
+              aria-label="Slide anterior"
+              aria-controls="hero-eventos-slider"
+              className="relative z-30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.06] transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] md:absolute md:left-2 md:top-1/2 md:-translate-y-1/2 md:bg-black/40 md:backdrop-blur-sm md:hover:bg-black/60 md:focus-visible:ring-offset-1"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+
+            <span aria-hidden="true" className="flex-1 text-center text-xs font-bold tracking-[0.18em] text-white/75 md:hidden">
+              {realIndex + 1} / {total}
+            </span>
+
+            <button
+              type="button"
+              onClick={toggleManualPause}
+              aria-label={manualPause ? "Retomar rotação de banners" : "Pausar rotação de banners"}
+              aria-pressed={manualPause}
+              aria-controls="hero-eventos-slider"
+              className="relative z-30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.06] transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] md:absolute md:bottom-3 md:right-3 md:bg-black/50 md:backdrop-blur-sm md:hover:bg-black/70 md:focus-visible:ring-offset-1"
+            >
+              {manualPause ? (
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              ) : (
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                </svg>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={goForward}
+              aria-label="Próximo slide"
+              aria-controls="hero-eventos-slider"
+              className="relative z-30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/[0.06] transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] md:absolute md:right-2 md:top-1/2 md:-translate-y-1/2 md:bg-black/40 md:backdrop-blur-sm md:hover:bg-black/60 md:focus-visible:ring-offset-1"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+        )}
+
+        {activeEvento && (
+          <div className="flex min-h-[220px] flex-col bg-white p-5 md:hidden">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#c96f00]">
+              Evento em destaque
+            </p>
+            <h3 className="mt-2 font-acme text-xl leading-6 tracking-wide text-[#212121]">
+              {activeEvento.titulo}
+            </h3>
+            {activeEvento.subtitulo && (
+              <p className="mt-2 text-sm leading-5 text-[#5f5f5f]">
+                {activeEvento.subtitulo}
+              </p>
+            )}
+            <Link
+              href={activeEvento.href}
+              aria-label={activeEvento.ariaLabel}
+              className="mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#ffa726] px-5 py-2 text-center text-xs font-bold uppercase tracking-widest text-[#111] transition-colors hover:bg-[#f59b17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#111] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            >
+              {activeEvento.ctaLabel ?? "Ver detalhes"}
+            </Link>
+          </div>
+        )}
       </div>
 
       <div className="ui-page-container mt-5 text-center md:mt-6">
