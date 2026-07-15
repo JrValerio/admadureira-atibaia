@@ -11,13 +11,93 @@ export const VIGILIA_29_08_2026 = {
   horario: "22h",
   local: SEDE_PLACE_NAME,
   endereco: SEDE_ADDRESS_INLINE,
-  preletor: "Pr. Wanderley Abraão",
+  preletor: {
+    nome: "Pr. Wanderley Abraão",
+    papel: "Preletor",
+    foto: "/programacao/eventos/vigilia-29-08-2026/perfis/wanderley-abrahao.jpg",
+    fotoClassName: "origin-top scale-[1.12] object-cover object-[50%_42%]",
+    redes: [
+      {
+        plataforma: "Instagram",
+        usuario: "@wanderleyabrahao",
+        href: "https://www.instagram.com/wanderleyabrahao/",
+      },
+    ],
+  },
   anfitrioes: ["Pr. Zacarias B. Félix", "Pra. Anna Alzira"],
   cantores: [
-    { nome: "Noemi Nonato", papel: "Cantora" },
-    { nome: "Nando Menezes", papel: "Cantor" },
-    { nome: "Gildo Borges", papel: "Cantor" },
-    { nome: "Cíntia Pérez", papel: "Cantora" },
+    {
+      nome: "Noemi Nonato",
+      papel: "Cantora",
+      foto: "/programacao/eventos/vigilia-29-08-2026/perfis/noemi-nonato.jpg",
+      fotoClassName: "origin-top scale-[1.1] object-cover object-top",
+      redes: [
+        {
+          plataforma: "Instagram",
+          usuario: "@cantoranoeminonatooficial",
+          href: "https://www.instagram.com/cantoranoeminonatooficial/",
+        },
+        {
+          plataforma: "YouTube",
+          usuario: "@NoemiNonatoOficial",
+          href: "https://www.youtube.com/noeminonatooficial",
+        },
+      ],
+    },
+    {
+      nome: "Nando Menezes",
+      papel: "Cantor",
+      foto: "/programacao/eventos/vigilia-29-08-2026/perfis/nando-menezes.jpg",
+      fotoClassName: "object-cover object-top",
+      redes: [
+        {
+          plataforma: "Instagram",
+          usuario: "@nandomenezes_oficial",
+          href: "https://www.instagram.com/nandomenezes_oficial/",
+        },
+        {
+          plataforma: "YouTube",
+          usuario: "@NandoMenezesOficial",
+          href: "https://www.youtube.com/@NandoMenezesOficial",
+        },
+      ],
+    },
+    {
+      nome: "Gildo Borges",
+      papel: "Cantor",
+      foto: "/programacao/eventos/vigilia-29-08-2026/perfis/gildo-borges.jpg",
+      fotoClassName: "object-cover object-top",
+      redes: [
+        {
+          plataforma: "Instagram",
+          usuario: "@gildoborgesofc",
+          href: "https://www.instagram.com/gildoborgesofc/",
+        },
+        {
+          plataforma: "YouTube",
+          usuario: "@GildoBorges",
+          href: "https://www.youtube.com/user/GildoBorges",
+        },
+      ],
+    },
+    {
+      nome: "Cíntia Pérez",
+      papel: "Cantora",
+      foto: "/programacao/eventos/vigilia-29-08-2026/perfis/cintia-perez.jpg",
+      fotoClassName: "scale-[1.24] object-cover object-[44%_42%]",
+      redes: [
+        {
+          plataforma: "Instagram",
+          usuario: "@peres_cynthia",
+          href: "https://www.instagram.com/peres_cynthia/",
+        },
+        {
+          plataforma: "YouTube",
+          usuario: "@JuntoseMisturadosemCristo",
+          href: "https://www.youtube.com/@JuntoseMisturadosemCristo",
+        },
+      ],
+    },
   ],
   imagem: "/programacao/eventos/vigilia.png",
   banner: "/programacao/eventos/vigilia.png",

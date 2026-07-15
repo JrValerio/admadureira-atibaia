@@ -25,6 +25,93 @@ function InfoItem({ label, value }: { label: string; value: string }) {
   );
 }
 
+type SocialProfileLinkProps = {
+  plataforma: "Instagram" | "YouTube";
+  usuario: string;
+  href: string;
+  nome: string;
+  dark?: boolean;
+};
+
+function SocialIcon({ plataforma }: { plataforma: "Instagram" | "YouTube" }) {
+  if (plataforma === "Instagram") {
+    return (
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        className="h-5 w-5"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      className="h-5 w-5"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
+function SocialProfileLink({
+  plataforma,
+  usuario,
+  href,
+  nome,
+  dark = false,
+}: SocialProfileLinkProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Abrir ${plataforma} oficial de ${nome} (${usuario}) em nova aba`}
+      className={`group flex min-h-12 w-full min-w-0 items-center gap-3 rounded-2xl border px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
+        dark
+          ? "border-white/40 bg-white/[0.06] text-white hover:border-[#ffa726] hover:bg-[#ffa726] hover:text-[#111] focus-visible:ring-[#ffa726] focus-visible:ring-offset-[#160e08]"
+          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-[#fff8ee] focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
+      }`}
+    >
+      <span
+        aria-hidden="true"
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+          dark ? "bg-white/10 group-hover:bg-black/10" : "bg-[#f5f1e9]"
+        }`}
+      >
+        <SocialIcon plataforma={plataforma} />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-[0.65rem] font-bold tracking-[0.16em] uppercase opacity-70">
+          {plataforma}
+        </span>
+        <span className="mt-0.5 block break-all text-xs leading-snug font-semibold">
+          {usuario}
+        </span>
+      </span>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        className="h-4 w-4 shrink-0 opacity-60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 5h6m0 0v6m0-6L10 14" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 13v6H5V5h6" />
+      </svg>
+    </a>
+  );
+}
+
 export default function Vigilia29082026Page() {
   const canonicalUrl = resolveSiteUrl(vigilia.path);
   const breadcrumbSchema = {
@@ -60,10 +147,17 @@ export default function Vigilia29082026Page() {
       url: resolveSiteUrl("/"),
     },
     performer: [
-      { "@type": "Person", name: vigilia.preletor },
+      {
+        "@type": "Person",
+        name: vigilia.preletor.nome,
+        image: resolveSiteUrl(vigilia.preletor.foto),
+        sameAs: vigilia.preletor.redes.map((rede) => rede.href),
+      },
       ...vigilia.cantores.map((cantor) => ({
         "@type": "Person",
         name: cantor.nome,
+        image: resolveSiteUrl(cantor.foto),
+        sameAs: cantor.redes.map((rede) => rede.href),
       })),
     ],
   };
@@ -161,43 +255,96 @@ export default function Vigilia29082026Page() {
         </div>
       </section>
 
-      <section className="ui-section ui-section--dense bg-white">
+      <section
+        aria-labelledby="perfis-vigilia-title"
+        className="ui-section ui-section--dense bg-white"
+      >
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
-            <p className="ui-section-eyebrow">Participação especial</p>
-            <h2 className="ui-section-title">Preletor e cantores convidados</h2>
+            <p className="ui-section-eyebrow !text-[#b3261e]">Participação especial</p>
+            <h2 id="perfis-vigilia-title" className="ui-section-title">
+              Perfis oficiais dos convidados
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#555] md:text-base">
+              Conheça e acompanhe o preletor e os cantores da Vigília em seus canais
+              oficiais.
+            </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="rounded-[1.5rem] border border-[#ffa726]/25 bg-[#fff8ee] p-6 shadow-sm lg:col-span-3">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
-                Preletor
+          <article className="overflow-hidden rounded-[1.5rem] border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#111] md:aspect-auto md:min-h-[400px]">
+              <Image
+                src={vigilia.preletor.foto}
+                alt=""
+                fill
+                sizes="(max-width: 767px) calc(100vw - 2rem), 320px"
+                className={vigilia.preletor.fotoClassName}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
+            </div>
+
+            <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-10">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+                {vigilia.preletor.papel}
               </p>
-              <h3 className="mt-2 font-acme text-2xl tracking-wide text-[#212121]">
-                {vigilia.preletor}
+              <h3 className="mt-2 font-acme text-3xl tracking-wide text-white lg:text-4xl">
+                {vigilia.preletor.nome}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#555]">
-                Ministração da Palavra nesta noite de adoração e clamor.
+              <p className="mt-3 text-sm leading-relaxed text-white/72">
+                Acompanhe o perfil oficial do preletor da Vigília.
               </p>
-            </article>
+              <div className="mt-6 grid max-w-xl gap-2 sm:grid-cols-2">
+                {vigilia.preletor.redes.map((rede) => (
+                  <SocialProfileLink
+                    key={rede.plataforma}
+                    plataforma={rede.plataforma}
+                    usuario={rede.usuario}
+                    href={rede.href}
+                    nome={vigilia.preletor.nome}
+                    dark
+                  />
+                ))}
+              </div>
+            </div>
+          </article>
 
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {vigilia.cantores.map((cantor) => (
-              <article
-                key={cantor.nome}
-                className="rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
-              >
-                <p className="text-xs font-bold tracking-[0.22em] text-[#ffa726] uppercase">
-                  {cantor.papel}
-                </p>
-                <h3 className="mt-2 font-acme text-xl tracking-wide text-[#212121]">
-                  {cantor.nome}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#555]">
-                  Participação especial no louvor e adoração da Vigília.
-                </p>
-              </article>
+              <li key={cantor.nome} className="h-full">
+                <article className="flex h-full min-h-56 overflow-hidden rounded-[1.5rem] border border-black/6 bg-[#faf8f3] shadow-sm sm:flex-col">
+                  <div className="relative w-28 shrink-0 self-stretch overflow-hidden bg-[#160e08] sm:aspect-[4/5] sm:w-full sm:self-auto">
+                    <Image
+                      src={cantor.foto}
+                      alt=""
+                      fill
+                      sizes="(max-width: 639px) 112px, (max-width: 1023px) calc(50vw - 2.5rem), calc(25vw - 2rem)"
+                      className={cantor.fotoClassName}
+                    />
+                  </div>
+
+                  <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+                    <p className="text-[0.68rem] font-bold tracking-[0.2em] text-[#8b5b18] uppercase">
+                      {cantor.papel}
+                    </p>
+                    <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
+                      {cantor.nome}
+                    </h3>
+                    <div className="mt-auto flex flex-col gap-2 pt-4">
+                      {cantor.redes.map((rede) => (
+                        <SocialProfileLink
+                          key={rede.plataforma}
+                          plataforma={rede.plataforma}
+                          usuario={rede.usuario}
+                          href={rede.href}
+                          nome={cantor.nome}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <div className="mt-8 rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6">
             <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
