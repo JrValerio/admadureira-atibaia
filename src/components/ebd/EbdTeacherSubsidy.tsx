@@ -258,10 +258,12 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
     <div className="space-y-6">
       <EbdSupportSection eyebrow="Panorama da lição" title="Visão geral da aula">
         <div className={SUPPORT_OVERVIEW_GRID_CLASS_NAME}>
-          <div>
-            <p className="mb-4 text-[#555] leading-relaxed">
-              <BibleReferenceText text={subsidio.visaoGeral.resumo} />
-            </p>
+          <div className="space-y-4">
+            <EbdSupportPanel title="Resumo em um minuto">
+              <p className="text-[#555] leading-relaxed">
+                <BibleReferenceText text={subsidio.visaoGeral.resumo} />
+              </p>
+            </EbdSupportPanel>
             <EbdSupportTextPanel
               title="Ideia central"
               text={subsidio.visaoGeral.ideiaCentral}
@@ -376,7 +378,7 @@ function AdultSubsidy({ subsidio }: { subsidio: SubsidioAdultos }) {
               },
               {
                 key: "leituras-complementares",
-                title: "Leituras complementares",
+                title: "Para aprofundar",
                 items: subsidio.aprofundamento.leituraComplementar,
                 labelTone: "danger",
               },
