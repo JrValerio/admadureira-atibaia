@@ -311,6 +311,9 @@ export type TrimestreEBD = {
   classe: ClasseEBD;
   imagem: string;
   versiculoBase?: string;
+  percurso?: ListaItem[];
+  fontesEditoriais?: ListaItem[];
+  orientacaoUso?: string;
   licoes: LicaoEBD[];
 };
 
