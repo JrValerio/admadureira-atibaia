@@ -711,7 +711,7 @@ function getAdultFullSections(
             </PrintParagraph>
           ) : null}
 
-          <PrintParagraph label="Resumo expandido">
+          <PrintParagraph label="Resumo em um minuto">
             <PrintBibleText text={subsidio.visaoGeral.resumo} />
           </PrintParagraph>
 
@@ -903,7 +903,7 @@ function getAdultFullSections(
     },
     {
       key: "adult-leituras-complementares",
-      title: "Leituras complementares",
+      title: "Para aprofundar",
       weight: sectionWeight(
         estimateListaItemsWeight(subsidio.aprofundamento?.leituraComplementar)
       ),
@@ -913,7 +913,7 @@ function getAdultFullSections(
           {subsidio.aprofundamento?.leituraComplementar?.length ? (
             <>
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
-                Leituras complementares
+                Para aprofundar
               </p>
               <PrintOrderedList items={subsidio.aprofundamento.leituraComplementar} />
             </>

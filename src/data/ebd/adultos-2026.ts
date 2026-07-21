@@ -9,6 +9,8 @@ import {
   getEbdQuarterCoverPath,
 } from "./assets";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
+import { editoriaisAdultosTerceiroTrimestre } from "./adultos-2026-3t";
+import type { EditorialAdultos3T } from "./adultos-2026-3t-editorial";
 
 type LicaoSeed = {
   numero: number;
@@ -5619,6 +5621,37 @@ type SementeAdultosTerceiroTrimestre = {
   leituraBiblica: string[];
 };
 
+function criarLicaoAdultosTerceiroTrimestreEditorial(
+  editorial: EditorialAdultos3T,
+): LicaoEBDAdultos {
+  return {
+    id: `adultos-2026-3t-licao-${editorial.numero}`,
+    publico: "adultos",
+    slug: `licao-${editorial.numero}`,
+    numero: editorial.numero,
+    data: editorial.data,
+    statusEditorial: "published",
+    titulo: editorial.titulo,
+    imagem: getEbdLessonImagePath(
+      "adultos",
+      "2026-3t",
+      editorial.numero,
+      "jpg",
+    ),
+    resumo: editorial.resumo,
+    textoChave: editorial.textoChave,
+    verdadePratica: editorial.verdadePratica,
+    leituraBiblica: editorial.leituraBiblica,
+    objetivos: editorial.objetivos,
+    topicos: editorial.topicos,
+    aplicacao: editorial.aplicacao,
+    apoioProfessor: editorial.apoioProfessor,
+    apoioAluno: editorial.apoioAluno,
+    esboco: editorial.esboco,
+    subsidioAdultos: normalizeAdultSubsidy(editorial.subsidioAdultos),
+  };
+}
+
 function criarLicaoAdultosTerceiroTrimestreSkeleton(
   seed: SementeAdultosTerceiroTrimestre
 ): LicaoEBDAdultos {
@@ -6550,6 +6583,10 @@ const adultos2026TerceiroTrimestre: TrimestreEBD = {
     "Treze lições para acompanhar a expansão do Evangelho entre os gentios, da chamada de Barnabé e Saulo em Antioquia até a consolidação das comunidades gentílicas nas cartas paulinas.",
   versiculoBase: "Atos 1.8",
   licoes: adultos2026TerceiroTrimestreBase.licoes.map((licao) => {
+    const editorialCompleto = editoriaisAdultosTerceiroTrimestre[licao.numero];
+    if (editorialCompleto) {
+      return criarLicaoAdultosTerceiroTrimestreEditorial(editorialCompleto);
+    }
     if (licao.numero === 1) return licaoAdultosTerceiroTrimestre1;
     if (licao.numero === 2) return licaoAdultosTerceiroTrimestre2;
     if (licao.numero === 3) return licaoAdultosTerceiroTrimestre3;
