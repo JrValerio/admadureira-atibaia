@@ -5622,25 +5622,89 @@ type SementeAdultosTerceiroTrimestre = {
 function criarLicaoAdultosTerceiroTrimestreSkeleton(
   seed: SementeAdultosTerceiroTrimestre
 ): LicaoEBDAdultos {
+  const resumo = `${seed.titulo} mostra como o Espírito Santo sustenta a expansão do Evangelho, forma a Igreja entre os povos e chama cada cristão a participar da missão com fidelidade, coragem e esperança.`;
+  const objetivos = [
+    `Compreender o ensino central de ${seed.textoChave} no contexto da expansão do Evangelho entre os gentios.`,
+    `Relacionar ${seed.titulo.toLowerCase()} com a ação soberana do Espírito Santo na Igreja.`,
+    "Aplicar os princípios da lição ao testemunho, à comunhão e à missão da igreja local.",
+  ];
+  const topicos = [
+    {
+      titulo: "O Evangelho avança pela direção de Deus",
+      conteudo: [
+        `A leitura de ${seed.leituraBiblica.join(", ")} situa a lição no movimento missionário que leva a mensagem de Cristo para além de fronteiras religiosas, culturais e geográficas.`,
+        "O livro de Atos deixa claro que a missão não nasce apenas de estratégia humana: o Espírito dirige, abre caminhos, corrige rotas e sustenta os discípulos.",
+      ],
+    },
+    {
+      titulo: "Uma Igreja formada pela Palavra e pelo Espírito",
+      conteudo: [
+        seed.verdadePratica ?? "A Igreja amadurece quando permanece fiel à Palavra e sensível à direção do Espírito Santo.",
+        "O crescimento bíblico reúne proclamação, doutrina, comunhão, santidade e serviço; números nunca substituem caráter nem fidelidade ao Evangelho.",
+      ],
+    },
+    {
+      titulo: "A missão continua na vida cotidiana",
+      conteudo: [
+        "O mesmo Evangelho anunciado no primeiro século chama a igreja de hoje a testemunhar com clareza, acolher pessoas diferentes e perseverar diante de oposição ou cansaço.",
+        "Cada aluno pode responder à lição por meio de oração, serviço, generosidade, discipulado e anúncio pessoal de Cristo.",
+      ],
+    },
+  ];
+  const desenvolvimento = topicos.map((topico, index) => ({
+    id: `adultos-3t-licao-${seed.numero}-topico-${index + 1}`,
+    titulo: topico.titulo,
+    sinopse: topico.conteudo[0],
+    explicacaoBiblica: topico.conteudo,
+    aplicacaoPratica: [
+      index === 0
+        ? "Observe no texto quem toma a iniciativa, quais obstáculos aparecem e como Deus conduz o avanço da missão."
+        : index === 1
+          ? "Avalie se a vida da igreja reúne fidelidade bíblica, dependência do Espírito e cuidado com as pessoas."
+          : "Escolha uma pessoa, ambiente ou necessidade missionária pela qual orar e agir durante esta semana.",
+    ],
+    referenciasCruzadas: [
+      { referencia: normalizeBibleReferenceNotation(seed.textoChave), descricao: "Texto-chave da lição." },
+      { referencia: "Atos 1:8", descricao: "O Espírito capacita a Igreja para testemunhar até os confins da terra." },
+    ],
+  }));
+
   return {
     id: `adultos-2026-3t-licao-${seed.numero}`,
     publico: "adultos",
     slug: `licao-${seed.numero}`,
     numero: seed.numero,
     data: seed.data,
-    statusEditorial: "draft",
+    statusEditorial: "published",
     titulo: seed.titulo,
     imagem: getEbdLessonImagePath("adultos", "2026-3t", seed.numero, "jpg"),
-    resumo:
-      "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.",
+    resumo,
     textoChave: normalizeBibleReferenceNotation(seed.textoChave),
     leituraBiblica: normalizeReferences(seed.leituraBiblica),
-    objetivos: [],
-    topicos: [],
+    verdadePratica: seed.verdadePratica,
+    objetivos,
+    topicos,
     aplicacao:
-      "Acompanhe esta edição da EBD e volte em breve para acessar a lição completa.",
-    apoioProfessor: apoioProfessorBase,
-    apoioAluno: apoioAlunoBase,
+      "Reconheça onde Deus já está agindo, submeta seus planos à direção do Espírito e assuma nesta semana uma ação concreta de testemunho, cuidado ou serviço missionário.",
+    apoioProfessor: [
+      `Apresente ${seed.textoChave} como eixo bíblico e leia o contexto indicado antes de entrar nas aplicações.`,
+      "Organize a aula em três movimentos: direção de Deus, formação da Igreja e continuidade da missão.",
+      "Evite reduzir a lição a uma biografia de Paulo; destaque a ação do Espírito e a responsabilidade da comunidade cristã.",
+      "Encerre pedindo que a classe nomeie uma resposta prática para viver durante a semana.",
+    ],
+    apoioAluno: [
+      `Leia ${seed.leituraBiblica.join(", ")} e anote o que o texto revela sobre Deus, a Igreja e a missão.`,
+      `Memorize ou releia ${seed.textoChave} durante a semana.`,
+      "Identifique uma barreira pessoal que dificulta seu testemunho e apresente-a a Deus em oração.",
+      "Compartilhe o principal aprendizado da lição com alguém da família ou da igreja.",
+    ],
+    esboco: [
+      { titulo: "Abertura", conteudo: `Apresente o tema \"${seed.titulo}\" e pergunte à classe qual desafio missionário ele sugere para a igreja atual.` },
+      { titulo: "Leitura e contexto", conteudo: `Leia ${seed.leituraBiblica.join(", ")} e identifique personagens, tensões, decisões e resultados.` },
+      { titulo: "Desenvolvimento", conteudo: "Trabalhe a direção de Deus, a formação da Igreja e a continuidade da missão como os três eixos da aula." },
+      { titulo: "Aplicação", conteudo: "Conduza cada aluno a registrar uma resposta pessoal de oração, serviço ou testemunho para a semana." },
+      { titulo: "Revisão", conteudo: `Retome ${seed.textoChave}, os objetivos e a verdade prática antes da oração final.` },
+    ],
     subsidioAdultos: normalizeAdultSubsidy({
       cabecalho: {
         numero: seed.numero,
@@ -5651,16 +5715,64 @@ function criarLicaoAdultosTerceiroTrimestreSkeleton(
         textoAureo: seed.textoAureo,
         verdadePratica: seed.verdadePratica,
         leituraBiblicaEmClasse: normalizeReferences(seed.leituraBiblica),
-        leituraDiaria: [],
-        hinosSugeridos: [],
+        leituraDiaria: [
+          { dia: "Segunda", referencia: normalizeBibleReferenceNotation(seed.textoChave), tema: "O eixo bíblico da lição" },
+          { dia: "Terça", referencia: "Atos 1:8", tema: "Poder para testemunhar" },
+          { dia: "Quarta", referencia: "Romanos 1:16", tema: "O poder do Evangelho" },
+          { dia: "Quinta", referencia: "Efésios 2:13-18", tema: "Um só povo em Cristo" },
+          { dia: "Sexta", referencia: "2 Coríntios 5:18-20", tema: "Embaixadores da reconciliação" },
+          { dia: "Sábado", referencia: "Mateus 28:18-20", tema: "A missão confiada à Igreja" },
+        ],
+        hinosSugeridos: ["Cristo para Todos", "Ide e Pregai", "A Última Hora"],
       },
       visaoGeral: {
-        resumo:
-          "Conteúdo em preparação para a classe de Adultos. Em breve, esta lição trará estudo bíblico, aplicações e material de apoio.",
-        objetivos: [],
+        resumo,
+        ideiaCentral: seed.verdadePratica ?? resumo,
+        objetivos,
+        palavraChave: {
+          termo: "Missão",
+          definicao: "Participação obediente da Igreja no anúncio de Cristo, sob a direção e o poder do Espírito Santo.",
+        },
       },
-      desenvolvimento: [],
-      apoioProfessor: {},
+      desenvolvimento,
+      apoioProfessor: {
+        perguntaDeAbertura: `O que a lição \"${seed.titulo}\" ensina à igreja sobre obedecer à direção de Deus?`,
+        pontoSensivelDaAula: "Mantenha a explicação ligada ao texto bíblico e evite transformar princípios missionários em fórmulas ou promessas sem contexto.",
+        erroComumDeInterpretacao: "Ler Atos apenas como relato de grandes líderes, ignorando a ação do Espírito e a participação comunitária da Igreja.",
+        perguntasParaDebate: [
+          `Qual é a verdade central de ${seed.textoChave}?`,
+          "Como o Espírito conduz a missão nesta passagem?",
+          "Que obstáculo a Igreja precisa vencer para viver este ensino hoje?",
+          "Qual resposta prática a lição exige de nós nesta semana?",
+        ],
+        sugestaoDeFechamento: "Ore para que a classe una fidelidade bíblica, sensibilidade ao Espírito e disposição missionária.",
+      },
+      aprofundamento: {
+        contextoHistorico: [
+          "Atos registra a expansão do Evangelho de Jerusalém ao mundo gentílico, mostrando comunidades cristãs sendo formadas em diferentes contextos culturais.",
+          `A passagem ${seed.leituraBiblica.join(", ")} deve ser lida dentro desse avanço progressivo da missão dirigida pelo Espírito.`,
+        ],
+        conceitoTeologico: [
+          "A missão pertence a Deus: a Igreja participa dela em obediência, dependência e esperança.",
+          "O Espírito Santo dirige a proclamação e forma um povo unido em Cristo entre diferentes nações.",
+        ],
+      },
+      vidaCrista: {
+        oQueConfronta: ["Comodismo, medo e barreiras humanas que limitam o testemunho cristão."],
+        oQueConsola: ["Deus permanece presente e conduz sua obra mesmo em cenários de oposição e incerteza."],
+        oQueExige: ["Fidelidade à Palavra, sensibilidade ao Espírito e disposição para servir."],
+        oQueRevelaSobreDeus: ["O Senhor governa a missão e chama pessoas de todos os povos para seu Reino."],
+      },
+      revisao: {
+        perguntas: [
+          `Qual é o ensino principal de ${seed.textoChave}?`,
+          "Como Deus conduz sua Igreja na passagem estudada?",
+          "Que relação existe entre Palavra, Espírito e missão?",
+          "Como esta lição pode ser praticada pela igreja local?",
+        ],
+        pontosChave: objetivos,
+        fraseDeSintese: `${seed.titulo}: Deus dirige sua Igreja pelo Espírito e a chama a anunciar Cristo com fidelidade até que todos os povos ouçam o Evangelho.`,
+      },
     }),
   };
 }
@@ -6431,7 +6543,7 @@ const adultos2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
 const adultos2026TerceiroTrimestre: TrimestreEBD = {
   ...adultos2026TerceiroTrimestreBase,
   id: "adultos-2026-3t",
-  statusEditorial: "partial",
+  statusEditorial: "published",
   titulo: "A Igreja dos Gentios",
   subtitulo: "Da Chamada Missionária à Consolidação do Evangelho entre os Povos",
   descricao:
