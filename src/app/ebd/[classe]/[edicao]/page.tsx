@@ -278,6 +278,75 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   </div>
                 </div>
 
+                {trimestre.percurso?.length ||
+                trimestre.fontesEditoriais?.length ||
+                trimestre.orientacaoUso ? (
+                  <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                    {trimestre.percurso?.length ? (
+                      <section className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
+                        <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          O percurso do trimestre
+                        </p>
+                        <div className="space-y-4">
+                          {trimestre.percurso.map((etapa) => (
+                            <div key={`${etapa.titulo}-${etapa.conteudo}`}>
+                              {etapa.titulo ? (
+                                <h2 className="font-semibold text-[#212121]">
+                                  {etapa.titulo}
+                                </h2>
+                              ) : null}
+                              <p className="mt-1 text-sm leading-relaxed text-[#555]">
+                                {etapa.conteudo}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    ) : null}
+
+                    {trimestre.fontesEditoriais?.length ||
+                    trimestre.orientacaoUso ? (
+                      <section className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+                        {trimestre.fontesEditoriais?.length ? (
+                          <>
+                            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                              Fontes editoriais
+                            </p>
+                            <ul className="space-y-2 text-sm leading-relaxed text-[#555]">
+                              {trimestre.fontesEditoriais.map((fonte) => (
+                                <li key={`${fonte.titulo}-${fonte.conteudo}`}>
+                                  {fonte.titulo ? (
+                                    <span className="font-semibold text-[#212121]">
+                                      {fonte.titulo}:{" "}
+                                    </span>
+                                  ) : null}
+                                  {fonte.conteudo}
+                                </li>
+                              ))}
+                            </ul>
+                          </>
+                        ) : null}
+                        {trimestre.orientacaoUso ? (
+                          <div
+                            className={
+                              trimestre.fontesEditoriais?.length
+                                ? "mt-6 border-t border-[#ffa726]/20 pt-6"
+                                : ""
+                            }
+                          >
+                            <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
+                              Como usar este material
+                            </p>
+                            <p className="text-sm leading-relaxed text-[#555]">
+                              {trimestre.orientacaoUso}
+                            </p>
+                          </div>
+                        ) : null}
+                      </section>
+                    ) : null}
+                  </div>
+                ) : null}
+
                 <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8 lg:hidden">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Em destaque

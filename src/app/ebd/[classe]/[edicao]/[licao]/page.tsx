@@ -6,7 +6,6 @@ import HeroPage from "@/components/HeroPage";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import EbdLessonAuxiliarySections from "@/components/ebd/EbdLessonAuxiliarySections";
 import EbdLessonOverviewBlocks from "@/components/ebd/EbdLessonOverviewBlocks";
-import { EbdSupportList } from "@/components/ebd/EbdLessonSupportUi";
 import EbdTeacherSubsidy from "@/components/ebd/EbdTeacherSubsidy";
 import {
   formatEbdDate,
@@ -195,11 +194,6 @@ export default async function EbdLessonPage({ params }: PageProps) {
     lessonContext.licao
   );
   const tocItems = getLicaoTocItems(lessonStructure, lessonContext.licao, classe);
-  const lessonPrimaryReading = lessonStructure
-    ? lessonStructure.tipo === "adultos"
-      ? lessonStructure.leituraBiblicaEmClasse
-      : lessonStructure.textoBiblico
-    : [];
   const canonicalUrl = resolveSiteUrl(`/ebd/${classe}/${trimestre.slug}/${licao}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -282,10 +276,12 @@ export default async function EbdLessonPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
+      {isPubliclyAvailable ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+      ) : null}
 
       <main className="min-h-screen bg-[#f5f5f5]">
         <HeroPage
@@ -309,10 +305,12 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
               <article className="space-y-6">
-                {isDraft ? (
+                {!isPubliclyAvailable ? (
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
                     <div className="mb-6 inline-flex rounded-full border border-black/10 bg-[#fafafa] px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
-                      Conteúdo em preparação
+                      {isDraft
+                        ? "Conteúdo em preparação"
+                        : "Publicação programada"}
                     </div>
                     <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
@@ -345,20 +343,11 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         Em breve
                       </p>
                       <p className="leading-relaxed text-[#555]">
-                        Esta lição ainda está em preparação. Em breve, esta
-                        página receberá o conteúdo completo para estudo,
-                        leitura bíblica e apoio à classe.
+                        {isDraft
+                          ? "Esta lição ainda está em preparação. Em breve, esta página receberá o conteúdo completo para estudo, leitura bíblica e apoio à classe."
+                          : "Esta lição já integra a trilha do trimestre e será liberada para estudo dentro da janela pública prevista para a sua semana."}
                       </p>
                     </div>
-
-                    {lessonPrimaryReading.length ? (
-                      <div className="mt-8">
-                        <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
-                          {classeInfo.leituraPrincipalLabel}
-                        </p>
-                        <EbdSupportList items={lessonPrimaryReading} />
-                      </div>
-                    ) : null}
                   </div>
                 ) : (
                   <>

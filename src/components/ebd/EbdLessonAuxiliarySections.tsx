@@ -110,7 +110,11 @@ export default function EbdLessonAuxiliarySections({
           <p>{classeInfo.horarioLabel}</p>
           <p>
             <BibleReferenceText
-              text={trimestre.versiculoBase ?? "Versículo-base a confirmar"}
+              text={
+                licao.textoChave ??
+                trimestre.versiculoBase ??
+                `${classeInfo.textoBaseLabel} a confirmar`
+              }
               linkClassName="font-medium text-[#555] underline decoration-[#ffa726]/60 underline-offset-4 transition-colors hover:text-[#8b1e1e]"
             />
           </p>
@@ -140,7 +144,9 @@ export default function EbdLessonAuxiliarySections({
           </p>
           {licaoDaSemanaAtual ? (
             <p>
-              <span className="font-semibold text-[#212121]">Semana atual:</span>{" "}
+              <span className="font-semibold text-[#212121]">
+                Semana atual:
+              </span>{" "}
               esta é a lição em destaque desta semana.
             </p>
           ) : null}

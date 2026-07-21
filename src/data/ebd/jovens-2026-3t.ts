@@ -15,7 +15,7 @@ export const sementesJovensTerceiroTrimestre: SementeJovensTerceiroTrimestre[] =
   {
     numero: 1,
     data: "2026-07-05",
-    titulo: "O Livro de Juízes: quando Cada um Fazia o que Parecia Certo",
+    titulo: "O Livro de Juízes: Quando Cada um Fazia o que Parecia Certo",
     textoPrincipal: "Juízes 17.6",
     resumo:
       "Deus cumpre seus propósitos por meio de instrumentos humanos, escolhidos e capacitados por Ele, apesar da fraqueza do homem.",

@@ -12,6 +12,8 @@ import {
   sementesJovensTerceiroTrimestre,
   type SementeJovensTerceiroTrimestre,
 } from "./jovens-2026-3t";
+import { editoriaisJovensTerceiroTrimestre } from "./jovens-2026-3t/index";
+import type { EditorialJovens3T } from "./jovens-2026-3t-editorial";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
@@ -4234,6 +4236,37 @@ function criarLicaoJovensTerceiroTrimestre(
   };
 }
 
+function criarLicaoJovensTerceiroTrimestreEditorial(
+  editorial: EditorialJovens3T,
+): LicaoEBDJovens {
+  return {
+    id: `jovens-2026-3t-licao-${editorial.numero}`,
+    publico: "jovens",
+    slug: `licao-${editorial.numero}`,
+    numero: editorial.numero,
+    data: editorial.data,
+    statusEditorial: "published",
+    titulo: editorial.titulo,
+    imagem: getEbdLessonImagePath(
+      "jovens",
+      "2026-3t",
+      editorial.numero,
+      "jpg",
+    ),
+    resumo: editorial.resumo,
+    textoChave: editorial.textoChave,
+    verdadePratica: editorial.verdadePratica,
+    leituraBiblica: editorial.leituraBiblica,
+    objetivos: editorial.objetivos,
+    topicos: editorial.topicos,
+    aplicacao: editorial.aplicacao,
+    apoioProfessor: editorial.apoioProfessor,
+    apoioAluno: editorial.apoioAluno,
+    esboco: editorial.esboco,
+    subsidioJovens: editorial.subsidioJovens,
+  };
+}
+
 const objetivosJovensTerceiroTrimestreLicao1 = [
   "Apresentar o contexto espiritual e histórico do livro de Juízes.",
   "Explicar o significado bíblico da frase: cada um fazia o que parecia certo aos seus olhos.",
@@ -5039,18 +5072,61 @@ const jovens2026TerceiroTrimestre: TrimestreEBD = {
   titulo: "Fidelidade às Escrituras em Oposição à Apostasia",
   subtitulo: "Lições Espirituais no Livro de Juízes",
   descricao:
-    "Treze lições para fortalecer a juventude cristã na fidelidade às Escrituras, usando o livro de Juízes como espelho espiritual que revela os perigos da apostasia e o valor da memória ativa da fé.",
+    "Treze lições para conduzir a juventude pelo livro de Juízes, mostrando os perigos da apostasia, a necessidade de fidelidade às Escrituras, a misericórdia de Deus em tempos de crise e a esperança no governo do verdadeiro Rei.",
   comentarista: "Valmir Nascimento",
-  versiculoBase: "Juízes 17:6",
-  licoes: sementesJovensTerceiroTrimestre.map((seed) =>
-    seed.numero === 1
-      ? licaoJovensTerceiroTrimestre1
-      : seed.numero === 2
-        ? licaoJovensTerceiroTrimestre2
-        : seed.numero === 3
-          ? licaoJovensTerceiroTrimestre3
-      : criarLicaoJovensTerceiroTrimestre(seed)
-  ),
+  versiculoBase: "Juízes 21.25",
+  percurso: [
+    {
+      titulo: "Lições 1–4 · A crise e os primeiros libertadores",
+      conteudo:
+        "Introdução ao livro, infidelidade da nova geração, clamor e atuação de Otniel, Eúde e Sangar.",
+    },
+    {
+      titulo: "Lições 5–8 · Liderança, coragem e escolhas",
+      conteudo:
+        "Débora e Baraque, a formação e os últimos anos de Gideão, o governo de Abimeleque e a trajetória de Jefté.",
+    },
+    {
+      titulo: "Lições 9–10 · A força e a fraqueza de Sansão",
+      conteudo:
+        "Chamado, dons, relacionamentos, vitórias e derrotas de um libertador que expõe a necessidade de caráter e dependência de Deus.",
+    },
+    {
+      titulo: "Lições 11–13 · Decadência e esperança",
+      conteudo:
+        "Falsa religiosidade, colapso moral e social, responsabilidade diante do pecado e esperança no Rei justo e definitivo.",
+    },
+  ],
+  fontesEditoriais: [
+    {
+      titulo: "Revista do professor",
+      conteudo: "Lições Bíblicas Jovens, 3º trimestre de 2026, CPAD.",
+    },
+    {
+      titulo: "Livro de apoio",
+      conteudo:
+        "Fidelidade às Escrituras em Oposição à Apostasia, de Valmir Nascimento.",
+    },
+    {
+      titulo: "Texto bíblico",
+      conteudo:
+        "Bíblia Sagrada na Almeida Corrigida Fiel, com referências cruzadas usadas de forma contextual.",
+    },
+  ],
+  orientacaoUso:
+    "Cada lição reúne texto bíblico, objetivos, roteiro de 40–50 minutos, subsídio ao professor, aplicações e revisão. Use o material como apoio à preparação, preservando a leitura direta das Escrituras, a revista da classe e a condução pastoral do professor.",
+  licoes: sementesJovensTerceiroTrimestre.map((seed) => {
+    const editorialCompleto = editoriaisJovensTerceiroTrimestre[seed.numero];
+
+    if (editorialCompleto) {
+      return criarLicaoJovensTerceiroTrimestreEditorial(editorialCompleto);
+    }
+
+    if (seed.numero === 1) return licaoJovensTerceiroTrimestre1;
+    if (seed.numero === 2) return licaoJovensTerceiroTrimestre2;
+    if (seed.numero === 3) return licaoJovensTerceiroTrimestre3;
+    return criarLicaoJovensTerceiroTrimestre(seed);
+  }),
 };
 
 export const jovens2026Trimestres: TrimestreEBD[] = [
