@@ -4199,7 +4199,7 @@ function criarLicaoJovensTerceiroTrimestre(
   seed: SementeJovensTerceiroTrimestre,
   options: CriarLicaoJovensOptions = {}
 ): LicaoEBDJovens {
-  const { statusEditorial = "draft", dataLiberacaoPublica } = options;
+  const { statusEditorial = "published", dataLiberacaoPublica } = options;
 
   return {
     id: `jovens-2026-3t-licao-${seed.numero}`,
@@ -5035,7 +5035,7 @@ const jovens2026TerceiroTrimestreBase = criarTrimestrePlaceholder({
 const jovens2026TerceiroTrimestre: TrimestreEBD = {
   ...jovens2026TerceiroTrimestreBase,
   id: "jovens-2026-3t",
-  statusEditorial: "partial",
+  statusEditorial: "published",
   titulo: "Fidelidade às Escrituras em Oposição à Apostasia",
   subtitulo: "Lições Espirituais no Livro de Juízes",
   descricao:
