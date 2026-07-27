@@ -44,10 +44,17 @@ function createBookAliasMap() {
   const aliasMap = new Map<string, BookAlias>();
   const aliasOptions = new Set<string>();
 
-  const register = (alias: string, book: BookAlias) => {
+  const register = (
+    alias: string,
+    book: BookAlias,
+    options: { allowShort?: boolean } = {}
+  ) => {
     const normalizedAlias = normalizeReferenceText(alias);
 
-    if (!normalizedAlias || normalizedAlias.length < 3) {
+    if (
+      !normalizedAlias ||
+      (normalizedAlias.length < 3 && !options.allowShort)
+    ) {
       return;
     }
 
@@ -63,6 +70,10 @@ function createBookAliasMap() {
 
     register(book.nome, alias);
     register(stripAccents(book.nome), alias);
+
+    if (book.slug === "juizes") {
+      register("Jz", alias, { allowShort: true });
+    }
 
     const slugAlias = book.slug.replace(/-/g, " ");
     if (slugAlias.length >= 4) {

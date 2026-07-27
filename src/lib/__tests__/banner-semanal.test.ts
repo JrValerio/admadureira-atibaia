@@ -42,6 +42,14 @@ describe("getBannerSemanal", () => {
     );
   });
 
+  it("resolve a vigilia pelo arquivo da programacao semanal", () => {
+    vi.setSystemTime(new Date("2026-07-20T15:00:00.000Z"));
+
+    expect(getBannerSemanal("/programacao/eventos/vigilia.png")).toBe(
+      "/programacao/semanas/2026-07-20/vigilia.png"
+    );
+  });
+
   it("mantem compatibilidade com semanas antigas do culto da familia", () => {
     vi.setSystemTime(new Date("2026-04-06T15:00:00.000Z"));
 
