@@ -12,7 +12,7 @@ export const VIGILIA_29_08_2026 = {
   local: SEDE_PLACE_NAME,
   endereco: SEDE_ADDRESS_INLINE,
   preletor: {
-    nome: "Pr. Wanderley Abraão",
+    nome: "Pr. Wanderley Abrahão",
     papel: "Preletor",
     foto: "/programacao/eventos/vigilia-29-08-2026/perfis/wanderley-abrahao.jpg",
     fotoClassName: "origin-top scale-[1.12] object-cover object-[50%_42%]",
@@ -103,12 +103,12 @@ export const VIGILIA_29_08_2026 = {
   banner: "/programacao/eventos/vigilia.png",
   hero: "/programacao/eventos/hero-vigilia.png",
   descricaoSeo:
-    "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de adoração, clamor e Palavra com o Pr. Wanderley Abraão e participação de Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+    "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de adoração, clamor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
   descricaoTopo:
     "A Assembleia de Deus — Ministério Madureira Campo de Atibaia convida você e sua família para uma noite especial de Vigília.",
   sobre: [
     "A Vigília será uma noite separada para buscarmos a presença de Deus em oração, adoração e ministração da Palavra. Um tempo de renovo espiritual e comunhão para toda a igreja.",
-    "A ministração da Palavra ficará com o Pr. Wanderley Abraão, e o louvor contará com a participação especial dos cantores Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+    "A ministração da Palavra ficará com o Pr. Wanderley Abrahão, e o louvor contará com a participação especial dos cantores Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
   ],
   keywords: [
     "Vigília em Atibaia",
@@ -116,7 +116,7 @@ export const VIGILIA_29_08_2026 = {
     "Assembleia de Deus Atibaia",
     "vigília evangélica",
     "noite de oração",
-    "Pr. Wanderley Abraão",
+    "Pr. Wanderley Abrahão",
     "Noemi Nonato",
     "Nando Menezes",
     "Gildo Borges",

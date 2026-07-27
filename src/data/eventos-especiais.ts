@@ -870,7 +870,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "evento-especial",
           horario: "22h00",
           descricao:
-            "Uma noite de adoração, clamor e Palavra, com ministração do Pr. Wanderley Abraão e participação especial dos cantores Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+            "Uma noite de adoração, clamor e Palavra, com ministração do Pr. Wanderley Abrahão e participação especial dos cantores Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
           convite:
             "Separe a noite de sábado para buscar a presença de Deus conosco. Traga sua família e convide alguém para essa vigília.",
           baseBiblica: criarBaseBiblica("Mateus 26:41"),
