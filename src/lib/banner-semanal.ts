@@ -46,6 +46,7 @@ const WEEKLY_FILENAME_MAP: Record<string, readonly string[]> = {
     "ebd.png",
     "EBD.png",
   ],
+  "/programacao/eventos/vigilia.png": ["vigilia.png"],
   "/programacao/ensaio-jovens.png": ["ensaio-jovens.png"],
   "/programacao/culto-de-domingo.png": [
     "culto-de-domingo.png",
