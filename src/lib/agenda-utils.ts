@@ -480,10 +480,25 @@ export function getEventosDestaque(
   return incluirFallback ? futuros.slice(0, limite) : [];
 }
 
+export function ordenarEventosCronologicamente(
+  eventos: readonly EventoFuturo[]
+): EventoFuturo[] {
+  return [...eventos].sort((a, b) => {
+    if (a.ano !== b.ano) return a.ano - b.ano;
+
+    const mesA = mesParaNumero[a.mes] ?? 1;
+    const mesB = mesParaNumero[b.mes] ?? 1;
+
+    if (mesA !== mesB) return mesA - mesB;
+
+    return primeiroDia(a.data) - primeiroDia(b.data);
+  });
+}
+
 export function groupEventosPorMes(eventos = getEventosFuturos()): EventosPorMesUI[] {
   const agrupados = new Map<string, EventosPorMesUI>();
 
-  for (const evento of eventos) {
+  for (const evento of ordenarEventosCronologicamente(eventos)) {
     const mesNumero = mesParaNumero[evento.mes] ?? 1;
     const id = `${evento.ano}-${String(mesNumero).padStart(2, "0")}`;
     const existente = agrupados.get(id);

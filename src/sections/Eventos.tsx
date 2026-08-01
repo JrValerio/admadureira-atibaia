@@ -2,6 +2,7 @@ import Link from "next/link";
 import CardMedia from "@/components/media/CardMedia";
 import {
   groupEventosPorMes,
+  ordenarEventosCronologicamente,
   type EventoFuturo,
   type EventosPorMesUI,
 } from "@/lib/agenda-utils";
@@ -100,9 +101,13 @@ export default function Eventos({
   eventos,
   showHeader = true,
 }: EventosProps) {
-  const proximosEventos = eventos.filter((evento) => evento.destaque).slice(0, 6);
-  const agendaPrincipal = proximosEventos.length > 0 ? proximosEventos : eventos.slice(0, 6);
-  const agendaPorMes = groupEventosPorMes(eventos);
+  const eventosOrdenados = ordenarEventosCronologicamente(eventos);
+  const proximosEventos = eventosOrdenados
+    .filter((evento) => evento.destaque)
+    .slice(0, 6);
+  const agendaPrincipal =
+    proximosEventos.length > 0 ? proximosEventos : eventosOrdenados.slice(0, 6);
+  const agendaPorMes = groupEventosPorMes(eventosOrdenados);
 
   return (
     <section id="eventos" className="py-12 md:py-24 bg-white">
