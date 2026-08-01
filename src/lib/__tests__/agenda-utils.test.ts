@@ -10,6 +10,7 @@ import {
   getNextCultoSemanal,
   getProximoEventoPorTipo,
   groupEventosPorMes,
+  ordenarEventosCronologicamente,
 } from "../agenda-utils";
 
 // SP is UTC-3. Passing noon SP as UTC avoids day-boundary issues across timezones.
@@ -201,6 +202,19 @@ describe("getEventosDestaque", () => {
     }
   });
 
+  it("mantem os destaques em ordem cronologica mes a mes", () => {
+    vi.setSystemTime(new Date("2026-08-01T15:00:00.000Z"));
+
+    expect(
+      getEventosDestaque(4).map((evento) => [evento.data, evento.titulo])
+    ).toEqual([
+      ["08/08", "Santa Ceia"],
+      ["29/08", "Vigília"],
+      ["02/09", "Aniversário do Pastor Zacarias Bernardes Félix"],
+      ["27/09", "Batismo"],
+    ]);
+  });
+
   it("returns empty array when incluirFallback is false and no destaque exists", () => {
     // With no destaques flagged, fallback=false should return []
     const todos = getEventosFuturos();
@@ -251,6 +265,19 @@ describe("groupEventosPorMes", () => {
 
   it("returns empty array for empty input", () => {
     expect(groupEventosPorMes([])).toHaveLength(0);
+  });
+
+  it("ordena eventos dentro do mes mesmo quando a entrada vem embaralhada", () => {
+    const eventos = getEventosAgenda();
+    const setembro = eventos.filter(
+      (evento) => evento.ano === 2026 && evento.mes === "Setembro"
+    );
+
+    expect(
+      ordenarEventosCronologicamente([...setembro].reverse()).map(
+        (evento) => evento.data
+      )
+    ).toEqual(setembro.map((evento) => evento.data));
   });
 });
 

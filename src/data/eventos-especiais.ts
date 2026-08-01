@@ -17,6 +17,7 @@ type EventoConfig = {
   baseBiblica?: ReferenciaBiblicaLink[];
   recursos?: ConteudoRelacionadoLink[];
   horario?: string;
+  local?: string;
   destaque?: boolean;
   imagem?: string;
   banner?: string;
@@ -28,7 +29,7 @@ function criarEvento(local: string, config: EventoConfig) {
     ...config,
     baseBiblica:
       config.baseBiblica ?? BASE_BIBLICA_PADRAO_POR_TIPO[config.tipo],
-    local,
+    local: config.local ?? local,
   };
 }
 
@@ -785,6 +786,22 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
+          slug: "cha-de-mulheres-que-inspiram-24-07-2026",
+          data: "24/07",
+          titulo: "Chá de Mulheres que Inspiram",
+          tipo: "evento-especial",
+          horario: "19h30",
+          descricao:
+            "Uma noite de fé, comunhão, louvor e propósito preparada especialmente para mulheres, com palestra da Dra. Andresa Gomes.",
+          convite:
+            "Participe deste encontro especial entre mulheres e convide alguém para compartilhar uma noite de inspiração e comunhão.",
+          local: "Rua Pacaembu, 85 — Jardim Imperial, Atibaia/SP",
+          destaque: true,
+          imagem: "/programacao/eventos/cha-de-mulheres/cha-de-mulheres.png",
+          banner: "/programacao/eventos/cha-de-mulheres/banner-cha-de-mulheres.png",
+          hero: "/programacao/eventos/cha-de-mulheres/banner-cha-de-mulheres.png",
+        }),
+        criarEvento(local, {
           slug: "curso-de-teologia-27-07-2026",
           data: "27/07",
           titulo: "Curso de Teologia",
@@ -817,6 +834,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-08-03/santa-ceia.png",
+          banner: "/programacao/semanas/2026-08-03/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-10-08-2026",
@@ -904,13 +924,15 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       ano: 2026,
       eventos: [
         criarEvento(local, {
-          slug: "aniversario-pastor-zacarias-05-09-2026",
-          data: "05/09",
+          slug: "aniversario-pastor-zacarias-02-09-2026",
+          data: "02/09",
           titulo: "Aniversário do Pastor Zacarias Bernardes Félix",
           tipo: "evento-especial",
           descricao:
             "Celebração especial em honra ao aniversário do Pastor Zacarias Bernardes Félix.",
           destaque: true,
+          imagem: "/programacao/eventos/aniversario-pastor-zacarias.png",
+          banner: "/programacao/eventos/aniversario-pastor-zacarias.png",
         }),
         criarEvento(local, {
           slug: "reuniao-de-ministerio-07-09-2026",
@@ -975,6 +997,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: batismoDescricao,
           convite: batismoConvite,
           destaque: true,
+          imagem: "/programacao/semanas/2026-09-21/batismo.png",
+          banner: "/programacao/semanas/2026-09-21/batismo.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-28-09-2026",
