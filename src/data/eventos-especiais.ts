@@ -951,6 +951,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-09-07/santa-ceia.png",
+          banner: "/programacao/semanas/2026-09-07/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-14-09-2026",
@@ -1119,7 +1122,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
-          destaque: true,
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-16-11-2026",

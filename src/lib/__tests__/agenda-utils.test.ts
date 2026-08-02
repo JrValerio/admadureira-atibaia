@@ -206,13 +206,32 @@ describe("getEventosDestaque", () => {
     vi.setSystemTime(new Date("2026-08-01T15:00:00.000Z"));
 
     expect(
-      getEventosDestaque(4).map((evento) => [evento.data, evento.titulo])
+      getEventosDestaque(6).map((evento) => [evento.data, evento.titulo])
     ).toEqual([
       ["08/08", "Santa Ceia"],
       ["29/08", "Vigília"],
       ["02/09", "Aniversário do Pastor Zacarias Bernardes Félix"],
+      ["12/09", "Santa Ceia"],
       ["27/09", "Batismo"],
     ]);
+  });
+
+  it("destaca a Santa Ceia de setembro no lugar da de novembro", () => {
+    vi.setSystemTime(new Date("2026-08-01T15:00:00.000Z"));
+
+    const destaques = getEventosDestaque(6);
+    const santaCeiaSetembro = destaques.find(
+      (evento) => evento.slug === "santa-ceia-12-09-2026"
+    );
+
+    expect(santaCeiaSetembro?.imagem).toBe(
+      "/programacao/semanas/2026-09-07/santa-ceia.png"
+    );
+    expect(destaques).not.toContainEqual(
+      expect.objectContaining({
+        slug: "santa-ceia-e-reuniao-de-obreiros-14-11-2026",
+      })
+    );
   });
 
   it("returns empty array when incluirFallback is false and no destaque exists", () => {
