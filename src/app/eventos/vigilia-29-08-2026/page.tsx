@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import VigiliaCountdown from "./VigiliaCountdown";
+import EventCountdown from "@/components/EventCountdown";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
 import { SEDE_POSTAL_ADDRESS } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -132,7 +132,8 @@ export default function Vigilia29082026Page() {
     description: vigilia.descricaoSeo,
     url: canonicalUrl,
     image: [resolveSiteUrl(vigilia.hero)],
-    startDate: "2026-08-29T22:00:00-03:00",
+    startDate: vigilia.inicioIso,
+    endDate: vigilia.fimIso,
     inLanguage: "pt-BR",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -204,7 +205,11 @@ export default function Vigilia29082026Page() {
           </nav>
 
           <div className="mb-4">
-            <VigiliaCountdown targetIso="2026-08-29T22:00:00-03:00" />
+            <EventCountdown
+              targetIso={vigilia.inicioIso}
+              endIso={vigilia.fimIso}
+              eventName={vigilia.titulo}
+            />
           </div>
 
           <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
