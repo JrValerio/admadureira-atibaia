@@ -293,6 +293,7 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "jejum-e-oração.png",
     "oracao-matinal-domingo.png",
     "oracao-matinal.png",
+    "reuniao-ministerial.png",
     "santa-ceia.png"
   ],
   "2026-08-31": [

@@ -38,4 +38,9 @@ describe("getHeroEventos", () => {
       "Reunião de Obreiros"
     );
   });
+
+  it("mantem a Vigilia na home ate o encerramento no fuso de Sao Paulo", () => {
+    expect(getTitlesAt("2026-08-30T08:59:59.000Z")).toContain("Vigília");
+    expect(getTitlesAt("2026-08-30T09:00:00.000Z")).not.toContain("Vigília");
+  });
 });

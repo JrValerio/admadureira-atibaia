@@ -1,5 +1,6 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
+import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
 import {
   isFirstMondayWeek,
@@ -16,6 +17,11 @@ export interface HeroEvento {
   imageClassName?: string;
   href: string;
   ariaLabel: string;
+  countdown?: {
+    targetIso: string;
+    endIso: string;
+    eventName: string;
+  };
   /** Slides "high" sempre ficam nas primeiras posições. */
   priority?: "high" | "normal";
   /**
@@ -36,6 +42,8 @@ export interface HeroEvento {
    * Após essa data, o slide não aparece nem como fallback.
    */
   archivedAfter?: string;
+  /** Instante exato, com fuso, a partir do qual o slide é removido. */
+  archivedAt?: string;
   recurrence?: "first-monday-previous-week" | "third-saturday-week";
   hiddenWhen?: "first-monday-week";
 }
@@ -102,6 +110,10 @@ function isHiddenByCalendar(slide: HeroEvento, today: Date): boolean {
 }
 
 function isArchived(slide: HeroEvento, today: Date): boolean {
+  if (slide.archivedAt) {
+    return today.getTime() >= Date.parse(slide.archivedAt);
+  }
+
   if (!slide.archivedAfter) return false;
   const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   return t > toMidnight(slide.archivedAfter);
@@ -300,10 +312,15 @@ export function getHeroEventos(): HeroEvento[] {
       imagem: "/banners/banner-vigilia.png",
       href: "/eventos/vigilia-29-08-2026",
       ariaLabel: "Abrir página da Vigília 29 de agosto",
+      countdown: {
+        targetIso: vigilia.inicioIso,
+        endIso: vigilia.fimIso,
+        eventName: vigilia.titulo,
+      },
       priority: "high",
       type: "event",
       eventDate: "2026-08-29",
-      archivedAfter: "2026-08-29",
+      archivedAt: vigilia.fimIso,
     },
     {
       titulo: "Culto de Santa Ceia",

@@ -26,6 +26,14 @@ describe("getBannerSemanal", () => {
     );
   });
 
+  it("resolve a reuniao ministerial da semana de 3 de agosto", () => {
+    vi.setSystemTime(new Date("2026-08-03T15:00:00.000Z"));
+
+    expect(getBannerSemanal("/programacao/reuniao-ministerial.png")).toBe(
+      "/programacao/semanas/2026-08-03/reuniao-ministerial.png"
+    );
+  });
+
   it("usa a semana anterior mais recente quando a arte da semana atual nao existe", () => {
     vi.setSystemTime(new Date("2026-05-04T15:00:00.000Z"));
 

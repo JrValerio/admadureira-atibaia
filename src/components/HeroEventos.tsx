@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import EventCountdown from "@/components/EventCountdown";
 import {
   useEffect,
   useEffectEvent,
@@ -285,6 +286,8 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   };
 
   const activeEvento = eventos[realIndex];
+  const countdownEvento = eventos.find((evento) => evento.countdown);
+  const countdown = countdownEvento?.countdown;
 
   return (
     <section
@@ -484,6 +487,36 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
           </div>
         )}
       </div>
+
+      {countdownEvento && countdown && (
+        <div className="ui-page-container mt-5">
+          <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 rounded-2xl bg-[#17130e] px-5 py-4 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] sm:flex-row sm:text-left md:px-7">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ffc46b]">
+                Próximo grande encontro
+              </p>
+              <p className="mt-1 font-acme text-xl tracking-wide text-white">
+                {countdownEvento.titulo}
+              </p>
+            </div>
+
+            <EventCountdown
+              targetIso={countdown.targetIso}
+              endIso={countdown.endIso}
+              eventName={countdown.eventName}
+              variant="overlay"
+            />
+
+            <Link
+              href={countdownEvento.href}
+              aria-label={countdownEvento.ariaLabel}
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#ffa726] px-5 py-2 text-xs font-bold uppercase tracking-widest text-[#111] transition-colors hover:bg-[#f59b17] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#17130e]"
+            >
+              Ver detalhes
+            </Link>
+          </div>
+        </div>
+      )}
 
       <div className="ui-page-container mt-5 text-center md:mt-6">
         <Link href="/eventos" className="ui-btn-secondary">

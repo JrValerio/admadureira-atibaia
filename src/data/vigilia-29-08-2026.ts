@@ -9,6 +9,8 @@ export const VIGILIA_29_08_2026 = {
   data: "29 de agosto de 2026",
   diaSemana: "Sábado",
   horario: "22h",
+  inicioIso: "2026-08-29T22:00:00-03:00",
+  fimIso: "2026-08-30T06:00:00-03:00",
   local: SEDE_PLACE_NAME,
   endereco: SEDE_ADDRESS_INLINE,
   preletor: {
