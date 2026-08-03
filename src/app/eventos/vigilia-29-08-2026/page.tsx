@@ -174,17 +174,19 @@ export default function Vigilia29082026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <div className="relative aspect-square w-full overflow-hidden bg-[#111] sm:aspect-[21/9] md:aspect-[21/7]">
-        <Image
-          src={vigilia.hero}
-          alt="Vigília 29 de agosto — AD Madureira Atibaia"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+      <div className="w-full overflow-hidden bg-[#140a06]">
+        <div className="relative mx-auto aspect-video w-full max-w-[1536px]">
+          <Image
+            src={vigilia.hero}
+            alt="Vigília 29 de agosto — AD Madureira Atibaia"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="(min-width: 1536px) 1536px, 100vw"
+            className="object-contain"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+        </div>
       </div>
 
       <section className="py-8 md:py-14">
