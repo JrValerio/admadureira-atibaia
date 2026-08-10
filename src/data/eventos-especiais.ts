@@ -855,6 +855,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-08-10/reuniao-de-obreiro.png",
+          banner: "/programacao/semanas/2026-08-10/reuniao-de-obreiro.png",
         }),
         criarEvento(local, {
           slug: "curso-de-teologia-17-08-2026",
