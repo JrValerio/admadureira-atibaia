@@ -88,61 +88,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginasBase: MetadataRoute.Sitemap = [
     {
       url: resolveSiteUrl(""),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: resolveSiteUrl("/programacao"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: resolveSiteUrl("/programacao/curso-de-teologia"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/eventos"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: resolveSiteUrl("/eventos/congresso-mocidade-rios-de-uncao-2026"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: resolveSiteUrl("/sobre"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/historia"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/congregacoes"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/pastores"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/ministerios"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -172,43 +162,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: resolveSiteUrl("/oracao"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: resolveSiteUrl("/contato"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: resolveSiteUrl("/oferta"),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: resolveSiteUrl("/espiritualidade"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/espiritualidade/versiculo-do-dia"),
-      lastModified: generatedAt,
       changeFrequency: "daily",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/espiritualidade/biblia"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: resolveSiteUrl("/espiritualidade/plano-de-leitura"),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.7,
     },
@@ -228,15 +211,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const paginasEvento: MetadataRoute.Sitemap = eventosFuturos.map((evento) => ({
     url: resolveSiteUrl(`/eventos/${evento.slug}`),
-    // A data do evento não representa a data de modificação do conteúdo.
-    lastModified: generatedAt,
+    // A data do evento não representa a data de modificação do conteúdo; omitir é melhor que inventar.
     changeFrequency: "weekly",
     priority: evento.destaque ? 0.9 : 0.8,
   }));
 
   const paginasPastores: MetadataRoute.Sitemap = getPastores().map((pastor) => ({
     url: resolveSiteUrl(`/pastores/${pastor.slug}`),
-    lastModified: generatedAt,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
@@ -244,7 +225,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginasCongregacoes: MetadataRoute.Sitemap = getCongregacoes().map(
     (congregacao) => ({
       url: resolveSiteUrl(`/congregacoes/${congregacao.slug}`),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     })
@@ -253,7 +233,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginasMinisterios: MetadataRoute.Sitemap = getMinisterios().map(
     (ministerio) => ({
       url: resolveSiteUrl(`/ministerios/${ministerio.slug}`),
-      lastModified: generatedAt,
       changeFrequency: "monthly",
       priority: 0.7,
     })
@@ -295,7 +274,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const paginasPlanosLeitura: MetadataRoute.Sitemap = readingPlans.map((plan) => ({
     url: resolveSiteUrl(`/espiritualidade/plano-de-leitura/${plan.slug}`),
-    lastModified: generatedAt,
     changeFrequency: "weekly",
     priority: 0.7,
   }));
@@ -305,7 +283,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ? [
           {
             url: resolveSiteUrl("/espiritualidade/radio"),
-            lastModified: generatedAt,
             changeFrequency: "monthly" as const,
             priority: 0.6,
           },
@@ -315,7 +292,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ? [
           {
             url: resolveSiteUrl("/espiritualidade/podcast"),
-            lastModified: generatedAt,
             changeFrequency: "monthly" as const,
             priority: 0.6,
           },
@@ -386,7 +362,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: resolveSiteUrl(
         `/espiritualidade/plano-de-leitura/${plan.slug}/dia/${day.dia}`
       ),
-      lastModified: generatedAt,
       changeFrequency: "weekly",
       priority: 0.6,
     }))
