@@ -202,6 +202,7 @@ describe("getEventosDestaque", () => {
     }
   });
 
+  // TODO(#127): acoplado a @/data/agenda — quebra a cada evento publicado na janela
   it("mantem os destaques em ordem cronologica mes a mes", () => {
     vi.setSystemTime(new Date("2026-08-01T15:00:00.000Z"));
 
