@@ -209,6 +209,7 @@ describe("getEventosDestaque", () => {
       getEventosDestaque(6).map((evento) => [evento.data, evento.titulo])
     ).toEqual([
       ["08/08", "Santa Ceia"],
+      ["15/08", "Reunião de Obreiros"],
       ["29/08", "Vigília"],
       ["02/09", "Aniversário do Pastor Zacarias Bernardes Félix"],
       ["12/09", "Santa Ceia"],
