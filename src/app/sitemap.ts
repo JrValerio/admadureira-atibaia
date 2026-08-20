@@ -26,9 +26,9 @@ function parseContentDate(date: string) {
   return new Date(`${date}T12:00:00-03:00`);
 }
 
-function getLatestDate(dates: Date[], fallback: Date) {
+function getLatestDate(dates: Date[]): Date | undefined {
   if (dates.length === 0) {
-    return fallback;
+    return undefined;
   }
 
   return new Date(Math.max(...dates.map((date) => date.getTime())));
@@ -51,23 +51,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const eventosFuturos = getEventosFuturos();
 
   const latestMensagemDate = getLatestDate(
-    mensagens.map((mensagem) => parseContentDate(mensagem.data)),
-    generatedAt
+    mensagens.map((mensagem) => parseContentDate(mensagem.data))
   );
   const latestTestemunhoDate = getLatestDate(
-    testemunhos.map((testemunho) => parseContentDate(testemunho.data)),
-    generatedAt
+    testemunhos.map((testemunho) => parseContentDate(testemunho.data))
   );
   const latestChannelVideoDate = getLatestDate(
     channelVideos.videos
       .map((video) => video.publishedAt)
       .filter((publishedAt): publishedAt is string => Boolean(publishedAt))
-      .map((publishedAt) => new Date(publishedAt)),
-    generatedAt
+      .map((publishedAt) => new Date(publishedAt))
   );
   const latestDevotionalDate = getLatestDate(
-    devotionals.map((devotional) => parseContentDate(devotional.data)),
-    generatedAt
+    devotionals.map((devotional) => parseContentDate(devotional.data))
   );
   const latestEbdDate = getLatestDate(
     classesEbd.flatMap((classe) =>
@@ -80,10 +76,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           )
           .map((licao) => parseContentDate(licao.data))
       )
-    ),
-    generatedAt
+    )
   );
-  const latestGaleriaDate = getGaleriaLatestDate() ?? generatedAt;
+  const latestGaleriaDate = getGaleriaLatestDate() ?? undefined;
 
   const paginasBase: MetadataRoute.Sitemap = [
     {
@@ -310,8 +305,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
           )
           .map((licao) => parseContentDate(licao.data))
-      ),
-      generatedAt
+      )
     );
 
     return {
@@ -332,8 +326,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             .filter((licao) =>
               isLicaoPubliclyAvailable(trimestre, licao, availabilityDate)
             )
-            .map((licao) => parseContentDate(licao.data)),
-          generatedAt
+            .map((licao) => parseContentDate(licao.data))
         ),
         changeFrequency: "weekly",
         priority: getTrimestrePublicLessonCount(trimestre, availabilityDate) >= 13 ? 0.7 : 0.6,
