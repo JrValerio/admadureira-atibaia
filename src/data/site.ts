@@ -83,14 +83,14 @@ export const SEDE_HORARIOS_CONTATO = [
   "Segunda a Sexta · 06:00 – 07:00 · Oração Matinal",
   "Segunda · 19:00 – Curso de Teologia",
   "Terça · 19:30 – Culto de Ensino",
-  "Quarta · 09:00 – Consagração das Irmãs",
+  "Quarta · 09:00 – Consagração de Mulheres",
   "Quarta · 15:00 – Círculo de Oração",
   "Quarta · 19:00 – Ensaio das Irmãs",
   "Quinta · 19:30 – Culto da Vitória · Jejum e Oração",
   "Sexta · 14:30 – Culto de Libertação",
   "Domingo · 08:00 – Oração Matinal",
   "Domingo · 09:00 – Escola Bíblica Dominical (EBD)",
-  "Domingo · 11:00 – Ensaio com os Jovens",
+  "Domingo · 11:00 – Ensaio da Mocidade Rios de Unção",
   "Domingo · 18:30 – Culto da Família",
 ] as const;
 
@@ -98,14 +98,14 @@ export const SEDE_HORARIOS_CONGREGACAO = [
   "Segunda a Sexta · 06h00 – 07h00 · Oração Matinal",
   "Segunda · 19h00 · Curso de Teologia",
   "Terça · 19h30 · Culto de Ensino",
-  "Quarta · 09h00 · Consagração das Irmãs",
+  "Quarta · 09h00 · Consagração de Mulheres",
   "Quarta · 15h00 · Círculo de Oração",
   "Quarta · 19h00 · Ensaio das Irmãs",
   "Quinta · 19h30 · Culto da Vitória · Jejum e Oração",
   "Sexta · 14h30 · Culto de Libertação",
   "Domingo · 08h00 · Oração Matinal",
   "Domingo · 09h00 · Escola Bíblica Dominical (EBD)",
-  "Domingo · 11h00 · Ensaio com os Jovens",
+  "Domingo · 11h00 · Ensaio da Mocidade Rios de Unção",
   "Domingo · 18h30 · Culto da Família",
 ] as const;
 
