@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { MesAgenda } from "@/data/agenda-types";
 import {
   getCultoBySlug,
   getCultosSlugs,
@@ -12,6 +13,101 @@ import {
   groupEventosPorMes,
   ordenarEventosCronologicamente,
 } from "../agenda-utils";
+
+// agenda2026 é reconstruído toda semana a partir de eventos-especiais.ts (conteúdo
+// real e crescente da igreja) — testes que comparam contra título/data exatos
+// quebravam a cada evento novo publicado (issue #127). Fixamos agenda2026 com uma
+// agenda determinística; programacaoSemanal continua real porque não é a fonte da
+// instabilidade e outros testes abaixo dependem do seu conteúdo real (ex.: "Sunday
+// has at least one atividade from programacaoSemanal").
+vi.mock("@/data/agenda", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/data/agenda")>();
+
+  const agenda2026: MesAgenda[] = [
+    {
+      mes: "Agosto",
+      mesNumero: 8,
+      ano: 2026,
+      eventos: [
+        {
+          slug: "santa-ceia-08-08-2026",
+          tipo: "santa-ceia",
+          data: "08/08",
+          titulo: "Santa Ceia",
+          horario: "19h",
+          destaque: true,
+        },
+        {
+          slug: "reuniao-de-obreiros-15-08-2026",
+          tipo: "reuniao-de-obreiros",
+          data: "15/08",
+          titulo: "Reunião de Obreiros",
+          horario: "19h",
+          destaque: true,
+        },
+        {
+          slug: "vigilia-29-08-2026",
+          tipo: "evento-especial",
+          data: "29/08",
+          titulo: "Vigília",
+          horario: "22h",
+          destaque: true,
+        },
+      ],
+    },
+    {
+      mes: "Setembro",
+      mesNumero: 9,
+      ano: 2026,
+      eventos: [
+        {
+          slug: "aniversario-pastor-zacarias-02-09-2026",
+          tipo: "evento-especial",
+          data: "02/09",
+          titulo: "Aniversário do Pastor Zacarias Bernardes Félix",
+          destaque: true,
+        },
+        {
+          slug: "santa-ceia-12-09-2026",
+          tipo: "santa-ceia",
+          data: "12/09",
+          titulo: "Santa Ceia",
+          horario: "19h",
+          destaque: true,
+          imagem: "/programacao/semanas/2026-09-07/santa-ceia.png",
+        },
+        {
+          slug: "batismo-27-09-2026",
+          tipo: "batismo",
+          data: "27/09",
+          titulo: "Batismo",
+          horario: "09h30",
+          destaque: true,
+        },
+      ],
+    },
+    {
+      mes: "Novembro",
+      mesNumero: 11,
+      ano: 2026,
+      eventos: [
+        {
+          slug: "santa-ceia-e-reuniao-de-obreiros-14-11-2026",
+          tipo: "santa-ceia",
+          data: "14/11",
+          titulo: "Santa Ceia e Reunião de Obreiros",
+          horario: "19h",
+          destaque: true,
+        },
+      ],
+    },
+  ];
+
+  return {
+    ...actual,
+    agenda2026,
+  };
+});
 
 // SP is UTC-3. Passing noon SP as UTC avoids day-boundary issues across timezones.
 // 2026-01-07 = Wednesday  (Quarta-feira)
