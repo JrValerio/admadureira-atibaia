@@ -459,15 +459,21 @@ section[id] {
 
 /* ── Scroll reveal ─────────────────────────────────
    Use className="reveal" no container e o hook useReveal().
-   A classe .is-visible é adicionada via JS quando o elemento entra no viewport.
+   Visível por padrão (sem JS, ou antes do hook rodar, o conteúdo aparece
+   normalmente). O hook adiciona .reveal-armed no mount, colocando o
+   elemento no estado oculto/deslocado; a classe .is-visible é adicionada
+   via JS quando o elemento entra no viewport, revelando-o.
 ────────────────────────────────────────────────── */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.reveal.is-visible {
+.reveal.reveal-armed {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal.reveal-armed.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -500,4 +506,27 @@ section[id] {
 
 .animate-hero-media-in {
   animation: hero-media-in 0.9s ease-out both;
+}
+
+/* ── Reduced motion ────────────────────────────────
+   HeroBackgroundMedia já respeita a preferência via matchMedia em JS;
+   este bloco cobre as animações puramente CSS do resto do site.
+────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.reveal-armed,
+  .reveal.reveal-armed.is-visible {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .wa-pulse,
+  .animate-bounce {
+    animation: none;
+  }
 }

@@ -137,11 +137,9 @@ export default function Navbar() {
             scrolled ? "h-[3.9rem] md:h-[4.15rem]" : "h-[4.5rem] md:h-[4.85rem]"
           }`}
         >
-          <div className="hidden xl:block" />
-
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-2.5 md:gap-3.5 xl:hidden"
+            className="flex min-w-0 items-center gap-2.5 md:gap-3.5"
             aria-label="Voltar para a página inicial"
           >
             <Image
