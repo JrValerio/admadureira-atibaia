@@ -331,7 +331,7 @@ export default function BibleShareVerseButton({
           <div className="w-full max-w-xl rounded-4xl bg-white p-6 shadow-2xl md:p-8">
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                <p className="ui-card-eyebrow mb-2">
                   Compartilhar versículo
                 </p>
                 <h3 className="font-acme text-2xl md:text-3xl text-[#212121] tracking-wide">

@@ -94,7 +94,7 @@ export default function OfertaPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Por que contribuímos
               </p>
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
@@ -126,7 +126,7 @@ export default function OfertaPage() {
             </div>
 
             <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Como sua contribuição ajuda
               </p>
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
@@ -162,7 +162,7 @@ export default function OfertaPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 mt-8">
             <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8 text-center">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 PIX
               </p>
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-6">
@@ -298,7 +298,7 @@ export default function OfertaPage() {
               </div>
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Presencial e transparência
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">

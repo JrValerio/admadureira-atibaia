@@ -249,7 +249,7 @@ export default async function CultoPage({ params }: Props) {
             {/* Descrição */}
             {descricaoParagrafos.length > 0 && (
               <div className="order-3 rounded-3xl border border-black/5 bg-white p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:order-1 md:p-8">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Sobre o culto
                 </p>
                 <div className="space-y-4 text-[#444] leading-relaxed text-base md:text-lg">
@@ -266,7 +266,7 @@ export default async function CultoPage({ params }: Props) {
             {/* Convite */}
             {conviteParagrafos.length > 0 && (
               <div className="order-4 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:order-2 md:p-8">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Você é bem-vindo
                 </p>
                 <blockquote className="space-y-3 text-[#555] leading-relaxed text-base md:text-lg">
@@ -304,7 +304,7 @@ export default async function CultoPage({ params }: Props) {
 
                 {recursosRelacionados.length > 0 && (
                   <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                    <p className="ui-card-eyebrow mb-3">
                       Continue navegando
                     </p>
                     <div className="space-y-4">

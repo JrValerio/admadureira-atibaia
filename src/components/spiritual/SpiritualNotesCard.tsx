@@ -35,7 +35,7 @@ export default function SpiritualNotesCard({
 
   return (
     <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+      <p className="ui-card-eyebrow mb-3">
         {title}
       </p>
       <p className="text-sm text-[#555] leading-relaxed mb-5">{description}</p>

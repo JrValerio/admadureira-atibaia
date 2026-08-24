@@ -82,7 +82,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Visão geral do plano
               </p>
               <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-5">
@@ -137,7 +137,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
 
           {plan.slug === "biblia-em-1-ano" && dailyDevotional ? (
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm mb-8">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Devocional do dia
               </p>
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
@@ -167,7 +167,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
 
           <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
             <div className="mb-8">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Jornada completa
               </p>
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">
@@ -190,7 +190,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                       : "bg-[#fafafa] border-black/5 hover:border-[#ffa726]/25"
                   }`}
                 >
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  <p className="ui-card-eyebrow mb-3">
                     Dia {day.dia}
                   </p>
                   <p className="font-semibold text-[#212121] leading-relaxed mb-3">

@@ -268,7 +268,7 @@ export default async function BibliaChapterPage({
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
               <div className="mb-8 space-y-6">
                 <div className="space-y-5">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                  <p className="ui-card-eyebrow mb-2">
                     {chapterSeo.groupLabel}
                   </p>
                   <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">

@@ -66,7 +66,7 @@ export default function DevocionalPage() {
           {dailyDevotional && annualPlan && suggestedDay ? (
             <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 mb-12">
               <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Devocional do dia
                 </p>
                 <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-3">
@@ -102,7 +102,7 @@ export default function DevocionalPage() {
           ) : null}
 
           <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               Caminhada diária
             </p>
             <p className="text-[#555] leading-relaxed">
@@ -119,7 +119,7 @@ export default function DevocionalPage() {
                 href={`/espiritualidade/devocional/${devotional.slug}`}
                 className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)] transition-shadow"
               >
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   {formatDevotionalDate(getDevotionalDisplayDate(devotional))}
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">

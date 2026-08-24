@@ -60,7 +60,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+      <p className="ui-card-eyebrow mb-1">
         {label}
       </p>
       <p className="text-[#212121] text-sm leading-relaxed">{value}</p>
@@ -149,7 +149,7 @@ export default async function PastorPage({ params }: PageProps) {
           <Breadcrumb nome={pastor.nome} />
 
           <div className="mb-10">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               {pastor.grupo === "presidencia"
                 ? "Presidência do Campo"
                 : pastor.grupo === "congregacao"

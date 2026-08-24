@@ -137,7 +137,7 @@ export default function EspiritualidadePage() {
 
           <div className="mb-8 grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Trilha principal
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
@@ -216,7 +216,7 @@ export default function EspiritualidadePage() {
 
           <div className="mb-12">
             <div className="mb-6 max-w-3xl">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Recursos principais
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
@@ -235,7 +235,7 @@ export default function EspiritualidadePage() {
                   key={feature.href}
                   className="group rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
                 >
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  <p className="ui-card-eyebrow mb-3">
                     {feature.destaque}
                   </p>
                   <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">

@@ -124,7 +124,7 @@ export default function HistoriaPage() {
               </div>
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Marcos institucionais
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">
@@ -190,7 +190,7 @@ export default function HistoriaPage() {
                         >
                           <div className="absolute left-[-21px] top-3 h-6 w-6 rounded-full border-4 border-white bg-[#ffa726] shadow-sm md:left-0 md:translate-x-[-50%]" />
                           <div className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 md:p-7 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
-                            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                            <p className="ui-card-eyebrow mb-2">
                               {marco.periodo}
                             </p>
                             <h3 className="font-acme text-2xl md:text-[2rem] text-[#212121] tracking-wide mb-3">
@@ -283,7 +283,7 @@ export default function HistoriaPage() {
                   </p>
                   {congregacaoSede ? (
                     <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5 mb-6">
-                      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                      <p className="ui-card-eyebrow mb-2">
                         Templo sede
                       </p>
                       <p className="font-acme text-2xl text-[#212121] mb-2">

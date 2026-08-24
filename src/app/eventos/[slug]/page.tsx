@@ -167,7 +167,7 @@ export default async function EventoPage({ params }: PageProps) {
             </div>
 
             <div className="p-6 md:p-10">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="ui-card-eyebrow mb-2">
                 {evento.data}
                 {evento.horario && ` · ${evento.horario}`}
               </p>
@@ -178,13 +178,13 @@ export default async function EventoPage({ params }: PageProps) {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Data
                   </p>
                   <p className="text-[#212121] text-sm">{evento.data}</p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Horário
                   </p>
                   <p className="text-[#212121] text-sm">
@@ -192,7 +192,7 @@ export default async function EventoPage({ params }: PageProps) {
                   </p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Local
                   </p>
                   <p className="text-[#212121] text-sm">
@@ -220,7 +220,7 @@ export default async function EventoPage({ params }: PageProps) {
 
                 {conviteParagrafos.length > 0 && (
                   <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                    <p className="ui-card-eyebrow mb-2">
                       Você é bem-vindo
                     </p>
                     <blockquote className="space-y-3 text-[#555] leading-relaxed">
@@ -258,7 +258,7 @@ export default async function EventoPage({ params }: PageProps) {
 
                     {recursosRelacionados.length > 0 && (
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
-                        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                        <p className="ui-card-eyebrow mb-2">
                           Continue navegando
                         </p>
                         <div className="space-y-3">

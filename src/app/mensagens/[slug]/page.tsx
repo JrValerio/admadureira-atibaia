@@ -160,7 +160,7 @@ export default async function MensagemPage({ params }: PageProps) {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Data
                   </p>
                   <p className="text-[#212121] text-sm">
@@ -168,7 +168,7 @@ export default async function MensagemPage({ params }: PageProps) {
                   </p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Pregador
                   </p>
                   <p className="text-[#212121] text-sm">
@@ -176,7 +176,7 @@ export default async function MensagemPage({ params }: PageProps) {
                   </p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Plataforma
                   </p>
                   <p className="text-[#212121] text-sm">YouTube</p>

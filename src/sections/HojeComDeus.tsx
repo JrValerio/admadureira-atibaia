@@ -10,7 +10,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
     <section className="mb-10">
       <div className="rounded-4xl border border-[#ffa726]/15 bg-[#fff8ee] p-4 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
         <div className="mb-8 max-w-3xl">
-          <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+          <p className="ui-card-eyebrow mb-3">
             Hoje com Deus
           </p>
           <h2 className="font-acme text-2xl md:text-3xl lg:text-5xl text-[#212121] tracking-wide mb-4">
@@ -24,7 +24,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-4 md:mb-6">
           <div className="rounded-3xl bg-white/85 border border-white/70 p-6 md:p-7">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               Versículo do dia
             </p>
             <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">

@@ -159,7 +159,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                 href={SEDE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wide text-[#ffa726] uppercase hover:underline"
+                className="inline-flex items-center gap-1.5 rounded text-xs font-bold tracking-wide text-[#ffa726] uppercase hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -181,13 +181,13 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                 href={SEDE_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-sm text-[#424242] transition-colors hover:text-[#ffa726]"
+                className="block rounded text-sm text-[#424242] transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 WhatsApp: {SEDE_CONTACT.whatsappDisplay}
               </a>
               <a
                 href="tel:+551144116116"
-                className="block text-sm text-[#424242] transition-colors hover:text-[#ffa726]"
+                className="block rounded text-sm text-[#424242] transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 Telefone: {SEDE_CONTACT.telephoneDisplay}
               </a>
@@ -273,7 +273,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="Seu nome completo"
                     aria-invalid={!!errors.nome}
                     aria-describedby={errors.nome ? "cnome-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.nome ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.nome ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.nome && (
                     <p id="cnome-error" className="mt-1 text-xs text-red-500">{errors.nome}</p>
@@ -292,7 +292,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="seu@email.com"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "cemail-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.email ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.email && (
                     <p id="cemail-error" className="mt-1 text-xs text-red-500">{errors.email}</p>
@@ -312,7 +312,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     value={form.telefone}
                     onChange={handleChange}
                     placeholder="(11) 9xxxx-xxxx"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:border-[#ffa726] focus:outline-none"
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:border-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1"
                   />
                 </div>
                 <div>
@@ -328,7 +328,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="Sobre o que deseja falar?"
                     aria-invalid={!!errors.assunto}
                     aria-describedby={errors.assunto ? "assunto-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.assunto ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.assunto ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.assunto && (
                     <p id="assunto-error" className="mt-1 text-xs text-red-500">{errors.assunto}</p>
@@ -349,7 +349,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                   placeholder="Escreva aqui sua mensagem..."
                   aria-invalid={!!errors.mensagem}
                   aria-describedby={errors.mensagem ? "mensagem-error" : undefined}
-                  className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus:outline-none ${errors.mensagem ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                  className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.mensagem ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                 />
                 {errors.mensagem && (
                   <p id="mensagem-error" className="mt-1 text-xs text-red-500">{errors.mensagem}</p>
@@ -392,7 +392,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                   href={rede.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-[#faf8f3] px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121]"
+                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-[#faf8f3] px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111] text-white transition-colors group-hover:bg-[#ffa726] group-hover:text-[#111]">
                     {rede.icon}

@@ -61,7 +61,7 @@ export default function PodcastPage() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
               <div className="mb-5 flex flex-wrap items-center gap-3">
-                <span className="text-[#ffa726] text-xs font-bold tracking-widest uppercase">
+                <span className="ui-card-eyebrow">
                   Distribuição
                 </span>
                 <span
