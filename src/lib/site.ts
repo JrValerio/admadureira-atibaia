@@ -51,7 +51,6 @@ export function buildPageMetadata({
   description,
   path,
   image = SITE_DEFAULT_SHARE_IMAGE,
-  keywords,
 }: BuildPageMetadataInput): Metadata {
   const canonicalUrl = resolveSiteUrl(path);
   const shareImageUrl = resolveSiteUrl(image);
@@ -59,7 +58,6 @@ export function buildPageMetadata({
   return {
     title,
     description,
-    ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: canonicalUrl,
     },

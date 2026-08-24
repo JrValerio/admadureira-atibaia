@@ -202,6 +202,7 @@ describe("getEventosDestaque", () => {
     }
   });
 
+  // TODO(#127): acoplado a @/data/agenda — quebra a cada evento publicado na janela
   it("mantem os destaques em ordem cronologica mes a mes", () => {
     vi.setSystemTime(new Date("2026-08-01T15:00:00.000Z"));
 
@@ -209,6 +210,7 @@ describe("getEventosDestaque", () => {
       getEventosDestaque(6).map((evento) => [evento.data, evento.titulo])
     ).toEqual([
       ["08/08", "Santa Ceia"],
+      ["15/08", "Reunião de Obreiros"],
       ["29/08", "Vigília"],
       ["02/09", "Aniversário do Pastor Zacarias Bernardes Félix"],
       ["12/09", "Santa Ceia"],
