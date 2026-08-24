@@ -115,7 +115,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Quarta-feira",
-    titulo: "Consagração das Irmãs",
+    titulo: "Consagração de Mulheres",
     horario: SEDE_PROGRAMACAO_HORARIOS.consagracao,
     banner: BANNERS_PROGRAMACAO.consagracao,
     slug: "consagracao",
@@ -252,7 +252,7 @@ export const programacaoSemanal: ItemSemanal[] = [
   },
   {
     dia: "Domingo",
-    titulo: "Ensaio com os Jovens",
+    titulo: "Ensaio da Mocidade Rios de Unção",
     horario: SEDE_PROGRAMACAO_HORARIOS.ensaioJovensDomingo,
     banner: BANNERS_PROGRAMACAO.ensaioJovens,
     slug: "ensaio-jovens-rios-de-uncao",
