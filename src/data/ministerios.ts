@@ -1,5 +1,3 @@
-import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
-
 export interface MinisterioDestaque {
   etiqueta: string;
   titulo: string;
@@ -101,19 +99,6 @@ const ministerios: Ministerio[] = [
       "Apoio às programações da igreja",
       "Crescimento bíblico e espiritual dos jovens",
     ],
-    destaque: {
-      etiqueta: "Evento especial",
-      titulo: congressoRiosDeUncao.titulo,
-      descricao: `Nos dias ${congressoRiosDeUncao.data}, às ${congressoRiosDeUncao.horario}, a Mocidade Rios de Unção realizará o Congresso da Mocidade com o tema “${congressoRiosDeUncao.tema}” — ${congressoRiosDeUncao.baseBiblica}.`,
-      href: congressoRiosDeUncao.path,
-      ctaLabel: "Ver informações do Congresso",
-      detalhes: [
-        `Data: ${congressoRiosDeUncao.data}`,
-        `Horário: ${congressoRiosDeUncao.horario}`,
-        `Local: ${congressoRiosDeUncao.local}`,
-        `Endereço: ${congressoRiosDeUncao.endereco}`,
-      ],
-    },
     imagem: "/ministerios/rios-de-uncao.webp",
   },
   {
