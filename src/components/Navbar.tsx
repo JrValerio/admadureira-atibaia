@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -101,18 +101,57 @@ function getMobileMenuSectionId(label: string) {
     .replace(/\s+/g, "-")}`;
 }
 
+function getDesktopMenuSectionId(label: string) {
+  return `desktop-menu-section-${label
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/\s+/g, "-")}`;
+}
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [openDesktopCategory, setOpenDesktopCategory] = useState<string | null>(null);
   const pathname = usePathname();
   const mobileMenuId = "primary-mobile-menu";
+  const desktopNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!openDesktopCategory) {
+      return;
+    }
+
+    const closeOnOutsideInteraction = (event: PointerEvent) => {
+      if (
+        desktopNavRef.current &&
+        !desktopNavRef.current.contains(event.target as Node)
+      ) {
+        setOpenDesktopCategory(null);
+      }
+    };
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpenDesktopCategory(null);
+      }
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideInteraction);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideInteraction);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [openDesktopCategory]);
 
   const toggleMenu = () => {
     setMenuOpen((current) => !current);
@@ -162,7 +201,10 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <nav className="hidden xl:flex items-center justify-center gap-5 2xl:gap-8">
+          <nav
+            ref={desktopNavRef}
+            className="hidden xl:flex items-center justify-center gap-5 2xl:gap-8"
+          >
             {menu.map((item) => {
               const active = isMenuItemActive(pathname, item);
 
@@ -187,10 +229,21 @@ export default function Navbar() {
                 );
               }
 
+              const isOpen = openDesktopCategory === item.label;
+              const desktopSectionId = getDesktopMenuSectionId(item.label);
+
               return (
                 <div key={item.label} className="relative group/menu">
                   <button
                     type="button"
+                    onClick={() =>
+                      setOpenDesktopCategory((prev) =>
+                        prev === item.label ? null : item.label
+                      )
+                    }
+                    aria-expanded={isOpen}
+                    aria-haspopup="true"
+                    aria-controls={desktopSectionId}
                     className={`group/button relative font-acme inline-flex items-center gap-2 text-[13px] 2xl:text-[14px] tracking-[0.15em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
                         ? "text-[#ffa726]"
@@ -206,12 +259,18 @@ export default function Navbar() {
                     />
                   </button>
 
-                  <div className="pointer-events-none absolute left-0 top-full pt-4 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0">
+                  <div
+                    id={desktopSectionId}
+                    className={`pointer-events-none absolute left-0 top-full pt-4 opacity-0 invisible translate-y-2 transition-all duration-200 group-hover/menu:pointer-events-auto group-hover/menu:opacity-100 group-hover/menu:visible group-hover/menu:translate-y-0 group-focus-within/menu:pointer-events-auto group-focus-within/menu:opacity-100 group-focus-within/menu:visible group-focus-within/menu:translate-y-0 ${
+                      isOpen ? "pointer-events-auto opacity-100 visible translate-y-0" : ""
+                    }`}
+                  >
                     <div className="min-w-56 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
+                          onClick={() => setOpenDesktopCategory(null)}
                           className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
                             isLinkActive(pathname, child.href)
                               ? "text-[#ffa726] bg-white/6"
