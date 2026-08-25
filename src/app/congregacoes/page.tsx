@@ -108,7 +108,7 @@ export default function CongregacoesPage() {
               </div>
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Base atual do campo
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-6">
@@ -139,7 +139,7 @@ export default function CongregacoesPage() {
 
             {/* Sede em destaque */}
             <div className="mb-4">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Templo Sede
               </p>
               <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-2">
@@ -167,7 +167,7 @@ export default function CongregacoesPage() {
                 <div className="absolute inset-0 bg-linear-to-r from-transparent to-black/10" />
               </div>
               <div className="p-6 md:p-10 flex flex-col justify-center">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                <p className="ui-card-eyebrow mb-2">
                   {sede.cidade}
                 </p>
                 <h3 className="font-acme text-2xl md:text-3xl text-[#212121] tracking-wide mb-3">
@@ -186,7 +186,7 @@ export default function CongregacoesPage() {
 
             {/* Outras congregações */}
             <div className="mb-8 max-w-3xl">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Congregações do campo
               </p>
               <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-4">
@@ -217,7 +217,7 @@ export default function CongregacoesPage() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
                   </div>
                   <div className="p-6">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                    <p className="ui-card-eyebrow mb-2">
                       {congregacao.cidade}
                     </p>
                     <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">

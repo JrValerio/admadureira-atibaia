@@ -31,7 +31,7 @@ export default function HojeNaIgreja({
               key={atividade.id}
               className="min-w-[82vw] shrink-0 snap-center rounded-2xl border border-black/5 bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.04)] md:min-w-0"
             >
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="ui-card-eyebrow mb-2">
                 {atividade.horario ?? "Horário a confirmar"}
               </p>
               <h4 className="font-acme text-xl md:text-2xl text-[#212121] tracking-wide mb-2">

@@ -111,7 +111,7 @@ export default async function MensagensPage() {
         <div className="ui-page-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
             <div className="ui-panel ui-panel-pad-lg">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="ui-card-eyebrow mb-2">
                 Mensagens publicadas
               </p>
               <p className="font-acme text-4xl text-[#212121]">
@@ -119,7 +119,7 @@ export default async function MensagensPage() {
               </p>
             </div>
             <div className="ui-panel ui-panel-pad-lg">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="ui-card-eyebrow mb-2">
                 Pregadores identificados
               </p>
               <p className="font-acme text-4xl text-[#212121]">
@@ -127,7 +127,7 @@ export default async function MensagensPage() {
               </p>
             </div>
             <div className="ui-panel ui-panel-pad-lg">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="ui-card-eyebrow mb-2">
                 Conteúdo em vídeo
               </p>
               <p className="font-acme text-4xl text-[#212121]">YouTube</p>
@@ -135,7 +135,7 @@ export default async function MensagensPage() {
           </div>
 
           <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               Palavra para a semana
             </p>
             <p className="text-[#555] leading-relaxed">
@@ -171,7 +171,7 @@ export default async function MensagensPage() {
                 </CardMedia>
 
                 <div className="p-6">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                  <p className="ui-card-eyebrow mb-2">
                     {formatMensagemDate(mensagem.data)}
                   </p>
                   <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">

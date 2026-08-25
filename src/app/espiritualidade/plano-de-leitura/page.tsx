@@ -82,7 +82,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 mb-12">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Jornada organizada
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-5">
@@ -125,7 +125,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
           {annualPlan && annualDay ? (
             <div className="grid grid-cols-1 xl:grid-cols-[1.05fr_0.95fr] gap-8 mb-12">
               <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Bíblia em 1 ano
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">

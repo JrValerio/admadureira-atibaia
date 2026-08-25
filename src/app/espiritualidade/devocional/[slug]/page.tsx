@@ -127,7 +127,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
               <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                    <p className="ui-card-eyebrow mb-1">
                       Publicado em
                     </p>
                     <p className="text-[#212121] text-sm">
@@ -135,7 +135,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                     </p>
                   </div>
                   <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                    <p className="ui-card-eyebrow mb-1">
                       Tempo de leitura
                     </p>
                     <p className="text-[#212121] text-sm">{devotional.tempoLeitura}</p>
@@ -143,7 +143,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 mb-8">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                  <p className="ui-card-eyebrow mb-3">
                     Versículo-base
                   </p>
                   <p className="font-acme text-2xl md:text-3xl text-[#212121] tracking-wide mb-4">
@@ -162,7 +162,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
               </div>
 
               <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-4">
+                <p className="ui-card-eyebrow mb-4">
                   Aplicação prática
                 </p>
                 <ul className="space-y-3 text-[#555] leading-relaxed">
@@ -176,7 +176,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
               </div>
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-4">
+                <p className="ui-card-eyebrow mb-4">
                   Oração
                 </p>
                 <p className="text-[#555] leading-relaxed">{devotional.oracao}</p>

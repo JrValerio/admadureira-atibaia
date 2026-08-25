@@ -166,7 +166,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Publicado em
                   </p>
                   <p className="text-[#212121] text-sm">
@@ -174,7 +174,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
                   </p>
                 </div>
                 <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     Participação
                   </p>
                   <p className="text-[#212121] text-sm">{testemunho.nome}</p>
@@ -210,7 +210,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
               </div>
 
               <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 mt-6">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Comunidade e fé
                 </p>
                 <p className="text-[#555] leading-relaxed">

@@ -31,7 +31,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
       />
 
       <div className="p-5">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+        <p className="ui-card-eyebrow mb-2">
           {evento.data} · {evento.mes}
         </p>
         <h3 className="font-acme text-[#212121] text-2xl tracking-wide leading-tight mb-3 transition-colors group-hover:text-[#ef5350]">
@@ -59,7 +59,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
     >
       <div className="flex items-center justify-between gap-4 mb-5">
         <div>
-          <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+          <p className="ui-card-eyebrow mb-2">
             Agenda mensal
           </p>
           <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
@@ -78,7 +78,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
               href={`/eventos/${evento.slug}`}
               className="flex items-start gap-4 rounded-xl px-2 py-3 -mx-2 transition-colors hover:bg-[#fff8ee]"
             >
-              <span className="w-20 shrink-0 pt-0.5 text-[#ffa726] text-xs font-bold tracking-widest uppercase">
+              <span className="w-20 shrink-0 pt-0.5 ui-card-eyebrow">
                 {evento.data}
               </span>
               <div className="min-w-0">

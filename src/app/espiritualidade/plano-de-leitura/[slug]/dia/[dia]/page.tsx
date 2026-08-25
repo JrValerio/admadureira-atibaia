@@ -154,7 +154,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-8 mb-8">
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Leituras do dia
               </p>
               <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide mb-4">
@@ -221,7 +221,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start mb-6">
                     <div>
-                      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                      <p className="ui-card-eyebrow mb-2">
                         Capítulo da leitura
                       </p>
                       <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">

@@ -163,7 +163,7 @@ export default function PastoresPage() {
 
           {versiculoInstitucional && (
             <div className="mt-16 md:mt-20 text-center max-w-3xl mx-auto rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] px-6 py-10">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Versículo que marca a liderança
               </p>
               <blockquote className="font-acme text-2xl md:text-3xl text-[#212121] leading-tight">

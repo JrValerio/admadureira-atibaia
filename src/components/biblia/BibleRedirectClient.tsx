@@ -82,7 +82,7 @@ export default function BibleRedirectClient({
   return (
     <section className="min-h-[40vh] bg-[#f5f5f5] px-4 py-16">
       <div className="mx-auto max-w-3xl rounded-3xl border border-black/5 bg-white p-8 text-center shadow-sm">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+        <p className="ui-card-eyebrow mb-3">
           Bíblia Online
         </p>
         <h1 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">

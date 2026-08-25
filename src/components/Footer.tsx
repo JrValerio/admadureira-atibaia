@@ -278,7 +278,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="ui-page-container ui-page-container--footer py-4 text-center text-xs text-white/35 md:py-5">
+        <div className="ui-page-container ui-page-container--footer py-4 text-center text-xs text-white/60 md:py-5">
           <p>
             © {new Date().getFullYear()} Igreja Assembleia de Deus - Ministério
             Madureira | {CHURCH_FIELD_NAME}. Todos os direitos reservados.

@@ -121,7 +121,7 @@ export default function QuadroSemanal() {
             >
               <div className="mb-3 md:mb-5 flex flex-wrap items-start justify-between gap-2">
                 <div>
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                  <p className="ui-card-eyebrow mb-1">
                     {dia.sigla}
                   </p>
                   <h4 className="font-acme text-xl text-[#212121] tracking-wide md:text-[1.75rem]">
@@ -141,7 +141,7 @@ export default function QuadroSemanal() {
                     key={item.id}
                     className="rounded-2xl border border-black/5 bg-[#f9f9f9] px-3 py-2 md:px-4 md:py-3"
                   >
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                    <p className="ui-card-eyebrow mb-1">
                       {item.horario}
                     </p>
                     <p className="text-sm font-medium leading-relaxed text-[#212121]">

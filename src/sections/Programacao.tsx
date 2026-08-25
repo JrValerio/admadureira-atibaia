@@ -78,7 +78,7 @@ function CardSemanal({
       )}
 
       <div className="px-5 py-4">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+        <p className="ui-card-eyebrow mb-2">
           {dia}
         </p>
         <h4 className="font-acme text-xl md:text-2xl text-[#212121] tracking-wide leading-tight mb-2">

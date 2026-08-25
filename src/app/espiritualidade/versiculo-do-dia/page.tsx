@@ -51,7 +51,7 @@ export default function VersiculoDoDiaPage() {
           />
 
           <div className="rounded-3xl bg-white border border-black/5 p-8 md:p-10 shadow-sm mb-8">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               Palavra para hoje
             </p>
             <h2 className="font-acme text-xl md:text-3xl lg:text-5xl text-[#212121] tracking-wide mb-6">
@@ -91,7 +91,7 @@ export default function VersiculoDoDiaPage() {
             </div>
 
             <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="ui-card-eyebrow mb-3">
                 Aplicação prática
               </p>
               <div className="space-y-4 text-[#555] leading-relaxed">

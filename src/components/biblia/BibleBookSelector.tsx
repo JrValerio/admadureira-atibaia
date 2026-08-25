@@ -145,7 +145,7 @@ export default function BibleBookSelector({
 
   return (
     <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
-      <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+      <p className="ui-card-eyebrow mb-3">
         Navegação bíblica
       </p>
       <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4">

@@ -128,7 +128,7 @@ export default function MinisteriosPage() {
               </div>
 
               <div className="ui-panel-accent ui-panel-pad-lg">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="ui-card-eyebrow mb-3">
                   Estrutura ministerial
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-5">

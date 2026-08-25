@@ -69,7 +69,7 @@ export default async function TestemunhosPage() {
                 key={stat.label}
                 className="ui-panel ui-panel-pad-lg"
               >
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                <p className="ui-card-eyebrow mb-2">
                   {stat.label}
                 </p>
                 <p className="font-acme text-2xl md:text-4xl text-[#212121]">
@@ -80,7 +80,7 @@ export default async function TestemunhosPage() {
           </div>
 
           <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+            <p className="ui-card-eyebrow mb-3">
               Comunidade viva
             </p>
             <p className="text-[#555] leading-relaxed">
@@ -111,7 +111,7 @@ export default async function TestemunhosPage() {
                 />
 
                 <div className="p-6 md:p-8">
-                  <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                  <p className="ui-card-eyebrow mb-2">
                     {formatDate(testemunho.data)}
                   </p>
                   {testemunho.youtubeId && (
