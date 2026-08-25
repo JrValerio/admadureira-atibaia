@@ -92,19 +92,19 @@ export default function Cultos() {
                       href={`/programacao/${horario.slug}`}
                       className="block rounded-lg transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
                     >
-                      <p className="text-[11px] font-semibold tracking-wide text-[#212121] md:text-xs">
+                      <p className="text-[16px] font-bold tracking-wide text-[#212121]">
                         {horario.hora}
                       </p>
-                      <p className="mt-0.5 text-[11px] leading-relaxed text-[#5f5f5f] md:text-xs">
+                      <p className="mt-0.5 text-[14px] leading-relaxed text-[#5f5f5f]">
                         {horario.nome}
                       </p>
                     </Link>
                   ) : (
                     <>
-                      <p className="text-[11px] font-semibold tracking-wide text-[#212121] md:text-xs">
+                      <p className="text-[16px] font-bold tracking-wide text-[#212121]">
                         {horario.hora}
                       </p>
-                      <p className="mt-0.5 text-[11px] leading-relaxed text-[#5f5f5f] md:text-xs">
+                      <p className="mt-0.5 text-[14px] leading-relaxed text-[#5f5f5f]">
                         {horario.nome}
                       </p>
                     </>
