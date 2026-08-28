@@ -306,7 +306,7 @@ export function getHeroEventos(): HeroEvento[] {
     {
       titulo: "Vigília",
       subtitulo:
-        "Uma noite de adoração, clamor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Gildo Borges e Cíntia Pérez.",
+        "Uma noite de oração, louvor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Cynthia Peres e Gildo Borges.",
       ctaLabel: "Ver detalhes da Vigília",
       alt: "Banner da Vigília 29 de agosto — AD Madureira Atibaia",
       imagem: "/banners/banner-vigilia.png",

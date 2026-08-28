@@ -3,14 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import EventCountdown from "@/components/EventCountdown";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
-import { SEDE_POSTAL_ADDRESS } from "@/data/site";
+import { OFFICIAL_SOCIAL_LINKS, SEDE_POSTAL_ADDRESS } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: vigilia.tituloSeo,
   description: vigilia.descricaoSeo,
   path: vigilia.path,
-  image: vigilia.hero,
+  image: vigilia.heroShare,
   keywords: [...vigilia.keywords],
 });
 
@@ -166,12 +166,18 @@ export default function Vigilia29082026Page() {
     endDate: vigilia.fimIso,
     inLanguage: "pt-BR",
     eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: {
-      "@type": "Place",
-      name: vigilia.local,
-      address: SEDE_POSTAL_ADDRESS,
-    },
+    eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
+    location: [
+      {
+        "@type": "Place",
+        name: vigilia.local,
+        address: SEDE_POSTAL_ADDRESS,
+      },
+      {
+        "@type": "VirtualLocation",
+        url: OFFICIAL_SOCIAL_LINKS.youtube,
+      },
+    ],
     organizer: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -275,15 +281,31 @@ export default function Vigilia29082026Page() {
               </>
             ) : (
               <>
-                <Link href="/contato" className="ui-btn-primary">
+                <a
+                  href={OFFICIAL_SOCIAL_LINKS.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ui-btn-primary"
+                >
+                  Assistir ao vivo
+                </a>
+                <Link href="/contato" className="ui-btn-secondary">
                   Como chegar
-                </Link>
-                <Link href="/programacao" className="ui-btn-secondary">
-                  Ver programação completa
                 </Link>
               </>
             )}
           </div>
+
+          {eventEnded ? null : (
+            <div className="mt-3">
+              <Link
+                href="/programacao"
+                className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
+              >
+                Ver programação completa →
+              </Link>
+            </div>
+          )}
 
           {eventEnded ? null : (
             <div className="mt-3 flex flex-col gap-3 sm:flex-row">
@@ -323,7 +345,7 @@ export default function Vigilia29082026Page() {
           <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Sobre a Vigília
           </p>
-          <h2 className="ui-section-title">Uma noite de adoração, clamor e Palavra</h2>
+          <h2 className="ui-section-title">Uma noite de oração, louvor e Palavra</h2>
           <div className="mt-6 max-w-3xl space-y-4 text-[#555] leading-relaxed">
             {vigilia.sobre.map((paragrafo) => (
               <p key={paragrafo}>{paragrafo}</p>
@@ -430,6 +452,29 @@ export default function Vigilia29082026Page() {
             <p className="mt-2 text-sm leading-relaxed text-[#555]">
               {vigilia.anfitrioes.join(" e ")}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8ee] border-y border-[#ffa726]/20 py-10 md:py-14">
+        <div className="ui-page-container flex flex-col gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold tracking-[0.24em] text-[#8b5b18] uppercase">
+              Monte sua caravana
+            </p>
+            <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
+              Venha com sua igreja para a Vigília
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">
+              Outras igrejas também são bem-vindas para se juntar a essa noite. Fale
+              com a AD Madureira Atibaia para organizar a caravana da sua
+              congregação.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
+            <Link href="/contato" className="ui-btn-primary">
+              Falar com a igreja
+            </Link>
           </div>
         </div>
       </section>
