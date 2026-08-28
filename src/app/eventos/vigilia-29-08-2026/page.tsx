@@ -166,18 +166,12 @@ export default function Vigilia29082026Page() {
     endDate: vigilia.fimIso,
     inLanguage: "pt-BR",
     eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",
-    location: [
-      {
-        "@type": "Place",
-        name: vigilia.local,
-        address: SEDE_POSTAL_ADDRESS,
-      },
-      {
-        "@type": "VirtualLocation",
-        url: OFFICIAL_SOCIAL_LINKS.youtube,
-      },
-    ],
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: vigilia.local,
+      address: SEDE_POSTAL_ADDRESS,
+    },
     organizer: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -281,16 +275,11 @@ export default function Vigilia29082026Page() {
               </>
             ) : (
               <>
-                <a
-                  href={OFFICIAL_SOCIAL_LINKS.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ui-btn-primary"
-                >
-                  Assistir ao vivo
-                </a>
-                <Link href="/contato" className="ui-btn-secondary">
+                <Link href="/contato" className="ui-btn-primary">
                   Como chegar
+                </Link>
+                <Link href="/programacao" className="ui-btn-secondary">
+                  Ver programação completa
                 </Link>
               </>
             )}
@@ -298,12 +287,14 @@ export default function Vigilia29082026Page() {
 
           {eventEnded ? null : (
             <div className="mt-3">
-              <Link
-                href="/programacao"
+              <a
+                href={OFFICIAL_SOCIAL_LINKS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
               >
-                Ver programação completa →
-              </Link>
+                Assistir ao vivo →
+              </a>
             </div>
           )}
 
