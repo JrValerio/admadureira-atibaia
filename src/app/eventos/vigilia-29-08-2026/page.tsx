@@ -14,6 +14,35 @@ export const metadata: Metadata = buildPageMetadata({
   keywords: [...vigilia.keywords],
 });
 
+// Página estática por padrão — sem isso, a checagem de "evento encerrado"
+// abaixo fica congelada na data do último build/deploy.
+export const revalidate = 3600;
+
+function formatGoogleCalendarDate(iso: string) {
+  return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function buildGoogleCalendarUrl() {
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: vigilia.titulo,
+    dates: `${formatGoogleCalendarDate(vigilia.inicioIso)}/${formatGoogleCalendarDate(vigilia.fimIso)}`,
+    details: vigilia.descricaoSeo,
+    location: `${vigilia.local}, ${vigilia.endereco}`,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function buildWhatsAppShareUrl() {
+  const canonicalUrl = resolveSiteUrl(vigilia.path);
+  const mensagem = `${vigilia.titulo} — ${vigilia.diaSemana}, ${vigilia.data}, às ${vigilia.horario}. ${vigilia.subtitulo}. Mais informações: ${canonicalUrl}`;
+  return `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+}
+
+function isEventEnded(now = new Date()) {
+  return now.getTime() > new Date(vigilia.fimIso).getTime();
+}
+
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
@@ -114,6 +143,7 @@ function SocialProfileLink({
 
 export default function Vigilia29082026Page() {
   const canonicalUrl = resolveSiteUrl(vigilia.path);
+  const eventEnded = isEventEnded();
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -207,11 +237,17 @@ export default function Vigilia29082026Page() {
           </nav>
 
           <div className="mb-4">
-            <EventCountdown
-              targetIso={vigilia.inicioIso}
-              endIso={vigilia.fimIso}
-              eventName={vigilia.titulo}
-            />
+            {eventEnded ? (
+              <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+                Evento encerrado
+              </span>
+            ) : (
+              <EventCountdown
+                targetIso={vigilia.inicioIso}
+                endIso={vigilia.fimIso}
+                eventName={vigilia.titulo}
+              />
+            )}
           </div>
 
           <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
@@ -228,13 +264,47 @@ export default function Vigilia29082026Page() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contato" className="ui-btn-primary">
-              Como chegar
-            </Link>
-            <Link href="/programacao" className="ui-btn-secondary">
-              Ver programação completa
-            </Link>
+            {eventEnded ? (
+              <>
+                <Link href="/galeria" className="ui-btn-primary">
+                  Ver fotos e vídeos
+                </Link>
+                <Link href="/eventos" className="ui-btn-secondary">
+                  Ver próximos eventos
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/contato" className="ui-btn-primary">
+                  Como chegar
+                </Link>
+                <Link href="/programacao" className="ui-btn-secondary">
+                  Ver programação completa
+                </Link>
+              </>
+            )}
           </div>
+
+          {eventEnded ? null : (
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={buildGoogleCalendarUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-ghost"
+              >
+                Adicionar ao calendário
+              </a>
+              <a
+                href={buildWhatsAppShareUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-ghost"
+              >
+                Compartilhar no WhatsApp
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -268,7 +338,7 @@ export default function Vigilia29082026Page() {
       >
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
-            <p className="ui-section-eyebrow !text-[#b3261e]">Participação especial</p>
+            <p className="ui-section-eyebrow">Participação especial</p>
             <h2 id="perfis-vigilia-title" className="ui-section-title">
               Perfis oficiais dos convidados
             </h2>

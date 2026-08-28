@@ -4,7 +4,6 @@ import {
   CHURCH_FIELD_NAME,
   CHURCH_OFFICIAL_NAME,
   OFFICIAL_SOCIAL_LINKS,
-  SEDE_ADDRESS_INLINE,
   SEDE_ADDRESS_LINES,
   SEDE_CONTACT,
   SEDE_HORARIOS_RESUMIDOS,
@@ -126,15 +125,15 @@ function FooterDisclosure({
 }) {
   return (
     <details
-      className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden ${className}`.trim()}
+      className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden xl:rounded-none xl:border-0 xl:bg-transparent xl:px-0 xl:py-0 xl:[&>*:not(summary)]:!block ${className}`.trim()}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-[#ffa726] focus-visible:text-[#ffa726]">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-[#ffa726] focus-visible:text-[#ffa726] xl:pointer-events-none xl:cursor-default xl:hover:text-white xl:focus-visible:text-white">
         <FooterSectionTitle>{title}</FooterSectionTitle>
-        <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180">
+        <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180 xl:hidden">
           ▾
         </span>
       </summary>
-      <FooterLinkList links={links} className="mt-4 space-y-2.5" />
+      <FooterLinkList links={links} className="mt-4 space-y-2.5 xl:space-y-3" />
     </details>
   );
 }
@@ -190,7 +189,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="space-y-4 text-center md:text-left xl:hidden">
+        <div className="space-y-4 text-center md:text-left xl:contents">
           <FooterDisclosure
             title="Primeiros passos"
             links={linksPrimeirosPassos}
@@ -203,34 +202,16 @@ export default function Footer() {
           />
         </div>
 
-        <div className="hidden xl:block xl:text-left">
-          <FooterSectionTitle className="mb-4">
-            Primeiros passos
-          </FooterSectionTitle>
-          <FooterLinkList links={linksPrimeirosPassos} className="space-y-3" />
-        </div>
-
-        <div className="hidden xl:block xl:text-left">
-          <FooterSectionTitle className="mb-4">
-            A Igreja
-          </FooterSectionTitle>
-          <FooterLinkList links={linksIgreja} className="space-y-3" />
-        </div>
-
         <div className="space-y-6 text-center md:text-left">
           <div>
             <FooterSectionTitle className="mb-3 md:mb-4">
               Endereço
             </FooterSectionTitle>
             <div className="space-y-3 text-sm leading-relaxed">
-              <p className="xl:hidden">
-                {SEDE_ADDRESS_INLINE}
-                <br />
-                {SEDE_ADDRESS_LINES[2]}
-              </p>
-              <p className="hidden xl:block">
+              <p>
                 {SEDE_ADDRESS_LINES[0]}
-                <br />
+                <span className="xl:hidden"> · </span>
+                <br className="hidden xl:block" />
                 {SEDE_ADDRESS_LINES[1]}
                 <br />
                 {SEDE_ADDRESS_LINES[2]}
