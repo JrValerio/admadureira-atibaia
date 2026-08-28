@@ -65,7 +65,7 @@ export const VIGILIA_29_08_2026 = {
       ],
     },
     {
-      nome: "Cíntia Pérez",
+      nome: "Cynthia Peres",
       papel: "Cantora",
       foto: "/programacao/eventos/vigilia-29-08-2026/perfis/cintia-perez.jpg",
       fotoClassName: "scale-[1.24] object-cover object-[44%_42%]",
@@ -103,15 +103,17 @@ export const VIGILIA_29_08_2026 = {
   ],
   imagem: "/programacao/eventos/vigilia.png",
   banner: "/programacao/eventos/vigilia.png",
-  hero: "/programacao/eventos/hero-vigilia.jpg",
-  heroShare: "/programacao/eventos/og-vigilia-1200x675.jpg",
+  // TODO: PNG antigo (2,96 MB, arte desatualizada — nome da cantora errado)
+  // até alguém escolher qual dos três 16:9 novos é o final. Depois disso:
+  // gerar hero-vigilia.jpg (master) e um heroShare 1200x675 a partir dele.
+  hero: "/programacao/eventos/hero-vigilia.png",
   descricaoSeo:
-    "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de oração, louvor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Cíntia Pérez e Gildo Borges.",
+    "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de oração, louvor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Cynthia Peres e Gildo Borges.",
   descricaoTopo:
     "A Assembleia de Deus — Ministério Madureira Campo de Atibaia convida você e sua família para uma noite especial de Vigília.",
   sobre: [
     "A Vigília será uma noite separada para buscarmos a presença de Deus em oração, adoração e ministração da Palavra. Um tempo de renovo espiritual e comunhão para toda a igreja.",
-    "A ministração da Palavra ficará com o Pr. Wanderley Abrahão, e o louvor contará com a participação especial dos cantores Noemi Nonato, Nando Menezes, Cíntia Pérez e Gildo Borges.",
+    "A ministração da Palavra ficará com o Pr. Wanderley Abrahão, e o louvor contará com a participação especial dos cantores Noemi Nonato, Nando Menezes, Cynthia Peres e Gildo Borges.",
   ],
   keywords: [
     "Vigília em Atibaia",
@@ -123,6 +125,6 @@ export const VIGILIA_29_08_2026 = {
     "Noemi Nonato",
     "Nando Menezes",
     "Gildo Borges",
-    "Cíntia Pérez",
+    "Cynthia Peres",
   ],
 } as const;
