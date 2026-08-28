@@ -103,10 +103,8 @@ export const VIGILIA_29_08_2026 = {
   ],
   imagem: "/programacao/eventos/vigilia.png",
   banner: "/programacao/eventos/vigilia.png",
-  // TODO: PNG antigo (2,96 MB, arte desatualizada — nome da cantora errado)
-  // até alguém escolher qual dos três 16:9 novos é o final. Depois disso:
-  // gerar hero-vigilia.jpg (master) e um heroShare 1200x675 a partir dele.
-  hero: "/programacao/eventos/hero-vigilia.png",
+  hero: "/programacao/eventos/hero-vigilia.jpg",
+  heroShare: "/programacao/eventos/og-vigilia-1200x675.jpg",
   descricaoSeo:
     "Participe da Vigília na AD Madureira Atibaia, sábado, 29 de agosto de 2026, às 22h. Uma noite de oração, louvor e Palavra com o Pr. Wanderley Abrahão e participação de Noemi Nonato, Nando Menezes, Cynthia Peres e Gildo Borges.",
   descricaoTopo:

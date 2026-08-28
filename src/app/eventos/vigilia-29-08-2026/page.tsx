@@ -10,7 +10,7 @@ export const metadata: Metadata = buildPageMetadata({
   title: vigilia.tituloSeo,
   description: vigilia.descricaoSeo,
   path: vigilia.path,
-  image: vigilia.hero,
+  image: vigilia.heroShare,
   keywords: [...vigilia.keywords],
 });
 
