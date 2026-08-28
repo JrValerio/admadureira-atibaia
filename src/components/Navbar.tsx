@@ -172,13 +172,13 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`ui-page-container grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+          className={`ui-page-container ui-page-container--footer grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
             scrolled ? "h-[3.9rem] md:h-[4.15rem]" : "h-[4.5rem] md:h-[4.85rem]"
           }`}
         >
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-2.5 md:gap-3.5"
+            className="flex min-w-0 items-center gap-2.5 md:gap-3.5 xl:min-w-fit"
             aria-label="Voltar para a página inicial"
           >
             <Image
@@ -191,8 +191,8 @@ export default function Navbar() {
               className="h-auto w-9 shrink-0 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)] md:w-11"
               style={{ width: "auto", height: "auto" }}
             />
-            <div className="min-w-0">
-              <p className="truncate font-script text-[1.32rem] leading-none text-[#f7dfbb] md:text-[1.55rem]">
+            <div className="min-w-0 xl:min-w-fit">
+              <p className="truncate font-script text-[1.32rem] leading-none text-[#f7dfbb] md:text-[1.55rem] xl:overflow-visible xl:text-clip xl:whitespace-nowrap">
                 Assembleia de Deus
               </p>
               <p className="mt-1 text-[8px] tracking-[0.22em] text-white/72 uppercase md:text-[9px] md:tracking-[0.28em]">
