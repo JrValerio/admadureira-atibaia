@@ -3,16 +3,45 @@ import Image from "next/image";
 import Link from "next/link";
 import EventCountdown from "@/components/EventCountdown";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
-import { SEDE_POSTAL_ADDRESS } from "@/data/site";
+import { OFFICIAL_SOCIAL_LINKS, SEDE_POSTAL_ADDRESS } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = buildPageMetadata({
   title: vigilia.tituloSeo,
   description: vigilia.descricaoSeo,
   path: vigilia.path,
-  image: vigilia.hero,
+  image: vigilia.heroShare,
   keywords: [...vigilia.keywords],
 });
+
+// Página estática por padrão — sem isso, a checagem de "evento encerrado"
+// abaixo fica congelada na data do último build/deploy.
+export const revalidate = 3600;
+
+function formatGoogleCalendarDate(iso: string) {
+  return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+}
+
+function buildGoogleCalendarUrl() {
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: vigilia.titulo,
+    dates: `${formatGoogleCalendarDate(vigilia.inicioIso)}/${formatGoogleCalendarDate(vigilia.fimIso)}`,
+    details: vigilia.descricaoSeo,
+    location: `${vigilia.local}, ${vigilia.endereco}`,
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+function buildWhatsAppShareUrl() {
+  const canonicalUrl = resolveSiteUrl(vigilia.path);
+  const mensagem = `${vigilia.titulo} — ${vigilia.diaSemana}, ${vigilia.data}, às ${vigilia.horario}. ${vigilia.subtitulo}. Mais informações: ${canonicalUrl}`;
+  return `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+}
+
+function isEventEnded(now = new Date()) {
+  return now.getTime() > new Date(vigilia.fimIso).getTime();
+}
 
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
@@ -114,6 +143,7 @@ function SocialProfileLink({
 
 export default function Vigilia29082026Page() {
   const canonicalUrl = resolveSiteUrl(vigilia.path);
+  const eventEnded = isEventEnded();
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -207,11 +237,17 @@ export default function Vigilia29082026Page() {
           </nav>
 
           <div className="mb-4">
-            <EventCountdown
-              targetIso={vigilia.inicioIso}
-              endIso={vigilia.fimIso}
-              eventName={vigilia.titulo}
-            />
+            {eventEnded ? (
+              <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+                Evento encerrado
+              </span>
+            ) : (
+              <EventCountdown
+                targetIso={vigilia.inicioIso}
+                endIso={vigilia.fimIso}
+                eventName={vigilia.titulo}
+              />
+            )}
           </div>
 
           <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
@@ -228,13 +264,60 @@ export default function Vigilia29082026Page() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contato" className="ui-btn-primary">
-              Como chegar
-            </Link>
-            <Link href="/programacao" className="ui-btn-secondary">
-              Ver programação completa
-            </Link>
+            {eventEnded ? (
+              <>
+                <Link href="/galeria" className="ui-btn-primary">
+                  Ver fotos e vídeos
+                </Link>
+                <Link href="/eventos" className="ui-btn-secondary">
+                  Ver próximos eventos
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/contato" className="ui-btn-primary">
+                  Como chegar
+                </Link>
+                <Link href="/programacao" className="ui-btn-secondary">
+                  Ver programação completa
+                </Link>
+              </>
+            )}
           </div>
+
+          {eventEnded ? null : (
+            <div className="mt-3">
+              <a
+                href={OFFICIAL_SOCIAL_LINKS.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
+              >
+                Assistir ao vivo →
+              </a>
+            </div>
+          )}
+
+          {eventEnded ? null : (
+            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={buildGoogleCalendarUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-ghost"
+              >
+                Adicionar ao calendário
+              </a>
+              <a
+                href={buildWhatsAppShareUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-ghost"
+              >
+                Compartilhar no WhatsApp
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -253,7 +336,7 @@ export default function Vigilia29082026Page() {
           <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Sobre a Vigília
           </p>
-          <h2 className="ui-section-title">Uma noite de adoração, clamor e Palavra</h2>
+          <h2 className="ui-section-title">Uma noite de oração, louvor e Palavra</h2>
           <div className="mt-6 max-w-3xl space-y-4 text-[#555] leading-relaxed">
             {vigilia.sobre.map((paragrafo) => (
               <p key={paragrafo}>{paragrafo}</p>
@@ -268,7 +351,7 @@ export default function Vigilia29082026Page() {
       >
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
-            <p className="ui-section-eyebrow !text-[#b3261e]">Participação especial</p>
+            <p className="ui-section-eyebrow">Participação especial</p>
             <h2 id="perfis-vigilia-title" className="ui-section-title">
               Perfis oficiais dos convidados
             </h2>
@@ -360,6 +443,29 @@ export default function Vigilia29082026Page() {
             <p className="mt-2 text-sm leading-relaxed text-[#555]">
               {vigilia.anfitrioes.join(" e ")}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#fff8ee] border-y border-[#ffa726]/20 py-10 md:py-14">
+        <div className="ui-page-container flex flex-col gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold tracking-[0.24em] text-[#8b5b18] uppercase">
+              Monte sua caravana
+            </p>
+            <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
+              Venha com sua igreja para a Vigília
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#555] md:text-base">
+              Outras igrejas também são bem-vindas para se juntar a essa noite. Fale
+              com a AD Madureira Atibaia para organizar a caravana da sua
+              congregação.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row md:shrink-0">
+            <Link href="/contato" className="ui-btn-primary">
+              Falar com a igreja
+            </Link>
           </div>
         </div>
       </section>
