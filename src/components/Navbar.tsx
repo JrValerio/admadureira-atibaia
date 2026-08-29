@@ -37,7 +37,6 @@ const menu: MenuItem[] = [
     label: "Ensino",
     children: [
       { label: "Escola Bíblica Dominical (EBD)", href: "/ebd" },
-      { label: "Curso de Teologia", href: "/programacao/curso-de-teologia" },
     ],
   },
   {

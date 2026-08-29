@@ -12,14 +12,12 @@ describe("getProgramacaoSemanalAtual", () => {
     expect(segundaNoite?.banner).toBe("/programacao/reuniao-ministerial.png");
   });
 
-  it("mantem o Curso de Teologia nas demais semanas", () => {
+  it("não inclui atividade fixa de segunda-feira fora da semana da primeira segunda (Curso de Teologia suspenso em 29/08/2026)", () => {
     const programacao = getProgramacaoSemanalAtual(
       new Date("2026-05-11T15:00:00.000Z")
     );
     const segundaNoite = programacao.find((item) => item.dia === "Segunda-feira");
 
-    expect(segundaNoite?.titulo).toBe("Curso de Teologia");
-    expect(segundaNoite?.horario).toBe("19h");
-    expect(segundaNoite?.banner).toBe("/programacao/curso-teologia.png");
+    expect(segundaNoite).toBeUndefined();
   });
 });

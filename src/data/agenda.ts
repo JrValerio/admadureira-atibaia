@@ -85,20 +85,9 @@ export const programacaoSemanal: ItemSemanal[] = [
       "Atos 13:2-3"
     ),
   },
-  {
-    dia: "Segunda-feira",
-    titulo: "Curso de Teologia",
-    horario: SEDE_PROGRAMACAO_HORARIOS.cursoTeologia,
-    banner: BANNERS_PROGRAMACAO.cursoTeologia,
-    slug: "curso-de-teologia",
-    descricao: [
-      "Uma igreja saudável não vive apenas de emoção; ela também investe em formação, doutrina e entendimento da Palavra. O Curso de Teologia existe para aprofundar a fé, organizar o pensamento bíblico e preparar homens e mulheres para servir com maturidade.",
-      "Aqui o estudo não é vaidade intelectual. É reverência, responsabilidade e fome de conhecer melhor o Deus que se revelou nas Escrituras. Quando a mente é discipulada pela verdade, a vida inteira cresce em firmeza.",
-    ].join("\n\n"),
-    convite:
-      "Se você deseja amadurecer no conhecimento bíblico e servir com mais consciência e profundidade, este tempo de estudo é para você.",
-    baseBiblica: criarBaseBiblica("2 Timóteo 2:15", "Oséias 6:3"),
-  },
+  // Curso de Teologia (Segunda-feira) suspenso em 29/08/2026 — removido da
+  // programação semanal ativa. Ver src/app/programacao/curso-de-teologia
+  // para a página institucional (mantida, com aviso de suspensão).
   {
     dia: "Terça-feira",
     titulo: "Culto de Ensino",

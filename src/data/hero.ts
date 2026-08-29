@@ -332,16 +332,9 @@ export function getHeroEventos(): HeroEvento[] {
       // eventDate definido pelo operador quando a data for confirmada:
       // eventDate: "YYYY-MM-DD",
     },
-    {
-      titulo: "Curso de Teologia",
-      alt: "Banner do Curso de Teologia da AD Madureira Atibaia",
-      imagem: "/banners/banner-curso-de-teologia.webp",
-      href: "/programacao/curso-de-teologia",
-      ariaLabel: "Abrir página do Curso de Teologia",
-      type: "weekly",
-      dayOfWeek: 1, // segunda-feira
-      hiddenWhen: "first-monday-week",
-    },
+    // Curso de Teologia suspenso — slide removido da rotação em 29/08/2026.
+    // A página institucional (/programacao/curso-de-teologia) segue no ar,
+    // atualizada para refletir a suspensão.
   ];
 
   return orderSlides(

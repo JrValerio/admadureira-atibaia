@@ -92,9 +92,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      // Turma suspensa — página institucional mantida, mas sem atualização
+      // semanal (ver src/data/curso-teologia.ts).
       url: resolveSiteUrl("/programacao/curso-de-teologia"),
-      changeFrequency: "weekly",
-      priority: 0.8,
+      changeFrequency: "monthly",
+      priority: 0.4,
     },
     {
       url: resolveSiteUrl("/eventos"),
