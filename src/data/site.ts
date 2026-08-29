@@ -81,7 +81,6 @@ export const SEDE_PROGRAMACAO_HORARIOS = {
 
 export const SEDE_HORARIOS_CONTATO = [
   "Segunda a Sexta · 06:00 – 07:00 · Oração Matinal",
-  "Segunda · 19:00 – Curso de Teologia",
   "Terça · 19:30 – Culto de Ensino",
   "Quarta · 09:00 – Consagração de Mulheres",
   "Quarta · 15:00 – Círculo de Oração",
@@ -96,7 +95,6 @@ export const SEDE_HORARIOS_CONTATO = [
 
 export const SEDE_HORARIOS_CONGREGACAO = [
   "Segunda a Sexta · 06h00 – 07h00 · Oração Matinal",
-  "Segunda · 19h00 · Curso de Teologia",
   "Terça · 19h30 · Culto de Ensino",
   "Quarta · 09h00 · Consagração de Mulheres",
   "Quarta · 15h00 · Círculo de Oração",
@@ -111,7 +109,6 @@ export const SEDE_HORARIOS_CONGREGACAO = [
 
 export const SEDE_HORARIOS_RESUMIDOS = [
   "Segunda a Sexta — 06:00 / 07:00",
-  "Segunda — 19:00",
   "Terça — 19:30",
   "Quarta — 09:00 / 15:00 / 19:00",
   "Quinta — 19:30",

@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  CHURCH_DISPLAY_NAME,
-  SEDE_PROGRAMACAO_HORARIOS,
-  SEDE_PROGRAMACAO_LOCATION,
-  SEDE_WHATSAPP_URL,
-} from "@/data/site";
+import { SEDE_WHATSAPP_URL } from "@/data/site";
 import { cursoTeologiaData } from "@/data/curso-teologia";
 import { buildPageMetadata, resolveSiteUrl } from "@/lib/site";
 
@@ -61,40 +56,15 @@ export default function CursoTeologiaPage() {
     ],
   };
 
-  const courseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Course",
-    name: "Curso de Teologia",
-    description: cursoTeologiaData.hero.description,
-    provider: {
-      "@type": "Church",
-      name: CHURCH_DISPLAY_NAME,
-      url: resolveSiteUrl("/"),
-    },
-    instructor: {
-      "@type": "Person",
-      name: cursoTeologiaData.teacher.name,
-      sameAs: [
-        cursoTeologiaData.teacher.socialLinks.facebook,
-        cursoTeologiaData.teacher.socialLinks.instagram,
-      ],
-    },
-    location: {
-      "@type": "Place",
-      name: SEDE_PROGRAMACAO_LOCATION,
-    },
-    url: canonicalUrl,
-  };
+  // Sem schema Course: a turma está suspensa (ver cursoTeologiaData.suspenso),
+  // e schema.org/Course sinaliza uma oferta ativa ao Google — reintroduzir
+  // quando uma nova turma tiver data confirmada.
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
       />
 
       <main className="min-h-screen bg-[#f5f5f5]">
@@ -152,25 +122,25 @@ export default function CursoTeologiaPage() {
 
         <section className="border-b border-black/5 bg-white/90">
           <div className="ui-page-container py-5 md:py-6">
-            <div className="ui-panel ui-panel-pad-sm">
-              <p className="ui-section-eyebrow ui-section-eyebrow--gold">
-                Próximo passo
+            <div className="ui-panel ui-panel-pad-sm border-l-4 border-l-[#8b5b18]">
+              <p className="text-xs font-bold tracking-widest uppercase text-[#8b5b18]">
+                Turma suspensa
               </p>
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-3xl">
                   <h2 className="font-acme text-xl tracking-wide text-[#212121] md:text-2xl">
-                    Acompanhe as atualizações do Curso de Teologia
+                    O Curso de Teologia está suspenso no momento
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
-                    Aulas às segundas-feiras, às{" "}
-                    {SEDE_PROGRAMACAO_HORARIOS.cursoTeologia}, na sede da AD
-                    Madureira Atibaia. Para informações sobre inscrição e
-                    participação, fale com a equipe da igreja.
+                    Não há aulas acontecendo e não há data de retorno
+                    confirmada. As informações abaixo — professor, conteúdo e
+                    artigos — seguem disponíveis como referência de como o
+                    curso funcionava.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a href={whatsappUrl} className="ui-btn-primary">
-                    Registrar interesse
+                    Perguntar sobre retorno
                   </a>
                   <Link href="/programacao" className="ui-btn-secondary">
                     Ver programação
@@ -311,8 +281,8 @@ export default function CursoTeologiaPage() {
               </article>
 
               <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-[#ffa726]">
-                  Inscrição e contato
+                <p className="ui-card-eyebrow">
+                  Situação atual
                 </p>
                 <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
                   {cursoTeologiaData.contact.title}

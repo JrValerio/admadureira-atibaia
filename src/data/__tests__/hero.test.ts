@@ -20,14 +20,18 @@ describe("getHeroEventos", () => {
     const titles = getTitlesAt("2026-05-27T15:00:00.000Z");
 
     expect(titles).toContain("Reunião de Ministério");
-    expect(titles).toContain("Curso de Teologia");
   });
 
-  it("oculta Curso de Teologia e Reunião de Ministério na semana da primeira segunda", () => {
+  it("oculta Reunião de Ministério na semana da primeira segunda", () => {
     const titles = getTitlesAt("2026-06-01T15:00:00.000Z");
 
-    expect(titles).not.toContain("Curso de Teologia");
     expect(titles).not.toContain("Reunião de Ministério");
+  });
+
+  it("não exibe o Curso de Teologia (suspenso em 29/08/2026)", () => {
+    const titles = getTitlesAt("2026-05-11T15:00:00.000Z");
+
+    expect(titles).not.toContain("Curso de Teologia");
   });
 
   it("exibe Reunião de Obreiros somente na semana do terceiro sábado", () => {

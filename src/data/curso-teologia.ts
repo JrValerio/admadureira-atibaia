@@ -4,6 +4,7 @@ import {
 } from "@/data/site";
 
 export const cursoTeologiaData = {
+  suspenso: true,
   hero: {
     label: "Formação bíblica",
     title: "Curso de Teologia",
@@ -98,20 +99,20 @@ export const cursoTeologiaData = {
   ],
   quickFacts: [
     {
+      label: "Situação",
+      value: "Turma suspensa no momento — sem previsão de retorno",
+    },
+    {
       label: "Professor",
       value: "Pr. Eliel Sobrinho",
     },
     {
-      label: "Dia e horário",
+      label: "Quando estava ativo",
       value: `Segunda-feira · ${SEDE_PROGRAMACAO_HORARIOS.cursoTeologia}`,
     },
     {
       label: "Local",
       value: SEDE_PROGRAMACAO_LOCATION,
-    },
-    {
-      label: "Público",
-      value: "Jovens, adultos, obreiros, líderes e irmãos interessados em formação bíblica",
     },
   ],
   courseDetails: [
@@ -143,17 +144,22 @@ export const cursoTeologiaData = {
     "História da Igreja",
   ],
   contact: {
-    title: "Informações e inscrição",
+    title: "Quer saber quando voltar",
     description:
-      "Para informações sobre inscrição, vagas e próximos passos, entre em contato com a sede da igreja.",
+      "O curso está suspenso e não há data de retorno confirmada. Para acompanhar novidades, entre em contato com a sede da igreja.",
     notes: [
-      "A equipe da igreja orientará sobre inscrições, vagas e próximos passos.",
-      "Se houver vagas limitadas, você receberá a orientação necessária ao entrar em contato.",
+      "A equipe da igreja informará se e quando uma nova turma for aberta.",
+      "As informações abaixo (professor, conteúdo, artigos) seguem como referência de como o curso funcionava.",
     ],
   },
   faq: [
     {
-      question: "Quem pode participar?",
+      question: "O curso está acontecendo agora?",
+      answer:
+        "Não. O Curso de Teologia está suspenso no momento, sem data de retorno confirmada.",
+    },
+    {
+      question: "Quem pode participar quando voltar?",
       answer:
         "O curso foi estruturado para irmãos, obreiros, líderes, jovens e adultos que desejam crescer no conhecimento da Palavra de Deus e avançar em formação bíblica e doutrinária.",
     },
@@ -163,19 +169,9 @@ export const cursoTeologiaData = {
         "Não necessariamente. O curso busca acolher pessoas interessadas em aprender mais das Escrituras e crescer no conhecimento bíblico.",
     },
     {
-      question: "Tem mensalidade?",
+      question: "Como eu fico sabendo se ele voltar?",
       answer:
-        "Se houver investimento, a igreja informará no momento da inscrição.",
-    },
-    {
-      question: "Precisa fazer inscrição?",
-      answer:
-        "Sim. Entre em contato com a igreja para obter informações sobre as condições de participação e o processo de ingresso.",
-    },
-    {
-      question: "Tem certificado?",
-      answer:
-        "A igreja orientará sobre certificado e critérios de participação no momento oportuno.",
+        "Entre em contato com a igreja para ficar de olho — a equipe informará se e quando uma nova turma for aberta.",
     },
   ],
 } as const;

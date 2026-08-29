@@ -69,17 +69,9 @@ const BASE_BIBLICA_PADRAO_POR_TIPO: Partial<
 };
 
 export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
-  const cursoTeologiaDescricao =
-    [
-      "Uma igreja que deseja permanecer firme precisa cultivar também o estudo sério da Palavra. O Curso de Teologia reúne ensino bíblico, formação doutrinária e preparo ministerial para quem deseja amadurecer na fé e servir com responsabilidade.",
-      "Não se trata de conhecimento por vaidade, mas de entendimento que gera reverência, discernimento e compromisso com o Evangelho.",
-    ].join("\n\n");
-  const cursoTeologiaConvite =
-    "Venha aprofundar seu conhecimento bíblico, amadurecer espiritualmente e servir ao Senhor com mais clareza, convicção e temor.";
-  const cursoTeologiaBaseBiblica = criarBaseBiblica(
-    "2 Timóteo 2:15",
-    "Oséias 6:3"
-  );
+  // Curso de Teologia suspenso em 29/08/2026 — as ~34 datas mensais que
+  // existiam aqui foram removidas. BASE_BIBLICA_PADRAO_POR_TIPO acima
+  // mantém o fallback para "curso-de-teologia" caso volte a ser usado.
 
   const reuniaoMinisterioDescricao =
     [
@@ -190,16 +182,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           baseBiblica: reuniaoMinisterioBaseBiblica,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-09-02-2026",
-          data: "09/02",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-          baseBiblica: cursoTeologiaBaseBiblica,
-        }),
-        criarEvento(local, {
           slug: "santa-ceia-14-02-2026",
           data: "14/02",
           titulo: "Santa Ceia",
@@ -210,16 +192,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           baseBiblica: santaCeiaBaseBiblica,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-16-02-2026",
-          data: "16/02",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-          baseBiblica: cursoTeologiaBaseBiblica,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-21-02-2026",
           data: "21/02",
           titulo: "Reunião de Obreiros",
@@ -228,16 +200,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
           baseBiblica: reuniaoObreirosBaseBiblica,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-23-02-2026",
-          data: "23/02",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-          baseBiblica: cursoTeologiaBaseBiblica,
         }),
         criarEvento(local, {
           slug: "culto-com-a-mocidade-28-02-2026",
@@ -266,15 +228,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite: reuniaoMinisterioConvite,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-09-03-2026",
-          data: "09/03",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "santa-ceia-14-03-2026",
           data: "14/03",
           titulo: "Santa Ceia",
@@ -284,15 +237,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite: santaCeiaConvite,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-16-03-2026",
-          data: "16/03",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-21-03-2026",
           data: "21/03",
           titulo: "Reunião de Obreiros",
@@ -300,15 +244,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-23-03-2026",
-          data: "23/03",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "confraternizacao-departamento-feminino-28-03-2026",
@@ -329,15 +264,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao: batismoDescricao,
           convite: batismoConvite,
           destaque: true,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-30-03-2026",
-          data: "30/03",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -376,15 +302,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-13-04-2026",
-          data: "13/04",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-18-04-2026",
           data: "18/04",
           titulo: "Reunião de Obreiros",
@@ -392,15 +309,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-20-04-2026",
-          data: "20/04",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "congresso-com-as-criancas-25-04-2026",
@@ -411,15 +319,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           descricao:
             "Culto especial voltado às crianças, com participação do departamento infantil, louvor e ministração da Palavra.",
           destaque: true,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-27-04-2026",
-          data: "27/04",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -450,15 +349,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-04-27/santa-ceia.png",
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-11-05-2026",
-          data: "11/05",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-16-05-2026",
           data: "16/05",
           titulo: "Reunião de Obreiros",
@@ -469,24 +359,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-05-11/reuniao-de-obreiro.png",
           banner: "/programacao/semanas/2026-05-11/reuniao-de-obreiro.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-18-05-2026",
-          data: "18/05",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-25-05-2026",
-          data: "25/05",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "congresso-circulo-de-oracao-29-05-2026",
@@ -537,15 +409,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoMinisterioDescricao,
           convite: reuniaoMinisterioConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-08-06-2026",
-          data: "08/06",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "santa-ceia-13-06-2026",
@@ -611,15 +474,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/eventos/entrevista.png",
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-15-06-2026",
-          data: "15/06",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-20-06-2026",
           data: "20/06",
           titulo: "Reunião de Obreiros",
@@ -630,15 +484,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-06-15/reuniao-de-obreiro.png",
           banner: "/programacao/semanas/2026-06-15/reuniao-de-obreiro.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-22-06-2026",
-          data: "22/06",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "culto-com-a-mocidade-27-06-2026",
@@ -660,15 +505,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-06-22/batismo.png",
           banner: "/programacao/semanas/2026-06-22/batismo.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-29-06-2026",
-          data: "29/06",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -714,15 +550,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-07-06/santa-ceia.png",
           banner: "/programacao/semanas/2026-07-06/santa-ceia.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-13-07-2026",
-          data: "13/07",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "congresso-da-mocidade-local-17-07-2026",
@@ -777,15 +604,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           hero: congressoRiosDeUncao.hero,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-20-07-2026",
-          data: "20/07",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "cha-de-mulheres-que-inspiram-24-07-2026",
           data: "24/07",
           titulo: "Chá de Mulheres que Inspiram",
@@ -800,15 +618,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           imagem: "/programacao/eventos/cha-de-mulheres/cha-de-mulheres.png",
           banner: "/programacao/eventos/cha-de-mulheres/banner-cha-de-mulheres.png",
           hero: "/programacao/eventos/cha-de-mulheres/banner-cha-de-mulheres.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-27-07-2026",
-          data: "27/07",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -839,15 +648,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-08-03/santa-ceia.png",
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-10-08-2026",
-          data: "10/08",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-15-08-2026",
           data: "15/08",
           titulo: "Reunião de Obreiros",
@@ -860,15 +660,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-08-10/reuniao-de-obreiro.png",
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-17-08-2026",
-          data: "17/08",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "culto-com-a-mocidade-22-08-2026",
           data: "22/08",
           titulo: "Culto com a Mocidade",
@@ -876,15 +667,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: cultoMocidadeDescricao,
           convite: cultoMocidadeConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-24-08-2026",
-          data: "24/08",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "vigilia-29-08-2026",
@@ -909,15 +691,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           imagem: "/programacao/eventos/vigilia.png",
           banner: "/programacao/eventos/vigilia.png",
           hero: "/programacao/eventos/hero-vigilia.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-31-08-2026",
-          data: "31/08",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -959,15 +732,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-09-07/santa-ceia.png",
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-14-09-2026",
-          data: "14/09",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-19-09-2026",
           data: "19/09",
           titulo: "Reunião de Obreiros",
@@ -975,15 +739,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-21-09-2026",
-          data: "21/09",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "culto-com-a-mocidade-26-09-2026",
@@ -1005,15 +760,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-09-21/batismo.png",
           banner: "/programacao/semanas/2026-09-21/batismo.png",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-28-09-2026",
-          data: "28/09",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -1041,15 +787,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite: santaCeiaConvite,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-12-10-2026",
-          data: "12/10",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "reuniao-de-obreiros-17-10-2026",
           data: "17/10",
           titulo: "Reunião de Obreiros",
@@ -1057,15 +794,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: reuniaoObreirosDescricao,
           convite: reuniaoObreirosConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-19-10-2026",
-          data: "19/10",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-23-10-2026",
@@ -1082,15 +810,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           tipo: "culto-com-a-mocidade",
           descricao:
             "Segunda noite do Congresso Geral UMADAT Jovem no templo sede.",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-26-10-2026",
-          data: "26/10",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },
@@ -1109,15 +828,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite: reuniaoMinisterioConvite,
         }),
         criarEvento(local, {
-          slug: "curso-de-teologia-09-11-2026",
-          data: "09/11",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
           slug: "santa-ceia-e-reuniao-de-obreiros-14-11-2026",
           data: "14/11",
           titulo: "Santa Ceia e Reunião de Obreiros",
@@ -1125,15 +835,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-16-11-2026",
-          data: "16/11",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
         criarEvento(local, {
           slug: "aniversario-pastora-anna-alzira-21-11-2026",
@@ -1166,24 +867,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
             "Segundo dia do CONFADAT, Congresso das Irmãs, com adoração, palavra e comunhão no templo sede.",
           convite:
             "Serão dias especiais de renovo, comunhão e glória de Deus. Convide outras irmãs e venha participar do CONFADAT.",
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-23-11-2026",
-          data: "23/11",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
-        }),
-        criarEvento(local, {
-          slug: "curso-de-teologia-30-11-2026",
-          data: "30/11",
-          titulo: "Curso de Teologia",
-          tipo: "curso-de-teologia",
-          horario: "19h00",
-          descricao: cursoTeologiaDescricao,
-          convite: cursoTeologiaConvite,
         }),
       ],
     },

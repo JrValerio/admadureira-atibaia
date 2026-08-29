@@ -22,7 +22,19 @@ export function getProgramacaoSemanalAtual(referencia = new Date()) {
     return programacaoSemanal;
   }
 
-  return programacaoSemanal.map((item) =>
-    item.slug === "curso-de-teologia" ? reuniaoMinisterialSemanal : item
+  // A Reunião Ministerial não depende do Curso de Teologia (suspenso em
+  // 29/08/2026, removido de `programacaoSemanal`) — ela entra na posição de
+  // segunda-feira só na semana da primeira segunda do mês, mantendo a ordem
+  // cronológica do restante da lista (logo antes de Terça-feira).
+  const indiceTercaFeira = programacaoSemanal.findIndex(
+    (item) => item.dia === "Terça-feira"
   );
+  const posicaoInsercao =
+    indiceTercaFeira === -1 ? programacaoSemanal.length : indiceTercaFeira;
+
+  return [
+    ...programacaoSemanal.slice(0, posicaoInsercao),
+    reuniaoMinisterialSemanal,
+    ...programacaoSemanal.slice(posicaoInsercao),
+  ];
 }
