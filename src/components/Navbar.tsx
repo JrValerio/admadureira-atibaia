@@ -172,7 +172,7 @@ export default function Navbar() {
         }`}
       >
         <div
-          className={`ui-page-container ui-page-container--footer grid grid-cols-[1fr_auto] xl:grid-cols-[1fr_auto_1fr] items-center transition-all duration-300 ${
+          className={`ui-page-container ui-page-container--footer grid grid-cols-[1fr_auto] xl:grid-cols-[auto_1fr_auto] items-center transition-all duration-300 ${
             scrolled ? "h-[3.9rem] md:h-[4.15rem]" : "h-[4.5rem] md:h-[4.85rem]"
           }`}
         >
@@ -203,7 +203,7 @@ export default function Navbar() {
 
           <nav
             ref={desktopNavRef}
-            className="hidden xl:flex items-center justify-center gap-5 2xl:gap-8"
+            className="hidden xl:flex items-center xl:justify-end 2xl:justify-center gap-5 2xl:gap-8"
           >
             {menu.map((item) => {
               const active = isMenuItemActive(pathname, item);
