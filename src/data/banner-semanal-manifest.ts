@@ -342,7 +342,8 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "vigilia.png"
   ],
   "2026-08-31": [
-    "aniversario-pastor-zacarias.png"
+    "aniversario-pastor-zacarias.png",
+    "culto-acoes-de-gracas.png"
   ],
   "2026-09-07": [
     "santa-ceia.png"
