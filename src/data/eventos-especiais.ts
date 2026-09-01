@@ -711,6 +711,21 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/eventos/aniversario-pastor-zacarias.png",
         }),
         criarEvento(local, {
+          slug: "culto-acoes-de-gracas-05-09-2026",
+          data: "05/09",
+          titulo: "Culto de Ações de Graças",
+          tipo: "evento-especial",
+          horario: "19h",
+          descricao:
+            "Uma noite de gratidão celebrando a vida, o ministério e o cuidado pastoral do Pastor Zacarias B. Félix à frente do Campo de Atibaia. Participe presencialmente ou acompanhe a transmissão ao vivo.",
+          convite:
+            "Se você foi alcançado por esta igreja em algum momento da sua vida, este culto também é seu. Venha participar presencialmente conosco. Se não puder estar presente, acompanhe por aqui.",
+          destaque: true,
+          imagem: "/programacao/eventos/culto-acoes-de-gracas.png",
+          banner: "/programacao/eventos/culto-acoes-de-gracas.png",
+          baseBiblica: criarBaseBiblica("1 Tessalonicenses 5:18"),
+        }),
+        criarEvento(local, {
           slug: "reuniao-de-ministerio-07-09-2026",
           data: "07/09",
           titulo: "Reunião de Ministério",
