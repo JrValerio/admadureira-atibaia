@@ -199,7 +199,7 @@ export default function CultoAcoesDeGracas05092026Page() {
       />
 
       <div className="w-full overflow-hidden bg-[#140a06]">
-        <div className="relative mx-auto aspect-video w-full max-w-[1536px]">
+        <div className="relative mx-auto h-[clamp(184px,51vw,216px)] w-full max-w-[1536px] md:aspect-[2172/724] md:h-auto">
           <Image
             src={culto.hero}
             alt={`${culto.titulo} — ${culto.data}`}
@@ -207,7 +207,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             priority
             fetchPriority="high"
             sizes="(min-width: 1536px) 1536px, 100vw"
-            className="object-contain"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>

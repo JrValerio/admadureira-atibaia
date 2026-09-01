@@ -17,16 +17,16 @@ export const CULTO_ACOES_DE_GRACAS_05_09_2026 = {
   preletor: {
     nome: "Pr. Zacarias Bernardes Félix",
     papel: "Ministrador da Palavra",
-    foto: "/pastores/zacarias-felix.jpg",
+    foto: "/pastores/pr-zacarias.png",
     fotoClassName: "object-cover object-top",
     redes: [] as Array<{ plataforma: "Instagram" | "YouTube"; usuario: string; href: string }>,
   },
   anfitrioes: ["Pra. Anna Alzira Félix"],
   cantores: [],
-  imagem: "/programacao/semanas/2026-08-31/culto-acoes-de-gracas.png",
-  banner: "/programacao/eventos/banner-culto-acoes-de-gracas.png",
-  hero: "/programacao/semanas/2026-08-31/culto-acoes-de-gracas.png",
-  heroShare: "/programacao/semanas/2026-08-31/culto-acoes-de-gracas.png",
+  imagem: "/programacao/semanas/2026-08-31/culto-de-acao-de-graca.png",
+  banner: "/banners/banner-culto-de-acao-de-graca.png",
+  hero: "/banners/banner-culto-de-acao-de-graca.png",
+  heroShare: "/banners/banner-culto-de-acao-de-graca.png",
   descricaoSeo:
     "Participe do Culto de Ações de Graças ao vivo da AD Madureira Atibaia, sábado, 05 de setembro de 2026, às 19h, celebrando a vida do Pastor Zacarias B. Félix com ministração da Palavra e presidência da Pra. Anna Alzira Félix. Transmissão ao vivo.",
   descricaoTopo:
