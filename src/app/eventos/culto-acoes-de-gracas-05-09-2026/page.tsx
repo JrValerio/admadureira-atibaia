@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import EventCountdown from "@/components/EventCountdown";
+import PhotoCarousel from "@/components/gallery/PhotoCarousel";
+import YouTubeLiteEmbed from "@/components/YouTubeLiteEmbed";
 import { CULTO_ACOES_DE_GRACAS_05_09_2026 as culto } from "@/data/culto-acoes-de-gracas-05-09-2026";
 import { OFFICIAL_SOCIAL_LINKS, SEDE_POSTAL_ADDRESS } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
@@ -412,6 +414,61 @@ export default function CultoAcoesDeGracas05092026Page() {
             <p className="mt-2 text-sm leading-relaxed text-[#555]">
               {culto.anfitrioes.join(" e ")}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="memoria-aniversario-title"
+        className="ui-section ui-section--dense bg-white"
+      >
+        <div className="ui-page-container">
+          <div className="mb-8 max-w-3xl">
+            <p className="ui-section-eyebrow ui-section-eyebrow--gold">
+              Memória
+            </p>
+            <h2 id="memoria-aniversario-title" className="ui-section-title">
+              {culto.memoriaAniversario.titulo}
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#555] md:text-base">
+              {culto.memoriaAniversario.descricao}
+            </p>
+          </div>
+
+          <PhotoCarousel
+            title={culto.memoriaAniversario.titulo}
+            images={[...culto.memoriaAniversario.fotos]}
+          />
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div>
+              <p className="mb-3 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
+                Vídeo de fotos antigas
+              </p>
+              <div className="overflow-hidden rounded-2xl border border-black/8 bg-[#111] shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
+                <video
+                  controls
+                  preload="metadata"
+                  className="aspect-video w-full"
+                >
+                  <source
+                    src={culto.memoriaAniversario.videoFotosAntigas}
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </div>
+
+            <div>
+              <p className="mb-3 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
+                Depoimento
+              </p>
+              <YouTubeLiteEmbed
+                videoId={culto.memoriaAniversario.depoimento.youtubeId}
+                title={culto.memoriaAniversario.depoimento.titulo}
+                badge="Entrevista"
+              />
+            </div>
           </div>
         </div>
       </section>

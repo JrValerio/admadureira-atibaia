@@ -27,6 +27,10 @@
 material_consulta/
 *.pem
 
+# material bruto de origem (fotos/vídeos não editados enviados para curadoria) —
+# não deve ser commitado; só as artes já processadas em public/programacao vão pro repo.
+public/images/aniversário-do-pastor/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
