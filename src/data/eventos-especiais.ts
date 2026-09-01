@@ -721,8 +721,8 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           convite:
             "Se você foi alcançado por esta igreja em algum momento da sua vida, este culto também é seu. Venha participar presencialmente conosco. Se não puder estar presente, acompanhe por aqui.",
           destaque: true,
-          imagem: "/programacao/eventos/culto-acoes-de-gracas.png",
-          banner: "/programacao/eventos/culto-acoes-de-gracas.png",
+          imagem: "/programacao/semanas/2026-08-31/culto-acoes-de-gracas.png",
+          banner: "/programacao/eventos/banner-culto-acoes-de-gracas.png",
           baseBiblica: criarBaseBiblica("1 Tessalonicenses 5:18"),
         }),
         criarEvento(local, {
