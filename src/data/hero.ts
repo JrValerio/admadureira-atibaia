@@ -1,5 +1,6 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
+import { CULTO_ACOES_DE_GRACAS_05_09_2026 as cultoAcoesDeGracas } from "@/data/culto-acoes-de-gracas-05-09-2026";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
 import {
@@ -321,6 +322,24 @@ export function getHeroEventos(): HeroEvento[] {
       type: "event",
       eventDate: "2026-08-29",
       archivedAt: vigilia.fimIso,
+    },
+    {
+      titulo: cultoAcoesDeGracas.titulo,
+      subtitulo: cultoAcoesDeGracas.subtitulo,
+      ctaLabel: "Ver detalhes do culto",
+      alt: "Banner do Culto de Ações de Graças em celebração à vida do Pr. Zacarias B. Félix",
+      imagem: cultoAcoesDeGracas.banner,
+      href: cultoAcoesDeGracas.path,
+      ariaLabel: "Abrir página do Culto de Ações de Graças de 5 de setembro",
+      countdown: {
+        targetIso: cultoAcoesDeGracas.inicioIso,
+        endIso: cultoAcoesDeGracas.fimIso,
+        eventName: cultoAcoesDeGracas.titulo,
+      },
+      priority: "high",
+      type: "event",
+      eventDate: "2026-09-05",
+      archivedAt: cultoAcoesDeGracas.fimIso,
     },
     {
       titulo: "Culto de Santa Ceia",

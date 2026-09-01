@@ -47,4 +47,13 @@ describe("getHeroEventos", () => {
     expect(getTitlesAt("2026-08-30T08:59:59.000Z")).toContain("Vigília");
     expect(getTitlesAt("2026-08-30T09:00:00.000Z")).not.toContain("Vigília");
   });
+
+  it("mantem o Culto de Acoes de Gracas na home ate o encerramento", () => {
+    expect(getTitlesAt("2026-09-05T23:59:59.000Z")).toContain(
+      "Culto de Ações de Graças"
+    );
+    expect(getTitlesAt("2026-09-06T00:00:00.000Z")).not.toContain(
+      "Culto de Ações de Graças"
+    );
+  });
 });
