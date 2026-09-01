@@ -200,18 +200,42 @@ export default function CultoAcoesDeGracas05092026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <div className="w-full overflow-hidden bg-[#140a06]">
-        <div className="relative mx-auto h-[clamp(184px,51vw,216px)] w-full max-w-[1536px] md:aspect-[2172/724] md:h-auto">
-          <Image
-            src={culto.hero}
-            alt={`${culto.titulo} — ${culto.data}`}
-            fill
-            priority
-            fetchPriority="high"
-            sizes="(min-width: 1536px) 1536px, 100vw"
-            className="object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+      <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-[#f5f5f5]/95 backdrop-blur-sm md:top-[4.85rem]">
+        <div className="ui-page-container ui-page-container--narrow flex items-center gap-2 overflow-x-auto py-3 text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <a
+            href="#sobre"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+          >
+            Sobre o culto
+          </a>
+          <a
+            href="#pastores"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+          >
+            Pastores
+          </a>
+          <a
+            href="#memoria"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+          >
+            Memória
+          </a>
+          <a
+            href="#local"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+          >
+            Local
+          </a>
+          {eventEnded ? null : (
+            <a
+              href={OFFICIAL_SOCIAL_LINKS.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto shrink-0 rounded-full bg-[#8b5b18] px-4 py-1.5 font-bold text-white transition-colors hover:bg-[#6f4813]"
+            >
+              Assistir ao vivo
+            </a>
+          )}
         </div>
       </div>
 
@@ -232,92 +256,117 @@ export default function CultoAcoesDeGracas05092026Page() {
             <span className="text-[#212121]">{culto.titulo}</span>
           </nav>
 
-          <div className="mb-4">
-            {eventEnded ? (
-              <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
-                Evento encerrado
-              </span>
-            ) : (
-              <EventCountdown
-                targetIso={culto.inicioIso}
-                endIso={culto.fimIso}
-                eventName={culto.titulo}
-              />
-            )}
-          </div>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-start">
+            <div>
+              <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
+                {culto.diaSemana}, {culto.data} · {culto.horario}
+              </p>
+              <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
+                {culto.titulo}
+              </h1>
+              <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-[#8b5b18] md:text-2xl">
+                {culto.subtitulo}
+              </p>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
+                {culto.descricaoTopo}
+              </p>
 
-          <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
-            {culto.diaSemana}, {culto.data} · {culto.horario}
-          </p>
-          <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
-            {culto.titulo}
-          </h1>
-          <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-[#8b5b18] md:text-2xl">
-            {culto.subtitulo}
-          </p>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
-            {culto.descricaoTopo}
-          </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                {eventEnded ? (
+                  <>
+                    <Link href="/galeria" className="ui-btn-primary">
+                      Ver fotos e vídeos
+                    </Link>
+                    <Link href="/eventos" className="ui-btn-secondary">
+                      Ver próximos eventos
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/contato" className="ui-btn-primary">
+                      Como chegar
+                    </Link>
+                    <Link href="/programacao" className="ui-btn-secondary">
+                      Ver programação completa
+                    </Link>
+                  </>
+                )}
+              </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            {eventEnded ? (
-              <>
-                <Link href="/galeria" className="ui-btn-primary">
-                  Ver fotos e vídeos
-                </Link>
-                <Link href="/eventos" className="ui-btn-secondary">
-                  Ver próximos eventos
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href="/contato" className="ui-btn-primary">
-                  Como chegar
-                </Link>
-                <Link href="/programacao" className="ui-btn-secondary">
-                  Ver programação completa
-                </Link>
-              </>
-            )}
-          </div>
+              {eventEnded ? null : (
+                <div className="mt-3">
+                  <a
+                    href={OFFICIAL_SOCIAL_LINKS.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
+                  >
+                    Assistir ao vivo →
+                  </a>
+                </div>
+              )}
 
-          {eventEnded ? null : (
-            <div className="mt-3">
-              <a
-                href={OFFICIAL_SOCIAL_LINKS.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
-              >
-                Assistir ao vivo →
-              </a>
+              {eventEnded ? null : (
+                <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={buildGoogleCalendarUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ui-btn-ghost"
+                  >
+                    Adicionar ao calendário
+                  </a>
+                  <a
+                    href={buildWhatsAppShareUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ui-btn-ghost"
+                  >
+                    Compartilhar no WhatsApp
+                  </a>
+                </div>
+              )}
             </div>
-          )}
 
-          {eventEnded ? null : (
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={buildGoogleCalendarUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ui-btn-ghost"
-              >
-                Adicionar ao calendário
-              </a>
-              <a
-                href={buildWhatsAppShareUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ui-btn-ghost"
-              >
-                Compartilhar no WhatsApp
-              </a>
+            <div className="flex flex-col gap-4">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
+                {eventEnded ? null : (
+                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-white uppercase">
+                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                    Ao vivo
+                  </span>
+                )}
+                <div className="relative aspect-[1200/675] w-full">
+                  <Image
+                    src={culto.hero}
+                    alt={`${culto.titulo} — ${culto.data}`}
+                    fill
+                    priority
+                    fetchPriority="high"
+                    sizes="(min-width: 1024px) 380px, 100vw"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                </div>
+              </div>
+
+              {eventEnded ? (
+                <span className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+                  Evento encerrado
+                </span>
+              ) : (
+                <EventCountdown
+                  targetIso={culto.inicioIso}
+                  endIso={culto.fimIso}
+                  eventName={culto.titulo}
+                />
+              )}
             </div>
-          )}
+          </div>
         </div>
       </section>
 
-      <section className="bg-[#160e08] text-white">
+      <section id="local" className="scroll-mt-32 bg-[#160e08] text-white">
         <div className="ui-page-container py-10 md:py-14">
           <div className="grid gap-4 sm:grid-cols-3">
             <InfoItem label="Data" value={`${culto.diaSemana}, ${culto.data}`} />
@@ -327,7 +376,7 @@ export default function CultoAcoesDeGracas05092026Page() {
         </div>
       </section>
 
-      <section className="ui-section">
+      <section id="sobre" className="ui-section scroll-mt-32">
         <div className="ui-page-container">
           <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Sobre o Culto
@@ -356,8 +405,9 @@ export default function CultoAcoesDeGracas05092026Page() {
       </section>
 
       <section
+        id="pastores"
         aria-labelledby="perfis-culto-title"
-        className="ui-section ui-section--dense bg-white"
+        className="ui-section ui-section--dense scroll-mt-32 bg-white"
       >
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
@@ -419,8 +469,9 @@ export default function CultoAcoesDeGracas05092026Page() {
       </section>
 
       <section
+        id="memoria"
         aria-labelledby="memoria-aniversario-title"
-        className="ui-section ui-section--dense bg-white"
+        className="ui-section ui-section--dense scroll-mt-32 bg-white"
       >
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
@@ -440,29 +491,30 @@ export default function CultoAcoesDeGracas05092026Page() {
             images={[...culto.memoriaAniversario.fotos]}
           />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <div>
-              <p className="mb-3 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
-                Vídeo de fotos antigas
-              </p>
-              <div className="overflow-hidden rounded-2xl border border-black/8 bg-[#111] shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
-                <video
-                  controls
-                  preload="metadata"
-                  className="aspect-video w-full"
+          <div className="mt-10">
+            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
+              Vídeos do aniversário
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {culto.memoriaAniversario.videos.map((video, index) => (
+                <div
+                  key={video.src}
+                  className="overflow-hidden rounded-2xl border border-black/8 bg-[#111] shadow-[0_10px_28px_rgba(0,0,0,0.08)]"
                 >
-                  <source
-                    src={culto.memoriaAniversario.videoFotosAntigas}
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            </div>
+                  <video
+                    controls
+                    preload="metadata"
+                    className="aspect-video w-full"
+                    aria-label={video.titulo}
+                  >
+                    <source src={video.src} type="video/mp4" />
+                  </video>
+                  <p className="px-4 py-3 font-acme text-sm tracking-wide text-white/90">
+                    {video.titulo} — parte {index + 1}
+                  </p>
+                </div>
+              ))}
 
-            <div>
-              <p className="mb-3 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
-                Depoimento
-              </p>
               <YouTubeLiteEmbed
                 videoId={culto.memoriaAniversario.depoimento.youtubeId}
                 title={culto.memoriaAniversario.depoimento.titulo}
