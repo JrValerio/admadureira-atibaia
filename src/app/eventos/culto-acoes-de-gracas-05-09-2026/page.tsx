@@ -168,12 +168,26 @@ export default function CultoAcoesDeGracas05092026Page() {
     endDate: culto.fimIso,
     inLanguage: "pt-BR",
     eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    location: {
-      "@type": "Place",
-      name: culto.local,
-      address: SEDE_POSTAL_ADDRESS,
-    },
+    eventAttendanceMode: eventEnded
+      ? "https://schema.org/OfflineEventAttendanceMode"
+      : "https://schema.org/MixedEventAttendanceMode",
+    location: eventEnded
+      ? {
+          "@type": "Place",
+          name: culto.local,
+          address: SEDE_POSTAL_ADDRESS,
+        }
+      : [
+          {
+            "@type": "Place",
+            name: culto.local,
+            address: SEDE_POSTAL_ADDRESS,
+          },
+          {
+            "@type": "VirtualLocation",
+            url: culto.transmissaoAoVivoUrl,
+          },
+        ],
     organizer: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -329,26 +343,54 @@ export default function CultoAcoesDeGracas05092026Page() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
-                {eventEnded ? null : (
+              {eventEnded ? (
+                <div className="relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
+                  <div className="relative aspect-[1200/675] w-full">
+                    <Image
+                      src={culto.hero}
+                      alt={`${culto.titulo} — ${culto.data}`}
+                      fill
+                      priority
+                      fetchPriority="high"
+                      sizes="(min-width: 1024px) 380px, 100vw"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={culto.transmissaoAoVivoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
+                  aria-label={`Assistir à transmissão ao vivo do ${culto.titulo} no YouTube`}
+                >
                   <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-white uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     Ao vivo
                   </span>
-                )}
-                <div className="relative aspect-[1200/675] w-full">
-                  <Image
-                    src={culto.hero}
-                    alt={`${culto.titulo} — ${culto.data}`}
-                    fill
-                    priority
-                    fetchPriority="high"
-                    sizes="(min-width: 1024px) 380px, 100vw"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-                </div>
-              </div>
+                  <div className="relative aspect-[1200/675] w-full">
+                    <Image
+                      src={culto.hero}
+                      alt={`${culto.titulo} — ${culto.data}`}
+                      fill
+                      priority
+                      fetchPriority="high"
+                      sizes="(min-width: 1024px) 380px, 100vw"
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/0 transition-colors group-hover:from-black/50" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#ef5350] text-white shadow-xl transition-transform duration-200 group-hover:scale-105">
+                        <svg className="ml-0.5 h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M8 5.14v13.72c0 .72.78 1.17 1.4.8l10.2-6.86a.93.93 0 0 0 0-1.6L9.4 4.34A.93.93 0 0 0 8 5.14z" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              )}
 
               {eventEnded ? (
                 <span className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
