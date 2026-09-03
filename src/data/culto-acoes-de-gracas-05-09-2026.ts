@@ -47,6 +47,7 @@ export const CULTO_ACOES_DE_GRACAS_05_09_2026 = {
   banner: "/banners/banner-culto-de-acao-de-graca.png",
   hero: "/banners/banner-culto-de-acao-de-graca.png",
   heroShare: "/banners/banner-culto-de-acao-de-graca.png",
+  transmissaoAoVivoUrl: "https://www.youtube.com/live/7vKDuWB5-iA",
   descricaoSeo:
     "Participe do Culto de Ações de Graças ao vivo da AD Madureira Atibaia, sábado, 05 de setembro de 2026, às 19h, celebrando a vida do Pastor Zacarias B. Félix com ministração da Palavra e presidência da Pra. Anna Alzira Félix. Transmissão ao vivo.",
   descricaoTopo:
