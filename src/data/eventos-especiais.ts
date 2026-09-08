@@ -22,6 +22,15 @@ type EventoConfig = {
   imagem?: string;
   banner?: string;
   hero?: string;
+  arteComplementar?: {
+    imagem: string;
+    alt: string;
+    largura: number;
+    altura: number;
+    titulo?: string;
+    destaque?: string;
+    texto?: string;
+  };
 };
 
 function criarEvento(local: string, config: EventoConfig) {
@@ -745,6 +754,16 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-09-07/santa-ceia.png",
           banner: "/programacao/semanas/2026-09-07/santa-ceia.png",
+          arteComplementar: {
+            imagem: "/programacao/eventos/santa-ceia-cesta-basica.png",
+            alt: "Arte da campanha de arrecadação de alimentos: traga 1 kg de alimento não perecível para as cestas básicas do Departamento Social da igreja",
+            largura: 1122,
+            altura: 1402,
+            titulo: "Campanha de arrecadação de alimentos",
+            destaque: "Traga 1 kg de alimento não perecível",
+            texto:
+              "Neste culto de Santa Ceia, pedimos aos irmãos que tragam 1 kg de alimento não perecível. Os alimentos serão destinados às cestas básicas preparadas pelo Departamento Social da igreja para famílias em situação de necessidade.",
+          },
         }),
         criarEvento(local, {
           slug: "reuniao-de-obreiros-19-09-2026",
