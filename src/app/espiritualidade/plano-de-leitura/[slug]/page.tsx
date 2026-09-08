@@ -99,7 +99,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                   {plan.versiculoBase}
                 </p>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#777]">
+              <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold tracking-[0.12em] uppercase text-[#777]">
                 <span className="rounded-full bg-surface-accent px-3 py-2 text-text-accent">
                   {plan.duracaoLabel}
                 </span>

@@ -146,7 +146,7 @@ export default function GaleriaPage() {
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Álbuns
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -159,7 +159,7 @@ export default function GaleriaPage() {
                 </article>
 
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Fotos
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -172,7 +172,7 @@ export default function GaleriaPage() {
                 </article>
 
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Memória
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -191,7 +191,7 @@ export default function GaleriaPage() {
         <section>
           <div className="ui-page-container py-10 md:py-14">
             <div className="mb-7 max-w-3xl md:mb-10">
-              <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-[#ef5350] uppercase">
+              <p className="mb-3 text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
                 Fotografias da igreja
               </p>
               <h2 className="font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
@@ -215,7 +215,7 @@ export default function GaleriaPage() {
               </div>
             ) : (
               <div className="rounded-3xl border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
-                <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-text-accent uppercase">
+                <p className="mb-3 text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
                   Em breve
                 </p>
                 <h3 className="font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">

@@ -115,7 +115,7 @@ export default async function TestemunhosPage() {
                     {formatDate(testemunho.data)}
                   </p>
                   {testemunho.youtubeId && (
-                    <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
+                    <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-2">
                       Vídeo testemunho
                     </p>
                   )}

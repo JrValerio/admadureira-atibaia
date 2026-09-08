@@ -274,7 +274,7 @@ export default async function BibliaChapterPage({
                   <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
                     {chapterSeo.introTitle}
                   </h2>
-                  <p className="text-xs font-bold tracking-[0.18em] uppercase text-text-accent">
+                  <p className="text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     {chapterSeo.contextLabel}
                   </p>
                   <div className="max-w-none space-y-4 text-[15px] leading-relaxed text-[#555]">

@@ -86,7 +86,7 @@ export default function GalleryLightbox({
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-3 pb-4 text-white">
             <div>
-              <p className="text-[11px] font-bold tracking-[0.18em] text-text-accent-on-dark uppercase">
+              <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
                 Galeria
               </p>
               <h2 className="font-acme text-xl tracking-wide md:text-2xl">
@@ -95,7 +95,7 @@ export default function GalleryLightbox({
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/78">
+              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.12em] uppercase text-white/78">
                 {currentLabel}
               </span>
               <button

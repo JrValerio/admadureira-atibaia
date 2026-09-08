@@ -33,7 +33,7 @@ export default function ReadingPlanCard({ plan }: ReadingPlanCardProps) {
 
       <div className="p-6 md:p-7">
         <p className="text-[#555] leading-relaxed mb-5">{plan.descricao}</p>
-        <div className="flex flex-wrap gap-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#777]">
+        <div className="flex flex-wrap gap-3 text-xs font-semibold tracking-[0.12em] uppercase text-[#777]">
           <span className="rounded-full bg-surface-accent px-3 py-2 text-text-accent">
             {plan.duracaoLabel}
           </span>

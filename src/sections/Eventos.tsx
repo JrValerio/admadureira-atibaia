@@ -66,7 +66,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
             {grupo.label}
           </h3>
         </div>
-        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-text-accent">
+        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
           {grupo.eventos.length} eventos
         </span>
       </div>

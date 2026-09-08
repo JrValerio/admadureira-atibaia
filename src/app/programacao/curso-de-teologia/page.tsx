@@ -95,7 +95,7 @@ export default function CursoTeologiaPage() {
             </nav>
 
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-[0.24em] uppercase text-text-accent-on-dark">
+              <p className="text-xs font-semibold tracking-[0.12em] uppercase text-text-accent-on-dark">
                 {cursoTeologiaData.hero.label}
               </p>
               <h1 className="mt-4 font-acme text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
@@ -104,7 +104,7 @@ export default function CursoTeologiaPage() {
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/82 md:text-lg">
                 {cursoTeologiaData.hero.description}
               </p>
-              <div className="mt-5 inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent/10 px-5 py-3 text-xs font-semibold tracking-[0.22em] uppercase text-[#f7dfbb]">
+              <div className="mt-5 inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent/10 px-5 py-3 text-xs font-semibold tracking-[0.12em] uppercase text-[#f7dfbb]">
                 {cursoTeologiaData.hero.highlight}
               </div>
 
@@ -178,7 +178,7 @@ export default function CursoTeologiaPage() {
                       key={fact.label}
                       className="rounded-2xl border border-[#ffa726]/15 bg-white/75 p-4"
                     >
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                      <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                         {fact.label}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#444]">
@@ -208,7 +208,7 @@ export default function CursoTeologiaPage() {
                       <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/55 to-transparent" />
                     </div>
                     <div className="border-t border-[#ffa726]/15 bg-white/85 px-5 py-4 text-center">
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                      <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                         Foto institucional
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#666]">
@@ -350,7 +350,7 @@ export default function CursoTeologiaPage() {
                     href={`/programacao/curso-de-teologia/artigos/${article.slug}`}
                     className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-surface-accent"
                   >
-                    <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                    <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                       {article.date}
                     </p>
                     <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-text-accent">

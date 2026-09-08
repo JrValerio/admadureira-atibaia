@@ -113,7 +113,7 @@ export default function PhotoCarousel({
               className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/0 to-black/0" />
-            <span className="absolute bottom-3 right-3 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[10px] font-bold tracking-[0.16em] text-white uppercase backdrop-blur-sm">
+            <span className="absolute bottom-3 right-3 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[10px] font-bold tracking-[0.12em] text-white uppercase backdrop-blur-sm">
               Ampliar
             </span>
           </button>

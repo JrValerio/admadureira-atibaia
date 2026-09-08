@@ -30,7 +30,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
             <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
               &quot;{data.verse.texto}&quot;
             </p>
-            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent mb-5">
+            <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent mb-5">
               {data.verse.referencia}
             </p>
             <Link href={data.verseChapterHref} className="ui-link-accent inline-flex">

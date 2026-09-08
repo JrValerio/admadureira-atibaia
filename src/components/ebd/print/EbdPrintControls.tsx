@@ -27,7 +27,7 @@ export default function EbdPrintControls({
   return (
     <div className="ebd-print-controls mx-auto mb-5 max-w-[190mm] border-b border-black/10 pb-3 text-[#444]">
       <div>
-        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
+        <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#ef5350]">
           Impressão da lição
         </p>
         <h1 className="mt-1 font-acme text-[2rem] leading-tight tracking-wide text-[#212121]">

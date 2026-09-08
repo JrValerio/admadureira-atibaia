@@ -55,7 +55,7 @@ export default function VideosPage() {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Ao vivo e recentes
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -68,7 +68,7 @@ export default function VideosPage() {
               </article>
 
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Mensagens
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -81,7 +81,7 @@ export default function VideosPage() {
               </article>
 
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Programação
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">

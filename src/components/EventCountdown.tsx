@@ -62,7 +62,7 @@ export default function EventCountdown({
   return (
     <div className={wrapperClassName} role="timer" aria-label={accessibleLabel}>
       <span
-        className={`mb-1.5 text-[10px] font-bold uppercase tracking-[0.18em] ${
+        className={`mb-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${
           isOverlay ? "text-[#ffc46b]" : "text-[#b96500]"
         }`}
       >

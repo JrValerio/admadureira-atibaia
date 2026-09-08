@@ -32,7 +32,7 @@ export default function DailySpiritual() {
               <p className="mb-4 max-w-[34ch] text-base leading-relaxed text-[#3f3f3f]">
                 &quot;{verse.texto}&quot;
               </p>
-              <p className="mb-5 text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
+              <p className="mb-5 text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                 {verse.referencia}
               </p>
               <Link

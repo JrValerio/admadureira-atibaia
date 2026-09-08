@@ -117,7 +117,7 @@ export default function OfertaPage() {
                 {baseBiblica.map((referencia) => (
                   <span
                     key={referencia}
-                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-text-accent"
+                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent"
                   >
                     {referencia}
                   </span>
@@ -192,7 +192,7 @@ export default function OfertaPage() {
               </p>
 
               <div className="mt-6">
-                <p className="text-[#777] text-sm uppercase tracking-[0.18em] mb-2">
+                <p className="text-[#777] text-sm uppercase tracking-[0.12em] mb-2">
                   Chave PIX ({ofertaData.pix.tipo})
                 </p>
                 <p className="font-acme text-2xl text-[#ef5350] break-all">
@@ -270,7 +270,7 @@ export default function OfertaPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
-                      <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
+                      <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
                         Banco
                       </p>
                       <p className="text-[#212121] font-semibold">
@@ -278,7 +278,7 @@ export default function OfertaPage() {
                       </p>
                     </div>
                     <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
-                      <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
+                      <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
                         Agência
                       </p>
                       <p className="text-[#212121] font-semibold">
@@ -286,7 +286,7 @@ export default function OfertaPage() {
                       </p>
                     </div>
                     <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
-                      <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
+                      <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
                         Conta corrente
                       </p>
                       <p className="text-[#212121] font-semibold">
@@ -336,7 +336,7 @@ export default function OfertaPage() {
                     tristeza ou por necessidade, porque Deus ama quem dá com
                     alegria.&quot;
                   </p>
-                  <footer className="mt-2 text-[11px] font-semibold tracking-[0.16em] uppercase text-text-accent">
+                  <footer className="mt-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent">
                     2 Coríntios 9:7
                   </footer>
                 </blockquote>

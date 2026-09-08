@@ -101,7 +101,7 @@ export default function EspiritualidadePage() {
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {guidedSteps.map((item) => (
                 <article key={item.title} className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                  <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                     {item.step}
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">

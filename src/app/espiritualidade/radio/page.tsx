@@ -62,7 +62,7 @@ export default function RadioPage() {
                   Transmissão
                 </span>
                 <span
-                  className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase ${statusClassName}`.trim()}
+                  className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase ${statusClassName}`.trim()}
                 >
                   {statusLabel}
                 </span>
@@ -81,7 +81,7 @@ export default function RadioPage() {
 
               {hasStream ? (
                 <div className="rounded-3xl border border-emerald-500/15 bg-emerald-50/60 p-5">
-                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-emerald-700">
+                  <p className="mb-3 text-xs font-bold tracking-[0.12em] uppercase text-emerald-700">
                     Transmissão ao vivo
                   </p>
                   <audio controls className="w-full">
@@ -90,7 +90,7 @@ export default function RadioPage() {
                 </div>
               ) : (
                 <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
-                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-text-accent">
+                  <p className="mb-3 text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     Em breve
                   </p>
                   <p className="text-[#555] leading-relaxed">

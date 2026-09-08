@@ -194,7 +194,7 @@ export default function Navbar() {
               <p className="truncate font-script text-[1.32rem] leading-none text-[#f7dfbb] md:text-[1.55rem] xl:overflow-visible xl:text-clip xl:whitespace-nowrap">
                 Assembleia de Deus
               </p>
-              <p className="mt-1 text-[8px] tracking-[0.22em] text-white/72 uppercase md:text-[9px] md:tracking-[0.28em]">
+              <p className="mt-1 text-[8px] tracking-[0.12em] text-white/72 uppercase md:text-[9px] md:tracking-[0.12em]">
                 Madureira · Atibaia
               </p>
             </div>
@@ -316,7 +316,7 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`font-acme block py-3 text-base uppercase tracking-[0.16em] transition-colors ${
+                    className={`font-acme block py-3 text-base uppercase tracking-[0.12em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-brand-orange"
                         : "text-white/70 hover:text-brand-orange"
@@ -339,7 +339,7 @@ export default function Navbar() {
                         prev === item.label ? null : item.label
                       )
                     }
-                    className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.16em] transition-colors ${
+                    className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.12em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-brand-orange"
                         : "text-white/70"
