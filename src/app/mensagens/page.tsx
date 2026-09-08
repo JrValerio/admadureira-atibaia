@@ -43,6 +43,10 @@ export default async function MensagensPage() {
         .filter((pregador): pregador is string => Boolean(pregador))
     ),
   ];
+  // Contadores só ajudam quando há acervo para contar. Abaixo de 6 itens eles
+  // transformam a escassez no dado mais visível da página.
+  const MINIMO_PARA_METRICAS = 6;
+  const mostrarMetricas = mensagens.length >= MINIMO_PARA_METRICAS;
   const mensagensListSchema = buildVideoListJsonLd(mensagens);
   const mensagensSeriesSchema = buildVideoSeriesJsonLd(mensagens);
 
@@ -109,94 +113,120 @@ export default async function MensagensPage() {
       </section>
       <section className="py-16 md:py-20">
         <div className="ui-page-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div className="ui-panel ui-panel-pad-lg">
-              <p className="ui-card-eyebrow mb-2">
-                Mensagens publicadas
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">
-                {mensagens.length}
-              </p>
+          {mostrarMetricas ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+              <div className="ui-panel ui-panel-pad-lg">
+                <p className="ui-card-eyebrow mb-2">
+                  Mensagens publicadas
+                </p>
+                <p className="font-acme text-4xl text-[#212121]">
+                  {mensagens.length}
+                </p>
+              </div>
+              <div className="ui-panel ui-panel-pad-lg">
+                <p className="ui-card-eyebrow mb-2">
+                  Pregadores identificados
+                </p>
+                <p className="font-acme text-4xl text-[#212121]">
+                  {mensagensComPregador.length}
+                </p>
+              </div>
+              <div className="ui-panel ui-panel-pad-lg">
+                <p className="ui-card-eyebrow mb-2">
+                  Conteúdo em vídeo
+                </p>
+                <p className="font-acme text-4xl text-[#212121]">YouTube</p>
+              </div>
             </div>
-            <div className="ui-panel ui-panel-pad-lg">
-              <p className="ui-card-eyebrow mb-2">
-                Pregadores identificados
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">
-                {mensagensComPregador.length}
-              </p>
-            </div>
-            <div className="ui-panel ui-panel-pad-lg">
-              <p className="ui-card-eyebrow mb-2">
-                Conteúdo em vídeo
-              </p>
-              <p className="font-acme text-4xl text-[#212121]">YouTube</p>
-            </div>
-          </div>
+          ) : null}
 
-          <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
-            <p className="ui-card-eyebrow mb-3">
-              Palavra para a semana
-            </p>
-            <p className="text-[#555] leading-relaxed">
-              Aqui você encontra mensagens recentes da igreja com acesso rápido
-              às pregações, aos pregadores identificados e aos textos bíblicos
-              que acompanham cada ministração.
-            </p>
-            <p className="text-[#777] text-sm leading-relaxed mt-3">
-              Use esta página para ouvir com calma, compartilhar com outras
-              pessoas e revisitar aquilo que Deus ministrou ao coração da
-              igreja.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {mensagens.map((mensagem) => (
-              <Link
-                key={mensagem.slug}
-                href={`/mensagens/${mensagem.slug}`}
-                className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+          {mensagens.length === 0 ? (
+            <div className="ui-panel ui-panel-pad-lg mx-auto max-w-2xl text-center">
+              <p className="ui-card-eyebrow mb-2">Mensagens</p>
+              <h2 className="font-acme text-2xl tracking-wide text-[#212121]">
+                Ainda não há mensagens publicadas aqui
+              </h2>
+              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#5f5f5f]">
+                As pregações e ministrações da igreja continuam disponíveis no
+                canal do YouTube. Assim que forem organizadas nesta página, elas
+                aparecerão aqui.
+              </p>
+              <a
+                href="https://www.youtube.com/@ADMadureiraAtibaia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-btn-primary mt-6"
               >
-                <CardMedia
-                  src={mensagem.capa}
-                  alt={mensagem.titulo}
-                  variant="content"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  zoomOnHover
-                  className="rounded-none"
-                >
-                  <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-xs font-semibold tracking-widest uppercase">
-                    Assistir mensagem
-                  </div>
-                </CardMedia>
+                Abrir canal no YouTube
+              </a>
+            </div>
+          ) : (
+            <>
+              <div className="ui-panel-accent ui-panel-pad-lg max-w-4xl mx-auto mb-12">
+                <p className="ui-card-eyebrow mb-3">
+                  Palavra para a semana
+                </p>
+                <p className="text-[#555] leading-relaxed">
+                  Aqui você encontra mensagens recentes da igreja com acesso
+                  rápido às pregações, aos pregadores identificados e aos textos
+                  bíblicos que acompanham cada ministração.
+                </p>
+                <p className="text-[#777] text-sm leading-relaxed mt-3">
+                  Use esta página para ouvir com calma, compartilhar com outras
+                  pessoas e revisitar aquilo que Deus ministrou ao coração da
+                  igreja.
+                </p>
+              </div>
 
-                <div className="p-6">
-                  <p className="ui-card-eyebrow mb-2">
-                    {formatMensagemDate(mensagem.data)}
-                  </p>
-                  <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
-                    {mensagem.titulo}
-                  </h2>
-                  <p className="text-[#5f5f5f] text-sm leading-relaxed line-clamp-3 mb-4">
-                    {mensagem.resumo}
-                  </p>
-                  <div className="space-y-1">
-                    <p className="text-[#777] text-sm">
-                      Pregador: {mensagem.pregador ?? "AD Madureira Atibaia"}
-                    </p>
-                    {mensagem.versiculo && (
-                      <p className="text-[#777] text-sm">
-                        Versículo-base: {mensagem.versiculo}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {mensagens.map((mensagem) => (
+                  <Link
+                    key={mensagem.slug}
+                    href={`/mensagens/${mensagem.slug}`}
+                    className="group rounded-3xl overflow-hidden bg-white border border-black/5 shadow-sm hover:shadow-lg transition-shadow"
+                  >
+                    <CardMedia
+                      src={mensagem.capa}
+                      alt={mensagem.titulo}
+                      variant="content"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      zoomOnHover
+                      className="rounded-none"
+                    >
+                      <div className="absolute left-4 bottom-4 inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-xs font-semibold tracking-widest uppercase">
+                        Assistir mensagem
+                      </div>
+                    </CardMedia>
+
+                    <div className="p-6">
+                      <p className="ui-card-eyebrow mb-2">
+                        {formatMensagemDate(mensagem.data)}
                       </p>
-                    )}
-                  </div>
-                  <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
-                    Ver mensagem →
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+                      <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3 group-hover:text-[#ef5350] transition-colors">
+                        {mensagem.titulo}
+                      </h2>
+                      <p className="text-[#5f5f5f] text-sm leading-relaxed line-clamp-3 mb-4">
+                        {mensagem.resumo}
+                      </p>
+                      <div className="space-y-1">
+                        <p className="text-[#777] text-sm">
+                          Pregador: {mensagem.pregador ?? "AD Madureira Atibaia"}
+                        </p>
+                        {mensagem.versiculo && (
+                          <p className="text-[#777] text-sm">
+                            Versículo-base: {mensagem.versiculo}
+                          </p>
+                        )}
+                      </div>
+                      <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mt-5">
+                        Ver mensagem →
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </section>
     </main>
