@@ -27,6 +27,14 @@ export const EventoSchema = z.object({
   imagem: z.string().optional(),
   banner: z.string().optional(),
   hero: z.string().optional(),
+  arteComplementar: z
+    .object({
+      imagem: z.string().min(1),
+      alt: z.string().min(1),
+      titulo: z.string().optional(),
+      texto: z.string().optional(),
+    })
+    .optional(),
 });
 
 export const MesAgendaSchema = z.object({

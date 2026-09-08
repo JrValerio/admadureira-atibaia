@@ -26,6 +26,12 @@ export interface EventoBase {
   imagem?: string;
   banner?: string;
   hero?: string;
+  arteComplementar?: {
+    imagem: string;
+    alt: string;
+    titulo?: string;
+    texto?: string;
+  };
 }
 
 export type Evento = EventoBase;

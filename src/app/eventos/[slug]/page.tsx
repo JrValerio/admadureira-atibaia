@@ -231,6 +231,31 @@ export default async function EventoPage({ params }: PageProps) {
                   </div>
                 )}
 
+                {evento.arteComplementar && (
+                  <div className="rounded-2xl border border-black/5 bg-white p-5 md:p-6">
+                    {evento.arteComplementar.titulo && (
+                      <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-2">
+                        {evento.arteComplementar.titulo}
+                      </h2>
+                    )}
+                    {evento.arteComplementar.texto && (
+                      <p className="mb-4 text-[#555] leading-relaxed">
+                        {evento.arteComplementar.texto}
+                      </p>
+                    )}
+                    <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-black/5">
+                      <Image
+                        src={evento.arteComplementar.imagem}
+                        alt={evento.arteComplementar.alt}
+                        width={1122}
+                        height={1402}
+                        sizes="(max-width: 768px) 100vw, 384px"
+                        className="h-auto w-full"
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {((evento.baseBiblica?.length ?? 0) > 0 ||
                   recursosRelacionados.length > 0) && (
                   <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
