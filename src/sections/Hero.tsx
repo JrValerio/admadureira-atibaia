@@ -157,7 +157,7 @@ export default function Hero({ liveNow = null }: HeroProps) {
 
       {/* Seta para baixo */}
       <div className="absolute bottom-3 left-1/2 -translate-x-1/2 animate-bounce sm:bottom-6 md:bottom-8 lg:bottom-10">
-        <svg className="h-5 w-5 text-[#ffa726] sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="h-5 w-5 text-brand-orange sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </div>

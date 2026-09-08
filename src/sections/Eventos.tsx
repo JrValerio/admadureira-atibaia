@@ -66,7 +66,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
             {grupo.label}
           </h3>
         </div>
-        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-[#8b5b18]">
+        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-text-accent">
           {grupo.eventos.length} eventos
         </span>
       </div>
@@ -125,7 +125,7 @@ export default function Eventos({
 
         {showHeader ? (
           <div className="text-center mb-8 md:mb-16">
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+            <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
               Agenda especial
             </p>
             <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide">
@@ -137,7 +137,7 @@ export default function Eventos({
 
         <div className="mb-10 md:mb-20">
           <div className="text-center max-w-3xl mx-auto mb-8">
-            <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+            <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
               Próximos eventos
             </p>
             <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
@@ -195,7 +195,7 @@ export default function Eventos({
         <div className="rounded-3xl border border-black/5 bg-[#212121] p-6 md:p-8 text-white shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
             <div>
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="text-text-accent text-xs font-bold tracking-widest uppercase mb-3">
                 Programação semanal
               </p>
               <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-4">

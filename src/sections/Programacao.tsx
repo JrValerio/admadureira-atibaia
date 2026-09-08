@@ -71,7 +71,7 @@ function CardSemanal({
         />
       ) : (
         <div className="relative aspect-4/5 flex items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
-          <span className="font-acme text-[#ffa726] text-xl tracking-wide leading-tight">
+          <span className="font-acme text-text-accent text-xl tracking-wide leading-tight">
             {titulo}
           </span>
         </div>

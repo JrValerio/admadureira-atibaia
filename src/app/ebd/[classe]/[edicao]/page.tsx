@@ -220,7 +220,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
               <div className="space-y-12">
                 <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8 lg:p-10">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                     Visão geral do trimestre
                   </p>
                   <div
@@ -232,7 +232,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                     {trimestre.titulo}
                   </h2>
                   {trimestre.subtitulo ? (
-                    <p className="mb-4 text-sm font-medium text-[#8b5b18]">
+                    <p className="mb-4 text-sm font-medium text-text-accent">
                       {trimestre.subtitulo}
                     </p>
                   ) : null}
@@ -243,7 +243,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
                   <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
                     <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Classe
                       </p>
                       <p className="font-acme text-xl text-[#212121] md:text-3xl">
@@ -251,7 +251,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Lições publicadas
                       </p>
                       <p className="font-acme text-xl text-[#212121] md:text-3xl">
@@ -259,7 +259,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Horário
                       </p>
                       <p className="text-sm leading-relaxed text-[#212121]">
@@ -284,7 +284,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                     {trimestre.percurso?.length ? (
                       <section className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                        <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                           O percurso do trimestre
                         </p>
                         <div className="space-y-4">
@@ -356,7 +356,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl">
                         {licaoEmDestaque.titulo}
                       </h2>
-                      <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                      <p className="mb-2 text-sm font-medium text-text-accent">
                         Lição {licaoEmDestaque.numero} •{" "}
                         {formatEbdDate(licaoEmDestaque.data)}
                       </p>
@@ -393,7 +393,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
                 <div>
                   <div className="mb-6 max-w-4xl">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Trilha do trimestre
                     </p>
                     <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
@@ -408,7 +408,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
                   <div className="mb-6 grid grid-cols-2 gap-3 xl:grid-cols-4">
                     <div className="rounded-2xl border border-black/5 bg-white p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Concluídas
                       </p>
                       <p className="font-acme text-2xl text-[#212121]">
@@ -416,7 +416,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Liberadas
                       </p>
                       <p className="font-acme text-2xl text-[#212121]">
@@ -424,7 +424,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-[#ffa726]/15 bg-[#fffaf3] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em breve
                       </p>
                       <p className="font-acme text-2xl text-[#212121]">
@@ -432,7 +432,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                     </div>
                     <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em preparo
                       </p>
                       <p className="font-acme text-2xl text-[#212121]">
@@ -463,7 +463,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
                           {licaoEmDestaque.titulo}
                         </h2>
-                        <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                        <p className="mb-2 text-sm font-medium text-text-accent">
                           Lição {licaoEmDestaque.numero} •{" "}
                           {formatEbdDate(licaoEmDestaque.data)}
                         </p>
@@ -504,7 +504,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   </div>
 
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Lições da edição
                     </p>
                     <div className="space-y-3">

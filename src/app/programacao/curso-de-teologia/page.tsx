@@ -95,7 +95,7 @@ export default function CursoTeologiaPage() {
             </nav>
 
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-[0.24em] uppercase text-[#ffa726]">
+              <p className="text-xs font-semibold tracking-[0.24em] uppercase text-text-accent-on-dark">
                 {cursoTeologiaData.hero.label}
               </p>
               <h1 className="mt-4 font-acme text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
@@ -123,7 +123,7 @@ export default function CursoTeologiaPage() {
         <section className="border-b border-black/5 bg-white/90">
           <div className="ui-page-container py-5 md:py-6">
             <div className="ui-panel ui-panel-pad-sm border-l-4 border-l-[#8b5b18]">
-              <p className="text-xs font-bold tracking-widest uppercase text-[#8b5b18]">
+              <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                 Turma suspensa
               </p>
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -169,7 +169,7 @@ export default function CursoTeologiaPage() {
               </article>
 
               <aside className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Informações rápidas
                 </p>
                 <div className="mt-5 grid grid-cols-1 gap-4">
@@ -178,7 +178,7 @@ export default function CursoTeologiaPage() {
                       key={fact.label}
                       className="rounded-2xl border border-[#ffa726]/15 bg-white/75 p-4"
                     >
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
+                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
                         {fact.label}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#444]">
@@ -208,7 +208,7 @@ export default function CursoTeologiaPage() {
                       <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/55 to-transparent" />
                     </div>
                     <div className="border-t border-[#ffa726]/15 bg-white/85 px-5 py-4 text-center">
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
+                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
                         Foto institucional
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#666]">
@@ -350,13 +350,13 @@ export default function CursoTeologiaPage() {
                     href={`/programacao/curso-de-teologia/artigos/${article.slug}`}
                     className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-[#fff8ee]"
                   >
-                    <p className="text-[11px] font-bold tracking-widest uppercase text-[#8b5b18]">
+                    <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
                       {article.date}
                     </p>
-                    <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-[#8b5b18]">
+                    <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-text-accent">
                       {article.title}
                     </p>
-                    <p className="mt-2 text-xs text-[#ffa726]">Ler artigo →</p>
+                    <p className="mt-2 text-xs text-text-accent">Ler artigo →</p>
                   </Link>
                 ))}
               </div>

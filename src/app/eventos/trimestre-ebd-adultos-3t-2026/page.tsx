@@ -140,7 +140,7 @@ export default function TrimestreEbdAdultos3t2026Page() {
 
           {/* Wagner Gaby — "Curitiba" vem da revista física (texto transcrito pelo editor); confirmar contra o PDF CPAD antes de publicar */}
           <div className="mb-10 rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+            <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
               Comentarista deste trimestre
             </p>
             <div className="flex-1">
@@ -230,7 +230,7 @@ export default function TrimestreEbdAdultos3t2026Page() {
 
                     {verdadePratica && (
                       <div className="mt-auto pt-3 border-t border-black/5">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Verdade prática
                         </p>
                         <p className="text-xs leading-relaxed text-[#555]">

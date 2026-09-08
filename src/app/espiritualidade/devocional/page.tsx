@@ -72,7 +72,7 @@ export default function DevocionalPage() {
                 <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-3">
                   {dailyDevotional.titulo}
                 </h2>
-                <p className="text-sm text-[#8b5b18] mb-4">
+                <p className="text-sm text-text-accent mb-4">
                   {dailyDevotional.versiculo}
                 </p>
                 <p className="text-[#555] leading-relaxed mb-5">
@@ -86,7 +86,7 @@ export default function DevocionalPage() {
                 </Link>
                 <Link
                   href="/espiritualidade/podcast"
-                  className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-[#8b5b18] transition-colors hover:text-[#ef5350]"
+                  className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-text-accent transition-colors hover:text-[#ef5350]"
                 >
                   Continue com ouvir reflexões em áudio
                 </Link>

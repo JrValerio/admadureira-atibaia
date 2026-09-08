@@ -33,7 +33,7 @@ export default function RadioPage() {
   const statusLabel = hasStream ? "Ao vivo agora" : radioConfig.statusLabel;
   const statusClassName = hasStream
     ? "border-emerald-500/20 bg-emerald-50 text-emerald-700"
-    : "border-[#ffa726]/20 bg-[#fff8ee] text-[#8b5b18]";
+    : "border-[#ffa726]/20 bg-[#fff8ee] text-text-accent";
 
   return (
     <>
@@ -90,7 +90,7 @@ export default function RadioPage() {
                 </div>
               ) : (
                 <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
-                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-[#8b5b18]">
+                  <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-text-accent">
                     Em breve
                   </p>
                   <p className="text-[#555] leading-relaxed">

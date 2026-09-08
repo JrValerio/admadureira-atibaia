@@ -24,10 +24,10 @@ function getLabelToneClassName(tone: EbdSupportLabelTone) {
     case "danger":
       return "text-[#ef5350]";
     case "earth":
-      return "text-[#8b5b18]";
+      return "text-text-accent";
     case "accent":
     default:
-      return "text-[#ffa726]";
+      return "text-text-accent";
   }
 }
 
@@ -74,7 +74,7 @@ export function EbdSupportSection({
 }) {
   return (
     <section className="rounded-3xl border border-black/5 bg-[#fafafa] p-5 md:p-6">
-      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
         {eyebrow}
       </p>
       <h3 className="mb-4 font-acme text-2xl tracking-wide text-[#212121]">
@@ -387,7 +387,7 @@ export function EbdSupportOutlinePanel({
             className="rounded-2xl border border-white/70 bg-white/85 p-4"
           >
             {item.titulo ? (
-              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
                 {item.titulo}
               </p>
             ) : null}

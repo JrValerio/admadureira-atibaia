@@ -37,7 +37,11 @@ export default function PastoresGrid({
           </div>
 
           <div className="p-5">
-            <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+            <p
+              className={`text-xs font-bold tracking-widest uppercase mb-2 ${
+                isDark ? "text-text-accent-on-dark" : "text-text-accent"
+              }`}
+            >
               {pastor.cargo}
             </p>
             <h3

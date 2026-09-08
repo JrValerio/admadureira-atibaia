@@ -159,7 +159,7 @@ export default async function EbdClassPage({ params }: PageProps) {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
               <div className="space-y-12">
                 <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8 lg:p-10">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                     Classe em destaque
                   </p>
                   <h2 className="mb-4 max-w-4xl font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
@@ -191,7 +191,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                       <h2 className="mb-3 font-acme text-xl tracking-wide text-[#212121] md:text-3xl">
                         {licaoDaSemana.licao.titulo}
                       </h2>
-                      <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                      <p className="mb-2 text-sm font-medium text-text-accent">
                         Lição {licaoDaSemana.licao.numero} •{" "}
                         {formatEbdDate(licaoDaSemana.licao.data)}
                       </p>
@@ -223,7 +223,7 @@ export default async function EbdClassPage({ params }: PageProps) {
 
                 <div>
                   <div className="mb-6 max-w-4xl">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Trimestres de 2026
                     </p>
                     <h2 className="mb-4 font-acme text-xl tracking-wide text-[#212121] md:text-4xl lg:text-5xl">
@@ -263,7 +263,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                                 >
                                   {statusMeta.label}
                                 </div>
-                                <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                                <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent-on-dark">
                                   {trimestre.rotulo}
                                 </p>
                                 <h3 className="font-acme text-xl tracking-wide text-white md:text-3xl">
@@ -281,7 +281,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                               </p>
                               <div className="mb-4 grid grid-cols-2 gap-4">
                                 <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-                                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                                     Lições publicadas
                                   </p>
                                   <p className="font-acme text-xl text-[#212121] md:text-3xl">
@@ -289,7 +289,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                                   </p>
                                 </div>
                                 <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
-                                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                                  <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                                     Versículo-base
                                   </p>
                                   <p className="text-sm leading-relaxed text-[#212121]">
@@ -311,7 +311,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                     </div>
                   ) : (
                     <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Publicação pausada
                       </p>
                       <p className="leading-relaxed text-[#555]">
@@ -335,7 +335,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                         <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
                           {licaoDaSemana.licao.titulo}
                         </h2>
-                        <p className="mb-2 text-sm font-medium text-[#8b5b18]">
+                        <p className="mb-2 text-sm font-medium text-text-accent">
                           Lição {licaoDaSemana.licao.numero} •{" "}
                           {formatEbdDate(licaoDaSemana.licao.data)}
                         </p>
@@ -368,7 +368,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                   </div>
 
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Visão da classe
                     </p>
                     <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
@@ -401,7 +401,7 @@ export default async function EbdClassPage({ params }: PageProps) {
 
                   {trimestres.length ? (
                     <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
-                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Edições da classe
                       </p>
                       <div className="space-y-3">

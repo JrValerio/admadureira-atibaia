@@ -117,7 +117,7 @@ export default function OfertaPage() {
                 {baseBiblica.map((referencia) => (
                   <span
                     key={referencia}
-                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-[#8b5b18]"
+                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-text-accent"
                   >
                     {referencia}
                   </span>
@@ -336,7 +336,7 @@ export default function OfertaPage() {
                     tristeza ou por necessidade, porque Deus ama quem dá com
                     alegria.&quot;
                   </p>
-                  <footer className="mt-2 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#8b5b18]">
+                  <footer className="mt-2 text-[11px] font-semibold tracking-[0.16em] uppercase text-text-accent">
                     2 Coríntios 9:7
                   </footer>
                 </blockquote>

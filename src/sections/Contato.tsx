@@ -159,7 +159,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                 href={SEDE_MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded text-xs font-bold tracking-wide text-[#ffa726] uppercase hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-1.5 rounded text-xs font-bold tracking-wide text-text-accent uppercase hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -181,13 +181,13 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                 href={SEDE_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block rounded text-sm text-[#424242] transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
+                className="block rounded text-sm text-[#424242] transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 WhatsApp: {SEDE_CONTACT.whatsappDisplay}
               </a>
               <a
                 href="tel:+551144116116"
-                className="block rounded text-sm text-[#424242] transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
+                className="block rounded text-sm text-[#424242] transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
               >
                 Telefone: {SEDE_CONTACT.telephoneDisplay}
               </a>

@@ -240,7 +240,7 @@ export function getMetaEstadoProgressaoLicao(
       return {
         label: "Em breve",
         cardClassName: "border-[#ffa726]/15 bg-[#fffaf3] shadow-sm",
-        badgeClassName: "border-[#ffa726]/25 bg-white text-[#8b5b18]",
+        badgeClassName: "border-[#ffa726]/25 bg-white text-text-accent",
         actionLabel: "Disponível em breve",
       };
     case "liberada":
@@ -248,7 +248,7 @@ export function getMetaEstadoProgressaoLicao(
         label: "Liberada",
         cardClassName:
           "border-[#ffa726]/35 bg-[#fff8ee] shadow-[0_12px_30px_rgba(0,0,0,0.06)]",
-        badgeClassName: "border-[#ffa726]/30 bg-white text-[#8b5b18]",
+        badgeClassName: "border-[#ffa726]/30 bg-white text-text-accent",
         actionLabel: "Abrir lição →",
       };
     case "concluida":

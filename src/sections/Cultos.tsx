@@ -90,7 +90,7 @@ export default function Cultos() {
                   {horario.slug ? (
                     <Link
                       href={`/programacao/${horario.slug}`}
-                      className="block rounded-lg transition-colors hover:text-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
+                      className="block rounded-lg transition-colors hover:text-brand-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffa726] focus-visible:ring-offset-1"
                     >
                       <p className="text-[16px] font-bold tracking-wide text-[#212121]">
                         {horario.hora}

@@ -235,7 +235,7 @@ export default async function PastorPage({ params }: PageProps) {
                   <ul className="space-y-3 text-[#555] leading-relaxed">
                     {pastor.ministerio.map((item) => (
                       <li key={item} className="flex gap-3">
-                        <span className="text-[#ffa726]">•</span>
+                        <span className="text-brand-orange">•</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -250,7 +250,7 @@ export default async function PastorPage({ params }: PageProps) {
                     <ul className="space-y-3 text-[#555] leading-relaxed">
                       {pastor.formacao.map((item) => (
                         <li key={item} className="flex gap-3">
-                          <span className="text-[#ffa726]">•</span>
+                          <span className="text-brand-orange">•</span>
                           <span>{item}</span>
                         </li>
                       ))}
@@ -260,7 +260,7 @@ export default async function PastorPage({ params }: PageProps) {
 
                 {pastor.versiculo && (
                   <div className="rounded-3xl bg-[#212121] text-white p-8 text-center">
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                    <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-3">
                       Versículo que marca o ministério
                     </p>
                     <blockquote className="text-xl md:text-2xl italic text-white/85 leading-relaxed mb-3">

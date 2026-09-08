@@ -314,7 +314,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     </div>
                     <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Data
                         </p>
                         <p className="text-sm text-[#212121]">
@@ -322,13 +322,13 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         </p>
                       </div>
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Classe
                         </p>
                         <p className="text-sm text-[#212121]">{classeInfo.label}</p>
                       </div>
                       <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:col-span-2">
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Trilha do trimestre
                         </p>
                         <p className="text-sm text-[#212121]">
@@ -339,7 +339,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     </div>
 
                     <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
-                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em breve
                       </p>
                       <p className="leading-relaxed text-[#555]">
@@ -371,7 +371,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
                       <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Data
                           </p>
                           <p className="text-sm text-[#212121]">
@@ -379,7 +379,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Classe
                           </p>
                           <p className="text-sm text-[#212121]">{classeInfo.label}</p>
@@ -388,7 +388,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           </p>
                         </div>
                         <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                          <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Trilha
                           </p>
                           <p className="text-sm text-[#212121]">
@@ -455,7 +455,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   </div>
 
                   <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
-                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                    <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Aplicação prática
                     </p>
                     <p className="leading-relaxed text-[#555]">

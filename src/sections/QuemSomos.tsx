@@ -5,7 +5,7 @@ export default function QuemSomos() {
   return (
     <Section bg="white">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="mb-4 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+        <p className="mb-4 text-xs font-bold tracking-widest uppercase text-text-accent">
           Nossa Igreja
         </p>
         <h2 className="mb-5 font-acme text-3xl md:text-4xl text-[#212121]">

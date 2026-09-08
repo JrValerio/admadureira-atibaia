@@ -23,7 +23,7 @@ export function getQuarterStatusMeta(
   if (status === "partial") {
     return {
       label: "Em publicação",
-      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-[#8b5b18]",
+      badgeClassName: "border-[#ffa726]/25 bg-[#fff8ee] text-text-accent",
       description:
         "Este trimestre já começou e novas lições serão disponibilizadas ao longo do período.",
     };

@@ -27,7 +27,7 @@ export default function SobrePage() {
       <Sobre showHeader={false} />
       <HistoriasDeFe />
       <Section bg="gray" className="text-center">
-        <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+        <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
           Primeira visita
         </p>
         <h2 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">

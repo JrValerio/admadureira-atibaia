@@ -46,7 +46,11 @@ export default function EventCountdown({
   if (state.type === "live") {
     return (
       <div className={wrapperClassName} role="status">
-        <span className="text-sm font-bold tracking-wide text-[#ffa726]">
+        <span
+          className={`text-sm font-bold tracking-wide ${
+            isOverlay ? "text-text-accent-on-dark" : "text-text-accent"
+          }`}
+        >
           A {eventName} começou!
         </span>
       </div>

@@ -377,7 +377,7 @@ export default function BibleShareVerseButton({
             </div>
 
             <div className="mt-6 rounded-3xl border border-black/5 bg-[#f8f8f8] p-5">
-              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Prévia do conteúdo
               </p>
               <p className="text-sm leading-7 text-[#555]">

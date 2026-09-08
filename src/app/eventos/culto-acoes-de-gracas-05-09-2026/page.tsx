@@ -48,7 +48,7 @@ function isEventEnded(now = new Date()) {
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -218,25 +218,25 @@ export default function CultoAcoesDeGracas05092026Page() {
         <div className="ui-page-container ui-page-container--narrow flex items-center gap-2 overflow-x-auto py-3 text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <a
             href="#sobre"
-            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-text-accent"
           >
             Sobre o culto
           </a>
           <a
             href="#pastores"
-            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-text-accent"
           >
             Pastores
           </a>
           <a
             href="#memoria"
-            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-text-accent"
           >
             Memória
           </a>
           <a
             href="#local"
-            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-[#8b5b18]"
+            className="shrink-0 rounded-full px-3 py-1.5 font-semibold text-[#555] transition-colors hover:bg-[#8b5b18]/8 hover:text-text-accent"
           >
             Local
           </a>
@@ -272,13 +272,13 @@ export default function CultoAcoesDeGracas05092026Page() {
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-start">
             <div>
-              <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
+              <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
                 {culto.diaSemana}, {culto.data} · {culto.horario}
               </p>
               <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
                 {culto.titulo}
               </h1>
-              <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-[#8b5b18] md:text-2xl">
+              <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-text-accent md:text-2xl">
                 {culto.subtitulo}
               </p>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
@@ -313,7 +313,7 @@ export default function CultoAcoesDeGracas05092026Page() {
                     href={OFFICIAL_SOCIAL_LINKS.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
+                    className="text-sm font-semibold text-text-accent transition-colors hover:text-[#212121]"
                   >
                     Assistir ao vivo →
                   </a>
@@ -475,7 +475,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-10">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+              <p className="text-xs font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
                 {culto.preletor.papel}
               </p>
               <h3 className="mt-2 font-acme text-3xl tracking-wide text-white lg:text-4xl">
@@ -534,7 +534,7 @@ export default function CultoAcoesDeGracas05092026Page() {
           />
 
           <div className="mt-10">
-            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-[#8b5b18] uppercase">
+            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
               Vídeos do aniversário
             </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -570,7 +570,7 @@ export default function CultoAcoesDeGracas05092026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-[#ffa726] uppercase">
+            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
               {culto.titulo} — {culto.data}
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

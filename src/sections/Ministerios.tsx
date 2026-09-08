@@ -50,7 +50,7 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
               <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
                 {min.escopo}
               </p>
-              <h3 className="font-acme text-[#212121] text-xl mb-2 group-hover:text-[#ffa726] transition-colors tracking-wide">
+              <h3 className="font-acme text-[#212121] text-xl mb-2 group-hover:text-brand-orange transition-colors tracking-wide">
                 {min.nome}
               </h3>
               <p className="text-[#757575] text-sm leading-relaxed line-clamp-3">

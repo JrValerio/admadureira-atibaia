@@ -72,7 +72,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
-      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+      <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
         {label}
       </p>
       <p className="text-sm leading-relaxed text-[#212121]">{value}</p>
@@ -83,7 +83,7 @@ function InfoCard({ label, value }: { label: string; value: string }) {
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-black/5 bg-white/80 p-5">
-      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#8b5b18]">
+      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
         {label}
       </p>
       <p className="font-acme text-xl md:text-3xl tracking-wide text-[#212121]">{value}</p>
@@ -288,7 +288,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
               </div>
 
               <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
-                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                   Base local
                 </p>
                 <h2 className="mb-5 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
@@ -320,7 +320,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
             <div className="mb-8 grid grid-cols-1 gap-8 xl:grid-cols-[1.05fr_0.95fr]">
               <div className="space-y-8">
                 <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                     Endereço e visitação
                   </p>
                   <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
@@ -369,7 +369,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 </div>
 
                 <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                     Programação local
                   </p>
                   <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide text-[#212121]">
@@ -386,7 +386,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                         key={`${item.dia}-${item.horario}-${item.titulo}`}
                         className="rounded-2xl border border-black/5 bg-[#f9f9f9] p-5"
                       >
-                        <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
                           {item.dia}
                         </p>
                         <h3 className="mb-2 font-acme text-2xl tracking-wide text-[#212121]">
@@ -412,7 +412,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                     className="rounded-none"
                   >
                     <div className="absolute inset-x-0 bottom-0 p-6">
-                      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                      <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent-on-dark">
                         Campo de Atibaia
                       </p>
                       <h2 className="font-acme text-xl md:text-3xl tracking-wide text-white">
@@ -443,7 +443,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                         key={`${lider.cargo}-${lider.nome}`}
                         className="rounded-2xl border border-black/5 bg-white px-5 py-4"
                       >
-                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                        <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           {lider.cargo}
                         </p>
                         {lider.pastorSlug ? (
@@ -462,7 +462,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 </div>
 
                 <div className="rounded-3xl bg-[#212121] p-6 text-white shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                  <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent-on-dark">
                     Próximos passos
                   </p>
                   <h2 className="mb-4 font-acme text-xl md:text-3xl tracking-wide">

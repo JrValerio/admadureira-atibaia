@@ -121,7 +121,7 @@ export default async function BibliaPage({ searchParams }: PageProps) {
 
           <div className="mb-8 grid grid-cols-1 gap-8 xl:grid-cols-[1.05fr_0.95fr]">
             <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Leitura organizada
               </p>
               <h2 className="mb-5 font-acme text-xl tracking-wide text-[#212121] md:text-4xl">

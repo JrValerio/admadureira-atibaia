@@ -222,7 +222,7 @@ export default async function CultoPage({ params }: Props) {
             </nav>
 
             <div className={hasActiveBanner ? "hidden md:block" : "block"}>
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent-on-dark">
                 {culto.dia}
                 {culto.horario ? ` · ${culto.horario}` : ""}
               </p>
@@ -237,7 +237,7 @@ export default async function CultoPage({ params }: Props) {
         <section className="py-12 md:py-16">
           <div className="ui-page-container ui-page-container--narrow">
             <div className="mb-6 rounded-3xl border border-black/5 bg-white px-5 py-5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:hidden">
-              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
                 {mobileHeroSummary}
               </p>
               <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121]">
@@ -293,7 +293,7 @@ export default async function CultoPage({ params }: Props) {
                         <Link
                           key={`${item.referencia}-${item.href}`}
                           href={item.href}
-                          className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-[#8b5b18] transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                          className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
                         >
                           {item.referencia}
                         </Link>
