@@ -130,6 +130,32 @@ export default async function Videos({ showHeader = true }: VideosProps) {
           </div>
         )}
 
+        {!liveNow &&
+        !upcomingLive &&
+        featuredVideos.length === 0 &&
+        recentLiveVideos.length === 0 ? (
+          <div className="ui-panel-accent ui-panel-pad-sm mb-14 text-center">
+            <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-2">
+              Transmissões
+            </p>
+            <h3 className="font-acme text-2xl text-[#212121] tracking-wide">
+              Não foi possível carregar os vídeos agora
+            </h3>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#5f5f5f]">
+              As transmissões da igreja continuam no canal do YouTube. Tente
+              novamente em instantes ou abra o canal para ver o que está no ar.
+            </p>
+            <a
+              href={CANAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block text-sm font-semibold uppercase tracking-wide text-[#ef5350] hover:underline"
+            >
+              Abrir canal no YouTube →
+            </a>
+          </div>
+        ) : null}
+
         <div className="ui-panel ui-panel-pad-sm text-center">
           <p className="ui-section-eyebrow ui-section-eyebrow--gold">
             Próximo passo
