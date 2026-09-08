@@ -253,60 +253,12 @@ function createFallbackLiveVideo(
   };
 }
 
-const fallbackMessagesPlaylist: YouTubeVideo[] = [
-  createFallbackVideo(
-    "gn1q7mfAtGw",
-    "NÃO SE PRECIPITE: Deus Vai Cumprir a Promessa no Tempo Certo | Pr. Zacarias",
-    "2026-03-21T01:22:09+00:00",
-    "Mensagem em vídeo publicada na playlist oficial de Mensagens da AD Madureira Atibaia."
-  ),
-];
-
 const fallbackTestimoniesPlaylist: YouTubeVideo[] = [
   createFallbackVideo(
     "nD8ww-uzRgg",
     "Entrevista Especial – Pr. Zacarias Bernardes Félix & Pra. Anna Alzira",
     "2025-09-13T22:34:35+00:00",
     "Testemunho em vídeo publicado na playlist oficial de Testemunhos da AD Madureira Atibaia."
-  ),
-];
-
-const fallbackRecentVideos: YouTubeVideo[] = [
-  createFallbackVideo(
-    "LWX6A7T-PZI",
-    "Culto e Reunião de Obreiros | Hoje às 19h | Toda a Igreja Está Convidada",
-    "2026-03-21T00:57:18+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackVideo(
-    "HCL1a6rQ8ic",
-    "Assembleia de Deus - Min. Madureira | Atibaia-SP está ao vivo!",
-    "2026-03-21T01:25:45+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackVideo(
-    "gn1q7mfAtGw",
-    "NÃO SE PRECIPITE: Deus Vai Cumprir a Promessa no Tempo Certo | Pr. Zacarias",
-    "2026-03-21T01:22:09+00:00",
-    "Mensagem recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackVideo(
-    "1b-_PbSMPJs",
-    "AO VIVO | Campanha Jejum e Oração | Ministração com Pastor Isaías",
-    "2026-03-20T12:18:20+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackVideo(
-    "1uyhDvu53no",
-    "AO VIVO | Culto da Família | Participação Pr. Otton de Paula | AD Madureira Atibaia",
-    "2026-03-16T11:55:13+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackVideo(
-    "cbJQKtdNeFc",
-    "AO VIVO | Culto de Santa Ceia do Senhor | 14 de Março – 19h",
-    "2026-03-15T12:29:53+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
   ),
 ];
 
@@ -322,40 +274,6 @@ const fallbackFeaturedLiveVideos: YouTubeVideo[] = [
     "AO VIVO/ Culto e Reunião de Obreiros com Cicero Nogueira AD Madureira Atibaia .",
     "2026-02-22T12:39:57+00:00",
     "Transmissão destacada no canal da AD Madureira Atibaia."
-  ),
-];
-
-const fallbackRecentLiveVideos: YouTubeVideo[] = [
-  ...fallbackFeaturedLiveVideos,
-  createFallbackLiveVideo(
-    "LWX6A7T-PZI",
-    "Culto e Reunião de Obreiros | Hoje às 19h | Toda a Igreja Está Convidada",
-    "2026-03-21T00:57:18+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackLiveVideo(
-    "HCL1a6rQ8ic",
-    "Assembleia de Deus - Min. Madureira | Atibaia-SP está ao vivo!",
-    "2026-03-21T01:25:45+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackLiveVideo(
-    "1b-_PbSMPJs",
-    "AO VIVO | Campanha Jejum e Oração | Ministração com Pastor Isaías",
-    "2026-03-20T12:18:20+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackLiveVideo(
-    "1uyhDvu53no",
-    "AO VIVO | Culto da Família | Participação Pr. Otton de Paula | AD Madureira Atibaia",
-    "2026-03-16T11:55:13+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
-  ),
-  createFallbackLiveVideo(
-    "cbJQKtdNeFc",
-    "AO VIVO | Culto de Santa Ceia do Senhor | 14 de Março – 19h",
-    "2026-03-15T12:29:53+00:00",
-    "Transmissão recente publicada no canal da AD Madureira Atibaia."
   ),
 ];
 
@@ -1337,10 +1255,12 @@ export async function getYouTubeMessagesPlaylistVideos(
   limit = YOUTUBE_LIMITS.messagePlaylist
 ) {
   // /mensagens = curadoria da playlist oficial de pregações e ministrações.
+  // Sem lista fixa de reserva: se API/RSS/HTML falharem, a página mostra um
+  // estado vazio honesto em vez de conteúdo antigo se passando por atual.
   const result = await getPlaylistVideos(
     YOUTUBE_PLAYLIST_IDS.messages,
     limit,
-    fallbackMessagesPlaylist
+    []
   );
 
   if (result.usingFallback) {
@@ -1395,8 +1315,10 @@ export async function getYouTubeChannelVideos(
     };
   }
 
+  // Sem cadeia dinâmica disponível: devolvemos vazio em vez de uma lista fixa
+  // de vídeos antigos. `usingFallback` continua sinalizando a indisponibilidade.
   const result = {
-    videos: fallbackRecentVideos.slice(0, limit),
+    videos: [] as YouTubeVideo[],
     source: "fallback",
     usingFallback: true,
   } satisfies YouTubeVideoCollection;
@@ -1458,8 +1380,10 @@ export async function getYouTubeChannelLiveVideos(
     }
   }
 
+  // Idem: sem lives dinâmicas, a página mostra estado indisponível — não um
+  // acervo congelado de transmissões passadas.
   const result = {
-    videos: fallbackRecentLiveVideos.slice(0, limit),
+    videos: [] as YouTubeVideo[],
     source: "fallback",
     usingFallback: true,
   } satisfies YouTubeVideoCollection;
