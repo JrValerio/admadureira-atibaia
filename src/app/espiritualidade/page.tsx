@@ -70,7 +70,7 @@ export default function EspiritualidadePage() {
         image={igrejaHeroMedia.espiritualidade}
         imageAlt="Fachada da AD Madureira Atibaia"
       />
-      <section className="border-b border-black/5 bg-white/90">
+      <section className="border-b border-black/5 bg-surface-base/90">
         <div className="ui-page-container py-5 md:py-6">
           <div className="ui-panel ui-panel-pad-sm">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -159,7 +159,7 @@ export default function EspiritualidadePage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Se esta for a sua primeira visita
               </p>
@@ -287,7 +287,7 @@ export default function EspiritualidadePage() {
               {complementarySpiritualFeatures.map((feature) => (
                 <article
                   key={feature.href}
-                  className="group rounded-3xl border border-[#ffa726]/18 bg-[#fff8ee] p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
+                  className="group rounded-3xl border border-[#ffa726]/18 bg-surface-accent p-6 md:p-8 shadow-sm transition-shadow hover:shadow-[0_10px_30px_rgba(0,0,0,0.07)]"
                 >
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                     {feature.destaque}

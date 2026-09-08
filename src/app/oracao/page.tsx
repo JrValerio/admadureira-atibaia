@@ -12,7 +12,7 @@ export const metadata = buildPageMetadata({
 
 export default function OracaoPage() {
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <HeroPage
         variant="full"
         label="Intercessão"

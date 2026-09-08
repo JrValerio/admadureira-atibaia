@@ -75,7 +75,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="min-h-screen bg-surface-soft">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -87,7 +87,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
 
       <section className="bg-[#160e08] text-white">
         <div className="ui-page-container grid gap-8 py-8 md:py-12 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[28rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black shadow-[0_26px_70px_rgba(0,0,0,0.35)] lg:max-w-none">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[28rem] overflow-hidden rounded-3xl border border-white/10 bg-black shadow-[0_26px_70px_rgba(0,0,0,0.35)] lg:max-w-none">
             <Image
               src={congresso.imagem}
               alt="Arte oficial do Congresso da Mocidade Rios de Unção 2026"
@@ -165,7 +165,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               </div>
             </div>
 
-            <aside className="self-start rounded-[1.5rem] border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+            <aside className="self-start rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm">
               <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
                 Participe conosco
               </p>
@@ -206,7 +206,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
             {congresso.programacao.map((noite) => (
               <article
                 key={noite.data}
-                className="rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
+                className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
               >
                 <p className="text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
                   {noite.noite} · {noite.diaSemana}
@@ -268,7 +268,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               </div>
             </div>
 
-            <div className="rounded-[1.5rem] border border-black/5 bg-white p-6 shadow-sm">
+            <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
               <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
                 Liderança e organização
               </p>

@@ -8,7 +8,7 @@ type HojeComDeusProps = {
 export default function HojeComDeus({ data }: HojeComDeusProps) {
   return (
     <section className="mb-10">
-      <div className="rounded-4xl border border-[#ffa726]/15 bg-[#fff8ee] p-4 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+      <div className="rounded-3xl border border-[#ffa726]/15 bg-surface-accent p-4 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
         <div className="mb-8 max-w-3xl">
           <p className="ui-card-eyebrow mb-3">
             Hoje com Deus

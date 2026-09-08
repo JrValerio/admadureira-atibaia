@@ -23,7 +23,7 @@ export default function GalleryAlbumCard({
   return (
     <Link
       href={`/galeria/${album.slug}`}
-      className="group block overflow-hidden rounded-[1.75rem] border border-black/6 bg-white shadow-[0_18px_40px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1"
+      className="group block overflow-hidden rounded-2xl border border-black/6 bg-white shadow-[0_18px_40px_rgba(0,0,0,0.06)] transition-transform duration-300 hover:-translate-y-1"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image

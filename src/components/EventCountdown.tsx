@@ -41,7 +41,7 @@ export default function EventCountdown({
   const isOverlay = variant === "overlay";
   const wrapperClassName = isOverlay
     ? "inline-flex flex-col rounded-xl border border-white/20 bg-black/55 px-3 py-2 text-white shadow-lg backdrop-blur-sm"
-    : "inline-flex flex-col rounded-2xl border border-[#ffa726]/30 bg-[#fff8ed] px-4 py-3 text-[#212121] shadow-sm md:px-5";
+    : "inline-flex flex-col rounded-2xl border border-[#ffa726]/30 bg-surface-accent px-4 py-3 text-[#212121] shadow-sm md:px-5";
 
   if (state.type === "live") {
     return (

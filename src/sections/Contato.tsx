@@ -124,7 +124,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
   }
 
   return (
-    <Section id="contato" className="bg-[#f5f5f5]" density="dense">
+    <Section id="contato" className="bg-surface-soft" density="dense">
       {showHeader ? (
         <SectionTitle
           eyebrow="Venha nos visitar"
@@ -211,7 +211,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl bg-gray-200 shadow-md h-80">
+        <div className="overflow-hidden rounded-2xl bg-surface-soft shadow-md h-80">
           <iframe
             title="Localização AD Madureira Atibaia"
             src={SEDE_MAPS_EMBED_URL}
@@ -392,7 +392,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                   href={rede.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-[#faf8f3] px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
+                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-surface-soft px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111] text-white transition-colors group-hover:bg-[#ffa726] group-hover:text-[#111]">
                     {rede.icon}

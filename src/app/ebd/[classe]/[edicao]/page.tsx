@@ -197,7 +197,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
@@ -242,7 +242,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   </div>
 
                   <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Classe
                       </p>
@@ -250,7 +250,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         {classeInfo.label}
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Lições publicadas
                       </p>
@@ -258,7 +258,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         {publishedLessons}
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Horário
                       </p>
@@ -306,7 +306,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
                     {trimestre.fontesEditoriais?.length ||
                     trimestre.orientacaoUso ? (
-                      <section className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+                      <section className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8">
                         {trimestre.fontesEditoriais?.length ? (
                           <>
                             <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
@@ -347,7 +347,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                   </div>
                 ) : null}
 
-                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8 lg:hidden">
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8 lg:hidden">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Em destaque
                   </p>
@@ -415,7 +415,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         {contagemProgressao.concluida}
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                    <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Liberadas
                       </p>
@@ -423,7 +423,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         {contagemProgressao.liberada}
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-[#ffa726]/15 bg-[#fffaf3] p-4">
+                    <div className="rounded-2xl border border-[#ffa726]/15 bg-surface-soft p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em breve
                       </p>
@@ -431,7 +431,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         {contagemProgressao["em-breve"]}
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                    <div className="rounded-2xl border border-black/5 bg-surface-soft p-4">
                       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em preparo
                       </p>
@@ -454,7 +454,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
 
               <aside className="hidden lg:block">
                 <div className="sticky top-28 space-y-6">
-                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                       Em destaque
                     </p>
@@ -511,8 +511,8 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       {lessonsWithStatus.map(({ licao, status, isNavigable }) => {
                         const itemClassName = `block rounded-2xl border p-4 transition-colors ${
                           licaoEmDestaque?.id === licao.id
-                            ? "border-[#ffa726]/30 bg-[#fff8ee]"
-                            : "border-black/5 bg-[#fafafa]"
+                            ? "border-[#ffa726]/30 bg-surface-accent"
+                            : "border-black/5 bg-surface-soft"
                         } ${
                           isNavigable
                             ? "hover:border-[#ffa726]/20 hover:bg-white"

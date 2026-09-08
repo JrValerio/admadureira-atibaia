@@ -328,7 +328,7 @@ export default function BibleShareVerseButton({
 
       {isOpen ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4">
-          <div className="w-full max-w-xl rounded-4xl bg-white p-6 shadow-2xl md:p-8">
+          <div className="w-full max-w-xl rounded-3xl bg-white p-6 shadow-2xl md:p-8">
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
                 <p className="ui-card-eyebrow mb-2">
@@ -376,7 +376,7 @@ export default function BibleShareVerseButton({
               })}
             </div>
 
-            <div className="mt-6 rounded-3xl border border-black/5 bg-[#f8f8f8] p-5">
+            <div className="mt-6 rounded-3xl border border-black/5 bg-surface-soft p-5">
               <p className="mb-2 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Prévia do conteúdo
               </p>

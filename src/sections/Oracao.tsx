@@ -87,7 +87,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
         ) : null}
 
         {/* Formulário */}
-        <div className="bg-[#f5f5f5] rounded-2xl p-5 md:p-8 lg:p-12 shadow-sm">
+        <div className="bg-surface-soft rounded-2xl p-5 md:p-8 lg:p-12 shadow-sm">
           {status === "sent" ? (
             <div className="text-center py-8">
               <div className="w-14 h-1 rounded-full bg-[#ffa726] mx-auto mb-5" />

@@ -55,7 +55,7 @@ export default function CongregacoesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="bg-[#f5f5f5] min-h-screen">
+      <main className="bg-surface-soft min-h-screen">
         <HeroPage
           variant="full"
           label="Campo de Atibaia"
@@ -107,7 +107,7 @@ export default function CongregacoesPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
                 <p className="ui-card-eyebrow mb-3">
                   Base atual do campo
                 </p>

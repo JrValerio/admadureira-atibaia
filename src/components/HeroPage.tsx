@@ -30,7 +30,7 @@ export default function HeroPage({
     "relative overflow-hidden text-white",
     isFull
       ? "bg-[#111] h-[30svh] min-h-[15rem] sm:h-[34svh] sm:min-h-[17rem] md:h-[38svh] md:min-h-[19rem] lg:h-[44svh] lg:min-h-[22rem] xl:h-[50svh]"
-      : "rounded-[1.75rem] bg-[#212121]",
+      : "rounded-3xl bg-[#212121]",
     className,
   ]
     .filter(Boolean)

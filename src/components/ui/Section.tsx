@@ -1,10 +1,12 @@
 import type { ReactNode } from "react";
 
+// gray e cream colapsam no mesmo creme neutro (--surface-soft). Os nomes de
+// prop seguem aceitos para não mexer nas chamadas.
 const bgMap = {
-  white: "bg-white",
-  gray: "bg-[#f5f5f5]",
-  dark: "bg-[#212121]",
-  cream: "bg-[#f7f6f2]",
+  white: "bg-surface-base",
+  gray: "bg-surface-soft",
+  dark: "bg-surface-dark",
+  cream: "bg-surface-soft",
 } as const;
 
 type SectionProps = {

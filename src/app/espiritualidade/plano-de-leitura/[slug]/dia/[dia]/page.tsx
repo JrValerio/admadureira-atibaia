@@ -168,7 +168,7 @@ export default async function ReadingPlanDayPage({ params }: PageProps) {
               ) : null}
             </div>
 
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Navegação do plano
               </p>

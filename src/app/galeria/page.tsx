@@ -93,7 +93,7 @@ export default function GaleriaPage() {
         />
       ) : null}
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label={GALERIA_PAGE_COPY.heroLabel}
@@ -103,7 +103,7 @@ export default function GaleriaPage() {
           imageAlt="Registros da AD Madureira Atibaia durante um culto no templo sede"
         />
 
-        <section className="border-b border-black/5 bg-white/90">
+        <section className="border-b border-black/5 bg-surface-base/90">
           <div className="ui-page-container py-5 md:py-6">
             <nav
               aria-label="Breadcrumb"
@@ -214,7 +214,7 @@ export default function GaleriaPage() {
                 ))}
               </div>
             ) : (
-              <div className="rounded-[1.9rem] border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
+              <div className="rounded-3xl border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
                 <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-text-accent uppercase">
                   Em breve
                 </p>

@@ -20,7 +20,7 @@ function EventoCard({ evento }: { evento: EventoFuturo }) {
   return (
     <Link
       href={`/eventos/${evento.slug}`}
-      className="ui-card group min-w-[75vw] shrink-0 snap-start overflow-hidden rounded-[1.6rem] sm:min-w-0"
+      className="ui-card group min-w-[75vw] shrink-0 snap-start overflow-hidden rounded-2xl sm:min-w-0"
     >
       <CardMedia
         src={evento.imagem ?? evento.banner}
@@ -66,7 +66,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
             {grupo.label}
           </h3>
         </div>
-        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-text-accent">
+        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase text-text-accent">
           {grupo.eventos.length} eventos
         </span>
       </div>
@@ -76,7 +76,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
           <li key={evento.slug}>
             <Link
               href={`/eventos/${evento.slug}`}
-              className="flex items-start gap-4 rounded-xl px-2 py-3 -mx-2 transition-colors hover:bg-[#fff8ee]"
+              className="flex items-start gap-4 rounded-xl px-2 py-3 -mx-2 transition-colors hover:bg-surface-accent"
             >
               <span className="w-20 shrink-0 pt-0.5 ui-card-eyebrow">
                 {evento.data}
@@ -156,7 +156,7 @@ export default function Eventos({
           </div>
         </div>
 
-        <div className="mb-10 md:mb-20 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8 shadow-sm">
+        <div className="mb-10 md:mb-20 rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 md:p-8 shadow-sm">
           <div className="mb-6">
             <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
               Linha da agenda

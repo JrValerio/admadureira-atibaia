@@ -283,7 +283,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
         />
       ) : null}
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label={`EBD ${classeInfo.label} · ${trimestre.rotulo}`}
@@ -307,13 +307,13 @@ export default async function EbdLessonPage({ params }: PageProps) {
               <article className="space-y-6">
                 {!isPubliclyAvailable ? (
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                    <div className="mb-6 inline-flex rounded-full border border-black/10 bg-[#fafafa] px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
+                    <div className="mb-6 inline-flex rounded-full border border-black/10 bg-surface-soft px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
                       {isDraft
                         ? "Conteúdo em preparação"
                         : "Publicação programada"}
                     </div>
                     <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Data
                         </p>
@@ -321,13 +321,13 @@ export default async function EbdLessonPage({ params }: PageProps) {
                           {formatEbdDate(lessonContext.licao.data)}
                         </p>
                       </div>
-                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Classe
                         </p>
                         <p className="text-sm text-[#212121]">{classeInfo.label}</p>
                       </div>
-                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4 md:col-span-2">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4 md:col-span-2">
                         <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                           Trilha do trimestre
                         </p>
@@ -338,7 +338,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                       </div>
                     </div>
 
-                    <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:p-8">
+                    <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 md:p-8">
                       <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                         Em breve
                       </p>
@@ -353,7 +353,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                   <>
                     {lessonImage ? (
                       <div className="rounded-3xl border border-black/5 bg-white p-4 shadow-sm md:p-5">
-                        <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-[#fafafa]">
+                        <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl bg-surface-soft">
                           <Image
                             src={lessonImage}
                             alt={`Arte da lição ${lessonContext.licao.numero} — ${lessonContext.licao.titulo}`}
@@ -370,7 +370,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
 
                     <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
                       <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                           <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Data
                           </p>
@@ -378,7 +378,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             {formatEbdDate(lessonContext.licao.data)}
                           </p>
                         </div>
-                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                           <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Classe
                           </p>
@@ -387,7 +387,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             {classeInfo.horarioLabel}
                           </p>
                         </div>
-                        <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+                        <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
                           <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                             Trilha
                           </p>
@@ -433,7 +433,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                         {lessonContext.licao.topicos.map((topico) => (
                           <section
                             key={topico.titulo}
-                            className="rounded-3xl border border-black/5 bg-[#fafafa] p-5"
+                            className="rounded-3xl border border-black/5 bg-surface-soft p-5"
                           >
                             <h3 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
                               {topico.titulo}
@@ -454,7 +454,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                     </section>
                   </div>
 
-                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                       Aplicação prática
                     </p>

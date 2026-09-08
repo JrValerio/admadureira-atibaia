@@ -189,7 +189,7 @@ export default async function CultoPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         {/* Hero banner */}
         <div className="relative w-full min-h-52 overflow-hidden bg-[#111] md:min-h-80">
           {culto.banner && (
@@ -265,7 +265,7 @@ export default async function CultoPage({ params }: Props) {
 
             {/* Convite */}
             {conviteParagrafos.length > 0 && (
-              <div className="order-4 rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 md:order-2 md:p-8">
+              <div className="order-4 rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 md:order-2 md:p-8">
                 <p className="ui-card-eyebrow mb-3">
                   Você é bem-vindo
                 </p>
@@ -293,7 +293,7 @@ export default async function CultoPage({ params }: Props) {
                         <Link
                           key={`${item.referencia}-${item.href}`}
                           href={item.href}
-                          className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                          className="inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
                         >
                           {item.referencia}
                         </Link>
@@ -303,7 +303,7 @@ export default async function CultoPage({ params }: Props) {
                 )}
 
                 {recursosRelacionados.length > 0 && (
-                  <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
+                  <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8">
                     <p className="ui-card-eyebrow mb-3">
                       Continue navegando
                     </p>

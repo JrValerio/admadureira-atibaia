@@ -43,7 +43,7 @@ export default function OfertaPage() {
   };
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -59,7 +59,7 @@ export default function OfertaPage() {
         imageAlt="Fachada da AD Madureira Atibaia"
         imageClassName="object-[center_40%]"
       />
-      <section className="border-b border-black/5 bg-white/90">
+      <section className="border-b border-black/5 bg-surface-base/90">
         <div className="ui-page-container ui-page-container--narrow py-5 md:py-6">
           <div className="ui-panel ui-panel-pad-sm">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -117,7 +117,7 @@ export default function OfertaPage() {
                 {baseBiblica.map((referencia) => (
                   <span
                     key={referencia}
-                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-text-accent"
+                    className="inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent px-4 py-2 text-xs font-semibold tracking-[0.16em] uppercase text-text-accent"
                   >
                     {referencia}
                   </span>
@@ -125,7 +125,7 @@ export default function OfertaPage() {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-8">
               <p className="ui-card-eyebrow mb-3">
                 Como sua contribuição ajuda
               </p>
@@ -169,7 +169,7 @@ export default function OfertaPage() {
                 QR Code para contribuição
               </h2>
 
-              <div className="inline-flex rounded-4xl bg-[#f8f8f8] border border-black/5 p-4 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
+              <div className="inline-flex rounded-3xl bg-surface-soft border border-black/5 p-4 shadow-[0_6px_24px_rgba(0,0,0,0.04)]">
                 <Image
                   src={ofertaData.pix.qrCodePath}
                   alt="QR Code PIX da AD Madureira Atibaia"
@@ -211,7 +211,7 @@ export default function OfertaPage() {
                 />
               </div>
 
-              <div className="mt-6 rounded-2xl bg-[#f8f8f8] border border-black/5 p-5 text-left">
+              <div className="mt-6 rounded-2xl bg-surface-soft border border-black/5 p-5 text-left">
                 <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
                   Pix Copia e Cola
                 </p>
@@ -230,7 +230,7 @@ export default function OfertaPage() {
                 />
               </div>
 
-              <div className="mt-8 rounded-2xl bg-[#f8f8f8] border border-black/5 p-5 text-left">
+              <div className="mt-8 rounded-2xl bg-surface-soft border border-black/5 p-5 text-left">
                 <p className="text-[#777] text-xs font-bold tracking-widest uppercase mb-2">
                   Destinatário
                 </p>
@@ -269,7 +269,7 @@ export default function OfertaPage() {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="rounded-2xl bg-[#f8f8f8] border border-black/5 p-4">
+                    <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
                       <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
                         Banco
                       </p>
@@ -277,7 +277,7 @@ export default function OfertaPage() {
                         {ofertaData.banco.nome}
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-[#f8f8f8] border border-black/5 p-4">
+                    <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
                       <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
                         Agência
                       </p>
@@ -285,7 +285,7 @@ export default function OfertaPage() {
                         {ofertaData.banco.agencia}
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-[#f8f8f8] border border-black/5 p-4">
+                    <div className="rounded-2xl bg-surface-soft border border-black/5 p-4">
                       <p className="text-[#777] text-[11px] font-bold tracking-widest uppercase mb-2">
                         Conta corrente
                       </p>
@@ -297,7 +297,7 @@ export default function OfertaPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8">
                 <p className="ui-card-eyebrow mb-3">
                   Presencial e transparência
                 </p>

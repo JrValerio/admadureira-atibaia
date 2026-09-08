@@ -109,8 +109,8 @@ export default function GalleryLightbox({
             </div>
           </div>
 
-          <figure className="rounded-[1.75rem] border border-white/10 bg-[#050505] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.28)] md:p-4">
-            <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-[1.2rem] bg-black">
+          <figure className="rounded-3xl border border-white/10 bg-[#050505] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.28)] md:p-4">
+            <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-2xl bg-black">
               <Image
                 src={image.src}
                 alt={image.alt}

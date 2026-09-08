@@ -101,7 +101,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Como funciona
               </p>
@@ -138,7 +138,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
                   <p className="text-[#555] leading-relaxed mb-6">{annualDay.foco}</p>
                 ) : null}
 
-                <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-5 mb-6">
+                <div className="rounded-2xl border border-black/5 bg-surface-soft p-5 mb-6">
                   <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                     Devocional do dia
                   </p>

@@ -18,7 +18,19 @@
   --orange-dark: #e65100;
   --red: #ef5350;
   --gold: #ffd54f;
-  --radius-card: 1.5rem;
+
+  /* Superfícies — dois claros (base + creme) e o escuro. O accent NÃO entra
+     na alternância de seções: é só para callout / cartão ligado ao laranja. */
+  --surface-base: #ffffff;
+  --surface-soft: #faf8f3;
+  --surface-dark: #212121;
+  --surface-accent: #fff8ee;
+
+  /* Escala de raio: 8 / 16 / 24 + pill (9999 nos botões). */
+  --radius-field: 0.5rem;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
   --shadow-card-sm: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
@@ -31,6 +43,10 @@
   --color-brand-orange: var(--brand-orange);
   --color-text-accent: var(--text-accent);
   --color-text-accent-on-dark: var(--text-accent-on-dark);
+  --color-surface-base: var(--surface-base);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-accent: var(--surface-accent);
   --color-orange: var(--orange);
   --color-orange-dark: var(--orange-dark);
   --color-red: var(--red);
@@ -270,7 +286,7 @@ section[id] {
 }
 
 .ui-card {
-  background: #ffffff;
+  background: var(--surface-base);
   border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
@@ -308,18 +324,18 @@ section[id] {
 
 .ui-panel,
 .ui-panel-accent {
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-panel);
   box-shadow: var(--shadow-card);
 }
 
 .ui-panel {
   border: 1px solid rgba(17, 17, 17, 0.06);
-  background: #ffffff;
+  background: var(--surface-base);
 }
 
 .ui-panel-accent {
   border: 1px solid rgba(255, 167, 38, 0.2);
-  background: #fff8ee;
+  background: var(--surface-accent);
 }
 
 .ui-panel-pad-sm {
@@ -406,7 +422,7 @@ section[id] {
 
 .ui-btn-ghost {
   border: 1px solid rgba(17, 17, 17, 0.1);
-  background: #f9f9f9;
+  background: var(--surface-soft);
   color: #555555;
 }
 

@@ -108,7 +108,7 @@ function SocialProfileLink({
       className={`group flex min-h-12 w-full min-w-0 items-center gap-3 rounded-2xl border px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
         dark
           ? "border-white/40 bg-white/[0.06] text-white hover:border-[#ffa726] hover:bg-[#ffa726] hover:text-[#111] focus-visible:ring-[#ffa726] focus-visible:ring-offset-[#160e08]"
-          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-[#fff8ee] focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
+          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-surface-accent focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
       }`}
     >
       <span
@@ -204,7 +204,7 @@ export default function CultoAcoesDeGracas05092026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="min-h-screen bg-surface-soft">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -214,7 +214,7 @@ export default function CultoAcoesDeGracas05092026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-[#f5f5f5]/95 backdrop-blur-sm md:top-[4.85rem]">
+      <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-surface-soft/95 backdrop-blur-sm md:top-[4.85rem]">
         <div className="ui-page-container ui-page-container--narrow flex items-center gap-2 overflow-x-auto py-3 text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <a
             href="#sobre"
@@ -344,7 +344,7 @@ export default function CultoAcoesDeGracas05092026Page() {
 
             <div className="flex flex-col gap-4">
               {eventEnded ? (
-                <div className="relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
+                <div className="relative overflow-hidden rounded-3xl border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
                   <div className="relative aspect-[1200/675] w-full">
                     <Image
                       src={culto.hero}
@@ -363,7 +363,7 @@ export default function CultoAcoesDeGracas05092026Page() {
                   href={culto.transmissaoAoVivoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
+                  className="group relative overflow-hidden rounded-3xl border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
                   aria-label={`Assistir à transmissão ao vivo do ${culto.titulo} no YouTube`}
                 >
                   <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-white uppercase">
@@ -462,7 +462,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             </p>
           </div>
 
-          <article className="overflow-hidden rounded-[1.5rem] border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
+          <article className="overflow-hidden rounded-3xl border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#111] md:aspect-auto md:min-h-[400px]">
               <Image
                 src={culto.preletor.foto}
@@ -499,7 +499,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             </div>
           </article>
 
-          <div className="mt-8 rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6">
+          <div className="mt-8 rounded-3xl border border-black/5 bg-[#f9f9f9] p-6">
             <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
               Presidência
             </p>

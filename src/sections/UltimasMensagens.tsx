@@ -39,7 +39,7 @@ export default async function UltimasMensagens() {
             <Link
               key={mensagem.slug}
               href={`/mensagens/${mensagem.slug}`}
-              className="ui-card group overflow-hidden rounded-[1.6rem]"
+              className="ui-card group overflow-hidden rounded-2xl"
             >
               <CardMedia
                 src={getMensagemThumbnailUrl(mensagem.youtubeId)}

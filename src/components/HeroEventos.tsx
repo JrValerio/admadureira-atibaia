@@ -293,7 +293,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     <section
       id="eventos-destaque"
       aria-labelledby="home-eventos-destaque-title"
-      className="relative w-full overflow-hidden bg-[#f7f6f2] pt-6 pb-8 md:pt-8 md:pb-12"
+      className="relative w-full overflow-hidden bg-surface-soft pt-6 pb-8 md:pt-8 md:pb-12"
     >
       <div className="ui-page-container mb-5 text-center md:mb-7">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -314,7 +314,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
       </div>
 
       <div
-        className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-[22px] border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
+        className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onFocusCapture={() => setFocusWithin(true)}

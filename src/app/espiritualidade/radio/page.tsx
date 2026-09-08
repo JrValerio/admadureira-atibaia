@@ -33,7 +33,7 @@ export default function RadioPage() {
   const statusLabel = hasStream ? "Ao vivo agora" : radioConfig.statusLabel;
   const statusClassName = hasStream
     ? "border-emerald-500/20 bg-emerald-50 text-emerald-700"
-    : "border-[#ffa726]/20 bg-[#fff8ee] text-text-accent";
+    : "border-[#ffa726]/20 bg-surface-accent text-text-accent";
 
   return (
     <>
@@ -89,7 +89,7 @@ export default function RadioPage() {
                   </audio>
                 </div>
               ) : (
-                <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                   <p className="mb-3 text-[11px] font-bold tracking-[0.18em] uppercase text-text-accent">
                     Em breve
                   </p>
@@ -118,7 +118,7 @@ export default function RadioPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 shadow-sm">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 shadow-sm">
                 <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                   Como vai funcionar
                 </p>
