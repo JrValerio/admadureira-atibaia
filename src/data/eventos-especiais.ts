@@ -25,7 +25,10 @@ type EventoConfig = {
   arteComplementar?: {
     imagem: string;
     alt: string;
+    largura: number;
+    altura: number;
     titulo?: string;
+    destaque?: string;
     texto?: string;
   };
 };
@@ -753,10 +756,13 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-09-07/santa-ceia.png",
           arteComplementar: {
             imagem: "/programacao/eventos/santa-ceia-cesta-basica.png",
-            alt: "Convite para trazer 1 kg de alimento não perecível para a cesta básica montada pelo Departamento Social da igreja",
-            titulo: "Traga 1 kg de alimento",
+            alt: "Arte da campanha de arrecadação de alimentos: traga 1 kg de alimento não perecível para as cestas básicas do Departamento Social da igreja",
+            largura: 1122,
+            altura: 1402,
+            titulo: "Campanha de arrecadação de alimentos",
+            destaque: "Traga 1 kg de alimento não perecível",
             texto:
-              "Neste culto de Santa Ceia, cada irmão pode trazer 1 kg de alimento não perecível. O Departamento Social da igreja monta as cestas básicas e as entrega a famílias da comunidade que estão passando por necessidade.",
+              "Neste culto de Santa Ceia, pedimos aos irmãos que tragam 1 kg de alimento não perecível. Os alimentos serão destinados às cestas básicas preparadas pelo Departamento Social da igreja para famílias em situação de necessidade.",
           },
         }),
         criarEvento(local, {

@@ -238,6 +238,11 @@ export default async function EventoPage({ params }: PageProps) {
                         {evento.arteComplementar.titulo}
                       </h2>
                     )}
+                    {evento.arteComplementar.destaque && (
+                      <p className="mb-3 font-semibold text-[#212121]">
+                        {evento.arteComplementar.destaque}
+                      </p>
+                    )}
                     {evento.arteComplementar.texto && (
                       <p className="mb-4 text-[#555] leading-relaxed">
                         {evento.arteComplementar.texto}
@@ -247,8 +252,8 @@ export default async function EventoPage({ params }: PageProps) {
                       <Image
                         src={evento.arteComplementar.imagem}
                         alt={evento.arteComplementar.alt}
-                        width={1122}
-                        height={1402}
+                        width={evento.arteComplementar.largura}
+                        height={evento.arteComplementar.altura}
                         sizes="(max-width: 768px) 100vw, 384px"
                         className="h-auto w-full"
                       />
