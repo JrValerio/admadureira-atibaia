@@ -49,7 +49,7 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
                 <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                   {classeAdultos.horarioLabel}
                 </p>
-                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-xs font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                   {classeAdultos.label}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
                 <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                   {classeJovens.horarioLabel}
                 </p>
-                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-white/70 px-3 py-1 text-xs font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-white/70 px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                   {classeJovens.label}
                 </span>
               </div>

@@ -219,7 +219,7 @@ export default function OfertaPage() {
                   Se preferir, copie o código completo e cole no campo de Pix do
                   aplicativo do seu banco.
                 </p>
-                <div className="rounded-xl border border-black/5 bg-white px-4 py-3 text-xs leading-relaxed text-[#555] break-all">
+                <div className="rounded-lg border border-black/5 bg-white px-4 py-3 text-xs leading-relaxed text-[#555] break-all">
                   {ofertaData.pix.copiaECola}
                 </div>
                 <CopyPixButton

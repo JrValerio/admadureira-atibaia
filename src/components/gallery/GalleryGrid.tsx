@@ -76,7 +76,7 @@ export default function GalleryGrid({
                   <p className="line-clamp-2 text-sm leading-relaxed text-white/88">
                     {image.caption ?? image.alt}
                   </p>
-                  <span className="shrink-0 rounded-full border border-white/15 bg-white/12 px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase backdrop-blur-sm">
+                  <span className="shrink-0 rounded-full border border-white/15 bg-white/12 px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase backdrop-blur-sm">
                     Ampliar
                   </span>
                 </div>

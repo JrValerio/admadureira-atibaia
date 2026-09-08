@@ -367,7 +367,7 @@ export default function BibleShareVerseButton({
                         : "border-black/10"
                     }`}
                   >
-                    <div className={`h-24 rounded-xl ${option.className}`} />
+                    <div className={`h-24 rounded-2xl ${option.className}`} />
                     <p className="mt-2 text-xs font-bold tracking-widest uppercase text-[#212121]">
                       {option.label}
                     </p>

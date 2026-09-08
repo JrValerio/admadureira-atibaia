@@ -366,7 +366,7 @@ export default function CultoAcoesDeGracas05092026Page() {
                   className="group relative overflow-hidden rounded-3xl border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
                   aria-label={`Assistir à transmissão ao vivo do ${culto.titulo} no YouTube`}
                 >
-                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-white uppercase">
+                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-xs font-bold tracking-[0.12em] text-white uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     Ao vivo
                   </span>
@@ -438,7 +438,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             Base Bíblica
           </p>
           <h2 className="ui-section-title">Palavra de Deus</h2>
-          <div className="mt-6 rounded-xl border border-[#ffa726]/30 bg-[#ffa726]/5 p-6">
+          <div className="mt-6 rounded-2xl border border-[#ffa726]/30 bg-[#ffa726]/5 p-6">
             <p className="text-lg leading-relaxed text-[#212121]">
               {culto.baseBiblica}
             </p>

@@ -129,7 +129,7 @@ export default function QuadroSemanal() {
                   </h4>
                 </div>
                 {destaqueHoje ? (
-                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
+                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     Hoje
                   </span>
                 ) : null}

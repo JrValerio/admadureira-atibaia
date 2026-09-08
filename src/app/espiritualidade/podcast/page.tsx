@@ -65,7 +65,7 @@ export default function PodcastPage() {
                   Distribuição
                 </span>
                 <span
-                  className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase ${statusClassName}`.trim()}
+                  className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${statusClassName}`.trim()}
                 >
                   {statusLabel}
                 </span>

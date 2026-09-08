@@ -264,7 +264,7 @@ export default function Navbar() {
                       isOpen ? "pointer-events-auto opacity-100 visible translate-y-0" : ""
                     }`}
                   >
-                    <div className="min-w-56 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
+                    <div className="min-w-56 rounded-2xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}

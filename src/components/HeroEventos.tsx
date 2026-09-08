@@ -492,7 +492,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
         <div className="ui-page-container mt-5">
           <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 rounded-2xl bg-[#17130e] px-5 py-4 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] sm:flex-row sm:text-left md:px-7">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#ffc46b]">
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#ffc46b]">
                 Próximo grande encontro
               </p>
               <p className="mt-1 font-acme text-xl tracking-wide text-white">

@@ -40,7 +40,7 @@ export default function HojeNaIgreja({
               <div className="flex flex-wrap items-center gap-2 text-sm text-[#777] leading-relaxed">
                 <p>{atividade.dia}</p>
                 {atividade.origem === "evento" ? (
-                  <span className="rounded-full border border-[#ffa726]/20 bg-surface-accent px-2 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
+                  <span className="rounded-full border border-[#ffa726]/20 bg-surface-accent px-2 py-1 text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     Evento especial
                   </span>
                 ) : null}

@@ -259,7 +259,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                             >
                               <div className="absolute inset-x-0 bottom-0 p-5">
                                 <div
-                                  className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+                                  className={`mb-3 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${statusMeta.badgeClassName}`}
                                 >
                                   {statusMeta.label}
                                 </div>
@@ -415,7 +415,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                                 : "border-black/5 bg-surface-soft hover:border-[#ffa726]/20 hover:bg-white"
                             }`}
                           >
-                            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                            <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                               {trimestre.rotulo}
                             </p>
                             <p className="mt-2 font-semibold text-[#212121]">

@@ -37,10 +37,10 @@ export default function GalleryAlbumCard({
         <div className="absolute inset-0 bg-linear-to-b from-black/10 via-black/5 to-black/70" />
 
         <div className="absolute left-4 right-4 top-4 flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-[10px] font-bold tracking-[0.12em] text-white uppercase backdrop-blur-sm">
+          <span className="rounded-full border border-white/15 bg-black/35 px-3 py-1 text-xs font-bold tracking-[0.12em] text-white uppercase backdrop-blur-sm">
             {getGaleriaCategoryLabel(album.category)}
           </span>
-          <span className="rounded-full border border-white/15 bg-white/12 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-white uppercase backdrop-blur-sm">
+          <span className="rounded-full border border-white/15 bg-white/12 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-white uppercase backdrop-blur-sm">
             {album.images.length} fotos
           </span>
         </div>

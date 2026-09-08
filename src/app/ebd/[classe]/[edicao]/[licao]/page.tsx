@@ -307,7 +307,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
               <article className="space-y-6">
                 {!isPubliclyAvailable ? (
                   <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm md:p-8">
-                    <div className="mb-6 inline-flex rounded-full border border-black/10 bg-surface-soft px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-[#666]">
+                    <div className="mb-6 inline-flex rounded-full border border-black/10 bg-surface-soft px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-[#666]">
                       {isDraft
                         ? "Conteúdo em preparação"
                         : "Publicação programada"}
@@ -396,7 +396,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             {trimestre.licoes.length}
                           </p>
                           <div
-                            className={`mt-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${metaEstadoProgressao.badgeClassName}`}
+                            className={`mt-3 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${metaEstadoProgressao.badgeClassName}`}
                           >
                             {metaEstadoProgressao.label}
                           </div>

@@ -224,7 +224,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                     Visão geral do trimestre
                   </p>
                   <div
-                    className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+                    className={`mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${statusMeta.badgeClassName}`}
                   >
                     {statusMeta.label}
                   </div>
@@ -362,7 +362,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                       </p>
                       {estadoLicaoEmDestaque ? (
                         <div
-                          className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
+                          className={`mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
                         >
                           {estadoLicaoEmDestaque.label}
                         </div>
@@ -469,7 +469,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                         </p>
                         {estadoLicaoEmDestaque ? (
                           <div
-                            className={`mb-4 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
+                            className={`mb-4 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${estadoLicaoEmDestaque.badgeClassName}`}
                           >
                             {estadoLicaoEmDestaque.label}
                           </div>
@@ -522,7 +522,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                           <>
                             <div className="flex items-start justify-between gap-3">
                               <div>
-                                <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                                <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                                   Lição {licao.numero}
                                 </p>
                                 <p className="mt-1 font-semibold text-[#212121]">
@@ -530,7 +530,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
                                 </p>
                               </div>
                               <span
-                                className={`inline-flex rounded-full border px-2 py-1 text-[9px] font-bold tracking-[0.14em] uppercase ${status.badgeClassName}`}
+                                className={`inline-flex rounded-full border px-2 py-1 text-xs font-bold tracking-[0.12em] uppercase ${status.badgeClassName}`}
                               >
                                 {status.label}
                               </span>

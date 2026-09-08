@@ -66,7 +66,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
             {grupo.label}
           </h3>
         </div>
-        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
+        <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
           {grupo.eventos.length} eventos
         </span>
       </div>
@@ -76,7 +76,7 @@ function EventosMes({ grupo }: { grupo: EventosPorMesUI }) {
           <li key={evento.slug}>
             <Link
               href={`/eventos/${evento.slug}`}
-              className="flex items-start gap-4 rounded-xl px-2 py-3 -mx-2 transition-colors hover:bg-surface-accent"
+              className="flex items-start gap-4 rounded-lg px-2 py-3 -mx-2 transition-colors hover:bg-surface-accent"
             >
               <span className="w-20 shrink-0 pt-0.5 ui-card-eyebrow">
                 {evento.data}
@@ -178,7 +178,7 @@ export default function Eventos({
               <Link
                 key={grupo.id}
                 href={`#${getGrupoSectionId(grupo)}`}
-                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-center text-xs font-bold tracking-[0.14em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
+                className="inline-flex min-h-12 items-center justify-center rounded-2xl border border-black/10 bg-white px-4 py-2 text-center text-xs font-bold tracking-[0.12em] uppercase text-[#555] transition-colors hover:border-[#ffa726]/40 hover:bg-white hover:text-[#212121]"
               >
                 {grupo.mes} ({grupo.eventos.length})
               </Link>

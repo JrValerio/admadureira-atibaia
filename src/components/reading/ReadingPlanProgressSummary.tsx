@@ -64,7 +64,7 @@ export default function ReadingPlanProgressSummary({
               return (
                 <div
                   key={`${planSlug}-day-${day}`}
-                  className={`flex h-9 items-center justify-center rounded-xl text-xs font-semibold ${
+                  className={`flex h-9 items-center justify-center rounded-lg text-xs font-semibold ${
                     isCompleted
                       ? "bg-[#2e7d32] text-white"
                       : "bg-white text-[#555]"

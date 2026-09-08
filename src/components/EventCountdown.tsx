@@ -40,7 +40,7 @@ export default function EventCountdown({
 
   const isOverlay = variant === "overlay";
   const wrapperClassName = isOverlay
-    ? "inline-flex flex-col rounded-xl border border-white/20 bg-black/55 px-3 py-2 text-white shadow-lg backdrop-blur-sm"
+    ? "inline-flex flex-col rounded-2xl border border-white/20 bg-black/55 px-3 py-2 text-white shadow-lg backdrop-blur-sm"
     : "inline-flex flex-col rounded-2xl border border-[#ffa726]/30 bg-surface-accent px-4 py-3 text-[#212121] shadow-sm md:px-5";
 
   if (state.type === "live") {
@@ -62,7 +62,7 @@ export default function EventCountdown({
   return (
     <div className={wrapperClassName} role="timer" aria-label={accessibleLabel}>
       <span
-        className={`mb-1.5 text-[10px] font-bold uppercase tracking-[0.12em] ${
+        className={`mb-1.5 text-xs font-bold uppercase tracking-[0.12em] ${
           isOverlay ? "text-[#ffc46b]" : "text-[#b96500]"
         }`}
       >
@@ -79,7 +79,7 @@ export default function EventCountdown({
               {String(state[key]).padStart(2, "0")}
             </span>
             <span
-              className={`mt-1 text-[9px] font-bold uppercase tracking-wider ${
+              className={`mt-1 text-xs font-bold uppercase tracking-wider ${
                 isOverlay ? "text-white/75" : "text-[#6b6258]"
               }`}
             >

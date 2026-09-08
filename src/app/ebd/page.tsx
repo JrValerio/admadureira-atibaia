@@ -325,7 +325,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                         <Link
                           key={classe.slug}
                           href={`/ebd?classe=${classe.slug}`}
-                          className={`inline-flex rounded-full border px-4 py-2 text-xs font-bold tracking-[0.14em] uppercase transition-colors ${
+                          className={`inline-flex rounded-full border px-4 py-2 text-xs font-bold tracking-[0.12em] uppercase transition-colors ${
                             isActive
                               ? "border-[#ffa726]/35 bg-white text-text-accent"
                               : "border-black/10 bg-transparent text-[#555] hover:border-[#ffa726]/25 hover:text-[#212121]"
@@ -471,7 +471,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                           >
                             <div className="absolute inset-x-0 bottom-0 p-5">
                               <div
-                                className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+                                className={`mb-3 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${statusMeta.badgeClassName}`}
                               >
                                 {statusMeta.label}
                               </div>
@@ -548,7 +548,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                               <h2 className="font-acme text-xl tracking-wide text-[#212121]">
                                 {classe.label}
                               </h2>
-                              <span className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                              <span className="text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                                 {classe.horarioLabel}
                               </span>
                             </div>
@@ -625,7 +625,7 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                             href={`/ebd/${classeAtiva}/${trimestre.slug}`}
                             className="block rounded-2xl border border-black/5 bg-surface-soft p-4 transition-colors hover:border-[#ffa726]/20 hover:bg-white"
                           >
-                            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                            <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                               {trimestre.rotulo}
                             </p>
                             <p className="mt-2 font-semibold text-[#212121]">
