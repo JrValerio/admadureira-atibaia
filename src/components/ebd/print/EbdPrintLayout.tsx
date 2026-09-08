@@ -195,7 +195,7 @@ export function EbdPrintPage({
                 <p className="font-script text-[1.42rem] leading-none text-[#212121]">
                   {EBD_PRINT_BRANDING.scriptName}
                 </p>
-                <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.22em] text-[#8b5b18]">
+                <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.22em] text-text-accent">
                   {EBD_PRINT_BRANDING.subtitle}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export function EbdPrintPage({
             </div>
 
             <div className="text-right">
-              <p className="text-[8.5px] font-bold uppercase tracking-[0.2em] text-[#8b5b18]">
+              <p className="text-[8.5px] font-bold uppercase tracking-[0.2em] text-text-accent">
                 Data da lição
               </p>
               <p className="mt-0.5 text-[10px] font-semibold text-[#212121]">
@@ -240,7 +240,7 @@ export function EbdPrintPage({
             </div>
 
             <div className="text-right">
-              <p className="font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Material da lição
               </p>
               <p className="mt-1">

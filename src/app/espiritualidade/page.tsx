@@ -186,7 +186,7 @@ export default function EspiritualidadePage() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
               <div className="max-w-3xl">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-3">
                   Apoio em áudio
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl lg:text-4xl tracking-wide mb-4">
@@ -241,7 +241,7 @@ export default function EspiritualidadePage() {
                   <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                     {feature.titulo}
                   </h2>
-                  <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
+                  <p className="text-sm font-medium text-text-accent leading-relaxed mb-4">
                     {feature.uso}
                   </p>
                   <p className="text-[#555] leading-relaxed mb-6">
@@ -295,7 +295,7 @@ export default function EspiritualidadePage() {
                   <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-4 group-hover:text-[#ef5350] transition-colors">
                     {feature.titulo}
                   </h2>
-                  <p className="text-sm font-medium text-[#8b5b18] leading-relaxed mb-4">
+                  <p className="text-sm font-medium text-text-accent leading-relaxed mb-4">
                     {feature.uso}
                   </p>
                   <p className="text-[#555] leading-relaxed mb-6">

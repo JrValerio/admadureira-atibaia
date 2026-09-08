@@ -51,7 +51,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
     <Section id="sobre" bg="dark" className="text-white">
       {!showHeader ? (
         <div className="mb-12 ui-panel-accent ui-panel-pad-lg">
-          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
             Identidade do campo
           </p>
           <h2 className="mb-5 font-acme text-2xl md:text-3xl tracking-wide text-[#212121]">
@@ -90,7 +90,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
         <div>
           {showHeader ? (
             <>
-              <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+              <p className="text-text-accent-on-dark text-sm font-semibold tracking-widest uppercase mb-2">
                 Quem somos
               </p>
               <h2 className="font-acme text-2xl md:text-4xl mb-4 md:mb-6 tracking-wide">
@@ -129,7 +129,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
                 key={item.titulo}
                 className="border border-white/15 rounded-xl p-4 hover:border-[#ffa726] transition-colors"
               >
-                <h3 className="font-acme text-[#ffa726] text-xs tracking-widest uppercase mb-1">
+                <h3 className="font-acme text-text-accent-on-dark text-xs tracking-widest uppercase mb-1">
                   {item.titulo}
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed">
@@ -143,7 +143,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
 
       <div className="mt-12 pt-10 md:mt-20 md:pt-16 border-t border-white/10">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+          <p className="text-text-accent-on-dark text-sm font-semibold tracking-widest uppercase mb-2">
             Nossos Pastores
           </p>
           <h2 className="font-acme text-2xl md:text-4xl tracking-wide mb-4">

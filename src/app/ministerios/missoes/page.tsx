@@ -151,7 +151,7 @@ export default function MissoesPage() {
               </article>
 
               <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Como participar
                 </p>
                 <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
@@ -215,7 +215,7 @@ export default function MissoesPage() {
               </article>
 
               <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
-                <p className="text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Contribuição missionária
                 </p>
                 <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">

@@ -35,7 +35,7 @@ export default function ReadingJourneyActions({
         {title}
       </p>
       <p className="text-sm text-[#555] leading-relaxed mb-3">{description}</p>
-      <p className="text-xs text-[#8b5b18] mb-6">
+      <p className="text-xs text-text-accent mb-6">
         Dia sugerido de hoje: {suggestedDay}
         {suggestedSummary ? ` • ${suggestedSummary}` : ""}
       </p>

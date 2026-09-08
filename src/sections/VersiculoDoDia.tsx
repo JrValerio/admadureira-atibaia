@@ -20,7 +20,7 @@ export default function VersiculoDoDia() {
             <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-5">
               &quot;{verse.texto}&quot;
             </p>
-            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-8">
+            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent mb-8">
               {verse.referencia}
             </p>
             <div className="flex flex-wrap gap-3">

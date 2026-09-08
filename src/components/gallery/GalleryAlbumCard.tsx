@@ -56,7 +56,7 @@ export default function GalleryAlbumCard({
         <p className="mt-3 text-sm leading-relaxed text-[#5f5f5f] md:text-base">
           {descricao}
         </p>
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-black/6 pt-4 text-sm font-semibold text-[#8b5b18]">
+        <div className="mt-5 flex items-center justify-between gap-3 border-t border-black/6 pt-4 text-sm font-semibold text-text-accent">
           <span>Abrir álbum</span>
           <span className="transition-transform duration-300 group-hover:translate-x-1">
             →

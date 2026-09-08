@@ -147,7 +147,7 @@ export default async function PlanoDeLeituraPage({ searchParams }: PageProps) {
                       <h3 className="font-semibold text-[#212121] text-lg mb-2">
                         {dailyDevotional.titulo}
                       </h3>
-                      <p className="text-sm text-[#8b5b18] mb-3">
+                      <p className="text-sm text-text-accent mb-3">
                         {dailyDevotional.versiculo}
                       </p>
                       <p className="text-sm text-[#555] leading-relaxed mb-4">

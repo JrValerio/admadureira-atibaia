@@ -154,7 +154,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
             </div>
 
             <div className="p-6 md:p-10">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="text-text-accent text-xs font-bold tracking-widest uppercase mb-2">
                 Testemunho de fé
               </p>
               <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-4">

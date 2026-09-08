@@ -239,7 +239,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
               <GalleryGrid albumTitle={album.title} images={album.images} />
             ) : (
               <div className="rounded-[1.9rem] border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
-                <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-[#ffa726] uppercase">
+                <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-text-accent uppercase">
                   Em atualização
                 </p>
                 <h3 className="font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">

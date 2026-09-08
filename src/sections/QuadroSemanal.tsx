@@ -93,7 +93,7 @@ export default function QuadroSemanal() {
   return (
     <section className="mb-10 md:mb-20">
       <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
-        <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+        <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
           Visão rápida da semana
         </p>
         <h3 className="font-acme text-2xl md:text-4xl text-[#212121] tracking-wide mb-4">
@@ -129,7 +129,7 @@ export default function QuadroSemanal() {
                   </h4>
                 </div>
                 {destaqueHoje ? (
-                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-[#8b5b18]">
+                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
                     Hoje
                   </span>
                 ) : null}

@@ -214,8 +214,8 @@ export default function Navbar() {
                     href={item.href}
                     className={`group/link relative font-acme text-[13px] 2xl:text-[14px] tracking-[0.15em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
-                        ? "text-[#ffa726]"
-                        : "text-white/70 hover:text-[#ffa726]"
+                        ? "text-brand-orange"
+                        : "text-white/70 hover:text-brand-orange"
                     }`}
                   >
                     {item.label}
@@ -245,8 +245,8 @@ export default function Navbar() {
                     aria-controls={desktopSectionId}
                     className={`group/button relative font-acme inline-flex items-center gap-2 text-[13px] 2xl:text-[14px] tracking-[0.15em] transition-colors duration-200 uppercase whitespace-nowrap ${
                       active
-                        ? "text-[#ffa726]"
-                        : "text-white/70 hover:text-[#ffa726]"
+                        ? "text-brand-orange"
+                        : "text-white/70 hover:text-brand-orange"
                     }`}
                   >
                     {item.label}
@@ -272,8 +272,8 @@ export default function Navbar() {
                           onClick={() => setOpenDesktopCategory(null)}
                           className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
                             isLinkActive(pathname, child.href)
-                              ? "text-[#ffa726] bg-white/6"
-                              : "text-white/75 hover:text-[#ffa726] hover:bg-white/6"
+                              ? "text-brand-orange bg-white/6"
+                              : "text-white/75 hover:text-brand-orange hover:bg-white/6"
                           }`}
                         >
                           {child.label}
@@ -318,8 +318,8 @@ export default function Navbar() {
                     onClick={closeMenu}
                     className={`font-acme block py-3 text-base uppercase tracking-[0.16em] transition-colors ${
                       isMenuItemActive(pathname, item)
-                        ? "text-[#ffa726]"
-                        : "text-white/70 hover:text-[#ffa726]"
+                        ? "text-brand-orange"
+                        : "text-white/70 hover:text-brand-orange"
                     }`}
                   >
                     {item.label}
@@ -341,7 +341,7 @@ export default function Navbar() {
                     }
                     className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.16em] transition-colors ${
                       isMenuItemActive(pathname, item)
-                        ? "text-[#ffa726]"
+                        ? "text-brand-orange"
                         : "text-white/70"
                     }`}
                     aria-expanded={isOpen}
@@ -366,8 +366,8 @@ export default function Navbar() {
                         onClick={closeMenu}
                         className={`block py-2 text-sm transition-colors ${
                           isLinkActive(pathname, child.href)
-                            ? "text-[#ffa726]"
-                            : "text-white/70 hover:text-[#ffa726]"
+                            ? "text-brand-orange"
+                            : "text-white/70 hover:text-brand-orange"
                         }`}
                       >
                         {child.label}

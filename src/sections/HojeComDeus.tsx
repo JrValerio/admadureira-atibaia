@@ -30,7 +30,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
             <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-4 max-w-[34ch]">
               &quot;{data.verse.texto}&quot;
             </p>
-            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18] mb-5">
+            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent mb-5">
               {data.verse.referencia}
             </p>
             <Link href={data.verseChapterHref} className="ui-link-accent inline-flex">
@@ -45,7 +45,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
             <h3 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
               {data.devotional.titulo}
             </h3>
-            <p className="text-sm text-[#8b5b18] mb-4">
+            <p className="text-sm text-text-accent mb-4">
               {data.devotional.versiculo}
             </p>
             <p className="text-[#555] leading-relaxed mb-5">
@@ -56,7 +56,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
             </Link>
             <Link
               href="/espiritualidade/podcast"
-              className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-[#8b5b18] transition-colors hover:text-[#ef5350]"
+              className="mt-4 inline-flex text-xs font-semibold tracking-widest uppercase text-text-accent transition-colors hover:text-[#ef5350]"
             >
               Continue com ouvir reflexões em áudio
             </Link>
@@ -66,7 +66,7 @@ export default function HojeComDeus({ data }: HojeComDeusProps) {
         <div className="rounded-3xl bg-[#212121] p-6 md:p-7 text-white">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-5 items-start">
             <div>
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+              <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-3">
                 Leitura sugerida
               </p>
               <h3 className="font-acme text-2xl md:text-4xl tracking-wide mb-3">

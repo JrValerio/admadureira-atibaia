@@ -158,7 +158,7 @@ export default function HistoriaPage() {
 
             <div className="rounded-4xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
               <div className="text-center max-w-3xl mx-auto mb-12">
-                <p className="text-[#ffa726] text-sm font-semibold tracking-widest uppercase mb-2">
+                <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
                   Da origem ao presente
                 </p>
                 <h2 className="font-acme text-xl md:text-4xl text-[#212121] tracking-wide mb-4">
@@ -210,7 +210,7 @@ export default function HistoriaPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-14">
               <div className="rounded-3xl bg-[#212121] text-white p-6 md:p-8">
-                <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-3">
+                <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-3">
                   Legado pastoral
                 </p>
                 <h2 className="font-acme text-xl md:text-3xl tracking-wide mb-4">
@@ -224,7 +224,7 @@ export default function HistoriaPage() {
 
                 <div className="space-y-5 mb-6">
                   <div>
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                    <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-2">
                       Presidência do campo
                     </p>
                     <div className="grid grid-cols-1 gap-3">
@@ -233,7 +233,7 @@ export default function HistoriaPage() {
                           key={pastor.slug}
                           className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
                         >
-                          <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-1">
+                          <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-1">
                             {pastor.cargo}
                           </p>
                           <p className="text-sm md:text-base text-white leading-relaxed">
@@ -245,7 +245,7 @@ export default function HistoriaPage() {
                   </div>
 
                   <div>
-                    <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+                    <p className="text-text-accent-on-dark text-xs font-bold tracking-widest uppercase mb-2">
                       Vice-presidência e apoio pastoral
                     </p>
                     <div className="grid grid-cols-1 gap-3">

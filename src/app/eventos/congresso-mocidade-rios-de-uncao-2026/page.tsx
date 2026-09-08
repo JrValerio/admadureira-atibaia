@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -115,7 +115,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               <span className="text-white/86">Congresso da Mocidade</span>
             </nav>
 
-            <p className="mb-3 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
+            <p className="mb-3 text-xs font-bold tracking-[0.28em] text-text-accent-on-dark uppercase">
               {congresso.data} · {congresso.horario}
             </p>
             <h1 className="font-acme text-3xl leading-tight tracking-wide text-white md:text-5xl lg:text-6xl">
@@ -208,7 +208,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
                 key={noite.data}
                 className="rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
               >
-                <p className="text-xs font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+                <p className="text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
                   {noite.noite} · {noite.diaSemana}
                 </p>
                 <h3 className="mt-2 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
@@ -241,7 +241,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
                   <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#555]">
                     {noite.convidados.map((convidado) => (
                       <li key={convidado} className="flex gap-3">
-                        <span className="text-[#ffa726]">•</span>
+                        <span className="text-brand-orange">•</span>
                         <span>{convidado}</span>
                       </li>
                     ))}
@@ -292,7 +292,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-[#ffa726] uppercase">
+            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
               Congresso da Mocidade — Rios de Unção 2026
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

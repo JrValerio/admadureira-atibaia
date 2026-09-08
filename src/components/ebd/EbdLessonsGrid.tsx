@@ -57,7 +57,7 @@ export default function EbdLessonsGrid({
           <>
             <div className="mb-4 flex items-start justify-between gap-3">
               <div>
-                <p className="mb-1 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+                <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                   Lição {licao.numero}
                 </p>
                 <p className="text-sm text-[#666]">{formatEbdDate(licao.data)}</p>

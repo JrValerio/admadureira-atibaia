@@ -71,7 +71,7 @@ export default function HeroPage({
       {isFull ? (
         <div className="relative z-10 ui-page-container py-8 sm:py-10 md:py-12 lg:py-16">
           <div className="max-w-2xl lg:max-w-3xl">
-            <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-[#ffa726] uppercase sm:text-sm">
+            <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-text-accent-on-dark uppercase sm:text-sm">
               {label}
             </p>
             <h1 className="mb-4 font-acme text-xl tracking-tight leading-tight sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
@@ -84,7 +84,7 @@ export default function HeroPage({
         </div>
       ) : (
         <div className="relative z-10 max-w-3xl px-5 py-6 sm:px-7 sm:py-8 md:px-8 md:py-10 lg:px-12 lg:py-14">
-          <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-[#ffa726] uppercase sm:text-sm">
+          <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-text-accent-on-dark uppercase sm:text-sm">
             {label}
           </p>
           <h1 className="mb-4 font-acme text-lg tracking-tight leading-tight sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">

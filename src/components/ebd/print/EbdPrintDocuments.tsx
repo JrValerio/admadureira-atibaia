@@ -168,7 +168,7 @@ function PrintBulletList({ items }: { items?: string[] }) {
   }
 
   return (
-    <ul className="ml-4.5 list-disc space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:text-[#8b5b18]">
+    <ul className="ml-4.5 list-disc space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:text-text-accent">
       {items.map((item, index) => (
         <li key={`${index}-${item.slice(0, 30)}`}>
           <PrintBibleText text={item} />
@@ -184,7 +184,7 @@ function PrintOrderedList({ items }: { items?: ListaItem[] }) {
   }
 
   return (
-    <ol className="ml-4.5 list-decimal space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:font-semibold marker:text-[#8b5b18]">
+    <ol className="ml-4.5 list-decimal space-y-0.5 text-[10.3px] leading-[1.34] text-[#333] marker:font-semibold marker:text-text-accent">
       {items.map((item, index) => (
         <li key={`${index}-${item.titulo ?? "item"}`}>
           {item.titulo ? (
@@ -223,7 +223,7 @@ function adultTopicoSection(topico: TopicoConteudo): PrintablePageSection {
 
         {topico.explicacaoBiblica?.length ? (
           <>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Explicação bíblica
             </p>
             <PrintBulletList items={topico.explicacaoBiblica} />
@@ -232,7 +232,7 @@ function adultTopicoSection(topico: TopicoConteudo): PrintablePageSection {
 
         {topico.aprofundamentoDoutrinario?.length ? (
           <>
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Aprofundamento doutrinário
             </p>
             <PrintBulletList items={topico.aprofundamentoDoutrinario} />
@@ -241,7 +241,7 @@ function adultTopicoSection(topico: TopicoConteudo): PrintablePageSection {
 
         {topico.aplicacaoPratica?.length ? (
           <>
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Aplicação prática
             </p>
             <PrintBulletList items={topico.aplicacaoPratica} />
@@ -250,7 +250,7 @@ function adultTopicoSection(topico: TopicoConteudo): PrintablePageSection {
 
         {topico.referenciasCruzadas?.length ? (
           <>
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Referências cruzadas
             </p>
             <PrintOrderedList
@@ -287,7 +287,7 @@ function youngTopicoSection(topico: TopicoJovens): PrintablePageSection {
 
         {topico.explicacaoBiblica?.length ? (
           <>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Desenvolvimento
             </p>
             <PrintBulletList items={topico.explicacaoBiblica} />
@@ -296,7 +296,7 @@ function youngTopicoSection(topico: TopicoJovens): PrintablePageSection {
 
         {topico.aplicacaoPratica?.length ? (
           <>
-            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
               Aplicação prática
             </p>
             <PrintBulletList items={topico.aplicacaoPratica} />
@@ -466,12 +466,12 @@ function getSummaryPages(
       ),
       content: (
         <>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             {classeInfo.leituraPrincipalLabel}
           </p>
           <PrintBulletList items={lessonPrimaryReading.slice(0, 6)} />
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Objetivos
           </p>
           <PrintBulletList items={lessonObjectives.slice(0, 6)} />
@@ -540,7 +540,7 @@ function getSummaryPages(
         <>
           {summaryHighlights.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Destaques do subsídio
               </p>
               <PrintOrderedList items={summaryHighlights.slice(0, 5)} />
@@ -562,7 +562,7 @@ function getSummaryPages(
 
           {licao.apoioProfessor?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Apoio ao professor
               </p>
               <PrintBulletList items={licao.apoioProfessor.slice(0, 5)} />
@@ -571,7 +571,7 @@ function getSummaryPages(
 
           {revisionHighlights.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Revisão rápida
               </p>
               <PrintBulletList items={revisionHighlights.slice(0, 5)} />
@@ -580,7 +580,7 @@ function getSummaryPages(
 
           {licao.apoioAluno?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Para reforçar durante a semana
               </p>
               <PrintBulletList items={licao.apoioAluno.slice(0, 4)} />
@@ -668,17 +668,17 @@ function getAdultFullSections(
       ),
       content: (
         <>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Leitura bíblica em classe
           </p>
           <PrintBulletList items={structure.leituraBiblicaEmClasse} />
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Objetivos
           </p>
           <PrintBulletList items={structure.objetivos} />
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Esboço da aula
           </p>
           <PrintOrderedList items={structure.esboco} />
@@ -736,7 +736,7 @@ function getAdultFullSections(
 
           {subsidio.visaoGeral.objetivos?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Objetivos do subsídio
               </p>
               <PrintBulletList items={subsidio.visaoGeral.objetivos} />
@@ -745,7 +745,7 @@ function getAdultFullSections(
 
           {leituraClasseItems.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Leitura bíblica em classe
               </p>
               <PrintOrderedList items={leituraClasseItems} />
@@ -765,7 +765,7 @@ function getAdultFullSections(
         <>
           {leituraDiariaItems.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Leitura diária
               </p>
               <PrintOrderedList items={leituraDiariaItems} />
@@ -774,7 +774,7 @@ function getAdultFullSections(
 
           {structure.hinosSugeridos.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Hinos sugeridos
               </p>
               <PrintBulletList items={structure.hinosSugeridos} />
@@ -783,7 +783,7 @@ function getAdultFullSections(
 
           {licao.apoioProfessor?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Ênfase para a semana
               </p>
               <PrintBulletList items={licao.apoioProfessor.slice(0, 4)} />
@@ -829,7 +829,7 @@ function getAdultFullSections(
 
           {subsidio.apoioProfessor.perguntasParaDebate?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Perguntas para debate
               </p>
               <PrintBulletList items={subsidio.apoioProfessor.perguntasParaDebate} />
@@ -844,7 +844,7 @@ function getAdultFullSections(
 
           {licao.apoioProfessor?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Apoio ao professor
               </p>
               <PrintBulletList items={licao.apoioProfessor} />
@@ -853,7 +853,7 @@ function getAdultFullSections(
 
           {licao.apoioAluno?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Apoio ao aluno
               </p>
               <PrintBulletList items={licao.apoioAluno} />
@@ -874,7 +874,7 @@ function getAdultFullSections(
         <>
           {subsidio.aprofundamento?.contextoHistorico?.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Contexto histórico
               </p>
               <PrintBulletList items={subsidio.aprofundamento.contextoHistorico} />
@@ -883,7 +883,7 @@ function getAdultFullSections(
 
           {subsidio.aprofundamento?.conceitoTeologico?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Conceito teológico
               </p>
               <PrintBulletList items={subsidio.aprofundamento.conceitoTeologico} />
@@ -892,7 +892,7 @@ function getAdultFullSections(
 
           {subsidio.aprofundamento?.notaDeVocabulario?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Nota de vocabulário
               </p>
               <PrintOrderedList items={subsidio.aprofundamento.notaDeVocabulario} />
@@ -912,7 +912,7 @@ function getAdultFullSections(
 
           {subsidio.aprofundamento?.leituraComplementar?.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Para aprofundar
               </p>
               <PrintOrderedList items={subsidio.aprofundamento.leituraComplementar} />
@@ -938,7 +938,7 @@ function getAdultFullSections(
 
           {subsidio.vidaCrista?.oQueConfronta?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 O que confronta
               </p>
               <PrintBulletList items={subsidio.vidaCrista.oQueConfronta} />
@@ -947,7 +947,7 @@ function getAdultFullSections(
 
           {subsidio.vidaCrista?.oQueConsola?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 O que consola
               </p>
               <PrintBulletList items={subsidio.vidaCrista.oQueConsola} />
@@ -956,7 +956,7 @@ function getAdultFullSections(
 
           {subsidio.vidaCrista?.oQueExige?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 O que exige
               </p>
               <PrintBulletList items={subsidio.vidaCrista.oQueExige} />
@@ -965,7 +965,7 @@ function getAdultFullSections(
 
           {subsidio.vidaCrista?.oQueRevelaSobreDeus?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 O que revela sobre Deus
               </p>
               <PrintBulletList items={subsidio.vidaCrista.oQueRevelaSobreDeus} />
@@ -974,7 +974,7 @@ function getAdultFullSections(
 
           {subsidio.revisao?.pontosChave?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Pontos-chave
               </p>
               <PrintBulletList items={subsidio.revisao.pontosChave} />
@@ -983,7 +983,7 @@ function getAdultFullSections(
 
           {subsidio.revisao?.perguntas?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Perguntas
               </p>
               <PrintBulletList items={subsidio.revisao.perguntas} />
@@ -1057,17 +1057,17 @@ function getYoungFullSections(
       ),
       content: (
         <>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Texto bíblico
           </p>
           <PrintBulletList items={structure.textoBiblico} />
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Objetivos
           </p>
           <PrintBulletList items={structure.objetivos} />
 
-          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+          <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
             Esboço da aula
           </p>
           <PrintOrderedList items={structure.esboco} />
@@ -1122,7 +1122,7 @@ function getYoungFullSections(
         <>
           {structure.objetivos.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Objetivos
               </p>
               <PrintBulletList items={structure.objetivos} />
@@ -1131,7 +1131,7 @@ function getYoungFullSections(
 
           {leituraSemanalItems.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Leitura semanal
               </p>
               <PrintOrderedList items={leituraSemanalItems} />
@@ -1177,7 +1177,7 @@ function getYoungFullSections(
 
           {subsidio.apoioProfessor.conducaoDaConversa?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Condução da conversa
               </p>
               <PrintBulletList items={subsidio.apoioProfessor.conducaoDaConversa} />
@@ -1192,7 +1192,7 @@ function getYoungFullSections(
 
           {licao.apoioProfessor?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Apoio ao professor
               </p>
               <PrintBulletList items={licao.apoioProfessor} />
@@ -1201,7 +1201,7 @@ function getYoungFullSections(
 
           {licao.apoioAluno?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Apoio ao aluno
               </p>
               <PrintBulletList items={licao.apoioAluno} />
@@ -1222,7 +1222,7 @@ function getYoungFullSections(
         <>
           {subsidio.aprofundamentoOpcional?.notaDoutrinariaCurta?.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Nota doutrinária
               </p>
               <PrintBulletList
@@ -1233,7 +1233,7 @@ function getYoungFullSections(
 
           {subsidio.aprofundamentoOpcional?.contextoBiblico?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Contexto bíblico
               </p>
               <PrintBulletList items={subsidio.aprofundamentoOpcional.contextoBiblico} />
@@ -1242,7 +1242,7 @@ function getYoungFullSections(
 
           {subsidio.aprofundamentoOpcional?.conexaoComVidaCrista?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Conexão com a vida cristã
               </p>
               <PrintBulletList
@@ -1265,7 +1265,7 @@ function getYoungFullSections(
         <>
           {structure.horaDaRevisao.length ? (
             <>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Hora da revisão
               </p>
               <PrintBulletList items={structure.horaDaRevisao} />
@@ -1274,7 +1274,7 @@ function getYoungFullSections(
 
           {subsidio.revisao?.quizCurto?.length ? (
             <>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8b5b18]">
+              <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-text-accent">
                 Quiz curto
               </p>
               <PrintBulletList items={subsidio.revisao.quizCurto} />

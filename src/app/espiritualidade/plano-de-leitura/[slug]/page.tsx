@@ -100,7 +100,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                 </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#777]">
-                <span className="rounded-full bg-[#fff8ee] px-3 py-2 text-[#8b5b18]">
+                <span className="rounded-full bg-[#fff8ee] px-3 py-2 text-text-accent">
                   {plan.duracaoLabel}
                 </span>
                 <span className="rounded-full border border-black/10 px-3 py-2">
@@ -143,7 +143,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               <h2 className="font-acme text-xl md:text-3xl text-[#212121] tracking-wide mb-3">
                 {dailyDevotional.titulo}
               </h2>
-              <p className="text-sm text-[#8b5b18] mb-4">{dailyDevotional.versiculo}</p>
+              <p className="text-sm text-text-accent mb-4">{dailyDevotional.versiculo}</p>
               <p className="text-[#555] leading-relaxed mb-5">
                 {dailyDevotional.resumo}
               </p>

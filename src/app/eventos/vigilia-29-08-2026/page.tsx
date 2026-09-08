@@ -46,7 +46,7 @@ function isEventEnded(now = new Date()) {
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -250,13 +250,13 @@ export default function Vigilia29082026Page() {
             )}
           </div>
 
-          <p className="mb-2 text-xs font-bold tracking-[0.28em] text-[#ffa726] uppercase">
+          <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
             {vigilia.diaSemana}, {vigilia.data} · {vigilia.horario}
           </p>
           <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
             {vigilia.titulo}
           </h1>
-          <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-[#8b5b18] md:text-2xl">
+          <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-text-accent md:text-2xl">
             {vigilia.subtitulo}
           </p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
@@ -291,7 +291,7 @@ export default function Vigilia29082026Page() {
                 href={OFFICIAL_SOCIAL_LINKS.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-[#8b5b18] transition-colors hover:text-[#212121]"
+                className="text-sm font-semibold text-text-accent transition-colors hover:text-[#212121]"
               >
                 Assistir ao vivo →
               </a>
@@ -374,7 +374,7 @@ export default function Vigilia29082026Page() {
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-10">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ffa726] uppercase">
+              <p className="text-xs font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
                 {vigilia.preletor.papel}
               </p>
               <h3 className="mt-2 font-acme text-3xl tracking-wide text-white lg:text-4xl">
@@ -413,7 +413,7 @@ export default function Vigilia29082026Page() {
                   </div>
 
                   <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-                    <p className="text-[0.68rem] font-bold tracking-[0.2em] text-[#8b5b18] uppercase">
+                    <p className="text-[0.68rem] font-bold tracking-[0.2em] text-text-accent uppercase">
                       {cantor.papel}
                     </p>
                     <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
@@ -450,7 +450,7 @@ export default function Vigilia29082026Page() {
       <section className="bg-[#fff8ee] border-y border-[#ffa726]/20 py-10 md:py-14">
         <div className="ui-page-container flex flex-col gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-[#8b5b18] uppercase">
+            <p className="text-xs font-bold tracking-[0.24em] text-text-accent uppercase">
               Monte sua caravana
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
@@ -473,7 +473,7 @@ export default function Vigilia29082026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-[#ffa726] uppercase">
+            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
               Vigília — {vigilia.data}
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

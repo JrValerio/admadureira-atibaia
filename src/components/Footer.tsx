@@ -104,7 +104,7 @@ function FooterLinkList({
         <li key={link.href}>
           <Link
             href={link.href}
-            className="transition-colors hover:text-[#ffa726]"
+            className="transition-colors hover:text-brand-orange"
           >
             {link.label}
           </Link>
@@ -127,7 +127,7 @@ function FooterDisclosure({
     <details
       className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden xl:rounded-none xl:border-0 xl:bg-transparent xl:px-0 xl:py-0 xl:[&>*:not(summary)]:!block ${className}`.trim()}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-[#ffa726] focus-visible:text-[#ffa726] xl:pointer-events-none xl:cursor-default xl:hover:text-white xl:focus-visible:text-white">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-brand-orange focus-visible:text-brand-orange xl:pointer-events-none xl:cursor-default xl:hover:text-white xl:focus-visible:text-white">
         <FooterSectionTitle>{title}</FooterSectionTitle>
         <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180 xl:hidden">
           ▾
@@ -155,7 +155,7 @@ export default function Footer() {
               <p className="text-base font-semibold leading-snug text-white">
                 {CHURCH_OFFICIAL_NAME}
               </p>
-              <p className="font-acme text-sm tracking-[0.22em] text-[#ffa726] uppercase">
+              <p className="font-acme text-sm tracking-[0.22em] text-text-accent-on-dark uppercase">
                 {CHURCH_FIELD_NAME}
               </p>
             </div>
@@ -220,7 +220,7 @@ export default function Footer() {
                 href={`https://wa.me/${SEDE_CONTACT.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-[#ffa726] transition-colors hover:text-[#ffd54f]"
+                className="block text-text-accent-on-dark transition-colors hover:text-[#ffd54f]"
               >
                 {SEDE_CONTACT.whatsappDisplay}
               </a>

@@ -86,7 +86,7 @@ export default function GalleryLightbox({
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-3 pb-4 text-white">
             <div>
-              <p className="text-[11px] font-bold tracking-[0.18em] text-[#ffa726] uppercase">
+              <p className="text-[11px] font-bold tracking-[0.18em] text-text-accent-on-dark uppercase">
                 Galeria
               </p>
               <h2 className="font-acme text-xl tracking-wide md:text-2xl">

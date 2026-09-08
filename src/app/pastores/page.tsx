@@ -32,7 +32,7 @@ function PastorEditorialCard({ pastor }: { pastor: Pastor }) {
       </div>
 
       <div className="p-6 md:p-10">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+        <p className="text-text-accent text-xs font-bold tracking-widest uppercase mb-2">
           {pastor.cargo}
         </p>
         <h2 className="font-acme text-xl md:text-3xl lg:text-4xl xl:text-3xl text-[#212121] tracking-wide leading-tight mb-4">
@@ -65,7 +65,7 @@ function PastorCompactCard({ pastor }: { pastor: Pastor }) {
       </div>
 
       <div className="p-5">
-        <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+        <p className="text-text-accent text-xs font-bold tracking-widest uppercase mb-2">
           {pastor.cargo}
         </p>
         <h3 className="font-acme text-xl text-[#212121] tracking-wide leading-tight mb-2">

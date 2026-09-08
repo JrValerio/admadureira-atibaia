@@ -5,7 +5,16 @@
   --fg: #1a1a1a;
   --primary: #424242;
   --primary-dark: #212121;
-  --orange: #ffa726;
+
+  /* Accent — laranja da marca. Fonte única da cor. */
+  --brand-orange: #ffa726;
+  /* Accent como TEXTO sobre superfície clara: o laranja falha (~1,9:1), então
+     texto pequeno usa este tom — 5,8:1 sobre branco, passa AA. */
+  --text-accent: #8b5b18;
+  /* Accent como texto sobre fundo escuro / foto: aí o laranja é que contrasta. */
+  --text-accent-on-dark: var(--brand-orange);
+
+  --orange: var(--brand-orange); /* legado — preferir --brand-orange */
   --orange-dark: #e65100;
   --red: #ef5350;
   --gold: #ffd54f;
@@ -19,6 +28,9 @@
   --color-fg: var(--fg);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-brand-orange: var(--brand-orange);
+  --color-text-accent: var(--text-accent);
+  --color-text-accent-on-dark: var(--text-accent-on-dark);
   --color-orange: var(--orange);
   --color-orange-dark: var(--orange-dark);
   --color-red: var(--red);
@@ -167,12 +179,14 @@ section[id] {
   margin-bottom: 0.6rem;
 }
 
+/* Todas as ocorrências hoje ficam sobre superfície clara. Para seção escura,
+   crie uma variante --gold-on-dark com var(--text-accent-on-dark). */
 .ui-section-eyebrow--gold {
-  color: #ffa726;
+  color: var(--text-accent);
 }
 
 .ui-card-eyebrow {
-  color: #8b5b18;
+  color: var(--text-accent);
   font-size: 0.75rem;
   line-height: 1rem;
   font-weight: 700;
@@ -448,7 +462,7 @@ section[id] {
 }
 
 .ui-link-accent {
-  color: #ef5350;
+  color: #b3261e; /* 5,9:1 sobre branco — texto pequeno precisa de 4,5:1 */
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;

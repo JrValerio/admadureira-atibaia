@@ -391,7 +391,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                   {(evento.subtitulo || evento.ctaLabel) && (
                     <div className="absolute inset-0 hidden flex-col justify-end bg-[linear-gradient(0deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.28)_58%,transparent_100%)] p-8 md:flex">
                       <div className="max-w-lg">
-                        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#ffa726]">
+                        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-text-accent-on-dark">
                           {evento.titulo}
                         </p>
                         {evento.subtitulo && (

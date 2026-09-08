@@ -18,7 +18,7 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
     return (
       <section className="bg-[#f5f5f5] py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:8rem]">
         <div className="mx-auto max-w-6xl px-4 text-center">
-          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
             Escola Bíblica Dominical
           </p>
           <p className="mb-2 font-acme text-2xl md:text-3xl text-[#212121]">
@@ -42,11 +42,11 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
           {/* Adultos */}
           <div className={slideClass}>
             <article className="ui-panel ui-panel-pad w-full">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Escola Bíblica Dominical
               </p>
               <div className="mb-4 flex flex-wrap items-center gap-3">
-                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18]">
+                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
                   {classeAdultos.horarioLabel}
                 </p>
                 <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
@@ -98,11 +98,11 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
           {/* Jovens */}
           <div className={slideClass}>
             <article className="ui-panel-accent ui-panel-pad w-full">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Escola Bíblica Dominical
               </p>
               <div className="mb-4 flex flex-wrap items-center gap-3">
-                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18]">
+                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
                   {classeJovens.horarioLabel}
                 </p>
                 <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-white/70 px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">

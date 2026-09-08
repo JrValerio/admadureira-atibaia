@@ -102,7 +102,7 @@ export default async function MinisterioPage({ params }: PageProps) {
             </div>
 
             <div className="p-6 md:p-10">
-              <p className="text-[#ffa726] text-xs font-bold tracking-widest uppercase mb-2">
+              <p className="text-text-accent text-xs font-bold tracking-widest uppercase mb-2">
                 {ministerio.escopo}
               </p>
               <h1 className="font-acme text-2xl md:text-4xl lg:text-5xl text-[#212121] tracking-wide mb-4">
@@ -133,7 +133,7 @@ export default async function MinisterioPage({ params }: PageProps) {
                       <ul className="space-y-3 text-[#555] leading-relaxed">
                         {ministerio.atividades.map((atividade) => (
                           <li key={atividade} className="flex gap-3">
-                            <span className="text-[#ffa726]">•</span>
+                            <span className="text-brand-orange">•</span>
                             <span>{atividade}</span>
                           </li>
                         ))}
@@ -149,7 +149,7 @@ export default async function MinisterioPage({ params }: PageProps) {
                       <ul className="space-y-3 text-[#555] leading-relaxed">
                         {ministerio.lideranca.map((lider) => (
                           <li key={lider} className="flex gap-3">
-                            <span className="text-[#ffa726]">•</span>
+                            <span className="text-brand-orange">•</span>
                             <span>{lider}</span>
                           </li>
                         ))}
@@ -176,7 +176,7 @@ export default async function MinisterioPage({ params }: PageProps) {
                         <ul className="mt-5 grid gap-2 text-sm text-[#555] sm:grid-cols-2">
                           {ministerio.destaque.detalhes.map((detalhe) => (
                             <li key={detalhe} className="flex gap-3">
-                              <span className="text-[#ffa726]">•</span>
+                              <span className="text-brand-orange">•</span>
                               <span>{detalhe}</span>
                             </li>
                           ))}

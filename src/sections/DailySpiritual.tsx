@@ -14,7 +14,7 @@ export default function DailySpiritual() {
     <section className="bg-[#f5f5f5] pt-6 pb-8 md:pt-8 md:pb-12 [content-visibility:auto] [contain-intrinsic-size:42rem]">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto mb-6 max-w-3xl text-center md:mb-8">
-          <p className="mb-3 text-xs font-bold tracking-widest text-[#ffa726] uppercase">
+          <p className="mb-3 text-xs font-bold tracking-widest text-text-accent uppercase">
             Hoje com Deus
           </p>
           <h2 className="font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
@@ -26,13 +26,13 @@ export default function DailySpiritual() {
           {/* Versículo */}
           <div className={slideClass}>
             <article className="ui-panel ui-panel-pad h-full w-full">
-              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+              <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                 Versículo do dia
               </p>
               <p className="mb-4 max-w-[34ch] text-base leading-relaxed text-[#3f3f3f]">
                 &quot;{verse.texto}&quot;
               </p>
-              <p className="mb-5 text-sm font-semibold tracking-[0.16em] uppercase text-[#8b5b18]">
+              <p className="mb-5 text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
                 {verse.referencia}
               </p>
               <Link
@@ -54,7 +54,7 @@ export default function DailySpiritual() {
                 <h3 className="mb-3 font-acme text-2xl tracking-wide text-[#212121]">
                   {devotional.titulo}
                 </h3>
-                <p className="mb-4 text-sm text-[#8b5b18]">{devotional.versiculo}</p>
+                <p className="mb-4 text-sm text-text-accent">{devotional.versiculo}</p>
                 <p className="mb-5 text-sm leading-relaxed text-[#555]">
                   {devotional.resumo}
                 </p>

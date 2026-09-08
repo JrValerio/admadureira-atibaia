@@ -172,11 +172,7 @@ function TopicListBlock({
   }
 
   const labelClassName =
-    labelTone === "danger"
-      ? "text-[#ef5350]"
-      : labelTone === "earth"
-        ? "text-[#8b5b18]"
-        : "text-[#ffa726]";
+    labelTone === "danger" ? "text-[#ef5350]" : "text-text-accent";
 
   return (
     <div>
@@ -213,7 +209,7 @@ function AdultTopicoCard({ topico }: { topico: TopicoConteudo }) {
       />
       {topico.referenciasCruzadas?.length ? (
         <div>
-          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ffa726]">
+          <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
             Referências cruzadas
           </p>
           <ReferenciaList items={topico.referenciasCruzadas} />

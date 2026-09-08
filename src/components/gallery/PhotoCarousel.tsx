@@ -128,7 +128,7 @@ export default function PhotoCarousel({
           <button
             type="button"
             onClick={() => scrollByCard(-1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-[#212121] transition-colors hover:border-[#8b5b18] hover:text-[#8b5b18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5b18]"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-[#212121] transition-colors hover:border-[#8b5b18] hover:text-text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5b18]"
             aria-label="Fotos anteriores"
           >
             ←
@@ -136,7 +136,7 @@ export default function PhotoCarousel({
           <button
             type="button"
             onClick={() => scrollByCard(1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-[#212121] transition-colors hover:border-[#8b5b18] hover:text-[#8b5b18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5b18]"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-[#212121] transition-colors hover:border-[#8b5b18] hover:text-text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b5b18]"
             aria-label="Próximas fotos"
           >
             →

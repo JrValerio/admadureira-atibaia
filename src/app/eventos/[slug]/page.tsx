@@ -247,7 +247,7 @@ export default async function EventoPage({ params }: PageProps) {
                             <Link
                               key={`${item.referencia}-${item.href}`}
                               href={item.href}
-                              className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-[#8b5b18] transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                              className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
                             >
                               {item.referencia}
                             </Link>
