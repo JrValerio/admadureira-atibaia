@@ -151,7 +151,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
               <p className="mb-3 text-sm leading-relaxed text-[#424242]">
                 {SEDE_ADDRESS_LINES[0]}
                 <br />
-                {SEDE_ADDRESS_LINES[1].replace(" - ", " – ")}
+                {SEDE_ADDRESS_LINES[1]}
                 <br />
                 {SEDE_ADDRESS_LINES[2]}
               </p>

@@ -37,11 +37,11 @@ export const SEDE_ADDRESS = {
 
 export const SEDE_ADDRESS_LINES = [
   SEDE_ADDRESS.streetAddress,
-  `${SEDE_ADDRESS.neighborhood} - ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`,
+  `${SEDE_ADDRESS.neighborhood} – ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`,
   `CEP ${SEDE_ADDRESS.postalCode}`,
 ] as const;
 
-export const SEDE_ADDRESS_INLINE = `${SEDE_ADDRESS.streetAddress} · ${SEDE_ADDRESS.neighborhood} - ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`;
+export const SEDE_ADDRESS_INLINE = `${SEDE_ADDRESS.streetAddress} · ${SEDE_ADDRESS.neighborhood} – ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`;
 export const SEDE_ADDRESS_PRINT = `${SEDE_ADDRESS.streetAddress} · ${SEDE_ADDRESS.neighborhood} · ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state} · CEP ${SEDE_ADDRESS.postalCode}`;
 export const SEDE_ADDRESS_SEO = `${SEDE_ADDRESS.streetAddress} – ${SEDE_ADDRESS.neighborhood}, ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`;
 export const SEDE_ADDRESS_CONGREGACAO = `${SEDE_ADDRESS.streetAddress} – ${SEDE_ADDRESS.neighborhood} – ${SEDE_ADDRESS.city}/${SEDE_ADDRESS.state}`;
