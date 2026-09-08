@@ -13,7 +13,8 @@
     "test": "vitest",
     "pretest:run": "node scripts/generate-banner-semanal-manifest.mjs",
     "test:run": "vitest run",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "audit:assets": "node scripts/audit-assets.mjs"
   },
   "dependencies": {
     "next": "^16.2.12",
