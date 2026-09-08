@@ -99,8 +99,8 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                   {plan.versiculoBase}
                 </p>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-[11px] font-semibold tracking-[0.16em] uppercase text-[#777]">
-                <span className="rounded-full bg-[#fff8ee] px-3 py-2 text-text-accent">
+              <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold tracking-[0.12em] uppercase text-[#777]">
+                <span className="rounded-full bg-surface-accent px-3 py-2 text-text-accent">
                   {plan.duracaoLabel}
                 </span>
                 <span className="rounded-full border border-black/10 px-3 py-2">
@@ -109,7 +109,7 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Sugestão para hoje
               </p>
@@ -186,8 +186,8 @@ export default async function ReadingPlanDetailPage({ params }: PageProps) {
                   href={createReadingPlanDayPath(plan.slug, day.dia)}
                   className={`rounded-3xl border p-5 shadow-sm transition-colors ${
                     day.dia === suggestedDay
-                      ? "bg-[#fff8ee] border-[#ffa726]/25"
-                      : "bg-[#fafafa] border-black/5 hover:border-[#ffa726]/25"
+                      ? "bg-surface-accent border-[#ffa726]/25"
+                      : "bg-surface-soft border-black/5 hover:border-[#ffa726]/25"
                   }`}
                 >
                   <p className="ui-card-eyebrow mb-3">

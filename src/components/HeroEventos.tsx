@@ -293,7 +293,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     <section
       id="eventos-destaque"
       aria-labelledby="home-eventos-destaque-title"
-      className="relative w-full overflow-hidden bg-[#f7f6f2] pt-6 pb-8 md:pt-8 md:pb-12"
+      className="relative w-full overflow-hidden bg-surface-soft pt-6 pb-8 md:pt-8 md:pb-12"
     >
       <div className="ui-page-container mb-5 text-center md:mb-7">
         <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -314,7 +314,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
       </div>
 
       <div
-        className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-[22px] border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
+        className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-2xl border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         onFocusCapture={() => setFocusWithin(true)}
@@ -427,7 +427,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
               </svg>
             </button>
 
-            <span aria-hidden="true" className="flex-1 text-center text-xs font-bold tracking-[0.18em] text-white/75 md:hidden">
+            <span aria-hidden="true" className="flex-1 text-center text-xs font-bold tracking-[0.12em] text-white/75 md:hidden">
               {realIndex + 1} / {total}
             </span>
 
@@ -466,7 +466,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
 
         {activeEvento && (
           <div className="flex min-h-[220px] flex-col bg-white p-5 md:hidden">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#c96f00]">
+            <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#c96f00]">
               Evento em destaque
             </p>
             <h3 className="mt-2 font-acme text-xl leading-6 tracking-wide text-[#212121]">
@@ -492,7 +492,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
         <div className="ui-page-container mt-5">
           <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 rounded-2xl bg-[#17130e] px-5 py-4 text-center shadow-[0_12px_30px_rgba(0,0,0,0.12)] sm:flex-row sm:text-left md:px-7">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#ffc46b]">
+              <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#ffc46b]">
                 Próximo grande encontro
               </p>
               <p className="mt-1 font-acme text-xl tracking-wide text-white">

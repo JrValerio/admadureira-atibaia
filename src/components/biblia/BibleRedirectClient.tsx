@@ -80,7 +80,7 @@ export default function BibleRedirectClient({
   }, [capitulo, lang, lastReading, livro, router, version]);
 
   return (
-    <section className="min-h-[40vh] bg-[#f5f5f5] px-4 py-16">
+    <section className="min-h-[40vh] bg-surface-soft px-4 py-16">
       <div className="mx-auto max-w-3xl rounded-3xl border border-black/5 bg-white p-8 text-center shadow-sm">
         <p className="ui-card-eyebrow mb-3">
           Bíblia Online

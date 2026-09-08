@@ -50,7 +50,7 @@ export default function GalleryGrid({
               key={`${image.src}-${index}`}
               type="button"
               onClick={() => openImage(index)}
-              className={`group relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-white text-left shadow-[0_14px_36px_rgba(0,0,0,0.05)] ${
+              className={`group relative overflow-hidden rounded-2xl border border-black/8 bg-white text-left shadow-[0_14px_36px_rgba(0,0,0,0.05)] ${
                 wideTile ? "col-span-2 xl:col-span-2" : ""
               }`.trim()}
               aria-label={`Ampliar foto ${index + 1} do álbum ${albumTitle}`}
@@ -76,7 +76,7 @@ export default function GalleryGrid({
                   <p className="line-clamp-2 text-sm leading-relaxed text-white/88">
                     {image.caption ?? image.alt}
                   </p>
-                  <span className="shrink-0 rounded-full border border-white/15 bg-white/12 px-3 py-1 text-[10px] font-bold tracking-[0.16em] uppercase backdrop-blur-sm">
+                  <span className="shrink-0 rounded-full border border-white/15 bg-white/12 px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase backdrop-blur-sm">
                     Ampliar
                   </span>
                 </div>

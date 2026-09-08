@@ -18,7 +18,19 @@
   --orange-dark: #e65100;
   --red: #ef5350;
   --gold: #ffd54f;
-  --radius-card: 1.5rem;
+
+  /* Superfícies — dois claros (base + creme) e o escuro. O accent NÃO entra
+     na alternância de seções: é só para callout / cartão ligado ao laranja. */
+  --surface-base: #ffffff;
+  --surface-soft: #faf8f3;
+  --surface-dark: #212121;
+  --surface-accent: #fff8ee;
+
+  /* Escala de raio: 8 / 16 / 24 + pill (9999 nos botões). */
+  --radius-field: 0.5rem;
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
   --shadow-card-sm: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
@@ -31,6 +43,10 @@
   --color-brand-orange: var(--brand-orange);
   --color-text-accent: var(--text-accent);
   --color-text-accent-on-dark: var(--text-accent-on-dark);
+  --color-surface-base: var(--surface-base);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-accent: var(--surface-accent);
   --color-orange: var(--orange);
   --color-orange-dark: var(--orange-dark);
   --color-red: var(--red);
@@ -172,9 +188,9 @@ section[id] {
 
 .ui-section-eyebrow {
   color: #b3261e;
-  font-size: 0.7rem;
+  font-size: 0.75rem; /* 12px — piso de rótulo */
   font-weight: 700;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.12em; /* era 0.25em */
   text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
@@ -212,7 +228,7 @@ section[id] {
 
 .ui-section-description {
   margin-top: 0.9rem;
-  font-size: 0.92rem;
+  font-size: 1rem; /* 16px — corpo editorial, era 0.92rem no mobile */
   line-height: 1.75;
   color: #5f5f5f;
 }
@@ -229,11 +245,6 @@ section[id] {
   max-width: 48rem;
 }
 
-@media (min-width: 768px) {
-  .ui-section-description {
-    font-size: 1rem;
-  }
-}
 
 .ui-card-grid {
   display: grid;
@@ -270,7 +281,7 @@ section[id] {
 }
 
 .ui-card {
-  background: #ffffff;
+  background: var(--surface-base);
   border: 1px solid rgba(17, 17, 17, 0.06);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
@@ -308,18 +319,18 @@ section[id] {
 
 .ui-panel,
 .ui-panel-accent {
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-panel);
   box-shadow: var(--shadow-card);
 }
 
 .ui-panel {
   border: 1px solid rgba(17, 17, 17, 0.06);
-  background: #ffffff;
+  background: var(--surface-base);
 }
 
 .ui-panel-accent {
   border: 1px solid rgba(255, 167, 38, 0.2);
-  background: #fff8ee;
+  background: var(--surface-accent);
 }
 
 .ui-panel-pad-sm {
@@ -345,6 +356,9 @@ section[id] {
   }
 }
 
+/* Hierarquia de ação: primary (uma por tela) → secondary → ghost/link.
+   red e success são ESTADO (perigo / confirmação), não concorrentes do CTA
+   principal — usar só quando a semântica pedir. */
 .ui-btn-primary,
 .ui-btn-secondary,
 .ui-btn-red,
@@ -356,9 +370,9 @@ section[id] {
   justify-content: center;
   border-radius: 9999px;
   padding: 0.7rem 1.1rem;
-  font-size: 0.68rem;
+  font-size: 0.875rem; /* 14px — era 10,9/11,5px */
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em; /* era 0.18em */
   text-transform: uppercase;
   transition:
     background-color 0.2s ease,
@@ -371,12 +385,11 @@ section[id] {
 @media (min-width: 640px) {
   .ui-btn-primary,
   .ui-btn-secondary,
-.ui-btn-red,
-.ui-btn-success,
+  .ui-btn-red,
+  .ui-btn-success,
   .ui-btn-ghost,
   .ui-btn-ghost-dark {
     padding: 0.85rem 1.5rem;
-    font-size: 0.72rem;
   }
 }
 
@@ -406,7 +419,7 @@ section[id] {
 
 .ui-btn-ghost {
   border: 1px solid rgba(17, 17, 17, 0.1);
-  background: #f9f9f9;
+  background: var(--surface-soft);
   color: #555555;
 }
 
@@ -463,9 +476,9 @@ section[id] {
 
 .ui-link-accent {
   color: #b3261e; /* 5,9:1 sobre branco — texto pequeno precisa de 4,5:1 */
-  font-size: 0.72rem;
+  font-size: 0.75rem; /* 12px */
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em; /* era 0.18em */
   text-transform: uppercase;
   transition: color 0.2s ease;
 }

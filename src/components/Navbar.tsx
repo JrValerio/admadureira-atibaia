@@ -194,7 +194,7 @@ export default function Navbar() {
               <p className="truncate font-script text-[1.32rem] leading-none text-[#f7dfbb] md:text-[1.55rem] xl:overflow-visible xl:text-clip xl:whitespace-nowrap">
                 Assembleia de Deus
               </p>
-              <p className="mt-1 text-[8px] tracking-[0.22em] text-white/72 uppercase md:text-[9px] md:tracking-[0.28em]">
+              <p className="mt-1 text-[8px] tracking-[0.12em] text-white/72 uppercase md:text-[9px] md:tracking-[0.12em]">
                 Madureira · Atibaia
               </p>
             </div>
@@ -264,7 +264,7 @@ export default function Navbar() {
                       isOpen ? "pointer-events-auto opacity-100 visible translate-y-0" : ""
                     }`}
                   >
-                    <div className="min-w-56 rounded-xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
+                    <div className="min-w-56 rounded-2xl border border-white/10 bg-[#171717]/98 p-3 shadow-[0_12px_36px_rgba(0,0,0,0.16)] backdrop-blur-md">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
@@ -316,7 +316,7 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className={`font-acme block py-3 text-base uppercase tracking-[0.16em] transition-colors ${
+                    className={`font-acme block py-3 text-base uppercase tracking-[0.12em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-brand-orange"
                         : "text-white/70 hover:text-brand-orange"
@@ -339,7 +339,7 @@ export default function Navbar() {
                         prev === item.label ? null : item.label
                       )
                     }
-                    className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.16em] transition-colors ${
+                    className={`flex w-full items-center justify-between py-3 font-acme text-base uppercase tracking-[0.12em] transition-colors ${
                       isMenuItemActive(pathname, item)
                         ? "text-brand-orange"
                         : "text-white/70"

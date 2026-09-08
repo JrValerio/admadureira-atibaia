@@ -274,7 +274,7 @@ export default async function BibliaChapterPage({
                   <h2 className="font-acme text-xl md:text-3xl lg:text-4xl text-[#212121] tracking-wide">
                     {chapterSeo.introTitle}
                   </h2>
-                  <p className="text-xs font-bold tracking-[0.18em] uppercase text-text-accent">
+                  <p className="text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     {chapterSeo.contextLabel}
                   </p>
                   <div className="max-w-none space-y-4 text-[15px] leading-relaxed text-[#555]">
@@ -333,7 +333,7 @@ export default async function BibliaChapterPage({
                   <div
                     key={verse.numero}
                     id={`v${verse.numero}`}
-                    className="group -mx-3 flex items-start gap-3 rounded-2xl px-3 py-2 scroll-mt-28 transition-colors duration-300 data-[verse-target=true]:bg-[#fff8ee] data-[verse-target=true]:ring-1 data-[verse-target=true]:ring-[#ffa726]/20"
+                    className="group -mx-3 flex items-start gap-3 rounded-2xl px-3 py-2 scroll-mt-28 transition-colors duration-300 data-[verse-target=true]:bg-surface-accent data-[verse-target=true]:ring-1 data-[verse-target=true]:ring-[#ffa726]/20"
                   >
                     <span className="mt-1 min-w-7 text-xs font-semibold text-[#ef5350]">
                       {verse.numero}

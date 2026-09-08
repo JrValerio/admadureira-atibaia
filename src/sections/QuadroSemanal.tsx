@@ -115,7 +115,7 @@ export default function QuadroSemanal() {
               key={dia.id}
               className={`min-w-60 snap-start rounded-3xl border p-4 transition-colors md:min-w-0 md:p-6 ${
                 destaqueHoje
-                  ? "border-[#ffa726]/50 bg-[#fff8ee] shadow-[0_8px_28px_rgba(0,0,0,0.05)]"
+                  ? "border-[#ffa726]/50 bg-surface-accent shadow-[0_8px_28px_rgba(0,0,0,0.05)]"
                   : "border-black/5 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.04)]"
               }`}
             >
@@ -129,7 +129,7 @@ export default function QuadroSemanal() {
                   </h4>
                 </div>
                 {destaqueHoje ? (
-                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-[10px] font-bold tracking-[0.12em] uppercase text-text-accent">
+                  <span className="inline-flex shrink-0 items-center rounded-full border border-[#ffa726]/35 bg-white px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-text-accent">
                     Hoje
                   </span>
                 ) : null}

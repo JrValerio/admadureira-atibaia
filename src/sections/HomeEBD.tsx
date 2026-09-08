@@ -16,7 +16,7 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
 
   if (teaser) {
     return (
-      <section className="bg-[#f5f5f5] py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:8rem]">
+      <section className="bg-surface-soft py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:8rem]">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
             Escola Bíblica Dominical
@@ -36,7 +36,7 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
   }
 
   return (
-    <section className="bg-[#f5f5f5] pt-4 pb-12 md:pt-6 md:pb-16 [content-visibility:auto] [contain-intrinsic-size:48rem]">
+    <section className="bg-surface-soft pt-4 pb-12 md:pt-6 md:pb-16 [content-visibility:auto] [contain-intrinsic-size:48rem]">
       <div className="mx-auto max-w-6xl px-4">
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none">
           {/* Adultos */}
@@ -46,10 +46,10 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
                 Escola Bíblica Dominical
               </p>
               <div className="mb-4 flex flex-wrap items-center gap-3">
-                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
+                <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                   {classeAdultos.horarioLabel}
                 </p>
-                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-[#fff8ee] px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-surface-accent px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                   {classeAdultos.label}
                 </span>
               </div>
@@ -102,10 +102,10 @@ export default function HomeEBD({ teaser = false }: { teaser?: boolean }) {
                 Escola Bíblica Dominical
               </p>
               <div className="mb-4 flex flex-wrap items-center gap-3">
-                <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
+                <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                   {classeJovens.horarioLabel}
                 </p>
-                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-white/70 px-3 py-1 text-[11px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                <span className="inline-flex rounded-full border border-[#ffa726]/20 bg-white/70 px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                   {classeJovens.label}
                 </span>
               </div>

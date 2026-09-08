@@ -124,7 +124,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
   }
 
   return (
-    <Section id="contato" className="bg-[#f5f5f5]" density="dense">
+    <Section id="contato" className="bg-surface-soft" density="dense">
       {showHeader ? (
         <SectionTitle
           eyebrow="Venha nos visitar"
@@ -211,7 +211,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl bg-gray-200 shadow-md h-80">
+        <div className="overflow-hidden rounded-2xl bg-surface-soft shadow-md h-80">
           <iframe
             title="Localização AD Madureira Atibaia"
             src={SEDE_MAPS_EMBED_URL}
@@ -273,7 +273,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="Seu nome completo"
                     aria-invalid={!!errors.nome}
                     aria-describedby={errors.nome ? "cnome-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.nome ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
+                    className={`w-full rounded-lg border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.nome ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.nome && (
                     <p id="cnome-error" className="mt-1 text-xs text-red-500">{errors.nome}</p>
@@ -292,7 +292,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="seu@email.com"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "cemail-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.email ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
+                    className={`w-full rounded-lg border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.email ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.email && (
                     <p id="cemail-error" className="mt-1 text-xs text-red-500">{errors.email}</p>
@@ -312,7 +312,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     value={form.telefone}
                     onChange={handleChange}
                     placeholder="(11) 9xxxx-xxxx"
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:border-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1"
+                    className="w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:border-[#ffa726] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1"
                   />
                 </div>
                 <div>
@@ -328,7 +328,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                     placeholder="Sobre o que deseja falar?"
                     aria-invalid={!!errors.assunto}
                     aria-describedby={errors.assunto ? "assunto-error" : undefined}
-                    className={`w-full rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.assunto ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
+                    className={`w-full rounded-lg border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.assunto ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                   />
                   {errors.assunto && (
                     <p id="assunto-error" className="mt-1 text-xs text-red-500">{errors.assunto}</p>
@@ -349,7 +349,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                   placeholder="Escreva aqui sua mensagem..."
                   aria-invalid={!!errors.mensagem}
                   aria-describedby={errors.mensagem ? "mensagem-error" : undefined}
-                  className={`w-full resize-none rounded-xl border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.mensagem ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
+                  className={`w-full resize-none rounded-lg border bg-white px-4 py-3 text-sm text-[#212121] placeholder-gray-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-1 ${errors.mensagem ? "border-red-400 focus-visible:border-red-400" : "border-gray-200 focus-visible:border-[#ffa726]"}`}
                 />
                 {errors.mensagem && (
                   <p id="mensagem-error" className="mt-1 text-xs text-red-500">{errors.mensagem}</p>
@@ -392,7 +392,7 @@ export default function Contato({ showHeader = true }: ContatoProps) {
                   href={rede.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-[#faf8f3] px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
+                  className="group flex items-center gap-3 rounded-2xl border border-black/6 bg-surface-soft px-4 py-3 text-sm text-[#424242] transition-colors hover:border-[#ffa726]/40 hover:text-[#212121] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#212121] focus-visible:ring-offset-2"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#111] text-white transition-colors group-hover:bg-[#ffa726] group-hover:text-[#111]">
                     {rede.icon}

@@ -11,7 +11,7 @@ export default function DailySpiritual() {
   const devotional = getDevotionalOfTheDay();
 
   return (
-    <section className="bg-[#f5f5f5] pt-6 pb-8 md:pt-8 md:pb-12 [content-visibility:auto] [contain-intrinsic-size:42rem]">
+    <section className="bg-surface-soft pt-6 pb-8 md:pt-8 md:pb-12 [content-visibility:auto] [contain-intrinsic-size:42rem]">
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto mb-6 max-w-3xl text-center md:mb-8">
           <p className="mb-3 text-xs font-bold tracking-widest text-text-accent uppercase">
@@ -32,7 +32,7 @@ export default function DailySpiritual() {
               <p className="mb-4 max-w-[34ch] text-base leading-relaxed text-[#3f3f3f]">
                 &quot;{verse.texto}&quot;
               </p>
-              <p className="mb-5 text-sm font-semibold tracking-[0.16em] uppercase text-text-accent">
+              <p className="mb-5 text-sm font-semibold tracking-[0.12em] uppercase text-text-accent">
                 {verse.referencia}
               </p>
               <Link

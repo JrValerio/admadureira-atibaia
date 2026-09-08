@@ -101,7 +101,7 @@ export default function DevocionalPage() {
             </div>
           ) : null}
 
-          <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
+          <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 max-w-4xl mx-auto mb-12">
             <p className="ui-card-eyebrow mb-3">
               Caminhada diária
             </p>

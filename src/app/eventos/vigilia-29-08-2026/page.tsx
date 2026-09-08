@@ -46,7 +46,7 @@ function isEventEnded(now = new Date()) {
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+      <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -106,7 +106,7 @@ function SocialProfileLink({
       className={`group flex min-h-12 w-full min-w-0 items-center gap-3 rounded-2xl border px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
         dark
           ? "border-white/40 bg-white/[0.06] text-white hover:border-[#ffa726] hover:bg-[#ffa726] hover:text-[#111] focus-visible:ring-[#ffa726] focus-visible:ring-offset-[#160e08]"
-          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-[#fff8ee] focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
+          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-surface-accent focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
       }`}
     >
       <span
@@ -118,7 +118,7 @@ function SocialProfileLink({
         <SocialIcon plataforma={plataforma} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-[0.65rem] font-bold tracking-[0.16em] uppercase opacity-70">
+        <span className="block text-[0.65rem] font-bold tracking-[0.12em] uppercase opacity-70">
           {plataforma}
         </span>
         <span className="mt-0.5 block break-all text-xs leading-snug font-semibold">
@@ -194,7 +194,7 @@ export default function Vigilia29082026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="min-h-screen bg-surface-soft">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -238,7 +238,7 @@ export default function Vigilia29082026Page() {
 
           <div className="mb-4">
             {eventEnded ? (
-              <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+              <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.12em] text-[#555] uppercase">
                 Evento encerrado
               </span>
             ) : (
@@ -250,7 +250,7 @@ export default function Vigilia29082026Page() {
             )}
           </div>
 
-          <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
+          <p className="mb-2 text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
             {vigilia.diaSemana}, {vigilia.data} · {vigilia.horario}
           </p>
           <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
@@ -361,7 +361,7 @@ export default function Vigilia29082026Page() {
             </p>
           </div>
 
-          <article className="overflow-hidden rounded-[1.5rem] border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
+          <article className="overflow-hidden rounded-3xl border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#111] md:aspect-auto md:min-h-[400px]">
               <Image
                 src={vigilia.preletor.foto}
@@ -374,7 +374,7 @@ export default function Vigilia29082026Page() {
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-10">
-              <p className="text-xs font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+              <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
                 {vigilia.preletor.papel}
               </p>
               <h3 className="mt-2 font-acme text-3xl tracking-wide text-white lg:text-4xl">
@@ -401,7 +401,7 @@ export default function Vigilia29082026Page() {
           <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {vigilia.cantores.map((cantor) => (
               <li key={cantor.nome} className="h-full">
-                <article className="flex h-full min-h-56 overflow-hidden rounded-[1.5rem] border border-black/6 bg-[#faf8f3] shadow-sm sm:flex-col">
+                <article className="flex h-full min-h-56 overflow-hidden rounded-3xl border border-black/6 bg-surface-soft shadow-sm sm:flex-col">
                   <div className="relative w-28 shrink-0 self-stretch overflow-hidden bg-[#160e08] sm:aspect-[4/5] sm:w-full sm:self-auto">
                     <Image
                       src={cantor.foto}
@@ -413,7 +413,7 @@ export default function Vigilia29082026Page() {
                   </div>
 
                   <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-                    <p className="text-[0.68rem] font-bold tracking-[0.2em] text-text-accent uppercase">
+                    <p className="text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
                       {cantor.papel}
                     </p>
                     <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
@@ -436,8 +436,8 @@ export default function Vigilia29082026Page() {
             ))}
           </ul>
 
-          <div className="mt-8 rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6">
-            <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+          <div className="mt-8 rounded-3xl border border-black/5 bg-[#f9f9f9] p-6">
+            <p className="text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
               Anfitriões
             </p>
             <p className="mt-2 text-sm leading-relaxed text-[#555]">
@@ -447,10 +447,10 @@ export default function Vigilia29082026Page() {
         </div>
       </section>
 
-      <section className="bg-[#fff8ee] border-y border-[#ffa726]/20 py-10 md:py-14">
+      <section className="bg-surface-accent border-y border-[#ffa726]/20 py-10 md:py-14">
         <div className="ui-page-container flex flex-col gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-text-accent uppercase">
+            <p className="text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
               Monte sua caravana
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
@@ -473,7 +473,7 @@ export default function Vigilia29082026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
+            <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
               Vigília — {vigilia.data}
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

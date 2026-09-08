@@ -39,7 +39,7 @@ export default async function UltimasMensagens() {
             <Link
               key={mensagem.slug}
               href={`/mensagens/${mensagem.slug}`}
-              className="ui-card group overflow-hidden rounded-[1.6rem]"
+              className="ui-card group overflow-hidden rounded-2xl"
             >
               <CardMedia
                 src={getMensagemThumbnailUrl(mensagem.youtubeId)}
@@ -49,7 +49,7 @@ export default async function UltimasMensagens() {
                 zoomOnHover
                 className="rounded-none"
               >
-                <div className="absolute left-4 bottom-4 rounded-full bg-black/55 px-3 py-2 text-white text-[11px] font-semibold tracking-widest uppercase">
+                <div className="absolute left-4 bottom-4 rounded-full bg-black/55 px-3 py-2 text-white text-xs font-semibold tracking-widest uppercase">
                   {formatMensagemDate(mensagem.data)}
                 </div>
               </CardMedia>

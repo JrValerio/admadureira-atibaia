@@ -137,7 +137,7 @@ export default async function EbdClassPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label="Escola Bíblica Dominical"
@@ -182,7 +182,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8 lg:hidden">
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8 lg:hidden">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Domingo mais próximo
                   </p>
@@ -259,7 +259,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                             >
                               <div className="absolute inset-x-0 bottom-0 p-5">
                                 <div
-                                  className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${statusMeta.badgeClassName}`}
+                                  className={`mb-3 inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${statusMeta.badgeClassName}`}
                                 >
                                   {statusMeta.label}
                                 </div>
@@ -280,7 +280,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                                 {statusMeta.description}
                               </p>
                               <div className="mb-4 grid grid-cols-2 gap-4">
-                                <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                                <div className="rounded-2xl border border-black/5 bg-surface-soft p-4">
                                   <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                                     Lições publicadas
                                   </p>
@@ -288,7 +288,7 @@ export default async function EbdClassPage({ params }: PageProps) {
                                     {publishedLessons}
                                   </p>
                                 </div>
-                                <div className="rounded-2xl border border-black/5 bg-[#fafafa] p-4">
+                                <div className="rounded-2xl border border-black/5 bg-surface-soft p-4">
                                   <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
                                     Versículo-base
                                   </p>
@@ -326,7 +326,7 @@ export default async function EbdClassPage({ params }: PageProps) {
 
               <aside className="hidden lg:block">
                 <div className="sticky top-28 space-y-6">
-                  <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                  <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm">
                     <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                       Estudo da semana
                     </p>
@@ -411,11 +411,11 @@ export default async function EbdClassPage({ params }: PageProps) {
                             href={`/ebd/${classe}/${trimestre.slug}`}
                             className={`block rounded-2xl border p-4 transition-colors ${
                               trimestreAtual?.slug === trimestre.slug
-                                ? "border-[#ffa726]/30 bg-[#fff8ee]"
-                                : "border-black/5 bg-[#fafafa] hover:border-[#ffa726]/20 hover:bg-white"
+                                ? "border-[#ffa726]/30 bg-surface-accent"
+                                : "border-black/5 bg-surface-soft hover:border-[#ffa726]/20 hover:bg-white"
                             }`}
                           >
-                            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-[#ef5350]">
+                            <p className="text-xs font-bold tracking-[0.12em] uppercase text-[#ef5350]">
                               {trimestre.rotulo}
                             </p>
                             <p className="mt-2 font-semibold text-[#212121]">
