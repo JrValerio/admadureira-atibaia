@@ -174,9 +174,9 @@ export const programacaoSemanal: ItemSemanal[] = [
         referencia: "Apocalipse 21:5",
       },
       datas: [
-        { data: "17/09", preletora: "Culto com os jovens do campo" },
-        { data: "24/09", preletora: "Culto com os varões do campo" },
-        { data: "01/10", preletora: "Culto com as irmãs do campo" },
+        { data: "17/09", detalhe: "Culto com os jovens do campo" },
+        { data: "24/09", detalhe: "Culto com os varões do campo" },
+        { data: "01/10", detalhe: "Culto com as irmãs do campo" },
       ],
       local: "Igreja Sede — Campo de Atibaia",
       horario: "19h30",
