@@ -349,7 +349,8 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir página do Culto da Vitória — Campanha Apocalipse 21:5",
       type: "event",
       eventDate: "2026-09-17",
-      archivedAfter: "2026-09-17",
+      eventEndDate: "2026-10-01",
+      archivedAfter: "2026-10-01",
     },
     {
       titulo: "Culto de Santa Ceia",
