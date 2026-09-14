@@ -342,6 +342,17 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAt: cultoAcoesDeGracas.fimIso,
     },
     {
+      titulo: "Campanha Apocalipse 21:5",
+      alt: "Banner da Campanha Apocalipse 21:5 da AD Madureira Atibaia",
+      imagem: "/banners/banner-campanha-apocalipse-21-5.png",
+      href: "/programacao/quinta-da-vitoria",
+      ariaLabel: "Abrir página do Culto da Vitória — Campanha Apocalipse 21:5",
+      type: "event",
+      eventDate: "2026-09-17",
+      eventEndDate: "2026-10-01",
+      archivedAfter: "2026-10-01",
+    },
+    {
       titulo: "Culto de Santa Ceia",
       alt: "Banner do Culto de Santa Ceia da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-santa-ceia.png",

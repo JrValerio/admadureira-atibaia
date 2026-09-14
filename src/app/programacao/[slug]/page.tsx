@@ -60,14 +60,14 @@ function CampanhaBlock({ campanha }: { campanha: CampanhaData }) {
         </p>
       )}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
-        {campanha.datas.map(({ data, preletora }) => (
+        {campanha.datas.map(({ data, preletora, detalhe }) => (
           <div
             key={data}
             className="rounded-2xl border border-[#ef5350]/15 bg-[#fff5f5] px-4 py-3"
           >
             <p className="font-acme text-xl text-[#ef5350]">{data}</p>
-            {preletora && (
-              <p className="text-xs text-[#555] mt-1 leading-snug">{preletora}</p>
+            {(preletora ?? detalhe) && (
+              <p className="text-xs text-[#555] mt-1 leading-snug">{preletora ?? detalhe}</p>
             )}
           </div>
         ))}
