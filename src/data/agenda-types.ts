@@ -56,7 +56,7 @@ export interface MesAgenda {
 export interface CampanhaData {
   titulo: string;
   versiculo?: { texto: string; referencia: string };
-  datas: Array<{ data: string; preletora?: string }>;
+  datas: Array<{ data: string; preletora?: string; detalhe?: string }>;
   cantoras?: string[];
   local?: string;
   horario?: string;
