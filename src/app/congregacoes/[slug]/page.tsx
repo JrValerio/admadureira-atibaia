@@ -71,7 +71,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-4">
+    <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-4">
       <p className="mb-1 text-xs font-bold tracking-widest uppercase text-text-accent">
         {label}
       </p>
@@ -229,7 +229,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label={`Campo de Atibaia · ${locationInfo.cidade}`}
@@ -287,7 +287,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+              <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8">
                 <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
                   Base local
                 </p>
@@ -430,7 +430,7 @@ export default async function CongregacaoPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
+                <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm">
                   <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                     Liderança local
                   </p>

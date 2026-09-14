@@ -30,7 +30,7 @@ export default function ReadingPlanProgressSummary({
   }, [progressPercent]);
 
   return (
-    <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+    <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
       <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
         Progresso do plano
       </p>
@@ -64,7 +64,7 @@ export default function ReadingPlanProgressSummary({
               return (
                 <div
                   key={`${planSlug}-day-${day}`}
-                  className={`flex h-9 items-center justify-center rounded-xl text-xs font-semibold ${
+                  className={`flex h-9 items-center justify-center rounded-lg text-xs font-semibold ${
                     isCompleted
                       ? "bg-[#2e7d32] text-white"
                       : "bg-white text-[#555]"

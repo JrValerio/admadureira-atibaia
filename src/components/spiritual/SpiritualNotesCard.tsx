@@ -44,7 +44,7 @@ export default function SpiritualNotesCard({
         value={note}
         onChange={(event) => setNote(event.target.value)}
         placeholder={placeholder}
-        className="min-h-[180px] w-full rounded-2xl border border-black/10 bg-[#fafafa] px-4 py-4 text-sm leading-relaxed text-[#212121] outline-none transition-colors placeholder:text-[#888] focus:border-[#ffa726]/40 focus:bg-white"
+        className="min-h-[180px] w-full rounded-2xl border border-black/10 bg-surface-soft px-4 py-4 text-sm leading-relaxed text-[#212121] outline-none transition-colors placeholder:text-[#888] focus:border-[#ffa726]/40 focus:bg-white"
       />
 
       <div className="mt-4 flex flex-wrap items-center gap-3">

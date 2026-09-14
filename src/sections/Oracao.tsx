@@ -87,7 +87,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
         ) : null}
 
         {/* Formulário */}
-        <div className="bg-[#f5f5f5] rounded-2xl p-5 md:p-8 lg:p-12 shadow-sm">
+        <div className="bg-surface-soft rounded-2xl p-5 md:p-8 lg:p-12 shadow-sm">
           {status === "sent" ? (
             <div className="text-center py-8">
               <div className="w-14 h-1 rounded-full bg-[#ffa726] mx-auto mb-5" />
@@ -126,7 +126,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                     placeholder="Seu nome completo"
                     aria-invalid={!!errors.nome}
                     aria-describedby={errors.nome ? "nome-error" : undefined}
-                    className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.nome ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                    className={`w-full bg-white border rounded-lg px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.nome ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
                   {errors.nome && (
                     <p id="nome-error" className="mt-1 text-xs text-red-500">{errors.nome}</p>
@@ -148,7 +148,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                     placeholder="seu@email.com"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
-                    className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                    className={`w-full bg-white border rounded-lg px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors ${errors.email ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                   />
                   {errors.email && (
                     <p id="email-error" className="mt-1 text-xs text-red-500">{errors.email}</p>
@@ -170,7 +170,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                   value={form.telefone}
                   onChange={handleChange}
                   placeholder="(11) 9xxxx-xxxx"
-                  className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none focus:border-[#ffa726] transition-colors"
+                  className="w-full bg-white border border-gray-200 rounded-lg px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none focus:border-[#ffa726] transition-colors"
                 />
               </div>
 
@@ -190,7 +190,7 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
                   placeholder="Escreva aqui o seu pedido de oração..."
                   aria-invalid={!!errors.pedido}
                   aria-describedby={errors.pedido ? "pedido-error" : undefined}
-                  className={`w-full bg-white border rounded-xl px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors resize-none ${errors.pedido ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
+                  className={`w-full bg-white border rounded-lg px-4 py-3 text-sm text-[#212121] placeholder-gray-400 focus:outline-none transition-colors resize-none ${errors.pedido ? "border-red-400 focus:border-red-400" : "border-gray-200 focus:border-[#ffa726]"}`}
                 />
                 {errors.pedido && (
                   <p id="pedido-error" className="mt-1 text-xs text-red-500">{errors.pedido}</p>

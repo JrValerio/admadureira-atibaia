@@ -67,7 +67,7 @@ export default function CursoTeologiaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <section className="relative overflow-hidden bg-[#111] text-white">
           <div
             className="absolute inset-0 bg-cover bg-center"
@@ -95,7 +95,7 @@ export default function CursoTeologiaPage() {
             </nav>
 
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-[0.24em] uppercase text-text-accent-on-dark">
+              <p className="text-xs font-semibold tracking-[0.12em] uppercase text-text-accent-on-dark">
                 {cursoTeologiaData.hero.label}
               </p>
               <h1 className="mt-4 font-acme text-3xl tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
@@ -104,7 +104,7 @@ export default function CursoTeologiaPage() {
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/82 md:text-lg">
                 {cursoTeologiaData.hero.description}
               </p>
-              <div className="mt-5 inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee]/10 px-5 py-3 text-xs font-semibold tracking-[0.22em] uppercase text-[#f7dfbb]">
+              <div className="mt-5 inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent/10 px-5 py-3 text-xs font-semibold tracking-[0.12em] uppercase text-[#f7dfbb]">
                 {cursoTeologiaData.hero.highlight}
               </div>
 
@@ -120,7 +120,7 @@ export default function CursoTeologiaPage() {
           </div>
         </section>
 
-        <section className="border-b border-black/5 bg-white/90">
+        <section className="border-b border-black/5 bg-surface-base/90">
           <div className="ui-page-container py-5 md:py-6">
             <div className="ui-panel ui-panel-pad-sm border-l-4 border-l-[#8b5b18]">
               <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
@@ -168,7 +168,7 @@ export default function CursoTeologiaPage() {
                 </div>
               </article>
 
-              <aside className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+              <aside className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
                 <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Informações rápidas
                 </p>
@@ -178,7 +178,7 @@ export default function CursoTeologiaPage() {
                       key={fact.label}
                       className="rounded-2xl border border-[#ffa726]/15 bg-white/75 p-4"
                     >
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                      <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                         {fact.label}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#444]">
@@ -196,7 +196,7 @@ export default function CursoTeologiaPage() {
                   Professor
                 </p>
                 <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-[0.72fr_1.28fr]">
-                  <div className="overflow-hidden rounded-[2rem] border border-[#ffa726]/20 bg-[#fff8ee] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                  <div className="overflow-hidden rounded-3xl border border-[#ffa726]/20 bg-surface-accent shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
                     <div className="relative aspect-[4/4.5] bg-[#111]">
                       <Image
                         src={cursoTeologiaData.teacher.photo}
@@ -208,7 +208,7 @@ export default function CursoTeologiaPage() {
                       <div className="absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-black/55 to-transparent" />
                     </div>
                     <div className="border-t border-[#ffa726]/15 bg-white/85 px-5 py-4 text-center">
-                      <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                      <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                         Foto institucional
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#666]">
@@ -272,7 +272,7 @@ export default function CursoTeologiaPage() {
                   {cursoTeologiaData.contentTopics.map((topic) => (
                     <div
                       key={topic}
-                      className="rounded-2xl border border-[#ffa726]/15 bg-[#fff8ee] px-4 py-3 text-sm font-semibold text-[#444]"
+                      className="rounded-2xl border border-[#ffa726]/15 bg-surface-accent px-4 py-3 text-sm font-semibold text-[#444]"
                     >
                       {topic}
                     </div>
@@ -280,7 +280,7 @@ export default function CursoTeologiaPage() {
                 </div>
               </article>
 
-              <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+              <article className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
                 <p className="ui-card-eyebrow">
                   Situação atual
                 </p>
@@ -348,9 +348,9 @@ export default function CursoTeologiaPage() {
                   <Link
                     key={article.slug}
                     href={`/programacao/curso-de-teologia/artigos/${article.slug}`}
-                    className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-[#fff8ee]"
+                    className="group flex flex-col rounded-2xl border border-black/5 bg-[#f9f9f9] p-4 transition-colors hover:border-[#ffa726]/30 hover:bg-surface-accent"
                   >
-                    <p className="text-[11px] font-bold tracking-widest uppercase text-text-accent">
+                    <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                       {article.date}
                     </p>
                     <p className="mt-2 text-sm font-semibold leading-snug text-[#212121] group-hover:text-text-accent">

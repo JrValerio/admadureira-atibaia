@@ -77,7 +77,7 @@ export default function VersiculoDoDiaPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8">
-            <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
               <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">
                 Tema do dia
               </p>

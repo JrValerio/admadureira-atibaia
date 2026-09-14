@@ -13,7 +13,7 @@ export const metadata = buildPageMetadata({
 
 export default function VideosPage() {
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <HeroPage
         variant="full"
         label="Vídeo e transmissão"
@@ -22,7 +22,7 @@ export default function VideosPage() {
         image={igrejaHeroMedia.videos}
         imageAlt="Púlpito da AD Madureira Atibaia preparado para transmissão"
       />
-      <section className="border-b border-black/5 bg-white/90">
+      <section className="border-b border-black/5 bg-surface-base/90">
         <div className="ui-page-container py-5 md:py-6">
           <div className="ui-panel ui-panel-pad-sm">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -55,7 +55,7 @@ export default function VideosPage() {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Ao vivo e recentes
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -68,7 +68,7 @@ export default function VideosPage() {
               </article>
 
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Mensagens
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -81,7 +81,7 @@ export default function VideosPage() {
               </article>
 
               <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                <p className="text-[#ef5350] text-[11px] font-bold tracking-widest uppercase mb-2">
+                <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-2">
                   Programação
                 </p>
                 <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">

@@ -12,9 +12,9 @@ export default function DailyReminder() {
   }
 
   return (
-    <section className="bg-[#f5f5f5] py-8">
+    <section className="bg-surface-soft py-8">
       <div className="ui-page-container">
-        <div className="rounded-3xl border border-[#ffa726]/15 bg-[#fff8ee] p-6 md:p-8 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+        <div className="rounded-3xl border border-[#ffa726]/15 bg-surface-accent p-6 md:p-8 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
           <p className="ui-card-eyebrow mb-3">
             {greeting}
           </p>

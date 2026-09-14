@@ -195,20 +195,20 @@ export function EbdPrintPage({
                 <p className="font-script text-[1.42rem] leading-none text-[#212121]">
                   {EBD_PRINT_BRANDING.scriptName}
                 </p>
-                <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.22em] text-text-accent">
+                <p className="mt-1 text-[8.5px] font-semibold uppercase tracking-[0.12em] text-text-accent">
                   {EBD_PRINT_BRANDING.subtitle}
                 </p>
               </div>
             </div>
 
-            <div className="self-start text-[8.5px] font-bold uppercase tracking-[0.22em] text-[#ef5350]">
+            <div className="self-start text-[8.5px] font-bold uppercase tracking-[0.12em] text-[#ef5350]">
               {modeLabel}
             </div>
           </div>
 
           <div className="mt-2.5 grid gap-2 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p className="text-[8.5px] font-bold uppercase tracking-[0.24em] text-[#ef5350]">
+              <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-[#ef5350]">
                 {classeInfo.label} · {trimestreLabel}
               </p>
               <h2 className="mt-1 font-acme text-[1.32rem] leading-tight tracking-wide text-[#212121]">
@@ -217,7 +217,7 @@ export function EbdPrintPage({
             </div>
 
             <div className="text-right">
-              <p className="text-[8.5px] font-bold uppercase tracking-[0.2em] text-text-accent">
+              <p className="text-[8.5px] font-bold uppercase tracking-[0.12em] text-text-accent">
                 Data da lição
               </p>
               <p className="mt-0.5 text-[10px] font-semibold text-[#212121]">
@@ -240,7 +240,7 @@ export function EbdPrintPage({
             </div>
 
             <div className="text-right">
-              <p className="font-semibold uppercase tracking-[0.18em] text-text-accent">
+              <p className="font-semibold uppercase tracking-[0.12em] text-text-accent">
                 Material da lição
               </p>
               <p className="mt-1">

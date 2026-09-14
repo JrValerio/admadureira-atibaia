@@ -232,14 +232,14 @@ export function getMetaEstadoProgressaoLicao(
     case "draft":
       return {
         label: "Em preparo",
-        cardClassName: "border-black/5 bg-[#fafafa] shadow-sm",
+        cardClassName: "border-black/5 bg-surface-soft shadow-sm",
         badgeClassName: "border-black/10 bg-white text-[#666]",
         actionLabel: "Conteúdo em preparação",
       };
     case "em-breve":
       return {
         label: "Em breve",
-        cardClassName: "border-[#ffa726]/15 bg-[#fffaf3] shadow-sm",
+        cardClassName: "border-[#ffa726]/15 bg-surface-soft shadow-sm",
         badgeClassName: "border-[#ffa726]/25 bg-white text-text-accent",
         actionLabel: "Disponível em breve",
       };
@@ -247,7 +247,7 @@ export function getMetaEstadoProgressaoLicao(
       return {
         label: "Liberada",
         cardClassName:
-          "border-[#ffa726]/35 bg-[#fff8ee] shadow-[0_12px_30px_rgba(0,0,0,0.06)]",
+          "border-[#ffa726]/35 bg-surface-accent shadow-[0_12px_30px_rgba(0,0,0,0.06)]",
         badgeClassName: "border-[#ffa726]/30 bg-white text-text-accent",
         actionLabel: "Abrir lição →",
       };
@@ -256,7 +256,7 @@ export function getMetaEstadoProgressaoLicao(
       return {
         label: "Concluída",
         cardClassName: "border-black/5 bg-white/85 shadow-sm",
-        badgeClassName: "border-black/10 bg-[#f5f5f5] text-[#666]",
+        badgeClassName: "border-black/10 bg-surface-soft text-[#666]",
         actionLabel: "Abrir lição →",
       };
   }

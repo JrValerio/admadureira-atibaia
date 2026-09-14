@@ -122,7 +122,7 @@ export default async function EventoPage({ params }: PageProps) {
   };
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <section className="py-8 md:py-16">
         <div className="ui-page-container ui-page-container--narrow">
           <script
@@ -177,13 +177,13 @@ export default async function EventoPage({ params }: PageProps) {
               </h1>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Data
                   </p>
                   <p className="text-[#212121] text-sm">{evento.data}</p>
                 </div>
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Horário
                   </p>
@@ -191,7 +191,7 @@ export default async function EventoPage({ params }: PageProps) {
                     {evento.horario ?? "A confirmar"}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Local
                   </p>
@@ -219,7 +219,7 @@ export default async function EventoPage({ params }: PageProps) {
                 </div>
 
                 {conviteParagrafos.length > 0 && (
-                  <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5">
+                  <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-5">
                     <p className="ui-card-eyebrow mb-2">
                       Você é bem-vindo
                     </p>
@@ -277,7 +277,7 @@ export default async function EventoPage({ params }: PageProps) {
                             <Link
                               key={`${item.referencia}-${item.href}`}
                               href={item.href}
-                              className="inline-flex rounded-full border border-[#ffa726]/25 bg-[#fff8ee] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
+                              className="inline-flex rounded-full border border-[#ffa726]/25 bg-surface-accent px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-text-accent transition-colors hover:border-[#ffa726]/40 hover:text-[#6d4511]"
                             >
                               {item.referencia}
                             </Link>
@@ -287,7 +287,7 @@ export default async function EventoPage({ params }: PageProps) {
                     )}
 
                     {recursosRelacionados.length > 0 && (
-                      <div className="rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] p-5">
+                      <div className="rounded-2xl border border-[#ffa726]/20 bg-surface-accent p-5">
                         <p className="ui-card-eyebrow mb-2">
                           Continue navegando
                         </p>

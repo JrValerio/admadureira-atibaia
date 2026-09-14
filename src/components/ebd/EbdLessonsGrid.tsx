@@ -63,7 +63,7 @@ export default function EbdLessonsGrid({
                 <p className="text-sm text-[#666]">{formatEbdDate(licao.data)}</p>
               </div>
               <span
-                className={`inline-flex rounded-full border px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase ${status.badgeClassName}`}
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-bold tracking-[0.12em] uppercase ${status.badgeClassName}`}
               >
                 {status.label}
               </span>

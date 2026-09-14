@@ -59,7 +59,7 @@ function Breadcrumb({ nome }: { nome: string }) {
 
 function InfoCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+    <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
       <p className="ui-card-eyebrow mb-1">
         {label}
       </p>
@@ -138,7 +138,7 @@ export default async function PastorPage({ params }: PageProps) {
   };
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <section className="py-8 md:py-16">
         <div className="ui-page-container">
           <script
@@ -228,7 +228,7 @@ export default async function PastorPage({ params }: PageProps) {
               </div>
 
               <div className="space-y-6">
-                <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                   <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                     Ministério
                   </h2>
@@ -243,7 +243,7 @@ export default async function PastorPage({ params }: PageProps) {
                 </div>
 
                 {pastor.formacao && (
-                  <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                  <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                     <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                       Formação e Atuação
                     </h2>

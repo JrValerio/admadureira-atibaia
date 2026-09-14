@@ -61,14 +61,14 @@ export default async function HistoriasDeFe() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="rounded-none"
               >
-                <div className="absolute left-4 bottom-4 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-[11px] font-semibold tracking-widest uppercase">
+                <div className="absolute left-4 bottom-4 rounded-full bg-white/12 px-3 py-2 backdrop-blur-sm text-white text-xs font-semibold tracking-widest uppercase">
                   {formatDate(testemunho.data)}
                 </div>
               </CardMedia>
 
               <div className="p-4 md:p-8">
                 {testemunho.youtubeId && (
-                  <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
+                  <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-2">
                     Vídeo testemunho
                   </p>
                 )}

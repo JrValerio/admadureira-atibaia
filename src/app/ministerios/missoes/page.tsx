@@ -84,7 +84,7 @@ export default function MissoesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="bg-[#f5f5f5] min-h-screen">
+      <main className="bg-surface-soft min-h-screen">
         <HeroPage
           variant="full"
           label={missoesData.hero.label}
@@ -95,7 +95,7 @@ export default function MissoesPage() {
           imageClassName="object-[center_34%]"
         />
 
-        <section className="border-b border-black/5 bg-white/90">
+        <section className="border-b border-black/5 bg-surface-base/90">
           <div className="ui-page-container py-5 md:py-6">
             <div className="ui-panel ui-panel-pad-sm">
               <p className="ui-section-eyebrow ui-section-eyebrow--gold">
@@ -140,7 +140,7 @@ export default function MissoesPage() {
                 <h2 className="mt-3 font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
                   O compromisso da igreja com a obra missionária
                 </h2>
-                <blockquote className="mt-5 rounded-2xl border border-[#ffa726]/20 bg-[#fff8ee] px-5 py-4 text-sm leading-relaxed text-[#6b4a12] md:text-base">
+                <blockquote className="mt-5 rounded-2xl border border-[#ffa726]/20 bg-surface-accent px-5 py-4 text-sm leading-relaxed text-[#6b4a12] md:text-base">
                   {missoesData.vision.verse}
                 </blockquote>
                 <div className="mt-5 space-y-4 text-sm leading-7 text-[#555] md:text-base md:leading-8">
@@ -150,7 +150,7 @@ export default function MissoesPage() {
                 </div>
               </article>
 
-              <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+              <article className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
                 <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Como participar
                 </p>
@@ -214,7 +214,7 @@ export default function MissoesPage() {
                 </div>
               </article>
 
-              <article className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
+              <article className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-[0_6px_24px_rgba(0,0,0,0.04)] md:p-8">
                 <p className="text-xs font-bold tracking-widest uppercase text-text-accent">
                   Contribuição missionária
                 </p>

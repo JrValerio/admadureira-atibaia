@@ -45,7 +45,7 @@ export default function CopyPixButton({
       <button
         type="button"
         onClick={handleCopy}
-        className="inline-flex items-center justify-center gap-2 rounded-full border border-[#ef5350] px-4 py-2 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#ef5350] transition-colors hover:bg-[#ef5350]/5"
+        className="inline-flex items-center justify-center gap-2 rounded-full border border-[#ef5350] px-4 py-2 text-xs font-semibold tracking-[0.12em] uppercase text-[#ef5350] transition-colors hover:bg-[#ef5350]/5"
       >
         <svg
           aria-hidden="true"

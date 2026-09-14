@@ -46,7 +46,7 @@ export default async function TestemunhosPage() {
   ];
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <HeroPage
         variant="full"
         label="Histórias de transformação"
@@ -115,7 +115,7 @@ export default async function TestemunhosPage() {
                     {formatDate(testemunho.data)}
                   </p>
                   {testemunho.youtubeId && (
-                    <p className="text-[#ef5350] text-[11px] font-semibold tracking-widest uppercase mb-2">
+                    <p className="text-[#ef5350] text-xs font-semibold tracking-widest uppercase mb-2">
                       Vídeo testemunho
                     </p>
                   )}

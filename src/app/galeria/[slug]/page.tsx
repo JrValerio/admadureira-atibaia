@@ -116,7 +116,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
       />
 
-      <main className="min-h-screen bg-[#f5f5f5]">
+      <main className="min-h-screen bg-surface-soft">
         <HeroPage
           variant="full"
           label="Galeria da igreja"
@@ -130,7 +130,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
           imageAlt={album.coverImage.alt}
         />
 
-        <section className="border-b border-black/5 bg-white/90">
+        <section className="border-b border-black/5 bg-surface-base/90">
           <div className="ui-page-container py-5 md:py-6">
             <nav
               aria-label="Breadcrumb"
@@ -178,7 +178,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Categoria
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -191,7 +191,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                 </article>
 
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Data
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -204,7 +204,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
                 </article>
 
                 <article className="ui-panel-accent ui-panel-pad-sm h-full">
-                  <p className="mb-2 text-[11px] font-bold tracking-widest text-[#ef5350] uppercase">
+                  <p className="mb-2 text-xs font-bold tracking-widest text-[#ef5350] uppercase">
                     Fotos
                   </p>
                   <h3 className="font-acme text-lg tracking-wide text-[#212121] md:text-xl">
@@ -223,7 +223,7 @@ export default async function GaleriaAlbumPage({ params }: Props) {
         <section>
           <div className="ui-page-container py-10 md:py-14">
             <div className="mb-7 max-w-3xl md:mb-10">
-              <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-[#ef5350] uppercase">
+              <p className="mb-3 text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
                 Fotografias
               </p>
               <h2 className="font-acme text-2xl tracking-wide text-[#212121] md:text-4xl">
@@ -238,8 +238,8 @@ export default async function GaleriaAlbumPage({ params }: Props) {
             {album.images.length > 0 ? (
               <GalleryGrid albumTitle={album.title} images={album.images} />
             ) : (
-              <div className="rounded-[1.9rem] border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
-                <p className="mb-3 text-[11px] font-bold tracking-[0.18em] text-text-accent uppercase">
+              <div className="rounded-3xl border border-black/6 bg-white p-6 shadow-[0_18px_40px_rgba(0,0,0,0.05)] md:p-8">
+                <p className="mb-3 text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
                   Em atualização
                 </p>
                 <h3 className="font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">

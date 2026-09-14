@@ -124,7 +124,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
     .filter(Boolean);
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <section className="py-8 md:py-16">
         <div className="ui-page-container ui-page-container--narrow">
           <script
@@ -165,7 +165,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Publicado em
                   </p>
@@ -173,7 +173,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
                     {formatDate(testemunho.data)}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Participação
                   </p>
@@ -209,7 +209,7 @@ export default async function TestemunhoPage({ params }: PageProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 mt-6">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 mt-6">
                 <p className="ui-card-eyebrow mb-3">
                   Comunidade e fé
                 </p>

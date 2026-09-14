@@ -84,7 +84,7 @@ function FooterSectionTitle({
 }) {
   return (
     <h4
-      className={`font-acme text-sm tracking-[0.22em] text-white uppercase ${className}`.trim()}
+      className={`font-acme text-sm tracking-[0.12em] text-white uppercase ${className}`.trim()}
     >
       {children}
     </h4>
@@ -155,7 +155,7 @@ export default function Footer() {
               <p className="text-base font-semibold leading-snug text-white">
                 {CHURCH_OFFICIAL_NAME}
               </p>
-              <p className="font-acme text-sm tracking-[0.22em] text-text-accent-on-dark uppercase">
+              <p className="font-acme text-sm tracking-[0.12em] text-text-accent-on-dark uppercase">
                 {CHURCH_FIELD_NAME}
               </p>
             </div>
@@ -167,7 +167,7 @@ export default function Footer() {
 
           <blockquote className="max-w-sm border-l border-[#ffa726]/40 pl-4 text-left text-sm leading-relaxed text-white/82">
             <p>&quot;{versiculoFooter.texto}&quot;</p>
-            <footer className="mt-2 text-[11px] tracking-[0.16em] uppercase text-white/45">
+            <footer className="mt-2 text-xs tracking-[0.12em] uppercase text-white/45">
               {versiculoFooter.referencia}
             </footer>
           </blockquote>

@@ -126,7 +126,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
             <article className="space-y-6">
               <div className="rounded-3xl bg-white border border-black/5 p-6 md:p-8 shadow-sm">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                  <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                  <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                     <p className="ui-card-eyebrow mb-1">
                       Publicado em
                     </p>
@@ -134,7 +134,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                       {formatDevotionalDate(devotionalDisplayDate)}
                     </p>
                   </div>
-                  <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                  <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                     <p className="ui-card-eyebrow mb-1">
                       Tempo de leitura
                     </p>
@@ -142,7 +142,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 mb-8">
+                <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 mb-8">
                   <p className="ui-card-eyebrow mb-3">
                     Versículo-base
                   </p>
@@ -175,7 +175,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                 </ul>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
                 <p className="ui-card-eyebrow mb-4">
                   Oração
                 </p>
@@ -210,7 +210,7 @@ export default async function DevotionalDetailPage({ params }: PageProps) {
                     <Link
                       key={item.slug}
                       href={`/espiritualidade/devocional/${item.slug}`}
-                      className="block rounded-2xl border border-black/5 px-4 py-4 transition-colors hover:border-[#ffa726]/25 hover:bg-[#fff8ee]"
+                      className="block rounded-2xl border border-black/5 px-4 py-4 transition-colors hover:border-[#ffa726]/25 hover:bg-surface-accent"
                     >
                       <p className="font-semibold text-[#212121] mb-2">
                         {item.titulo}

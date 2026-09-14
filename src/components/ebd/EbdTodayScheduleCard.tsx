@@ -51,7 +51,7 @@ export default function EbdTodayScheduleCard({
       <span
         aria-hidden={!isToday}
         className={joinClasses(
-          "absolute top-3 right-3 rounded-full px-2 py-1 text-[10px] font-bold tracking-widest uppercase transition-opacity",
+          "absolute top-3 right-3 rounded-full px-2 py-1 text-xs font-bold tracking-widest uppercase transition-opacity",
           isToday
             ? "bg-[#ef5350] text-white opacity-100"
             : "pointer-events-none bg-transparent text-transparent opacity-0"

@@ -69,7 +69,7 @@ export default function HistoriaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="bg-[#f5f5f5] min-h-screen">
+      <main className="bg-surface-soft min-h-screen">
         <HeroPage
           variant="full"
           label="Campo de Atibaia"
@@ -123,7 +123,7 @@ export default function HistoriaPage() {
                 </div>
               </div>
 
-              <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
+              <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6 md:p-8 shadow-sm">
                 <p className="ui-card-eyebrow mb-3">
                   Marcos institucionais
                 </p>
@@ -156,7 +156,7 @@ export default function HistoriaPage() {
               </div>
             </div>
 
-            <div className="rounded-4xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
+            <div className="rounded-3xl bg-white border border-black/5 shadow-[0_6px_24px_rgba(0,0,0,0.04)] p-6 md:p-10">
               <div className="text-center max-w-3xl mx-auto mb-12">
                 <p className="text-text-accent text-sm font-semibold tracking-widest uppercase mb-2">
                   Da origem ao presente
@@ -282,7 +282,7 @@ export default function HistoriaPage() {
                     ministeriais que fortalecem a vida cristã da comunidade.
                   </p>
                   {congregacaoSede ? (
-                    <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-5 mb-6">
+                    <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-5 mb-6">
                       <p className="ui-card-eyebrow mb-2">
                         Templo sede
                       </p>
