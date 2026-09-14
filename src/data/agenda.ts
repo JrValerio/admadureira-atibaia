@@ -168,17 +168,16 @@ export const programacaoSemanal: ItemSemanal[] = [
       "1 Tessalonicenses 5:18"
     ),
     campanha: {
-      titulo: "Campanha Mulheres em Ação",
+      titulo: "Campanha Apocalipse 21:5",
       versiculo: {
-        texto: "Eu e minha casa serviremos ao Senhor.",
-        referencia: "Josué 24:15",
+        texto: "Eis que faço novas todas as coisas.",
+        referencia: "Apocalipse 21:5",
       },
       datas: [
-        { data: "23/04", preletora: "Pastora Anna Alzira Felix" },
-        { data: "30/04", preletora: "Diaconisa Andreia Spaca" },
-        { data: "07/05", preletora: "Missionária Eunice Motta" },
+        { data: "17/09", preletora: "Culto com os jovens do campo" },
+        { data: "24/09", preletora: "Culto com os varões do campo" },
+        { data: "01/10", preletora: "Culto com as irmãs do campo" },
       ],
-      cantoras: ["Elizama", "Jaine", "Edna", "Valéria e Filhas", "Erlândia"],
       local: "Igreja Sede — Campo de Atibaia",
       horario: "19h30",
     },
