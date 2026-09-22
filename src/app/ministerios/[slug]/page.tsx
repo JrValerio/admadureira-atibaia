@@ -78,7 +78,7 @@ export default async function MinisterioPage({ params }: PageProps) {
   };
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <section className="py-8 md:py-16">
         <div className="ui-page-container">
           <script
@@ -126,7 +126,7 @@ export default async function MinisterioPage({ params }: PageProps) {
 
                 <div className="space-y-6">
                   {ministerio.atividades && (
-                    <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                    <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                       <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                         Atividades
                       </h2>
@@ -142,7 +142,7 @@ export default async function MinisterioPage({ params }: PageProps) {
                   )}
 
                   {ministerio.lideranca && (
-                    <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                    <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                       <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                         Liderança
                       </h2>
@@ -160,7 +160,7 @@ export default async function MinisterioPage({ params }: PageProps) {
               </div>
 
               {ministerio.destaque ? (
-                <div className="mt-8 rounded-3xl border border-[#ffa726]/25 bg-[#fff8ee] p-6 md:p-8">
+                <div className="mt-8 rounded-3xl border border-[#ffa726]/25 bg-surface-accent p-6 md:p-8">
                   <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
                     <div>
                       <p className="text-[#ef5350] text-xs font-bold tracking-widest uppercase mb-3">

@@ -67,7 +67,7 @@ export default function ProgramacaoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="bg-[#f5f5f5] min-h-screen">
+      <main className="bg-surface-soft min-h-screen">
         <HeroPage
           variant="full"
           label="Vida da Igreja"
@@ -76,7 +76,7 @@ export default function ProgramacaoPage() {
           image={igrejaHeroMedia.programacao}
           imageAlt="Culto da AD Madureira Atibaia"
         />
-        <section className="border-b border-black/5 bg-white/90">
+        <section className="border-b border-black/5 bg-surface-base/90">
           <div className="ui-page-container py-5 md:py-6">
             <div className="ui-panel ui-panel-pad-sm">
               <p className="ui-section-eyebrow ui-section-eyebrow--gold">

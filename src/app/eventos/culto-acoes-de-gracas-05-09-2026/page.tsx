@@ -48,7 +48,7 @@ function isEventEnded(now = new Date()) {
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+      <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -108,7 +108,7 @@ function SocialProfileLink({
       className={`group flex min-h-12 w-full min-w-0 items-center gap-3 rounded-2xl border px-3 py-2.5 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${
         dark
           ? "border-white/40 bg-white/[0.06] text-white hover:border-[#ffa726] hover:bg-[#ffa726] hover:text-[#111] focus-visible:ring-[#ffa726] focus-visible:ring-offset-[#160e08]"
-          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-[#fff8ee] focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
+          : "border-[#6f6f6f] bg-white text-[#212121] hover:border-[#8b5b18] hover:bg-surface-accent focus-visible:ring-[#8b5b18] focus-visible:ring-offset-white"
       }`}
     >
       <span
@@ -120,7 +120,7 @@ function SocialProfileLink({
         <SocialIcon plataforma={plataforma} />
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-[0.65rem] font-bold tracking-[0.16em] uppercase opacity-70">
+        <span className="block text-[0.65rem] font-bold tracking-[0.12em] uppercase opacity-70">
           {plataforma}
         </span>
         <span className="mt-0.5 block break-all text-xs leading-snug font-semibold">
@@ -204,7 +204,7 @@ export default function CultoAcoesDeGracas05092026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="min-h-screen bg-surface-soft">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -214,7 +214,7 @@ export default function CultoAcoesDeGracas05092026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-[#f5f5f5]/95 backdrop-blur-sm md:top-[4.85rem]">
+      <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-surface-soft/95 backdrop-blur-sm md:top-[4.85rem]">
         <div className="ui-page-container ui-page-container--narrow flex items-center gap-2 overflow-x-auto py-3 text-sm [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <a
             href="#sobre"
@@ -272,7 +272,7 @@ export default function CultoAcoesDeGracas05092026Page() {
 
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-start">
             <div>
-              <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
+              <p className="mb-2 text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
                 {culto.diaSemana}, {culto.data} · {culto.horario}
               </p>
               <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
@@ -344,7 +344,7 @@ export default function CultoAcoesDeGracas05092026Page() {
 
             <div className="flex flex-col gap-4">
               {eventEnded ? (
-                <div className="relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
+                <div className="relative overflow-hidden rounded-3xl border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]">
                   <div className="relative aspect-[1200/675] w-full">
                     <Image
                       src={culto.hero}
@@ -363,10 +363,10 @@ export default function CultoAcoesDeGracas05092026Page() {
                   href={culto.transmissaoAoVivoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
+                  className="group relative overflow-hidden rounded-3xl border border-black/8 bg-[#140a06] shadow-[0_18px_44px_rgba(0,0,0,0.16)]"
                   aria-label={`Assistir à transmissão ao vivo do ${culto.titulo} no YouTube`}
                 >
-                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-[10px] font-bold tracking-[0.14em] text-white uppercase">
+                  <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-[#ef5350] px-3 py-1 text-xs font-bold tracking-[0.12em] text-white uppercase">
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     Ao vivo
                   </span>
@@ -393,7 +393,7 @@ export default function CultoAcoesDeGracas05092026Page() {
               )}
 
               {eventEnded ? (
-                <span className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+                <span className="inline-flex items-center justify-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.12em] text-[#555] uppercase">
                   Evento encerrado
                 </span>
               ) : (
@@ -438,7 +438,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             Base Bíblica
           </p>
           <h2 className="ui-section-title">Palavra de Deus</h2>
-          <div className="mt-6 rounded-xl border border-[#ffa726]/30 bg-[#ffa726]/5 p-6">
+          <div className="mt-6 rounded-2xl border border-[#ffa726]/30 bg-[#ffa726]/5 p-6">
             <p className="text-lg leading-relaxed text-[#212121]">
               {culto.baseBiblica}
             </p>
@@ -462,7 +462,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             </p>
           </div>
 
-          <article className="overflow-hidden rounded-[1.5rem] border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
+          <article className="overflow-hidden rounded-3xl border border-[#ffa726]/30 bg-[#160e08] shadow-[0_18px_50px_rgba(22,14,8,0.16)] md:grid md:grid-cols-[minmax(240px,320px)_minmax(0,1fr)]">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#111] md:aspect-auto md:min-h-[400px]">
               <Image
                 src={culto.preletor.foto}
@@ -475,7 +475,7 @@ export default function CultoAcoesDeGracas05092026Page() {
             </div>
 
             <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-10">
-              <p className="text-xs font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+              <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
                 {culto.preletor.papel}
               </p>
               <h3 className="mt-2 font-acme text-3xl tracking-wide text-white lg:text-4xl">
@@ -499,8 +499,8 @@ export default function CultoAcoesDeGracas05092026Page() {
             </div>
           </article>
 
-          <div className="mt-8 rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6">
-            <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+          <div className="mt-8 rounded-3xl border border-black/5 bg-[#f9f9f9] p-6">
+            <p className="text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
               Presidência
             </p>
             <p className="mt-2 text-sm leading-relaxed text-[#555]">
@@ -534,7 +534,7 @@ export default function CultoAcoesDeGracas05092026Page() {
           />
 
           <div className="mt-10">
-            <p className="mb-4 text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
+            <p className="mb-4 text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
               Vídeos do aniversário
             </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -570,7 +570,7 @@ export default function CultoAcoesDeGracas05092026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
+            <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
               {culto.titulo} — {culto.data}
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

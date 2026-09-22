@@ -24,7 +24,7 @@ export default function ContinueReading({
 
   return (
     <div className="mb-5 rounded-2xl border border-white/60 bg-white/70 p-4">
-      <p className="text-[#ef5350] text-[11px] font-bold tracking-[0.16em] uppercase mb-2">
+      <p className="text-[#ef5350] text-xs font-bold tracking-[0.12em] uppercase mb-2">
         Continue de onde parou
       </p>
       <p className="text-sm text-[#555] leading-relaxed mb-4">

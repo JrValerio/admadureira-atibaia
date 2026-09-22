@@ -86,7 +86,7 @@ export default function GalleryLightbox({
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-3 pb-4 text-white">
             <div>
-              <p className="text-[11px] font-bold tracking-[0.18em] text-text-accent-on-dark uppercase">
+              <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
                 Galeria
               </p>
               <h2 className="font-acme text-xl tracking-wide md:text-2xl">
@@ -95,7 +95,7 @@ export default function GalleryLightbox({
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/78">
+              <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-semibold tracking-[0.12em] uppercase text-white/78">
                 {currentLabel}
               </span>
               <button
@@ -109,8 +109,8 @@ export default function GalleryLightbox({
             </div>
           </div>
 
-          <figure className="rounded-[1.75rem] border border-white/10 bg-[#050505] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.28)] md:p-4">
-            <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-[1.2rem] bg-black">
+          <figure className="rounded-3xl border border-white/10 bg-[#050505] p-3 shadow-[0_20px_60px_rgba(0,0,0,0.28)] md:p-4">
+            <div className="relative mx-auto aspect-[16/10] w-full overflow-hidden rounded-2xl bg-black">
               <Image
                 src={image.src}
                 alt={image.alt}

@@ -7,8 +7,8 @@ export default function VersiculoDoDia() {
   const verse = getDailyVerse();
 
   return (
-    <Section className="bg-[#f5f5f5]">
-      <Card className="overflow-hidden border border-[#ffa726]/15 bg-[#fff8ee] p-0 shadow-[0_12px_36px_rgba(0,0,0,0.05)]">
+    <Section className="bg-surface-soft">
+      <Card className="overflow-hidden border border-[#ffa726]/15 bg-surface-accent p-0 shadow-[0_12px_36px_rgba(0,0,0,0.05)]">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="p-5 md:p-8 lg:p-10">
             <p className="ui-card-eyebrow mb-3">
@@ -20,7 +20,7 @@ export default function VersiculoDoDia() {
             <p className="text-lg md:text-xl leading-relaxed text-[#3f3f3f] mb-5">
               &quot;{verse.texto}&quot;
             </p>
-            <p className="text-sm font-semibold tracking-[0.16em] uppercase text-text-accent mb-8">
+            <p className="text-sm font-semibold tracking-[0.12em] uppercase text-text-accent mb-8">
               {verse.referencia}
             </p>
             <div className="flex flex-wrap gap-3">

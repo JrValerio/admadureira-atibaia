@@ -127,7 +127,7 @@ export default function Sobre({ showHeader = true }: SobreProps) {
             {valores.map((item) => (
               <div
                 key={item.titulo}
-                className="border border-white/15 rounded-xl p-4 hover:border-[#ffa726] transition-colors"
+                className="border border-white/15 rounded-2xl p-4 hover:border-[#ffa726] transition-colors"
               >
                 <h3 className="font-acme text-text-accent-on-dark text-xs tracking-widest uppercase mb-1">
                   {item.titulo}

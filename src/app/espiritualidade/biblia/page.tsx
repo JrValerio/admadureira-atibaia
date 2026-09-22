@@ -140,7 +140,7 @@ export default async function BibliaPage({ searchParams }: PageProps) {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm md:p-8">
+            <div className="rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm md:p-8">
               <p className="mb-3 text-xs font-bold tracking-widest uppercase text-[#ef5350]">
                 Acesso rápido
               </p>

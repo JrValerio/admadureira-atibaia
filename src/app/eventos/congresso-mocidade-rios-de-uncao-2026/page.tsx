@@ -16,7 +16,7 @@ export const metadata: Metadata = buildPageMetadata({
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+      <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
         {label}
       </p>
       <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
@@ -75,7 +75,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className="min-h-screen bg-surface-soft">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -87,7 +87,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
 
       <section className="bg-[#160e08] text-white">
         <div className="ui-page-container grid gap-8 py-8 md:py-12 lg:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)] lg:items-center">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[28rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-black shadow-[0_26px_70px_rgba(0,0,0,0.35)] lg:max-w-none">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[28rem] overflow-hidden rounded-3xl border border-white/10 bg-black shadow-[0_26px_70px_rgba(0,0,0,0.35)] lg:max-w-none">
             <Image
               src={congresso.imagem}
               alt="Arte oficial do Congresso da Mocidade Rios de Unção 2026"
@@ -115,7 +115,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               <span className="text-white/86">Congresso da Mocidade</span>
             </nav>
 
-            <p className="mb-3 text-xs font-bold tracking-[0.28em] text-text-accent-on-dark uppercase">
+            <p className="mb-3 text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
               {congresso.data} · {congresso.horario}
             </p>
             <h1 className="font-acme text-3xl leading-tight tracking-wide text-white md:text-5xl lg:text-6xl">
@@ -165,8 +165,8 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               </div>
             </div>
 
-            <aside className="self-start rounded-[1.5rem] border border-[#ffa726]/20 bg-[#fff8ee] p-6 shadow-sm">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+            <aside className="self-start rounded-3xl border border-[#ffa726]/20 bg-surface-accent p-6 shadow-sm">
+              <p className="text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
                 Participe conosco
               </p>
               <h3 className="mt-3 font-acme text-2xl tracking-wide text-[#212121]">
@@ -206,9 +206,9 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
             {congresso.programacao.map((noite) => (
               <article
                 key={noite.data}
-                className="rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
+                className="rounded-3xl border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
               >
-                <p className="text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
+                <p className="text-xs font-bold tracking-[0.12em] text-text-accent uppercase">
                   {noite.noite} · {noite.diaSemana}
                 </p>
                 <h3 className="mt-2 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
@@ -235,7 +235,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
                 </dl>
 
                 <div className="mt-6 border-t border-black/5 pt-5">
-                  <p className="text-xs font-bold tracking-[0.2em] text-[#ef5350] uppercase">
+                  <p className="text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
                     {noite.convidadosLabel}
                   </p>
                   <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#555]">
@@ -268,8 +268,8 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
               </div>
             </div>
 
-            <div className="rounded-[1.5rem] border border-black/5 bg-white p-6 shadow-sm">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+            <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm">
+              <p className="text-xs font-bold tracking-[0.12em] text-[#ef5350] uppercase">
                 Liderança e organização
               </p>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -292,7 +292,7 @@ export default function CongressoMocidadeRiosDeUncao2026Page() {
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
+            <p className="text-xs font-bold tracking-[0.12em] text-text-accent-on-dark uppercase">
               Congresso da Mocidade — Rios de Unção 2026
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">

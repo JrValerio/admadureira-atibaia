@@ -120,7 +120,7 @@ export default async function MensagemPage({ params }: PageProps) {
   const schema = buildVideoJsonLd(mensagem);
 
   return (
-    <main className="bg-[#f5f5f5] min-h-screen">
+    <main className="bg-surface-soft min-h-screen">
       <section className="py-8 md:py-16">
         <div className="ui-page-container">
           <script
@@ -159,7 +159,7 @@ export default async function MensagemPage({ params }: PageProps) {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Data
                   </p>
@@ -167,7 +167,7 @@ export default async function MensagemPage({ params }: PageProps) {
                     {formatMensagemDate(mensagem.data)}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Pregador
                   </p>
@@ -175,7 +175,7 @@ export default async function MensagemPage({ params }: PageProps) {
                     {mensagem.pregador ?? "AD Madureira Atibaia"}
                   </p>
                 </div>
-                <div className="rounded-2xl bg-[#fff8ee] border border-[#ffa726]/20 p-4">
+                <div className="rounded-2xl bg-surface-accent border border-[#ffa726]/20 p-4">
                   <p className="ui-card-eyebrow mb-1">
                     Plataforma
                   </p>
@@ -201,7 +201,7 @@ export default async function MensagemPage({ params }: PageProps) {
 
                 <div className="space-y-6">
                   {mensagem.versiculo && (
-                    <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
+                    <div className="rounded-3xl bg-surface-accent border border-[#ffa726]/20 p-6">
                       <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-3">
                         Versículo-base
                       </h2>

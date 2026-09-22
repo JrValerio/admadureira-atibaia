@@ -46,9 +46,9 @@ function getMarkerToneClassName(tone: EbdSupportMarkerTone) {
 function getPanelToneClassName(tone: EbdSupportPanelTone) {
   switch (tone) {
     case "accent":
-      return "border border-[#ffa726]/20 bg-[#fff8ee]";
+      return "border border-[#ffa726]/20 bg-surface-accent";
     case "soft":
-      return "border border-black/5 bg-[#fafafa]";
+      return "border border-black/5 bg-surface-soft";
     case "dark":
       return "bg-[#212121] text-white";
     case "white":
@@ -73,7 +73,7 @@ export function EbdSupportSection({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-black/5 bg-[#fafafa] p-5 md:p-6">
+    <section className="rounded-3xl border border-black/5 bg-surface-soft p-5 md:p-6">
       <p className="mb-3 text-xs font-bold tracking-widest uppercase text-text-accent">
         {eyebrow}
       </p>

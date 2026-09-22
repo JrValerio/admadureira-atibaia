@@ -70,7 +70,7 @@ export default function MinisteriosPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
       />
 
-      <main className="bg-[#f5f5f5] min-h-screen">
+      <main className="bg-surface-soft min-h-screen">
         <HeroPage
           variant="full"
           label="Departamentos"
