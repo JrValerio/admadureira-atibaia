@@ -15,6 +15,22 @@ export type ParsedBibleReference = {
 type BookAlias = {
   slug: string;
   name: string;
+  chapters: number;
+};
+
+// Abreviações usadas nas revistas; não são regras de correção de OCR.
+const BOOK_ABBREVIATIONS: Record<string, string> = {
+  GEN: "Gn", EXO: "Êx", LEV: "Lv", NUM: "Nm", DEU: "Dt", JOS: "Js",
+  JDG: "Jz", RUT: "Rt", "1SA": "1 Sm", "2SA": "2 Sm", "1KI": "1 Rs", "2KI": "2 Rs",
+  "1CH": "1 Cr", "2CH": "2 Cr", EZR: "Ed", NEH: "Ne", EST: "Et", PSA: "Sl",
+  PRO: "Pv", ECC: "Ec", SNG: "Ct", ISA: "Is", JER: "Jr", LAM: "Lm", EZK: "Ez",
+  DAN: "Dn", HOS: "Os", JOL: "Jl", AMO: "Am", OBA: "Ob", JON: "Jn", MIC: "Mq",
+  NAM: "Na", HAB: "Hc", ZEP: "Sf", HAG: "Ag", ZEC: "Zc", MAL: "Ml", MAT: "Mt",
+  MRK: "Mc", LUK: "Lc", JHN: "Jo", ACT: "At", ROM: "Rm", "1CO": "1 Co", "2CO": "2 Co",
+  GAL: "Gl", EPH: "Ef", PHP: "Fp", COL: "Cl", "1TH": "1 Ts", "2TH": "2 Ts",
+  "1TI": "1 Tm", "2TI": "2 Tm", TIT: "Tt", PHM: "Fm", HEB: "Hb", JAS: "Tg",
+  "1PE": "1 Pe", "2PE": "2 Pe", "1JN": "1 Jo", "2JN": "2 Jo", "3JN": "3 Jo",
+  JUD: "Jd", REV: "Ap",
 };
 
 function stripAccents(value: string) {
@@ -66,13 +82,16 @@ function createBookAliasMap() {
     const alias = {
       slug: book.slug,
       name: book.nome,
+      chapters: book.capitulos,
     };
 
-    register(book.nome, alias);
+    register(book.nome, alias, { allowShort: true });
     register(stripAccents(book.nome), alias);
 
-    if (book.slug === "juizes") {
-      register("Jz", alias, { allowShort: true });
+    const abbreviation = BOOK_ABBREVIATIONS[book.id];
+    if (abbreviation) {
+      register(abbreviation, alias, { allowShort: true });
+      register(stripAccents(abbreviation), alias, { allowShort: true });
     }
 
     const slugAlias = book.slug.replace(/-/g, " ");
@@ -117,17 +136,29 @@ function parseVerseStart(verses?: string) {
 }
 
 function parseVerseEnd(verses?: string) {
-  if (!verses?.includes("-")) {
+  // Um link abre o primeiro trecho. Não converter uma lista descontínua
+  // (1-4,7-9) num intervalo contínuo (1-9).
+  const firstRange = verses?.split(",")[0];
+  if (!firstRange?.includes("-")) {
     return undefined;
   }
 
-  const lastVerse = Number(verses.split("-").at(-1));
+  const lastVerse = Number(firstRange.split("-").at(-1));
 
   return Number.isFinite(lastVerse) ? lastVerse : undefined;
 }
 
 export function normalizeBibleReferenceNotation(text: string) {
   return text.replace(/(?<=\d)\.(?=\d)/g, ":");
+}
+
+function isValidVerseNotation(verses?: string) {
+  if (!verses) return true;
+  if (!/^\d+(?:-\d+)?(?:,\d+(?:-\d+)?)*$/.test(verses)) return false;
+  return verses.split(",").every((part) => {
+    const [start, end = start] = part.split("-").map(Number);
+    return start > 0 && end >= start;
+  });
 }
 
 export function extractBibleReferences(text: string): ParsedBibleReference[] {
@@ -141,10 +172,16 @@ export function extractBibleReferences(text: string): ParsedBibleReference[] {
   for (const [matchIndex, match] of fullMatches.entries()) {
     const [matchedText, rawBook, rawChapter, rawVerses] = match;
     const normalizedBook = normalizeReferenceText(rawBook);
-    const book = bibleBookAliasMap.get(normalizedBook);
+    // Preservar Jó (livro) versus Jo (abreviação de João).
+    const canonicalBook = bibleBooks.find(
+      (item) => item.nome.toLocaleLowerCase("pt-BR") === rawBook.toLocaleLowerCase("pt-BR")
+    );
+    const book = canonicalBook
+      ? { slug: canonicalBook.slug, name: canonicalBook.nome, chapters: canonicalBook.capitulos }
+      : bibleBookAliasMap.get(normalizedBook);
     const chapter = Number(rawChapter);
 
-    if (!book || !Number.isFinite(chapter)) {
+    if (!book || !Number.isFinite(chapter) || chapter < 1 || chapter > book.chapters || !isValidVerseNotation(rawVerses)) {
       continue;
     }
 
@@ -178,7 +215,7 @@ export function extractBibleReferences(text: string): ParsedBibleReference[] {
         shorthandMatch;
       const shorthandChapter = Number(rawShorthandChapter);
 
-      if (!Number.isFinite(shorthandChapter)) {
+      if (!Number.isFinite(shorthandChapter) || shorthandChapter < 1 || shorthandChapter > book.chapters || !isValidVerseNotation(rawShorthandVerses)) {
         continue;
       }
 
