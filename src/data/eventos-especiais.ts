@@ -803,6 +803,21 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
       ano: 2026,
       eventos: [
         criarEvento(local, {
+          slug: "trimestre-ebd-4t-2026",
+          data: "04/10 a 27/12",
+          titulo: "4º Trimestre EBD 2026 — O Deus da Aliança",
+          tipo: "evento-especial",
+          descricao: [
+            "Neste 4º trimestre de 2026, a Escola Bíblica Dominical da AD Madureira Atibaia inicia um novo ciclo de estudos. A classe de adultos estuda \"O Deus da Aliança — Advertências, Promessas e Bênçãos no Livro de Deuteronômio\", com comentários do pastor Osiel Gomes.",
+            "A classe de jovens estuda \"Regozijai-vos no Senhor — Vivendo com Propósito à Luz da Carta aos Filipenses\", com comentários do pastor Reynaldo Odilo. As aulas acontecem todo domingo às 09h, na sede da AD Madureira Atibaia.",
+          ].join("\n\n"),
+          convite:
+            "Participe das aulas da Escola Bíblica Dominical todo domingo às 09h e comece o novo trimestre estudando a Palavra com a sua classe.",
+          destaque: true,
+          imagem: "/programacao/eventos/abertura-do-4t-ebd.png",
+          banner: "/programacao/eventos/abertura-do-4t-ebd.png",
+        }),
+        criarEvento(local, {
           slug: "reuniao-de-ministerio-05-10-2026",
           data: "05/10",
           titulo: "Reunião de Ministério",
