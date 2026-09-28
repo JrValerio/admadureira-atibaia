@@ -353,6 +353,18 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAfter: "2026-10-01",
     },
     {
+      titulo: "Congresso UMADAT 2026",
+      alt: "Arte oficial do Congresso UMADAT 2026 — 23 e 24 de outubro",
+      imagem: "/banners/banner-congresso-umadat-2026.png",
+      href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
+      ariaLabel: "Abrir página do Congresso UMADAT 2026",
+      priority: "high",
+      type: "event",
+      eventDate: "2026-10-23",
+      eventEndDate: "2026-10-24",
+      archivedAfter: "2026-10-24",
+    },
+    {
       titulo: "Culto de Santa Ceia",
       alt: "Banner do Culto de Santa Ceia da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-santa-ceia.png",
