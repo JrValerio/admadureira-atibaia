@@ -257,12 +257,16 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
         criarEvento(local, {
           slug: "confraternizacao-departamento-feminino-28-03-2026",
           data: "28/03",
-          titulo: "Confraternização do Departamento Feminino",
+          titulo: "Culto para Mulheres",
           tipo: "dia-das-mulheres",
           horario: "19h00",
           descricao:
-            "Encontro especial do departamento feminino com louvor, comunhão e palavra voltada à edificação das irmãs.",
+            "Encontro especial do departamento feminino com louvor, comunhão e palavra voltada à edificação das irmãs, com a participação da Pra. Anna Alzira, da Pra. Jak Ferreira e da cantora Valquíria de Oliveira.",
+          baseBiblica: criarBaseBiblica("João 4:13-14"),
           destaque: true,
+          imagem: "/ministerios/confadat/culto-de-mulheres/culto-de-mulheres-2026-feed.png",
+          banner: "/ministerios/confadat/culto-de-mulheres/culto-de-mulheres-2026-youtube.png",
+          hero: "/ministerios/confadat/culto-de-mulheres/culto-de-mulheres-2026-youtube.png",
         }),
         criarEvento(local, {
           slug: "batismo-29-03-2026",
