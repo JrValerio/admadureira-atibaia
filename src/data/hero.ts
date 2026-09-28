@@ -182,7 +182,7 @@ export function getHeroEventos(): HeroEvento[] {
     {
       titulo: "Escola Bíblica Dominical",
       alt: "Banner da Escola Bíblica Dominical da AD Madureira Atibaia",
-      imagem: "/banners/banner-ebd.png",
+      imagem: "/banners/banner-ebd-4t.png",
       href: "/ebd",
       ariaLabel: "Abrir página da Escola Bíblica Dominical",
       priority: "high",
