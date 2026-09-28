@@ -54,7 +54,7 @@ const ministerios: Ministerio[] = [
       "Ações de comunhão, discipulado e oração",
       "Participação em congressos e eventos especiais",
     ],
-    imagem: "/ministerios/confadat/confadat-2025-feed.jpg",
+    imagem: "/ministerios/confadat/confadat-2025-youtube.png",
   },
   {
     slug: "umadat",
@@ -66,13 +66,13 @@ const ministerios: Ministerio[] = [
       "A UMADAT reúne a juventude do Campo de Atibaia em uma caminhada de fé, adoração, serviço cristão e comunhão entre congregações.",
       "O departamento promove encontros, congressos e ações que incentivam os jovens a crescer no conhecimento da Palavra e no compromisso com a obra de Deus.",
     ],
-    lideranca: ["Liderança da juventude do Campo de Atibaia"],
+    lideranca: ["Presidente da UMADAT: Pr. Mathias Nascimento"],
     atividades: [
       "Congressos e encontros de juventude",
       "Comunhão entre jovens das congregações",
       "Atividades de discipulado e serviço cristão",
     ],
-    imagem: "/ministerios/umadat/umadat-2025-feed.jpg",
+    imagem: "/ministerios/umadat/umadat-2026-youtube.png",
   },
   {
     slug: "rios-de-uncao",
@@ -99,7 +99,7 @@ const ministerios: Ministerio[] = [
       "Apoio às programações da igreja",
       "Crescimento bíblico e espiritual dos jovens",
     ],
-    imagem: "/ministerios/rios-de-uncao/rios-de-uncao-2025-feed.webp",
+    imagem: "/ministerios/rios-de-uncao/rios-de-uncao-2026-youtube.png",
   },
   {
     slug: "baluarte-da-fe",
@@ -117,7 +117,7 @@ const ministerios: Ministerio[] = [
       "Momentos de oração e comunhão",
       "Apoio às ações espirituais e sociais da igreja",
     ],
-    imagem: "/ministerios/baluarte-da-fe/baluarte-de-fe.webp",
+    imagem: "/ministerios/baluarte-da-fe/baluarte-da-fe-2026-youtube.png",
   },
   {
     slug: "infantil",
@@ -135,7 +135,7 @@ const ministerios: Ministerio[] = [
       "Participação em atividades da Escola Bíblica Dominical",
       "Ações de acolhimento e formação cristã infantil",
     ],
-    imagem: "/ministerios/infantil/infantil-2026-feed.png",
+    imagem: "/ministerios/infantil/infantil-2026-youtube.png",
   },
 ];
 
