@@ -832,18 +832,32 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
         criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-23-10-2026",
           data: "23/10",
-          titulo: "Congresso Geral UMADAT Jovem",
+          titulo: "Congresso UMADAT 2026",
           tipo: "culto-com-a-mocidade",
-          descricao:
-            "Primeira noite do Congresso Geral UMADAT Jovem, reunindo a juventude em adoração e ministração da Palavra.",
+          horario: "19h30",
+          descricao: [
+            "Primeira noite do Congresso UMADAT 2026, que reúne a juventude das congregações do Campo de Atibaia para dois dias de adoração, comunhão e ministração da Palavra.",
+            "A Palavra será ministrada pelo Pr. Israel Felippe e pelo Pr. Elson de Assis, com louvor de Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro. O congresso é presidido pelo Pr. Mathias Nascimento, presidente da UMADAT, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira, Presidentes do Campo de Atibaia.",
+          ].join("\n\n"),
+          destaque: true,
+          imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
+          banner: "/programacao/eventos/congresso-umadat-2026.png",
+          hero: "/programacao/eventos/congresso-umadat-2026.png",
         }),
         criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-24-10-2026",
           data: "24/10",
-          titulo: "Congresso Geral UMADAT Jovem",
+          titulo: "Congresso UMADAT 2026",
           tipo: "culto-com-a-mocidade",
-          descricao:
-            "Segunda noite do Congresso Geral UMADAT Jovem no templo sede.",
+          horario: "19h00",
+          descricao: [
+            "Segunda noite do Congresso UMADAT 2026 no templo sede, encerrando os dois dias de adoração, comunhão e ministração da Palavra com a juventude do Campo de Atibaia.",
+            "A Palavra será ministrada pelo Pr. Israel Felippe e pelo Pr. Elson de Assis, com louvor de Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro. O congresso é presidido pelo Pr. Mathias Nascimento, presidente da UMADAT, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira, Presidentes do Campo de Atibaia.",
+          ].join("\n\n"),
+          destaque: true,
+          imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
+          banner: "/programacao/eventos/congresso-umadat-2026.png",
+          hero: "/programacao/eventos/congresso-umadat-2026.png",
         }),
       ],
     },
