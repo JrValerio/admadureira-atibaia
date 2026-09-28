@@ -14,6 +14,7 @@ import {
 } from "./jovens-2026-3t";
 import { editoriaisJovensTerceiroTrimestre } from "./jovens-2026-3t/index";
 import type { EditorialJovens3T } from "./jovens-2026-3t-editorial";
+import { jovens2026QuartoTrimestre } from "./2026-4t";
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 
 type LicaoSeed = {
@@ -5151,9 +5152,5 @@ export const jovens2026Trimestres: TrimestreEBD[] = [
   },
   jovens2026SegundoTrimestre,
   jovens2026TerceiroTrimestre,
-  criarTrimestrePlaceholder({
-    slug: "2026-4t",
-    trimestre: 4,
-    imagem: getEbdQuarterCoverPath("jovens", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  jovens2026QuartoTrimestre,
 ];

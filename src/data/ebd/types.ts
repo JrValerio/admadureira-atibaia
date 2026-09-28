@@ -199,6 +199,7 @@ type LicaoEBDBase = {
   numero: number;
   data: string;
   dataLiberacaoPublica?: string;
+  dataEspecial?: string;
   statusEditorial?: StatusLicaoEBD;
   titulo: string;
   resumo: string;
