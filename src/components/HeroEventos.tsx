@@ -388,7 +388,10 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
                     <div className="absolute inset-0 bg-linear-to-br from-[#1a1200] via-[#211800] to-[#0f0a00]" />
                   )}
 
-                  {(evento.subtitulo || evento.ctaLabel) && (
+                  {/* No desktop a faixa 3:1 aparece inteira: o bloco sobre a arte só
+                      entra em slides com CTA. Subtítulo sem CTA é dado para o card
+                      do celular, onde o carrossel corta as laterais da arte. */}
+                  {evento.ctaLabel && (
                     <div className="absolute inset-0 hidden flex-col justify-end bg-[linear-gradient(0deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.28)_58%,transparent_100%)] p-8 md:flex">
                       <div className="max-w-lg">
                         <p className="mb-2 text-xs font-bold uppercase tracking-widest text-text-accent-on-dark">

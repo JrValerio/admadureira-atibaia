@@ -363,7 +363,6 @@ export function getHeroEventos(): HeroEvento[] {
       titulo: "Congresso UMADAT 2026",
       subtitulo:
         "23 e 24 de outubro, na Igreja Sede — sexta às 19h30 e sábado às 19h. Preletores: Pr. Israel Felippe e Pr. Elson de Assis.",
-      ctaLabel: "Ver detalhes do congresso",
       alt: "Arte oficial do Congresso UMADAT 2026 — 23 e 24 de outubro",
       imagem: "/banners/banner-congresso-umadat-2026.png",
       href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
