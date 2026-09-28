@@ -699,7 +699,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/eventos/vigilia.png",
           banner: "/programacao/eventos/vigilia.png",
-          hero: "/programacao/eventos/hero-vigilia.png",
+          hero: "/programacao/eventos/hero-vigilia.jpg",
         }),
       ],
     },
