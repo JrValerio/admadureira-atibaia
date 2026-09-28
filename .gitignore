@@ -49,3 +49,6 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# Extrações locais de material de apoio (textos e PDFs das revistas)
+tmp/
