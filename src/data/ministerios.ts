@@ -54,7 +54,7 @@ const ministerios: Ministerio[] = [
       "Ações de comunhão, discipulado e oração",
       "Participação em congressos e eventos especiais",
     ],
-    imagem: "/ministerios/confadat.jpg",
+    imagem: "/ministerios/confadat/confadat-2025-feed.jpg",
   },
   {
     slug: "umadat",
@@ -72,7 +72,7 @@ const ministerios: Ministerio[] = [
       "Comunhão entre jovens das congregações",
       "Atividades de discipulado e serviço cristão",
     ],
-    imagem: "/ministerios/umadat.jpg",
+    imagem: "/ministerios/umadat/umadat-2025-feed.jpg",
   },
   {
     slug: "rios-de-uncao",
@@ -99,7 +99,7 @@ const ministerios: Ministerio[] = [
       "Apoio às programações da igreja",
       "Crescimento bíblico e espiritual dos jovens",
     ],
-    imagem: "/ministerios/rios-de-uncao.webp",
+    imagem: "/ministerios/rios-de-uncao/rios-de-uncao-2025-feed.webp",
   },
   {
     slug: "baluarte-da-fe",
@@ -117,7 +117,7 @@ const ministerios: Ministerio[] = [
       "Momentos de oração e comunhão",
       "Apoio às ações espirituais e sociais da igreja",
     ],
-    imagem: "/ministerios/baluarte-de-fe.webp",
+    imagem: "/ministerios/baluarte-da-fe/baluarte-de-fe.webp",
   },
   {
     slug: "infantil",
@@ -135,7 +135,7 @@ const ministerios: Ministerio[] = [
       "Participação em atividades da Escola Bíblica Dominical",
       "Ações de acolhimento e formação cristã infantil",
     ],
-    imagem: "/ministerios/infantil.png",
+    imagem: "/ministerios/infantil/infantil-2026-feed.png",
   },
 ];
 
