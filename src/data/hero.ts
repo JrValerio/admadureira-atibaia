@@ -181,6 +181,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Escola Bíblica Dominical",
+      subtitulo:
+        "4º trimestre de 2026 — Tema: O Deus da Aliança. Advertências, promessas e bênçãos no livro de Deuteronômio.",
       alt: "Banner da Escola Bíblica Dominical da AD Madureira Atibaia",
       imagem: "/banners/banner-ebd-4t.png",
       href: "/ebd",
@@ -190,6 +192,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Culto de Ensino",
+      subtitulo:
+        "Toda terça-feira às 19h30.",
       alt: "Banner do Culto de Ensino da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-ensino.png",
       href: "/programacao/culto-de-ensino",
@@ -232,6 +236,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Reunião de Ministério",
+      subtitulo:
+        "Toda primeira segunda-feira do mês, às 19h.",
       alt: "Banner da Reunião de Ministério da AD Madureira Atibaia",
       imagem: "/banners/banner-reuniao-de-ministerio.png",
       href: "/programacao",
@@ -250,6 +256,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Círculo de Oração",
+      subtitulo:
+        "Toda quarta-feira às 15h.",
       alt: "Banner do Círculo de Oração da AD Madureira Atibaia",
       imagem: "/banners/banner-circulo-de-oracao.png",
       href: "/programacao/circulo-de-oracao",
@@ -343,6 +351,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Campanha Apocalipse 21:5",
+      subtitulo:
+        "Quintas às 19h30: 17/09 jovens, 24/09 varões e 01/10 irmãs, com todo o Campo de Atibaia.",
       alt: "Banner da Campanha Apocalipse 21:5 da AD Madureira Atibaia",
       imagem: "/banners/banner-campanha-apocalipse-21-5.png",
       href: "/programacao/quinta-da-vitoria",
@@ -369,6 +379,8 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Culto de Santa Ceia",
+      subtitulo:
+        "Todo segundo sábado do mês, às 19h.",
       alt: "Banner do Culto de Santa Ceia da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-santa-ceia.png",
       href: hrefSantaCeia,
