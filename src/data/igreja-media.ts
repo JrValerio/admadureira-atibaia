@@ -69,7 +69,7 @@ export const igrejaHeroMedia = {
   contato: igrejaMedia.nave[6],
   congregacoes: igrejaMedia.nave[2],
   devocional: igrejaMedia.pulpito[4],
-  ebd: "/images/EBD/hero-ebd.png",
+  ebd: "/images/EBD/hero-ebd-4t.png",
   espiritualidade: igrejaMedia.nave[8],
   eventos: igrejaMedia.nave[1],
   historia: igrejaMedia.historica[1],
