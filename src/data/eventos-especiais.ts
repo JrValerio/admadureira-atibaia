@@ -811,6 +811,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           data: "04/10 a 27/12",
           titulo: "4º Trimestre EBD 2026 — O Deus da Aliança",
           tipo: "evento-especial",
+          horario: "09h00",
           descricao: [
             "Neste 4º trimestre de 2026, a Escola Bíblica Dominical da AD Madureira Atibaia inicia um novo ciclo de estudos. A classe de adultos estuda \"O Deus da Aliança — Advertências, Promessas e Bênçãos no Livro de Deuteronômio\", com comentários do pastor Osiel Gomes.",
             "A classe de jovens estuda \"Regozijai-vos no Senhor — Vivendo com Propósito à Luz da Carta aos Filipenses\", com comentários do pastor Reynaldo Odilo. As aulas acontecem todo domingo às 09h, na sede da AD Madureira Atibaia.",
