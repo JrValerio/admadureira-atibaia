@@ -11,6 +11,7 @@ import {
 import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 import { editoriaisAdultosTerceiroTrimestre } from "./adultos-2026-3t";
 import type { EditorialAdultos3T } from "./adultos-2026-3t-editorial";
+import { adultos2026QuartoTrimestre } from "./2026-4t";
 
 type LicaoSeed = {
   numero: number;
@@ -6617,9 +6618,5 @@ export const adultos2026Trimestres: TrimestreEBD[] = [
   },
   adultos2026SegundoTrimestre,
   adultos2026TerceiroTrimestre,
-  criarTrimestrePlaceholder({
-    slug: "2026-4t",
-    trimestre: 4,
-    imagem: getEbdQuarterCoverPath("adultos", "2026-2t", "ebd-2t-capa.jpg"),
-  }),
+  adultos2026QuartoTrimestre,
 ];
