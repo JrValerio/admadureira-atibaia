@@ -31,6 +31,12 @@ material_consulta/
 # não deve ser commitado; só as artes já processadas em public/programacao vão pro repo.
 public/images/aniversário-do-pastor/
 
+# bundle de handoff exportado do Claude Design (runtime da ferramenta + uploads).
+# O export bruto não entra no repo; achados que valham registro vão para docs/
+# em markdown. O nome da pasta tem "maduereira" (sic): se ela for renomeada,
+# atualizar este padrão junto.
+docs/auditoria-adm-maduereira-atibaia/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
