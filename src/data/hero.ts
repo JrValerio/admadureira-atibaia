@@ -2,6 +2,7 @@ import type { EventoTipo } from "@/data/agenda-visuais";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import { CULTO_ACOES_DE_GRACAS_05_09_2026 as cultoAcoesDeGracas } from "@/data/culto-acoes-de-gracas-05-09-2026";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
+import { SEDE_PROGRAMACAO_HORARIOS } from "@/data/site";
 import { getProximoEventoPorTipo } from "@/lib/agenda-utils";
 import {
   isFirstMondayWeek,
@@ -181,8 +182,7 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Escola Bíblica Dominical",
-      subtitulo:
-        "4º trimestre de 2026 — Tema: O Deus da Aliança. Advertências, promessas e bênçãos no livro de Deuteronômio.",
+      subtitulo: `Todo domingo às ${SEDE_PROGRAMACAO_HORARIOS.ebdDomingo}. 4º trimestre: O Deus da Aliança (Adultos) e Regozijai-vos no Senhor (Jovens).`,
       alt: "Banner da Escola Bíblica Dominical da AD Madureira Atibaia",
       imagem: "/banners/banner-ebd-4t.png",
       href: "/ebd",
@@ -192,8 +192,7 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Culto de Ensino",
-      subtitulo:
-        "Toda terça-feira às 19h30.",
+      subtitulo: `Toda terça-feira às ${SEDE_PROGRAMACAO_HORARIOS.cultoEnsino}.`,
       alt: "Banner do Culto de Ensino da AD Madureira Atibaia",
       imagem: "/banners/banner-culto-de-ensino.png",
       href: "/programacao/culto-de-ensino",
@@ -256,8 +255,7 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Círculo de Oração",
-      subtitulo:
-        "Toda quarta-feira às 15h.",
+      subtitulo: `Toda quarta-feira às ${SEDE_PROGRAMACAO_HORARIOS.circuloOracao}.`,
       alt: "Banner do Círculo de Oração da AD Madureira Atibaia",
       imagem: "/banners/banner-circulo-de-oracao.png",
       href: "/programacao/circulo-de-oracao",
@@ -351,8 +349,7 @@ export function getHeroEventos(): HeroEvento[] {
     },
     {
       titulo: "Campanha Apocalipse 21:5",
-      subtitulo:
-        "Quintas às 19h30: 17/09 jovens, 24/09 varões e 01/10 irmãs, com todo o Campo de Atibaia.",
+      subtitulo: `Quinta, 01/10, às ${SEDE_PROGRAMACAO_HORARIOS.quintaVitoria} — noite das irmãs, com todo o Campo de Atibaia.`,
       alt: "Banner da Campanha Apocalipse 21:5 da AD Madureira Atibaia",
       imagem: "/banners/banner-campanha-apocalipse-21-5.png",
       href: "/programacao/quinta-da-vitoria",
