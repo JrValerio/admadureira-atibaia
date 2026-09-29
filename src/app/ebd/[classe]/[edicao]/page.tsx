@@ -205,6 +205,7 @@ export default async function EbdQuarterPage({ params }: PageProps) {
           description={trimestre.descricao}
           image={trimestre.imagem}
           imageAlt={trimestre.titulo}
+          imageClassName="blur-[3px] opacity-60 md:blur-none md:opacity-100"
         />
 
         <section className="py-16 md:py-20 xl:py-24">
