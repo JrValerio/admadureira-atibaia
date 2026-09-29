@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { trimestresEBDPorClasse } from "@/data/ebd";
+import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
+import resolucoesCabecalho from "@/data/ebd/2026-4t/fontes/resolucoes-cabecalho.json";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
 // Parte estrutural do gate automatizado (scripts/gate/). Os scripts conferem as
@@ -24,7 +26,7 @@ function frases(texto: string) {
   return texto.split(/(?<=[.!?][”"]?)\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ“"])/).map((f) => f.trim()).filter(Boolean);
 }
 
-const CITACAO_LIVRO = /\([^()]*,\s*[^()]*,\s*cap\.\s*\d+\)/;
+const CITACAO_LIVRO = /\([^()]*,\s*[^()]*,\s*cap\.\s*\d+[^()]*\)/;
 const VERSICULO = /\bvers[íi]culos?\s+\d+/i;
 
 function licoesDoCorpo(classe: "adultos" | "jovens") {
@@ -51,4 +53,55 @@ describe("gate 4T2026 — camada 2: citações entre aspas têm fonte associada"
       }
     });
   }
+});
+
+describe("gate 4T2026 — camada 1: cabeçalhos com livro, capítulo e domingo válidos", () => {
+  // Forma impressa malformada mantida por decisão editorial (ver ressalvasJovens4T).
+  const MALFORMADAS = new Set(["Filipenses 1.12-15-20,22,23,25-30"]);
+
+  for (const classe of ["adultos", "jovens"] as const) {
+    const licoes = cabecalhos[classe].licoes as Array<Record<string, unknown>>;
+
+    it(`${classe}: toda data de lição cai num domingo`, () => {
+      for (const licao of licoes) {
+        const data = String(licao.data);
+        expect(new Date(`${data}T12:00:00-03:00`).getDay(), `${classe} L${licao.numero}: ${data}`).toBe(0);
+      }
+    });
+
+    it(`${classe}: toda referência do cabeçalho aponta para livro e capítulo existentes`, () => {
+      const chave = classe === "adultos" ? "textoAureo" : "textoPrincipal";
+      const leituras = classe === "adultos" ? "leituraDiaria" : "leituraSemanal";
+      for (const licao of licoes) {
+        const refs = [
+          (licao[chave] as { referencia: string }).referencia,
+          String(licao.leituraBiblica),
+          ...(licao[leituras] as Array<{ referencia: string }>).map((item) => item.referencia),
+        ];
+        for (const ref of refs) {
+          if (MALFORMADAS.has(ref)) continue;
+          for (const parte of ref.split(";").map((p) => p.trim())) {
+            // "23.27" depois de "At 22.29;" herda o livro da parte anterior.
+            const completa = /^\d/.test(parte) ? `${ref.split(/\s+\d/)[0]} ${parte}` : parte;
+            const achadas = extractBibleReferences(normalizeBibleReferenceNotation(completa));
+            expect(achadas.length, `${classe} L${licao.numero}: "${parte}" em "${ref}"`).toBeGreaterThan(0);
+          }
+        }
+      }
+    });
+  }
+
+  it("resoluções de cabeçalho só valem para o valor exato que está no JSON", () => {
+    for (const resolucao of resolucoesCabecalho) {
+      const [classe, rotulo, ...resto] = resolucao.id.split("-");
+      const numero = Number(rotulo.slice(1));
+      const licao = (cabecalhos as unknown as Record<string, { licoes: Array<Record<string, unknown>> }>)[classe].licoes[numero - 1];
+      const caminho = resto.join("-");
+      if (caminho === "hinosSugeridos") continue; // hinos vêm do corpo, conferidos pela camada 1 em script
+      const valor = caminho.split(/\.|\[|\]/).filter(Boolean).reduce<unknown>(
+        (atual, parte) => (atual as Record<string, unknown>)?.[parte], licao);
+      expect(valor, resolucao.id).toBe(resolucao.valor);
+      expect(resolucao.conferido, resolucao.id).toBe("imagem");
+    }
+  });
 });
