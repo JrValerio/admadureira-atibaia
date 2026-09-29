@@ -22,7 +22,7 @@ import time
 import cabecalho
 import citacoes_biblicas
 import livro_apoio
-from comum import MATERIAL, TMP, carregar_licao, recortar
+from comum import MATERIAL, TMP, cabecalhos, carregar_licao, recortar, revistas
 
 
 def gerar(classe, numero, edicao="2026-4t", semente=None):
@@ -44,7 +44,7 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
     L = [f"# Gate · {classe.capitalize()} L{numero} · {dados['edicao']['rotulo']} · {dados['edicao']['titulo']}", ""]
     L.append(f"Lição `{licao['id']}` ({licao['data']}), status `{licao['statusEditorial']}`. Semente do sorteio: `{semente}`.")
     L += ["", "## Resultado por camada", "",
-          "| Camada | Conferido por script | Lido na imagem pelo agente | Exceções |", "|---|---|---|---|",
+          "| Camada | Conferido por script | Transcrito às cegas na imagem (o script compara) | Exceções |", "|---|---|---|---|",
           f"| 1. Cabeçalho × dois OCRs | {len(c1['conferidos'])} campos nos dois OCRs | {len(c1['resolvidos'])} | {len(c1['excecoes'])} |",
           f"| 2. Citações bíblicas (ARC) | {len(c2['conferidas'])} citações | — | {len(c2['excecoes'])} |",
           f"| 3. Livro de apoio | {len(c3['conferidas'])} citações com âncora no PDF | — | {len(c3['excecoes'])} |", ""]
@@ -88,10 +88,29 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
         L.append("Nenhuma citação sorteável nesta lição.")
     L.append("")
 
+    # Auditoria do agente: uma transcrição às cegas sorteada, com o recorte da seção.
+    L += ["## Transcrição às cegas sorteada para auditar", ""]
     if c1["resolvidos"]:
-        L += ["## Lido na imagem pelo agente (camada 1)", ""]
-        for ident, r in c1["resolvidos"]:
-            L.append(f"- `{ident}` = “{r['valor']}” (PDF p. {r['pagina']}): {r.get('nota', '')}")
+        ident, t = random.Random(semente + 1).choice(c1["resolvidos"])
+        campo = ident.split("-", 2)[2]
+        seed = cabecalhos(edicao)[classe]["licoes"][numero - 1]
+        hinos = dados["cabecalho"].get("hinosSugeridos") if classe == "adultos" else None
+        _, _, _, rotulo, secao = next(c for c in cabecalho.campos(classe, seed, hinos) if c[0] == campo)
+        pagina, imagem = cabecalho.recorte_da_secao(revistas(classe, edicao)["canonica"], [t["pagina"]], secao,
+                                                    saida / "sorteio" / f"transcricao-{campo.replace('[', '_').replace(']', '')}.png")
+        L += [f"Campo: `{ident}` ({rotulo}), PDF p. {pagina}", "",
+              f"O agente leu, sem ver o valor esperado: “{t['lido']}” ({t.get('lidoEm', '')})", "",
+              f"Recorte da página: `{imagem}`", "",
+              "Confira: o que está impresso no recorte é exatamente o que o agente leu."]
+    else:
+        L.append("Nenhuma transcrição nesta lição: todos os campos foram confirmados pelos dois OCRs.")
+    L.append("")
+
+    if c1["resolvidos"]:
+        L += ["## Transcrito às cegas pelo agente (camada 1)", "",
+              "Campos que os dois OCRs não confirmaram. O agente leu o recorte sem ver o valor esperado, e o script comparou com o JSON.", ""]
+        for ident, t in c1["resolvidos"]:
+            L.append(f"- `{ident}`: lido “{t['lido']}” (PDF p. {t['pagina']}, {t.get('lidoEm', '')})")
         L.append("")
 
     saida.mkdir(parents=True, exist_ok=True)
