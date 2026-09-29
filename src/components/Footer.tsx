@@ -123,18 +123,28 @@ function FooterDisclosure({
   links: { label: string; href: string }[];
   className?: string;
 }) {
+  // No desktop a lista fica sempre aberta. Não dá para "abrir" um <details>
+  // fechado só com CSS: nos navegadores atuais o conteúdo fechado fica em
+  // ::details-content com content-visibility: hidden, e forçar display nos
+  // filhos deixava as colunas vazias. Por isso são dois elementos.
   return (
-    <details
-      className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden xl:rounded-none xl:border-0 xl:bg-transparent xl:px-0 xl:py-0 xl:[&>*:not(summary)]:!block ${className}`.trim()}
-    >
-      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-brand-orange focus-visible:text-brand-orange xl:pointer-events-none xl:cursor-default xl:hover:text-white xl:focus-visible:text-white">
+    <>
+      <details
+        className={`group rounded-2xl border border-white/12 bg-white/[0.035] px-4 py-3 text-left [&_summary::-webkit-details-marker]:hidden xl:hidden ${className}`.trim()}
+      >
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-lg text-white outline-none transition-colors hover:text-brand-orange focus-visible:text-brand-orange">
+          <FooterSectionTitle>{title}</FooterSectionTitle>
+          <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180">
+            ▾
+          </span>
+        </summary>
+        <FooterLinkList links={links} className="mt-4 space-y-2.5" />
+      </details>
+      <div className={`hidden text-left xl:block ${className}`.trim()}>
         <FooterSectionTitle>{title}</FooterSectionTitle>
-        <span className="text-[10px] text-white/45 transition-transform group-open:rotate-180 xl:hidden">
-          ▾
-        </span>
-      </summary>
-      <FooterLinkList links={links} className="mt-4 space-y-2.5 xl:space-y-3" />
-    </details>
+        <FooterLinkList links={links} className="mt-4 space-y-3" />
+      </div>
+    </>
   );
 }
 
@@ -148,8 +158,10 @@ export default function Footer() {
               src="/logo-transparent.png"
               alt="Logo AD Madureira Atibaia"
               width={76}
-              height={76}
-              className="h-auto w-auto drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
+              height={73}
+              // Largura fixa: com w-auto a caixa fica 0x0 até a imagem carregar,
+              // e o lazy loading nunca dispara (o logo não aparecia).
+              className="h-auto w-[76px] drop-shadow-[0_10px_24px_rgba(0,0,0,0.24)]"
             />
             <div className="space-y-1">
               <p className="text-base font-semibold leading-snug text-white">
