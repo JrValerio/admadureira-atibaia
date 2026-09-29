@@ -116,7 +116,7 @@ function ReferenciaList({ items }: { items?: ReferenciaCruzada[] }) {
           key={`${item.referencia}-${item.descricao ?? ""}`}
           className="flex items-start gap-3"
         >
-          <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
+          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ffa726]" />
           <span>
             <span className="font-semibold text-[#212121]">
               <BibleReferenceText

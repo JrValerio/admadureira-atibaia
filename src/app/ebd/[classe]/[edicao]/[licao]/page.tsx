@@ -441,7 +441,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
                             <ul className="space-y-3 text-[#555] leading-relaxed">
                               {topico.conteudo.map((item) => (
                                 <li key={item} className="flex items-start gap-3">
-                                  <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#ffa726]" />
+                                  <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#ffa726]" />
                                   <span>
                                     <BibleReferenceText text={item} />
                                   </span>

@@ -144,7 +144,7 @@ export function EbdSupportList({
         <li key={item} className="flex items-start gap-3">
           <span
             className={joinClasses(
-              "mt-[7px] h-1.5 w-1.5 rounded-full",
+              "mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full",
               getMarkerToneClassName(markerTone)
             )}
           />
@@ -225,7 +225,7 @@ export function EbdSupportListaPanel({
           >
             <span
               className={joinClasses(
-                "mt-[7px] h-1.5 w-1.5 rounded-full",
+                "mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full",
                 getMarkerToneClassName(markerTone)
               )}
             />
