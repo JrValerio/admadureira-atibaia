@@ -1,0 +1,23 @@
+[
+  {
+    "id": "adultos-L2-data",
+    "valor": "2026-10-11",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Impresso: “11 de Outubro de 2026”. OCR canônico leu “ii”; o de apoio perdeu o dia."
+  },
+  {
+    "id": "jovens-L2-textoPrincipal.texto",
+    "valor": "Somente deveis portar-vos dignamente conforme o evangelho de Cristo [...].",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Impresso com reticências entre colchetes; os dois OCRs leram “[...1”."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[5].referencia",
+    "valor": "At 5.41",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Sábado: “At 5.41”. Os dois OCRs perderam o ponto (“At 541”)."
+  }
+]
