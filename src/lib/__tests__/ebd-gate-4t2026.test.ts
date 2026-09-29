@@ -34,7 +34,8 @@ function licoesDoCorpo(classe: "adultos" | "jovens") {
   const trimestre = trimestresEBDPorClasse[classe].find((item) => item.slug === "2026-4t")!;
   return trimestre.licoes.map((licao) => {
     const subsidio = licao.subsidioAdultos ?? licao.subsidioJovens;
-    const { cabecalho: _cabecalho, ...corpo } = subsidio as Record<string, unknown>;
+    const corpo = { ...(subsidio as Record<string, unknown>) };
+    delete corpo.cabecalho;
     return { licao, textos: [...textosDoCorpo(corpo), { campo: "resumo", texto: licao.resumo }] };
   });
 }
