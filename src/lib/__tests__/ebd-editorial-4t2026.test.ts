@@ -25,6 +25,9 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
       expect(trimestre.titulo).toBe(cabecalhos[classe].titulo);
       expect(trimestre.comentarista).toBe(cabecalhos[classe].comentarista);
       expect(trimestre.versiculoBase).toBe(classe === "adultos" ? "Deuteronômio 7.9" : "Filipenses 4.4");
+      // Fonte declarada acompanha o que o texto usa: o livro de apoio entra com o aprofundamento da L2.
+      expect(trimestre.fontesEditoriais?.map((fonte) => fonte.titulo)).toEqual(["Revista do professor — CPAD, 4T/2026", "Livro de apoio", "Texto bíblico", "Subsídio de estudo"]);
+      expect(trimestre.fontesEditoriais?.[1].conteudo).toContain(classe === "adultos" ? "Osiel Gomes" : "Reynaldo Odilo");
       expect(trimestre.licoes).toHaveLength(13);
       expect(new Set(trimestre.licoes.map((licao) => licao.id)).size).toBe(13);
       expect(corpos.map((corpo) => corpo.numero)).toEqual(Array.from({ length: 13 }, (_, i) => i + 1));
