@@ -129,14 +129,18 @@ def verificar(classe, numero, edicao="2026-4t", saida=None):
             conferidos.append((ident, onde))
             continue
         transcricao = lidas.get(ident)
-        if transcricao and bate(transcricao["lido"], formas):
+        if transcricao and transcricao.get("lido") is not None and bate(transcricao["lido"], formas):
             resolvidos.append((ident, transcricao))
             continue
         pagina, imagem = recorte_da_secao(fontes["canonica"], paginas["canonica"], secao,
                                           saida / "cabecalho" / f"{ident.replace('[', '_').replace(']', '')}.png")
         item = {"id": ident, "rotulo": rotulo, "pagina": pagina, "imagem": str(imagem)}
         semelhanca = {nome: round(max(similaridade_melhor_trecho(f, texto[nome]) for f in formas), 2) for nome in fontes}
-        if transcricao:
+        if transcricao and transcricao.get("lido") is None:
+            # Ilegível para quem transcreveu: caso 1 de escalonamento se os OCRs também não resolvem.
+            excecoes.append(Excecao(1, f"{campo}: ilegível na transcrição às cegas ({transcricao.get('nota', 'sem nota')})",
+                                    valor=valor, semelhanca_ocr=semelhanca, **item))
+        elif transcricao:
             excecoes.append(Excecao(1, f"{campo}: a transcrição às cegas diverge do JSON — lido “{transcricao['lido']}”, JSON “{valor}”",
                                     valor=valor, lido=transcricao["lido"], semelhanca_ocr=semelhanca, **item))
         else:

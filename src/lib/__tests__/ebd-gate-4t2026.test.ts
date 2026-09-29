@@ -117,6 +117,7 @@ describe("gate 4T2026 — camada 1: cabeçalhos com livro, capítulo e domingo v
       const licao = (cabecalhos as unknown as Record<string, { licoes: Array<Record<string, unknown>> }>)[classe].licoes[numero - 1];
       const caminho = resto.join("-");
       if (caminho === "hinosSugeridos") continue; // hinos vêm do corpo; a comparação fica no script
+      if ((transcricao.lido as string | null) === null) continue; // ilegível: exceção no script, não valor a comparar
       const valor = String(caminho.split(/\.|\[|\]/).filter(Boolean).reduce<unknown>(
         (atual, parte) => (atual as Record<string, unknown>)?.[parte], licao));
       const formas = caminho === "data" ? formasDaData(valor) : [valor];
