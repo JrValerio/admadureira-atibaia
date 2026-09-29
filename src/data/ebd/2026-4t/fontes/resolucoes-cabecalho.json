@@ -1,5 +1,61 @@
 [
   {
+    "id": "adultos-L1-data",
+    "valor": "2026-10-04",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "adultos-L1-leituraBiblica",
+    "valor": "Deuteronômio 1.1-8",
+    "pagina": 6,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L1-leituraDiaria[0].tema",
+    "valor": "A obediência à Palavra conduz à vida santa e à direção de Deus",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L1-leituraDiaria[1].tema",
+    "valor": "A desobediência à Palavra conduz à perda espiritual",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "adultos-L1-leituraDiaria[2].tema",
+    "valor": "A responsabilidade de transmitir fielmente a Palavra à próxima geração",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L1-leituraDiaria[5].referencia",
+    "valor": "Mt 4.4,7,10",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L1-textoAureo.texto",
+    "valor": "Eis aqui esta terra, eu a dei diante de vós; entrai e possuí a terra que o SENHOR jurou a vossos pais, Abraão, Isaque e Jacó, que a daria a eles e à sua semente depois deles.",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "adultos-L1-verdadePratica",
+    "valor": "A fidelidade a Deus e à sua Palavra dirige o crente a viver pela fé e alcançar as suas promessas.",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
     "id": "adultos-L2-data",
     "valor": "2026-10-11",
     "pagina": 12,
@@ -7,11 +63,172 @@
     "nota": "Impresso: “11 de Outubro de 2026”. OCR canônico leu “ii”; o de apoio perdeu o dia."
   },
   {
-    "id": "jovens-L2-textoPrincipal.texto",
-    "valor": "Somente deveis portar-vos dignamente conforme o evangelho de Cristo [...].",
+    "id": "adultos-L2-leituraBiblica",
+    "valor": "Deuteronômio 1.9-12,19-21,26-28,34-36",
     "pagina": 13,
     "conferido": "imagem",
-    "nota": "Impresso com reticências entre colchetes; os dois OCRs leram “[...1”."
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L2-leituraDiaria[2].referencia",
+    "valor": "Dt 1.21; Hb 11.6",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "adultos-L2-leituraDiaria[4].referencia",
+    "valor": "Dt 1.34,35",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "adultos-L2-leituraDiaria[4].tema",
+    "valor": "A incredulidade impede o cumprimento da promessa divina",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L2-textoAureo.texto",
+    "valor": "O SENHOR, vosso Deus, que vai adiante de vós, por vós pelejará, conforme tudo o que fez convosco, diante de vossos olhos, no Egito.",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L2-titulo",
+    "valor": "Recapitulando a Jornada no Deserto",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "adultos-L2-verdadePratica",
+    "valor": "Confiar em Deus conduz à vitória; já a incredulidade leva à derrota e ao fracasso espiritual.",
+    "pagina": 12,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L1-data",
+    "valor": "2026-10-04",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[0].referencia",
+    "valor": "At 16.12",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[1].referencia",
+    "valor": "At 22.29; 23.27",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[1].tema",
+    "valor": "O benefício de ser cidadão romano",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[2].referencia",
+    "valor": "At 16.9,10",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[3].referencia",
+    "valor": "1 Ts 2.2",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[4].referencia",
+    "valor": "Ne 8.10",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L1-leituraSemanal[5].referencia",
+    "valor": "Fp 1.1",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: em nenhum dos dois OCRs."
+  },
+  {
+    "id": "jovens-L1-resumoLicao",
+    "valor": "A Epístola aos Filipenses mostra que o cristão pode viver pleno de alegria e paz com Deus em um mundo conturbado.",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L1-textoPrincipal.referencia",
+    "valor": "Fp 1.6",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L1-titulo",
+    "valor": "Carta aos Filipenses: Um Chamado à Alegria",
+    "pagina": 5,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L2-data",
+    "valor": "2026-10-11",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[0].referencia",
+    "valor": "Sl 119.67,71",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[1].referencia",
+    "valor": "Rm 8.28",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR apoio."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[2].referencia",
+    "valor": "Hb 5.12-14",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[3].referencia",
+    "valor": "At 20.24",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L2-leituraSemanal[4].referencia",
+    "valor": "Ef 4.1",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
   },
   {
     "id": "jovens-L2-leituraSemanal[5].referencia",
@@ -19,5 +236,19 @@
     "pagina": 13,
     "conferido": "imagem",
     "nota": "Sábado: “At 5.41”. Os dois OCRs perderam o ponto (“At 541”)."
+  },
+  {
+    "id": "jovens-L2-textoPrincipal.referencia",
+    "valor": "Fp 1.27a",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Lido na imagem da página (folha de contato de 2026-09-29): confere com o valor. Antes: só no OCR canonica."
+  },
+  {
+    "id": "jovens-L2-textoPrincipal.texto",
+    "valor": "Somente deveis portar-vos dignamente conforme o evangelho de Cristo [...].",
+    "pagina": 13,
+    "conferido": "imagem",
+    "nota": "Impresso com reticências entre colchetes; os dois OCRs leram “[...1”."
   }
 ]

@@ -5,8 +5,11 @@ Cada campo de cabecalhos.json (data, título, texto-chave, verdade prática ou
 resumo, leituras da semana, leitura em classe e hinos) é procurado nas páginas
 de abertura da lição nas DUAS revistas do professor da edição.
 
-- Encontrado literalmente (após normalização) em pelo menos uma: confere.
-- Em nenhuma: divergência. O gate recorta a imagem da página e exige uma
+- Encontrado literalmente (após normalização) nas DUAS: confere automaticamente.
+  São motores de OCR diferentes; errarem igual no mesmo ponto é improvável.
+- Em só uma: não basta. cabecalhos.json foi montado em parte a partir desses
+  OCRs, e um erro copiado de um deles bateria com ele mesmo (checagem circular).
+- Em uma só ou em nenhuma: o gate recorta a imagem da página e exige uma
   resolução registrada em src/data/ebd/<edicao>/fontes/resolucoes-cabecalho.json,
   feita na imagem, com o valor confirmado. A resolução só vale enquanto o valor
   em cabecalhos.json for exatamente o valor confirmado.
@@ -64,7 +67,7 @@ def verificar(classe, numero, edicao="2026-4t", saida=None):
     for campo, valor, formas in campos(classe, seed, hinos):
         ident = f"{classe}-L{numero}-{campo}"
         onde = [nome for nome in fontes if any(normalizar(f) in texto[nome] for f in formas)]
-        if onde:
+        if len(onde) == len(fontes):
             conferidos.append((ident, onde))
             continue
         resolucao = resolucoes.get(ident)
@@ -72,10 +75,17 @@ def verificar(classe, numero, edicao="2026-4t", saida=None):
             resolvidos.append((ident, resolucao))
             continue
         semelhanca = {nome: round(max(similaridade_melhor_trecho(f, texto[nome]) for f in formas), 2) for nome in fontes}
-        imagem = recortar(fontes["canonica"], paginas["canonica"][0 if campo != "leituraBiblica" and campo != "hinosSugeridos" else 1],
-                          saida / "cabecalho" / f"{ident.replace('[', '_').replace(']', '')}.png", termo=formas[0])
-        motivo = "resolução registrada com outro valor" if resolucao else "não encontrado literalmente em nenhuma das duas revistas"
-        excecoes.append(Excecao(1, f"{campo}: {motivo}", id=ident, valor=valor, semelhanca_ocr=semelhanca, imagem=str(imagem)))
+        # Recorte da página da lição cujo texto mais se aproxima do valor esperado.
+        pagina = max(paginas["canonica"], key=lambda p: max(similaridade_melhor_trecho(f, texto_pagina(fontes["canonica"], p)) for f in formas))
+        imagem = recortar(fontes["canonica"], pagina, saida / "cabecalho" / f"{ident.replace('[', '_').replace(']', '')}.png", termo=formas[0])
+        if resolucao:
+            motivo = "resolução registrada com outro valor"
+        elif onde:
+            motivo = f"só no OCR {onde[0]}; precisa de confirmação na imagem"
+        else:
+            motivo = "não encontrado literalmente em nenhuma das duas revistas"
+        excecoes.append(Excecao(1, f"{campo}: {motivo}", id=ident, valor=valor, pagina=pagina, so_em=onde,
+                                semelhanca_ocr=semelhanca, imagem=str(imagem)))
     return {"conferidos": conferidos, "resolvidos": resolvidos, "excecoes": excecoes, "paginas": paginas}
 
 
@@ -87,6 +97,6 @@ if __name__ == "__main__":
     a = ap.parse_args()
     r = verificar(a.classe, a.numero, a.edicao)
     print(f"Páginas: {r['paginas']}")
-    print(f"Conferidos direto no OCR: {len(r['conferidos'])} | resolvidos na imagem: {len(r['resolvidos'])} | exceções: {len(r['excecoes'])}")
+    print(f"Conferidos nos dois OCRs: {len(r['conferidos'])} | resolvidos na imagem: {len(r['resolvidos'])} | exceções: {len(r['excecoes'])}")
     for e in r["excecoes"]:
-        print(f"  - {e['id']}: {e['mensagem']} | valor={e['valor']!r} | similaridade={e['semelhanca_ocr']} | {e['imagem']}")
+        print(f"  - {e['id']}: {e['mensagem']} | p. {e['pagina']} | valor={e['valor']!r} | similaridade={e['semelhanca_ocr']}")
