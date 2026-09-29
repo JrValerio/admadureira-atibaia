@@ -51,7 +51,7 @@ export default function Ministerios({ showHeader = true }: MinisteriosProps) {
                 {min.escopo}
               </p>
               <h3 className="font-acme text-[#212121] text-xl mb-2 group-hover:text-brand-orange transition-colors tracking-wide">
-                {min.nome}
+                {min.nomeCurto ?? min.nome}
               </h3>
               <p className="text-[#757575] text-sm leading-relaxed line-clamp-3">
                 {min.resumo}
