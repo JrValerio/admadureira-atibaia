@@ -234,7 +234,7 @@ function criarTrimestre(classe: "adultos" | "jovens", licoes: TrimestreEBD["lico
       { titulo: "Revista do professor — CPAD, 4T/2026", conteudo: `Fonte dos títulos, datas, textos-chave e leituras. Comentarista: ${edicao.comentarista}.` },
       {
         titulo: "Livro de apoio",
-        conteudo: `${classe === "adultos" ? "O Deus da Aliança, de Osiel Gomes" : "Regozijai-vos no Senhor, de Reynaldo Odilo"}. Citado por capítulo no aprofundamento das lições, a partir da L2, com citações diretas curtas e leitura crítica; o restante é paráfrase.`,
+        conteudo: `${classe === "adultos" ? "O Deus da Aliança, de Osiel Gomes" : "Regozijai-vos no Senhor, de Reynaldo Odilo"}. Citado por capítulo no aprofundamento das lições, a partir da L2, com citações diretas curtas; o restante é paráfrase.`,
       },
       { titulo: "Texto bíblico", conteudo: "Citações na Almeida Revista e Corrigida (ARC), a mesma tradução da revista. O leitor bíblico do site exibe a Almeida (JFA), que pode diferir na redação." },
       { titulo: "Subsídio de estudo", conteudo: "Objetivos, planejamento, desenvolvimento, aplicações e perguntas de revisão redigidos para o site a partir dos temas da revista. A partir da L2, o aprofundamento (contexto, sinopses, aprofundamento doutrinário e referências cruzadas) também se apoia no livro de apoio. Não constituem transcrição integral das publicações." },
