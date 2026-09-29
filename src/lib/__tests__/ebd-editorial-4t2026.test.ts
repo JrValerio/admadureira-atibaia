@@ -6,7 +6,9 @@ import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
 import { corposAdultos4T } from "@/data/ebd/2026-4t/adultos";
 import { corposJovens4T } from "@/data/ebd/2026-4t/jovens";
 import { ressalvasJovens4T } from "@/data/ebd/2026-4t";
-import { getDiagnosticoProntidaoEditorialLicao, getLicaoReleaseWindowKey, isLicaoPubliclyAvailable } from "../ebd-utils";
+import { getClasseEbdInfo, getDiagnosticoProntidaoEditorialLicao, getLicaoReleaseWindowKey, isLicaoPubliclyAvailable } from "../ebd-utils";
+import { getLessonStructure } from "../ebd-lesson-structure";
+import type { LicaoEBD, TrimestreEBD } from "@/data/ebd/types";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
 // Lições que passaram pelo gate humano contra a revista. Cada PR semanal de
@@ -119,6 +121,9 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
     expect(extractBibleReferences(licoes[1].leituraBiblica[0])).toEqual([]);
     expect(licoes[5].subsidioJovens!.cabecalho.leituraSemanal![0].foco).toBe("Um pouco de fermento levada toda a massa");
     expect(licoes[7].subsidioJovens!.cabecalho.leituraSemanal![5].referencia).toBe("Fp 2:22");
+    // A forma impressa fica no campo de leitura, mas não numa instrução escrita pelo site.
+    expect(licoes[1].apoioAluno![0]).toBe("Leia o texto bíblico da lição antes do domingo e marque os movimentos principais do texto.");
+    expect(licoes.flatMap((licao) => licao.apoioAluno ?? []).some((tarefa) => tarefa.includes("12-15-20"))).toBe(false);
     // As ressalvas de curadoria ficam só em ressalvasJovens4T: nenhuma parte
     // delas pode chegar ao que o site renderiza.
     for (const licao of licoes) {
@@ -130,4 +135,63 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
     }
     expect(Object.keys(ressalvasJovens4T).map(Number)).toEqual([2, 6, 8]);
   });
+});
+
+// Campos que precisam de texto próprio: nenhuma string deles aparece em outro campo.
+const CAMPOS_TEXTO_PROPRIO = [
+  "esboco.conteudo",
+  "apoioAluno",
+  "subsidioAdultos.apoioProfessor.sugestaoDeFechamento",
+  "subsidioAdultos.revisao.fraseDeSintese",
+  "subsidioJovens.apoioProfessor.fechamento",
+];
+// Metadados e cabeçalho transcrito ficam fora da regra (não são corpo autoral).
+const FORA_DA_REGRA = /(^|\.)(id|slug|publico|imagem|statusEditorial|data|dataEspecial|titulo|numero|textoChave|verdadePratica|leituraBiblica|cabecalho)(\.|$)/;
+
+function camposRenderizados(valor: unknown, caminho = ""): [string, string][] {
+  if (typeof valor === "string") return FORA_DA_REGRA.test(caminho) ? [] : [[caminho, valor]];
+  if (Array.isArray(valor)) return valor.flatMap((item) => camposRenderizados(item, caminho));
+  if (valor && typeof valor === "object") {
+    return Object.entries(valor).flatMap(([chave, item]) => camposRenderizados(item, caminho ? `${caminho}.${chave}` : chave));
+  }
+  return [];
+}
+
+// O que a página recebe: a lição com o esboço resolvido pela camada de estrutura
+// (que antes caía no primeiro parágrafo de cada tópico quando faltava esboço).
+function modeloRenderizado(classe: "adultos" | "jovens", trimestre: TrimestreEBD, licao: LicaoEBD) {
+  const estrutura = getLessonStructure(getClasseEbdInfo(classe), trimestre, licao)!;
+  return { ...licao, esboco: estrutura.esboco };
+}
+
+function textosDoCorpo(corpo: object): string[] {
+  return camposRenderizados(corpo).filter(([caminho]) => !/hinosSugeridos/.test(caminho)).map(([, texto]) => texto);
+}
+
+describe("repetição de texto no 4T2026 (regra do 3T com trava)", () => {
+  for (const classe of ["adultos", "jovens"] as const) {
+    const trimestre = trimestresEBDPorClasse[classe].find((item) => item.slug === "2026-4t")!;
+    const corpos = classe === "adultos" ? corposAdultos4T : corposJovens4T;
+
+    it(`${classe}: nenhum texto do corpo aparece em mais de dois campos renderizados`, () => {
+      for (const licao of trimestre.licoes) {
+        const renderizados = camposRenderizados(modeloRenderizado(classe, trimestre, licao));
+        const corpo = corpos.find((item) => item.numero === licao.numero)!;
+        for (const texto of textosDoCorpo(corpo)) {
+          const campos = new Set(renderizados.filter(([, r]) => r === texto || r.includes(texto)).map(([c]) => c));
+          expect(campos.size, `${licao.id}: "${texto.slice(0, 60)}…" em ${[...campos].join(", ")}`).toBeLessThanOrEqual(2);
+        }
+      }
+    });
+
+    it(`${classe}: esboço, tarefas do aluno, fechamento e síntese têm texto próprio`, () => {
+      for (const licao of trimestre.licoes) {
+        const renderizados = camposRenderizados(modeloRenderizado(classe, trimestre, licao));
+        for (const [campo, texto] of renderizados.filter(([c]) => CAMPOS_TEXTO_PROPRIO.includes(c))) {
+          const outros = renderizados.filter(([c, r]) => c !== campo && (r === texto || r.includes(texto) || texto.includes(r) && r.length > 40));
+          expect(outros.map(([c]) => c), `${licao.id}: ${campo} repete "${texto.slice(0, 60)}…"`).toEqual([]);
+        }
+      }
+    });
+  }
 });
