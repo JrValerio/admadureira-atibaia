@@ -1,4 +1,4 @@
-import { normalizeBibleReferenceNotation } from "@/lib/bible-reference";
+import { extractBibleReferences, normalizeBibleReferenceNotation } from "@/lib/bible-reference";
 import { getEbdLessonImagePath, getEbdQuarterCoverPath } from "../assets";
 import {
   validateSubsidioAdultos,
@@ -35,21 +35,48 @@ function corpoDaLicao(corpos: CorpoEditorial4T[], numero: number) {
   return corpo;
 }
 
-function conteudoComum(corpo: CorpoEditorial4T) {
+/** Leitura e memorização da semana, montadas a partir do cabeçalho transcrito. */
+function tarefasDaSemana(corpo: CorpoEditorial4T, leitura: string, textoChave: string) {
+  // Referência que o site não reconhece (ex.: a forma impressa malformada da L2
+  // de Jovens, mantida por decisão editorial) não entra numa instrução ao aluno.
+  const leituraCitavel = extractBibleReferences(leitura).length > 0;
+  return [
+    leituraCitavel
+      ? `Leia ${leitura} antes do domingo e marque os movimentos principais do texto.`
+      : "Leia o texto bíblico da lição antes do domingo e marque os movimentos principais do texto.",
+    `Releia ${textoChave} ao longo da semana e procure guardá-lo de memória.`,
+    ...(corpo.tarefasAluno ?? []),
+  ];
+}
+
+// Regra de repetição (ver editorial.ts): o conteúdo do tópico aparece na visão do
+// aluno (topicos) e no subsídio do professor (desenvolvimento), e em nenhum
+// outro lugar. Esboço e tarefas do aluno só entram com texto próprio.
+function conteudoComum(corpo: CorpoEditorial4T, leitura: string, textoChave: string) {
+  const esbocoCompleto = corpo.desenvolvimento.every((topico) => topico.esboco);
   return {
     resumo: corpo.introducao,
     objetivos: corpo.objetivos,
     topicos: corpo.desenvolvimento.map((topico) => ({
       titulo: topico.titulo,
-      conteudo: [...topico.paragrafos, topico.aplicacao],
+      conteudo: [
+        ...(topico.sinopse ? [topico.sinopse] : []),
+        ...topico.paragrafos,
+        ...(topico.aprofundamentoDoutrinario ?? []),
+        topico.aplicacao,
+      ],
     })),
     aplicacao: corpo.conclusao,
     apoioProfessor: [corpo.planejamento],
-    apoioAluno: corpo.desenvolvimento.map((topico) => topico.aplicacao),
-    esboco: corpo.desenvolvimento.map((topico) => ({
-      titulo: topico.titulo,
-      conteudo: topico.paragrafos[0],
-    })),
+    apoioAluno: tarefasDaSemana(corpo, leitura, textoChave),
+    ...(esbocoCompleto
+      ? {
+          esboco: corpo.desenvolvimento.map((topico) => ({
+            titulo: topico.titulo,
+            conteudo: topico.esboco!,
+          })),
+        }
+      : {}),
   };
 }
 
@@ -57,8 +84,18 @@ function desenvolvimento(corpo: CorpoEditorial4T, id: string) {
   return corpo.desenvolvimento.map((topico, index) => ({
     id: `${id}-topico-${index + 1}`,
     titulo: topico.titulo,
+    ...(topico.sinopse ? { sinopse: topico.sinopse } : {}),
     explicacaoBiblica: topico.paragrafos,
+    ...(topico.aprofundamentoDoutrinario ? { aprofundamentoDoutrinario: topico.aprofundamentoDoutrinario } : {}),
     aplicacaoPratica: [topico.aplicacao],
+    ...(topico.referenciasCruzadas
+      ? {
+          referenciasCruzadas: topico.referenciasCruzadas.map((item) => ({
+            ...item,
+            referencia: normalizar(item.referencia),
+          })),
+        }
+      : {}),
   }));
 }
 
@@ -67,7 +104,7 @@ const licoesAdultos: LicaoEBDAdultos[] = cabecalhos.adultos.licoes.map((seed) =>
   const id = `adultos-2026-4t-licao-${seed.numero}`;
   const leituraBiblica = [normalizar(seed.leituraBiblica)];
   return {
-    ...conteudoComum(corpo),
+    ...conteudoComum(corpo, leituraBiblica[0], normalizar(seed.textoAureo.referencia)),
     id,
     publico: "adultos",
     slug: `licao-${seed.numero}`,
@@ -96,13 +133,22 @@ const licoesAdultos: LicaoEBDAdultos[] = cabecalhos.adultos.licoes.map((seed) =>
         })),
         hinosSugeridos: corpo.hinosSugeridos?.map((hino) => `${hino} da Harpa Cristã`),
       },
-      visaoGeral: { resumo: corpo.introducao, objetivos: corpo.objetivos },
+      visaoGeral: {
+        resumo: corpo.introducao,
+        objetivos: corpo.objetivos,
+        ...(corpo.ideiaCentral ? { ideiaCentral: corpo.ideiaCentral } : {}),
+      },
       desenvolvimento: desenvolvimento(corpo, id),
       apoioProfessor: {
+        ...(corpo.perguntaDeAbertura ? { perguntaDeAbertura: corpo.perguntaDeAbertura } : {}),
         perguntasParaDebate: corpo.revisao,
-        sugestaoDeFechamento: corpo.conclusao,
+        ...(corpo.sugestaoDeFechamento ? { sugestaoDeFechamento: corpo.sugestaoDeFechamento } : {}),
       },
-      revisao: { perguntas: corpo.revisao, fraseDeSintese: corpo.conclusao },
+      ...(corpo.contextoHistorico ? { aprofundamento: { contextoHistorico: corpo.contextoHistorico } } : {}),
+      revisao: {
+        perguntas: corpo.revisao,
+        ...(corpo.fraseDeSintese ? { fraseDeSintese: corpo.fraseDeSintese } : {}),
+      },
     }),
   };
 });
@@ -121,7 +167,7 @@ const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
   const corpo = corpoDaLicao(corposJovens4T, seed.numero);
   const id = `jovens-2026-4t-licao-${seed.numero}`;
   return {
-    ...conteudoComum(corpo),
+    ...conteudoComum(corpo, normalizar(seed.leituraBiblica), normalizar(seed.textoPrincipal.referencia)),
     id,
     publico: "jovens",
     slug: `licao-${seed.numero}`,
@@ -154,9 +200,11 @@ const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
       },
       desenvolvimento: desenvolvimento(corpo, id),
       apoioProfessor: {
-        conducaoDaConversa: [corpo.planejamento],
-        fechamento: corpo.conclusao,
+        ...(corpo.perguntaDeAbertura ? { perguntaChave: corpo.perguntaDeAbertura } : {}),
+        ...(corpo.conducaoDaConversa ? { conducaoDaConversa: corpo.conducaoDaConversa } : {}),
+        ...(corpo.sugestaoDeFechamento ? { fechamento: corpo.sugestaoDeFechamento } : {}),
       },
+      ...(corpo.contextoHistorico ? { aprofundamentoOpcional: { contextoBiblico: corpo.contextoHistorico } } : {}),
       revisao: { horaDaRevisao: corpo.revisao, conclusao: corpo.conclusao },
     }),
   };
