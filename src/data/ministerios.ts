@@ -79,21 +79,62 @@ const ministerios: Ministerio[] = [
   },
   {
     slug: "umadat",
-    nome: "UMADAT – Jovens Campo de Atibaia",
+    nome: "UMADAT – União de Mocidade da Assembleia de Deus Madureira do Campo de Atibaia",
     nomeCurto: "UMADAT – Jovens Campo de Atibaia",
     escopo: "Campo de Atibaia",
     resumo:
-      "Departamento jovem do campo, voltado ao discipulado, à comunhão e ao fortalecimento espiritual da juventude.",
+      "A juventude das congregações do Campo de Atibaia unida em adoração, comunhão, discipulado e serviço, com o Congresso Geral anual na sede.",
     descricao: [
-      "A UMADAT reúne a juventude do Campo de Atibaia em uma caminhada de fé, adoração, serviço cristão e comunhão entre congregações.",
-      "O departamento promove encontros, congressos e ações que incentivam os jovens a crescer no conhecimento da Palavra e no compromisso com a obra de Deus.",
+      "A UMADAT — União de Mocidade da Assembleia de Deus Madureira do Campo de Atibaia — reúne os jovens de todas as congregações do campo. Sob a cobertura pastoral do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira, presidentes do Campo de Atibaia, e com a direção do Pr. Mathias Nascimento, a mocidade caminha unida em adoração, comunhão e compromisso com a Palavra.",
+      "Ao longo do ano, a UMADAT promove encontros entre as mocidades das congregações e realiza o Congresso Geral, que reúne a juventude do campo na sede, em Atibaia, para dias de louvor, ministração da Palavra e consagração.",
+      "Mais do que eventos, a proposta é formar jovens firmes na fé, que conheçam a Palavra, sirvam na igreja local e testemunhem de Cristo onde estiverem.",
+      "Em 2025, o Congresso Geral teve como tema “Atraídos pela Cruz”, com base em 1 Coríntios 1:18, nos dias 24 e 25 de outubro. A Palavra foi ministrada pelo Pb. Diogo Almeida e pelo Pr. Rafael Bello, com louvor de Renildo Tavares.",
     ],
-    lideranca: ["Presidente da UMADAT: Pr. Mathias Nascimento"],
+    lideranca: [
+      "Cobertura pastoral: Pr. Zacarias Bernardes Félix e Pra. Anna Alzira — Presidentes do Campo de Atibaia",
+    ],
+    liderancaDestaque: {
+      nome: "Pr. Mathias Nascimento",
+      cargo: "Presidente da UMADAT",
+      foto: "/pastores/pr-mathias-nascimento.jpg",
+    },
     atividades: [
       "Congressos e encontros de juventude",
       "Comunhão entre jovens das congregações",
       "Atividades de discipulado e serviço cristão",
     ],
+    destaque: {
+      etiqueta: "Congresso UMADAT 2026",
+      titulo: "O que darei eu ao Senhor?",
+      descricao:
+        "A identidade da UMADAT 2026 nasce da pergunta do salmista: “Que darei eu ao Senhor por todos os benefícios que me tem feito?” (Salmos 116:12). As mãos abertas da arte oficial expressam os dois lados dessa pergunta: recebemos de Deus a graça, os dons, as oportunidades e a própria vida, e somos chamados a responder com gratidão, adoração, disponibilidade e entrega. Depois de tudo o que Deus fez por mim, qual será a minha resposta?",
+      detalhes: [
+        "23 e 24 de outubro de 2026",
+        "Sexta às 19h30 e sábado às 19h",
+        "Igreja Sede — Praça Pio XII, 122 — Centro — Atibaia/SP",
+        "Base bíblica: Salmos 116:12-14",
+      ],
+      href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
+      ctaLabel: "Ver programação do congresso",
+    },
+    recursos: {
+      titulo: "Assista ao Congresso 2025",
+      itens: [
+        {
+          label: "Congresso UMADAT 2025 — 1ª noite",
+          href: "https://www.youtube.com/live/10U_dsUWXZU",
+          descricao: "Palavra com o Pb. Diogo Almeida.",
+        },
+        {
+          label: "Congresso UMADAT 2025 — 2ª noite",
+          href: "https://www.youtube.com/live/NUOkvhMBoy4",
+          descricao: "Palavra com o Pr. Rafael Bello.",
+        },
+      ],
+    },
+    redes: {
+      instagram: "https://www.instagram.com/umadat_atibaia/",
+    },
     imagem: "/ministerios/umadat/umadat-2026-youtube.png",
   },
   {
