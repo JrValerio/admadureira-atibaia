@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { trimestresEBDPorClasse } from "@/data/ebd";
 import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
-import resolucoesCabecalho from "@/data/ebd/2026-4t/fontes/resolucoes-cabecalho.json";
+import transcricoesCabecalho from "@/data/ebd/2026-4t/fontes/transcricoes-cabecalho.json";
 import manifestoLivro from "@/data/ebd/2026-4t/fontes/livro-apoio.json";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
@@ -93,17 +93,35 @@ describe("gate 4T2026 — camada 1: cabeçalhos com livro, capítulo e domingo v
     });
   }
 
-  it("resoluções de cabeçalho só valem para o valor exato que está no JSON", () => {
-    for (const resolucao of resolucoesCabecalho) {
-      const [classe, rotulo, ...resto] = resolucao.id.split("-");
+  // Mesma normalização de scripts/gate/comum.py (caixa, aspas, espaços, "[...]").
+  function normalizar(texto: string) {
+    return texto
+      .replace(/[“”„«»]/g, '"').replace(/[‘’]/g, "'").replace(/[–—]/g, "-").replace(/­/g, "")
+      .replace(/\[\s*\.\.\.\s*\]|…/g, " ")
+      .replace(/\s+/g, " ").trim().toLocaleLowerCase("pt-BR")
+      .replace(/\s+([,.;:!?)])/g, "$1")
+      .replace(/(\d)\s*([,.:-])\s+(\d)/g, "$1$2$3")
+      .replace(/([(])\s+/g, "$1");
+  }
+  const MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  function formasDaData(iso: string) {
+    const [ano, mes, dia] = iso.split("-");
+    const nome = MESES[Number(mes) - 1];
+    return [`${Number(dia)} de ${nome} de ${ano}`, `${dia} de ${nome} de ${ano}`, `${Number(dia)} ${nome.slice(0, 3)} ${ano}`, `${dia} ${nome.slice(0, 3)} ${ano}`];
+  }
+
+  it("cada transcrição às cegas da imagem bate com o valor atual do JSON", () => {
+    for (const transcricao of transcricoesCabecalho) {
+      const [classe, rotulo, ...resto] = transcricao.id.split("-");
       const numero = Number(rotulo.slice(1));
       const licao = (cabecalhos as unknown as Record<string, { licoes: Array<Record<string, unknown>> }>)[classe].licoes[numero - 1];
       const caminho = resto.join("-");
-      if (caminho === "hinosSugeridos") continue; // hinos vêm do corpo, conferidos pela camada 1 em script
-      const valor = caminho.split(/\.|\[|\]/).filter(Boolean).reduce<unknown>(
-        (atual, parte) => (atual as Record<string, unknown>)?.[parte], licao);
-      expect(valor, resolucao.id).toBe(resolucao.valor);
-      expect(resolucao.conferido, resolucao.id).toBe("imagem");
+      if (caminho === "hinosSugeridos") continue; // hinos vêm do corpo; a comparação fica no script
+      const valor = String(caminho.split(/\.|\[|\]/).filter(Boolean).reduce<unknown>(
+        (atual, parte) => (atual as Record<string, unknown>)?.[parte], licao));
+      const formas = caminho === "data" ? formasDaData(valor) : [valor];
+      expect(formas.map(normalizar), `${transcricao.id}: lido "${transcricao.lido}"`).toContain(normalizar(transcricao.lido));
+      expect(transcricao.pagina, transcricao.id).toBeGreaterThan(0);
     }
   });
 });
