@@ -89,7 +89,7 @@ export default async function MinisterioPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(ministrySchema) }}
           />
 
-          <Breadcrumb nome={ministerio.nome} />
+          <Breadcrumb nome={ministerio.nomeCurto ?? ministerio.nome} />
 
           <div className="rounded-3xl overflow-hidden bg-white border border-black/5 shadow-lg">
             <div className="relative aspect-video bg-[#111]">

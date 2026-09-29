@@ -24,6 +24,8 @@ export interface MinisterioRecursos {
 export interface Ministerio {
   slug: string;
   nome: string;
+  /** Nome para espaços estreitos (card do grid e breadcrumb); o nome completo segue no H1, no title e no JSON-LD. */
+  nomeCurto?: string;
   escopo: string;
   resumo: string;
   descricao: string[];
@@ -78,6 +80,7 @@ const ministerios: Ministerio[] = [
   {
     slug: "umadat",
     nome: "UMADAT – Jovens Campo de Atibaia",
+    nomeCurto: "UMADAT – Jovens Campo de Atibaia",
     escopo: "Campo de Atibaia",
     resumo:
       "Departamento jovem do campo, voltado ao discipulado, à comunhão e ao fortalecimento espiritual da juventude.",
