@@ -72,15 +72,6 @@ function buildEditorialReadiness(
   };
 }
 
-function topicosToListaItems(licao: LicaoEBD): ListaItem[] {
-  return licao.topicos.map((topico) => ({
-    titulo: topico.titulo,
-    conteudo:
-      topico.conteudo[0] ??
-      "Desenvolva este tópico em aula com base bíblica e aplicação prática.",
-  }));
-}
-
 function buildLessonHeader(
   classeInfo: ClasseEBDInfo,
   trimestre: Pick<TrimestreEBD, "rotulo">,
@@ -118,7 +109,9 @@ export function getAdultLessonStructure(
     objetivos: subsidio?.visaoGeral.objetivos ?? licao.objetivos,
     apoioProfessor: licao.apoioProfessor ?? [],
     apoioAluno: licao.apoioAluno ?? [],
-    esboco: licao.esboco?.length ? licao.esboco : topicosToListaItems(licao),
+    // Sem esboço próprio, a aula fica sem esboço: montá-lo com o primeiro
+    // parágrafo de cada tópico repetia na página um texto já exibido duas vezes.
+    esboco: licao.esboco ?? [],
   };
 }
 
@@ -145,7 +138,9 @@ export function getYoungLessonStructure(
     horaDaRevisao: subsidio?.revisao?.horaDaRevisao ?? [],
     apoioProfessor: licao.apoioProfessor ?? [],
     apoioAluno: licao.apoioAluno ?? [],
-    esboco: licao.esboco?.length ? licao.esboco : topicosToListaItems(licao),
+    // Sem esboço próprio, a aula fica sem esboço: montá-lo com o primeiro
+    // parágrafo de cada tópico repetia na página um texto já exibido duas vezes.
+    esboco: licao.esboco ?? [],
   };
 }
 
