@@ -3,6 +3,7 @@ import HeroPage from "@/components/HeroPage";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
 import EbdBreadcrumb from "@/components/ebd/EbdBreadcrumb";
 import CardMedia from "@/components/media/CardMedia";
+import { trimestresEBDPorClasse } from "@/data/ebd";
 import { igrejaHeroMedia } from "@/data/igreja-media";
 import {
   formatEbdDate,
@@ -39,23 +40,29 @@ export const metadata = buildPageMetadata({
 
 export const revalidate = 3600;
 
-const terceiroTrimestrePreview = [
-  {
-    classe: "Adultos",
-    titulo: "A Igreja dos Gentios",
-    descricao:
-      "Da chamada missionária à consolidação do Evangelho entre os povos.",
-    capa: "/images/EBD/adultos/2026-3t/ebd-3t-capa.jpg",
-    alt: "Capa da revista Adultos do 3º Trimestre de 2026",
-  },
-  {
-    classe: "Jovens",
-    titulo: "Fidelidade às Escrituras",
-    descricao: "Lições espirituais no livro de Juízes contra a apostasia.",
-    capa: "/images/EBD/jovens/2026-3t/ebd-3t-capa.jpg",
-    alt: "Capa da revista Jovens do 3º Trimestre de 2026",
-  },
-] as const;
+// Edição anunciada no bloco "Novo trimestre". Título, subtítulo, capa e data
+// de início vêm dos dados da edição; na virada do trimestre, só o slug muda.
+const TRIMESTRE_EM_DESTAQUE = "2026-4t";
+
+const trimestresEmDestaque = (["adultos", "jovens"] as const).flatMap((classe) => {
+  const trimestre = trimestresEBDPorClasse[classe].find(
+    (item) => item.slug === TRIMESTRE_EM_DESTAQUE
+  );
+  if (!trimestre) return [];
+  const nomeClasse = classe === "adultos" ? "Adultos" : "Jovens";
+  return [
+    {
+      classe: nomeClasse,
+      titulo: trimestre.titulo,
+      descricao: trimestre.subtitulo,
+      capa: trimestre.imagem,
+      alt: `Capa da revista ${nomeClasse} do ${trimestre.rotulo}`,
+      rotulo: trimestre.rotulo,
+      inicio: trimestre.licoes[0]?.data,
+    },
+  ];
+});
+const trimestreEmDestaque = trimestresEmDestaque[0];
 
 export default async function EbdHubPage({ searchParams }: PageProps) {
   const params = await searchParams;
@@ -165,16 +172,19 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
                     Novo trimestre da EBD
                   </p>
                   <h2 className="mb-3 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
-                    3º Trimestre de 2026
+                    {trimestreEmDestaque?.rotulo}
                   </h2>
                   <p className="text-sm leading-relaxed text-[#555] md:text-base">
-                    Começa em 05 de julho. Prepare-se para uma nova jornada de
-                    estudo bíblico nas classes Adultos e Jovens.
+                    {trimestreEmDestaque?.inicio
+                      ? `Começa em ${formatEbdDate(trimestreEmDestaque.inicio)}. `
+                      : ""}
+                    Prepare-se para uma nova jornada de estudo bíblico nas
+                    classes Adultos e Jovens.
                   </p>
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
-                  {terceiroTrimestrePreview.map((item) => (
+                  {trimestresEmDestaque.map((item) => (
                     <div
                       key={item.classe}
                       className="grid grid-cols-[5.5rem_1fr] gap-4 border-l-4 border-[#ffa726]/40 pl-4 sm:grid-cols-[6.5rem_1fr]"
