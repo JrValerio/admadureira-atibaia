@@ -26,7 +26,7 @@ from comum import (
 )
 
 ASPAS = re.compile(r"“([^”]+)”")
-CITACAO_LIVRO = re.compile(r"\([^()]*,\s*[^()]*,\s*cap\.\s*\d+\)")
+CITACAO_LIVRO = re.compile(r"\([^()]*,\s*[^()]*,\s*cap\.\s*\d+[^()]*\)")
 
 
 def trechos(citacao):

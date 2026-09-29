@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { trimestresEBDPorClasse } from "@/data/ebd";
 import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
 import resolucoesCabecalho from "@/data/ebd/2026-4t/fontes/resolucoes-cabecalho.json";
+import manifestoLivro from "@/data/ebd/2026-4t/fontes/livro-apoio.json";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
 // Parte estrutural do gate automatizado (scripts/gate/). Os scripts conferem as
@@ -103,5 +104,40 @@ describe("gate 4T2026 — camada 1: cabeçalhos com livro, capítulo e domingo v
       expect(valor, resolucao.id).toBe(resolucao.valor);
       expect(resolucao.conferido, resolucao.id).toBe("imagem");
     }
+  });
+});
+
+describe("gate 4T2026 — camada 3: manifesto do livro de apoio", () => {
+  const livros = manifestoLivro.livros as Record<string, { citacao: string }>;
+
+  for (const classe of ["adultos", "jovens"] as const) {
+    it(`${classe}: cada entrada do manifesto aponta para um trecho existente que cita o livro com o capítulo`, () => {
+      const porLicao = new Map(licoesDoCorpo(classe).map(({ licao, textos }) => [licao.numero, textos.map((t) => t.texto)]));
+      for (const entrada of manifestoLivro.citacoes.filter((c) => c.classe === classe)) {
+        const corpo = porLicao.get(entrada.licao) ?? [];
+        expect(corpo.some((texto) => texto.includes(entrada.trecho)), `${entrada.id}: trecho não encontrado no corpo da L${entrada.licao}`).toBe(true);
+        expect(entrada.trecho, entrada.id).toContain(`${livros[classe].citacao}, cap. ${entrada.capitulo}`);
+        expect(entrada.ancoras.length, entrada.id).toBeGreaterThan(0);
+      }
+    });
+
+    it(`${classe}: toda frase que cita o livro de apoio tem entrada no manifesto`, () => {
+      const entradas = manifestoLivro.citacoes.filter((c) => c.classe === classe);
+      for (const { licao, textos } of licoesDoCorpo(classe)) {
+        const daLicao = entradas.filter((e) => e.licao === licao.numero);
+        for (const { campo, texto } of textos) {
+          for (const frase of frases(texto)) {
+            if (!frase.includes(livros[classe].citacao)) continue;
+            const coberta = daLicao.some((e) => frase.includes(e.trecho) || e.trecho.includes(frase));
+            expect(coberta, `${licao.id} ${campo}: citação do livro sem entrada no manifesto — "${frase.slice(0, 90)}…"`).toBe(true);
+          }
+        }
+      }
+    });
+  }
+
+  it("ids do manifesto são únicos", () => {
+    const ids = manifestoLivro.citacoes.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
   });
 });
