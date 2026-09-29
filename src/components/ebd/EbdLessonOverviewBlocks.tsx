@@ -27,7 +27,6 @@ type BaseBlock = {
   key: string;
   title: string;
   tone?: OverviewBlockTone;
-  fullWidth?: boolean;
 };
 
 type ListBlock = BaseBlock & {
@@ -54,7 +53,9 @@ type ScheduleBlock = BaseBlock & {
 type RecurringBlock = ListBlock | TextBlock | OutlineBlock | ScheduleBlock;
 
 const OVERVIEW_BLOCK_CLASS_NAME = "rounded-3xl p-5 shadow-sm md:p-6";
-const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 sm:grid-cols-2 xl:grid-cols-4";
+// A coluna de conteúdo divide a tela com a barra lateral (~720px no desktop):
+// as grades respondem à largura do container, não da janela.
+const OVERVIEW_SCHEDULE_GRID_CLASS_NAME = "grid gap-3 @md:grid-cols-2 @2xl:grid-cols-3";
 
 function SectionLead({
   eyebrow,
@@ -78,12 +79,6 @@ function SectionLead({
   );
 }
 
-function getOverviewBlockClassName(fullWidth = false) {
-  return fullWidth
-    ? `${OVERVIEW_BLOCK_CLASS_NAME} lg:col-span-2`
-    : OVERVIEW_BLOCK_CLASS_NAME;
-}
-
 function renderBlock(block: RecurringBlock) {
   switch (block.kind) {
     case "list":
@@ -93,7 +88,7 @@ function renderBlock(block: RecurringBlock) {
           title={block.title}
           items={block.items}
           tone={block.tone}
-          className={getOverviewBlockClassName(block.fullWidth)}
+          className={OVERVIEW_BLOCK_CLASS_NAME}
         />
       );
     case "text":
@@ -103,7 +98,7 @@ function renderBlock(block: RecurringBlock) {
           title={block.title}
           text={block.text}
           tone={block.tone}
-          className={getOverviewBlockClassName(block.fullWidth)}
+          className={OVERVIEW_BLOCK_CLASS_NAME}
           textClassName={
             block.highlight ? "text-lg leading-relaxed md:text-xl" : undefined
           }
@@ -116,7 +111,7 @@ function renderBlock(block: RecurringBlock) {
           title={block.title}
           items={block.items}
           tone={block.tone}
-          className={getOverviewBlockClassName(block.fullWidth)}
+          className={OVERVIEW_BLOCK_CLASS_NAME}
         />
       );
     case "schedule":
@@ -126,7 +121,7 @@ function renderBlock(block: RecurringBlock) {
           title={block.title}
           items={block.items}
           tone={block.tone}
-          className={getOverviewBlockClassName(block.fullWidth)}
+          className={OVERVIEW_BLOCK_CLASS_NAME}
           itemsClassName={OVERVIEW_SCHEDULE_GRID_CLASS_NAME}
         />
       );
@@ -189,7 +184,6 @@ export default function EbdLessonOverviewBlocks({
                     structure.topo.data
                   ),
                   tone: "accent" as const,
-                  fullWidth: true,
                 },
               ]
             : []),
@@ -216,7 +210,6 @@ export default function EbdLessonOverviewBlocks({
                 structure.topo.data
               ),
               tone: "accent" as const,
-              fullWidth: true,
             },
           ]
         : [];
@@ -253,7 +246,6 @@ export default function EbdLessonOverviewBlocks({
                   title: "Esboço da aula",
                   items: structure.esboco,
                   tone: "accent" as const,
-                  fullWidth: true,
                 },
               ]
             : []),
@@ -278,7 +270,6 @@ export default function EbdLessonOverviewBlocks({
                   title: "Orientação pedagógica",
                   text: structure.orientacaoPedagogica,
                   tone: "dark" as const,
-                  fullWidth: true,
                 },
               ]
             : []),
@@ -323,13 +314,22 @@ export default function EbdLessonOverviewBlocks({
                   title: "Esboço da aula",
                   items: structure.esboco,
                   tone: "accent" as const,
-                  fullWidth: true,
                 },
               ]
             : []),
         ];
-  const hasPrimaryColumn =
-    primaryReading.length > 0 || structure.objetivos.length > 0;
+  // Jovens: o apoio ao professor às vezes repete a orientação pedagógica palavra por palavra.
+  const planningBlocksSemRepeticao = planningBlocks.filter(
+    (block) =>
+      !(
+        block.key === "apoio-professor" &&
+        block.kind === "list" &&
+        structure.tipo === "jovens" &&
+        block.items.every(
+          (item) => item.trim() === structure.orientacaoPedagogica?.trim()
+        )
+      )
+  );
 
   return (
     <div className="space-y-10">
@@ -340,54 +340,47 @@ export default function EbdLessonOverviewBlocks({
           description="Os blocos recorrentes mais consultados aparecem logo no topo para facilitar leitura devocional, leitura rápida e preparação da aula."
         />
 
-        <div
-          className={`grid gap-6 ${
-            hasPrimaryColumn ? "xl:grid-cols-[1.05fr_0.95fr]" : ""
-          }`}
-        >
-          <div className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2">
-              <EbdSupportTextPanel
-                title={classeInfo.textoBaseLabel}
-                text={primaryText}
-                tone="accent"
-                className={OVERVIEW_BLOCK_CLASS_NAME}
-                textClassName="text-lg leading-relaxed md:text-xl"
-              />
-              <EbdSupportTextPanel
-                title={classeInfo.resumoDestaqueLabel}
-                text={highlightText}
-                tone="soft"
-                className={OVERVIEW_BLOCK_CLASS_NAME}
-                textClassName="text-lg leading-relaxed md:text-xl"
-              />
-            </div>
+        <div className="@container space-y-4">
+          <div className="grid gap-4 @xl:grid-cols-2">
+            <EbdSupportTextPanel
+              title={classeInfo.textoBaseLabel}
+              text={primaryText}
+              tone="accent"
+              className={OVERVIEW_BLOCK_CLASS_NAME}
+              textClassName="text-lg leading-relaxed md:text-xl"
+            />
+            <EbdSupportTextPanel
+              title={classeInfo.resumoDestaqueLabel}
+              text={highlightText}
+              tone="soft"
+              className={OVERVIEW_BLOCK_CLASS_NAME}
+              textClassName="text-lg leading-relaxed md:text-xl"
+            />
           </div>
 
-          {hasPrimaryColumn ? (
-            <div className="grid gap-4">
-              {primaryReading.length ? (
-                <EbdSupportListPanel
-                  title={classeInfo.leituraPrincipalLabel}
-                  items={primaryReading}
-                  className={OVERVIEW_BLOCK_CLASS_NAME}
-                />
-              ) : null}
+          {primaryReading.length ? (
+            <EbdSupportListPanel
+              title={classeInfo.leituraPrincipalLabel}
+              items={primaryReading}
+              className={OVERVIEW_BLOCK_CLASS_NAME}
+            />
+          ) : null}
 
-              {structure.objetivos.length ? (
-                <EbdSupportListPanel
-                  title="Objetivos da lição"
-                  items={structure.objetivos}
-                  className={OVERVIEW_BLOCK_CLASS_NAME}
-                />
-              ) : null}
-            </div>
+          {structure.objetivos.length ? (
+            <EbdSupportListPanel
+              title="Objetivos da lição"
+              items={structure.objetivos}
+              className={OVERVIEW_BLOCK_CLASS_NAME}
+            />
           ) : null}
         </div>
       </section>
 
       {hasRitmoSemana(structure) ? (
-        <section id="ritmo-semana" className="scroll-mt-28 space-y-4">
+        <section
+          id="ritmo-semana"
+          className="@container scroll-mt-28 space-y-4"
+        >
           <SectionLead
             eyebrow="Ritmo da semana"
             title={
@@ -401,7 +394,7 @@ export default function EbdLessonOverviewBlocks({
                 : "A leitura semanal sobe de nível visual para apoiar acompanhamento da juventude ao longo dos dias."
             }
           />
-          <div className="grid gap-4 lg:grid-cols-2">{weeklyBlocks.map(renderBlock)}</div>
+          <div className="grid gap-4">{weeklyBlocks.map(renderBlock)}</div>
         </section>
       ) : null}
 
@@ -420,7 +413,9 @@ export default function EbdLessonOverviewBlocks({
                 : "Interação, orientação pedagógica, revisão e apoios ficam organizados no mesmo fluxo para consulta do professor."
             }
           />
-          <div className="grid gap-4 lg:grid-cols-2">{planningBlocks.map(renderBlock)}</div>
+          <div className="grid gap-4">
+            {planningBlocksSemRepeticao.map(renderBlock)}
+          </div>
         </section>
       ) : null}
     </div>
