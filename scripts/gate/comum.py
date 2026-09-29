@@ -243,7 +243,10 @@ def textos(valor, caminho=""):
 
 def frases(texto):
     """Divide em frases sem quebrar abreviações como 'cap. 2' ou 'Dt 1.21'."""
-    partes = re.split(r"(?<=[.!?])[”\"]?\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ“\"(])", texto.strip())
+    # Não quebra antes de "(": a referência entre parênteses pertence à frase
+    # anterior (ex.: “Mas que importa?” (Fp 1.18) revela…). A aspa de fechamento
+    # fica com a frase.
+    partes = re.split(r"(?:(?<=[.!?])|(?<=[.!?][”\"]))\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ“\"])", texto.strip())
     return [p.strip() for p in partes if p.strip()]
 
 
