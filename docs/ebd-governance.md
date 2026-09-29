@@ -168,6 +168,13 @@ For the current weekly operation of `Jovens 2T/2026`, use:
 - [docs/ebd/jovens-2t-2026-operacao.md](./ebd/jovens-2t-2026-operacao.md)
 - [docs/ebd/jovens-2t-2026-checklist.md](./ebd/jovens-2t-2026-checklist.md)
 
+## Editorial Conventions for Lesson Bodies (from 4T/2026)
+
+- **Support book.** The commentator's support book is cited by chapter in the text ("Osiel Gomes, *O Deus da Aliança*, cap. 2"). Direct quotes stay short and the rest is paraphrase. The PR lists every citation with its PDF page so the human gate can spot-check at least two per class. If the book is a scan, Bible references taken from it are checked against the page image or the verse content.
+- **Divergence from Scripture.** When the support book diverges from the biblical text, the published lesson presents the biblical reading only and never names or corrects the commentator. The divergence is recorded in the PR alone. Correcting the quarter's commentator on the church's official site is a pastoral decision, not an editorial one.
+- **Bible quotations.** Direct quotations follow the ARC (Almeida Revista e Corrigida), the translation printed in the CPAD magazine. Each quotation is checked against a real ARC text: the magazine page image, or a published ARC edition for verses the magazine does not print. The comparison is pasted in the PR. The site's Bible reader (`bible-api.com`, "almeida") serves the JFA, whose wording differs from the ARC in several verses; see the open decision in PR #175.
+- **Greek and Hebrew terms.** Simple transliteration without diacritics: `upsilon → y`, `chi → ch`, `eta` and `epsilon → e`, `omega` and `omicron → o`, no accents (for example `prokope`, `synergeo`, `oida`, `epichoregia`, `politeuomai`, `charis`). Hebrew follows the same rule (`chakhamim`, `nevonim`). The spelling the support book uses is not reproduced when it differs from this pattern.
+
 ## Editorial Priorities
 
 When deciding what to ship next, use this order:
