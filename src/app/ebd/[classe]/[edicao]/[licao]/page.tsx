@@ -291,6 +291,7 @@ export default async function EbdLessonPage({ params }: PageProps) {
           description={lessonContext.licao.resumo}
           image={trimestre.imagem}
           imageAlt={lessonContext.licao.titulo}
+          imageClassName="blur-[3px] opacity-60 md:blur-none md:opacity-100"
         />
 
         <section className="py-16 md:py-20">
