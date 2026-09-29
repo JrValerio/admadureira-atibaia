@@ -176,6 +176,15 @@ For the current weekly operation of `Jovens 2T/2026`, use:
 - **ARC text stays out of git.** The ARC translation is copyrighted by the SBB. The gate's ARC cache (`tmp/cache/arc/`, filled from bibliaonline by `scripts/gate/arc.py`) lives in `tmp/`, which is gitignored, and must never be committed or moved into `src/` or `public/`. The same goes for the magazine and support-book PDFs in `material_consulta/`.
 - **Greek and Hebrew terms.** Simple transliteration without diacritics: `upsilon → y`, `chi → ch`, `eta` and `epsilon → e`, `omega` and `omicron → o`, no accents (for example `prokope`, `synergeo`, `oida`, `epichoregia`, `politeuomai`, `charis`). Hebrew follows the same rule (`chakhamim`, `nevonim`). The spelling the support book uses is not reproduced when it differs from this pattern.
 
+## Automated Gate: Blind Transcription (layer 1)
+
+Header fields that the two magazine OCRs do not both confirm are read from the page image (`scripts/gate/cabecalho.py`). That reading only counts as a second source if whoever reads has never seen the expected value. The main agent works with `cabecalhos.json` all session long, so hiding the value on the sheet is not enough when it is the main agent that reads.
+
+- **Who transcribes.** A subagent or new session with clean context. It receives only the sheets (`tmp/gate/transcricao/folha-NN.jpg`, from `scripts/gate/transcricao.py`) and the list of labels (`pendentes.json`: id, label and PDF page, no values), copied to a folder outside the repository. It gets no access to the repository, `cabecalhos.json` or the lesson files, and returns the transcriptions as JSON (`id`, `lido`, `pagina`).
+- **What the main agent does.** It writes the returned JSON to `src/data/ebd/<edition>/fontes/transcricoes-cabecalho.json` unchanged, with `lidoEm`, and runs the comparison. It never edits a transcription. A divergence stays an exception with both versions. A new reading of that sheet is a new call to a clean subagent, never a correction by the main agent.
+- **How isolation is shown.** Tool restrictions do not guarantee that a subagent cannot open another path, so the evidence is its tool log. The main agent checks that every file the subagent read is inside the sheets folder, and states that in the PR next to the number of transcriptions, how many matched and the exceptions.
+- **Reading done before this rule.** The 36 transcriptions for L1–L2 of 4T/2026 were made by the main agent after it had already seen the values. They validate the method, not the independence of the reading.
+
 ## Editorial Priorities
 
 When deciding what to ship next, use this order:
