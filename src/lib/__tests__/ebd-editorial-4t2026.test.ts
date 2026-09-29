@@ -21,6 +21,7 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
       expect(trimestre.statusEditorial).toBe("partial");
       expect(trimestre.titulo).toBe(cabecalhos[classe].titulo);
       expect(trimestre.comentarista).toBe(cabecalhos[classe].comentarista);
+      expect(trimestre.versiculoBase).toBe(classe === "adultos" ? "Deuteronômio 7.9" : "Filipenses 4.4");
       expect(trimestre.licoes).toHaveLength(13);
       expect(new Set(trimestre.licoes.map((licao) => licao.id)).size).toBe(13);
       expect(corpos.map((corpo) => corpo.numero)).toEqual(Array.from({ length: 13 }, (_, i) => i + 1));

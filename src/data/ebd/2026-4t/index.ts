@@ -173,6 +173,9 @@ function criarTrimestre(classe: "adultos" | "jovens", licoes: TrimestreEBD["lico
     titulo: edicao.titulo,
     subtitulo: edicao.subtitulo,
     comentarista: edicao.comentarista,
+    // Jovens: destacado na carta da editora (revista do professor, p. 4).
+    // Adultos: a revista não destaca versículo; escolha editorial do usuário.
+    versiculoBase: classe === "adultos" ? "Deuteronômio 7.9" : "Filipenses 4.4",
     descricao: classe === "adultos"
       ? "Treze lições sobre a aliança, a fidelidade de Deus e o chamado à obediência no Livro de Deuteronômio, lido à luz de Cristo."
       : "Treze lições sobre alegria, humildade, comunhão e perseverança na Carta aos Filipenses.",
