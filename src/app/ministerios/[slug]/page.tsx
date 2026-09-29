@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import LiderancaDestaque from "@/components/ministerios/LiderancaDestaque";
+import RecursosMinisterio from "@/components/ministerios/RecursosMinisterio";
 import { getMinisterioBySlug, getMinisterios } from "@/data/ministerios";
 import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
@@ -70,6 +72,7 @@ export default async function MinisterioPage({ params }: PageProps) {
     name: `${ministerio.nome} | AD Madureira Atibaia`,
     url: `${SITE_URL}/ministerios/${ministerio.slug}`,
     image: `${SITE_URL}${ministerio.imagem ?? "/fachada-da-igreja.jpg"}`,
+    ...(ministerio.redes?.instagram ? { sameAs: [ministerio.redes.instagram] } : {}),
     parentOrganization: {
       "@type": "Church",
       name: "AD Madureira Atibaia",
@@ -141,13 +144,18 @@ export default async function MinisterioPage({ params }: PageProps) {
                     </div>
                   )}
 
-                  {ministerio.lideranca && (
+                  {(ministerio.lideranca || ministerio.liderancaDestaque) && (
                     <div className="rounded-3xl bg-[#fff8ee] border border-[#ffa726]/20 p-6">
                       <h2 className="font-acme text-2xl text-[#212121] tracking-wide mb-4">
                         Liderança
                       </h2>
+                      {ministerio.liderancaDestaque ? (
+                        <div className="mb-4">
+                          <LiderancaDestaque lider={ministerio.liderancaDestaque} />
+                        </div>
+                      ) : null}
                       <ul className="space-y-3 text-[#555] leading-relaxed">
-                        {ministerio.lideranca.map((lider) => (
+                        {ministerio.lideranca?.map((lider) => (
                           <li key={lider} className="flex gap-3">
                             <span className="text-brand-orange">•</span>
                             <span>{lider}</span>
@@ -193,6 +201,8 @@ export default async function MinisterioPage({ params }: PageProps) {
                 </div>
               ) : null}
 
+              <RecursosMinisterio recursos={ministerio.recursos} />
+
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <Link
                   href="/contato"
@@ -206,6 +216,16 @@ export default async function MinisterioPage({ params }: PageProps) {
                 >
                   Ver outros ministérios
                 </Link>
+                {ministerio.redes?.instagram ? (
+                  <a
+                    href={ministerio.redes.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center border border-[#212121]/20 text-[#212121] hover:border-[#212121]/40 font-bold text-xs tracking-widest uppercase px-6 py-3 rounded-full transition-colors"
+                  >
+                    Instagram oficial
+                  </a>
+                ) : null}
               </div>
             </div>
           </div>

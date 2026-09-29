@@ -1,3 +1,5 @@
+import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
+
 export interface MinisterioDestaque {
   etiqueta: string;
   titulo: string;
@@ -5,6 +7,18 @@ export interface MinisterioDestaque {
   href: string;
   ctaLabel: string;
   detalhes?: string[];
+}
+
+export interface MinisterioLiderancaDestaque {
+  nome: string;
+  cargo: string;
+  /** Retrato em public/; o enquadramento fica no componente, sem editar o arquivo. */
+  foto: string;
+}
+
+export interface MinisterioRecursos {
+  titulo: string;
+  itens: ConteudoRelacionadoLink[];
 }
 
 export interface Ministerio {
@@ -17,6 +31,11 @@ export interface Ministerio {
   atividades?: string[];
   destaque?: MinisterioDestaque;
   imagem?: string;
+  liderancaDestaque?: MinisterioLiderancaDestaque;
+  recursos?: MinisterioRecursos;
+  redes?: {
+    instagram?: string;
+  };
 }
 
 const ministerios: Ministerio[] = [
