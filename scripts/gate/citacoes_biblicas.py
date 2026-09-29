@@ -52,9 +52,18 @@ def verificar(classe, numero, edicao="2026-4t", dados=None):
     corpo = [t for _, t in textos(dados["corpo"])] + [dados["licao"]["resumo"]]
     fontes = revistas(classe, edicao)
     paginas = paginas_alinhadas(fontes, classe, numero)
-    texto_revista = {n: normalizar("\n".join(texto_pagina(fontes[n], p) for p in paginas[n])) for n in fontes}
-    # Capítulos do texto bíblico da lição: contexto de "versículo N" sem livro.
+    # Reserva da revista: só a página do bloco "Leitura Bíblica em Classe" / "Texto
+    # Bíblico". A prosa da revista pode parafrasear ou citar outra tradução.
+    titulo_bloco = "LEITURA BÍBLICA EM CLASSE" if classe == "adultos" else "TEXTO BÍBLICO"
+    bloco_revista = {}
+    for n in fontes:
+        pags = [p for p in paginas[n] if titulo_bloco in texto_pagina(fontes[n], p).upper()]
+        if pags:
+            bloco_revista[n] = (pags[0], normalizar(texto_pagina(fontes[n], pags[0])))
+    # Capítulos e versículos do texto bíblico da lição: contexto de "versículo N"
+    # sem livro e limite da reserva da revista (só versículos impressos no bloco).
     principais = [(r[2], r[3], r[1]) for ref in dados["licao"]["leituraBiblica"] for r in referencias(ref)]
+    impressos = {(r[2], r[3], v) for ref in dados["licao"]["leituraBiblica"] for r in referencias(ref) for v in r[4]}
 
     conferidas, do_livro, excecoes, vistos = [], [], [], set()
     for paragrafo in dict.fromkeys(corpo):
@@ -82,9 +91,11 @@ def verificar(classe, numero, edicao="2026-4t", dados=None):
                                  "url": arc.url(slug, cap), "versiculos": {v: cap_arc.get(v) for v in vs}}
                         break
                 if not achou:
-                    for nome_rev, texto in texto_revista.items():
-                        if all(normalizar(t) in texto for t in trechos(citacao)):
-                            achou = {"fonte": f"revista ({nome_rev}), PDF p. {paginas[nome_rev][0]}–{paginas[nome_rev][-1]}", "ref": ", ".join(f"{r[3]} {r[1]}" for r in refs)}
+                    no_bloco = [r for r in refs if r[2] and all((r[0], r[1], v) in impressos for v in r[2])]
+                    for nome_rev, (pagina_bloco, texto) in bloco_revista.items():
+                        if no_bloco and all(normalizar(t) in texto for t in trechos(citacao)):
+                            achou = {"fonte": f"revista ({nome_rev}), bloco {titulo_bloco.title()}, PDF p. {pagina_bloco}",
+                                     "ref": ", ".join(f"{r[3]} {r[1]}:{','.join(map(str, r[2]))}" for r in no_bloco)}
                             break
                 if achou:
                     conferidas.append({"citacao": citacao, **achou})
