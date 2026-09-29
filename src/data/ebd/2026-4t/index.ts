@@ -107,7 +107,10 @@ const licoesAdultos: LicaoEBDAdultos[] = cabecalhos.adultos.licoes.map((seed) =>
   };
 });
 
-/** Decisão expressa do usuário: manter as formas impressas, sem emendas. */
+/**
+ * Decisão expressa do usuário: manter as formas impressas, sem emendas.
+ * Registro de curadoria apenas: estas notas não entram no objeto renderizado.
+ */
 export const ressalvasJovens4T: Record<number, string> = {
   2: "Referência transcrita como impressa: Filipenses 1.12-15-20,22,23,25-30. A sequência contém um intervalo malformado; não foi corrigida. Na preparação, confira os versículos reproduzidos na revista.",
   6: "Leitura semanal de segunda-feira: mantida a palavra “levada”, conforme impressa na revista. A proposta de alteração para “leveda” não foi aplicada.",
@@ -117,7 +120,6 @@ export const ressalvasJovens4T: Record<number, string> = {
 const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
   const corpo = corpoDaLicao(corposJovens4T, seed.numero);
   const id = `jovens-2026-4t-licao-${seed.numero}`;
-  const ressalva = ressalvasJovens4T[seed.numero];
   return {
     ...conteudoComum(corpo),
     id,
@@ -132,7 +134,7 @@ const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
     textoChave: normalizar(seed.textoPrincipal.referencia),
     verdadePratica: seed.resumoLicao,
     leituraBiblica: [normalizar(seed.leituraBiblica)],
-    apoioProfessor: [corpo.planejamento, ...(ressalva ? [ressalva] : [])],
+    apoioProfessor: [corpo.planejamento],
     subsidioJovens: validateSubsidioJovens(id, {
       cabecalho: {
         numero: seed.numero,
@@ -152,7 +154,6 @@ const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
       },
       desenvolvimento: desenvolvimento(corpo, id),
       apoioProfessor: {
-        ...(ressalva ? { dificuldadeProvavelDaClasse: ressalva } : {}),
         conducaoDaConversa: [corpo.planejamento],
         fechamento: corpo.conclusao,
       },

@@ -5,6 +5,7 @@ import { trimestresEBDPorClasse, validateSubsidioAdultos, validateSubsidioJovens
 import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
 import { corposAdultos4T } from "@/data/ebd/2026-4t/adultos";
 import { corposJovens4T } from "@/data/ebd/2026-4t/jovens";
+import { ressalvasJovens4T } from "@/data/ebd/2026-4t";
 import { getDiagnosticoProntidaoEditorialLicao, getLicaoReleaseWindowKey, isLicaoPubliclyAvailable } from "../ebd-utils";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
@@ -117,6 +118,15 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
     expect(extractBibleReferences(licoes[1].leituraBiblica[0])).toEqual([]);
     expect(licoes[5].subsidioJovens!.cabecalho.leituraSemanal![0].foco).toBe("Um pouco de fermento levada toda a massa");
     expect(licoes[7].subsidioJovens!.cabecalho.leituraSemanal![5].referencia).toBe("Fp 2:22");
-    for (const numero of [2, 6, 8]) expect(licoes[numero - 1].apoioProfessor).toHaveLength(2);
+    // As ressalvas de curadoria ficam só em ressalvasJovens4T: nenhuma parte
+    // delas pode chegar ao que o site renderiza.
+    for (const licao of licoes) {
+      const renderizado = JSON.stringify(licao);
+      for (const ressalva of Object.values(ressalvasJovens4T)) {
+        expect(renderizado.includes(ressalva.slice(0, 40)), licao.id).toBe(false);
+      }
+      expect(licao.subsidioJovens!.apoioProfessor.dificuldadeProvavelDaClasse).toBeUndefined();
+    }
+    expect(Object.keys(ressalvasJovens4T).map(Number)).toEqual([2, 6, 8]);
   });
 });
