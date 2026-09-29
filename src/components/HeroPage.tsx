@@ -26,10 +26,11 @@ export default function HeroPage({
   priority = true,
 }: HeroPageProps) {
   const isFull = variant === "full";
+  // Altura mínima, não fixa: descrições longas (resumo da lição) não são cortadas.
   const rootClassName = [
     "relative overflow-hidden text-white",
     isFull
-      ? "bg-[#111] h-[30svh] min-h-[15rem] sm:h-[34svh] sm:min-h-[17rem] md:h-[38svh] md:min-h-[19rem] lg:h-[44svh] lg:min-h-[22rem] xl:h-[50svh]"
+      ? "bg-[#111] min-h-[max(15rem,30svh)] sm:min-h-[max(17rem,34svh)] md:min-h-[max(19rem,38svh)] lg:min-h-[max(22rem,44svh)] xl:min-h-[50svh]"
       : "rounded-[1.75rem] bg-[#212121]",
     className,
   ]
@@ -74,7 +75,7 @@ export default function HeroPage({
             <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-text-accent-on-dark uppercase sm:text-sm">
               {label}
             </p>
-            <h1 className="mb-4 font-acme text-xl tracking-tight leading-tight sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+            <h1 className="mb-4 font-acme text-xl tracking-wide leading-tight sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
               {title}
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
@@ -87,7 +88,7 @@ export default function HeroPage({
           <p className="mb-3 text-xs font-semibold tracking-[0.24em] text-text-accent-on-dark uppercase sm:text-sm">
             {label}
           </p>
-          <h1 className="mb-4 font-acme text-lg tracking-tight leading-tight sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
+          <h1 className="mb-4 font-acme text-lg tracking-wide leading-tight sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl">
             {title}
           </h1>
           <p className="max-w-2xl text-sm leading-relaxed text-white/80 md:text-base">
