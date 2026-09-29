@@ -8,13 +8,17 @@ import { corposJovens4T } from "@/data/ebd/2026-4t/jovens";
 import { getDiagnosticoProntidaoEditorialLicao, getLicaoReleaseWindowKey, isLicaoPubliclyAvailable } from "../ebd-utils";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
+// Lições que passaram pelo gate humano contra a revista. Cada PR semanal de
+// publicação acrescenta o número aqui junto com a troca de status.
+const aprovadas: Record<"adultos" | "jovens", number[]> = { adultos: [1], jovens: [1] };
+
 describe("curadoria de Adultos e Jovens — 4T2026", () => {
   for (const classe of ["adultos", "jovens"] as const) {
     const trimestre = trimestresEBDPorClasse[classe].find((item) => item.slug === "2026-4t")!;
     const corpos = classe === "adultos" ? corposAdultos4T : corposJovens4T;
 
-    it(`${classe}: possui treze lições completas, únicas e em revisão`, () => {
-      expect(trimestre.statusEditorial).toBe("draft");
+    it(`${classe}: possui treze lições completas e únicas, publicadas só após o gate`, () => {
+      expect(trimestre.statusEditorial).toBe("partial");
       expect(trimestre.titulo).toBe(cabecalhos[classe].titulo);
       expect(trimestre.comentarista).toBe(cabecalhos[classe].comentarista);
       expect(trimestre.licoes).toHaveLength(13);
@@ -22,7 +26,7 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
       expect(corpos.map((corpo) => corpo.numero)).toEqual(Array.from({ length: 13 }, (_, i) => i + 1));
       for (const licao of trimestre.licoes) {
         expect(getDiagnosticoProntidaoEditorialLicao(trimestre, licao).pendencias, licao.id).toEqual([]);
-        expect(licao.statusEditorial).toBe("draft");
+        expect(licao.statusEditorial, licao.id).toBe(aprovadas[classe].includes(licao.numero) ? "published" : "draft");
         expect(licao.dataLiberacaoPublica).toBeUndefined();
         expect(licao.objetivos).toHaveLength(3);
         expect(licao.topicos).toHaveLength(3);
@@ -50,15 +54,22 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
 
     it(`${classe}: não publica rascunhos e preserva a janela semanal após aprovação`, () => {
       for (const licao of trimestre.licoes) {
-        expect(isLicaoPubliclyAvailable(trimestre, licao, new Date("2027-01-01T12:00:00-03:00"))).toBe(false);
+        expect(isLicaoPubliclyAvailable(trimestre, licao, new Date("2027-01-01T12:00:00-03:00")), licao.id).toBe(
+          aprovadas[classe].includes(licao.numero),
+        );
         const aprovado = { ...licao, statusEditorial: "published" as const };
-        const edicaoAberta = { ...trimestre, statusEditorial: "partial" as const };
+        const rascunho = { ...licao, statusEditorial: "draft" as const };
+        const edicaoFechada = { ...trimestre, statusEditorial: "draft" as const };
         const inicio = new Date(`${getLicaoReleaseWindowKey(licao)}T00:00:00-03:00`);
-        expect(isLicaoPubliclyAvailable(edicaoAberta, aprovado, new Date(inicio.getTime() - 1000))).toBe(false);
-        expect(isLicaoPubliclyAvailable(edicaoAberta, aprovado, inicio)).toBe(true);
-        expect(isLicaoPubliclyAvailable(trimestre, aprovado, inicio)).toBe(false);
-        expect(isLicaoPubliclyAvailable(edicaoAberta, licao, inicio)).toBe(false);
+        expect(isLicaoPubliclyAvailable(trimestre, aprovado, new Date(inicio.getTime() - 1000))).toBe(false);
+        expect(isLicaoPubliclyAvailable(trimestre, aprovado, inicio)).toBe(true);
+        expect(isLicaoPubliclyAvailable(edicaoFechada, aprovado, inicio)).toBe(false);
+        expect(isLicaoPubliclyAvailable(trimestre, rascunho, inicio)).toBe(false);
       }
+      // L1 aberta desde a janela de 25/09; L2 segue fechada mesmo com a janela
+      // aberta (02/10), porque ainda não passou pelo gate.
+      expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[0], new Date("2026-09-28T12:00:00-03:00"))).toBe(true);
+      expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[1], new Date("2026-10-10T12:00:00-03:00"))).toBe(false);
       expect(getLicaoReleaseWindowKey(trimestre.licoes[0])).toBe("2026-09-25");
       expect(getLicaoReleaseWindowKey(trimestre.licoes[12])).toBe("2026-12-18");
     });
