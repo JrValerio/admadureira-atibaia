@@ -857,8 +857,10 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h30",
           descricao: [
             "Primeira noite do Congresso UMADAT 2026, que reúne a juventude das congregações do Campo de Atibaia para dois dias de adoração, comunhão e ministração da Palavra.",
+            "O tema deste ano é “O que darei eu ao Senhor?”, a partir de Salmos 116:12-14: depois de tudo o que Deus fez por nós, qual será a nossa resposta?",
             "A Palavra será ministrada pelo Pr. Israel Felippe e pelo Pr. Elson de Assis, com louvor de Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro. O congresso é presidido pelo Pr. Mathias Nascimento, presidente da UMADAT, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira, Presidentes do Campo de Atibaia.",
           ].join("\n\n"),
+          baseBiblica: criarBaseBiblica("Salmos 116:12-14"),
           destaque: true,
           imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
           banner: "/programacao/eventos/congresso-umadat-2026.png",
@@ -872,8 +874,10 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: [
             "Segunda noite do Congresso UMADAT 2026 no templo sede, encerrando os dois dias de adoração, comunhão e ministração da Palavra com a juventude do Campo de Atibaia.",
+            "O tema deste ano é “O que darei eu ao Senhor?”, a partir de Salmos 116:12-14: depois de tudo o que Deus fez por nós, qual será a nossa resposta?",
             "A Palavra será ministrada pelo Pr. Israel Felippe e pelo Pr. Elson de Assis, com louvor de Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro. O congresso é presidido pelo Pr. Mathias Nascimento, presidente da UMADAT, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira, Presidentes do Campo de Atibaia.",
           ].join("\n\n"),
+          baseBiblica: criarBaseBiblica("Salmos 116:12-14"),
           destaque: true,
           imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
           banner: "/programacao/eventos/congresso-umadat-2026.png",
