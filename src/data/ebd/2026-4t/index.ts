@@ -23,8 +23,8 @@ export const statusTrimestres4T: Record<"adultos" | "jovens", StatusEditorialEBD
 // Alterar individualmente após a revisão humana. A janela semanal continua
 // sendo aplicada por isLicaoPubliclyAvailable; não há antecipação de datas.
 export const statusLicoes4T: Record<"adultos" | "jovens", Record<number, StatusLicaoEBD>> = {
-  adultos: { 1: "published", 2: "draft", 3: "draft", 4: "draft", 5: "draft", 6: "draft", 7: "draft", 8: "draft", 9: "draft", 10: "draft", 11: "draft", 12: "draft", 13: "draft" },
-  jovens: { 1: "published", 2: "draft", 3: "draft", 4: "draft", 5: "draft", 6: "draft", 7: "draft", 8: "draft", 9: "draft", 10: "draft", 11: "draft", 12: "draft", 13: "draft" },
+  adultos: { 1: "published", 2: "published", 3: "draft", 4: "draft", 5: "draft", 6: "draft", 7: "draft", 8: "draft", 9: "draft", 10: "draft", 11: "draft", 12: "draft", 13: "draft" },
+  jovens: { 1: "published", 2: "published", 3: "draft", 4: "draft", 5: "draft", 6: "draft", 7: "draft", 8: "draft", 9: "draft", 10: "draft", 11: "draft", 12: "draft", 13: "draft" },
 };
 
 const normalizar = normalizeBibleReferenceNotation;

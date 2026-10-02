@@ -13,7 +13,7 @@ import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bibl
 
 // Lições que passaram pelo gate humano contra a revista. Cada PR semanal de
 // publicação acrescenta o número aqui junto com a troca de status.
-const aprovadas: Record<"adultos" | "jovens", number[]> = { adultos: [1], jovens: [1] };
+const aprovadas: Record<"adultos" | "jovens", number[]> = { adultos: [1, 2], jovens: [1, 2] };
 
 describe("curadoria de Adultos e Jovens — 4T2026", () => {
   for (const classe of ["adultos", "jovens"] as const) {
@@ -73,10 +73,12 @@ describe("curadoria de Adultos e Jovens — 4T2026", () => {
         expect(isLicaoPubliclyAvailable(edicaoFechada, aprovado, inicio)).toBe(false);
         expect(isLicaoPubliclyAvailable(trimestre, rascunho, inicio)).toBe(false);
       }
-      // L1 aberta desde a janela de 25/09; L2 segue fechada mesmo com a janela
-      // aberta (02/10), porque ainda não passou pelo gate.
+      // L1 aberta desde a janela de 25/09; L2, aprovada no gate de 02/10, só abre
+      // com a própria janela (sexta 02/10), nunca antes.
       expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[0], new Date("2026-09-28T12:00:00-03:00"))).toBe(true);
-      expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[1], new Date("2026-10-10T12:00:00-03:00"))).toBe(false);
+      expect(getLicaoReleaseWindowKey(trimestre.licoes[1])).toBe("2026-10-02");
+      expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[1], new Date("2026-10-01T12:00:00-03:00"))).toBe(false);
+      expect(isLicaoPubliclyAvailable(trimestre, trimestre.licoes[1], new Date("2026-10-02T12:00:00-03:00"))).toBe(true);
       expect(getLicaoReleaseWindowKey(trimestre.licoes[0])).toBe("2026-09-25");
       expect(getLicaoReleaseWindowKey(trimestre.licoes[12])).toBe("2026-12-18");
     });
