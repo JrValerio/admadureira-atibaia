@@ -180,7 +180,9 @@ const licoesJovens: LicaoEBDJovens[] = cabecalhos.jovens.licoes.map((seed) => {
     textoChave: normalizar(seed.textoPrincipal.referencia),
     verdadePratica: seed.resumoLicao,
     leituraBiblica: [normalizar(seed.leituraBiblica)],
-    apoioProfessor: [corpo.planejamento],
+    // O planejamento já aparece como "Orientação pedagógica"; o apoio ao professor
+    // usa a condução da conversa, texto próprio, quando a lição já foi aprofundada.
+    apoioProfessor: corpo.conducaoDaConversa ?? [corpo.planejamento],
     subsidioJovens: validateSubsidioJovens(id, {
       cabecalho: {
         numero: seed.numero,
