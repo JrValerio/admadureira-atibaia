@@ -214,5 +214,132 @@
     "lido": "Somente deveis portar-vos dignamente conforme o evangelho de Cristo [...].",
     "pagina": 13,
     "lidoEm": "2026-09-29"
+  },
+  {
+    "id": "adultos-L3-data",
+    "lido": "18 de Outubro de 2026",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-textoAureo.texto",
+    "lido": "Pelo que hoje saberás e refletirás no teu coração que só o SENHOR é Deus em cima no céu e embaixo na terra; nenhum outro há.",
+    "pagina": 20,
+    "nota": "SENHOR está impresso em versalete (S maior, ENHOR em maiúsculas pequenas)",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-textoAureo.referencia",
+    "lido": "Dt 4.39",
+    "pagina": 20,
+    "nota": "impresso entre parênteses: (Dt 4.39)",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-verdadePratica",
+    "lido": "Reconhecer que só o Senhor é Deus exige fidelidade, obediência à sua Palavra e rejeição da idolatria.",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[0].tema",
+    "lido": "A obediência à Palavra é condição para viver na aliança",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[1].referencia",
+    "lido": "Dt 4.3,4; Nm 25.3-5",
+    "pagina": 20,
+    "nota": "o traço do intervalo pode ser hífen ou meia-risca (en dash); na imagem não dá para distinguir com segurança",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[2].referencia",
+    "lido": "Dt 4.5,6; Sl 25.14",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[2].tema",
+    "lido": "A Palavra de Deus orienta-nos a uma vida sábia e testemunhal",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[3].referencia",
+    "lido": "Dt 4.8,9; Mt 4.4",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[3].tema",
+    "lido": "Guardar e transmitir a Palavra evita a infidelidade espiritual",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[4].referencia",
+    "lido": "Dt 4.23,24; Rm 1.25",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraDiaria[5].referencia",
+    "lido": "Dt 4.29,31; 1 Jo 1.9",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "adultos-L3-leituraBiblica",
+    "lido": "Deuteronômio 4.1-4, 25-31",
+    "pagina": 21,
+    "nota": "os traços dos intervalos podem ser hífen ou meia-risca; não dá para distinguir com segurança",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-data",
+    "lido": "18 out 2026",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-resumoLicao",
+    "lido": "Quanto mais alguém for humilde, abrir mão de seus direitos, negar-se a si mesmo de todo coração receberá, da parte de Deus, honras indizíveis proporcionais ao seu esvaziamento.",
+    "pagina": 20,
+    "nota": "'negar-' / 'se' quebra de linha no impresso; juntei como a palavra composta 'negar-se'",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-leituraSemanal[0].referencia",
+    "lido": "Zc 9.9",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-leituraSemanal[1].referencia",
+    "lido": "Mt 11.25-30",
+    "pagina": 20,
+    "nota": "não dá para ter certeza se o traço é hífen ou meia-risca",
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-leituraSemanal[3].referencia",
+    "lido": "Fp 2.7,8",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-leituraSemanal[4].referencia",
+    "lido": "Is 53.4",
+    "pagina": 20,
+    "lidoEm": "2026-10-02"
+  },
+  {
+    "id": "jovens-L3-leituraSemanal[5].referencia",
+    "lido": "Sl 24.7-10",
+    "pagina": 20,
+    "nota": "não dá para ter certeza se o traço é hífen ou meia-risca",
+    "lidoEm": "2026-10-02"
   }
 ]
