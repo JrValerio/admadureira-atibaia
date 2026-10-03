@@ -185,6 +185,21 @@ Header fields that the two magazine OCRs do not both confirm are read from the p
 - **What the main agent does.** It writes the returned JSON to `src/data/ebd/<edition>/fontes/transcricoes-cabecalho.json` unchanged, with `lidoEm`, and runs the comparison. It never edits a transcription. A divergence stays an exception with both versions. A new reading of that sheet is a new call to a clean subagent, never a correction by the main agent.
 - **How isolation is shown.** Tool restrictions do not guarantee that a subagent cannot open another path, so the evidence is its tool log. The main agent checks that every file the subagent read is inside the sheets folder, and states that in the PR next to the number of transcriptions, how many matched and the exceptions.
 - **Reading done before this rule.** The 36 transcriptions for L1–L2 of 4T/2026 were made by the main agent after it had already seen the values. They validate the method, not the independence of the reading.
+- **Limit of the method.** The subagent is independent of `cabecalhos.json`, but it is the same kind of model that built the JSON and writes the lessons. A systematic reading bias (a small digit, a dash, an accent in a specific typeface) can repeat in both, and the comparison would still match. Blind transcription is one check, not a guarantee. The defences against a shared bias are the two OCR layers from different engines, the CI test that every reference points to an existing book and chapter, and the drawn transcription that the human reviewer compares with the page crop in each report.
+- **Where the tool log is.** Claude Code stores the subagent's transcript at `~/.claude/projects/<project>/<session>/subagents/agent-<id>.jsonl`. The file accesses are the `tool_use` blocks of the assistant messages (`file_path`, `path`).
+
+## Publication and the Weekly Window
+
+A lesson is public when its status is `published`, the edition is open and the weekly window has started: the Friday of the week before the class, nine days earlier (`getLicaoReleaseWindowKey`).
+
+- **The publication merge can land before the window.** The lesson, quarter and listing routes are ISR with `revalidate = 3600` (shown as `1h` in the `next build` output), and availability is recomputed at each regeneration. A lesson merged as `published` on Thursday opens by itself on Friday, within about one hour of 00:00 in São Paulo.
+- **First visit after the window opens.** Next serves the stale copy while it regenerates, so the first request to each URL still gets the closed version. On the morning the window opens, request each URL twice, for both classes, and check by content, never by status code (a draft lesson also answers 200):
+  - `/ebd`
+  - `/ebd/{classe}`
+  - `/ebd/{classe}/{edicao}` (must link to the lesson)
+  - `/ebd/{classe}/{edicao}/licao-N`
+  - `/ebd/{classe}/{edicao}/licao-N/pdf-completo` and `/pdf-resumo`
+- **Unavailable lessons stay out of search.** A draft or not-yet-open lesson page carries `noindex`, and `sitemap.ts` lists only lessons that pass `isLicaoPubliclyAvailable` (it regenerates every two minutes).
 
 ## Editorial Priorities
 
