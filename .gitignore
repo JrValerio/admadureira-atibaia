@@ -58,3 +58,6 @@ next-env.d.ts
 
 # Extrações locais de material de apoio (textos e PDFs das revistas)
 tmp/
+
+# Python
+__pycache__/

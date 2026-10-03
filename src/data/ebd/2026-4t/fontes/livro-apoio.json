@@ -1,0 +1,73 @@
+{
+  "livros": {
+    "adultos": {
+      "arquivo": "ADULTO/O Deus da Aliança - Livro de Apoio classe Adultos 4T.pdf",
+      "citacao": "Osiel Gomes, O Deus da Aliança",
+      "tipo": "texto nativo (e-book convertido)",
+      "deslocamentoPaginaImpressa": null
+    },
+    "jovens": {
+      "arquivo": "JOVENS/Livro de apoio classe Jovens 4T - Regozijai-vos no Senhor - Reynaldo Odilo.pdf",
+      "citacao": "Reynaldo Odilo, Regozijai-vos no Senhor",
+      "tipo": "scan com OCR",
+      "deslocamentoPaginaImpressa": 2
+    }
+  },
+  "citacoes": [
+    {
+      "id": "A1", "classe": "adultos", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 30, "frase": "resumida, seletiva e teológica" }],
+      "trecho": "faz uma recordação que Osiel Gomes descreve como “resumida, seletiva e teológica” (Osiel Gomes, O Deus da Aliança, cap. 2)"
+    },
+    {
+      "id": "A2", "classe": "adultos", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 27, "frase": "demandas físicas, emocionais e judiciais" }],
+      "trecho": "que Osiel Gomes lê como demandas físicas, emocionais e judiciais do ministério (Osiel Gomes, O Deus da Aliança, cap. 2)"
+    },
+    {
+      "id": "A3", "classe": "adultos", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 31, "frase": "como um ato consumado de Deus" }],
+      "trecho": "O verbo aponta para uma decisão de Deus já tomada; a Israel cabia subir e possuir (Osiel Gomes, O Deus da Aliança, cap. 2)"
+    },
+    {
+      "id": "A5", "classe": "adultos", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 35, "frase": "ensinada, moldada e lapidada no deserto" }],
+      "trecho": "mas eles precisariam ser formados no deserto para não repetir a história (Osiel Gomes, O Deus da Aliança, cap. 2)"
+    },
+    {
+      "id": "J1", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 19, "frase": "olhos fixos em Cristo" }],
+      "trecho": "para Reynaldo Odilo, um testemunho do que acontece quando os olhos estão fixos em Cristo (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "J2", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 26, "frase": "deriva de polis" }, { "pagina": 26, "frase": "exercer a cidadania" }, { "pagina": 26, "frase": "cidadania celestial" }],
+      "trecho": "é exercer a cidadania do Reino com a mesma consciência com que eles exerciam a de Roma (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2; ver Fp 3.20)"
+    },
+    {
+      "id": "J3", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 19, "frase": "carrega a noção de avanço" }],
+      "trecho": "“proveito” traduz prokope, palavra que evoca avanço, abrir caminho em terreno fechado (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "J4", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 20, "frase": "sunergeo" }, { "pagina": 21, "frase": "juntar as forças com" }],
+      "trecho": "não só as coisas boas, mas todas são conduzidas pela providência de Deus para o bem dos que o amam (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "J5", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 23, "frase": "sabe quando a batalha merece ser travada" }],
+      "trecho": "Reynaldo Odilo descreve essa maturidade como saber quando uma batalha merece ser travada e quando a energia deve ser guardada (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "J6", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 23, "frase": "oida" }, { "pagina": 23, "frase": "epikhoregia" }],
+      "trecho": "o verbo oida expressa uma certeza apoiada na fidelidade de Deus, não otimismo; e o “socorro do Espírito” traduz epichoregia, provisão generosa (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "J7", "classe": "jovens", "licao": 2, "capitulo": 2,
+      "ancoras": [{ "pagina": 26, "frase": "ptyromenoi" }, { "pagina": 27, "frase": "deriva de charis" }],
+      "trecho": "“espanteis” traduz um verbo usado para o animal que se assusta e dispara; a firmeza diante dos adversários é sinal de salvação que vem de Deus (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    }
+  ]
+}
