@@ -20,7 +20,7 @@ import re
 import citacoes_biblicas
 from comum import (
     MATERIAL, TMP, Excecao, carregar_licao, frases, ler_json, normalizar, pasta_fontes,
-    recortar, texto_pagina, textos,
+    recortar, texto_pagina, textos_da_licao,
 )
 
 
@@ -34,7 +34,7 @@ def verificar(classe, numero, edicao="2026-4t", dados=None, citacoes_livro=None,
     livro = m["livros"].get(classe)
     entradas = [c for c in m["citacoes"] if c["classe"] == classe and c["licao"] == numero]
     saida = saida or TMP / "gate" / f"{classe}-{edicao}-licao-{numero}"
-    corpo = list(dict.fromkeys(t for _, t in textos(dados["corpo"])))
+    corpo = list(dict.fromkeys(t for _, t in textos_da_licao(dados)))
     if citacoes_livro is None:
         citacoes_livro = citacoes_biblicas.verificar(classe, numero, edicao, dados)["do_livro"]
 

@@ -241,6 +241,16 @@ def textos(valor, caminho=""):
     return []
 
 
+FORA_DO_SUBSIDIO = ("resumo", "aplicacao", "apoioProfessor", "apoioAluno", "esboco")
+
+
+def textos_da_licao(dados):
+    """(campo, texto) de tudo o que a página mostra: o subsídio e os campos da
+    lição renderizados fora dele (resumo, aplicação, apoios e esboço)."""
+    fora = {k: dados["licao"].get(k) for k in FORA_DO_SUBSIDIO if dados["licao"].get(k)}
+    return textos(dados["corpo"]) + textos(fora, "licao")
+
+
 def frases(texto):
     """Divide em frases sem quebrar abreviações como 'cap. 2' ou 'Dt 1.21'."""
     # Não quebra antes de "(": a referência entre parênteses pertence à frase

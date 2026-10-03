@@ -51,6 +51,12 @@ process.stdout.write(
       statusEditorial: licao.statusEditorial ?? "published",
       resumo: licao.resumo,
       leituraBiblica: licao.leituraBiblica,
+      // Texto que a página mostra fora do subsídio (em Adultos, a conclusão vira
+      // "Aplicação prática"): o gate também precisa ler.
+      aplicacao: licao.aplicacao,
+      apoioProfessor: licao.apoioProfessor,
+      apoioAluno: licao.apoioAluno,
+      esboco: licao.esboco,
     },
     cabecalho,
     corpo,

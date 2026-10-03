@@ -22,7 +22,7 @@ import re
 import arc
 from comum import (
     Excecao, VERSICULO_REGEX, carregar_licao, frases, normalizar, paginas_alinhadas,
-    referencias, revistas, texto_pagina, textos,
+    referencias, revistas, texto_pagina, textos_da_licao,
 )
 
 ASPAS = re.compile(r"“([^”]+)”")
@@ -49,7 +49,7 @@ def candidatos(paragrafo, inicio_frase, frase, principais=()):
 
 def verificar(classe, numero, edicao="2026-4t", dados=None):
     dados = dados or carregar_licao(classe, edicao, numero)
-    corpo = [t for _, t in textos(dados["corpo"])] + [dados["licao"]["resumo"]]
+    corpo = list(dict.fromkeys(t for _, t in textos_da_licao(dados)))
     fontes = revistas(classe, edicao)
     paginas = paginas_alinhadas(fontes, classe, numero)
     # Reserva da revista: só a página do bloco "Leitura Bíblica em Classe" / "Texto
