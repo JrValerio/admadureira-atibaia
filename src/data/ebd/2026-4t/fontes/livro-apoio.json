@@ -68,6 +68,76 @@
       "id": "J7", "classe": "jovens", "licao": 2, "capitulo": 2,
       "ancoras": [{ "pagina": 26, "frase": "ptyromenoi" }, { "pagina": 27, "frase": "deriva de charis" }],
       "trecho": "“espanteis” traduz um verbo usado para o animal que se assusta e dispara; a firmeza diante dos adversários é sinal de salvação que vem de Deus (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 2)"
+    },
+    {
+      "id": "A6", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 38, "frase": "exortação à obediência" }, { "pagina": 38, "frase": "apelo final à fidelidade" }],
+      "trecho": "apelo final à fidelidade (v. 39,40) (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "A7", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 39, "frase": "que é o Shema" }, { "pagina": 39, "frase": "um ato de obedecer" }],
+      "trecho": "ouvir, aqui, é responder com obediência, e não apenas perceber um som (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "A8", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 39, "frase": "mandamentos estabelecidos pela autoridade divina" }, { "pagina": 40, "frase": "decisões legais" }],
+      "trecho": "normas de justiça para as relações entre as pessoas (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "A9", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 43, "frase": "shamar (guardar)" }, { "pagina": 45, "frase": "tem o seu aspecto moral" }],
+      "trecho": "é descuido moral com a aliança (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "A10", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 46, "frase": "profecia condicional" }, { "pagina": 46, "frase": "apostasia progressiva" }],
+      "trecho": "que atravessa filhos e netos, e não um ato isolado (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "A11", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 47, "frase": "ironia teológica" }],
+      "trecho": "o povo recebe aquilo que escolheu (Osiel Gomes, O Deus da Aliança, cap. 3; ver Sl 115.4-8)"
+    },
+    {
+      "id": "A12", "classe": "adultos", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 50, "frase": "centro da razão, da vontade e da consciência moral" }],
+      "trecho": "o coração é o centro da razão, da vontade e da consciência (Osiel Gomes, O Deus da Aliança, cap. 3)"
+    },
+    {
+      "id": "J8", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 31, "frase": "reprimenda moralizante" }],
+      "trecho": "antes de corrigir os filipenses, mostra-lhes Cristo (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J9", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 31, "frase": "olhar ascendente" }, { "pagina": 32, "frase": "olhar descendente" }],
+      "trecho": "Reynaldo Odilo chama de “olhar ascendente” a atitude oposta, a de considerar o outro digno de honra, e de “olhar descendente” o orgulho que mede as pessoas de cima para baixo (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J10", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 33, "frase": "pode deixar de ser Deus" }],
+      "trecho": "como resume Reynaldo Odilo, “Deus não pode deixar de ser Deus” (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J11", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 34, "frase": "gradativa e crescente em intensidade" }, { "pagina": 34, "frase": "cláusulas de exceção" }],
+      "trecho": "a obediência de Cristo não tinha cláusulas de exceção (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J12", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 37, "frase": "mas por causa dele" }, { "pagina": 37, "frase": "estratégia calculada" }],
+      "trecho": "isso não faz da humildade uma estratégia calculada para ser reconhecido (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J13", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 36, "frase": "(Kyrios)" }, { "pagina": 37, "frase": "tetragrama hebraico YHWH" }],
+      "trecho": "é reconhecer nele a autoridade do próprio Deus (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J14", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 31, "frase": "tensões internas" }],
+      "trecho": "o apóstolo responde levando os irmãos a contemplar Cristo (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
     }
   ]
 }
