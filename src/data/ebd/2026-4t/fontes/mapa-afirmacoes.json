@@ -1,0 +1,277 @@
+[
+  {
+    "id": "MA3-01", "classe": "adultos", "licao": 3,
+    "frase": "A fidelidade do Senhor contrasta com a instabilidade de Israel.",
+    "fontes": [{ "fonte": "revista", "pagina": 23, "ancora": "Deus permanece fiel" }]
+  },
+  {
+    "id": "MA3-02", "classe": "adultos", "licao": 3,
+    "frase": "Moisés chama a comunidade a guardar a revelação recebida e a rejeitar os ídolos.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.23", "ancora": "Guardai-vos de que vos esqueçais do concerto" }]
+  },
+  {
+    "id": "MA3-03", "classe": "adultos", "licao": 3,
+    "frase": "A advertência inclui disciplina, mas também anuncia a misericórdia de Deus",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.31", "ancora": "é Deus misericordioso" }, { "fonte": "biblia", "ref": "Dt 4.29", "ancora": "e o acharás" }]
+  },
+  {
+    "id": "MA3-04", "classe": "adultos", "licao": 3,
+    "frase": "Deus permanece digno de confiança e sua Palavra deve ser recebida sem acréscimos",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.2", "ancora": "Nada acrescentareis à palavra que vos mando" }]
+  },
+  {
+    "id": "MA3-05", "classe": "adultos", "licao": 3,
+    "frase": "O povo havia experimentado tanto cuidado quanto disciplina.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.3", "ancora": "consumiu do meio de ti" }, { "fonte": "biblia", "ref": "Dt 4.4", "ancora": "hoje todos estais vivos" }]
+  },
+  {
+    "id": "MA3-06", "classe": "adultos", "licao": 3,
+    "frase": "A fidelidade divina não torna a resposta humana indiferente",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.1", "ancora": "para os cumprirdes, para que vivais" }]
+  },
+  {
+    "id": "MA3-07", "classe": "adultos", "licao": 3,
+    "frase": "A Lei revela sabedoria para uma comunidade chamada a testemunhar entre as nações.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.6", "ancora": "esta será a vossa sabedoria e o vosso entendimento perante os olhos dos povos" }]
+  },
+  {
+    "id": "MA3-08", "classe": "adultos", "licao": 3,
+    "frase": "Conhecer os mandamentos traz responsabilidade de praticá-los e transmiti-los.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.5", "ancora": "para que assim façais" }, { "fonte": "biblia", "ref": "Dt 4.9", "ancora": "as farás saber a teus filhos" }]
+  },
+  {
+    "id": "MA3-09", "classe": "adultos", "licao": 3,
+    "frase": "A disciplina lembra que a aliança não pode ser usada como proteção para a rebeldia deliberada.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.3", "ancora": "a todo homem que seguiu a Baal-Peor" }]
+  },
+  {
+    "id": "MA3-10", "classe": "adultos", "licao": 3,
+    "frase": "A disciplina não nega a fidelidade de Deus; é uma de suas formas.",
+    "fontes": [{ "fonte": "livro", "pagina": 39, "ancora": "A fidelidade dessa aliança é vista na maneira como Deus aplica a disciplina" }]
+  },
+  {
+    "id": "MA3-11", "classe": "adultos", "licao": 3,
+    "frase": "Esquecer a revelação abre espaço para substituir o Criador",
+    "fontes": [{ "fonte": "revista", "pagina": 24, "ancora": "a infidelidade começa quando se esquece da Palavra" }]
+  },
+  {
+    "id": "MA3-12", "classe": "adultos", "licao": 3,
+    "frase": "A idolatria não é apenas um erro intelectual",
+    "fontes": [{ "fonte": "livro", "pagina": 45, "ancora": "dentro do coração" }]
+  },
+  {
+    "id": "MA3-13", "classe": "adultos", "licao": 3,
+    "frase": "Moisés adverte sobre consequências que alcançariam a vida coletiva.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.27", "ancora": "vos espalhará entre os povos" }]
+  },
+  {
+    "id": "MA3-14", "classe": "adultos", "licao": 3,
+    "frase": "Prosperidade e permanência na terra não autorizavam complacência.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.25", "ancora": "vos envelhecerdes na terra, e vos corromperdes" }]
+  },
+  {
+    "id": "MA3-15", "classe": "adultos", "licao": 3,
+    "frase": "O ensino às novas gerações e a vigilância do coração eram necessários",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.9", "ancora": "guarda bem a tua alma, que te não esqueças" }]
+  },
+  {
+    "id": "MA3-16", "classe": "adultos", "licao": 3,
+    "frase": "A advertência não encerra a história em desespero.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.30", "ancora": "te virarás para o Senhor, teu Deus" }]
+  },
+  {
+    "id": "MA3-17", "classe": "adultos", "licao": 3,
+    "frase": "O Senhor é misericordioso e recebe aqueles que o procuram com sinceridade.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.29", "ancora": "de todo o teu coração" }]
+  },
+  {
+    "id": "MA3-18", "classe": "adultos", "licao": 3,
+    "frase": "A restauração não depende de negar a gravidade do pecado",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.30", "ancora": "ouvirás a sua voz" }, { "fonte": "revista", "pagina": 25, "ancora": "sinceramente arrependido" }]
+  },
+  {
+    "id": "MA3-19", "classe": "adultos", "licao": 3,
+    "frase": "As obras divinas recordadas por Moisés mostram o privilégio e a responsabilidade",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.34", "ancora": "com sinais, e com milagres" }, { "fonte": "biblia", "ref": "Dt 4.40", "ancora": "guardarás os seus estatutos" }]
+  },
+  {
+    "id": "MA3-20", "classe": "adultos", "licao": 3,
+    "frase": "A gratidão deve conduzir à obediência.",
+    "fontes": [{ "fonte": "revista", "pagina": 25, "ancora": "honrá-lo com obediência sincera" }]
+  },
+  {
+    "id": "MA3-21", "classe": "adultos", "licao": 3,
+    "frase": "Na vida cristã, a confiança no perdão sustenta o arrependimento",
+    "fontes": [{ "fonte": "biblia", "ref": "1 Jo 1.9", "ancora": "fiel e justo para nos perdoar" }]
+  },
+  {
+    "id": "MA3-22", "classe": "adultos", "licao": 3,
+    "frase": "As perguntas esperam resposta negativa.",
+    "fontes": [{ "fonte": "revista", "pagina": 25, "ancora": "perguntas retóricas" }]
+  },
+  {
+    "id": "MA3-23", "classe": "adultos", "licao": 3,
+    "frase": "A infidelidade humana não muda o caráter do Senhor.",
+    "fontes": [{ "fonte": "revista", "pagina": 25, "ancora": "o Senhor permanece imutável" }]
+  },
+  {
+    "id": "MA3-24", "classe": "adultos", "licao": 3,
+    "frase": "Sua misericórdia chama ao retorno, e sua santidade impede tratar o pecado como algo irrelevante.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 4.24", "ancora": "um Deus zeloso" }, { "fonte": "biblia", "ref": "Dt 4.31", "ancora": "misericordioso" }]
+  },
+  {
+    "id": "MA3-25", "classe": "adultos", "licao": 3,
+    "frase": "Guardar a Palavra é uma resposta de amor ao Deus fiel.",
+    "fontes": [{ "fonte": "biblia", "ref": "Dt 7.9", "ancora": "aos que o amam e guardam os seus mandamentos" }]
+  },
+  {
+    "id": "MJ3-01", "classe": "jovens", "licao": 3,
+    "frase": "Paulo apresenta o caminho de Cristo para formar os relacionamentos da comunidade.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.5", "ancora": "haja em vós o mesmo sentimento" }]
+  },
+  {
+    "id": "MJ3-02", "classe": "jovens", "licao": 3,
+    "frase": "A humildade não é falta de valor pessoal",
+    "fontes": [{ "fonte": "revista", "pagina": 22, "ancora": "baixa autoestima" }]
+  },
+  {
+    "id": "MJ3-03", "classe": "jovens", "licao": 3,
+    "frase": "Jesus revela esse caminho ao assumir a condição de servo.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.7", "ancora": "tomando a forma de servo" }]
+  },
+  {
+    "id": "MJ3-04", "classe": "jovens", "licao": 3,
+    "frase": "A exortação nasce de um problema relacional",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.3", "ancora": "por contenda ou por vanglória" }, { "fonte": "livro", "pagina": 31, "ancora": "tensões internas" }]
+  },
+  {
+    "id": "MJ3-05", "classe": "jovens", "licao": 3,
+    "frase": "Considerar o próximo exige escuta e disposição para reconhecer suas necessidades.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.4", "ancora": "para o que é dos outros" }]
+  },
+  {
+    "id": "MJ3-06", "classe": "jovens", "licao": 3,
+    "frase": "A humildade não pede que alguém negue sua dignidade",
+    "fontes": [{ "fonte": "revista", "pagina": 23, "ancora": "Não existe ser humano" }]
+  },
+  {
+    "id": "MJ3-07", "classe": "jovens", "licao": 3,
+    "frase": "Cristo oferece o exemplo decisivo.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.5", "ancora": "que houve também em Cristo Jesus" }]
+  },
+  {
+    "id": "MJ3-08", "classe": "jovens", "licao": 3,
+    "frase": "Sua grandeza se manifesta no serviço e no amor.",
+    "fontes": [{ "fonte": "biblia", "ref": "Mt 20.28", "ancora": "mas para servir" }]
+  },
+  {
+    "id": "MJ3-09", "classe": "jovens", "licao": 3,
+    "frase": "Segui-lo modifica a maneira de tratar pessoas menos reconhecidas",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.3", "ancora": "considere os outros superiores a si mesmo" }]
+  },
+  {
+    "id": "MJ3-10", "classe": "jovens", "licao": 3,
+    "frase": "Paulo não manda ignorar as próprias necessidades; manda alargar o olhar.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.4", "ancora": "mas cada qual também" }]
+  },
+  {
+    "id": "MJ3-11", "classe": "jovens", "licao": 3,
+    "frase": "O esvaziamento é apresentado como a assunção da condição de servo",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.7", "ancora": "tomando a forma de servo" }, { "fonte": "livro", "pagina": 33, "ancora": "não implicou a renúncia" }]
+  },
+  {
+    "id": "MJ3-12", "classe": "jovens", "licao": 3,
+    "frase": "O Filho entra na realidade humana e vive em obediência ao Pai.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.8", "ancora": "sendo obediente" }, { "fonte": "revista", "pagina": 24, "ancora": "entrou na realidade humana" }]
+  },
+  {
+    "id": "MJ3-13", "classe": "jovens", "licao": 3,
+    "frase": "O texto deve ser lido preservando a identidade de Jesus e a realidade de sua encarnação.",
+    "fontes": [{ "fonte": "revista", "pagina": 24, "ancora": "Sem deixar de ser Deus" }]
+  },
+  {
+    "id": "MJ3-14", "classe": "jovens", "licao": 3,
+    "frase": "A obediência alcança o sacrifício da cruz.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.8", "ancora": "morte de cruz" }]
+  },
+  {
+    "id": "MJ3-15", "classe": "jovens", "licao": 3,
+    "frase": "O serviço cristão encontra aí um fundamento que ultrapassa simpatia ou conveniência.",
+    "fontes": [{ "fonte": "biblia", "ref": "1 Pe 2.21", "ancora": "deixando-nos o exemplo" }]
+  },
+  {
+    "id": "MJ3-16", "classe": "jovens", "licao": 3,
+    "frase": "A comunidade aprende a agir com amor concreto",
+    "fontes": [{ "fonte": "biblia", "ref": "Rm 12.9", "ancora": "O amor seja não fingido" }]
+  },
+  {
+    "id": "MJ3-17", "classe": "jovens", "licao": 3,
+    "frase": "Quem era igual a Deus desceu; quem não era quis subir.",
+    "fontes": [{ "fonte": "livro", "pagina": 34, "ancora": "o esvaziamento, a descida, o serviço" }]
+  },
+  {
+    "id": "MJ3-18", "classe": "jovens", "licao": 3,
+    "frase": "A exaltação é ação do Pai e revela o senhorio de Jesus.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.9", "ancora": "Deus o exaltou soberanamente" }]
+  },
+  {
+    "id": "MJ3-19", "classe": "jovens", "licao": 3,
+    "frase": "Cristo não precisa conquistar reconhecimento pela lógica da vaidade.",
+    "fontes": [{ "fonte": "livro", "pagina": 36, "ancora": "Jesus quem se autoexaltou" }]
+  },
+  {
+    "id": "MJ3-20", "classe": "jovens", "licao": 3,
+    "frase": "A confissão de seu nome dirige a glória a Deus",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.11", "ancora": "para glória de Deus Pai" }]
+  },
+  {
+    "id": "MJ3-21", "classe": "jovens", "licao": 3,
+    "frase": "O discípulo não transforma humildade em uma técnica para subir de posição.",
+    "fontes": [{ "fonte": "livro", "pagina": 37, "ancora": "estratégia calculada" }]
+  },
+  {
+    "id": "MJ3-22", "classe": "jovens", "licao": 3,
+    "frase": "Ele confia no Senhor e serve porque foi alcançado por seu amor.",
+    "fontes": [{ "fonte": "biblia", "ref": "1 Jo 4.19", "ancora": "porque ele nos amou primeiro" }]
+  },
+  {
+    "id": "MJ3-23", "classe": "jovens", "licao": 3,
+    "frase": "A esperança no reconhecimento divino liberta da necessidade de controlar",
+    "fontes": [{ "fonte": "biblia", "ref": "Jo 12.26", "ancora": "meu Pai o honrará" }]
+  },
+  {
+    "id": "MJ3-24", "classe": "jovens", "licao": 3,
+    "frase": "Até o versículo 8, é Cristo quem age, descendo",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.8", "ancora": "humilhou-se a si mesmo" }, { "fonte": "biblia", "ref": "Fp 2.9", "ancora": "Deus o exaltou" }]
+  },
+  {
+    "id": "MJ3-25", "classe": "jovens", "licao": 3,
+    "frase": "Jesus não se promoveu.",
+    "fontes": [{ "fonte": "livro", "pagina": 36, "ancora": "Jesus quem se autoexaltou" }]
+  },
+  {
+    "id": "MJ3-26", "classe": "jovens", "licao": 3,
+    "frase": "O nome que é sobre todo o nome é o de Senhor.",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.11", "ancora": "Jesus Cristo é o Senhor" }]
+  },
+  {
+    "id": "MJ3-27", "classe": "jovens", "licao": 3,
+    "frase": "A exaltação do Filho não rivaliza com o Pai; revela-o.",
+    "fontes": [{ "fonte": "livro", "pagina": 38, "ancora": "ao exaltar o Filho" }]
+  },
+  {
+    "id": "MJ3-28", "classe": "jovens", "licao": 3,
+    "frase": "Numa cidade assim, a cruz era o ponto mais baixo",
+    "fontes": [{ "fonte": "livro", "pagina": 34, "ancora": "reservada para escravos" }]
+  },
+  {
+    "id": "MJ3-29", "classe": "jovens", "licao": 3,
+    "frase": "O caminho de Jesus une humildade, obediência e serviço.",
+    "fontes": [{ "fonte": "revista", "pagina": 21, "ancora": "humildade, obediência e serviço" }]
+  },
+  {
+    "id": "MJ3-30", "classe": "jovens", "licao": 3,
+    "frase": "Sua exaltação chama a igreja à adoração",
+    "fontes": [{ "fonte": "biblia", "ref": "Fp 2.10", "ancora": "se dobre todo joelho" }]
+  }
+]

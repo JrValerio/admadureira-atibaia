@@ -3,6 +3,7 @@ import { trimestresEBDPorClasse } from "@/data/ebd";
 import cabecalhos from "@/data/ebd/2026-4t/cabecalhos.json";
 import transcricoesCabecalho from "@/data/ebd/2026-4t/fontes/transcricoes-cabecalho.json";
 import manifestoLivro from "@/data/ebd/2026-4t/fontes/livro-apoio.json";
+import mapaAfirmacoes from "@/data/ebd/2026-4t/fontes/mapa-afirmacoes.json";
 import { extractBibleReferences, normalizeBibleReferenceNotation } from "../bible-reference";
 
 // Parte estrutural do gate automatizado (scripts/gate/). Os scripts conferem as
@@ -158,6 +159,33 @@ describe("gate 4T2026 — camada 3: manifesto do livro de apoio", () => {
 
   it("ids do manifesto são únicos", () => {
     const ids = manifestoLivro.citacoes.map((c) => c.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+describe("gate 4T2026 — camada 4: mapa afirmação → fonte", () => {
+  it("cada entrada aponta para uma frase que existe no texto da lição e tem fonte com âncora", () => {
+    for (const entrada of mapaAfirmacoes) {
+      const classe = entrada.classe as "adultos" | "jovens";
+      const alvo = licoesDoCorpo(classe).find(({ licao }) => licao.numero === entrada.licao);
+      expect(alvo, entrada.id).toBeDefined();
+      const textos = [...alvo!.textos.map((t) => t.texto), alvo!.licao.aplicacao ?? ""];
+      expect(textos.some((texto) => texto.includes(entrada.frase)), `${entrada.id}: frase fora do texto — "${entrada.frase.slice(0, 80)}"`).toBe(true);
+      expect(entrada.fontes.length, entrada.id).toBeGreaterThan(0);
+      for (const fonte of entrada.fontes as unknown as Array<Record<string, string | number>>) {
+        expect(["biblia", "revista", "livro"], entrada.id).toContain(fonte.fonte);
+        expect(String(fonte.ancora).trim().length, entrada.id).toBeGreaterThan(3);
+        if (fonte.fonte === "biblia") {
+          expect(extractBibleReferences(normalizeBibleReferenceNotation(String(fonte.ref))).length, `${entrada.id}: ${fonte.ref}`).toBeGreaterThan(0);
+        } else {
+          expect(Number(fonte.pagina), entrada.id).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
+  it("ids do mapa são únicos", () => {
+    const ids = mapaAfirmacoes.map((e) => e.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
 });

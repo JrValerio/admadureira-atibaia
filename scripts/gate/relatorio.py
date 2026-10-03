@@ -1,5 +1,5 @@
 """
-Orquestrador do gate: roda as camadas 1 a 3 numa lição e gera o relatório de
+Orquestrador do gate: roda as camadas 1 a 4 numa lição e gera o relatório de
 exceções para o revisor humano.
 
 Saída: tmp/gate/<classe>-<edicao>-licao-<n>/relatorio.md (fora do git), com
@@ -19,6 +19,7 @@ import random
 import sys
 import time
 
+import afirmacoes
 import cabecalho
 import citacoes_biblicas
 import livro_apoio
@@ -31,7 +32,8 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
     c1 = cabecalho.verificar(classe, numero, edicao, saida)
     c2 = citacoes_biblicas.verificar(classe, numero, edicao, dados)
     c3 = livro_apoio.verificar(classe, numero, edicao, dados, c2["do_livro"], saida)
-    excecoes = c1["excecoes"] + c2["excecoes"] + c3["excecoes"]
+    c4 = afirmacoes.verificar(classe, numero, edicao, dados)
+    excecoes = c1["excecoes"] + c2["excecoes"] + c3["excecoes"] + c4["excecoes"]
 
     semente = semente if semente is not None else int(time.time())
     sorteaveis = [("biblia", c) for c in c2["conferidas"] if c.get("url")] + [("livro", e) for e in c3["conferidas"]]
@@ -47,7 +49,8 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
           "| Camada | Conferido por script | Transcrito às cegas na imagem (o script compara) | Exceções |", "|---|---|---|---|",
           f"| 1. Cabeçalho × dois OCRs | {len(c1['conferidos'])} campos nos dois OCRs | {len(c1['resolvidos'])} | {len(c1['excecoes'])} |",
           f"| 2. Citações bíblicas (ARC) | {len(c2['conferidas'])} citações | — | {len(c2['excecoes'])} |",
-          f"| 3. Livro de apoio | {len(c3['conferidas'])} citações com âncora no PDF | — | {len(c3['excecoes'])} |", ""]
+          f"| 3. Livro de apoio | {len(c3['conferidas'])} citações com âncora no PDF | — | {len(c3['excecoes'])} |",
+          f"| 4. Afirmação → fonte | {sum(c4['ancoradas'].values())} frases doutrinárias ancoradas ({c4['ancoradas']['citacao']} por citação, {c4['ancoradas']['referencia']} por referência, {c4['ancoradas']['mapa']} pelo mapa) | — | {len(c4['excecoes'])} |", ""]
 
     L += ["## Exceções", ""]
     if excecoes:
@@ -55,7 +58,7 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
             extra = f" — imagem: `{e['imagem']}`" if e.get("imagem") else ""
             L.append(f"- **Camada {e['camada']}:** {e['mensagem']}{extra}")
     else:
-        L.append("Nenhuma. Tudo o que as camadas 1 a 3 cobrem foi conferido por script ou resolvido na imagem (lista no fim).")
+        L.append("Nenhuma. Tudo o que as camadas 1 a 4 cobrem foi conferido por script ou resolvido na imagem (lista no fim).")
     L.append("")
 
     L += ["## Para ler (2 minutos)", ""]
@@ -112,6 +115,18 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
         for ident, t in c1["resolvidos"]:
             L.append(f"- `{ident}`: lido “{t['lido']}” (PDF p. {t['pagina']}, {t.get('lidoEm', '')})")
         L.append("")
+
+    # Auditoria do mapa: uma afirmação sorteada, com a fonte que a sustenta.
+    L += ["## Afirmação sorteada do mapa (camada 4)", ""]
+    if c4["mapeadas"]:
+        m = random.Random(semente + 2).choice(c4["mapeadas"])
+        L += [f"No texto do site (`{m['campo']}`): {m['frase']}", "", "Fontes registradas (âncora conferida pelo script):", ""]
+        for f in m["fontes"]:
+            onde = f["ref"] + " (ARC)" if f["fonte"] == "biblia" else f"{f['fonte']}, PDF p. {f['pagina']}"
+            L.append(f"- {onde}: “{f['ancora']}”")
+        L += ["", "Confira: a fonte sustenta o que a frase afirma, sem acréscimo.", ""]
+    else:
+        L += ["Nenhuma afirmação precisou do mapa nesta lição.", ""]
 
     saida.mkdir(parents=True, exist_ok=True)
     arquivo = saida / "relatorio.md"
