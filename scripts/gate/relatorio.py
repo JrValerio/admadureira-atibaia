@@ -1,5 +1,5 @@
 """
-Orquestrador do gate: roda as camadas 1 a 4 numa lição e gera o relatório de
+Orquestrador do gate: roda as camadas 1 a 5 numa lição e gera o relatório de
 exceções para o revisor humano.
 
 Saída: tmp/gate/<classe>-<edicao>-licao-<n>/relatorio.md (fora do git), com
@@ -23,6 +23,7 @@ import afirmacoes
 import cabecalho
 import citacoes_biblicas
 import livro_apoio
+import revisao
 from comum import MATERIAL, TMP, cabecalhos, carregar_licao, recortar, revistas
 
 
@@ -33,7 +34,8 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
     c2 = citacoes_biblicas.verificar(classe, numero, edicao, dados)
     c3 = livro_apoio.verificar(classe, numero, edicao, dados, c2["do_livro"], saida)
     c4 = afirmacoes.verificar(classe, numero, edicao, dados)
-    excecoes = c1["excecoes"] + c2["excecoes"] + c3["excecoes"] + c4["excecoes"]
+    c5 = revisao.verificar(classe, numero, edicao, dados)
+    excecoes = c1["excecoes"] + c2["excecoes"] + c3["excecoes"] + c4["excecoes"] + c5["excecoes"]
 
     semente = semente if semente is not None else int(time.time())
     sorteaveis = [("biblia", c) for c in c2["conferidas"] if c.get("url")] + [("livro", e) for e in c3["conferidas"]]
@@ -50,7 +52,8 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
           f"| 1. Cabeçalho × dois OCRs | {len(c1['conferidos'])} campos nos dois OCRs | {len(c1['resolvidos'])} | {len(c1['excecoes'])} |",
           f"| 2. Citações bíblicas (ARC) | {len(c2['conferidas'])} citações | — | {len(c2['excecoes'])} |",
           f"| 3. Livro de apoio | {len(c3['conferidas'])} citações com âncora no PDF | — | {len(c3['excecoes'])} |",
-          f"| 4. Afirmação → fonte | {sum(c4['ancoradas'].values())} frases doutrinárias ancoradas ({c4['ancoradas']['citacao']} por citação, {c4['ancoradas']['referencia']} por referência, {c4['ancoradas']['mapa']} pelo mapa) | — | {len(c4['excecoes'])} |", ""]
+          f"| 4. Afirmação → fonte | {c4['ancoradas']['citacao']} frases por citação, {c4['ancoradas']['mapa']} pelo mapa, {c4['ancoradas']['referencia']} só por referência (a mais fraca) | — | {len(c4['excecoes'])} |",
+          f"| 5. Revisão adversarial | {len(c5['sustentadas'])} de {c5['total']} afirmações julgadas sustentadas (as do mapa e as só por referência) | — | {len(c5['excecoes'])} |", ""]
 
     L += ["## Exceções", ""]
     if excecoes:
@@ -58,7 +61,7 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
             extra = f" — imagem: `{e['imagem']}`" if e.get("imagem") else ""
             L.append(f"- **Camada {e['camada']}:** {e['mensagem']}{extra}")
     else:
-        L.append("Nenhuma. Tudo o que as camadas 1 a 4 cobrem foi conferido por script ou resolvido na imagem (lista no fim).")
+        L.append("Nenhuma. Tudo o que as camadas 1 a 5 cobrem foi conferido por script, resolvido na imagem ou julgado sustentado pelo revisor adversarial.")
     L.append("")
 
     L += ["## Para ler (2 minutos)", ""]
@@ -127,6 +130,16 @@ def gerar(classe, numero, edicao="2026-4t", semente=None):
         L += ["", "Confira: a fonte sustenta o que a frase afirma, sem acréscimo.", ""]
     else:
         L += ["Nenhuma afirmação precisou do mapa nesta lição.", ""]
+
+    # Auditoria do revisor adversarial: três vereditos "sustentada" sorteados.
+    L += ["## Vereditos “sustentada” sorteados (camada 5)", ""]
+    if c5["sustentadas"]:
+        amostra = random.Random(semente + 3).sample(c5["sustentadas"], min(3, len(c5["sustentadas"])))
+        for v in amostra:
+            L += [f"- `{v['id']}` ({v['tipo']}): {v['frase']}", f"  - trecho da fonte citado pelo revisor: “{v['trecho']}”"]
+        L += ["", "Confira: em cada um, o trecho citado diz o que a frase afirma.", ""]
+    else:
+        L += ["Nenhum veredito disponível (revisão pendente ou com exceções).", ""]
 
     saida.mkdir(parents=True, exist_ok=True)
     arquivo = saida / "relatorio.md"
