@@ -174,7 +174,8 @@ describe("gate 4T2026 — camada 4: mapa afirmação → fonte", () => {
       expect(entrada.fontes.length, entrada.id).toBeGreaterThan(0);
       for (const fonte of entrada.fontes as unknown as Array<Record<string, string | number>>) {
         expect(["biblia", "revista", "livro"], entrada.id).toContain(fonte.fonte);
-        expect(String(fonte.ancora).trim().length, entrada.id).toBeGreaterThan(3);
+        // Trecho curto existe em quase qualquer página e não sustenta nada.
+        expect(String(fonte.ancora).trim().split(/\s+/).length, `${entrada.id}: âncora "${fonte.ancora}"`).toBeGreaterThanOrEqual(6);
         if (fonte.fonte === "biblia") {
           expect(extractBibleReferences(normalizeBibleReferenceNotation(String(fonte.ref))).length, `${entrada.id}: ${fonte.ref}`).toBeGreaterThan(0);
         } else {
