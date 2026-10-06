@@ -830,6 +830,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: reuniaoMinisterioDescricao,
           convite: reuniaoMinisterioConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-10-05/reuniao-ministerial.png",
+          banner: "/programacao/semanas/2026-10-05/reuniao-ministerial.png",
         }),
         criarEvento(local, {
           slug: "santa-ceia-10-10-2026",
@@ -839,6 +842,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao: santaCeiaDescricao,
           convite: santaCeiaConvite,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-10-05/santa-ceia.png",
+          banner: "/programacao/semanas/2026-10-05/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "reuniao-de-obreiros-17-10-2026",
