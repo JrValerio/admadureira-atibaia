@@ -847,6 +847,21 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/programacao/semanas/2026-10-05/santa-ceia.png",
         }),
         criarEvento(local, {
+          slug: "cha-de-mulheres-17-10-2026",
+          data: "17/10",
+          titulo: "Chá de Mulheres",
+          tipo: "evento-especial",
+          horario: "19h00",
+          descricao:
+            "Uma noite preparada para mulheres, com ministração da Missionária Franciane Roberta, palestra da Dra. Jaqueline e louvor, promovida pela Congregação Chácaras Brasil.",
+          convite:
+            "Venha e traga uma amiga: há um lugar preparado para você nesta mesa.",
+          local: "Estrada do Ramalho, 918 — Chácaras Brasil, Atibaia/SP",
+          destaque: true,
+          imagem: "/ministerios/confadat/cha-de-mulheres/cha-de-mulheres-17-10-2026-feed.png",
+          banner: "/ministerios/confadat/cha-de-mulheres/cha-de-mulheres-17-10-2026-feed.png",
+        }),
+        criarEvento(local, {
           slug: "reuniao-de-obreiros-17-10-2026",
           data: "17/10",
           titulo: "Reunião de Obreiros",
