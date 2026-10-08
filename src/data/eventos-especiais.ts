@@ -862,15 +862,6 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/ministerios/confadat/cha-de-mulheres/cha-de-mulheres-17-10-2026-feed.png",
         }),
         criarEvento(local, {
-          slug: "reuniao-de-obreiros-17-10-2026",
-          data: "17/10",
-          titulo: "Reunião de Obreiros",
-          tipo: "reuniao-de-obreiros",
-          horario: "19h30",
-          descricao: reuniaoObreirosDescricao,
-          convite: reuniaoObreirosConvite,
-        }),
-        criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-23-10-2026",
           data: "23/10",
           titulo: "Congresso UMADAT 2026",
