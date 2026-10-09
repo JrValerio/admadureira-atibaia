@@ -1,4 +1,5 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
+import { CHA_DE_MULHERES_17_10_2026 as chaDeMulheres } from "@/data/cha-de-mulheres-17-10-2026";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import { CULTO_ACOES_DE_GRACAS_05_09_2026 as cultoAcoesDeGracas } from "@/data/culto-acoes-de-gracas-05-09-2026";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
@@ -168,6 +169,24 @@ export function getHeroEventos(): HeroEvento[] {
 
   const today = new Date();
   const slides: HeroEvento[] = [
+    // Primeiro da rotação até o evento: os slides "high" mantêm a ordem desta lista.
+    {
+      titulo: chaDeMulheres.titulo,
+      subtitulo: `${chaDeMulheres.diaSemana}, 17 de outubro, às ${chaDeMulheres.horario}, na ${chaDeMulheres.local}. Ministração da Missionária Franciane Roberta e palestra da Dra. Jaqueline.`,
+      alt: "Banner do Chá de Mulheres — sábado, 17 de outubro, às 19h",
+      imagem: chaDeMulheres.artes.hero,
+      href: chaDeMulheres.path,
+      ariaLabel: "Abrir página do Chá de Mulheres de 17 de outubro",
+      countdown: {
+        targetIso: chaDeMulheres.inicioIso,
+        endIso: chaDeMulheres.fimIso,
+        eventName: chaDeMulheres.titulo,
+      },
+      priority: "high",
+      type: "event",
+      eventDate: "2026-10-17",
+      archivedAt: chaDeMulheres.fimIso,
+    },
     {
       titulo: "Dízimos e Ofertas",
       subtitulo:

@@ -29,6 +29,8 @@ export const CHA_DE_MULHERES_17_10_2026 = {
   artes: {
     feed: `${ARTES}/cha-de-mulheres-17-10-2026-feed.png`,
     story: `${ARTES}/cha-de-mulheres-17-10-2026-story.png`,
+    // Faixa 3:1 do carrossel da home.
+    hero: `${ARTES}/cha-de-mulheres-17-10-2026-hero.png`,
     // A mesma arte do feed em JPG leve: o WhatsApp descarta a prévia de imagens pesadas.
     og: `${ARTES}/cha-de-mulheres-17-10-2026-og.jpg`,
   },
