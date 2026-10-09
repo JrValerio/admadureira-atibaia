@@ -199,7 +199,7 @@ A lesson is public when its status is `published`, the edition is open and the w
   - `/ebd/{classe}/{edicao}` (must link to the lesson)
   - `/ebd/{classe}/{edicao}/licao-N`
   - `/ebd/{classe}/{edicao}/licao-N/pdf-completo` and `/pdf-resumo`
-- **Unavailable lessons stay out of search.** A draft or not-yet-open lesson page carries `noindex`, and `sitemap.ts` lists only lessons that pass `isLicaoPubliclyAvailable` (it regenerates every two minutes).
+- **Unavailable lessons stay out of search.** A draft or not-yet-open lesson page carries `noindex`, and `sitemap.ts` lists only lessons that pass `isLicaoPubliclyAvailable`. The sitemap is rendered on each request (`dynamic = "force-dynamic"`): on 09/10/2026 the production sitemap, although listed with a two-minute revalidation in the build output, was being served as a static file frozen at deploy time, and L3 stayed out of it after its window opened.
 
 ## Editorial Priorities
 

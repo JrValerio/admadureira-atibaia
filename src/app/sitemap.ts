@@ -34,6 +34,13 @@ function getLatestDate(dates: Date[]): Date | undefined {
   return new Date(Math.max(...dates.map((date) => date.getTime())));
 }
 
+// O sitemap depende da data: as lições da EBD entram quando a janela semanal
+// abre. Em produção ele era entregue como arquivo estático, congelado na data
+// do deploy, mesmo com a revalidação de 2 min herdada do fetch do YouTube (as
+// páginas com o mesmo intervalo regeneravam; o sitemap, não). Gerado a cada
+// requisição, não depende de regeneração; os fetches continuam com cache próprio.
+export const dynamic = "force-dynamic";
+
 // Prioridade das páginas para o Google
 // 1.0 = home | 0.9 = páginas principais | 0.7 = páginas secundárias
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
