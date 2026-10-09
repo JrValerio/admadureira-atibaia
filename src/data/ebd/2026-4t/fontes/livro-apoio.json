@@ -138,6 +138,11 @@
       "id": "J14", "classe": "jovens", "licao": 3, "capitulo": 3,
       "ancoras": [{ "pagina": 31, "frase": "tensões internas" }],
       "trecho": "o apóstolo responde levando os irmãos a contemplar Cristo (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
+    },
+    {
+      "id": "J15", "classe": "jovens", "licao": 3, "capitulo": 3,
+      "ancoras": [{ "pagina": 34, "frase": "a forma de execução mais infamante" }, { "pagina": 34, "frase": "reservada para escravos" }],
+      "trecho": "a cruz era a forma de execução mais infamante, reservada a escravos e criminosos (Reynaldo Odilo, Regozijai-vos no Senhor, cap. 3)"
     }
   ]
 }
