@@ -19,9 +19,11 @@ export const CHA_DE_MULHERES_17_10_2026 = {
   // O evento NÃO é no templo da congregação (que fica no 765 da mesma estrada).
   local: "Estrada do Ramalho, 918 — Chácaras Brasil",
   endereco: "Estrada do Ramalho, 918 — Chácaras Brasil, Atibaia/SP",
-  // Busca pelo endereço; provisório até chegar o pin exato do local.
+  // Busca pelo endereço, sem o nome do bairro: com "Chácaras Brasil" o Google Maps
+  // não resolve o endereço e mostra uma lista de lugares (testado no celular em
+  // 09/10/2026). Provisório até chegar o pin exato do local.
   mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Estrada%20do%20Ramalho%2C%20918%2C%20Ch%C3%A1caras%20Brasil%2C%20Atibaia%20-%20SP",
+    "https://www.google.com/maps/search/?api=1&query=Estrada%20do%20Ramalho%2C%20918%20-%20Atibaia%2C%20SP",
   // A congregação promove o evento; a página só leva até ela pelo botão "Conhecer a congregação".
   congregacaoSlug: "chacaras-brasil",
   artes: {
