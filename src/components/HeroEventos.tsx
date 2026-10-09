@@ -46,6 +46,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   const [dragging, setDragging] = useState(false);
   const [manualPause, setManualPause] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
   const manualPauseLockedRef = useRef(false);
   const pointerStartXRef = useRef<number | null>(null);
   const activePointerIdRef = useRef<number | null>(null);
@@ -54,7 +55,7 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   const sliderTrackRef = useRef<HTMLDivElement>(null);
 
   const paused =
-    hovered || focusWithin || dragging || manualPause || prefersReducedMotion;
+    hovered || focusWithin || dragging || manualPause || prefersReducedMotion || tabHidden;
 
   // Real 0-based index for the progress bar and aria states.
   const realIndex = useLoop
@@ -82,9 +83,22 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
     }, duration);
   };
 
-  const advanceSlide = useEffectEvent(() => {
+  // Passo de navegação que nunca sai do trilho: enquanto o carrossel está sobre um
+  // clone, esperando o salto invisível para o slide real, um novo passo é ignorado.
+  // Sem isso, cliques rápidos (ou o autoplay com a aba em segundo plano, quando o
+  // transitionend não dispara) levavam o índice além do último clone e o
+  // carrossel ficava vazio até recarregar a página.
+  const stepSlide = (delta: 1 | -1) => {
     setAnimated(true);
-    setDisplayIndex((prev) => prev + 1);
+    setDisplayIndex((prev) => {
+      if (!useLoop) return prev;
+      if (prev <= 0 || prev >= clonedTotal - 1) return prev;
+      return prev + delta;
+    });
+  };
+
+  const advanceSlide = useEffectEvent(() => {
+    stepSlide(1);
   });
 
   const toggleManualPause = () => {
@@ -109,31 +123,54 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
   };
 
   const goBack = () => {
-    setAnimated(true);
-    setDisplayIndex((prev) => prev - 1);
+    stepSlide(-1);
     pauseTemporarily();
   };
 
   const goForward = () => {
-    setAnimated(true);
-    setDisplayIndex((prev) => prev + 1);
+    stepSlide(1);
     pauseTemporarily();
   };
 
-  // After the transition lands on a clone, snap invisibly to the real slide.
+  // After the transition lands on a clone, snap invisibly to the real slide:
+  // clone of first -> real first; clone of last -> real last.
   const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
     if (event.propertyName !== "transform" || !useLoop) return;
 
-    if (displayIndex === clonedTotal - 1) {
-      // Landed on clone of first — jump to real first.
+    if (displayIndex >= clonedTotal - 1) {
       setAnimated(false);
       setDisplayIndex(1);
-    } else if (displayIndex === 0) {
-      // Landed on clone of last — jump to real last.
+    } else if (displayIndex <= 0) {
       setAnimated(false);
       setDisplayIndex(total);
     }
   };
+
+  // Rede de segurança: se o transitionend não vier (aba em segundo plano,
+  // movimento reduzido), o salto para o slide real acontece do mesmo jeito.
+  useEffect(() => {
+    if (!useLoop) return undefined;
+
+    const target = displayIndex >= clonedTotal - 1 ? 1 : displayIndex <= 0 ? total : null;
+    if (target === null) return undefined;
+
+    const timeoutId = window.setTimeout(() => {
+      setAnimated(false);
+      setDisplayIndex(target);
+    }, 900);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [displayIndex, useLoop, clonedTotal, total]);
+
+  // Com a aba em segundo plano o navegador não anima; a rotação espera a volta.
+  useEffect(() => {
+    const updateVisibility = () => setTabHidden(document.hidden);
+
+    updateVisibility();
+    document.addEventListener("visibilitychange", updateVisibility);
+
+    return () => document.removeEventListener("visibilitychange", updateVisibility);
+  }, []);
 
   // Re-enable animation one frame after the invisible snap is painted.
   useEffect(() => {
@@ -317,7 +354,13 @@ export default function HeroEventos({ eventos }: HeroEventosProps) {
         className="relative mx-auto w-[calc(100%-2rem)] max-w-[430px] overflow-hidden rounded-[22px] border border-black/5 bg-white shadow-[0_14px_35px_rgba(0,0,0,0.08)] md:w-full md:max-w-none md:overflow-visible md:rounded-none md:border-0 md:bg-transparent md:shadow-none"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onFocusCapture={() => setFocusWithin(true)}
+        // Só o foco de teclado pausa a rotação. O clique do mouse numa seta também
+        // deixa o botão com foco, e isso mantinha o carrossel parado até recarregar.
+        onFocusCapture={(event) => {
+          if ((event.target as HTMLElement).matches(":focus-visible")) {
+            setFocusWithin(true);
+          }
+        }}
         onBlurCapture={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
             setFocusWithin(false);
