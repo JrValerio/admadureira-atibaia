@@ -51,13 +51,13 @@ export default function EventCountdown({
             isOverlay ? "text-text-accent-on-dark" : "text-text-accent"
           }`}
         >
-          A {eventName} começou!
+          Já começou: {eventName}
         </span>
       </div>
     );
   }
 
-  const accessibleLabel = `Faltam ${state.days} dias, ${state.hours} horas, ${state.minutes} minutos e ${state.seconds} segundos para a ${eventName}.`;
+  const accessibleLabel = `Faltam ${state.days} dias, ${state.hours} horas, ${state.minutes} minutos e ${state.seconds} segundos para o início: ${eventName}.`;
 
   return (
     <div className={wrapperClassName} role="timer" aria-label={accessibleLabel}>
