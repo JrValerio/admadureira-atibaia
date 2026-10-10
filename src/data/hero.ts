@@ -188,6 +188,25 @@ export function getHeroEventos(): HeroEvento[] {
       archivedAt: chaDeMulheres.fimIso,
     },
     {
+      titulo: "Congresso UMADAT 2026",
+      subtitulo:
+        "23 e 24 de outubro, na Igreja Sede — sexta às 19h30 e sábado às 19h. Preletores: Pr. Israel Felippe e Pr. Elson de Assis.",
+      alt: "Arte oficial do Congresso UMADAT 2026 — 23 e 24 de outubro",
+      imagem: "/banners/banner-congresso-umadat-2026.png",
+      href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
+      ariaLabel: "Abrir página do Congresso UMADAT 2026",
+      countdown: {
+        targetIso: "2026-10-23T19:30:00-03:00",
+        endIso: "2026-10-24T23:59:59-03:00",
+        eventName: "Congresso UMADAT 2026",
+      },
+      priority: "high",
+      type: "event",
+      eventDate: "2026-10-23",
+      eventEndDate: "2026-10-24",
+      archivedAfter: "2026-10-24",
+    },
+    {
       titulo: "Dízimos e Ofertas",
       subtitulo:
         "Página oficial de contribuição da AD Madureira Atibaia, com PIX, dados bancários e orientação segura para quem deseja cooperar com a obra.",
@@ -377,20 +396,6 @@ export function getHeroEventos(): HeroEvento[] {
       eventDate: "2026-09-17",
       eventEndDate: "2026-10-01",
       archivedAfter: "2026-10-01",
-    },
-    {
-      titulo: "Congresso UMADAT 2026",
-      subtitulo:
-        "23 e 24 de outubro, na Igreja Sede — sexta às 19h30 e sábado às 19h. Preletores: Pr. Israel Felippe e Pr. Elson de Assis.",
-      alt: "Arte oficial do Congresso UMADAT 2026 — 23 e 24 de outubro",
-      imagem: "/banners/banner-congresso-umadat-2026.png",
-      href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
-      ariaLabel: "Abrir página do Congresso UMADAT 2026",
-      priority: "high",
-      type: "event",
-      eventDate: "2026-10-23",
-      eventEndDate: "2026-10-24",
-      archivedAfter: "2026-10-24",
     },
     {
       titulo: "Culto de Santa Ceia",
