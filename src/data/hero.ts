@@ -197,7 +197,7 @@ export function getHeroEventos(): HeroEvento[] {
       ariaLabel: "Abrir página do Congresso UMADAT 2026",
       countdown: {
         targetIso: "2026-10-23T19:30:00-03:00",
-        endIso: "2026-10-24T23:59:59-03:00",
+        endIso: "2026-10-24T21:30:00-03:00",
         eventName: "Congresso UMADAT 2026",
       },
       priority: "high",
