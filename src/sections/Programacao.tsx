@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { getProgramacaoAnchorId } from "@/lib/programacao-anchor";
 import { getBannerSemanal } from "@/lib/banner-semanal";
-import { getProgramacaoSemanalAtual } from "@/lib/programacao-semanal";
+import {
+  getAvisosProgramacaoSemanalAtual,
+  getProgramacaoSemanalAtual,
+} from "@/lib/programacao-semanal";
 import { Section, SectionTitle } from "@/components/ui";
 import QuadroSemanal from "@/sections/QuadroSemanal";
 import CardMedia from "@/components/media/CardMedia";
@@ -114,6 +117,7 @@ export default function Programacao({
       extrairOrdemDia(a.dia) - extrairOrdemDia(b.dia) ||
       extrairOrdemHorario(a.horario) - extrairOrdemHorario(b.horario)
   );
+  const avisos = getAvisosProgramacaoSemanalAtual();
 
   return (
     <Section id="programacao" bg="white">
@@ -149,6 +153,29 @@ export default function Programacao({
           className="mb-8"
           description="Consulte cada culto, reunião e atividade fixa da igreja com apoio visual para acompanhar a rotina semanal com clareza."
         />
+
+        {avisos.length > 0 ? (
+          <ul className="mb-6 space-y-3" aria-label="Mudanças na programação desta semana">
+            {avisos.map((aviso) => (
+              <li
+                key={`${aviso.slug}-${aviso.data}`}
+                className="rounded-2xl border border-[#ffa726]/40 bg-[#fff8ed] px-4 py-3 text-sm leading-relaxed text-[#212121] md:text-base"
+              >
+                <span className="font-bold">{aviso.titulo}:</span>{" "}
+                {aviso.href ? (
+                  <Link
+                    href={aviso.href}
+                    className="underline decoration-[#b96500] underline-offset-2 transition-colors hover:text-[#b96500]"
+                  >
+                    {aviso.texto}
+                  </Link>
+                ) : (
+                  aviso.texto
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
         <div className="-mx-4 flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-3 xl:grid-cols-4">
           {programacaoDetalhada.map((item, index) => (

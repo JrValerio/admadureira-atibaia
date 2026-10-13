@@ -2,6 +2,10 @@ import { programacaoSemanal, type ItemSemanal } from "@/data/agenda";
 import { BANNERS_PROGRAMACAO } from "@/data/programacao-banners";
 import { SEDE_PROGRAMACAO_HORARIOS } from "@/data/site";
 import { getSaoPauloDate } from "@/lib/date-utils";
+import {
+  aplicarExcecoesDaSemana,
+  getAvisosProgramacaoDaSemana,
+} from "@/lib/programacao-excecoes";
 import { isFirstMondayWeek } from "@/lib/programacao-recorrencia";
 
 const reuniaoMinisterialSemanal: ItemSemanal = {
@@ -15,9 +19,11 @@ const reuniaoMinisterialSemanal: ItemSemanal = {
     "Lideranças e membros do ministério são convidados a participar deste tempo de direção e fortalecimento para o serviço cristão.",
 };
 
-export function getProgramacaoSemanalAtual(referencia = new Date()) {
-  const dataReferencia = getSaoPauloDate(referencia);
-
+/**
+ * Programação fixa da semana, sem as exceções por data. Quem calcula
+ * ocorrências dia a dia parte daqui e aplica `aplicarExcecoesNaData`.
+ */
+export function getProgramacaoSemanalBase(dataReferencia: Date) {
   if (!isFirstMondayWeek(dataReferencia)) {
     return programacaoSemanal;
   }
@@ -37,4 +43,23 @@ export function getProgramacaoSemanalAtual(referencia = new Date()) {
     reuniaoMinisterialSemanal,
     ...programacaoSemanal.slice(posicaoInsercao),
   ];
+}
+
+/** Programação da semana de `referencia`, já com as exceções por data. */
+export function getProgramacaoSemanalAtual(referencia = new Date()) {
+  const dataReferencia = getSaoPauloDate(referencia);
+
+  return aplicarExcecoesDaSemana(
+    getProgramacaoSemanalBase(dataReferencia),
+    dataReferencia
+  );
+}
+
+export function getAvisosProgramacaoSemanalAtual(referencia = new Date()) {
+  const dataReferencia = getSaoPauloDate(referencia);
+
+  return getAvisosProgramacaoDaSemana(
+    getProgramacaoSemanalBase(dataReferencia),
+    dataReferencia
+  );
 }
