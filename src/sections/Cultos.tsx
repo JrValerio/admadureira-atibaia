@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { programacaoSemanal, type ItemSemanal } from "@/data/agenda";
 import { Card, Section, SectionTitle } from "@/components/ui";
+import { getSaoPauloDate } from "@/lib/date-utils";
+import { aplicarExcecoesDaSemana } from "@/lib/programacao-excecoes";
 
 type GrupoCulto = {
   dia: string;
@@ -58,7 +60,10 @@ const eventosEspeciais = [
 ];
 
 export default function Cultos() {
-  const cultos = agruparCultosPorDia(programacaoSemanal);
+  // Exceções por data (atividade suspensa ou alterada) valem para a semana em curso.
+  const cultos = agruparCultosPorDia(
+    aplicarExcecoesDaSemana(programacaoSemanal, getSaoPauloDate())
+  );
 
   return (
     <Section id="cultos" bg="cream" density="dense">

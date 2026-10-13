@@ -6,7 +6,11 @@ import {
 } from "@/data/agenda";
 import { getSaoPauloDate } from "@/lib/date-utils";
 import { getProgramacaoHref } from "@/lib/programacao-anchor";
-import { getProgramacaoSemanalAtual } from "@/lib/programacao-semanal";
+import {
+  aplicarExcecoesNaData,
+  DIAS_PROGRAMACAO as diasProgramacao,
+} from "@/lib/programacao-excecoes";
+import { getProgramacaoSemanalBase } from "@/lib/programacao-semanal";
 
 const mesesOrdenados = [
   "Janeiro",
@@ -100,16 +104,6 @@ const TIPOS_EVENTO_COM_PAGINA = new Set<Evento["tipo"]>([
   "reuniao-de-ministerio",
   "reuniao-de-obreiros",
 ]);
-
-const diasProgramacao: Record<string, number[]> = {
-  "Segunda a Sexta": [1, 2, 3, 4, 5],
-  "Segunda-feira": [1],
-  "Terça-feira": [2],
-  "Quarta-feira": [3],
-  "Quinta-feira": [4],
-  "Sexta-feira": [5],
-  Domingo: [0],
-};
 
 const diasSemanaPtBr = [
   "Domingo",
@@ -279,8 +273,6 @@ function encontrarProximaOcorrenciaSemanal(
     return null;
   }
 
-  const { hora, minuto } = extrairHorario(item.horario);
-
   for (let offset = 0; offset <= 7; offset += 1) {
     const dataCandidata = new Date(referencia);
     dataCandidata.setHours(0, 0, 0, 0);
@@ -290,20 +282,27 @@ function encontrarProximaOcorrenciaSemanal(
       continue;
     }
 
+    const itemNaData = aplicarExcecoesNaData(item, dataCandidata);
+
+    if (!itemNaData?.horario) {
+      continue;
+    }
+
+    const { hora, minuto } = extrairHorario(itemNaData.horario);
     dataCandidata.setHours(hora, minuto, 0, 0);
 
     if (dataCandidata < referencia) {
       continue;
     }
 
-    return criarOcorrenciaProgramacao(item, dataCandidata, indice);
+    return criarOcorrenciaProgramacao(itemNaData, dataCandidata, indice);
   }
 
   return null;
 }
 
 function getProximaProgramacaoSemanal(referencia: Date) {
-  const proximosCompromissos = getProgramacaoSemanalAtual(referencia)
+  const proximosCompromissos = getProgramacaoSemanalBase(referencia)
     .map((item, indice) =>
       encontrarProximaOcorrenciaSemanal(item, referencia, indice)
     )
@@ -362,14 +361,20 @@ function getOcorrenciasEspeciaisDoDia(referencia: Date) {
 function getOcorrenciasSemanaisDoDia(referencia: Date) {
   const diaSemana = referencia.getDay();
 
-  return getProgramacaoSemanalAtual(referencia)
+  return getProgramacaoSemanalBase(referencia)
     .filter((item) => (diasProgramacao[item.dia] ?? []).includes(diaSemana))
-    .map((item, indice) => {
-      const { hora, minuto } = extrairHorario(item.horario);
+    .flatMap((item, indice) => {
+      const itemNaData = aplicarExcecoesNaData(item, referencia);
+
+      if (!itemNaData) {
+        return [];
+      }
+
+      const { hora, minuto } = extrairHorario(itemNaData.horario);
       const dataEvento = new Date(referencia);
       dataEvento.setHours(hora, minuto, 0, 0);
 
-      return criarOcorrenciaProgramacao(item, dataEvento, indice);
+      return [criarOcorrenciaProgramacao(itemNaData, dataEvento, indice)];
     });
 }
 
