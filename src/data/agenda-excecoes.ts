@@ -1,3 +1,5 @@
+import { buildBibleReferenceHref } from "@/lib/bible-reference";
+
 /**
  * Exceções por data da programação semanal: único lugar para registrar que
  * uma atividade fixa não acontece, ou muda de horário/título, num dia
@@ -20,6 +22,16 @@ export type ExcecaoProgramacao =
   | (ExcecaoBase & { acao: "alterar"; horario?: string; titulo?: string });
 
 export const excecoesProgramacao: ExcecaoProgramacao[] = [
+  {
+    slug: "culto-de-ensino",
+    data: "2026-10-13",
+    acao: "alterar",
+    titulo:
+      "Culto de Ensino — Série especial: Estudando o livro de Tiago (cap. 2)",
+    motivo:
+      "Nesta terça, 13/10: série especial Estudando o livro de Tiago, capítulo 2. Preletor: Pr. Marcos Jorge",
+    href: buildBibleReferenceHref("Tiago 2") ?? "/espiritualidade/biblia",
+  },
   {
     slug: "ensaio-jovens-rios-de-uncao",
     data: "2026-10-18",
