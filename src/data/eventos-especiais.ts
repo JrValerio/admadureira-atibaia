@@ -862,6 +862,21 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           banner: "/ministerios/confadat/cha-de-mulheres/cha-de-mulheres-17-10-2026-feed.png",
         }),
         criarEvento(local, {
+          slug: "ensaio-geral-umadat-18-10-2026",
+          data: "18/10",
+          titulo: "Ensaio Geral da UMADAT",
+          tipo: "evento-especial",
+          horario: "13h00",
+          descricao:
+            "Neste domingo o ensaio da Mocidade dá lugar ao Ensaio Geral da UMADAT. É o último antes do Congresso, nos dias 23 e 24.",
+          convite:
+            "Louvor que chega pronto no congresso nasce no ensaio: venha e traga a sua mocidade.",
+          baseBiblica: criarBaseBiblica("Salmos 116:14"),
+          destaque: true,
+          imagem: "/programacao/semanas/2026-10-12/ensaio-jovens.png",
+          banner: "/programacao/semanas/2026-10-12/ensaio-jovens.png",
+        }),
+        criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-23-10-2026",
           data: "23/10",
           titulo: "Congresso UMADAT 2026",
