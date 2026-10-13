@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [{ source: "/agenda", destination: "/programacao", permanent: false }];
+  },
 };
 
 export default nextConfig;
