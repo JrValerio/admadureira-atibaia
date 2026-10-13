@@ -42,15 +42,17 @@ describe("exceção de 18/10/2026: Ensaio da Mocidade dá lugar ao Ensaio Geral 
     const comExcecao = getProgramacaoSemanalAtual(meioDia("2026-10-14"));
     const semExcecao = getProgramacaoSemanalAtual(meioDia("2026-10-21"));
 
-    expect(comExcecao.map((item) => item.titulo)).toEqual(
-      semExcecao
-        .filter((item) => item.slug !== ENSAIO)
-        .map((item) => item.titulo)
+    expect(comExcecao.map((item) => item.slug)).toEqual(
+      semExcecao.filter((item) => item.slug !== ENSAIO).map((item) => item.slug)
     );
   });
 
   it("mostra o aviso com link só na semana da exceção", () => {
-    expect(getAvisosProgramacaoSemanalAtual(meioDia("2026-10-14"))).toEqual([
+    expect(
+      getAvisosProgramacaoSemanalAtual(meioDia("2026-10-14")).filter(
+        (aviso) => aviso.slug === ENSAIO
+      )
+    ).toEqual([
       {
         slug: ENSAIO,
         data: "2026-10-18",
@@ -82,6 +84,47 @@ describe("exceção de 18/10/2026: Ensaio da Mocidade dá lugar ao Ensaio Geral 
     const proximo = getNextCultoSemanal(new Date("2026-10-18T13:00:00.000Z"));
 
     expect(proximo?.evento.titulo).not.toBe("Ensaio da Mocidade Rios de Unção");
+  });
+});
+
+describe("exceção de 13/10/2026: Culto de Ensino com a série de Tiago", () => {
+  const SERIE =
+    "Culto de Ensino — Série especial: Estudando o livro de Tiago (cap. 2)";
+  const ensinoNaSemana = (data: string) =>
+    getProgramacaoSemanalAtual(meioDia(data)).find(
+      (item) => item.slug === "culto-de-ensino"
+    );
+
+  it("troca o título só na semana de 13/10 e mantém terça às 19h30", () => {
+    expect(ensinoNaSemana("2026-10-13")).toMatchObject({
+      titulo: SERIE,
+      dia: "Terça-feira",
+      horario: "19h30",
+    });
+    expect(ensinoNaSemana("2026-10-06")?.titulo).toBe("Culto de Ensino");
+    expect(ensinoNaSemana("2026-10-20")?.titulo).toBe("Culto de Ensino");
+  });
+
+  it("avisa a série, o capítulo e o preletor, com link para Tiago 2", () => {
+    const aviso = getAvisosProgramacaoSemanalAtual(meioDia("2026-10-13")).find(
+      (item) => item.slug === "culto-de-ensino"
+    );
+
+    expect(aviso?.texto).toContain("Estudando o livro de Tiago, capítulo 2");
+    expect(aviso?.texto).toContain("Pr. Marcos Jorge");
+    expect(aviso?.href).toBeTruthy();
+    expect(aviso?.href).not.toBe("/espiritualidade/biblia");
+  });
+
+  it("mostra a série em Hoje na Igreja só em 13/10", () => {
+    const titulos = (dia: string) =>
+      getHojeNaIgreja(meioDia(dia)).atividades.map(
+        (atividade) => atividade.titulo
+      );
+
+    expect(titulos("2026-10-13")).toContain(SERIE);
+    expect(titulos("2026-10-20")).toContain("Culto de Ensino");
+    expect(titulos("2026-10-20")).not.toContain(SERIE);
   });
 });
 
