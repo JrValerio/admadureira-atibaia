@@ -62,7 +62,11 @@ describe("exceção de 18/10/2026: Ensaio da Mocidade dá lugar ao Ensaio Geral 
       },
     ]);
     expect(getAvisosProgramacaoSemanalAtual(meioDia("2026-10-11"))).toEqual([]);
-    expect(getAvisosProgramacaoSemanalAtual(meioDia("2026-10-19"))).toEqual([]);
+    expect(
+      getAvisosProgramacaoSemanalAtual(meioDia("2026-10-19")).filter(
+        (aviso) => aviso.slug === ENSAIO
+      )
+    ).toEqual([]);
   });
 
   it("some de Hoje na Igreja em 18/10 e aparece em 11/10 e 25/10", () => {
@@ -102,7 +106,7 @@ describe("exceção de 13/10/2026: Culto de Ensino com a série de Tiago", () =>
       horario: "19h30",
     });
     expect(ensinoNaSemana("2026-10-06")?.titulo).toBe("Culto de Ensino");
-    expect(ensinoNaSemana("2026-10-20")?.titulo).toBe("Culto de Ensino");
+    expect(ensinoNaSemana("2026-10-27")?.titulo).toBe("Culto de Ensino");
   });
 
   it("avisa a série, o capítulo e o preletor, com link para Tiago 2", () => {
@@ -123,8 +127,34 @@ describe("exceção de 13/10/2026: Culto de Ensino com a série de Tiago", () =>
       );
 
     expect(titulos("2026-10-13")).toContain(SERIE);
-    expect(titulos("2026-10-20")).toContain("Culto de Ensino");
+    expect(titulos("2026-10-27")).toContain("Culto de Ensino");
     expect(titulos("2026-10-20")).not.toContain(SERIE);
+  });
+});
+
+describe("exceção de 20/10/2026: Culto de Ensino com a série de Tiago e o Pr. Raimundo Martinez", () => {
+  const SERIE = "Culto de Ensino — Série especial: Estudando o livro de Tiago";
+  const ensinoNaSemana = (data: string) =>
+    getProgramacaoSemanalAtual(meioDia(data)).find(
+      (item) => item.slug === "culto-de-ensino"
+    );
+
+  it("troca o título só na semana de 20/10 e mantém terça às 19h30", () => {
+    expect(ensinoNaSemana("2026-10-20")).toMatchObject({
+      titulo: SERIE,
+      dia: "Terça-feira",
+      horario: "19h30",
+    });
+    expect(ensinoNaSemana("2026-10-27")?.titulo).toBe("Culto de Ensino");
+  });
+
+  it("avisa a série e o preletor", () => {
+    const aviso = getAvisosProgramacaoSemanalAtual(meioDia("2026-10-20")).find(
+      (item) => item.slug === "culto-de-ensino"
+    );
+
+    expect(aviso?.texto).toContain("Estudando o livro de Tiago");
+    expect(aviso?.texto).toContain("Pr. Raimundo Martinez");
   });
 });
 

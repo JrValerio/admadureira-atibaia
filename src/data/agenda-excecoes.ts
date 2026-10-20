@@ -33,6 +33,14 @@ export const excecoesProgramacao: ExcecaoProgramacao[] = [
     href: buildBibleReferenceHref("Tiago 2") ?? "/espiritualidade/biblia",
   },
   {
+    slug: "culto-de-ensino",
+    data: "2026-10-20",
+    acao: "alterar",
+    titulo: "Culto de Ensino — Série especial: Estudando o livro de Tiago",
+    motivo:
+      "Nesta terça, 20/10: série especial Estudando o livro de Tiago. Preletor: Pr. Raimundo Martinez",
+  },
+  {
     slug: "ensaio-jovens-rios-de-uncao",
     data: "2026-10-18",
     acao: "suspender",
