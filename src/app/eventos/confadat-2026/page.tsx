@@ -323,23 +323,25 @@ export default function Confadat2026Page() {
             ))}
           </ul>
 
-          <div className="mt-6 max-w-3xl rounded-[1.5rem] border border-[#ffa726]/20 bg-[#fff8ee] p-5 md:p-6">
-            <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
-              Transmissão ao vivo
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-[#555]">
-              Nada substitui estar na Casa de Deus com as irmãs. Se não puder estar
-              presente, acompanhe as duas noites ao vivo no canal da igreja.
-            </p>
-            <a
-              href={confadat.transmissaoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ui-link-accent mt-3 inline-flex"
-            >
-              Abrir o canal no YouTube →
-            </a>
-          </div>
+          {eventEnded ? null : (
+            <div className="mt-6 max-w-3xl rounded-[1.5rem] border border-[#ffa726]/20 bg-[#fff8ee] p-5 md:p-6">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+                Transmissão ao vivo
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#555]">
+                Nada substitui estar na Casa de Deus com as irmãs. Se não puder estar
+                presente, acompanhe as duas noites ao vivo no canal da igreja.
+              </p>
+              <a
+                href={confadat.transmissaoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-link-accent mt-3 inline-flex"
+              >
+                Abrir o canal no YouTube →
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
