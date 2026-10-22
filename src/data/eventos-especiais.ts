@@ -892,6 +892,26 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
           banner: "/programacao/eventos/congresso-umadat-2026.png",
           hero: "/programacao/eventos/congresso-umadat-2026.png",
+          arteComplementar: {
+            imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
+            alt: "Arte do Congresso UMADAT 2026, 23 e 24 de outubro: preletores Pr. Israel Felippe e Pr. Elson de Assis, louvor com Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro, tema O que darei eu ao Senhor? (Salmos 116:12-14)",
+            largura: 1122,
+            altura: 1402,
+            titulo: "Arte oficial do Congresso",
+          },
+          recursos: [
+            {
+              label: "Assistir ao vivo no YouTube",
+              href: "https://www.youtube.com/live/tOJCEiNi25U",
+              descricao:
+                "Transmissão da primeira noite do Congresso UMADAT 2026, sexta, 23/10, às 19h30.",
+            },
+            {
+              label: "Conheça a UMADAT",
+              href: "/ministerios/umadat",
+              descricao: "Página da mocidade do Campo de Atibaia.",
+            },
+          ],
         }),
         criarEvento(local, {
           slug: "congresso-geral-umadat-jovem-24-10-2026",
@@ -909,6 +929,26 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
           banner: "/programacao/eventos/congresso-umadat-2026.png",
           hero: "/programacao/eventos/congresso-umadat-2026.png",
+          arteComplementar: {
+            imagem: "/programacao/eventos/congresso-umadat-2026.jpg",
+            alt: "Arte do Congresso UMADAT 2026, 23 e 24 de outubro: preletores Pr. Israel Felippe e Pr. Elson de Assis, louvor com Lucas Maciel, Gabriel Del Puppo, Nithelle Xavier e Silvia de Castro, tema O que darei eu ao Senhor? (Salmos 116:12-14)",
+            largura: 1122,
+            altura: 1402,
+            titulo: "Arte oficial do Congresso",
+          },
+          recursos: [
+            {
+              label: "Assistir ao vivo no YouTube",
+              href: "https://www.youtube.com/live/239Ko2w58xY",
+              descricao:
+                "Transmissão da noite de encerramento do Congresso UMADAT 2026, sábado, 24/10, às 19h.",
+            },
+            {
+              label: "Conheça a UMADAT",
+              href: "/ministerios/umadat",
+              descricao: "Página da mocidade do Campo de Atibaia.",
+            },
+          ],
         }),
       ],
     },
