@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import nextConfig from "../../../next.config";
 import { getEventoBySlug } from "@/lib/agenda-utils";
 import { CONFADAT_2026 as confadat } from "../confadat-2026";
 
@@ -71,5 +72,15 @@ describe("CONFADAT_2026", () => {
 
     expect(evento?.recursos?.map((recurso) => recurso.href)).toContain(confadat.path);
     expect(evento?.imagem).toBe(confadat.artes.feed);
+  });
+
+  it("o atalho /confadat leva à página oficial", async () => {
+    const redirects = (await nextConfig.redirects?.()) ?? [];
+
+    expect(redirects).toContainEqual({
+      source: confadat.atalho,
+      destination: confadat.path,
+      permanent: false,
+    });
   });
 });
