@@ -48,6 +48,36 @@ describe("getHeroEventos", () => {
     expect(getTitlesAt("2026-08-30T09:00:00.000Z")).not.toContain("Vigília");
   });
 
+  it("deixa o CONFADAT 2026 depois do Congresso UMADAT até o congresso acabar", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-22T15:00:00.000Z"));
+
+    const slides = getHeroEventos();
+    const titles = slides.map((evento) => evento.titulo);
+
+    expect(titles.indexOf("Congresso UMADAT 2026")).toBeLessThan(
+      titles.indexOf("CONFADAT 2026")
+    );
+    expect(slides.find((evento) => evento.countdown)?.titulo).toBe(
+      "Congresso UMADAT 2026"
+    );
+  });
+
+  it("passa o primeiro slide e a contagem ao CONFADAT 2026 depois do UMADAT", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-26T15:00:00.000Z"));
+
+    const slides = getHeroEventos();
+
+    expect(slides[0]?.titulo).toBe("CONFADAT 2026");
+    expect(slides.find((evento) => evento.countdown)?.titulo).toBe("CONFADAT 2026");
+  });
+
+  it("mantém o CONFADAT 2026 na home até o fim da segunda noite", () => {
+    expect(getTitlesAt("2026-11-29T00:29:59.000Z")).toContain("CONFADAT 2026");
+    expect(getTitlesAt("2026-11-29T00:30:00.000Z")).not.toContain("CONFADAT 2026");
+  });
+
   it("mantem o Culto de Acoes de Gracas na home ate o encerramento", () => {
     expect(getTitlesAt("2026-09-05T23:59:59.000Z")).toContain(
       "Culto de Ações de Graças"

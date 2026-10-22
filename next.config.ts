@@ -19,7 +19,12 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return [{ source: "/agenda", destination: "/programacao", permanent: false }];
+    return [
+      { source: "/agenda", destination: "/programacao", permanent: false },
+      // Atalho da campanha (bio, stories e púlpito). Temporário: depois do
+      // congresso o destino pode mudar sem cache de 308 nos navegadores.
+      { source: "/confadat", destination: "/eventos/confadat-2026", permanent: false },
+    ];
   },
 };
 
