@@ -92,6 +92,39 @@ export const CONFADAT_2026 = {
       "O deserto e os lugares secos se alegrarão com isso; e o ermo exultará e florescerá como a rosa.",
     referencia: "Isaías 35:1 (ARC)",
   },
+  // Playlist do congresso: as quatro faixas das artes, na ordem delas. Links
+  // sem parâmetros de rastreio (si, utm_*, pi), que o teste barra.
+  playlist: {
+    faixas: [
+      { titulo: "Não Me Deixe Esquecer", artista: "Valesca Mayssa" },
+      { titulo: "Floresça", artista: "Antônia Gomes" },
+      { titulo: "Não Mais Escravos", artista: "Julia Vitória" },
+      { titulo: "Vai Florescer", artista: "Gersinho" },
+    ],
+    // YouTube em destaque: a playlist de lá é do canal da igreja.
+    plataformas: [
+      {
+        nome: "YouTube",
+        href: "https://www.youtube.com/playlist?list=PLTwu-a85ERIw",
+        principal: true,
+      },
+      {
+        nome: "YouTube Music",
+        href: "https://music.youtube.com/playlist?list=PLTwu-a85ERIw",
+        principal: false,
+      },
+      {
+        nome: "Spotify",
+        href: "https://open.spotify.com/playlist/7vHhAGzAKSBWlxDbzz95oR",
+        principal: false,
+      },
+      {
+        nome: "Apple Music",
+        href: "https://music.apple.com/br/playlist/confadat-2k26/pl.u-yZyVD9mtdoJJ9yg",
+        principal: false,
+      },
+    ],
+  },
   artes: {
     // Arte do feed (4:5): topo da página em todas as telas e card da agenda.
     feed: `${ARTES}/confadat-2026-feed.png`,

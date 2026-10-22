@@ -83,4 +83,40 @@ describe("CONFADAT_2026", () => {
       permanent: false,
     });
   });
+
+  describe("playlist", () => {
+    const HOST_DA_PLATAFORMA = {
+      YouTube: "www.youtube.com",
+      "YouTube Music": "music.youtube.com",
+      Spotify: "open.spotify.com",
+      "Apple Music": "music.apple.com",
+    } as const;
+    // Links copiados do app de compartilhar chegam com rastreio (si, utm_source, pi).
+    const RASTREIO = /^(si|pi|utm_.+|feature|igsh|fbclid)$/;
+
+    it.each(confadat.playlist.plataformas.map((plataforma) => [plataforma.nome, plataforma.href]))(
+      "abre a playlist no %s pelo domínio da plataforma, sem rastreio",
+      (nome, href) => {
+        const url = new URL(href);
+
+        expect(url.protocol).toBe("https:");
+        expect(url.host).toBe(HOST_DA_PLATAFORMA[nome as keyof typeof HOST_DA_PLATAFORMA]);
+        expect([...url.searchParams.keys()].filter((chave) => RASTREIO.test(chave))).toEqual([]);
+      }
+    );
+
+    it("YouTube e YouTube Music abrem a mesma playlist do canal", () => {
+      const listas = confadat.playlist.plataformas
+        .filter((plataforma) => plataforma.nome.startsWith("YouTube"))
+        .map((plataforma) => new URL(plataforma.href).searchParams.get("list"));
+
+      expect(listas).toHaveLength(2);
+      expect(listas[0]).toBeTruthy();
+      expect(listas[1]).toBe(listas[0]);
+    });
+
+    it("destaca uma única plataforma", () => {
+      expect(confadat.playlist.plataformas.filter((plataforma) => plataforma.principal)).toHaveLength(1);
+    });
+  });
 });

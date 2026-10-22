@@ -203,8 +203,8 @@ export default function Confadat2026Page() {
                 </Link>
               </div>
 
-              {eventEnded ? null : (
-                <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                {eventEnded ? null : (
                   <a
                     href={buildWhatsAppShareUrl()}
                     target="_blank"
@@ -213,8 +213,11 @@ export default function Confadat2026Page() {
                   >
                     Compartilhar no WhatsApp
                   </a>
-                </div>
-              )}
+                )}
+                <Link href="#playlist" className="ui-btn-ghost">
+                  Ouvir a playlist
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -380,6 +383,62 @@ export default function Confadat2026Page() {
               </dd>
             </div>
           </dl>
+        </div>
+      </section>
+
+      <section
+        id="playlist"
+        aria-labelledby="playlist-confadat-title"
+        className="ui-section ui-section--dense scroll-mt-28 bg-white"
+      >
+        <div className="ui-page-container">
+          <div className="max-w-3xl">
+            <p className="ui-section-eyebrow ui-section-eyebrow--gold">Playlist do congresso</p>
+            <h2 id="playlist-confadat-title" className="ui-section-title">
+              Prepare o coração para adorar
+            </h2>
+            <p className="mt-4 leading-relaxed text-[#555]">
+              Quatro canções para ouvir até o congresso: em casa, no carro, a caminho do
+              trabalho. Louvor não é trilha de fundo, é preparo do coração para o que Deus
+              vai falar nestas duas noites.
+            </p>
+          </div>
+
+          <ol className="mt-8 grid gap-3 sm:grid-cols-2">
+            {confadat.playlist.faixas.map((faixa, indice) => (
+              <li
+                key={faixa.titulo}
+                className="flex items-center gap-4 rounded-[1.25rem] border border-black/5 bg-[#f9f9f9] px-5 py-4"
+              >
+                <span
+                  aria-hidden="true"
+                  className="w-6 shrink-0 text-center font-acme text-2xl text-text-accent"
+                >
+                  {indice + 1}
+                </span>
+                <div>
+                  <p className="font-semibold text-[#212121]">{faixa.titulo}</p>
+                  <p className="text-sm text-[#666]">{faixa.artista}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+            {confadat.playlist.plataformas.map((plataforma) => (
+              <li key={plataforma.nome} className="flex">
+                <a
+                  href={plataforma.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ouvir a playlist do ${confadat.titulo} no ${plataforma.nome}, em nova aba`}
+                  className={`${plataforma.principal ? "ui-btn-primary" : "ui-btn-secondary"} w-full`}
+                >
+                  {plataforma.nome}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
