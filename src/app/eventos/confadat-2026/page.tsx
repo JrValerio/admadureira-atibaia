@@ -206,21 +206,35 @@ export default function Confadat2026Page() {
                 </Link>
               </div>
 
-              <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-                {eventEnded ? null : (
-                  <a
-                    href={buildWhatsAppShareUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ui-btn-ghost"
+              {eventEnded ? null : (
+                <>
+                  <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                    <a
+                      href={buildWhatsAppShareUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ui-btn-ghost"
+                    >
+                      Compartilhar no WhatsApp
+                    </a>
+                  </div>
+
+                  <nav
+                    aria-label="Prepare-se para o congresso"
+                    className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2"
                   >
-                    Compartilhar no WhatsApp
-                  </a>
-                )}
-                <Link href="#playlist" className="ui-btn-ghost">
-                  Ouvir a playlist
-                </Link>
-              </div>
+                    <span className="basis-full text-xs font-bold tracking-[0.22em] text-[#555] uppercase sm:basis-auto">
+                      Prepare-se
+                    </span>
+                    <Link href="#playlist" className="ui-link-accent inline-flex min-h-6 items-center">
+                      Playlist do congresso<span aria-hidden="true">&nbsp;→</span>
+                    </Link>
+                    <Link href="#paleta" className="ui-link-accent inline-flex min-h-6 items-center">
+                      Paleta de cores<span aria-hidden="true">&nbsp;→</span>
+                    </Link>
+                  </nav>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -448,6 +462,75 @@ export default function Confadat2026Page() {
           </ul>
         </div>
       </section>
+
+      {eventEnded ? null : (
+        <section id="paleta" aria-labelledby="paleta-confadat-title" className="ui-section scroll-mt-28">
+          <div className="ui-page-container">
+            <div className="max-w-3xl">
+              <p className="ui-section-eyebrow ui-section-eyebrow--gold">Paleta de cores</p>
+              <h2 id="paleta-confadat-title" className="ui-section-title">
+                Escolha o seu tom
+              </h2>
+              <p className="mt-4 leading-relaxed text-[#555]">
+                Estas são as cores da festividade, para usar em vestido, em blusa e saia ou
+                numa blusa com saia preta. A paleta é um convite, não uma condição para
+                participar: quem não tiver roupa nesses tons é bem-vinda do mesmo jeito.
+              </p>
+            </div>
+
+            <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {confadat.paleta.cores.map((cor) => (
+                <li
+                  key={cor.hex}
+                  className="overflow-hidden rounded-[1.25rem] border border-black/5 bg-white shadow-sm"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="h-20 border-b border-black/5"
+                    style={{ backgroundColor: cor.hex }}
+                  />
+                  <div className="px-4 py-3">
+                    <p className="font-semibold text-[#212121]">{cor.nome}</p>
+                    <p className="font-mono text-xs tracking-wide text-[#666]">{cor.hex}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="mt-12 font-acme text-2xl tracking-wide text-[#212121]">
+              Inspirações de look
+            </h3>
+            <ul className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-3">
+              {confadat.paleta.looks.map((look) => (
+                <li key={look.src}>
+                  <figure>
+                    <a
+                      href={look.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Ampliar a imagem: ${look.alt}`}
+                      className="block overflow-hidden rounded-[1.25rem] border border-black/5 bg-white shadow-sm"
+                    >
+                      <Image
+                        src={look.src}
+                        alt={look.alt}
+                        width={1080}
+                        height={1350}
+                        sizes="(max-width: 768px) calc(50vw - 1.5rem), 360px"
+                        className="h-auto w-full"
+                      />
+                    </a>
+                    <figcaption className="mt-2 text-sm leading-snug">
+                      <span className="block font-semibold text-[#212121]">{look.titulo}</span>
+                      <span className="block text-[#666]">{look.legenda}</span>
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section className="bg-[#212121] py-10 text-white md:py-14">
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">

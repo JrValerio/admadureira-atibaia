@@ -22,6 +22,24 @@ function versionados(): Set<string> | null {
   }
 }
 
+// Lê largura e altura do marcador SOF (C0–CF, exceto DHT/JPG/DAC) de um JPEG.
+function getJpegDimensions(assetPath: string) {
+  const buffer = readFileSync(resolvePublicAsset(assetPath));
+  let offset = 2;
+
+  while (offset + 9 < buffer.length) {
+    const marker = buffer[offset + 1];
+    const isSof = marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker);
+
+    if (isSof) {
+      return { width: buffer.readUInt16BE(offset + 7), height: buffer.readUInt16BE(offset + 5) };
+    }
+    offset += 2 + buffer.readUInt16BE(offset + 2);
+  }
+
+  throw new Error(`${assetPath}: marcador SOF não encontrado`);
+}
+
 function getPngDimensions(assetPath: string) {
   const buffer = readFileSync(resolvePublicAsset(assetPath));
 
@@ -134,5 +152,26 @@ describe("CONFADAT_2026", () => {
     it("destaca uma única plataforma", () => {
       expect(confadat.playlist.plataformas.filter((plataforma) => plataforma.principal)).toHaveLength(1);
     });
+  });
+
+  describe("paleta", () => {
+    it("tem as cinco cores da arte, com nome único e código hexadecimal", () => {
+      const { cores } = confadat.paleta;
+
+      expect(cores).toHaveLength(5);
+      expect(new Set(cores.map((cor) => cor.nome)).size).toBe(cores.length);
+      cores.forEach((cor) => expect(cor.hex).toMatch(/^#[0-9A-F]{6}$/));
+    });
+
+    it.each(confadat.paleta.looks.map((look) => [look.src]))(
+      "versiona o look %s em JPG 4:5 leve",
+      (src) => {
+        const existe = git ? git.has(`public${src}`) : existsSync(resolvePublicAsset(src));
+
+        expect(existe, `${src} ${git ? "não versionado" : "não encontrado"}`).toBe(true);
+        expect(getJpegDimensions(src)).toEqual({ width: 1080, height: 1350 });
+        expect(statSync(resolvePublicAsset(src)).size).toBeLessThan(350 * 1024);
+      }
+    );
   });
 });
