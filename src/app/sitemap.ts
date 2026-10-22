@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getEventosFuturos } from "@/lib/agenda-utils";
+import { CONFADAT_2026 } from "@/data/confadat-2026";
 import { getCongregacoes } from "@/data/congregacoes";
 import { getDevotionals } from "@/data/devocionais";
 import {
@@ -112,6 +113,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: resolveSiteUrl("/eventos/congresso-mocidade-rios-de-uncao-2026"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: resolveSiteUrl(CONFADAT_2026.path),
       changeFrequency: "weekly",
       priority: 0.9,
     },

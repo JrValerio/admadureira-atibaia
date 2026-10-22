@@ -1,4 +1,5 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
+import { CONFADAT_2026 as confadat } from "@/data/confadat-2026";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import type {
   ConteudoRelacionadoLink,
@@ -948,24 +949,54 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-27-11-2026",
           data: "27/11",
-          titulo: "CONFADAT — Congresso das Irmãs",
+          titulo: "CONFADAT 2026 — Congresso das Irmãs (1ª noite)",
           tipo: "congresso-circulo-de-oracao",
-          horario: "19h00",
-          descricao:
-            "Congresso especial das irmãs, voltado à edificação, comunhão, adoração e fortalecimento espiritual das mulheres na presença de Deus.",
+          horario: confadat.horarioAgenda,
+          descricao: [
+            `Primeira noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
+            "As preletoras do congresso são a Missionária Erinete Teodoro e a Missionária e cantora Adriane Medeiros, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira Félix, pastores presidentes. As duas noites terão transmissão ao vivo.",
+          ].join("\n\n"),
           convite:
-            "Serão dias especiais de renovo, comunhão e glória de Deus. Convide outras irmãs e venha participar do CONFADAT.",
+            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",
+          baseBiblica: criarBaseBiblica(confadat.baseBiblica),
+          recursos: [
+            {
+              label: "Ver a página oficial do CONFADAT 2026",
+              href: confadat.path,
+              descricao:
+                "Tema, preletoras, programação das duas noites e transmissão ao vivo.",
+            },
+          ],
+          destaque: true,
+          imagem: confadat.artes.feed,
+          banner: confadat.artes.feed,
+          hero: confadat.artes.og,
         }),
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-28-11-2026",
           data: "28/11",
-          titulo: "CONFADAT — Congresso das Irmãs",
+          titulo: "CONFADAT 2026 — Congresso das Irmãs (2ª noite)",
           tipo: "congresso-circulo-de-oracao",
-          horario: "19h00",
-          descricao:
-            "Segundo dia do CONFADAT, Congresso das Irmãs, com adoração, palavra e comunhão no templo sede.",
+          horario: confadat.horarioAgenda,
+          descricao: [
+            `Segunda e última noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
+            "As preletoras do congresso são a Missionária Erinete Teodoro e a Missionária e cantora Adriane Medeiros, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira Félix, pastores presidentes. As duas noites terão transmissão ao vivo.",
+          ].join("\n\n"),
           convite:
-            "Serão dias especiais de renovo, comunhão e glória de Deus. Convide outras irmãs e venha participar do CONFADAT.",
+            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",
+          baseBiblica: criarBaseBiblica(confadat.baseBiblica),
+          recursos: [
+            {
+              label: "Ver a página oficial do CONFADAT 2026",
+              href: confadat.path,
+              descricao:
+                "Tema, preletoras, programação das duas noites e transmissão ao vivo.",
+            },
+          ],
+          destaque: true,
+          imagem: confadat.artes.feed,
+          banner: confadat.artes.feed,
+          hero: confadat.artes.og,
         }),
       ],
     },
