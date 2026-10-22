@@ -1,5 +1,6 @@
 import type { EventoTipo } from "@/data/agenda-visuais";
 import { CHA_DE_MULHERES_17_10_2026 as chaDeMulheres } from "@/data/cha-de-mulheres-17-10-2026";
+import { CONFADAT_2026 as confadat } from "@/data/confadat-2026";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import { CULTO_ACOES_DE_GRACAS_05_09_2026 as cultoAcoesDeGracas } from "@/data/culto-acoes-de-gracas-05-09-2026";
 import { VIGILIA_29_08_2026 as vigilia } from "@/data/vigilia-29-08-2026";
@@ -205,6 +206,27 @@ export function getHeroEventos(): HeroEvento[] {
       eventDate: "2026-10-23",
       eventEndDate: "2026-10-24",
       archivedAfter: "2026-10-24",
+    },
+    // Logo depois do UMADAT: assume a primeira posição e a contagem quando o
+    // congresso da mocidade sai da rotação. Sem CTA sobre a arte; no celular,
+    // onde o carrossel corta as laterais da faixa, o card traz tema e datas.
+    {
+      titulo: confadat.titulo,
+      subtitulo: `${confadat.tema} — 27 e 28 de novembro, às ${confadat.horario}, na Igreja Sede. Preletoras: Missionária Erinete Teodoro e Missionária Adriane Medeiros.`,
+      alt: `Banner do ${confadat.titulo} — ${confadat.tema} — 27 e 28 de novembro, sexta e sábado, às ${confadat.horario}`,
+      imagem: confadat.artes.banner,
+      href: confadat.path,
+      ariaLabel: "Abrir página do CONFADAT 2026",
+      countdown: {
+        targetIso: confadat.inicioIso,
+        endIso: confadat.fimIso,
+        eventName: confadat.titulo,
+      },
+      priority: "high",
+      type: "event",
+      eventDate: "2026-11-27",
+      eventEndDate: "2026-11-28",
+      archivedAt: confadat.fimIso,
     },
     {
       titulo: "Dízimos e Ofertas",
