@@ -954,7 +954,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: confadat.horarioAgenda,
           descricao: [
             `Primeira noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
-            "As preletoras do congresso são a Missionária Erinete Teodoro e a Missionária e cantora Adriane Medeiros, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira Félix, pastores presidentes. As duas noites terão transmissão ao vivo.",
+            "Nesta noite a Palavra será ministrada pela Missionária e cantora Adriane Medeiros. No sábado, 28, a preletora é a Missionária Erinete Teodoro. O congresso é presidido pelo Pr. Zacarias Bernardes Félix e pela Pra. Anna Alzira Félix, pastores presidentes, e as duas noites terão transmissão ao vivo.",
           ].join("\n\n"),
           convite:
             "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",
@@ -980,7 +980,7 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: confadat.horarioAgenda,
           descricao: [
             `Segunda e última noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
-            "As preletoras do congresso são a Missionária Erinete Teodoro e a Missionária e cantora Adriane Medeiros, sob a liderança do Pr. Zacarias Bernardes Félix e da Pra. Anna Alzira Félix, pastores presidentes. As duas noites terão transmissão ao vivo.",
+            "Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro. Na sexta, 27, ministra a Missionária e cantora Adriane Medeiros. O congresso é presidido pelo Pr. Zacarias Bernardes Félix e pela Pra. Anna Alzira Félix, pastores presidentes, e as duas noites terão transmissão ao vivo.",
           ].join("\n\n"),
           convite:
             "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",

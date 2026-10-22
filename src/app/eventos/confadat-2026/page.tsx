@@ -58,8 +58,10 @@ function InfoItem({ label, value }: { label: string; value: string }) {
 export default function Confadat2026Page() {
   const canonicalUrl = resolveSiteUrl(confadat.path);
   const eventEnded = isEventEnded();
-  const preletorasNomes = confadat.preletoras.map((preletora) => preletora.nome).join(" e ");
-  const arteAlt = `Arte oficial do ${confadat.titulo}: ${confadat.tema}, ${confadat.baseBiblica}. Preletoras: ${preletorasNomes}. ${confadat.data}, sexta e sábado, às ${confadat.horario}.`;
+  const preletorasPorNoite = confadat.noites
+    .map((noite) => `${noite.preletora} (${noite.diaSemana.toLowerCase()})`)
+    .join(" e ");
+  const arteAlt = `Arte oficial do ${confadat.titulo}: ${confadat.tema}, ${confadat.baseBiblica}. Preletoras: ${preletorasPorNoite}. ${confadat.data}, às ${confadat.horario}.`;
   const sede = {
     "@type": "Place",
     name: confadat.local,
@@ -105,6 +107,7 @@ export default function Confadat2026Page() {
       startDate: noite.inicioIso,
       endDate: noite.fimIso,
       location: sede,
+      performer: { "@type": "Person", name: noite.preletora },
     })),
   };
 
@@ -278,6 +281,10 @@ export default function Confadat2026Page() {
                   {noite.data}
                 </h3>
                 <dl className="mt-5 grid gap-4 text-sm text-[#555] sm:grid-cols-2">
+                  <div className="sm:col-span-2">
+                    <dt className="font-semibold text-[#212121]">Preletora</dt>
+                    <dd>{noite.preletora}</dd>
+                  </div>
                   <div>
                     <dt className="font-semibold text-[#212121]">Horário</dt>
                     <dd>{noite.horario}</dd>
@@ -336,7 +343,7 @@ export default function Confadat2026Page() {
                 className="rounded-[1.5rem] border border-black/6 bg-[#faf8f3] p-5 shadow-sm"
               >
                 <p className="text-[0.68rem] font-bold tracking-[0.2em] text-text-accent uppercase">
-                  {preletora.papel}
+                  {preletora.papel} · {preletora.quando}
                 </p>
                 <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
                   {preletora.nome}

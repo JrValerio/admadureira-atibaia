@@ -18,7 +18,7 @@ export const CONFADAT_2026 = {
   tituloSeo:
     "CONFADAT 2026 — Floresça onde Deus te plantar · 27 e 28 de novembro | AD Madureira Atibaia",
   descricaoSeo:
-    "CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia: 27 e 28 de novembro de 2026, às 19h, na Igreja Sede, em Atibaia/SP. Tema: Floresça onde Deus te plantar (Isaías 35:1). Preletoras: Missionária Erinete Teodoro e Missionária Adriane Medeiros. Com transmissão ao vivo.",
+    "CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia: 27 e 28 de novembro de 2026, às 19h, na Igreja Sede, em Atibaia/SP. Tema: Floresça onde Deus te plantar (Isaías 35:1). Preletoras: Missionária Adriane Medeiros na sexta, 27, e Missionária Erinete Teodoro no sábado, 28. Com transmissão ao vivo.",
   descricaoTopo:
     "Duas noites de Palavra, louvor e oração preparadas pela CONFADAT, o departamento feminino do Campo de Atibaia, na Igreja Sede. Venha e traga uma irmã: há um lugar preparado para você.",
   baseBiblica: "Isaías 35:1",
@@ -45,6 +45,7 @@ export const CONFADAT_2026 = {
       horario: "19h",
       inicioIso: "2026-11-27T19:00:00-03:00",
       fimIso: "2026-11-27T21:30:00-03:00",
+      preletora: "Missionária Adriane Medeiros",
     },
     {
       noite: "2ª noite",
@@ -53,25 +54,28 @@ export const CONFADAT_2026 = {
       horario: "19h",
       inicioIso: "2026-11-28T19:00:00-03:00",
       fimIso: "2026-11-28T21:30:00-03:00",
+      preletora: "Missionária Erinete Teodoro",
     },
   ],
-  // As artes listam as duas preletoras sem dividir por noite. Não atribuir
-  // noite a nenhuma delas sem confirmação da liderança.
+  // Uma preletora por noite, como nas artes de 22/10 (feed e capa do
+  // YouTube); ordem confirmada pelo Amaro para o site. Na ordem das noites.
   preletoras: [
-    {
-      nome: "Missionária Erinete Teodoro",
-      papel: "Preletora",
-      instagram: {
-        usuario: "@erineteteodoro_oficial",
-        href: "https://www.instagram.com/erineteteodoro_oficial/",
-      },
-    },
     {
       nome: "Missionária Adriane Medeiros",
       papel: "Preletora e cantora",
+      quando: "Sexta, 27 de novembro",
       instagram: {
         usuario: "@adrianemedeirosoficial",
         href: "https://www.instagram.com/adrianemedeirosoficial/",
+      },
+    },
+    {
+      nome: "Missionária Erinete Teodoro",
+      papel: "Preletora",
+      quando: "Sábado, 28 de novembro",
+      instagram: {
+        usuario: "@erineteteodoro_oficial",
+        href: "https://www.instagram.com/erineteteodoro_oficial/",
       },
     },
   ],
@@ -140,8 +144,8 @@ export const CONFADAT_2026 = {
     "congresso de mulheres Assembleia de Deus",
     "Floresça onde Deus te plantar",
     "Isaías 35:1",
-    "Erinete Teodoro",
     "Adriane Medeiros",
+    "Erinete Teodoro",
     "AD Madureira Atibaia",
   ],
 } as const;

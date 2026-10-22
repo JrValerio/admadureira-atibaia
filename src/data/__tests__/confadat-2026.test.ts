@@ -64,6 +64,22 @@ describe("CONFADAT_2026", () => {
     expect(Date.parse(primeira.fimIso)).toBeLessThan(Date.parse(segunda.inicioIso));
   });
 
+  it("anuncia uma preletora por noite, como nas artes de 22/10", () => {
+    expect(confadat.noites.map((noite) => noite.preletora)).toEqual([
+      "Missionária Adriane Medeiros",
+      "Missionária Erinete Teodoro",
+    ]);
+    expect(confadat.preletoras.map((preletora) => preletora.nome)).toEqual(
+      confadat.noites.map((noite) => noite.preletora)
+    );
+    expect(
+      getEventoBySlug("confadat-congresso-das-irmas-27-11-2026")?.descricao
+    ).toContain("Nesta noite a Palavra será ministrada pela Missionária e cantora Adriane Medeiros");
+    expect(
+      getEventoBySlug("confadat-congresso-das-irmas-28-11-2026")?.descricao
+    ).toContain("Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro");
+  });
+
   it.each([
     "confadat-congresso-das-irmas-27-11-2026",
     "confadat-congresso-das-irmas-28-11-2026",
