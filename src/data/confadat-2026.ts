@@ -2,7 +2,6 @@ import {
   OFFICIAL_SOCIAL_LINKS,
   SEDE_ADDRESS_INLINE,
   SEDE_MAPS_URL,
-  SEDE_PLACE_NAME,
 } from "@/data/site";
 
 const ARTES = "/ministerios/confadat/confadat-2026";
@@ -18,7 +17,7 @@ export const CONFADAT_2026 = {
   tituloSeo:
     "CONFADAT 2026 — Floresça onde Deus te plantar · 27 e 28 de novembro | AD Madureira Atibaia",
   descricaoSeo:
-    "CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia: 27 e 28 de novembro de 2026, às 19h, na Igreja Sede, em Atibaia/SP. Tema: Floresça onde Deus te plantar (Isaías 35:1). Preletoras: Missionária Adriane Medeiros na sexta, 27, e Missionária Erinete Teodoro no sábado, 28. Com transmissão ao vivo.",
+    "CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia: 27 e 28 de novembro de 2026, às 19h, na Assembleia de Deus Ministério Madureira, em Atibaia/SP. Tema: Floresça onde Deus te plantar (Isaías 35:1). Sexta, 27: Missionária Erinete Teodoro e a cantora Anne Reis. Sábado, 28: Missionária e cantora Adriane Medeiros. Com transmissão ao vivo.",
   descricaoTopo:
     "Duas noites de Palavra, louvor e oração preparadas pela CONFADAT, o departamento feminino do Campo de Atibaia, na Igreja Sede. Venha e traga uma irmã: há um lugar preparado para você.",
   baseBiblica: "Isaías 35:1",
@@ -26,9 +25,11 @@ export const CONFADAT_2026 = {
   horario: "19h",
   horarioAgenda: "19h00",
   inicioIso: "2026-11-27T19:00:00-03:00",
-  // As artes não informam o término; 21h30 é estimativa, como no Congresso UMADAT.
+  // As artes não informam o término. 21h30 é só uma referência interna (fim da
+  // contagem "ao vivo", saída do slide da home, "evento encerrado"): não vai
+  // para texto, agenda nem dados estruturados.
   fimIso: "2026-11-28T21:30:00-03:00",
-  local: SEDE_PLACE_NAME,
+  local: "Assembleia de Deus Ministério Madureira — Campo de Atibaia",
   endereco: SEDE_ADDRESS_INLINE,
   mapsUrl: SEDE_MAPS_URL,
   // Os links de cada live só existem quando a transmissão é agendada; até lá, o canal.
@@ -44,8 +45,10 @@ export const CONFADAT_2026 = {
       data: "27 de novembro de 2026",
       horario: "19h",
       inicioIso: "2026-11-27T19:00:00-03:00",
-      fimIso: "2026-11-27T21:30:00-03:00",
-      preletora: "Missionária Adriane Medeiros",
+      participantes: [
+        { nome: "Missionária Erinete Teodoro", funcao: "Preletora" },
+        { nome: "Cantora Anne Reis", funcao: "Louvor" },
+      ],
     },
     {
       noite: "2ª noite",
@@ -53,36 +56,53 @@ export const CONFADAT_2026 = {
       data: "28 de novembro de 2026",
       horario: "19h",
       inicioIso: "2026-11-28T19:00:00-03:00",
-      fimIso: "2026-11-28T21:30:00-03:00",
-      preletora: "Missionária Erinete Teodoro",
+      participantes: [
+        { nome: "Missionária e cantora Adriane Medeiros", funcao: "Pregação e louvor" },
+      ],
     },
   ],
-  // Uma preletora por noite, como nas artes de 22/10 (feed e capa do
-  // YouTube); ordem confirmada pelo Amaro para o site. Na ordem das noites.
-  preletoras: [
-    {
-      nome: "Missionária Adriane Medeiros",
-      papel: "Preletora e cantora",
-      quando: "Sexta, 27 de novembro",
-      instagram: {
-        usuario: "@adrianemedeirosoficial",
-        href: "https://www.instagram.com/adrianemedeirosoficial/",
-      },
-    },
+  // Programação do kit oficial de 23/10/2026 (LEIA-ME e manifesto), que
+  // substitui a de 22/10: sexta, Erinete Teodoro e Anne Reis; sábado, Adriane
+  // Medeiros. Na ordem das noites. Anne Reis não tem Instagram: não inventar.
+  convidadas: [
     {
       nome: "Missionária Erinete Teodoro",
-      papel: "Preletora",
-      quando: "Sábado, 28 de novembro",
+      funcao: "Preletora",
+      quando: "Sexta, 27 de novembro",
+      arte: `${ARTES}/confadat-2026-erinete-teodoro.jpg`,
       instagram: {
         usuario: "@erineteteodoro_oficial",
         href: "https://www.instagram.com/erineteteodoro_oficial/",
       },
     },
+    {
+      nome: "Cantora Anne Reis",
+      funcao: "Louvor",
+      quando: "Sexta, 27 de novembro",
+      arte: `${ARTES}/confadat-2026-anne-reis.jpg`,
+      instagram: null,
+    },
+    {
+      nome: "Missionária e cantora Adriane Medeiros",
+      funcao: "Pregação e louvor",
+      quando: "Sábado, 28 de novembro",
+      arte: `${ARTES}/confadat-2026-adriane-medeiros.jpg`,
+      instagram: {
+        usuario: "@adrianemedeirosoficial",
+        href: "https://www.instagram.com/adrianemedeirosoficial/",
+      },
+    },
   ],
   liderancas: [
     {
-      papel: "Pastores presidentes",
-      nomes: "Pr. Zacarias Bernardes Félix e Pra. Anna Alzira Félix",
+      nome: "Pr. Zacarias Bernardes Félix",
+      papel: "Presidente do Campo de Atibaia",
+      arte: `${ARTES}/confadat-2026-pastor-zacarias.jpg`,
+    },
+    {
+      nome: "Pra. Anna Alzira Félix",
+      papel: "Presidente da CONFADAT",
+      arte: `${ARTES}/confadat-2026-pastora-anna-alzira.jpg`,
     },
   ],
   reflexao: {
@@ -180,13 +200,20 @@ export const CONFADAT_2026 = {
       },
     ],
   },
+  // Artes do kit oficial de 23/10 (artes/*.png, conferidas pelo sha256 do
+  // manifesto). As retrato vão em JPG para a página ficar leve, sem recorte.
   artes: {
-    // Arte do feed (4:5): topo da página em todas as telas e card da agenda.
-    feed: `${ARTES}/confadat-2026-feed.png`,
-    // A mesma arte do feed em JPG leve: o WhatsApp descarta a prévia de imagens pesadas.
-    og: `${ARTES}/confadat-2026-og.jpg`,
-    // Faixa 3:1 do carrossel da home.
+    // hero-desktop (3:1) com as três convidadas e a liderança: carrossel da
+    // home e topo da página no desktop. 2048x682 levada a 2172x724.
     banner: "/banners/banner-confadat-2026.png",
+    // hero-mobile (4:5), com as mesmas três convidadas e a liderança: topo da
+    // página no celular e cards dos eventos de 27 e 28/11 na agenda.
+    heroMobile: `${ARTES}/confadat-2026-hero-mobile.jpg`,
+    // youtube-geral (16:9): topo das páginas dos eventos de 27 e 28/11, que
+    // usam aspect-video, sem corte.
+    youtube: `${ARTES}/confadat-2026-youtube.png`,
+    // A youtube-geral em JPG leve (1200x675): o WhatsApp descarta prévia pesada.
+    og: `${ARTES}/confadat-2026-og.jpg`,
   },
   keywords: [
     "CONFADAT 2026",
@@ -195,8 +222,9 @@ export const CONFADAT_2026 = {
     "congresso de mulheres Assembleia de Deus",
     "Floresça onde Deus te plantar",
     "Isaías 35:1",
-    "Adriane Medeiros",
     "Erinete Teodoro",
+    "Anne Reis",
+    "Adriane Medeiros",
     "AD Madureira Atibaia",
   ],
 } as const;

@@ -212,7 +212,7 @@ export function getHeroEventos(): HeroEvento[] {
     // onde o carrossel corta as laterais da faixa, o card traz tema e datas.
     {
       titulo: confadat.titulo,
-      subtitulo: `${confadat.tema} — 27 e 28 de novembro, às ${confadat.horario}, na Igreja Sede. Sexta, Missionária Adriane Medeiros; sábado, Missionária Erinete Teodoro.`,
+      subtitulo: `${confadat.tema} — 27 e 28 de novembro, às ${confadat.horario}, na Igreja Sede. Sexta, Missionária Erinete Teodoro e a cantora Anne Reis; sábado, Missionária e cantora Adriane Medeiros.`,
       alt: `Banner do ${confadat.titulo} — ${confadat.tema} — 27 e 28 de novembro, sexta e sábado, às ${confadat.horario}`,
       imagem: confadat.artes.banner,
       href: confadat.path,
