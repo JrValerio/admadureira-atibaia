@@ -129,6 +129,57 @@ export const CONFADAT_2026 = {
       },
     ],
   },
+  // Paleta de vestuário da festividade. Mapeamento confirmado pelo Amaro em
+  // 22/10: as cores entram como HTML (nomes e códigos da arte "Paleta de
+  // cores") e os looks 03 a 08, na ordem do carrossel, como foto. A capa e o
+  // slide da paleta ficam fora do site.
+  paleta: {
+    cores: [
+      { nome: "Rosa claro", hex: "#F6D4D6" },
+      { nome: "Rosa antigo", hex: "#D99AA2" },
+      { nome: "Rosa coral", hex: "#F2A5A6" },
+      { nome: "Rosa queimado", hex: "#C7676F" },
+      { nome: "Vinho", hex: "#8E3A48" },
+    ],
+    looks: [
+      {
+        src: `${ARTES}/paleta/vestidos-rosa-antigo-e-queimado.jpg`,
+        titulo: "Vestidos",
+        legenda: "Rosa antigo · Rosa queimado",
+        alt: "Vestidos midi em rosa antigo e em rosa queimado, com sapato nude.",
+      },
+      {
+        src: `${ARTES}/paleta/blusa-e-saia-rosa-e-vinho.jpg`,
+        titulo: "Blusa e saia",
+        legenda: "Rosa claro + vinho · Vinho + rosa coral",
+        alt: "Blusa rosa claro com saia plissada vinho, e blusa vinho com saia rosa coral.",
+      },
+      {
+        src: `${ARTES}/paleta/saia-preta-rosa-antigo-e-coral.jpg`,
+        titulo: "Com saia preta",
+        legenda: "Rosa antigo + preto · Rosa coral + preto",
+        alt: "Blusa rosa antigo e blusa rosa coral, as duas com saia preta.",
+      },
+      {
+        src: `${ARTES}/paleta/vestidos-rosa-claro-e-vinho.jpg`,
+        titulo: "Vestidos",
+        legenda: "Rosa claro · Vinho",
+        alt: "Vestido rosa claro com cinto e vestido vinho com botões, os dois midi.",
+      },
+      {
+        src: `${ARTES}/paleta/blusa-e-saia-tons-de-rosa.jpg`,
+        titulo: "Blusa e saia",
+        legenda: "Rosa coral + rosa antigo · Rosa queimado + rosa claro",
+        alt: "Camisa rosa coral com saia plissada rosa antigo, e blusa rosa queimado com saia rosa claro.",
+      },
+      {
+        src: `${ARTES}/paleta/saia-preta-rosa-queimado-e-vinho.jpg`,
+        titulo: "Com saia preta",
+        legenda: "Rosa queimado + preto · Vinho + preto",
+        alt: "Blusa rosa queimado e camisa vinho, as duas com saia preta.",
+      },
+    ],
+  },
   artes: {
     // Arte do feed (4:5): topo da página em todas as telas e card da agenda.
     feed: `${ARTES}/confadat-2026-feed.png`,
