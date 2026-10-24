@@ -3,8 +3,9 @@ import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import EventCountdown from "@/components/EventCountdown";
 import { CONFADAT_2026 as confadat } from "@/data/confadat-2026";
-import { SEDE_POSTAL_ADDRESS } from "@/data/site";
+import { SEDE_POSTAL_ADDRESS, SEDE_WHATSAPP_URL } from "@/data/site";
 import { buildPageMetadata, resolveSiteUrl, SITE_NAME } from "@/lib/site";
+import styles from "./confadat.module.css";
 
 export const metadata: Metadata = buildPageMetadata({
   title: confadat.tituloSeo,
@@ -47,11 +48,11 @@ function isEventEnded(now = new Date()) {
 
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border-t border-white/10 pt-4">
-      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-text-accent-on-dark uppercase">
+    <div className="border-t border-[#b18a50]/35 pt-4">
+      <p className="text-[0.68rem] font-bold tracking-[0.22em] text-[#743044] uppercase">
         {label}
       </p>
-      <p className="mt-1 text-sm leading-relaxed text-white/82">{value}</p>
+      <p className="mt-1 text-sm leading-relaxed text-[#64534f]">{value}</p>
     </div>
   );
 }
@@ -141,7 +142,7 @@ export default function Confadat2026Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f5f5f5]">
+    <main className={`${styles.page} min-h-screen`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -151,21 +152,21 @@ export default function Confadat2026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
       />
 
-      <section className="py-8 md:py-14">
+      <section className={`${styles.opening} py-8 md:py-14`}>
         <div className="ui-page-container">
           <nav
             aria-label="Breadcrumb"
-            className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#8a8a8a]"
+            className="mb-6 flex flex-wrap items-center gap-2 text-sm text-[#806a61]"
           >
-            <Link href="/" className="transition-colors hover:text-[#212121]">
+            <Link href="/" className="transition-colors hover:text-[#542132]">
               Início
             </Link>
             <span>›</span>
-            <Link href="/eventos" className="transition-colors hover:text-[#212121]">
+            <Link href="/eventos" className="transition-colors hover:text-[#542132]">
               Eventos
             </Link>
             <span>›</span>
-            <span className="text-[#212121]">{confadat.titulo}</span>
+            <span className="text-[#542132]">{confadat.titulo}</span>
           </nav>
 
           <div className="grid gap-8 md:gap-10">
@@ -183,102 +184,105 @@ export default function Confadat2026Page() {
               </picture>
             </div>
 
-            <div className="max-w-3xl">
-              <div className="mb-4">
-                {eventEnded ? (
-                  <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
-                    Evento encerrado
-                  </span>
-                ) : (
-                  <EventCountdown
-                    targetIso={confadat.inicioIso}
-                    endIso={confadat.fimIso}
-                    eventName={confadat.titulo}
-                  />
-                )}
-              </div>
+            <div className={styles.introduction}>
+              <div className={styles.introFlowers} aria-hidden="true" />
+              <div className={styles.introCopy}>
+                <div className="mb-4">
+                  {eventEnded ? (
+                    <span className="inline-flex items-center rounded-full border border-black/10 bg-[#eeeeee] px-4 py-2 text-xs font-bold tracking-[0.18em] text-[#555] uppercase">
+                      Evento encerrado
+                    </span>
+                  ) : (
+                    <EventCountdown
+                      targetIso={confadat.inicioIso}
+                      endIso={confadat.fimIso}
+                      eventName={confadat.titulo}
+                    />
+                  )}
+                </div>
 
-              <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
-                {confadat.data} · {confadat.horario}
-              </p>
-              <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#212121] md:text-5xl">
-                {confadat.titulo}
-              </h1>
-              <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-text-accent md:text-2xl">
-                {confadat.tema}
-              </p>
-              <p className="mt-1 text-sm font-semibold tracking-wide text-[#8a8a8a]">
-                {confadat.descritor} · {confadat.baseBiblica}
-              </p>
-              <ul className="mt-5 space-y-1.5 text-sm leading-relaxed text-[#555]">
-                {confadat.noites.map((noite) => (
-                  <li key={noite.inicioIso}>
-                    <span className="font-semibold text-[#212121]">
-                      {noite.diaSemana}, {noite.data.replace(" de 2026", "")}:
-                    </span>{" "}
-                    {noite.participantes.map((participante) => participante.nome).join(" e ")}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
-                {confadat.descricaoTopo}
-              </p>
+                <p className="mb-2 text-xs font-bold tracking-[0.28em] text-text-accent uppercase">
+                  {confadat.data} · {confadat.horario}
+                </p>
+                <h1 className="font-acme text-3xl leading-tight tracking-wide text-[#542132] md:text-5xl">
+                  {confadat.titulo}
+                </h1>
+                <p className="mt-3 max-w-2xl text-lg font-semibold leading-relaxed text-text-accent md:text-2xl">
+                  {confadat.tema}
+                </p>
+                <p className="mt-1 text-sm font-semibold tracking-wide text-[#806a61]">
+                  {confadat.descritor} · {confadat.baseBiblica}
+                </p>
+                <ul className="mt-5 space-y-1.5 text-sm leading-relaxed text-[#555]">
+                  {confadat.noites.map((noite) => (
+                    <li key={noite.inicioIso}>
+                      <span className="font-semibold text-[#542132]">
+                        {noite.diaSemana}, {noite.data.replace(" de 2026", "")}:
+                      </span>{" "}
+                      {noite.participantes.map((participante) => participante.nome).join(" e ")}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#555]">
+                  {confadat.descricaoTopo}
+                </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                {eventEnded ? (
-                  <Link href="/eventos" className="ui-btn-primary">
-                    Ver próximos eventos
-                  </Link>
-                ) : (
-                  <a
-                    href={confadat.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ui-btn-primary"
-                  >
-                    Como chegar
-                  </a>
-                )}
-                <Link href="#programacao" className="ui-btn-secondary">
-                  Ver programação
-                </Link>
-              </div>
-
-              {eventEnded ? null : (
-                <>
-                  <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  {eventEnded ? (
+                    <Link href="/eventos" className="ui-btn-primary">
+                      Ver próximos eventos
+                    </Link>
+                  ) : (
                     <a
-                      href={buildWhatsAppShareUrl()}
+                      href={confadat.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ui-btn-ghost"
+                      className="ui-btn-primary"
                     >
-                      Compartilhar no WhatsApp
+                      Como chegar
                     </a>
-                  </div>
+                  )}
+                  <Link href="#programacao" className="ui-btn-secondary">
+                    Ver programação
+                  </Link>
+                </div>
 
-                  <nav
-                    aria-label="Prepare-se para o congresso"
-                    className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2"
-                  >
-                    <span className="basis-full text-xs font-bold tracking-[0.22em] text-[#555] uppercase sm:basis-auto">
-                      Prepare-se
-                    </span>
-                    <Link href="#playlist" className="ui-link-accent inline-flex min-h-6 items-center">
-                      Playlist do congresso<span aria-hidden="true">&nbsp;→</span>
-                    </Link>
-                    <Link href="#paleta" className="ui-link-accent inline-flex min-h-6 items-center">
-                      Paleta de cores<span aria-hidden="true">&nbsp;→</span>
-                    </Link>
-                  </nav>
-                </>
-              )}
+                {eventEnded ? null : (
+                  <>
+                    <div className="mt-3 flex flex-col gap-3 sm:flex-row">
+                      <a
+                        href={buildWhatsAppShareUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ui-btn-ghost"
+                      >
+                        Compartilhar no WhatsApp
+                      </a>
+                    </div>
+
+                    <nav
+                      aria-label="Prepare-se para o congresso"
+                      className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2"
+                    >
+                      <span className="basis-full text-xs font-bold tracking-[0.22em] text-[#555] uppercase sm:basis-auto">
+                        Prepare-se
+                      </span>
+                      <Link href="#playlist" className="ui-link-accent inline-flex min-h-6 items-center">
+                        Playlist do congresso<span aria-hidden="true">&nbsp;→</span>
+                      </Link>
+                      <Link href="#paleta" className="ui-link-accent inline-flex min-h-6 items-center">
+                        Paleta de cores<span aria-hidden="true">&nbsp;→</span>
+                      </Link>
+                    </nav>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#160e08] text-white">
+      <section className={styles.information}>
         <div className="ui-page-container py-10 md:py-14">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <InfoItem label="Datas" value={`Sexta e sábado, ${confadat.data}`} />
@@ -289,7 +293,8 @@ export default function Confadat2026Page() {
         </div>
       </section>
 
-      <section className="ui-section">
+      <section className={`${styles.reflection} ui-section`}>
+        <div className={styles.reflectionFlowers} aria-hidden="true" />
         <div className="ui-page-container">
           <p className="ui-section-eyebrow ui-section-eyebrow--gold">Para você</p>
           <h2 className="ui-section-title">{confadat.reflexao.titulo}</h2>
@@ -298,8 +303,8 @@ export default function Confadat2026Page() {
               <p key={paragrafo}>{paragrafo}</p>
             ))}
           </div>
-          <blockquote className="mt-8 max-w-3xl rounded-[1.5rem] border border-[#ffa726]/25 bg-[#fff8ee] p-6 md:p-8">
-            <p className="text-lg leading-relaxed text-[#212121]">“{confadat.reflexao.versiculo}”</p>
+          <blockquote className="mt-8 max-w-3xl rounded-[1.5rem] border border-[#b18a50]/30 bg-[#fffaf3] p-6 md:p-8">
+            <p className="text-lg leading-relaxed text-[#542132]">“{confadat.reflexao.versiculo}”</p>
             <footer className="mt-3 text-sm font-semibold text-text-accent">
               {confadat.reflexao.referencia}
             </footer>
@@ -308,10 +313,63 @@ export default function Confadat2026Page() {
       </section>
 
       <section
+        id="mensagem-presidente"
+        aria-labelledby="mensagem-presidente-title"
+        data-floating-contact-exclusion
+        className={`${styles.welcome} ui-section`}
+      >
+        <div className="ui-page-container">
+          <div className={styles.welcomeHeading}>
+            <p className="ui-section-eyebrow">Boas-vindas</p>
+            <h2 id="mensagem-presidente-title" className="ui-section-title">
+              {confadat.mensagemPresidente.titulo}
+            </h2>
+          </div>
+          <div className={styles.letter}>
+            <figure className={styles.portrait}>
+              <Image
+                src={confadat.mensagemPresidente.retrato}
+                alt="Pastora Anna Alzira Félix, com a blusa rosa, na fotografia aprovada para o CONFADAT 2026."
+                width={1087}
+                height={1447}
+                // O WebP aprovado já é leve: manter a resolução original do retrato.
+                unoptimized
+                className={styles.portraitImage}
+              />
+              <figcaption>
+                <span>Pastora Anna Alzira Félix</span>
+                <span>Presidente da CONFADAT</span>
+              </figcaption>
+            </figure>
+            <div className={styles.letterCopy}>
+              {confadat.mensagemPresidente.paragrafos.map((paragrafo) => (
+                <p key={paragrafo}>{paragrafo}</p>
+              ))}
+              <footer className={styles.signature}>
+                <p>{confadat.mensagemPresidente.assinatura}</p>
+                <p>{confadat.mensagemPresidente.identificacao}</p>
+              </footer>
+            </div>
+          </div>
+          <p className="mt-6 md:hidden">
+            <a
+              href={SEDE_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ui-btn-secondary"
+            >
+              Falar com a igreja pelo WhatsApp
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section
         id="programacao"
         aria-labelledby="programacao-confadat-title"
-        className="ui-section ui-section--dense scroll-mt-28 bg-white"
+        className={`${styles.programme} ui-section ui-section--dense scroll-mt-28`}
       >
+        <div className={styles.programmeFlowers} aria-hidden="true" />
         <div className="ui-page-container">
           <div className="mb-8 max-w-3xl">
             <p className="ui-section-eyebrow">Programação</p>
@@ -324,18 +382,18 @@ export default function Confadat2026Page() {
             {confadat.noites.map((noite) => (
               <li
                 key={noite.inicioIso}
-                className="rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6 shadow-sm"
+                className="rounded-[1.5rem] border border-black/5 bg-[#fffcf8] p-6 shadow-sm"
               >
                 <p className="text-xs font-bold tracking-[0.22em] text-text-accent uppercase">
                   {noite.noite} · {noite.diaSemana}
                 </p>
-                <h3 className="mt-2 font-acme text-2xl tracking-wide text-[#212121] md:text-3xl">
+                <h3 className="mt-2 font-acme text-2xl tracking-wide text-[#542132] md:text-3xl">
                   {noite.data}
                 </h3>
                 <ul className="mt-5 space-y-2 text-sm text-[#555]">
                   {noite.participantes.map((participante) => (
                     <li key={participante.nome}>
-                      <span className="font-semibold text-[#212121]">{participante.nome}</span>
+                      <span className="font-semibold text-[#542132]">{participante.nome}</span>
                       {" · "}
                       {participante.funcao}
                     </li>
@@ -343,11 +401,11 @@ export default function Confadat2026Page() {
                 </ul>
                 <dl className="mt-5 grid gap-4 text-sm text-[#555] sm:grid-cols-2">
                   <div>
-                    <dt className="font-semibold text-[#212121]">Horário</dt>
+                    <dt className="font-semibold text-[#542132]">Horário</dt>
                     <dd>{noite.horario}</dd>
                   </div>
                   <div>
-                    <dt className="font-semibold text-[#212121]">Local</dt>
+                    <dt className="font-semibold text-[#542132]">Local</dt>
                     <dd>Igreja Sede</dd>
                   </div>
                 </dl>
@@ -367,8 +425,8 @@ export default function Confadat2026Page() {
           </ul>
 
           {eventEnded ? null : (
-            <div className="mt-6 max-w-3xl rounded-[1.5rem] border border-[#ffa726]/20 bg-[#fff8ee] p-5 md:p-6">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+            <div className="mt-6 max-w-3xl rounded-[1.5rem] border border-[#b18a50]/30 bg-[#f8eee8] p-5 md:p-6">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#743044] uppercase">
                 Transmissão ao vivo
               </p>
               <p className="mt-2 text-sm leading-relaxed text-[#555]">
@@ -388,7 +446,7 @@ export default function Confadat2026Page() {
         </div>
       </section>
 
-      <section aria-labelledby="convidadas-confadat-title" className="ui-section">
+      <section aria-labelledby="convidadas-confadat-title" className={`${styles.guests} ui-section`}>
         <div className="ui-page-container">
           <p className="ui-section-eyebrow">Convidadas e liderança</p>
           <h2 id="convidadas-confadat-title" className="ui-section-title">
@@ -400,7 +458,7 @@ export default function Confadat2026Page() {
             {confadat.convidadas.map((convidada) => (
               <li
                 key={convidada.nome}
-                className="overflow-hidden rounded-[1.5rem] border border-black/6 bg-[#faf8f3] shadow-sm"
+                className="overflow-hidden rounded-[1.5rem] border border-black/6 bg-[#fffcf8] shadow-sm"
               >
                 <Image
                   src={convidada.arte}
@@ -414,7 +472,7 @@ export default function Confadat2026Page() {
                   <p className="text-[0.68rem] font-bold tracking-[0.2em] text-text-accent uppercase">
                     {convidada.funcao} · {convidada.quando}
                   </p>
-                  <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
+                  <h3 className="mt-1.5 font-acme text-xl tracking-wide text-[#542132]">
                     {convidada.nome}
                   </h3>
                   {convidada.instagram ? (
@@ -440,7 +498,7 @@ export default function Confadat2026Page() {
             {confadat.liderancas.map((lideranca) => (
               <li
                 key={lideranca.nome}
-                className="overflow-hidden rounded-[1.5rem] border border-black/5 bg-[#f9f9f9]"
+                className="overflow-hidden rounded-[1.5rem] border border-black/5 bg-[#fffcf8]"
               >
                 <Image
                   src={lideranca.arte}
@@ -451,17 +509,17 @@ export default function Confadat2026Page() {
                   className="h-auto w-full"
                 />
                 <div className="p-5">
-                  <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+                  <p className="text-xs font-bold tracking-[0.22em] text-[#743044] uppercase">
                     {lideranca.papel}
                   </p>
-                  <p className="mt-1.5 font-acme text-xl tracking-wide text-[#212121]">
+                  <p className="mt-1.5 font-acme text-xl tracking-wide text-[#542132]">
                     {lideranca.nome}
                   </p>
                 </div>
               </li>
             ))}
-            <li className="self-start rounded-[1.5rem] border border-black/5 bg-[#f9f9f9] p-6">
-              <p className="text-xs font-bold tracking-[0.22em] text-[#ef5350] uppercase">
+            <li className="self-start rounded-[1.5rem] border border-black/5 bg-[#fffcf8] p-6">
+              <p className="text-xs font-bold tracking-[0.22em] text-[#743044] uppercase">
                 Realização
               </p>
               <p className="mt-2 text-sm leading-relaxed text-[#555]">
@@ -480,8 +538,9 @@ export default function Confadat2026Page() {
       <section
         id="playlist"
         aria-labelledby="playlist-confadat-title"
-        className="ui-section ui-section--dense scroll-mt-28 bg-white"
+        className={`${styles.playlist} ui-section ui-section--dense scroll-mt-28`}
       >
+        <div className={styles.playlistFlowers} aria-hidden="true" />
         <div className="ui-page-container">
           <div className="max-w-3xl">
             <p className="ui-section-eyebrow ui-section-eyebrow--gold">Playlist do congresso</p>
@@ -499,7 +558,7 @@ export default function Confadat2026Page() {
             {confadat.playlist.faixas.map((faixa, indice) => (
               <li
                 key={faixa.titulo}
-                className="flex items-center gap-4 rounded-[1.25rem] border border-black/5 bg-[#f9f9f9] px-5 py-4"
+                className="flex items-center gap-4 rounded-[1.25rem] border border-black/5 bg-[#fffcf8] px-5 py-4"
               >
                 <span
                   aria-hidden="true"
@@ -508,7 +567,7 @@ export default function Confadat2026Page() {
                   {indice + 1}
                 </span>
                 <div>
-                  <p className="font-semibold text-[#212121]">{faixa.titulo}</p>
+                  <p className="font-semibold text-[#542132]">{faixa.titulo}</p>
                   <p className="text-sm text-[#666]">{faixa.artista}</p>
                 </div>
               </li>
@@ -534,7 +593,7 @@ export default function Confadat2026Page() {
       </section>
 
       {eventEnded ? null : (
-        <section id="paleta" aria-labelledby="paleta-confadat-title" className="ui-section scroll-mt-28">
+        <section id="paleta" aria-labelledby="paleta-confadat-title" className={`${styles.palette} ui-section scroll-mt-28`}>
           <div className="ui-page-container">
             <div className="max-w-3xl">
               <p className="ui-section-eyebrow ui-section-eyebrow--gold">Paleta de cores</p>
@@ -560,14 +619,14 @@ export default function Confadat2026Page() {
                     style={{ backgroundColor: cor.hex }}
                   />
                   <div className="px-4 py-3">
-                    <p className="font-semibold text-[#212121]">{cor.nome}</p>
+                    <p className="font-semibold text-[#542132]">{cor.nome}</p>
                     <p className="font-mono text-xs tracking-wide text-[#666]">{cor.hex}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <h3 className="mt-12 font-acme text-2xl tracking-wide text-[#212121]">
+            <h3 className="mt-12 font-acme text-2xl tracking-wide text-[#542132]">
               Inspirações de look
             </h3>
             <ul className="mt-5 grid grid-cols-2 gap-4 md:grid-cols-3">
@@ -591,7 +650,7 @@ export default function Confadat2026Page() {
                       />
                     </a>
                     <figcaption className="mt-2 text-sm leading-snug">
-                      <span className="block font-semibold text-[#212121]">{look.titulo}</span>
+                      <span className="block font-semibold text-[#542132]">{look.titulo}</span>
                       <span className="block text-[#666]">{look.legenda}</span>
                     </figcaption>
                   </figure>
@@ -602,16 +661,17 @@ export default function Confadat2026Page() {
         </section>
       )}
 
-      <section className="bg-[#212121] py-10 text-white md:py-14">
+      <section className={`${styles.invitation} py-10 md:py-14`}>
+        <div className={styles.invitationFlowers} aria-hidden="true" />
         <div className="ui-page-container flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
-            <p className="text-xs font-bold tracking-[0.24em] text-text-accent-on-dark uppercase">
+            <p className="text-xs font-bold tracking-[0.24em] text-[#743044] uppercase">
               {confadat.titulo} — {confadat.tema}
             </p>
             <h2 className="mt-3 font-acme text-2xl tracking-wide md:text-4xl">
               Há um lugar preparado para você
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-white/72 md:text-base">
+            <p className="mt-3 text-sm leading-relaxed text-[#64534f] md:text-base">
               Sexta e sábado, {confadat.data}, às {confadat.horario}, na Igreja Sede —{" "}
               {confadat.endereco}.
             </p>

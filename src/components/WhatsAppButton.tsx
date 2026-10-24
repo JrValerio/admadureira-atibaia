@@ -8,13 +8,28 @@ const WHATSAPP_URL =
 
 export default function WhatsAppButton() {
   const [visivel, setVisivel] = useState(false);
+  const [emAreaDeLeitura, setEmAreaDeLeitura] = useState(false);
 
   // Aparece após o usuário rolar um pouco
   useEffect(() => {
-    const onScroll = () => setVisivel(window.scrollY > 200);
+    const onScroll = () => {
+      setVisivel(window.scrollY > 200);
+
+      // A página marca textos longos que precisam ficar livres do botão móvel.
+      // Consultar no evento também acompanha navegações sem prender um nó antigo.
+      const area = document.querySelector("[data-floating-contact-exclusion]");
+      const limites = area?.getBoundingClientRect();
+      setEmAreaDeLeitura(
+        Boolean(limites && limites.top < window.innerHeight && limites.bottom > 0)
+      );
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -23,11 +38,12 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
+      data-whatsapp-floating
       className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25d366] hover:bg-[#1ebe57] text-white rounded-full shadow-xl transition-all duration-300 ${
         visivel
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-4 pointer-events-none"
-      }`}
+      } ${emAreaDeLeitura ? "max-md:hidden" : ""}`}
     >
       {/* Ícone do WhatsApp — pulsa 3x ao aparecer */}
       <span className="flex items-center justify-center w-14 h-14 shrink-0 wa-pulse">

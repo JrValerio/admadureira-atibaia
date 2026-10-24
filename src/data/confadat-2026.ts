@@ -116,6 +116,22 @@ export const CONFADAT_2026 = {
       "O deserto e os lugares secos se alegrarão com isso; e o ermo exultará e florescerá como a rosa.",
     referencia: "Isaías 35:1 (ARC)",
   },
+  // Transcrição integral da "Carta de boas-vindas CONFADAT 2026.png".
+  // O retrato aprovado, com a blusa rosa, é convertido para WebP sem recriação.
+  mensagemPresidente: {
+    titulo: "Uma mensagem da nossa presidente",
+    retrato: `${ARTES}/anna-alzira-boas-vindas.webp`,
+    paragrafos: [
+      "A obra do Reino de Deus não pode cumprir seu verdadeiro destino sem progredir de mãos dadas com as fiéis e maravilhosas irmãs da Igreja Assembleia de Deus Ministério Madureira — Campo de Atibaia.",
+      "Vocês, irmãs, carregam a responsabilidade dada por Deus de influenciar e contagiar pessoas por meio da Palavra de Deus, dos louvores entoados e das orações suplicadas.",
+      "Por isso, eu, Pastora Anna Alzira, convido todas as irmãs para esta comunhão. Juntas, unidas e destemidas, declaramos, em nome de Jesus, que, nos desertos que estamos atravessando, encontraremos força, mesmo na escassez.",
+      "Assim como um cacto guarda água para gerar uma flor deslumbrante, o deserto não vai nos destruir. Vamos criar raízes profundas, tornar-nos mulheres resilientes e fortalecer a nossa fé em Deus.",
+      "Assim, iniciaremos um novo tempo em nossas vidas: sairemos da dor para cultivar beleza, paz, alegria e esperança.",
+      "Sejam bem-vindas à CONFADAT 2026!",
+    ],
+    assinatura: "Pastora Anna Alzira Félix",
+    identificacao: "Presidente da CONFADAT",
+  },
   // Playlist do congresso: as quatro faixas das artes, na ordem delas. Links
   // sem parâmetros de rastreio (si, utm_*, pi), que o teste barra.
   playlist: {
