@@ -994,23 +994,23 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: confadat.horarioAgenda,
           descricao: [
             `Primeira noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
-            "Nesta noite a Palavra será ministrada pela Missionária e cantora Adriane Medeiros. No sábado, 28, a preletora é a Missionária Erinete Teodoro. O congresso é presidido pelo Pr. Zacarias Bernardes Félix e pela Pra. Anna Alzira Félix, pastores presidentes, e as duas noites terão transmissão ao vivo.",
+            "Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro, com a participação da cantora Anne Reis no louvor. No sábado, 28, a Missionária e cantora Adriane Medeiros ministra na pregação e no louvor. O congresso tem a liderança do Pr. Zacarias Bernardes Félix, presidente do Campo de Atibaia, e da Pra. Anna Alzira Félix, presidente da CONFADAT. As duas noites terão transmissão ao vivo.",
           ].join("\n\n"),
           convite:
-            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",
+            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as convidadas e a programação das duas noites.",
           baseBiblica: criarBaseBiblica(confadat.baseBiblica),
           recursos: [
             {
               label: "Ver a página oficial do CONFADAT 2026",
               href: confadat.path,
               descricao:
-                "Tema, preletoras, programação das duas noites e transmissão ao vivo.",
+                "Tema, convidadas, programação das duas noites e transmissão ao vivo.",
             },
           ],
           destaque: true,
-          imagem: confadat.artes.feed,
-          banner: confadat.artes.feed,
-          hero: confadat.artes.og,
+          imagem: confadat.artes.heroMobile,
+          banner: confadat.artes.heroMobile,
+          hero: confadat.artes.youtube,
         }),
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-28-11-2026",
@@ -1020,23 +1020,23 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: confadat.horarioAgenda,
           descricao: [
             `Segunda e última noite do CONFADAT 2026, o Congresso das Irmãs do Campo de Atibaia, com o tema “${confadat.tema}”, a partir de ${confadat.baseBiblica}.`,
-            "Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro. Na sexta, 27, ministra a Missionária e cantora Adriane Medeiros. O congresso é presidido pelo Pr. Zacarias Bernardes Félix e pela Pra. Anna Alzira Félix, pastores presidentes, e as duas noites terão transmissão ao vivo.",
+            "Nesta noite a Missionária e cantora Adriane Medeiros ministra na pregação e no louvor. Na sexta, 27, a preletora é a Missionária Erinete Teodoro, com a cantora Anne Reis no louvor. O congresso tem a liderança do Pr. Zacarias Bernardes Félix, presidente do Campo de Atibaia, e da Pra. Anna Alzira Félix, presidente da CONFADAT. As duas noites terão transmissão ao vivo.",
           ].join("\n\n"),
           convite:
-            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as preletoras e a programação das duas noites.",
+            "Venha e traga uma irmã. Na página oficial do congresso estão o tema, as convidadas e a programação das duas noites.",
           baseBiblica: criarBaseBiblica(confadat.baseBiblica),
           recursos: [
             {
               label: "Ver a página oficial do CONFADAT 2026",
               href: confadat.path,
               descricao:
-                "Tema, preletoras, programação das duas noites e transmissão ao vivo.",
+                "Tema, convidadas, programação das duas noites e transmissão ao vivo.",
             },
           ],
           destaque: true,
-          imagem: confadat.artes.feed,
-          banner: confadat.artes.feed,
-          hero: confadat.artes.og,
+          imagem: confadat.artes.heroMobile,
+          banner: confadat.artes.heroMobile,
+          hero: confadat.artes.youtube,
         }),
       ],
     },

@@ -52,11 +52,16 @@ function getPngDimensions(assetPath: string) {
 describe("CONFADAT_2026", () => {
   const git = versionados();
 
-  it.each([
-    ["arte do feed", confadat.artes.feed],
+  const artesDaPagina = [
+    ["faixa 3:1 (hero-desktop)", confadat.artes.banner],
+    ["arte do celular (hero-mobile)", confadat.artes.heroMobile],
+    ["capa 16:9 (youtube-geral)", confadat.artes.youtube],
     ["imagem de compartilhamento", confadat.artes.og],
-    ["banner da home", confadat.artes.banner],
-  ])("versiona em public o arquivo de %s", (_label, assetPath) => {
+    ...confadat.convidadas.map((convidada) => [convidada.nome, convidada.arte]),
+    ...confadat.liderancas.map((lideranca) => [lideranca.nome, lideranca.arte]),
+  ];
+
+  it.each(artesDaPagina)("versiona em public a arte: %s", (_label, assetPath) => {
     const existe = git
       ? git.has(`public${assetPath}`)
       : existsSync(resolvePublicAsset(assetPath));
@@ -64,48 +69,69 @@ describe("CONFADAT_2026", () => {
     expect(existe, `${assetPath} ${git ? "não versionado" : "não encontrado"}`).toBe(true);
   });
 
-  it("usa o feed 4:5 e a faixa 3:1 nas medidas do carrossel", () => {
-    expect(getPngDimensions(confadat.artes.feed)).toEqual({ width: 1080, height: 1350 });
+  it("mantém as proporções das artes do kit", () => {
     expect(getPngDimensions(confadat.artes.banner)).toEqual({ width: 2172, height: 724 });
+    expect(getJpegDimensions(confadat.artes.heroMobile)).toEqual({ width: 1080, height: 1350 });
+    expect(getPngDimensions(confadat.artes.youtube)).toEqual({ width: 1280, height: 720 });
+    expect(getJpegDimensions(confadat.artes.og)).toEqual({ width: 1200, height: 675 });
+    for (const pessoa of [...confadat.convidadas, ...confadat.liderancas]) {
+      expect(getJpegDimensions(pessoa.arte), pessoa.nome).toEqual({ width: 1080, height: 1350 });
+    }
   });
 
   it("mantém a imagem de compartilhamento leve para a prévia do WhatsApp", () => {
     expect(statSync(resolvePublicAsset(confadat.artes.og)).size).toBeLessThan(200 * 1024);
   });
 
-  it("cobre as duas noites entre o início e o fim do congresso", () => {
+  it("abre o congresso na sexta, 27/11, às 19h de São Paulo", () => {
     const [primeira, segunda] = confadat.noites;
 
     expect(confadat.noites).toHaveLength(2);
+    expect(confadat.inicioIso).toBe("2026-11-27T19:00:00-03:00");
+    expect(new Date(confadat.inicioIso).toISOString()).toBe("2026-11-27T22:00:00.000Z");
     expect(primeira.inicioIso).toBe(confadat.inicioIso);
-    expect(segunda.fimIso).toBe(confadat.fimIso);
-    expect(Date.parse(primeira.fimIso)).toBeLessThan(Date.parse(segunda.inicioIso));
+    expect(segunda.inicioIso).toBe("2026-11-28T19:00:00-03:00");
   });
 
-  it("anuncia uma preletora por noite, como nas artes de 22/10", () => {
-    expect(confadat.noites.map((noite) => noite.preletora)).toEqual([
-      "Missionária Adriane Medeiros",
-      "Missionária Erinete Teodoro",
+  it("segue a programação do kit de 23/10: Erinete e Anne Reis na sexta, Adriane no sábado", () => {
+    expect(
+      confadat.noites.map((noite) => noite.participantes.map((participante) => participante.nome))
+    ).toEqual([
+      ["Missionária Erinete Teodoro", "Cantora Anne Reis"],
+      ["Missionária e cantora Adriane Medeiros"],
     ]);
-    expect(confadat.preletoras.map((preletora) => preletora.nome)).toEqual(
-      confadat.noites.map((noite) => noite.preletora)
-    );
     expect(
       getEventoBySlug("confadat-congresso-das-irmas-27-11-2026")?.descricao
-    ).toContain("Nesta noite a Palavra será ministrada pela Missionária e cantora Adriane Medeiros");
+    ).toContain("Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro, com a participação da cantora Anne Reis no louvor");
     expect(
       getEventoBySlug("confadat-congresso-das-irmas-28-11-2026")?.descricao
-    ).toContain("Nesta noite a Palavra será ministrada pela Missionária Erinete Teodoro");
+    ).toContain("Nesta noite a Missionária e cantora Adriane Medeiros ministra na pregação e no louvor");
+  });
+
+  it("não inventa Instagram para Anne Reis", () => {
+    const anne = confadat.convidadas.find((convidada) => convidada.nome.includes("Anne Reis"));
+
+    expect(anne).toBeDefined();
+    expect(anne?.instagram).toBeNull();
+  });
+
+  it("identifica a liderança pela função confirmada", () => {
+    expect(confadat.liderancas.map((lideranca) => [lideranca.nome, lideranca.papel])).toEqual([
+      ["Pr. Zacarias Bernardes Félix", "Presidente do Campo de Atibaia"],
+      ["Pra. Anna Alzira Félix", "Presidente da CONFADAT"],
+    ]);
   });
 
   it.each([
     "confadat-congresso-das-irmas-27-11-2026",
     "confadat-congresso-das-irmas-28-11-2026",
-  ])("a data %s da agenda aponta para a página oficial", (slug) => {
+  ])("a data %s da agenda aponta para a página oficial, com artes sem corte", (slug) => {
     const evento = getEventoBySlug(slug);
 
     expect(evento?.recursos?.map((recurso) => recurso.href)).toContain(confadat.path);
-    expect(evento?.imagem).toBe(confadat.artes.feed);
+    expect(evento?.imagem).toBe(confadat.artes.heroMobile);
+    // O topo da página do evento é 16:9: a capa youtube-geral entra inteira.
+    expect(evento?.hero).toBe(confadat.artes.youtube);
   });
 
   it("o atalho /confadat leva à página oficial", async () => {

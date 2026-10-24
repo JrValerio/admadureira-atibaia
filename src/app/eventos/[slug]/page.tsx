@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CONFADAT_2026 as confadat } from "@/data/confadat-2026";
 import { CONGRESSO_RIOS_DE_UNCAO_2026 as congressoRiosDeUncao } from "@/data/congresso-rios-de-uncao-2026";
 import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
 import { getEventoBySlug, getEventosAgenda } from "@/lib/agenda-utils";
@@ -77,7 +76,6 @@ function getRecursosRelacionados(recursos: ConteudoRelacionadoLink[] = []) {
 // já trazem data, tema e nomes, e o crop padrão cortaria o texto.
 const ARTES_VERTICAIS_INTEIRAS = new Set<string>([
   congressoRiosDeUncao.imagem,
-  confadat.artes.og,
 ]);
 
 export default async function EventoPage({ params }: PageProps) {
