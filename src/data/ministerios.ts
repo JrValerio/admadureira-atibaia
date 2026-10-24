@@ -21,6 +21,23 @@ export interface MinisterioRecursos {
   itens: ConteudoRelacionadoLink[];
 }
 
+export interface MinisterioAlbumFoto {
+  src: string;
+  alt: string;
+  largura: number;
+  altura: number;
+}
+
+export interface MinisterioAlbum {
+  id: string;
+  titulo: string;
+  descricao: string;
+  data: string;
+  href: string;
+  capa: MinisterioAlbumFoto;
+  fotos: MinisterioAlbumFoto[];
+}
+
 export interface Ministerio {
   slug: string;
   nome: string;
@@ -35,6 +52,7 @@ export interface Ministerio {
   imagem?: string;
   liderancaDestaque?: MinisterioLiderancaDestaque;
   recursos?: MinisterioRecursos;
+  albuns?: MinisterioAlbum[];
   redes?: {
     instagram?: string;
   };
@@ -117,6 +135,48 @@ const ministerios: Ministerio[] = [
       href: "/eventos/congresso-geral-umadat-jovem-23-10-2026",
       ctaLabel: "Ver programação do congresso",
     },
+    albuns: [
+      {
+        id: "umadat-2026-primeira-noite",
+        titulo: "1ª noite do Congresso UMADAT 2026",
+        descricao:
+          "Momentos de louvor, Palavra e comunhão com a mocidade do Campo de Atibaia. Confira uma seleção dos registros e veja todas as fotos no álbum completo.",
+        data: "2026-10-23",
+        href: "https://photos.app.goo.gl/okev2AwX8dRPBWvv8",
+        capa: {
+          src: "/ministerios/umadat/umadat-2026/album-1-noite/capa-congregacao.webp",
+          alt: "Vista da Igreja Sede com a mocidade reunida em louvor na primeira noite do Congresso UMADAT 2026.",
+          largura: 1500,
+          altura: 1000,
+        },
+        fotos: [
+          {
+            src: "/ministerios/umadat/umadat-2026/album-1-noite/ministracao.webp",
+            alt: "Participante ao microfone no púlpito durante a primeira noite do Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1200,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-1-noite/congregacao-em-louvor.webp",
+            alt: "Mocidade reunida entre os bancos da Igreja Sede em um momento de louvor no Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1200,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-1-noite/jovens-em-louvor.webp",
+            alt: "Jovens da UMADAT cantam juntos durante a primeira noite do congresso de 2026.",
+            largura: 800,
+            altura: 1200,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-1-noite/vozes-da-mocidade.webp",
+            alt: "Participantes da mocidade cantam junto à congregação na primeira noite do Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1200,
+          },
+        ],
+      },
+    ],
     recursos: {
       titulo: "Assista ao Congresso 2025",
       itens: [
@@ -135,7 +195,7 @@ const ministerios: Ministerio[] = [
     redes: {
       instagram: "https://www.instagram.com/umadat_atibaia/",
     },
-    imagem: "/ministerios/umadat/umadat-2026-youtube.png",
+    imagem: "/ministerios/umadat/umadat-2026/umadat-2026-youtube.png",
   },
   {
     slug: "rios-de-uncao",
