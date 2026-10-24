@@ -1,0 +1,378 @@
+.page {
+  --wine: #743044;
+  --wine-dark: #542132;
+  --gold: #9a7544;
+  --text-accent: #743044;
+  --text-accent-on-dark: #743044;
+  background: #fffaf4;
+  color: #64534f;
+}
+
+.page > section {
+  position: relative;
+  isolation: isolate;
+}
+
+.page :global(.ui-page-container) {
+  position: relative;
+}
+
+.page :global(.font-acme),
+.page :global(.ui-section-title) {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--wine-dark);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.page :global(.ui-section-title) {
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.8rem);
+}
+
+.page :global(.ui-section-eyebrow) {
+  color: var(--wine);
+}
+
+.page :global(.ui-section-eyebrow)::before {
+  content: "";
+  display: inline-block;
+  width: 1.8rem;
+  height: 1px;
+  margin-right: 0.7rem;
+  background: var(--gold);
+  vertical-align: middle;
+}
+
+.page :global(.text-text-accent),
+.page :global(.ui-link-accent) {
+  color: var(--wine);
+}
+
+.page :global(.ui-btn-primary) {
+  background: var(--wine);
+  color: #fffaf4;
+  box-shadow: 0 8px 24px #74304418;
+}
+
+.page :global(.ui-btn-primary):hover {
+  background: var(--wine-dark);
+}
+
+.page :global(.ui-btn-secondary),
+.page :global(.ui-btn-ghost),
+.page :global(.ui-btn-ghost-dark) {
+  border: 1px solid #74304440;
+  background: #fffcf8;
+  color: var(--wine);
+}
+
+.page :global(.ui-btn-secondary):hover,
+.page :global(.ui-btn-ghost):hover,
+.page :global(.ui-btn-ghost-dark):hover {
+  border-color: var(--wine);
+  background: #f6e8e5;
+  color: var(--wine-dark);
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--wine);
+  outline-offset: 4px;
+}
+
+.opening {
+  overflow: clip;
+  background: linear-gradient(180deg, #fffaf4, #fcf3ed);
+}
+
+.introduction {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+.introCopy {
+  position: relative;
+  max-width: 46rem;
+}
+
+.page [role="timer"],
+.page [role="status"] {
+  border-color: #b18a504d;
+  background: #fffcf8;
+  box-shadow: none;
+}
+
+.page [role="timer"] > span:first-child,
+.page [role="status"] > span:first-child {
+  color: var(--wine);
+}
+
+.information {
+  background: #f4e5df;
+  border-block: 1px solid #b18a5033;
+}
+
+/* Each floral layer owns its clipping box: the content remains unobstructed. */
+.introFlowers,
+.reflectionFlowers,
+.programmeFlowers,
+.playlistFlowers,
+.invitationFlowers {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+
+.introFlowers {
+  right: -1rem;
+  bottom: -2rem;
+  width: 10rem;
+  height: 10rem;
+  background-image: url("/ministerios/confadat/confadat-2026/rosas-base-direita-refinada.webp");
+  background-position: right bottom;
+  background-size: contain;
+}
+
+.reflection {
+  padding-bottom: 7.5rem;
+}
+
+.reflectionFlowers {
+  inset: 0;
+  background-image: url("/ministerios/confadat/confadat-2026/rosas-base-direita-refinada.webp");
+  background-position: right bottom;
+  background-size: 7rem;
+}
+
+.welcome {
+  border-block: 1px solid #b18a5033;
+  background: #f8eee8;
+}
+
+.welcomeHeading {
+  max-width: 42rem;
+  margin-bottom: 2.25rem;
+}
+
+.letter {
+  display: grid;
+  gap: 2rem;
+  border: 1px solid #c4a17a55;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  background: #fffcf8;
+  box-shadow: 0 16px 48px #74304408;
+}
+
+.portrait {
+  width: min(100%, 18rem);
+  margin: 0 auto;
+}
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10rem 10rem 1rem 1rem;
+  border: 1px solid #c4a17a66;
+  background: #f3e1d9;
+}
+
+.portrait figcaption {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.portrait figcaption span {
+  display: block;
+}
+
+.portrait figcaption span:first-child {
+  color: var(--wine);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+}
+
+.portrait figcaption span:last-child {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.letterCopy {
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #554441;
+}
+
+.letterCopy > p + p {
+  margin-top: 1.15rem;
+}
+
+.letterCopy > p:last-of-type {
+  color: var(--wine);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+}
+
+.signature {
+  margin-top: 1.75rem;
+  border-top: 1px solid #b18a5040;
+  padding-top: 1.25rem;
+}
+
+.signature p:first-child {
+  color: var(--wine);
+  font-family: var(--font-script), cursive;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.3;
+}
+
+.signature p:last-child {
+  margin-top: 0.35rem;
+  color: #765c51;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.programme {
+  padding-top: 6.5rem;
+  background: #fffaf4;
+}
+
+.programmeFlowers {
+  inset: 0;
+  background-image: url("/ministerios/confadat/confadat-2026/rosas-canto-superior-refinada.webp");
+  background-position: right top;
+  background-size: 9rem;
+}
+
+.guests {
+  background: #fbf2ec;
+  border-block: 1px solid #b18a5026;
+}
+
+.playlist {
+  padding-bottom: 7.5rem;
+}
+
+.playlistFlowers {
+  inset: 0;
+  background-image: url("/ministerios/confadat/confadat-2026/rosas-base-esquerda-refinada.webp");
+  background-position: left bottom;
+  background-size: 6rem;
+}
+
+.palette {
+  background: #fcf5ef;
+  border-top: 1px solid #b18a5026;
+}
+
+.invitation {
+  background: #f1dfd8;
+  border-top: 1px solid #b18a5055;
+  padding-bottom: 8rem;
+}
+
+.invitationFlowers {
+  inset: 0;
+  background-image: url("/ministerios/confadat/confadat-2026/rosas-base-direita-refinada.webp");
+  background-size: 7rem;
+  background-position: right bottom;
+}
+
+@media (min-width: 768px) {
+  .letter {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    align-items: start;
+    gap: 2rem;
+    padding: 2.5rem;
+  }
+
+  .portrait {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .letterCopy {
+    font-size: 1.0625rem;
+  }
+
+  .welcomeHeading {
+    max-width: 48rem;
+  }
+
+  .programme {
+    padding-top: 7rem;
+  }
+
+  .programmeFlowers {
+    background-size: 13rem;
+  }
+
+  .invitation :global(.ui-page-container) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .introduction {
+    padding-bottom: 0;
+  }
+
+  .introCopy {
+    max-width: 70%;
+  }
+
+  .introFlowers {
+    right: calc((min(100vw, 72rem) - 100vw) / 2 - 1.5rem);
+    bottom: -3.5rem;
+    width: clamp(16rem, 28vw, 26rem);
+    height: 100%;
+    background-size: 100% auto;
+    background-position: right bottom;
+  }
+
+  .reflection {
+    padding-bottom: 5rem;
+  }
+
+  .reflection :global(.ui-page-container) {
+    padding-right: 20rem;
+  }
+
+  .reflectionFlowers {
+    background-size: 17rem;
+    background-position: right bottom;
+  }
+
+  .letter {
+    gap: 3.5rem;
+    padding: 3rem;
+  }
+
+  .playlist {
+    padding-bottom: 9rem;
+  }
+
+  .playlistFlowers {
+    background-size: 9rem;
+  }
+
+  .invitation {
+    padding-block: 4rem;
+  }
+
+  .invitationFlowers {
+    background-size: 14rem;
+    background-position: right bottom;
+  }
+
+  .invitation :global(.ui-page-container) {
+    padding-right: 17rem;
+  }
+}
