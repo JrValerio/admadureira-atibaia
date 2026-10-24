@@ -21,8 +21,12 @@ describe("ministérios: imagens referenciadas existem em public/", () => {
     git ? git.has(`public${caminho}`) : existsSync(path.join(process.cwd(), "public", caminho));
 
   for (const ministerio of getMinisterios()) {
-    it(`${ministerio.slug}: imagem e foto da liderança`, () => {
-      const caminhos = [ministerio.imagem, ministerio.liderancaDestaque?.foto].filter(
+    it(`${ministerio.slug}: imagens da página, liderança e álbuns`, () => {
+      const caminhos = [
+        ministerio.imagem,
+        ministerio.liderancaDestaque?.foto,
+        ...(ministerio.albuns ?? []).flatMap((album) => [album.capa.src, ...album.fotos.map((foto) => foto.src)]),
+      ].filter(
         (caminho): caminho is string => Boolean(caminho)
       );
       for (const caminho of caminhos) {

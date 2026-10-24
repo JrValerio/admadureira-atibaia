@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import LiderancaDestaque from "@/components/ministerios/LiderancaDestaque";
 import RecursosMinisterio from "@/components/ministerios/RecursosMinisterio";
+import AlbunsMinisterio from "@/components/ministerios/AlbunsMinisterio";
 import { getMinisterioBySlug, getMinisterios } from "@/data/ministerios";
 import { buildPageMetadata, SITE_URL } from "@/lib/site";
 
@@ -200,6 +201,8 @@ export default async function MinisterioPage({ params }: PageProps) {
                   </div>
                 </div>
               ) : null}
+
+              <AlbunsMinisterio albuns={ministerio.albuns} />
 
               <RecursosMinisterio recursos={ministerio.recursos} />
 
