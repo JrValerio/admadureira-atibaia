@@ -218,8 +218,18 @@ const ministerios: Ministerio[] = [
       },
     ],
     recursos: {
-      titulo: "Assista ao Congresso 2025",
+      titulo: "Assista aos congressos da UMADAT",
       itens: [
+        {
+          label: "Congresso UMADAT 2026 — 1ª noite",
+          href: "https://www.youtube.com/live/FEV7P2OynwE",
+          descricao: "Transmissão da primeira noite, em 23 de outubro de 2026.",
+        },
+        {
+          label: "Congresso UMADAT 2026 — 2ª noite",
+          href: "https://www.youtube.com/live/KcXKMoJqfBs",
+          descricao: "Transmissão da segunda noite, em 24 de outubro de 2026.",
+        },
         {
           label: "Congresso UMADAT 2025 — 1ª noite",
           href: "https://www.youtube.com/live/10U_dsUWXZU",
