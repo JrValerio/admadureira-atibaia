@@ -137,6 +137,46 @@ const ministerios: Ministerio[] = [
     },
     albuns: [
       {
+        id: "umadat-2026-segunda-noite",
+        titulo: "2ª noite do Congresso UMADAT 2026",
+        descricao:
+          "Registros de louvor, Palavra e comunhão na segunda noite do Congresso UMADAT 2026. Confira uma seleção das fotos e reviva esses momentos no álbum completo.",
+        data: "2026-10-24",
+        href: "https://photos.app.goo.gl/B7q5Goet381F8sdHA",
+        capa: {
+          src: "/ministerios/umadat/umadat-2026/album-2-noite/capa-congregacao.webp",
+          alt: "Vista da Igreja Sede com a mocidade reunida diante do púlpito na segunda noite do Congresso UMADAT 2026.",
+          largura: 1500,
+          altura: 1000,
+        },
+        fotos: [
+          {
+            src: "/ministerios/umadat/umadat-2026/album-2-noite/louvor.webp",
+            alt: "Participante canta ao microfone durante a segunda noite do Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1067,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-2-noite/mocidade-em-adoracao.webp",
+            alt: "Jovens da UMADAT com as mãos erguidas em adoração na segunda noite do congresso de 2026.",
+            largura: 800,
+            altura: 1067,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-2-noite/comunhao.webp",
+            alt: "Participantes da mocidade se abraçam entre os bancos da Igreja Sede na segunda noite do Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1067,
+          },
+          {
+            src: "/ministerios/umadat/umadat-2026/album-2-noite/ministracao.webp",
+            alt: "Participante ao microfone junto ao púlpito na segunda noite do Congresso UMADAT 2026.",
+            largura: 800,
+            altura: 1067,
+          },
+        ],
+      },
+      {
         id: "umadat-2026-primeira-noite",
         titulo: "1ª noite do Congresso UMADAT 2026",
         descricao:
