@@ -462,5 +462,21 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "jejum-e-oração.png",
     "oracao-matinal-domingo.png",
     "oracao-matinal.png"
+  ],
+  "2026-10-26": [
+    "circulo-de-oracao.png",
+    "confadat-save-the-date.jpg",
+    "consagracao-mulheres.png",
+    "culto-da-familia.png",
+    "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
+    "ebd.png",
+    "ensaio-geral-confadat.png",
+    "ensaio-irmas.png",
+    "ensaio-jovens.png",
+    "jejum-e-oração.png",
+    "oracao-matinal-domingo.png",
+    "oracao-matinal.png"
   ]
 };
