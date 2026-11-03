@@ -41,6 +41,14 @@ export const excecoesProgramacao: ExcecaoProgramacao[] = [
       "Nesta terça, 20/10: série especial Estudando o livro de Tiago. Preletor: Pr. Raimundo Martinez",
   },
   {
+    slug: "culto-de-ensino",
+    data: "2026-11-03",
+    acao: "alterar",
+    titulo: "Culto de Ensino — Série especial: Estudando o livro de Tiago",
+    motivo:
+      "Nesta terça, 03/11: série especial Estudando o livro de Tiago. Preletor: Pr. Jorge F. de Paula",
+  },
+  {
     slug: "ensaio-jovens-rios-de-uncao",
     data: "2026-10-18",
     acao: "suspender",

@@ -975,6 +975,9 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           horario: "19h00",
           descricao:
             "Culto especial de Santa Ceia com reunião de obreiros no templo sede.",
+          destaque: true,
+          imagem: "/programacao/semanas/2026-11-09/santa-ceia.png",
+          banner: "/programacao/semanas/2026-11-09/santa-ceia.png",
         }),
         criarEvento(local, {
           slug: "aniversario-pastora-anna-alzira-21-11-2026",
