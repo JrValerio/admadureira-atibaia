@@ -978,6 +978,16 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           destaque: true,
           imagem: "/programacao/semanas/2026-11-09/santa-ceia.png",
           banner: "/programacao/semanas/2026-11-09/santa-ceia.png",
+          arteComplementar: {
+            imagem: "/programacao/semanas/2026-11-09/santa-ceia-cesta-basica.png",
+            alt: "Arte da campanha Cesta Básica: doe alimentos não perecíveis, com entrega das doações na Santa Ceia de sábado, 14 de novembro, às 19h",
+            largura: 1122,
+            altura: 1402,
+            titulo: "Campanha Cesta Básica",
+            destaque: "Doe alimentos não perecíveis",
+            texto:
+              "Neste culto de Santa Ceia, pedimos aos irmãos que tragam alimentos não perecíveis. As doações serão entregues na Santa Ceia e destinadas às cestas básicas preparadas pelo Departamento Social da igreja para famílias em situação de necessidade.",
+          },
         }),
         criarEvento(local, {
           slug: "aniversario-pastora-anna-alzira-21-11-2026",
