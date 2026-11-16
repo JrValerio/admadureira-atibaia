@@ -57,6 +57,14 @@ export const excecoesProgramacao: ExcecaoProgramacao[] = [
       "Nesta terça, 10/11: série especial Estudando o livro de Tiago. Preletora: Miss. Amanda Teixeira",
   },
   {
+    slug: "culto-de-ensino",
+    data: "2026-11-17",
+    acao: "alterar",
+    titulo: "Culto de Ensino — Série especial: Estudando o livro de Tiago",
+    motivo:
+      "Nesta terça, 17/11: série especial Estudando o livro de Tiago. Preletor: Pr. Geraldo Marques",
+  },
+  {
     slug: "ensaio-jovens-rios-de-uncao",
     data: "2026-10-18",
     acao: "suspender",

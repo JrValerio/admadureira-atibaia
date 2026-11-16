@@ -990,14 +990,38 @@ export function getEventosEspeciais2026(local: string): MesAgendaBase[] {
           },
         }),
         criarEvento(local, {
-          slug: "aniversario-pastora-anna-alzira-21-11-2026",
-          data: "21/11",
+          slug: "aniversario-pastora-anna-alzira-14-11-2026",
+          data: "14/11",
           titulo: "Aniversário da Pastora Anna Alzira",
           tipo: "evento-especial",
           descricao:
-            "Celebração especial em honra ao aniversário da Pastora Anna Alzira.",
+            "Feliz aniversário, Pra. Anna Alzira Félix! Celebramos a vida de uma mulher de fé e propósito, pastora presidente do Campo de Atibaia ao lado do Pr. Zacarias B. Félix e presidente da CONFADAT.",
           convite:
-            "Vamos celebrar com carinho e gratidão a vida da nossa pastora. Um momento especial de honra.",
+            "Deixe também a sua mensagem de carinho e gratidão à nossa pastora no post de aniversário no Instagram da igreja.",
+          recursos: [
+            {
+              label: "Ver o post de aniversário no Instagram",
+              href: "https://www.instagram.com/p/DfvJByshlEv/",
+              descricao:
+                "Deixe sua mensagem de parabéns para a Pra. Anna Alzira.",
+            },
+          ],
+          destaque: true,
+          imagem: "/programacao/eventos/aniversario-pastora-anna-alzira.png",
+          banner: "/programacao/eventos/aniversario-pastora-anna-alzira.png",
+        }),
+        criarEvento(local, {
+          slug: "culto-e-reuniao-de-obreiros-21-11-2026",
+          data: "21/11",
+          titulo: "Culto e Reunião de Obreiros",
+          tipo: "reuniao-de-obreiros",
+          horario: "19h30",
+          descricao: reuniaoObreirosDescricao,
+          convite: reuniaoObreirosConvite,
+          baseBiblica: reuniaoObreirosBaseBiblica,
+          destaque: true,
+          imagem: "/programacao/semanas/2026-11-16/culto-e-reuniao-de-obreiros.png",
+          banner: "/programacao/semanas/2026-11-16/culto-e-reuniao-de-obreiros.png",
         }),
         criarEvento(local, {
           slug: "confadat-congresso-das-irmas-27-11-2026",
