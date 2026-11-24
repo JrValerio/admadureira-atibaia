@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod";
+import { z } from "zod/mini";
 import { Card, Section, SectionTitle } from "@/components/ui";
 import {
   OFFICIAL_SOCIAL_LINKS,
@@ -14,11 +14,11 @@ import {
 } from "@/data/site";
 
 const contatoSchema = z.object({
-  nome: z.string().min(2, "Informe seu nome completo"),
-  email: z.string().email("Informe um e-mail válido"),
-  telefone: z.string().optional(),
-  assunto: z.string().min(3, "Informe o assunto"),
-  mensagem: z.string().min(10, "Escreva uma mensagem com pelo menos 10 caracteres"),
+  nome: z.string().check(z.minLength(2, "Informe seu nome completo")),
+  email: z.email("Informe um e-mail válido"),
+  telefone: z.optional(z.string()),
+  assunto: z.string().check(z.minLength(3, "Informe o assunto")),
+  mensagem: z.string().check(z.minLength(10, "Escreva uma mensagem com pelo menos 10 caracteres")),
 });
 
 type FormState = "idle" | "sending" | "sent";
