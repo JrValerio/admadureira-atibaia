@@ -21,9 +21,9 @@
     "@keystatic/core": "^0.6.10",
     "@keystatic/next": "^5.0.5",
     "@vercel/speed-insights": "^2.1.0",
-    "next": "^16.4.5",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "next": "^16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "^16.2.12",
+    "eslint-config-next": "^16.4.6",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.12"
