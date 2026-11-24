@@ -91,7 +91,9 @@ export function aplicarExcecoesNaData(
 export function aplicarExcecoesDaSemana(
   itens: readonly ItemSemanal[],
   referencia: Date,
-  excecoes: readonly ExcecaoProgramacao[] = excecoesProgramacao
+  excecoes: readonly ExcecaoProgramacao[] = excecoesProgramacao,
+  /** Mantém o item suspenso na lista, marcado como `cancelado`. */
+  manterSuspensos = false
 ): ItemSemanal[] {
   const daSemana = getExcecoesDaSemana(referencia, excecoes);
 
@@ -108,7 +110,8 @@ export function aplicarExcecoesDaSemana(
     }
 
     const resultado = aplicarExcecao(item, excecao);
-    return resultado ? [resultado] : [];
+    if (resultado) return [resultado];
+    return manterSuspensos ? [{ ...item, cancelado: true }] : [];
   });
 }
 

@@ -74,4 +74,6 @@ export interface ItemSemanal {
   recursos?: ConteudoRelacionadoLink[];
   campanha?: CampanhaData;
   local?: string;
+  /** Ocorrência da semana suspensa por exceção; o card mostra a faixa. */
+  cancelado?: boolean;
 }

@@ -529,6 +529,8 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "consagracao-mulheres.png",
     "culto-da-familia.png",
     "culto-de-ensino.png",
+    "culto-de-libertacao.png",
+    "culto-de-quinta.png",
     "ebd.png",
     "ensaio-irmas.png",
     "ensaio-jovens.png",
