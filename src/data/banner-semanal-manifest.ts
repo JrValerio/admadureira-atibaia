@@ -443,6 +443,7 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "culto-de-quinta.png",
     "ebd.png",
     "ensaio-irmas.png",
+    "ensaio-jovens.png",
     "jejum-e-oração.png",
     "oracao-matinal-domingo.png",
     "oracao-matinal.png"
@@ -463,7 +464,6 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "oracao-matinal.png"
   ],
   "2026-10-26": [
-    "1º-ensaio-geral-da -confadat.png",
     "circulo-de-oracao.png",
     "confadat-save-the-date.jpg",
     "consagracao-mulheres.png",
@@ -481,7 +481,6 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
   ],
   "2026-11-02": [
     "circulo-de-oracao.png",
-    "congresso CONFADAT 2026 — Floresça onde Deus te plantar.png",
     "consagracao-mulheres.png",
     "culto-da-familia.png",
     "culto-de-ensino.png",
@@ -496,7 +495,6 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
   ],
   "2026-11-09": [
     "circulo-de-oracao.png",
-    "congresso CONFADAT 2026 — Floresça onde Deus te plantar.png",
     "consagracao-mulheres.png",
     "culto-da-familia.png",
     "culto-de-ensino.png",
@@ -524,17 +522,13 @@ export const BANNERS_SEMANAIS_DISPONIVEIS: Record<string, readonly string[]> = {
     "ensaio-jovens.png",
     "jejum-e-oração.png",
     "oracao-matinal-domingo.png",
-    "oracao-matinal.png",
-    "reuniao-de-obreiro.png"
+    "oracao-matinal.png"
   ],
   "2026-11-23": [
     "circulo-de-oracao.png",
-    "congresso CONFADAT 2026 — Floresça onde Deus te plantar.png",
     "consagracao-mulheres.png",
     "culto-da-familia.png",
     "culto-de-ensino.png",
-    "culto-de-libertacao.png",
-    "culto-de-quinta.png",
     "ebd.png",
     "ensaio-irmas.png",
     "ensaio-jovens.png",
