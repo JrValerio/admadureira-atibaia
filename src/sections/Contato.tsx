@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod/mini";
+import { validateForm, type FieldRule } from "@/lib/form-validation";
 import { Card, Section, SectionTitle } from "@/components/ui";
 import {
   OFFICIAL_SOCIAL_LINKS,
@@ -13,13 +13,12 @@ import {
   SEDE_WHATSAPP_URL,
 } from "@/data/site";
 
-const contatoSchema = z.object({
-  nome: z.string().check(z.minLength(2, "Informe seu nome completo")),
-  email: z.email("Informe um e-mail válido"),
-  telefone: z.optional(z.string()),
-  assunto: z.string().check(z.minLength(3, "Informe o assunto")),
-  mensagem: z.string().check(z.minLength(10, "Escreva uma mensagem com pelo menos 10 caracteres")),
-});
+const contatoRules: Partial<Record<"nome" | "email" | "assunto" | "mensagem", FieldRule>> = {
+  nome: { minLength: 2, message: "Informe seu nome completo" },
+  email: { email: true, message: "Informe um e-mail válido" },
+  assunto: { minLength: 3, message: "Informe o assunto" },
+  mensagem: { minLength: 10, message: "Escreva uma mensagem com pelo menos 10 caracteres" },
+};
 
 type FormState = "idle" | "sending" | "sent";
 
@@ -90,13 +89,8 @@ export default function Contato({ showHeader = true }: ContatoProps) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const result = contatoSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof typeof form, string>> = {};
-      for (const issue of result.error.issues) {
-        const field = issue.path[0] as keyof typeof form;
-        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
-      }
+    const fieldErrors = validateForm(form, contatoRules);
+    if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       return;
     }
