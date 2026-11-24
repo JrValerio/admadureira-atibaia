@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import HeroPage from "@/components/HeroPage";
@@ -109,11 +110,11 @@ export default async function GaleriaAlbumPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(gallerySchema) }}
       />
 
       <main className="min-h-screen bg-[#f5f5f5]">

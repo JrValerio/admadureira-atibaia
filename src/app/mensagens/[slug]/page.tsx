@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -125,11 +126,11 @@ export default async function MensagemPage({ params }: PageProps) {
         <div className="ui-page-container">
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(seriesSchema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(seriesSchema) }}
           />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
           />
 
           <Breadcrumb nome={mensagem.titulo} />

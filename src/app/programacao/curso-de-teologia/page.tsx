@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -64,7 +65,7 @@ export default function CursoTeologiaPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
 
       <main className="min-h-screen bg-[#f5f5f5]">

@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -87,7 +88,7 @@ export default async function MinisterioPage({ params }: PageProps) {
         <div className="ui-page-container">
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(ministrySchema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(ministrySchema) }}
           />
 
           <Breadcrumb nome={ministerio.nomeCurto ?? ministerio.nome} />

@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import { Acme, Alex_Brush } from "next/font/google";
 import Navbar from "@/components/Navbar";
@@ -201,7 +202,7 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no,date=no,address=no,email=no" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(churchSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(churchSchema) }}
         />
       </head>
       <body className={`${acme.variable} ${alexBrush.variable} antialiased`}>

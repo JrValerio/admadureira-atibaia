@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -182,11 +183,11 @@ export default async function CultoPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema) }}
       />
 
       <main className="min-h-screen bg-[#f5f5f5]">
