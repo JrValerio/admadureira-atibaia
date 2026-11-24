@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import HideOnPanel from "@/components/HideOnPanel";
 import { programacaoSemanal } from "@/data/agenda";
 import {
   CHURCH_DISPLAY_NAME,
@@ -213,10 +214,14 @@ export default function RootLayout({
         >
           Ir para o conteúdo
         </a>
-        <Navbar />
+        <HideOnPanel>
+          <Navbar />
+        </HideOnPanel>
         <div id="main-content">{children}</div>
-        <Footer />
-        <WhatsAppButton />
+        <HideOnPanel>
+          <Footer />
+          <WhatsAppButton />
+        </HideOnPanel>
         <SpeedInsights />
       </body>
     </html>
