@@ -65,6 +65,28 @@ export const excecoesProgramacao: ExcecaoProgramacao[] = [
       "Nesta terça, 17/11: série especial Estudando o livro de Tiago. Preletor: Pr. Geraldo Marques",
   },
   {
+    slug: "culto-de-ensino",
+    data: "2026-11-24",
+    acao: "alterar",
+    titulo: "Culto de Ensino — Série especial: Estudando o livro de Tiago",
+    motivo:
+      "Nesta terça, 24/11: série especial Estudando o livro de Tiago. Preletor: Pb. Rafael Garcia",
+  },
+  {
+    slug: "quinta-da-vitoria",
+    data: "2026-11-26",
+    acao: "suspender",
+    motivo: "Nesta quinta, 26/11, não haverá Culto da Vitória",
+  },
+  {
+    slug: "tarde-de-libertacao",
+    data: "2026-11-27",
+    acao: "suspender",
+    motivo:
+      "Nesta sexta, 27/11, não haverá Culto de Libertação: às 19h começa o CONFADAT 2026",
+    href: "/eventos/confadat-2026",
+  },
+  {
     slug: "ensaio-jovens-rios-de-uncao",
     data: "2026-10-18",
     acao: "suspender",
