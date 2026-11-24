@@ -17,6 +17,7 @@
     "audit:assets": "node scripts/audit-assets.mjs"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.1.0",
     "next": "^16.4.5",
     "react": "19.2.3",
     "react-dom": "19.2.3",

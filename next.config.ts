@@ -6,7 +6,7 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://vercel.live",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com",
+  "img-src 'self' data: blob: https://*.ytimg.com https://img.youtube.com",
   "font-src 'self' data:",
   "media-src 'self' https:",
   "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
@@ -40,7 +40,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.ytimg.com",
+        // O YouTube devolve miniaturas também em i1…i9.ytimg.com.
+        hostname: "**.ytimg.com",
       },
     ],
   },

@@ -1,6 +1,7 @@
 import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import { Acme, Alex_Brush } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -216,6 +217,7 @@ export default function RootLayout({
         <div id="main-content">{children}</div>
         <Footer />
         <WhatsAppButton />
+        <SpeedInsights />
       </body>
     </html>
   );
