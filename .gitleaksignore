@@ -1,0 +1,2 @@
+# Chave fictícia usada no teste que garante que a chave real nunca vai para o log.
+/repo/src/lib/__tests__/youtube-redact.test.ts:generic-api-key:7
