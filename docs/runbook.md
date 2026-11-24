@@ -51,7 +51,8 @@ Procedimento recorrente — executar toda segunda-feira antes das 8h.
 1. Criar pasta `public/programacao/semanas/YYYY-MM-DD/` onde a data é a segunda-feira da semana
 2. Adicionar os PNGs com nomes conforme `WEEKLY_FILENAME_MAP` em `src/lib/banner-semanal.ts`
 3. Renomear qualquer arquivo fora do padrão antes do commit
-4. Abrir branch `feat/programacao-banners-YYYY-MM-DD`, PR e merge
+4. Rodar `npm run optimize:artes -- public/programacao/semanas/YYYY-MM-DD` (reduz cerca de 75% sem mudar nome nem formato; uma arte sem comprimir pesa ~2 MB)
+5. Abrir branch `feat/programacao-banners-YYYY-MM-DD`, PR e merge
 
 Verificação pós-merge: acessar qualquer rota `/programacao/[slug]` e confirmar que o banner novo está sendo servido.
 
