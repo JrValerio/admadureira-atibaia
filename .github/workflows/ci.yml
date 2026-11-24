@@ -78,4 +78,4 @@ jobs:
       # shortcut: varre só os arquivos atuais (o histórico tem 1,1 GB); trocar por
       # varredura de commits se o repo sair do Git LFS/Blob e ficar leve.
       - name: Gitleaks (working tree)
-        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.28.0 dir /repo --redact --no-banner --exit-code 1
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.28.0 dir /repo --redact --verbose --no-banner --exit-code 1
