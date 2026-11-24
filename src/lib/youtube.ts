@@ -8,8 +8,10 @@ const YOUTUBE_DEFAULT_CHANNEL_HANDLE = "@ADMadureiraAtibaia";
 const YOUTUBE_DEFAULT_CHANNEL_TITLE =
   "Assembleia de Deus - Min. Madureira | Atibaia-SP";
 
-export const YOUTUBE_REVALIDATE_SECONDS = 120;
-export const YOUTUBE_LIVE_REVALIDATE_SECONDS = 60;
+// Cota diária padrão: 10 mil unidades. A live custa ~3 unidades por revalidação
+// (720/dia a cada 2 min ≈ 2,2 mil); listas a cada 10 min ficam abaixo de 1 mil.
+export const YOUTUBE_REVALIDATE_SECONDS = 600;
+export const YOUTUBE_LIVE_REVALIDATE_SECONDS = 120;
 export const YOUTUBE_FETCH_TIMEOUT_MS = 8000;
 export const YOUTUBE_CHANNEL = {
   id: env.YOUTUBE_CHANNEL_ID || YOUTUBE_DEFAULT_CHANNEL_ID,
@@ -72,14 +74,6 @@ interface YouTubeLiveState {
   upcomingLive: YouTubeVideo | null;
   source: YouTubeDataSource;
   usingFallback: boolean;
-}
-
-interface SearchListResponse {
-  items?: Array<{
-    id?: {
-      videoId?: string;
-    };
-  }>;
 }
 
 interface ChannelListResponse {
@@ -165,10 +159,15 @@ function getErrorMessage(error: unknown) {
   }
 }
 
+export function redactApiKey(target: string) {
+  return target.replace(/([?&]key=)[^&#]*/g, "$1REDACTED");
+}
+
 function logYouTubeFetchError(stage: string, target: string, error: unknown) {
+  // O target vai para os logs da Vercel e para o /healthz público: nunca com a chave.
   const payload = {
     stage,
-    target,
+    target: redactApiKey(target),
     message: getErrorMessage(error),
   };
 
@@ -734,35 +733,6 @@ async function getChannelVideosWithRss(
   return parseRssFeed(xml).slice(0, limit);
 }
 
-async function searchLiveVideosWithApi(
-  channelId: string,
-  eventType: "live" | "upcoming"
-) {
-  if (!YOUTUBE_API_KEY) {
-    return [] as YouTubeVideo[];
-  }
-
-  const url = new URL(`${YOUTUBE_API_BASE}/search`);
-  url.searchParams.set("part", "id");
-  url.searchParams.set("channelId", channelId);
-  url.searchParams.set("type", "video");
-  url.searchParams.set("eventType", eventType);
-  url.searchParams.set("maxResults", "1");
-  url.searchParams.set("order", "date");
-  url.searchParams.set("key", YOUTUBE_API_KEY);
-
-  const data = await fetchYouTubeJson<SearchListResponse>(
-    url,
-    YOUTUBE_LIVE_REVALIDATE_SECONDS
-  );
-  const ids =
-    data?.items
-      ?.map((item) => item.id?.videoId)
-      .filter((videoId): videoId is string => Boolean(videoId)) ?? [];
-
-  return getVideosByIdsWithApi(ids, YOUTUBE_LIVE_REVALIDATE_SECONDS);
-}
-
 function getLiveStateFromVideos(
   videos: YouTubeVideo[],
   source: YouTubeDataSource
@@ -1152,27 +1122,8 @@ async function getPlaylistVideosWithHtml(
 }
 
 async function getChannelLiveState(channelId: string): Promise<YouTubeLiveState> {
-  const apiLiveState = YOUTUBE_API_KEY
-    ? await (async () => {
-        const [liveVideos, upcomingVideos] = await Promise.all([
-          searchLiveVideosWithApi(channelId, "live"),
-          searchLiveVideosWithApi(channelId, "upcoming"),
-        ]);
-
-        return {
-          liveNow: liveVideos.find((video) => video.isLive) ?? null,
-          upcomingLive:
-            upcomingVideos.find((video) => video.isUpcoming) ?? upcomingVideos[0] ?? null,
-          source: "api" as const,
-          usingFallback: false,
-        } satisfies YouTubeLiveState;
-      })()
-    : null;
-
-  if (apiLiveState?.liveNow || apiLiveState?.upcomingLive) {
-    return apiLiveState;
-  }
-
+  // Sem search.list: custa 100 unidades e a cota padrão é de 100 buscas por dia.
+  // Uploads + videos.list (1 unidade cada) também trazem lives e estreias agendadas.
   const recentActivityState = await getLiveStateFromRecentChannelActivity(channelId);
   if (recentActivityState) {
     return recentActivityState;
