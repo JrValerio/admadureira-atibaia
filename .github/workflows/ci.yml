@@ -20,14 +20,21 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Mesma major da Vercel (projeto em Node 24.x).
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit runtime and dev dependencies
+        run: npm audit --audit-level=high
+
       - name: Run ESLint
         run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
 
       - name: Run tests
         run: npm run test:run
@@ -60,3 +67,15 @@ jobs:
           if [ -f /tmp/next-start.pid ]; then
             kill "$(cat /tmp/next-start.pid)" || true
           fi
+
+  secrets:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # shortcut: varre só os arquivos atuais (o histórico tem 1,1 GB); trocar por
+      # varredura de commits se o repo sair do Git LFS/Blob e ficar leve.
+      - name: Gitleaks (working tree)
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.28.0 dir /repo --redact --verbose --no-banner --exit-code 1
