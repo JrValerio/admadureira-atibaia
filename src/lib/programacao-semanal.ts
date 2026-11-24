@@ -46,12 +46,17 @@ export function getProgramacaoSemanalBase(dataReferencia: Date) {
 }
 
 /** Programação da semana de `referencia`, já com as exceções por data. */
-export function getProgramacaoSemanalAtual(referencia = new Date()) {
+export function getProgramacaoSemanalAtual(
+  referencia = new Date(),
+  manterSuspensos = false
+) {
   const dataReferencia = getSaoPauloDate(referencia);
 
   return aplicarExcecoesDaSemana(
     getProgramacaoSemanalBase(dataReferencia),
-    dataReferencia
+    dataReferencia,
+    undefined,
+    manterSuspensos
   );
 }
 

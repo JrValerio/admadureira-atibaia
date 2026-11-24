@@ -218,6 +218,22 @@ describe("regras gerais das exceções", () => {
     ).toHaveLength(1);
   });
 
+  it("com manterSuspensos, mantém o culto suspenso marcado como cancelado", () => {
+    const excecoes: ExcecaoProgramacao[] = [
+      {
+        slug: "culto-de-teste",
+        data: "2026-11-05",
+        acao: "suspender",
+        motivo: "Nesta quinta não haverá culto de teste",
+      },
+    ];
+
+    expect(aplicarExcecoesDaSemana([culto], quinta, excecoes)).toEqual([]);
+    expect(aplicarExcecoesDaSemana([culto], quinta, excecoes, true)).toEqual([
+      { ...culto, cancelado: true },
+    ]);
+  });
+
   it("ignora exceção de slug que não existe na programação", () => {
     const excecoes: ExcecaoProgramacao[] = [
       {

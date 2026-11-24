@@ -19,6 +19,7 @@ type CardSemanalProps = {
   horario?: string;
   banner?: string;
   slug?: string;
+  cancelado?: boolean;
 };
 
 const ordemProgramacaoDetalhada: Record<string, number> = {
@@ -56,6 +57,7 @@ function CardSemanal({
   horario,
   banner,
   slug,
+  cancelado,
 }: CardSemanalProps) {
   const anchorId = getProgramacaoAnchorId({ dia, titulo });
   const resolvedBanner = banner ? getBannerSemanal(banner) : banner;
@@ -65,13 +67,23 @@ function CardSemanal({
   const inner = (
     <>
       {resolvedBanner ? (
-        <CardMedia
-          src={resolvedBanner}
-          alt={titulo}
-          variant="poster"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="rounded-none"
-        />
+        <div className="relative overflow-hidden">
+          <CardMedia
+            src={resolvedBanner}
+            alt={cancelado ? `${titulo} (cancelado nesta semana)` : titulo}
+            variant="poster"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className={cancelado ? "rounded-none grayscale-[60%]" : "rounded-none"}
+          />
+          {cancelado ? (
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 w-[160%] -translate-x-1/2 -translate-y-1/2 -rotate-[30deg] bg-[#d32f2f] py-2 text-center font-acme text-2xl tracking-[0.3em] text-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] md:text-3xl"
+            >
+              CANCELADO
+            </span>
+          ) : null}
+        </div>
       ) : (
         <div className="relative aspect-4/5 flex items-end bg-linear-to-br from-[#1a1a1a] via-[#202020] to-[#2a2a2a] p-5">
           <span className="font-acme text-text-accent text-xl tracking-wide leading-tight">
@@ -87,7 +99,11 @@ function CardSemanal({
         <h4 className="font-acme text-xl md:text-2xl text-[#212121] tracking-wide leading-tight mb-2">
           {titulo}
         </h4>
-        {horario ? (
+        {cancelado ? (
+          <p className="text-sm font-bold text-[#d32f2f] leading-relaxed">
+            Não haverá nesta semana
+          </p>
+        ) : horario ? (
           <p className="text-sm text-[#666] leading-relaxed">{horario}</p>
         ) : null}
       </div>
@@ -112,7 +128,7 @@ function CardSemanal({
 export default function Programacao({
   showHeader = true,
 }: ProgramacaoProps = {}) {
-  const programacaoDetalhada = [...getProgramacaoSemanalAtual()].sort(
+  const programacaoDetalhada = [...getProgramacaoSemanalAtual(new Date(), true)].sort(
     (a, b) =>
       extrairOrdemDia(a.dia) - extrairOrdemDia(b.dia) ||
       extrairOrdemHorario(a.horario) - extrairOrdemHorario(b.horario)
