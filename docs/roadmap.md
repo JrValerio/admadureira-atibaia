@@ -58,6 +58,8 @@ Evoluções planejadas ordenadas por impacto e viabilidade.
 ### Área administrativa (CMS leve)
 Permitir que membros da liderança atualizem eventos e programação sem deploy.
 
+**Primeiro passo entregue (nov/2026, #220):** Keystatic em `/keystatic` para as artes da semana, gravando no próprio repositório. Próximo: levar eventos especiais e avisos para o painel.
+
 Opções avaliadas:
 - Notion como backend (API pública)
 - Sanity (free tier)
