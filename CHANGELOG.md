@@ -8,10 +8,44 @@ Formato baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/).
 ## [Não lançado]
 
 ### Planejado
-- Área administrativa para atualização de conteúdo
+- Painel de conteúdo além das artes semanais (eventos e avisos)
 - PWA com suporte offline básico
 - Notificações de eventos
 - Área de membros
+
+---
+
+## [1.6.0] — 2026-11-24
+
+Consolida março a novembro de 2026 (377 commits). O detalhe de cada mudança está nos PRs, de #157 a #223.
+
+### Adicionado
+- Painel Keystatic em `/keystatic` para publicar as artes da semana sem código (#220). Fica desligado em produção até o GitHub App ser configurado
+- EBD: 3º e 4º trimestres de 2026 de Adultos e Jovens, com subsídios, versão para impressão e contagem do trimestre
+- Gate editorial da EBD em Python (`scripts/gate-licao.py`): cabeçalho por OCR, citações bíblicas literais (ARC) e livro de apoio
+- Eventos: CONFADAT 2026, Congresso UMADAT 2026 (álbuns e vídeos), Chá de Mulheres, Vigília, Culto de Ações de Graças e outros, com hero e destaque na home
+- Programação semanal com exceções por data e banners por semana
+- Política de privacidade do agente de transmissão (`/privacidade-agente`)
+- Speed Insights da Vercel (#218)
+- `npm run optimize:artes` para comprimir as artes sem mudar nome nem formato (#219)
+
+### Alterado
+- Next 16.4.6, React 19.3.1, Tailwind 4.3.5, Zod 4.6.7 e demais dependências; `npm audit` zerado (#212, #223 e bumps do Dependabot)
+- YouTube: a detecção de live deixa de usar `search.list`, que esgotava a cota diária. A live revalida a cada 2 min e as listas a cada 10 min (#215)
+- Artes de `public/programacao` comprimidas: 850 MB → 236 MB (#219)
+- Vídeo do hero: 20,2 MB → 8,9 MB (#218)
+- CI em Node 24 com `npm audit`, `tsc --noEmit` e gitleaks; Dependabot com patch e minor agrupados (#217)
+- Funções da Vercel em São Paulo (`gru1`)
+
+### Segurança
+- Cabeçalhos CSP, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy` e `X-Frame-Options` (#216)
+- JSON-LD escapado contra fechamento de `<script>` (#216)
+- A chave da API do YouTube não é mais gravada em logs nem exposta no `/healthz` (#215)
+- Branch `main` protegida, exigindo CI verde
+
+### Corrigido
+- Miniaturas do YouTube servidas por `i1`–`i9.ytimg.com` voltavam 400 (#218)
+- Build com número variável de páginas quando o YouTube respondia 429 (#190, via #215)
 
 ---
 

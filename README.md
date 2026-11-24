@@ -94,15 +94,18 @@ Canal direto entre membros, visitantes e a liderança da igreja.
 
 ```text
 src/
-  app/          rotas e páginas (Next.js App Router)
+  app/          rotas e páginas (Next.js App Router); /keystatic é o painel de conteúdo
   components/   componentes reutilizáveis de UI
   sections/     blocos estruturais de páginas
-  data/         conteúdo e dados institucionais
+  data/         conteúdo e dados institucionais (TypeScript validado com Zod)
   lib/          utilitários, helpers e regras de negócio
   hooks/        hooks personalizados
+public/programacao/semanas/AAAA-MM-DD/   artes semanais da programação
+scripts/        manifesto de banners, compressão de artes, smoke test, gate editorial da EBD (Python)
+docs/           arquitetura, decisões, runbook, governança da EBD e baselines de performance
 ```
 
-Separação clara entre interface, conteúdo, lógica e utilitários. Ver [docs/architecture.md](docs/architecture.md) para detalhes.
+Não há banco de dados nem backend próprio. O conteúdo vive no repositório, as páginas são geradas no build e revalidadas por tempo (ISR). Fontes externas: YouTube Data API/RSS (mensagens, testemunhos, live) e bible-api.com (Bíblia). Ver [docs/architecture.md](docs/architecture.md).
 
 ---
 
@@ -110,11 +113,35 @@ Separação clara entre interface, conteúdo, lógica e utilitários. Ver [docs/
 
 | Camada | Tecnologia |
 |---|---|
-| Framework | Next.js (App Router) |
-| UI | React + TailwindCSS |
-| Linguagem | TypeScript |
-| Deploy | Vercel |
-| Integração de mídia | YouTube Data API |
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 + Tailwind CSS 4 |
+| Linguagem | TypeScript (strict) + Zod 4 |
+| Testes | Vitest |
+| Painel de conteúdo | Keystatic (artes da semana) |
+| Deploy | Vercel, Node 24, funções em São Paulo (`gru1`) |
+| Métricas | Vercel Speed Insights |
+| Integração de mídia | YouTube Data API + RSS |
+
+---
+
+## 🧪 Scripts
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento (gera o manifesto de banners antes) |
+| `npm run build` | Build de produção |
+| `npm run lint` | ESLint |
+| `npm run test:run` | Testes (Vitest) |
+| `npm run smoke -- <url>` | Smoke test das rotas principais contra um servidor rodando |
+| `npm run optimize:artes -- <pasta>` | Comprime PNGs das artes sem mudar nome nem formato |
+| `npm run audit:assets` | Audita os assets de `public/` |
+
+## ✅ Qualidade e segurança
+
+- **CI (GitHub Actions)** em todo PR: `npm audit --audit-level=high`, ESLint, `tsc --noEmit`, testes, build, smoke test e varredura de segredos (gitleaks).
+- **Branch `main` protegida**: merge só com o check `CI` verde, sem force push. Merges sempre por squash.
+- **Dependabot** semanal, com patch e minor agrupados num PR só; majors vêm em PR próprio.
+- **Cabeçalhos de segurança** em `next.config.ts`: CSP, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Frame-Options`.
 
 ---
 
@@ -151,6 +178,21 @@ Acesse `http://localhost:3000`.
 | `YOUTUBE_CHANNEL_HANDLE` | Handle do canal (ex: `@ADMadureiraAtibaia`) |
 | `YOUTUBE_MESSAGES_PLAYLIST_ID` | Playlist oficial de Mensagens (opcional; há valor padrão no projeto) |
 | `YOUTUBE_TESTIMONIALS_PLAYLIST_ID` | Playlist oficial de Testemunhos (opcional; há valor padrão no projeto) |
+| `KEYSTATIC_GITHUB_CLIENT_ID` | GitHub App do painel. Sem ele, o painel só funciona em `npm run dev` |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | Segredo do GitHub App do painel |
+| `KEYSTATIC_SECRET` | Segredo de sessão do painel |
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` | Slug do GitHub App do painel |
+
+Na Vercel, marque as chaves e segredos como **Sensitive**.
+
+---
+
+## 🖼️ Artes da semana
+
+Toda segunda-feira, as artes da programação vão para `public/programacao/semanas/AAAA-MM-DD/` (data da segunda), com os nomes de `src/lib/banner-semanal.ts`. Há dois caminhos:
+
+- **Painel** (`/keystatic` → Artes da semana): sobe cada arte no campo do culto e publica. Cada publicação vira um commit. Em produção, exige o GitHub App configurado.
+- **Manual**: copiar os PNGs, rodar `npm run optimize:artes -- public/programacao/semanas/AAAA-MM-DD` e abrir PR. Passo a passo em [docs/runbook.md](docs/runbook.md).
 
 ---
 
@@ -158,10 +200,10 @@ Acesse `http://localhost:3000`.
 
 O projeto mantém estrutura editorial por trimestre e classe, com conteúdo publicado de forma progressiva conforme governança interna.
 
-Estado atual (março/2026):
+Estado atual (novembro/2026):
 
-- **Adultos** — 1T/2026 publicado; 2T/2026 publicado
-- **Jovens** — 1T/2026 publicado; 2T/2026 com Lição 1 publicada; demais lições em preparação
+- **Adultos** — 1T, 2T, 3T e 4T/2026 publicados
+- **Jovens** — 1T, 2T, 3T e 4T/2026 publicados
 - **Infantil** — arquitetura mantida; publicação editorial pausada aguardando material da coordenação
 
 A publicação no front segue critérios de revisão, disponibilidade de material de apoio e decisão editorial do projeto.
