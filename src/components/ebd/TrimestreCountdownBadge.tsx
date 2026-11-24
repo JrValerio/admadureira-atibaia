@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type Props = {
   dataInicio: string; // ISO: "2026-07-05"
@@ -27,12 +27,14 @@ function calcularEstado(dataInicio: string, dataFim: string): Exclude<Estado, { 
   return { tipo: "encerrado" };
 }
 
-export default function TrimestreCountdownBadge({ dataInicio, dataFim }: Props) {
-  const [estado, setEstado] = useState<Estado>({ tipo: "carregando" });
+const subscribeNothing = () => () => {};
+const getClientDay = () => new Date().toDateString();
+const getServerDay = () => null;
 
-  useEffect(() => {
-    setEstado(calcularEstado(dataInicio, dataFim));
-  }, [dataInicio, dataFim]);
+export default function TrimestreCountdownBadge({ dataInicio, dataFim }: Props) {
+  // A contagem depende do relógio do visitante: no servidor (e na hidratação) não renderiza nada.
+  const dia = useSyncExternalStore(subscribeNothing, getClientDay, getServerDay);
+  const estado: Estado = dia === null ? { tipo: "carregando" } : calcularEstado(dataInicio, dataFim);
 
   if (estado.tipo === "carregando") return null;
 
