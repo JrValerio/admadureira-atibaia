@@ -14,7 +14,8 @@
     "pretest:run": "node scripts/generate-banner-semanal-manifest.mjs",
     "test:run": "vitest run",
     "smoke": "node scripts/smoke.mjs",
-    "audit:assets": "node scripts/audit-assets.mjs"
+    "audit:assets": "node scripts/audit-assets.mjs",
+    "optimize:artes": "node scripts/optimize-artes.mjs"
   },
   "dependencies": {
     "next": "^16.4.5",
