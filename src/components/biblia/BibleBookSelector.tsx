@@ -3,7 +3,6 @@
 import {
   startTransition,
   type ChangeEvent,
-  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -49,13 +48,19 @@ export default function BibleBookSelector({
     versions[0]?.id ??
     selectedVersion;
 
-  useEffect(() => {
+  // Ressincroniza com as props quando a navegação troca livro/idioma (ajuste durante o render, sem efeito).
+  const [syncedTestament, setSyncedTestament] = useState(selectedBook.testamento);
+  if (syncedTestament !== selectedBook.testamento) {
+    setSyncedTestament(selectedBook.testamento);
     setSelectedTestament(selectedBook.testamento);
-  }, [selectedBook.testamento]);
+  }
 
-  useEffect(() => {
+  const [syncedLanguage, setSyncedLanguage] = useState(selectedLanguage);
+  if (syncedLanguage !== selectedLanguage) {
+    setSyncedLanguage(selectedLanguage);
     setLanguage(selectedLanguage);
-  }, [selectedLanguage]);
+  }
+
   const filteredBooks = useMemo(
     () =>
       selectedTestament === "Antigo Testamento"
