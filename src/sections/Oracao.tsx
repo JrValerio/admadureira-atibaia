@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { z } from "zod/mini";
+import { validateForm, type FieldRule } from "@/lib/form-validation";
 import { Section, SectionTitle } from "@/components/ui";
 import { SEDE_WHATSAPP_URL } from "@/data/site";
 
-const oracaoSchema = z.object({
-  nome: z.string().check(z.minLength(2, "Informe seu nome completo")),
-  email: z.email("Informe um e-mail válido"),
-  telefone: z.optional(z.string()),
-  pedido: z.string().check(z.minLength(10, "Escreva um pedido com pelo menos 10 caracteres")),
-});
+const oracaoRules: Partial<Record<"nome" | "email" | "pedido", FieldRule>> = {
+  nome: { minLength: 2, message: "Informe seu nome completo" },
+  email: { email: true, message: "Informe um e-mail válido" },
+  pedido: { minLength: 10, message: "Escreva um pedido com pelo menos 10 caracteres" },
+};
 
 type FormState = "idle" | "sending" | "sent" | "error";
 
@@ -41,13 +40,8 @@ export default function Oracao({ showHeader = true }: OracaoProps) {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const result = oracaoSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof typeof form, string>> = {};
-      for (const issue of result.error.issues) {
-        const field = issue.path[0] as keyof typeof form;
-        if (!fieldErrors[field]) fieldErrors[field] = issue.message;
-      }
+    const fieldErrors = validateForm(form, oracaoRules);
+    if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
       return;
     }
