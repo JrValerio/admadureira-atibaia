@@ -1,3 +1,4 @@
+import { jsonLd as toJsonLd } from "@/lib/json-ld";
 // src/app/programacao/curso-de-teologia/artigos/[slug]/page.tsx
 import { notFound } from "next/navigation"
 import Link from "next/link"
@@ -129,7 +130,7 @@ export default async function ArtigoPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: toJsonLd(jsonLd) }}
       />
 
       <main>

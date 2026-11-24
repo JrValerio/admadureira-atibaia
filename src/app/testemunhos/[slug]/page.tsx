@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -129,12 +130,12 @@ export default async function TestemunhoPage({ params }: PageProps) {
         <div className="ui-page-container ui-page-container--narrow">
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
           />
           {videoSchema && (
             <script
               type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+              dangerouslySetInnerHTML={{ __html: jsonLd(videoSchema) }}
             />
           )}
 

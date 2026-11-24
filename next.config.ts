@@ -1,5 +1,31 @@
 import type { NextConfig } from "next";
 
+// 'unsafe-inline' em script/style: o Next injeta scripts inline e o site não usa nonce.
+// frame-src cobre os embeds existentes: YouTube, Google Maps e Spotify (podcast).
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://vercel.live",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com",
+  "font-src 'self' data:",
+  "media-src 'self' https:",
+  "connect-src 'self' https://vercel.live wss://ws-us3.pusher.com",
+  "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.google.com https://open.spotify.com https://vercel.live",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  "upgrade-insecure-requests",
+].join("; ");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+  { key: "X-Frame-Options", value: "DENY" },
+];
+
 const nextConfig: NextConfig = {
   outputFileTracingExcludes: {
     "/*": ["./public/programacao/semanas/**/*"],
@@ -17,6 +43,9 @@ const nextConfig: NextConfig = {
         hostname: "i.ytimg.com",
       },
     ],
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
   async redirects() {
     return [

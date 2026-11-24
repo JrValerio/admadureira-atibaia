@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import BibleReferenceText from "@/components/biblia/BibleReferenceText";
@@ -132,11 +133,11 @@ export default async function EbdHubPage({ searchParams }: PageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }}
       />
 
       <main className="min-h-screen bg-[#f5f5f5]">

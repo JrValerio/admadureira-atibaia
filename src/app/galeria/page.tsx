@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import GalleryAlbumCard from "@/components/gallery/GalleryAlbumCard";
@@ -80,16 +81,16 @@ export default function GaleriaPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }}
       />
       {itemListSchema ? (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(itemListSchema) }}
         />
       ) : null}
 

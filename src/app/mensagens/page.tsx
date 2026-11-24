@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
@@ -55,13 +56,13 @@ export default async function MensagensPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(mensagensListSchema),
+          __html: jsonLd(mensagensListSchema),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(mensagensSeriesSchema),
+          __html: jsonLd(mensagensSeriesSchema),
         }}
       />
       <HeroPage

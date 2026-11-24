@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -73,11 +74,11 @@ export default function TrimestreEbdAdultos3t2026Page() {
     <main className="min-h-screen bg-[#f5f5f5]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }}
       />
 
       {/* Hero */}

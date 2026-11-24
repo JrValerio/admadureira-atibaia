@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -143,7 +144,7 @@ export default async function PastorPage({ params }: PageProps) {
         <div className="ui-page-container">
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(personSchema) }}
           />
 
           <Breadcrumb nome={pastor.nome} />

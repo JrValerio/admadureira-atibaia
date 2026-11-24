@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -207,11 +208,11 @@ export default function CultoAcoesDeGracas05092026Page() {
     <main className="min-h-screen bg-[#f5f5f5]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema) }}
       />
 
       <div className="sticky top-[4.5rem] z-40 border-b border-black/5 bg-[#f5f5f5]/95 backdrop-blur-sm md:top-[4.85rem]">

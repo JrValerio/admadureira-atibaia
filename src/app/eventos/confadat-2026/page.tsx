@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
@@ -145,11 +146,11 @@ export default function Confadat2026Page() {
     <main className={`${styles.page} min-h-screen`}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema) }}
       />
 
       <section className={`${styles.opening} py-8 md:py-14`}>

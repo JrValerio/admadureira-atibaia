@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -134,12 +135,12 @@ export default async function EventoPage({ params }: PageProps) {
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(breadcrumbSchema),
+              __html: jsonLd(breadcrumbSchema),
             }}
           />
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }}
+            dangerouslySetInnerHTML={{ __html: jsonLd(eventSchema) }}
           />
 
           <nav

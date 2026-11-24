@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import HeroPage from "@/components/HeroPage";
 import { igrejaHeroMedia } from "@/data/igreja-media";
@@ -60,11 +61,11 @@ export default function ProgramacaoPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }}
       />
 
       <main className="bg-[#f5f5f5] min-h-screen">

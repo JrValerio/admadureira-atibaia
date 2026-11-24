@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/json-ld";
 import Image from "next/image";
 import Link from "next/link";
 import CopyPixButton from "@/components/CopyPixButton";
@@ -47,7 +48,7 @@ export default function OfertaPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(donationJsonLd),
+          __html: jsonLd(donationJsonLd),
         }}
       />
       <HeroPage
