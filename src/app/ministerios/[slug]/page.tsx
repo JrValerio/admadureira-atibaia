@@ -16,9 +16,10 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  return getMinisterios().map((ministerio) => ({
-    slug: ministerio.slug,
-  }));
+  // confadat tem rota própria (ministerios/confadat/page.tsx).
+  return getMinisterios()
+    .filter((ministerio) => ministerio.slug !== "confadat")
+    .map((ministerio) => ({ slug: ministerio.slug }));
 }
 
 export async function generateMetadata({
