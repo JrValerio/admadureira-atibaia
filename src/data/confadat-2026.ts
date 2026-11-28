@@ -49,6 +49,12 @@ export const CONFADAT_2026 = {
         { nome: "Missionária Erinete Teodoro", funcao: "Preletora" },
         { nome: "Cantora Anne Reis", funcao: "Louvor" },
       ],
+      // Depois do culto: álbum e gravação da transmissão.
+      cobertura: {
+        albumUrl: "https://photos.app.goo.gl/yPo8ZYiatve5YW7P8",
+        albumResumo: "107 fotos e 32 vídeos",
+        videoUrl: "https://www.youtube.com/watch?v=wlUnqdjLdAI",
+      },
     },
     {
       noite: "2ª noite",

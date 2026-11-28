@@ -410,7 +410,27 @@ export default function Confadat2026Page() {
                     <dd>Igreja Sede</dd>
                   </div>
                 </dl>
-                {eventEnded ? null : (
+                {"cobertura" in noite && noite.cobertura ? (
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href={noite.cobertura.albumUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ui-btn-ghost"
+                    >
+                      Ver o álbum ({noite.cobertura.albumResumo})
+                    </a>
+                    <a
+                      href={noite.cobertura.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ui-btn-ghost"
+                    >
+                      Rever o culto no YouTube
+                    </a>
+                  </div>
+                ) : null}
+                {eventEnded || ("cobertura" in noite && noite.cobertura) ? null : (
                   <a
                     href={buildGoogleCalendarUrl(noite)}
                     target="_blank"

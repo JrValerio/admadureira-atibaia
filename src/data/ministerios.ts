@@ -1,4 +1,5 @@
 import type { ConteudoRelacionadoLink } from "@/data/agenda-types";
+import { CONFADAT_2026 } from "@/data/confadat-2026";
 
 export interface MinisterioDestaque {
   etiqueta: string;
@@ -93,7 +94,42 @@ const ministerios: Ministerio[] = [
       "Ações de comunhão, discipulado e oração",
       "Participação em congressos e eventos especiais",
     ],
-    imagem: "/ministerios/confadat/confadat-2025-youtube.png",
+    destaque: {
+      etiqueta: CONFADAT_2026.titulo,
+      titulo: CONFADAT_2026.tema,
+      descricao: CONFADAT_2026.descricaoTopo,
+      detalhes: [
+        `${CONFADAT_2026.data}, às ${CONFADAT_2026.horario}`,
+        ...CONFADAT_2026.noites.map(
+          (noite) =>
+            `${noite.diaSemana}: ${noite.participantes.map((p) => p.nome).join(" e ")}`,
+        ),
+        `Igreja Sede — ${CONFADAT_2026.endereco}`,
+        `Base bíblica: ${CONFADAT_2026.baseBiblica}`,
+      ],
+      href: CONFADAT_2026.path,
+      ctaLabel: "Ver a página do congresso",
+    },
+    recursos: {
+      titulo: "Reviva o CONFADAT 2026",
+      itens: CONFADAT_2026.noites.flatMap((noite) =>
+        "cobertura" in noite && noite.cobertura
+          ? [
+              {
+                label: `${noite.noite} — álbum de fotos`,
+                href: noite.cobertura.albumUrl,
+                descricao: `${noite.cobertura.albumResumo} de ${noite.data}.`,
+              },
+              {
+                label: `${noite.noite} — transmissão no YouTube`,
+                href: noite.cobertura.videoUrl,
+                descricao: `Culto com ${noite.participantes.map((p) => p.nome).join(" e ")}.`,
+              },
+            ]
+          : [],
+      ),
+    },
+    imagem: CONFADAT_2026.artes.youtube,
   },
   {
     slug: "umadat",
